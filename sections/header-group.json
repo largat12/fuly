@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -5,6 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_wqPbMQ": {
+          "type": "announcement",
+          "settings": {
+            "text": "Te damos la bienvenida a nuestra tienda",
+            "link": ""
+          }
+        },
         "announcement-envio-mismo-dia": {
           "type": "announcement",
           "settings": {
@@ -28,13 +44,14 @@
         }
       },
       "block_order": [
+        "announcement_wqPbMQ",
         "announcement-envio-mismo-dia",
         "announcement-garantia",
         "announcement-suscribete"
       ],
       "custom_css": [
-        ".announcement-bar-section .slider-button { display: none !important; }",
-        ".announcement-bar-section .slider-buttons { display: none !important; }"
+        ".announcement-bar-section .slider-button {display: none !important;}",
+        ".announcement-bar-section .slider-buttons {display: none !important;}"
       ],
       "settings": {
         "auto_rotate": true,
@@ -52,19 +69,22 @@
         "fuly-announcement-1": {
           "type": "announcement",
           "settings": {
-            "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M."
+            "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M.",
+            "link": ""
           }
         },
         "fuly-announcement-2": {
           "type": "announcement",
           "settings": {
-            "text": "GARANTÍA DE SATISFACCIÓN : SI NO TE CONVENCE, TE DEVOLVEMOS TU DINERO"
+            "text": "GARANTÍA DE SATISFACCIÓN : SI NO TE CONVENCE, TE DEVOLVEMOS TU DINERO",
+            "link": ""
           }
         },
         "fuly-announcement-3": {
           "type": "announcement",
           "settings": {
-            "text": "SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO"
+            "text": "SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO",
+            "link": ""
           }
         },
         "fuly-nav-tienda": {
@@ -152,9 +172,9 @@
         "fuly-dropdown-contacto"
       ],
       "custom_css": [
-        ".header__icon--account { display: none !important; }",
-        ".header-wrapper { background-color: #FFFFFF !important; }",
-        ".header { background-color: #FFFFFF !important; }"
+        ".header__icon--account {display: none !important;}",
+        ".header-wrapper {background-color: #ffffff !important;}",
+        ".header {background-color: #ffffff !important;}"
       ],
       "settings": {
         "logo_position": "middle-left",
@@ -170,9 +190,45 @@
         "enable_customer_avatar": false,
         "margin_bottom": 0,
         "padding_top": 12,
-        "padding_bottom": 12
+        "padding_bottom": 12,
+        "logo_alt": "Fuly",
+        "rotation_interval_ms": 5000,
+        "fade_duration_ms": 300,
+        "show_search": true,
+        "nav_label": "Principal",
+        "announcement_label": "Anuncios",
+        "menu_label": "Abrir menu",
+        "close_label": "Cerrar menu",
+        "search_label": "Buscar",
+        "cart_label": "Abrir carrito",
+        "more_desktop_label": "Abrir mas opciones",
+        "more_mobile_label": "Mas opciones",
+        "more_trigger_label": "Más",
+        "logo_height_mobile": 32,
+        "logo_height_tablet": 40,
+        "logo_height_desktop": 40,
+        "nav_link_size_mobile": 13,
+        "nav_link_size_tablet": 13,
+        "nav_link_size_desktop": 13,
+        "nav_gap_mobile": 32,
+        "nav_gap_tablet": 32,
+        "nav_gap_desktop": 32,
+        "announcement_font_size_mobile": 10,
+        "announcement_font_size_tablet": 10,
+        "announcement_font_size_desktop": 10,
+        "bar_padding_x_mobile": 16,
+        "bar_padding_x_tablet": 32,
+        "bar_padding_x_desktop": 64,
+        "mobile_menu_item_size": 22,
+        "announcement_bg_color": "#ffe135",
+        "announcement_text_color": "#1a1a1a",
+        "nav_hover_color": "#e5006a",
+        "cart_badge_color": "#e5006a"
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
