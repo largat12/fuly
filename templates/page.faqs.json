@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "fuly_faq_page": {
@@ -92,13 +101,31 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8", "faq_9", "faq_10", "faq_11"],
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6",
+        "faq_7",
+        "faq_8",
+        "faq_9",
+        "faq_10",
+        "faq_11"
+      ],
       "settings": {
         "eyebrow": "FAQ",
         "title": "Preguntas frecuentes",
-        "subtitle": "Todo lo que necesitas saber sobre Fuly."
+        "subtitle": "Todo lo que necesitas saber sobre Fuly.",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     }
   },
-  "order": ["fuly_faq_page"]
+  "order": [
+    "fuly_faq_page"
+  ]
 }
