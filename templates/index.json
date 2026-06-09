@@ -1,25 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "fuly_home_slideshow": {
       "type": "slideshow",
-      "disabled": true,
       "blocks": {
         "slide_1": {
           "type": "slide",
           "settings": {
             "image_overlay_opacity": 0,
+            "enable_image_link": false,
+            "image_link": "",
             "heading": "",
+            "heading_size": "h1",
             "subheading": "",
             "button_label": "",
             "link": "",
+            "button_style_secondary": false,
             "show_text_box": false,
             "box_align": "middle-center",
             "text_alignment": "center",
-            "text_alignment_mobile": "center"
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
           }
         }
       },
-      "block_order": ["slide_1"],
+      "block_order": [
+        "slide_1"
+      ],
+      "disabled": true,
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt_image",
@@ -30,16 +46,66 @@
         "show_text_below": false,
         "show_on_desktop": true,
         "show_on_mobile": true,
-        "show_text_content": true
+        "show_text_content": true,
+        "accessibility_info": "Presentación de diapositivas sobre tu marca"
       }
     },
     "fuly_home_hero": {
       "type": "fuly-home-hero",
-      "settings": {}
+      "settings": {
+        "show_badge": true,
+        "tagline": "",
+        "reviews_manual_number": "3,400",
+        "reviews_text": "reseñas verificadas con 5 estrellas ⭐",
+        "title": "EL FUTURO SABE RICO",
+        "subtitle": "Formulados por científicos. Disfrutados por niños.",
+        "primary_label": "COMPRAR AHORA",
+        "primary_link": "",
+        "secondary_label": "VER PRODUCTOS",
+        "secondary_link": "",
+        "title_size_mobile": 56,
+        "title_size_tablet": 68,
+        "title_size_desktop": 80,
+        "subtitle_size_mobile": 18,
+        "subtitle_size_tablet": 18,
+        "subtitle_size_desktop": 18,
+        "content_gap_mobile": 16,
+        "content_gap_tablet": 24,
+        "content_gap_desktop": 24,
+        "buttons_gap_mobile": 12,
+        "buttons_gap_tablet": 12,
+        "buttons_gap_desktop": 12,
+        "image_height_mobile": 225,
+        "image_height_tablet": 450,
+        "image_height_desktop": 450,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_color": "#1a1a1a",
+        "subtitle_color": "#555555",
+        "badge_bg_color": "#ffe135"
+      }
     },
     "fuly_home_marquee": {
       "type": "fuly-home-marquee",
-      "settings": {}
+      "settings": {
+        "items": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB",
+        "duration_mobile": 10,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 24,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff",
+        "star_color": "#ffe135"
+      }
     },
     "fuly_home_benefits": {
       "type": "fuly-home-benefits",
@@ -75,13 +141,63 @@
           }
         }
       },
-      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5"],
-      "settings": {}
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5"
+      ],
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 51,
+        "padding_block_tablet": 51,
+        "padding_block_desktop": 51,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#fffbea"
+      }
     },
     "fuly_home_products": {
       "type": "fuly-home-products",
       "settings": {
-        "collection": "favoritos"
+        "show_reviews_badge": false,
+        "reviews_source": "dynamic",
+        "reviews_manual_number": "3,400",
+        "reviews_text": "reseñas verificadas con 5 estrellas ★",
+        "tag_label": "",
+        "heading": "",
+        "collection": "favoritos",
+        "fallback_collection": "",
+        "products_limit": 4,
+        "cta_label": "Ver todos los productos →",
+        "cta_link": "",
+        "grid_cols_mobile": 1,
+        "grid_cols_tablet": 2,
+        "grid_cols_desktop": 4,
+        "grid_gap_mobile": 12,
+        "grid_gap_tablet": 24,
+        "grid_gap_desktop": 24,
+        "card_image_height_mobile": 160,
+        "card_image_height_tablet": 224,
+        "card_image_height_desktop": 224,
+        "card_title_size_mobile": 16,
+        "card_title_size_tablet": 18,
+        "card_title_size_desktop": 18,
+        "card_price_size_mobile": 18,
+        "card_price_size_tablet": 20,
+        "card_price_size_desktop": 20,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96
       }
     },
     "fuly_home_how_it_works": {
@@ -112,8 +228,36 @@
           }
         }
       },
-      "block_order": ["step_1", "step_2", "step_3"],
-      "settings": {}
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "tag_label": "CÓMO FUNCIONA",
+        "heading": "ASÍ DE FÁCIL",
+        "cols_mobile": 1,
+        "cols_tablet": 3,
+        "cols_desktop": 3,
+        "gap_mobile": 24,
+        "gap_tablet": 24,
+        "gap_desktop": 24,
+        "card_padding_mobile": 32,
+        "card_padding_tablet": 32,
+        "card_padding_desktop": 32,
+        "title_size_mobile": 20,
+        "title_size_tablet": 20,
+        "title_size_desktop": 20,
+        "desc_size_mobile": 16,
+        "desc_size_tablet": 16,
+        "desc_size_desktop": 16,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96
+      }
     },
     "fuly_home_science": {
       "type": "fuly-home-science",
@@ -147,12 +291,65 @@
           }
         }
       },
-      "block_order": ["ingredient_1", "ingredient_2", "ingredient_3", "ingredient_4"],
-      "settings": {}
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3",
+        "ingredient_4"
+      ],
+      "settings": {
+        "tag_label": "NUESTROS INGREDIENTES",
+        "heading": "HECHO CON CIENCIA DELICIOSA EN EL FULY LAB",
+        "cta_label": "CONOCE NUESTROS INGREDIENTES",
+        "cta_link": "",
+        "cols_mobile": 1,
+        "cols_tablet": 2,
+        "cols_desktop": 2,
+        "gap_mobile": 16,
+        "gap_tablet": 16,
+        "gap_desktop": 16,
+        "card_padding_mobile": 24,
+        "card_padding_tablet": 24,
+        "card_padding_desktop": 24,
+        "name_size_mobile": 18,
+        "name_size_tablet": 18,
+        "name_size_desktop": 18,
+        "benefit_size_mobile": 15,
+        "benefit_size_tablet": 15,
+        "benefit_size_desktop": 15,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 32,
+        "heading_size_desktop": 36,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "section_bg_color": "#1a1a1a",
+        "card_bg_color": "#262626"
+      }
     },
     "fuly_home_why": {
       "type": "fuly-home-why",
-      "settings": {}
+      "settings": {
+        "tag_label": "POR QUÉ FULY",
+        "heading": "PARA QUE LOS NIÑOS SEAN MÁS NIÑOS",
+        "body": "Fuly nació para darles a las familias herramientas respaldadas por ciencia. Porque cada niño merece crecer sano, fuerte y feliz.",
+        "cta_label": "CONOCE NUESTRA HISTORIA",
+        "cta_link": "",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "body_size_mobile": 18,
+        "body_size_tablet": 18,
+        "body_size_desktop": 18,
+        "gap_mobile": 32,
+        "gap_tablet": 48,
+        "gap_desktop": 48,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_color": "#1a1a1a",
+        "body_color": "#555555"
+      }
     },
     "fuly_home_testimonials": {
       "type": "fuly-home-testimonials",
@@ -203,12 +400,50 @@
           }
         }
       },
-      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3", "testimonial_4", "testimonial_5"],
-      "settings": {}
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5"
+      ],
+      "settings": {
+        "tag_label": "TESTIMONIOS",
+        "heading": "LO QUE DICEN LAS FAMILIAS",
+        "card_width_mobile": 260,
+        "card_width_tablet": 280,
+        "card_width_desktop": 280,
+        "text_size_mobile": 16,
+        "text_size_tablet": 16,
+        "text_size_desktop": 16,
+        "track_gap_mobile": 16,
+        "track_gap_tablet": 16,
+        "track_gap_desktop": 16,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "star_color": "#ffe135"
+      }
     },
     "fuly_home_cta": {
       "type": "fuly-home-cta",
-      "settings": {}
+      "settings": {
+        "heading": "ÚNETE A +3,400 FAMILIAS QUE CONFÍAN EN FULY",
+        "cta_label": "VER PRODUCTOS",
+        "cta_link": "",
+        "bg_color": "#e5006a",
+        "text_color": "#ffffff",
+        "heading_size_mobile": 24,
+        "heading_size_tablet": 28,
+        "heading_size_desktop": 28,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 48,
+        "padding_block_desktop": 48,
+        "button_full_width_mobile": false
+      }
     },
     "fuly_home_faq": {
       "type": "fuly-home-faq",
@@ -249,12 +484,61 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
-      "settings": {}
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "tag_label": "FAQ",
+        "heading": "PREGUNTAS FRECUENTES",
+        "cta_heading": "¿TIENES MÁS PREGUNTAS?",
+        "cta_label": "ESCRÍBENOS",
+        "cta_link": "",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "question_size_mobile": 16,
+        "question_size_tablet": 16,
+        "question_size_desktop": 16,
+        "answer_size_mobile": 16,
+        "answer_size_tablet": 16,
+        "answer_size_desktop": 16,
+        "gap_mobile": 12,
+        "gap_tablet": 12,
+        "gap_desktop": 12,
+        "summary_padding_mobile": 20,
+        "summary_padding_tablet": 20,
+        "summary_padding_desktop": 20,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96
+      }
     },
     "fuly_home_newsletter": {
       "type": "fuly-home-newsletter",
-      "settings": {}
+      "settings": {
+        "heading": "ÚNETE AL FULYVERSO",
+        "body": "Descuentos exclusivos, lanzamientos y herramientas para una crianza más fácil.",
+        "badge": "RECIBE 10% EN TU PRIMERA COMPRA",
+        "placeholder": "tu@email.com",
+        "submit_label": "Suscribirme",
+        "bg_color": "#00e5cc",
+        "heading_size_mobile": 32,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 40,
+        "body_size_mobile": 16,
+        "body_size_tablet": 16,
+        "body_size_desktop": 16,
+        "input_size_mobile": 14,
+        "input_size_tablet": 14,
+        "input_size_desktop": 14,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 64,
+        "padding_block_desktop": 64
+      }
     }
   },
   "order": [

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Footer",
   "type": "footer",
@@ -103,20 +112,45 @@
         }
       },
       "block_order": [
-        "tienda-1", "tienda-2", "tienda-3",
-        "ayuda-1", "ayuda-2", "ayuda-3",
-        "comunidad-1", "comunidad-2", "comunidad-3",
-        "legal-1", "legal-2", "legal-3"
+        "tienda-1",
+        "tienda-2",
+        "tienda-3",
+        "ayuda-1",
+        "ayuda-2",
+        "ayuda-3",
+        "comunidad-1",
+        "comunidad-2",
+        "comunidad-3",
+        "legal-1",
+        "legal-2",
+        "legal-3"
       ],
       "settings": {
+        "logo": "shopify://shop_images/logo.svg",
         "tagline": "Ciencia deliciosa para más niños.",
         "copyright": "© The Functional Nutrition Company S.A.S. 2024. Todos los derechos reservados.",
         "instagram_url": "https://instagram.com/fulykids",
         "facebook_url": "https://facebook.com/fulykids",
         "youtube_url": "https://youtube.com/@fulykids",
-        "tiktok_url": "https://tiktok.com/@fulykids"
+        "tiktok_url": "https://tiktok.com/@fulykids",
+        "cols_mobile": 1,
+        "cols_tablet": 5,
+        "cols_desktop": 5,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 64,
+        "padding_block_desktop": 64,
+        "logo_height_mobile": 40,
+        "logo_height_tablet": 40,
+        "logo_height_desktop": 40,
+        "link_size_mobile": 14,
+        "link_size_tablet": 14,
+        "link_size_desktop": 14,
+        "bg_color": "#1a1a1a",
+        "accent_color": "#ffe135"
       }
     }
   },
-  "order": ["fuly-footer"]
+  "order": [
+    "fuly-footer"
+  ]
 }
