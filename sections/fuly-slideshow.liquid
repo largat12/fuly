@@ -38,11 +38,18 @@
       background: {{ b.overlay_color | default: '#000000' }};
       opacity: {{ b.overlay_opacity | default: 0 | divided_by: 100.0 }};
     }
-    {{ sel }} .fuly-ss__img--desktop { display: none; }
+    {{ sel }} .fuly-ss__img--desktop,
+    {{ sel }} .fuly-ss__img--tablet { display: none; }
     {{ sel }} .fuly-ss__img--mobile { display: block; }
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      {{ sel }} .fuly-ss__img--mobile,
+      {{ sel }} .fuly-ss__img--desktop { display: none; }
+      {{ sel }} .fuly-ss__img--tablet { display: block; }
+    }
+    @media (min-width: 1024px) {
+      {{ sel }} .fuly-ss__img--mobile,
+      {{ sel }} .fuly-ss__img--tablet { display: none; }
       {{ sel }} .fuly-ss__img--desktop { display: block; }
-      {{ sel }} .fuly-ss__img--mobile { display: none; }
     }
   {%- endfor -%}
 {%- endstyle -%}
@@ -72,6 +79,11 @@
                   {{ b.image | image_url: width: 2200 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--desktop', widths: '750, 1100, 1500, 1900, 2200', alt: b.image.alt | default: 'Slide' | escape }}
                 {%- else -%}
                   <span class="fuly-ss__img fuly-ss__img--desktop fuly-ss__placeholder">{{ 'image' | placeholder_svg_tag: 'fuly-ss__placeholder-svg' }}</span>
+                {%- endif -%}
+                {%- if b.image_tablet != blank -%}
+                  {{ b.image_tablet | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--tablet', widths: '750, 1000, 1300, 1600', alt: b.image_tablet.alt | default: 'Slide' | escape }}
+                {%- elsif b.image != blank -%}
+                  {{ b.image | image_url: width: 1600 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--tablet', widths: '750, 1000, 1300, 1600', alt: b.image.alt | default: 'Slide' | escape }}
                 {%- endif -%}
                 {%- if b.image_mobile != blank -%}
                   {{ b.image_mobile | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--mobile', widths: '450, 750, 1000, 1200', alt: b.image_mobile.alt | default: 'Slide' | escape }}
@@ -254,8 +266,9 @@
       "type": "slide",
       "name": "Slide",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "image_picker", "id": "image_mobile", "label": "Imagen para Mobile" },
+        { "type": "image_picker", "id": "image", "label": "Imagen Desktop" },
+        { "type": "image_picker", "id": "image_tablet", "label": "Imagen Tablet (opcional)" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Imagen Mobile (opcional)" },
         { "type": "color", "id": "overlay_color", "label": "Color del overlay", "default": "#000000" },
         { "type": "range", "id": "overlay_opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Overlay opacity", "default": 0 },
         { "type": "header", "content": "Enlace de la imagen" },

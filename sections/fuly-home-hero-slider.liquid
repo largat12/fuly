@@ -73,12 +73,19 @@
         --slide-max-width: {{ b.content_max_width_desktop | default: 50 }}%;
       }
     }
-    {%- comment -%} Mostrar imagen correcta por dispositivo {%- endcomment -%}
-    {{ sel }} .fuly-hslide__img--desktop { display: none; }
+    {%- comment -%} Mostrar imagen correcta por dispositivo (mobile / tablet / desktop) {%- endcomment -%}
+    {{ sel }} .fuly-hslide__img--desktop,
+    {{ sel }} .fuly-hslide__img--tablet { display: none; }
     {{ sel }} .fuly-hslide__img--mobile { display: block; }
-    @media (min-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      {{ sel }} .fuly-hslide__img--mobile,
+      {{ sel }} .fuly-hslide__img--desktop { display: none; }
+      {{ sel }} .fuly-hslide__img--tablet { display: block; }
+    }
+    @media (min-width: 1024px) {
+      {{ sel }} .fuly-hslide__img--mobile,
+      {{ sel }} .fuly-hslide__img--tablet { display: none; }
       {{ sel }} .fuly-hslide__img--desktop { display: block; }
-      {{ sel }} .fuly-hslide__img--mobile { display: none; }
     }
   {%- endfor -%}
 {%- endstyle -%}
@@ -99,6 +106,11 @@
             <div class="fuly-hslide__media">
               {%- if b.image != blank -%}
                 {{ b.image | image_url: width: 2000 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--desktop', alt: b.title | default: 'Fuly' | escape }}
+              {%- endif -%}
+              {%- if b.image_tablet != blank -%}
+                {{ b.image_tablet | image_url: width: 1600 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--tablet', alt: b.title | default: 'Fuly' | escape }}
+              {%- elsif b.image != blank -%}
+                {{ b.image | image_url: width: 1600 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--tablet', alt: b.title | default: 'Fuly' | escape }}
               {%- endif -%}
               {%- if b.image_mobile != blank -%}
                 {{ b.image_mobile | image_url: width: 1200 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--mobile', alt: b.title | default: 'Fuly' | escape }}
@@ -414,6 +426,7 @@
       "settings": [
         { "type": "header", "content": "Imágenes" },
         { "type": "image_picker", "id": "image", "label": "Imagen desktop" },
+        { "type": "image_picker", "id": "image_tablet", "label": "Imagen tablet (opcional)" },
         { "type": "image_picker", "id": "image_mobile", "label": "Imagen mobile (opcional)" },
 
         { "type": "header", "content": "Overlay" },
