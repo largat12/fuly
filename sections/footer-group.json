@@ -127,6 +127,7 @@
       ],
       "settings": {
         "logo": "shopify://shop_images/logo.svg",
+        "invert_logo": false,
         "tagline": "Ciencia deliciosa para más niños.",
         "copyright": "© The Functional Nutrition Company S.A.S. 2024. Todos los derechos reservados.",
         "instagram_url": "https://instagram.com/fulykids",
@@ -146,7 +147,11 @@
         "link_size_tablet": 14,
         "link_size_desktop": 14,
         "bg_color": "#1a1a1a",
-        "accent_color": "#ffe135"
+        "accent_color": "#ffe135",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     }
   },
