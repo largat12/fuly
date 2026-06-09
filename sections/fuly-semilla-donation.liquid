@@ -465,6 +465,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly Semilla Donation",
@@ -720,6 +735,94 @@ document.addEventListener('DOMContentLoaded', function() {
       "step": 4,
       "unit": "px",
       "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
     }
   ]
 }

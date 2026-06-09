@@ -1,0 +1,49 @@
+{%- comment -%}
+  FULY — fuly-font-stack
+  Devuelve (echo) un valor CSS de font-family según `choice`. Permite elegir
+  entre las fuentes cargadas por la theme (marca) y las de la librería de Shopify.
+
+  Params:
+    - choice (string): inherit | display | body | mono | shopify_heading | shopify_body | custom
+    - picker (font object, opcional): usado cuando choice == 'custom'
+                                      (un setting type "font_picker" de la sección)
+
+  Uso típico dentro de {% style %}:
+    --r-heading-font: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %};
+
+  Notas:
+    'display' = títulos de marca (PP Pangram Sans Rounded) vía --font-heading-family
+    'body'    = cuerpo de marca (Arial) vía --font-body-family
+    'mono'    = Martian Mono (Google, ya cargada en theme.liquid)
+    'shopify_heading' / 'shopify_body' = fuentes elegidas en Theme settings → Tipografía
+    'custom'  = fuente elegida en el font_picker propio de la sección
+{%- endcomment -%}
+{%- liquid
+  assign font_choice = choice | default: 'inherit'
+  case font_choice
+    when 'display'
+      echo 'var(--font-heading-family)'
+    when 'body'
+      echo 'var(--font-body-family)'
+    when 'mono'
+      echo '"Martian Mono", "Courier New", monospace'
+    when 'shopify_heading'
+      echo settings.type_header_font.family
+      echo ', '
+      echo settings.type_header_font.fallback_families
+    when 'shopify_body'
+      echo settings.type_body_font.family
+      echo ', '
+      echo settings.type_body_font.fallback_families
+    when 'custom'
+      if picker != blank
+        echo picker.family
+        echo ', '
+        echo picker.fallback_families
+      else
+        echo 'inherit'
+      endif
+    else
+      echo 'inherit'
+  endcase
+-%}

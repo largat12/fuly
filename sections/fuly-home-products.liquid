@@ -8,20 +8,13 @@
   assign cta_link = section.settings.cta_link | default: '/collections/tienda'
 
   comment
-    Badge de reseñas (#3 + PD): número dinámico sumando el metacampo estándar
-    reviews.rating_count de todos los productos. Si está en 0 (la app de reseñas
-    aún no lo poblo o usa otro namespace), cae al número manual de respaldo.
+    Badge de reseñas (#3 + PD): número configurable vía snippet fuly-reviews-total.
+    Revisa el namespace/key del metafield de tu app (revie.lat) en el editor.
   endcomment
-  assign reviews_total = 0
-  for review_product in collections.all.products
-    assign reviews_total = reviews_total | plus: review_product.metafields.reviews.rating_count
-  endfor
-  assign reviews_manual = section.settings.reviews_manual_number | default: '3,400'
-  if section.settings.reviews_source == 'manual' or reviews_total == 0
-    assign reviews_number = reviews_manual
-  else
-    assign reviews_number = reviews_total
-  endif
+  capture reviews_number
+    render 'fuly-reviews-total', source: section.settings.reviews_source, namespace: section.settings.reviews_namespace, key: section.settings.reviews_key, shop_namespace: section.settings.reviews_shop_namespace, shop_key: section.settings.reviews_shop_key, manual_number: section.settings.reviews_manual_number
+  endcapture
+  assign reviews_number = reviews_number | strip
   assign reviews_text = section.settings.reviews_text | default: 'reseñas verificadas con 5 estrellas ★'
 
   assign featured_collection = nil
@@ -164,10 +157,14 @@
               assign p_category_label = featured_collection.title
             endif
             assign p_category = product.metafields.fuly.category | default: ''
+            assign p_expert = product.metafields.custom.expert
+            assign p_talle = product.metafields.custom.talle
           -%}
           {% render 'fuly-product-card',
             name: product.title,
             functional_benefit: p_functional,
+            expert: p_expert,
+            talle: p_talle,
             category_label: p_category_label,
             price_formatted: p_price_formatted,
             format: p_format,
@@ -185,6 +182,21 @@
     </div>
   </div>
 </section>
+
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
 
 {% schema %}
 {
@@ -205,11 +217,40 @@
       "id": "reviews_source",
       "label": "Fuente del número",
       "options": [
-        { "value": "dynamic", "label": "Dinámico (suma de reseñas reales)" },
-        { "value": "manual", "label": "Manual (número fijo)" }
+        {
+          "value": "dynamic",
+          "label": "Dinámico (suma de reseñas reales)"
+        },
+        {
+          "value": "manual",
+          "label": "Manual (número fijo)"
+        }
       ],
       "default": "dynamic",
-      "info": "Dinámico suma reviews.rating_count; si da 0, usa el número manual."
+      "info": "Dinámico suma el metafield de reseñas; si da 0, usa el número manual."
+    },
+    {
+      "type": "text",
+      "id": "reviews_namespace",
+      "label": "Reseñas · namespace del metafield (producto)",
+      "default": "reviews",
+      "info": "Revisa Settings → Custom data → Metafields qué usa tu app (revie.lat)."
+    },
+    {
+      "type": "text",
+      "id": "reviews_key",
+      "label": "Reseñas · key del metafield (producto)",
+      "default": "rating_count"
+    },
+    {
+      "type": "text",
+      "id": "reviews_shop_namespace",
+      "label": "Reseñas · namespace metafield de tienda (opcional)"
+    },
+    {
+      "type": "text",
+      "id": "reviews_shop_key",
+      "label": "Reseñas · key metafield de tienda (opcional)"
     },
     {
       "type": "text",
@@ -268,34 +309,329 @@
       "id": "cta_link",
       "label": "CTA link"
     },
-    { "type": "header", "content": "Responsive — Columnas del grid" },
-    { "type": "range", "id": "grid_cols_mobile", "min": 1, "max": 6, "step": 1, "label": "Móvil", "default": 1 },
-    { "type": "range", "id": "grid_cols_tablet", "min": 1, "max": 6, "step": 1, "label": "Tablet", "default": 2 },
-    { "type": "range", "id": "grid_cols_desktop", "min": 1, "max": 6, "step": 1, "label": "Desktop", "default": 4 },
-    { "type": "header", "content": "Responsive — Espacio del grid" },
-    { "type": "range", "id": "grid_gap_mobile", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Móvil", "default": 12 },
-    { "type": "range", "id": "grid_gap_tablet", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Tablet", "default": 24 },
-    { "type": "range", "id": "grid_gap_desktop", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Desktop", "default": 24 },
-    { "type": "header", "content": "Responsive — Altura de imagen de tarjeta" },
-    { "type": "range", "id": "card_image_height_mobile", "min": 80, "max": 400, "step": 4, "unit": "px", "label": "Móvil", "default": 160 },
-    { "type": "range", "id": "card_image_height_tablet", "min": 80, "max": 400, "step": 4, "unit": "px", "label": "Tablet", "default": 224 },
-    { "type": "range", "id": "card_image_height_desktop", "min": 80, "max": 400, "step": 4, "unit": "px", "label": "Desktop", "default": 224 },
-    { "type": "header", "content": "Responsive — Tamaño título de tarjeta" },
-    { "type": "range", "id": "card_title_size_mobile", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Móvil", "default": 16 },
-    { "type": "range", "id": "card_title_size_tablet", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Tablet", "default": 18 },
-    { "type": "range", "id": "card_title_size_desktop", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Desktop", "default": 18 },
-    { "type": "header", "content": "Responsive — Tamaño precio de tarjeta" },
-    { "type": "range", "id": "card_price_size_mobile", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Móvil", "default": 18 },
-    { "type": "range", "id": "card_price_size_tablet", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Tablet", "default": 20 },
-    { "type": "range", "id": "card_price_size_desktop", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Desktop", "default": 20 },
-    { "type": "header", "content": "Responsive — Tamaño del encabezado" },
-    { "type": "range", "id": "heading_size_mobile", "min": 16, "max": 80, "step": 1, "unit": "px", "label": "Móvil", "default": 28 },
-    { "type": "range", "id": "heading_size_tablet", "min": 16, "max": 80, "step": 1, "unit": "px", "label": "Tablet", "default": 36 },
-    { "type": "range", "id": "heading_size_desktop", "min": 16, "max": 100, "step": 1, "unit": "px", "label": "Desktop", "default": 44 },
-    { "type": "header", "content": "Responsive — Padding vertical" },
-    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Móvil", "default": 48 },
-    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Tablet", "default": 96 },
-    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Desktop", "default": 96 }
+    {
+      "type": "header",
+      "content": "Responsive — Columnas del grid"
+    },
+    {
+      "type": "range",
+      "id": "grid_cols_mobile",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Móvil",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "grid_cols_tablet",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Tablet",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_cols_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Desktop",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Espacio del grid"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "min": 0,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_tablet",
+      "min": 0,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_desktop",
+      "min": 0,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Altura de imagen de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "card_image_height_mobile",
+      "min": 80,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "card_image_height_tablet",
+      "min": 80,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 224
+    },
+    {
+      "type": "range",
+      "id": "card_image_height_desktop",
+      "min": 80,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 224
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño título de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_mobile",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_tablet",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_desktop",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño precio de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "card_price_size_mobile",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_price_size_tablet",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_price_size_desktop",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño del encabezado"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 16,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_tablet",
+      "min": 16,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 16,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ],
   "blocks": [
     {
@@ -344,11 +680,26 @@
           "id": "category",
           "label": "Category",
           "options": [
-            { "value": "boosters", "label": "Boosters" },
-            { "value": "drinks-tarro", "label": "Drinks Tarro" },
-            { "value": "drinks-plegadiza", "label": "Drinks Plegadiza" },
-            { "value": "malteadas", "label": "Malteadas" },
-            { "value": "esparcibles", "label": "Esparcibles" }
+            {
+              "value": "boosters",
+              "label": "Boosters"
+            },
+            {
+              "value": "drinks-tarro",
+              "label": "Drinks Tarro"
+            },
+            {
+              "value": "drinks-plegadiza",
+              "label": "Drinks Plegadiza"
+            },
+            {
+              "value": "malteadas",
+              "label": "Malteadas"
+            },
+            {
+              "value": "esparcibles",
+              "label": "Esparcibles"
+            }
           ],
           "default": "boosters"
         },

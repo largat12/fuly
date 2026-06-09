@@ -90,53 +90,405 @@
   </div>
 </section>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly Home Science",
   "settings": [
-    { "type": "text", "id": "tag_label", "label": "Tag", "default": "NUESTROS INGREDIENTES" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "HECHO CON CIENCIA DELICIOSA EN EL FULY LAB" },
-    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "CONOCE NUESTROS INGREDIENTES" },
-    { "type": "url", "id": "cta_link", "label": "CTA link" },
-    { "type": "header", "content": "Responsive — Columnas" },
-    { "type": "range", "id": "cols_mobile", "label": "Columnas (móvil)", "min": 1, "max": 4, "step": 1, "default": 1 },
-    { "type": "range", "id": "cols_tablet", "label": "Columnas (tablet)", "min": 1, "max": 4, "step": 1, "default": 2 },
-    { "type": "range", "id": "cols_desktop", "label": "Columnas (desktop)", "min": 1, "max": 4, "step": 1, "default": 2 },
-    { "type": "header", "content": "Responsive — Espaciado entre tarjetas" },
-    { "type": "range", "id": "gap_mobile", "label": "Gap (móvil)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 16 },
-    { "type": "range", "id": "gap_tablet", "label": "Gap (tablet)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 16 },
-    { "type": "range", "id": "gap_desktop", "label": "Gap (desktop)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 16 },
-    { "type": "header", "content": "Responsive — Padding de tarjeta" },
-    { "type": "range", "id": "card_padding_mobile", "label": "Padding tarjeta (móvil)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_padding_tablet", "label": "Padding tarjeta (tablet)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "card_padding_desktop", "label": "Padding tarjeta (desktop)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
-    { "type": "header", "content": "Responsive — Nombre de ingrediente" },
-    { "type": "range", "id": "name_size_mobile", "label": "Nombre (móvil)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 18 },
-    { "type": "range", "id": "name_size_tablet", "label": "Nombre (tablet)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 18 },
-    { "type": "range", "id": "name_size_desktop", "label": "Nombre (desktop)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 18 },
-    { "type": "header", "content": "Responsive — Beneficio" },
-    { "type": "range", "id": "benefit_size_mobile", "label": "Beneficio (móvil)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 15 },
-    { "type": "range", "id": "benefit_size_tablet", "label": "Beneficio (tablet)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 15 },
-    { "type": "range", "id": "benefit_size_desktop", "label": "Beneficio (desktop)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 15 },
-    { "type": "header", "content": "Responsive — Encabezado" },
-    { "type": "range", "id": "heading_size_mobile", "label": "Encabezado (móvil)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 28 },
-    { "type": "range", "id": "heading_size_tablet", "label": "Encabezado (tablet)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 32 },
-    { "type": "range", "id": "heading_size_desktop", "label": "Encabezado (desktop)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 36 },
-    { "type": "header", "content": "Responsive — Padding vertical de sección" },
-    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical (móvil)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
-    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical (tablet)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
-    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
-    { "type": "header", "content": "Colores" },
-    { "type": "color", "id": "section_bg_color", "label": "Fondo de sección", "default": "#1A1A1A" },
-    { "type": "color", "id": "card_bg_color", "label": "Fondo de tarjeta", "default": "#262626" }
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Tag",
+      "default": "NUESTROS INGREDIENTES"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "HECHO CON CIENCIA DELICIOSA EN EL FULY LAB"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "CONOCE NUESTROS INGREDIENTES"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Columnas"
+    },
+    {
+      "type": "range",
+      "id": "cols_mobile",
+      "label": "Columnas (móvil)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "cols_tablet",
+      "label": "Columnas (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "cols_desktop",
+      "label": "Columnas (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Espaciado entre tarjetas"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (móvil)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Gap (tablet)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap (desktop)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_mobile",
+      "label": "Padding tarjeta (móvil)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_padding_tablet",
+      "label": "Padding tarjeta (tablet)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_padding_desktop",
+      "label": "Padding tarjeta (desktop)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Nombre de ingrediente"
+    },
+    {
+      "type": "range",
+      "id": "name_size_mobile",
+      "label": "Nombre (móvil)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "name_size_tablet",
+      "label": "Nombre (tablet)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "name_size_desktop",
+      "label": "Nombre (desktop)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Beneficio"
+    },
+    {
+      "type": "range",
+      "id": "benefit_size_mobile",
+      "label": "Beneficio (móvil)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "benefit_size_tablet",
+      "label": "Beneficio (tablet)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "benefit_size_desktop",
+      "label": "Beneficio (desktop)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Encabezado"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Encabezado (móvil)",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_tablet",
+      "label": "Encabezado (tablet)",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Encabezado (desktop)",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical de sección"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "label": "Padding vertical (móvil)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "label": "Padding vertical (tablet)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "label": "Padding vertical (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Fondo de sección",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Fondo de tarjeta",
+      "default": "#262626"
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ],
   "blocks": [
     {
       "type": "ingredient",
       "name": "Ingredient",
       "settings": [
-        { "type": "text", "id": "name", "label": "Ingredient name", "default": "GANODERMA" },
-        { "type": "text", "id": "benefit", "label": "Benefit", "default": "Hongo adaptógeno que fortalece las defensas naturales." }
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Ingredient name",
+          "default": "GANODERMA"
+        },
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit",
+          "default": "Hongo adaptógeno que fortalece las defensas naturales."
+        }
       ]
     }
   ],

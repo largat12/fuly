@@ -81,6 +81,21 @@
   </div>
 </section>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly Home How It Works",
@@ -97,43 +112,353 @@
       "label": "Heading",
       "default": "ASÍ DE FÁCIL"
     },
-    { "type": "header", "content": "Responsive — Columnas" },
-    { "type": "range", "id": "cols_mobile", "label": "Columnas (móvil)", "min": 1, "max": 4, "step": 1, "default": 1 },
-    { "type": "range", "id": "cols_tablet", "label": "Columnas (tablet)", "min": 1, "max": 4, "step": 1, "default": 3 },
-    { "type": "range", "id": "cols_desktop", "label": "Columnas (desktop)", "min": 1, "max": 4, "step": 1, "default": 3 },
-    { "type": "header", "content": "Responsive — Espaciado entre tarjetas" },
-    { "type": "range", "id": "gap_mobile", "label": "Gap (móvil)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "gap_tablet", "label": "Gap (tablet)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "gap_desktop", "label": "Gap (desktop)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
-    { "type": "header", "content": "Responsive — Padding de tarjeta" },
-    { "type": "range", "id": "card_padding_mobile", "label": "Padding tarjeta (móvil)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_padding_tablet", "label": "Padding tarjeta (tablet)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "card_padding_desktop", "label": "Padding tarjeta (desktop)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 32 },
-    { "type": "header", "content": "Responsive — Título de tarjeta" },
-    { "type": "range", "id": "title_size_mobile", "label": "Título (móvil)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 20 },
-    { "type": "range", "id": "title_size_tablet", "label": "Título (tablet)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 20 },
-    { "type": "range", "id": "title_size_desktop", "label": "Título (desktop)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 20 },
-    { "type": "header", "content": "Responsive — Descripción de tarjeta" },
-    { "type": "range", "id": "desc_size_mobile", "label": "Descripción (móvil)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "desc_size_tablet", "label": "Descripción (tablet)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
-    { "type": "range", "id": "desc_size_desktop", "label": "Descripción (desktop)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
-    { "type": "header", "content": "Responsive — Encabezado" },
-    { "type": "range", "id": "heading_size_mobile", "label": "Encabezado (móvil)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 28 },
-    { "type": "range", "id": "heading_size_tablet", "label": "Encabezado (tablet)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 36 },
-    { "type": "range", "id": "heading_size_desktop", "label": "Encabezado (desktop)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 44 },
-    { "type": "header", "content": "Responsive — Padding vertical de sección" },
-    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical (móvil)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
-    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical (tablet)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
-    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 }
+    {
+      "type": "header",
+      "content": "Responsive — Columnas"
+    },
+    {
+      "type": "range",
+      "id": "cols_mobile",
+      "label": "Columnas (móvil)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "cols_tablet",
+      "label": "Columnas (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "cols_desktop",
+      "label": "Columnas (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Espaciado entre tarjetas"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (móvil)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Gap (tablet)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap (desktop)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_mobile",
+      "label": "Padding tarjeta (móvil)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_padding_tablet",
+      "label": "Padding tarjeta (tablet)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_padding_desktop",
+      "label": "Padding tarjeta (desktop)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Título de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Título (móvil)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_size_tablet",
+      "label": "Título (tablet)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Título (desktop)",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Descripción de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "desc_size_mobile",
+      "label": "Descripción (móvil)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desc_size_tablet",
+      "label": "Descripción (tablet)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desc_size_desktop",
+      "label": "Descripción (desktop)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Encabezado"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Encabezado (móvil)",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_size_tablet",
+      "label": "Encabezado (tablet)",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Encabezado (desktop)",
+      "min": 18,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical de sección"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "label": "Padding vertical (móvil)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "label": "Padding vertical (tablet)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "label": "Padding vertical (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ],
   "blocks": [
     {
       "type": "step",
       "name": "Step",
       "settings": [
-        { "type": "text", "id": "num", "label": "Step number", "default": "01" },
-        { "type": "text", "id": "title", "label": "Title", "default": "ELIGE TU FULY" },
-        { "type": "text", "id": "desc", "label": "Description", "default": "Boosters, malteadas o drinks para cada momento del día." }
+        {
+          "type": "text",
+          "id": "num",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "ELIGE TU FULY"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description",
+          "default": "Boosters, malteadas o drinks para cada momento del día."
+        }
       ]
     }
   ],

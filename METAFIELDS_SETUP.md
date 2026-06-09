@@ -16,6 +16,8 @@ Estos metafields **deben ser creados una sola vez** en el admin de Shopify despu
 | Cómo Preparar | `modo_preparacion` | `custom` | `multi_line_text_field` | Instrucciones de preparación |
 | Beneficio Funcional | `beneficio_funcional` | `custom` | `single_line_text_field` | Beneficio principal |
 | Alergenos | `alergenos` | `custom` | `multi_line_text_field` | Información sobre alergenos |
+| Experto / Descripción corta | `expert` | `custom` | `multi_line_text_field` | Descripción corta que se muestra en la tarjeta del grid de productos (prioriza sobre el beneficio funcional). |
+| Talle | `talle` | `custom` | `single_line_text_field` | Talle/size del producto. Se muestra en la tarjeta del grid y en la página de producto. |
 
 ## Instalación de Metafields
 

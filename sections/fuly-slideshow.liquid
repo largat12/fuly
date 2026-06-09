@@ -1,0 +1,277 @@
+{%- comment -%}
+  FULY Slideshow — slideshow de banners (solo imagen).
+  Cada slide tiene imagen para Desktop y para Mobile (diseño distinto por
+  dispositivo), opacidad de overlay y enlace opcional en la imagen.
+  Incluye autoplay, flechas, dots, loop y swipe en mobile.
+{%- endcomment -%}
+
+{%- liquid
+  assign sid = section.id
+  assign autoplay = section.settings.autoplay
+  assign autoplay_speed = section.settings.autoplay_speed | default: 5
+  assign show_arrows = section.settings.show_arrows
+  assign show_dots = section.settings.show_dots
+  assign loop_slides = section.settings.loop
+  assign image_fit = section.settings.image_fit | default: 'cover'
+  assign height_mode = section.settings.height_mode | default: 'fixed'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ sid }} .fuly-ss {
+    --r-height: {{ section.settings.height_mobile | default: 420 }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ sid }} .fuly-ss {
+      --r-height: {{ section.settings.height_tablet | default: 520 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ sid }} .fuly-ss {
+      --r-height: {{ section.settings.height_desktop | default: 600 }}px;
+    }
+  }
+
+  {%- for block in section.blocks -%}
+    {%- assign b = block.settings -%}
+    {%- assign sel = '#shopify-section-' | append: sid | append: ' [data-ss-slide="' | append: block.id | append: '"]' -%}
+    {{ sel }} .fuly-ss__overlay {
+      background: {{ b.overlay_color | default: '#000000' }};
+      opacity: {{ b.overlay_opacity | default: 0 | divided_by: 100.0 }};
+    }
+    {{ sel }} .fuly-ss__img--desktop { display: none; }
+    {{ sel }} .fuly-ss__img--mobile { display: block; }
+    @media (min-width: 768px) {
+      {{ sel }} .fuly-ss__img--desktop { display: block; }
+      {{ sel }} .fuly-ss__img--mobile { display: none; }
+    }
+  {%- endfor -%}
+{%- endstyle -%}
+
+<section class="fuly-ss-section">
+  <div
+    class="fuly-ss fuly-ss--{{ height_mode }} fuly-ss--fit-{{ image_fit }}"
+    data-fuly-ss
+    data-autoplay="{{ autoplay }}"
+    data-autoplay-speed="{{ autoplay_speed }}"
+    data-loop="{{ loop_slides }}"
+  >
+    <div class="fuly-ss__viewport" data-ss-viewport>
+      <div class="fuly-ss__track" data-ss-track>
+        {%- for block in section.blocks -%}
+          {%- assign b = block.settings -%}
+          {%- liquid
+            assign has_link = false
+            if b.enable_link and b.link != blank
+              assign has_link = true
+            endif
+          -%}
+          <div class="fuly-ss__slide" data-ss-slide="{{ block.id }}" {{ block.shopify_attributes }}>
+            {%- if has_link -%}<a href="{{ b.link }}" class="fuly-ss__link" aria-label="{{ b.link_label | default: 'Ver más' | escape }}">{%- endif -%}
+              <div class="fuly-ss__media">
+                {%- if b.image != blank -%}
+                  {{ b.image | image_url: width: 2200 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--desktop', widths: '750, 1100, 1500, 1900, 2200', alt: b.image.alt | default: 'Slide' | escape }}
+                {%- else -%}
+                  <span class="fuly-ss__img fuly-ss__img--desktop fuly-ss__placeholder">{{ 'image' | placeholder_svg_tag: 'fuly-ss__placeholder-svg' }}</span>
+                {%- endif -%}
+                {%- if b.image_mobile != blank -%}
+                  {{ b.image_mobile | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--mobile', widths: '450, 750, 1000, 1200', alt: b.image_mobile.alt | default: 'Slide' | escape }}
+                {%- elsif b.image != blank -%}
+                  {{ b.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'fuly-ss__img fuly-ss__img--mobile', widths: '450, 750, 1000, 1200', alt: b.image.alt | default: 'Slide' | escape }}
+                {%- else -%}
+                  <span class="fuly-ss__img fuly-ss__img--mobile fuly-ss__placeholder">{{ 'image' | placeholder_svg_tag: 'fuly-ss__placeholder-svg' }}</span>
+                {%- endif -%}
+                <span class="fuly-ss__overlay" aria-hidden="true"></span>
+              </div>
+            {%- if has_link -%}</a>{%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if show_arrows and section.blocks.size > 1 -%}
+      <button type="button" class="fuly-ss__arrow fuly-ss__arrow--prev" aria-label="Anterior" data-ss-prev>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="fuly-ss__arrow fuly-ss__arrow--next" aria-label="Siguiente" data-ss-next>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    {%- endif -%}
+
+    {%- if show_dots and section.blocks.size > 1 -%}
+      <div class="fuly-ss__dots" data-ss-dots>
+        {%- for block in section.blocks -%}
+          <button type="button" class="fuly-ss__dot{% if forloop.first %} is-active{% endif %}" aria-label="Ir al slide {{ forloop.index }}" data-ss-dot="{{ forloop.index0 }}"></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ sid }} .fuly-ss-section { width: 100%; }
+  #shopify-section-{{ sid }} .fuly-ss { position: relative; overflow: hidden; }
+  #shopify-section-{{ sid }} .fuly-ss__viewport { overflow: hidden; width: 100%; }
+  #shopify-section-{{ sid }} .fuly-ss__track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  #shopify-section-{{ sid }} .fuly-ss__slide { flex: 0 0 100%; width: 100%; }
+  #shopify-section-{{ sid }} .fuly-ss__link { display: block; text-decoration: none; }
+  #shopify-section-{{ sid }} .fuly-ss__media { position: relative; width: 100%; }
+
+  /* Altura fija con recorte (object-fit) */
+  #shopify-section-{{ sid }} .fuly-ss--fixed .fuly-ss__media { height: var(--r-height); }
+  #shopify-section-{{ sid }} .fuly-ss--fixed .fuly-ss__img {
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ sid }} .fuly-ss--fixed.fuly-ss--fit-cover .fuly-ss__img { object-fit: cover; }
+  #shopify-section-{{ sid }} .fuly-ss--fixed.fuly-ss--fit-contain .fuly-ss__img { object-fit: contain; }
+
+  /* Adaptar a la imagen (sin recorte): la imagen define la altura */
+  #shopify-section-{{ sid }} .fuly-ss--adapt .fuly-ss__img { width: 100%; height: auto; display: block; }
+
+  #shopify-section-{{ sid }} .fuly-ss__overlay { position: absolute; inset: 0; pointer-events: none; }
+  #shopify-section-{{ sid }} .fuly-ss__placeholder { display: flex; align-items: center; justify-content: center; background: #f1f1f1; }
+  #shopify-section-{{ sid }} .fuly-ss__placeholder-svg { width: 100%; height: 100%; }
+
+  #shopify-section-{{ sid }} .fuly-ss__arrow {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+    width: 44px; height: 44px; border-radius: 9999px; border: none;
+    background: rgba(255, 255, 255, 0.85); color: #1A1A1A;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); transition: background 0.2s ease;
+  }
+  #shopify-section-{{ sid }} .fuly-ss__arrow:hover { background: #fff; }
+  #shopify-section-{{ sid }} .fuly-ss__arrow--prev { left: 12px; }
+  #shopify-section-{{ sid }} .fuly-ss__arrow--next { right: 12px; }
+  #shopify-section-{{ sid }} .fuly-ss__dots {
+    position: absolute; bottom: 16px; left: 0; right: 0; z-index: 3;
+    display: flex; justify-content: center; gap: 8px;
+  }
+  #shopify-section-{{ sid }} .fuly-ss__dot {
+    width: 10px; height: 10px; border-radius: 9999px; border: none;
+    background: rgba(255, 255, 255, 0.6); cursor: pointer; padding: 0;
+    transition: background 0.2s ease, width 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+  #shopify-section-{{ sid }} .fuly-ss__dot.is-active { background: #fff; width: 26px; }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ sid }} .fuly-ss__track { transition: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ sid }} [data-fuly-ss]');
+    if (!root) return;
+    var track = root.querySelector('[data-ss-track]');
+    if (!track || track.children.length === 0) return;
+    var total = track.children.length;
+    var prevBtn = root.querySelector('[data-ss-prev]');
+    var nextBtn = root.querySelector('[data-ss-next]');
+    var dots = root.querySelectorAll('[data-ss-dot]');
+    var loop = root.getAttribute('data-loop') === 'true';
+    var autoplay = root.getAttribute('data-autoplay') === 'true';
+    var speed = (parseFloat(root.getAttribute('data-autoplay-speed')) || 5) * 1000;
+    var index = 0, timer = null;
+
+    function go(i) {
+      if (i < 0) i = loop ? total - 1 : 0;
+      if (i >= total) i = loop ? 0 : total - 1;
+      index = i;
+      track.style.transform = 'translateX(' + (-100 * index) + '%)';
+      for (var d = 0; d < dots.length; d++) dots[d].classList.toggle('is-active', d === index);
+    }
+    function next() { go(index + 1); }
+    function prev() { go(index - 1); }
+    if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+    for (var d = 0; d < dots.length; d++) (function (el) {
+      el.addEventListener('click', function () { go(parseInt(el.getAttribute('data-ss-dot'), 10)); restart(); });
+    })(dots[d]);
+
+    function start() {
+      if (!autoplay || total < 2) return;
+      timer = window.setInterval(function () { if (!loop && index === total - 1) { go(0); } else { next(); } }, speed);
+    }
+    function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    var startX = 0, deltaX = 0, dragging = false;
+    var viewport = root.querySelector('[data-ss-viewport]');
+    if (viewport) {
+      viewport.addEventListener('touchstart', function (e) { dragging = true; startX = e.touches[0].clientX; deltaX = 0; stop(); }, { passive: true });
+      viewport.addEventListener('touchmove', function (e) { if (dragging) deltaX = e.touches[0].clientX - startX; }, { passive: true });
+      viewport.addEventListener('touchend', function () {
+        if (!dragging) return; dragging = false;
+        if (Math.abs(deltaX) > 50) { if (deltaX < 0) next(); else prev(); }
+        restart();
+      });
+    }
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    go(0); start();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Slideshow" },
+    { "type": "checkbox", "id": "autoplay", "label": "Reproducción automática", "default": true },
+    { "type": "range", "id": "autoplay_speed", "min": 2, "max": 12, "step": 1, "unit": "s", "label": "Velocidad (segundos por slide)", "default": 5 },
+    { "type": "checkbox", "id": "loop", "label": "Loop infinito", "default": true },
+    { "type": "checkbox", "id": "show_arrows", "label": "Mostrar flechas", "default": true },
+    { "type": "checkbox", "id": "show_dots", "label": "Mostrar puntos (dots)", "default": true },
+
+    { "type": "header", "content": "Tamaño de las imágenes" },
+    {
+      "type": "select", "id": "height_mode", "label": "Modo de altura", "default": "fixed",
+      "options": [
+        { "value": "fixed", "label": "Altura fija (recorta para llenar)" },
+        { "value": "adapt", "label": "Adaptar a la imagen (sin recorte)" }
+      ],
+      "info": "“Adaptar a la imagen” muestra el banner completo según su proporción."
+    },
+    {
+      "type": "select", "id": "image_fit", "label": "Ajuste (solo altura fija)", "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Llenar (cover)" },
+        { "value": "contain", "label": "Contener (contain)" }
+      ]
+    },
+    { "type": "range", "id": "height_mobile", "min": 160, "max": 900, "step": 10, "unit": "px", "label": "Altura — Móvil", "default": 420 },
+    { "type": "range", "id": "height_tablet", "min": 200, "max": 1000, "step": 10, "unit": "px", "label": "Altura — Tablet", "default": 520 },
+    { "type": "range", "id": "height_desktop", "min": 200, "max": 1000, "step": 10, "unit": "px", "label": "Altura — Desktop", "default": 600 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Imagen para Mobile" },
+        { "type": "color", "id": "overlay_color", "label": "Color del overlay", "default": "#000000" },
+        { "type": "range", "id": "overlay_opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Overlay opacity", "default": 0 },
+        { "type": "header", "content": "Enlace de la imagen" },
+        { "type": "checkbox", "id": "enable_link", "label": "Habilitar enlace en la imagen", "default": false },
+        { "type": "url", "id": "link", "label": "URL del enlace", "info": "Direcciona a una colección, página o producto cuando se haga clic en la imagen." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,541 @@
+{%- comment -%}
+  FULY Home — Hero Slider
+  Sección nueva e independiente (se agrega desde "Agregar sección"). Es una
+  versión tipo slider/carrusel del Home Hero, con TODAS las opciones:
+    - Bloques "slide" ilimitados.
+    - Imagen distinta para desktop y mobile.
+    - Posición/alineación del contenido independiente por dispositivo.
+    - Tamaños responsivos (móvil/tablet/desktop).
+    - Botones primario y secundario con toggle show/hide cada uno.
+    - Badge de reseñas (usa el snippet fuly-reviews-total).
+    - Tipografía elegible por elemento (snippet fuly-font-stack).
+    - Autoplay, flechas, dots, loop, swipe en mobile.
+{%- endcomment -%}
+
+{%- liquid
+  assign sid = section.id
+  assign autoplay = section.settings.autoplay
+  assign autoplay_speed = section.settings.autoplay_speed | default: 5
+  assign show_arrows = section.settings.show_arrows
+  assign show_dots = section.settings.show_dots
+  assign loop_slides = section.settings.loop
+
+  capture reviews_number
+    render 'fuly-reviews-total', source: section.settings.reviews_source, namespace: section.settings.reviews_namespace, key: section.settings.reviews_key, shop_namespace: section.settings.reviews_shop_namespace, shop_key: section.settings.reviews_shop_key, manual_number: section.settings.reviews_manual_number
+  endcapture
+  assign reviews_number = reviews_number | strip
+-%}
+
+{%- style -%}
+  #shopify-section-{{ sid }} .fuly-hslider {
+    --r-height: {{ section.settings.height_mobile | default: 460 }}px;
+    --r-pad-x: {{ section.settings.pad_x_mobile | default: 16 }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ sid }} .fuly-hslider {
+      --r-height: {{ section.settings.height_tablet | default: 560 }}px;
+      --r-pad-x: {{ section.settings.pad_x_tablet | default: 48 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ sid }} .fuly-hslider {
+      --r-height: {{ section.settings.height_desktop | default: 640 }}px;
+      --r-pad-x: {{ section.settings.pad_x_desktop | default: 64 }}px;
+    }
+  }
+
+  {%- comment -%} Estilos por slide (alineación, colores, tipografía, tamaños) {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- assign b = block.settings -%}
+    {%- assign sel = '#shopify-section-' | append: sid | append: ' [data-slide="' | append: block.id | append: '"]' -%}
+    {{ sel }} {
+      --slide-justify: {{ b.align_mobile | default: 'flex-start' }};
+      --slide-text-align: {{ b.text_align_mobile | default: 'left' }};
+      --slide-vertical: {{ b.vertical_mobile | default: 'center' }};
+      --slide-title-size: {{ b.title_size_mobile | default: 40 }}px;
+      --slide-subtitle-size: {{ b.subtitle_size_mobile | default: 16 }}px;
+      --slide-max-width: {{ b.content_max_width_mobile | default: 90 }}%;
+      --slide-heading-color: {{ b.heading_color | default: '#1A1A1A' }};
+      --slide-subtitle-color: {{ b.subtitle_color | default: '#333333' }};
+      --slide-badge-bg: {{ b.badge_bg_color | default: '#FFE135' }};
+      --slide-overlay: {{ b.overlay_color | default: '#000000' }};
+      --slide-overlay-opacity: {{ b.overlay_opacity | default: 0 | divided_by: 100.0 }};
+      --slide-heading-font: {% render 'fuly-font-stack', choice: b.heading_font, picker: b.heading_font_picker %};
+      --slide-body-font: {% render 'fuly-font-stack', choice: b.body_font, picker: b.body_font_picker %};
+    }
+    @media (min-width: 768px) {
+      {{ sel }} {
+        --slide-justify: {{ b.align_desktop | default: 'flex-start' }};
+        --slide-text-align: {{ b.text_align_desktop | default: 'left' }};
+        --slide-vertical: {{ b.vertical_desktop | default: 'center' }};
+        --slide-title-size: {{ b.title_size_desktop | default: 72 }}px;
+        --slide-subtitle-size: {{ b.subtitle_size_desktop | default: 18 }}px;
+        --slide-max-width: {{ b.content_max_width_desktop | default: 50 }}%;
+      }
+    }
+    {%- comment -%} Mostrar imagen correcta por dispositivo {%- endcomment -%}
+    {{ sel }} .fuly-hslide__img--desktop { display: none; }
+    {{ sel }} .fuly-hslide__img--mobile { display: block; }
+    @media (min-width: 768px) {
+      {{ sel }} .fuly-hslide__img--desktop { display: block; }
+      {{ sel }} .fuly-hslide__img--mobile { display: none; }
+    }
+  {%- endfor -%}
+{%- endstyle -%}
+
+<section class="fuly-hslider-section">
+  <div
+    class="fuly-hslider"
+    data-fuly-hslider
+    data-autoplay="{{ autoplay }}"
+    data-autoplay-speed="{{ autoplay_speed }}"
+    data-loop="{{ loop_slides }}"
+  >
+    <div class="fuly-hslider__viewport" data-hslider-viewport>
+      <div class="fuly-hslider__track" data-hslider-track>
+        {%- for block in section.blocks -%}
+          {%- assign b = block.settings -%}
+          <div class="fuly-hslide" data-slide="{{ block.id }}" {{ block.shopify_attributes }}>
+            <div class="fuly-hslide__media">
+              {%- if b.image != blank -%}
+                {{ b.image | image_url: width: 2000 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--desktop', alt: b.title | default: 'Fuly' | escape }}
+              {%- endif -%}
+              {%- if b.image_mobile != blank -%}
+                {{ b.image_mobile | image_url: width: 1200 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--mobile', alt: b.title | default: 'Fuly' | escape }}
+              {%- elsif b.image != blank -%}
+                {{ b.image | image_url: width: 1200 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--mobile', alt: b.title | default: 'Fuly' | escape }}
+              {%- endif -%}
+              <span class="fuly-hslide__overlay" aria-hidden="true"></span>
+            </div>
+
+            <div class="fuly-hslide__content">
+              <div class="fuly-hslide__box">
+                {%- if b.show_badge -%}
+                  {%- assign badge_text = b.badge_text -%}
+                  {%- if badge_text == blank -%}
+                    {%- capture badge_text -%}{{ reviews_number }}+ {{ b.reviews_text | default: 'reseñas verificadas ⭐' }}{%- endcapture -%}
+                  {%- endif -%}
+                  <span class="fuly-hslide__badge">{{ badge_text }}</span>
+                {%- endif -%}
+
+                {%- if b.title != blank -%}
+                  <h2 class="fuly-hslide__title">{{ b.title }}</h2>
+                {%- endif -%}
+                {%- if b.subtitle != blank -%}
+                  <p class="fuly-hslide__subtitle">{{ b.subtitle }}</p>
+                {%- endif -%}
+
+                {%- if b.show_primary_button or b.show_secondary_button -%}
+                  <div class="fuly-hslide__buttons">
+                    {%- if b.show_primary_button and b.primary_label != blank -%}
+                      <a href="{{ b.primary_link | default: '#' }}" class="fuly-cartoon-btn fuly-cartoon-btn-primary">{{ b.primary_label }}</a>
+                    {%- endif -%}
+                    {%- if b.show_secondary_button and b.secondary_label != blank -%}
+                      <a href="{{ b.secondary_link | default: '#' }}" class="fuly-btn-outline">{{ b.secondary_label }}</a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if show_arrows and section.blocks.size > 1 -%}
+      <button type="button" class="fuly-hslider__arrow fuly-hslider__arrow--prev" aria-label="Anterior" data-hslider-prev>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" class="fuly-hslider__arrow fuly-hslider__arrow--next" aria-label="Siguiente" data-hslider-next>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    {%- endif -%}
+
+    {%- if show_dots and section.blocks.size > 1 -%}
+      <div class="fuly-hslider__dots" data-hslider-dots>
+        {%- for block in section.blocks -%}
+          <button type="button" class="fuly-hslider__dot{% if forloop.first %} is-active{% endif %}" aria-label="Ir al slide {{ forloop.index }}" data-hslider-dot="{{ forloop.index0 }}"></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ sid }} .fuly-hslider-section { width: 100%; }
+  #shopify-section-{{ sid }} .fuly-hslider {
+    position: relative;
+    overflow: hidden;
+  }
+  #shopify-section-{{ sid }} .fuly-hslider__viewport { overflow: hidden; width: 100%; }
+  #shopify-section-{{ sid }} .fuly-hslider__track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  #shopify-section-{{ sid }} .fuly-hslide {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    height: var(--r-height);
+    min-height: var(--r-height);
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__media,
+  #shopify-section-{{ sid }} .fuly-hslide__media .fuly-hslide__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__img { object-fit: cover; }
+  #shopify-section-{{ sid }} .fuly-hslide__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--slide-overlay);
+    opacity: var(--slide-overlay-opacity);
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: var(--slide-vertical);
+    align-items: var(--slide-justify);
+    padding: 0 var(--r-pad-x);
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__box {
+    max-width: var(--slide-max-width);
+    text-align: var(--slide-text-align);
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    align-items: var(--slide-justify);
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__badge {
+    display: inline-block;
+    background: var(--slide-badge-bg);
+    color: #1A1A1A;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 9999px;
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__title {
+    margin: 0;
+    font-family: var(--slide-heading-font);
+    font-weight: 800;
+    line-height: 1.05;
+    font-size: var(--slide-title-size);
+    color: var(--slide-heading-color);
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__subtitle {
+    margin: 0;
+    font-family: var(--slide-body-font);
+    font-size: var(--slide-subtitle-size);
+    color: var(--slide-subtitle-color);
+    line-height: 1.4;
+  }
+  #shopify-section-{{ sid }} .fuly-hslide__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 0.6rem;
+  }
+  #shopify-section-{{ sid }} .fuly-hslider__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    border: none;
+    background: rgba(255, 255, 255, 0.85);
+    color: #1A1A1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease;
+  }
+  #shopify-section-{{ sid }} .fuly-hslider__arrow:hover { background: #fff; }
+  #shopify-section-{{ sid }} .fuly-hslider__arrow--prev { left: 12px; }
+  #shopify-section-{{ sid }} .fuly-hslider__arrow--next { right: 12px; }
+  #shopify-section-{{ sid }} .fuly-hslider__dots {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  #shopify-section-{{ sid }} .fuly-hslider__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    border: none;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, width 0.2s ease;
+  }
+  #shopify-section-{{ sid }} .fuly-hslider__dot.is-active {
+    background: #fff;
+    width: 26px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ sid }} .fuly-hslider__track { transition: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('#shopify-section-{{ sid }} [data-fuly-hslider]');
+    if (!root) return;
+    var track = root.querySelector('[data-hslider-track]');
+    var slides = track ? track.children : [];
+    if (!track || slides.length === 0) return;
+
+    var prevBtn = root.querySelector('[data-hslider-prev]');
+    var nextBtn = root.querySelector('[data-hslider-next]');
+    var dots = root.querySelectorAll('[data-hslider-dot]');
+    var loop = root.getAttribute('data-loop') === 'true';
+    var autoplay = root.getAttribute('data-autoplay') === 'true';
+    var speed = (parseFloat(root.getAttribute('data-autoplay-speed')) || 5) * 1000;
+    var index = 0;
+    var total = slides.length;
+    var timer = null;
+
+    function go(i) {
+      if (i < 0) i = loop ? total - 1 : 0;
+      if (i >= total) i = loop ? 0 : total - 1;
+      index = i;
+      track.style.transform = 'translateX(' + (-100 * index) + '%)';
+      for (var d = 0; d < dots.length; d++) {
+        dots[d].classList.toggle('is-active', d === index);
+      }
+    }
+    function next() { go(index + 1); }
+    function prev() { go(index - 1); }
+
+    if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+    for (var d = 0; d < dots.length; d++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          go(parseInt(el.getAttribute('data-hslider-dot'), 10));
+          restart();
+        });
+      })(dots[d]);
+    }
+
+    function start() {
+      if (!autoplay || total < 2) return;
+      timer = window.setInterval(function () {
+        if (!loop && index === total - 1) { go(0); } else { next(); }
+      }, speed);
+    }
+    function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    // Swipe / touch support
+    var startX = 0, deltaX = 0, dragging = false;
+    var viewport = root.querySelector('[data-hslider-viewport]');
+    if (viewport) {
+      viewport.addEventListener('touchstart', function (e) {
+        dragging = true; startX = e.touches[0].clientX; deltaX = 0; stop();
+      }, { passive: true });
+      viewport.addEventListener('touchmove', function (e) {
+        if (!dragging) return; deltaX = e.touches[0].clientX - startX;
+      }, { passive: true });
+      viewport.addEventListener('touchend', function () {
+        if (!dragging) return; dragging = false;
+        if (Math.abs(deltaX) > 50) { if (deltaX < 0) next(); else prev(); }
+        restart();
+      });
+    }
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+
+    go(0);
+    start();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Fuly Home Hero Slider",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Slider" },
+    { "type": "checkbox", "id": "autoplay", "label": "Reproducción automática", "default": true },
+    { "type": "range", "id": "autoplay_speed", "min": 2, "max": 12, "step": 1, "unit": "s", "label": "Velocidad (segundos por slide)", "default": 5 },
+    { "type": "checkbox", "id": "loop", "label": "Loop infinito", "default": true },
+    { "type": "checkbox", "id": "show_arrows", "label": "Mostrar flechas", "default": true },
+    { "type": "checkbox", "id": "show_dots", "label": "Mostrar puntos (dots)", "default": true },
+
+    { "type": "header", "content": "Responsive — Altura del slider" },
+    { "type": "range", "id": "height_mobile", "min": 240, "max": 900, "step": 10, "unit": "px", "label": "Móvil", "default": 460 },
+    { "type": "range", "id": "height_tablet", "min": 240, "max": 1000, "step": 10, "unit": "px", "label": "Tablet", "default": 560 },
+    { "type": "range", "id": "height_desktop", "min": 240, "max": 1000, "step": 10, "unit": "px", "label": "Desktop", "default": 640 },
+
+    { "type": "header", "content": "Responsive — Padding horizontal del contenido" },
+    { "type": "range", "id": "pad_x_mobile", "min": 0, "max": 120, "step": 2, "unit": "px", "label": "Móvil", "default": 16 },
+    { "type": "range", "id": "pad_x_tablet", "min": 0, "max": 160, "step": 2, "unit": "px", "label": "Tablet", "default": 48 },
+    { "type": "range", "id": "pad_x_desktop", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Desktop", "default": 64 },
+
+    { "type": "header", "content": "Badge de reseñas (global)" },
+    {
+      "type": "select",
+      "id": "reviews_source",
+      "label": "Fuente del número de reseñas",
+      "options": [
+        { "value": "auto", "label": "Automático (metafield de la app)" },
+        { "value": "manual", "label": "Manual (número fijo)" }
+      ],
+      "default": "auto"
+    },
+    { "type": "text", "id": "reviews_namespace", "label": "Reseñas · namespace (producto)", "default": "reviews" },
+    { "type": "text", "id": "reviews_key", "label": "Reseñas · key (producto)", "default": "rating_count" },
+    { "type": "text", "id": "reviews_shop_namespace", "label": "Reseñas · namespace tienda (opcional)" },
+    { "type": "text", "id": "reviews_shop_key", "label": "Reseñas · key tienda (opcional)" },
+    { "type": "text", "id": "reviews_manual_number", "label": "Número manual / respaldo", "default": "3,400" }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "header", "content": "Imágenes" },
+        { "type": "image_picker", "id": "image", "label": "Imagen desktop" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Imagen mobile (opcional)" },
+
+        { "type": "header", "content": "Overlay" },
+        { "type": "color", "id": "overlay_color", "label": "Color del overlay", "default": "#000000" },
+        { "type": "range", "id": "overlay_opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Opacidad del overlay", "default": 0 },
+
+        { "type": "header", "content": "Badge de reseñas" },
+        { "type": "checkbox", "id": "show_badge", "label": "Mostrar badge", "default": false },
+        { "type": "text", "id": "badge_text", "label": "Texto del badge (vacío = automático con # reseñas)" },
+        { "type": "text", "id": "reviews_text", "label": "Texto tras el número", "default": "reseñas verificadas ⭐" },
+
+        { "type": "header", "content": "Texto" },
+        { "type": "text", "id": "title", "label": "Título", "default": "EL FUTURO SABE RICO" },
+        { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Formulados por científicos. Disfrutados por niños." },
+        { "type": "color", "id": "heading_color", "label": "Color del título", "default": "#1A1A1A" },
+        { "type": "color", "id": "subtitle_color", "label": "Color del subtítulo", "default": "#333333" },
+        { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#FFE135" },
+
+        { "type": "header", "content": "Botón principal" },
+        { "type": "checkbox", "id": "show_primary_button", "label": "Mostrar botón principal", "default": true },
+        { "type": "text", "id": "primary_label", "label": "Texto", "default": "COMPRAR AHORA" },
+        { "type": "url", "id": "primary_link", "label": "Enlace" },
+
+        { "type": "header", "content": "Botón secundario" },
+        { "type": "checkbox", "id": "show_secondary_button", "label": "Mostrar botón secundario", "default": false },
+        { "type": "text", "id": "secondary_label", "label": "Texto", "default": "VER PRODUCTOS" },
+        { "type": "url", "id": "secondary_link", "label": "Enlace" },
+
+        { "type": "header", "content": "Posición del contenido — Desktop" },
+        {
+          "type": "select", "id": "align_desktop", "label": "Horizontal", "default": "flex-start",
+          "options": [
+            { "value": "flex-start", "label": "Izquierda" },
+            { "value": "center", "label": "Centro" },
+            { "value": "flex-end", "label": "Derecha" }
+          ]
+        },
+        {
+          "type": "select", "id": "vertical_desktop", "label": "Vertical", "default": "center",
+          "options": [
+            { "value": "flex-start", "label": "Arriba" },
+            { "value": "center", "label": "Centro" },
+            { "value": "flex-end", "label": "Abajo" }
+          ]
+        },
+        {
+          "type": "select", "id": "text_align_desktop", "label": "Alineación del texto", "default": "left",
+          "options": [
+            { "value": "left", "label": "Izquierda" },
+            { "value": "center", "label": "Centro" },
+            { "value": "right", "label": "Derecha" }
+          ]
+        },
+        { "type": "range", "id": "content_max_width_desktop", "min": 20, "max": 100, "step": 5, "unit": "%", "label": "Ancho máx. del contenido", "default": 50 },
+        { "type": "range", "id": "title_size_desktop", "min": 24, "max": 120, "step": 1, "unit": "px", "label": "Tamaño título", "default": 72 },
+        { "type": "range", "id": "subtitle_size_desktop", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "Tamaño subtítulo", "default": 18 },
+
+        { "type": "header", "content": "Posición del contenido — Móvil" },
+        {
+          "type": "select", "id": "align_mobile", "label": "Horizontal", "default": "flex-start",
+          "options": [
+            { "value": "flex-start", "label": "Izquierda" },
+            { "value": "center", "label": "Centro" },
+            { "value": "flex-end", "label": "Derecha" }
+          ]
+        },
+        {
+          "type": "select", "id": "vertical_mobile", "label": "Vertical", "default": "flex-end",
+          "options": [
+            { "value": "flex-start", "label": "Arriba" },
+            { "value": "center", "label": "Centro" },
+            { "value": "flex-end", "label": "Abajo" }
+          ]
+        },
+        {
+          "type": "select", "id": "text_align_mobile", "label": "Alineación del texto", "default": "left",
+          "options": [
+            { "value": "left", "label": "Izquierda" },
+            { "value": "center", "label": "Centro" },
+            { "value": "right", "label": "Derecha" }
+          ]
+        },
+        { "type": "range", "id": "content_max_width_mobile", "min": 40, "max": 100, "step": 5, "unit": "%", "label": "Ancho máx. del contenido", "default": 90 },
+        { "type": "range", "id": "title_size_mobile", "min": 18, "max": 80, "step": 1, "unit": "px", "label": "Tamaño título", "default": 40 },
+        { "type": "range", "id": "subtitle_size_mobile", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Tamaño subtítulo", "default": 16 },
+
+        { "type": "header", "content": "Tipografía" },
+        {
+          "type": "select", "id": "heading_font", "label": "Fuente del título", "default": "display",
+          "options": [
+            { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
+            { "value": "body", "label": "Marca — Cuerpo (Arial)" },
+            { "value": "mono", "label": "Marca — Martian Mono" },
+            { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
+            { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
+            { "value": "custom", "label": "Personalizada (elegir abajo)" }
+          ]
+        },
+        { "type": "font_picker", "id": "heading_font_picker", "label": "Fuente personalizada del título", "default": "assistant_n4" },
+        {
+          "type": "select", "id": "body_font", "label": "Fuente del subtítulo", "default": "body",
+          "options": [
+            { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
+            { "value": "body", "label": "Marca — Cuerpo (Arial)" },
+            { "value": "mono", "label": "Marca — Martian Mono" },
+            { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
+            { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
+            { "value": "custom", "label": "Personalizada (elegir abajo)" }
+          ]
+        },
+        { "type": "font_picker", "id": "body_font_picker", "label": "Fuente personalizada del subtítulo", "default": "assistant_n4" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Hero Slider",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

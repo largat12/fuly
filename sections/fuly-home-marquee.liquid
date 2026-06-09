@@ -58,6 +58,21 @@
   </div>
 </section>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly Home Marquee",
@@ -68,27 +83,256 @@
       "label": "Items (pipe `|` separated)",
       "default": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB"
     },
-    { "type": "header", "content": "Animación" },
-    { "type": "header", "content": "Velocidad (menos segundos = más rápido)" },
-    { "type": "range", "id": "duration_mobile", "min": 5, "max": 60, "step": 1, "unit": "s", "label": "Móvil", "default": 10 },
-    { "type": "range", "id": "duration_tablet", "min": 5, "max": 60, "step": 1, "unit": "s", "label": "Tablet", "default": 10 },
-    { "type": "range", "id": "duration_desktop", "min": 5, "max": 60, "step": 1, "unit": "s", "label": "Desktop", "default": 10 },
-    { "type": "header", "content": "Responsive — Tamaño de fuente" },
-    { "type": "range", "id": "font_size_mobile", "min": 10, "max": 48, "step": 1, "unit": "px", "label": "Móvil", "default": 18 },
-    { "type": "range", "id": "font_size_tablet", "min": 10, "max": 48, "step": 1, "unit": "px", "label": "Tablet", "default": 18 },
-    { "type": "range", "id": "font_size_desktop", "min": 10, "max": 48, "step": 1, "unit": "px", "label": "Desktop", "default": 18 },
-    { "type": "header", "content": "Responsive — Padding vertical" },
-    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Móvil", "default": 16 },
-    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Tablet", "default": 16 },
-    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Desktop", "default": 16 },
-    { "type": "header", "content": "Responsive — Espacio entre items" },
-    { "type": "range", "id": "item_gap_mobile", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Móvil", "default": 24 },
-    { "type": "range", "id": "item_gap_tablet", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Tablet", "default": 24 },
-    { "type": "range", "id": "item_gap_desktop", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Desktop", "default": 24 },
-    { "type": "header", "content": "Colores" },
-    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#1A1A1A" },
-    { "type": "color", "id": "text_color", "label": "Texto", "default": "#FFFFFF" },
-    { "type": "color", "id": "star_color", "label": "Estrella", "default": "#FFE135" }
+    {
+      "type": "header",
+      "content": "Animación"
+    },
+    {
+      "type": "header",
+      "content": "Velocidad (menos segundos = más rápido)"
+    },
+    {
+      "type": "range",
+      "id": "duration_mobile",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Móvil",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "duration_tablet",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Tablet",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "duration_desktop",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Desktop",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño de fuente"
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "font_size_tablet",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "min": 10,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Espacio entre items"
+    },
+    {
+      "type": "range",
+      "id": "item_gap_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "item_gap_tablet",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "item_gap_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Texto",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Estrella",
+      "default": "#FFE135"
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ],
   "presets": [
     {

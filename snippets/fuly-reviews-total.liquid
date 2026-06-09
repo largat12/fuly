@@ -1,0 +1,68 @@
+{%- comment -%}
+  FULY — fuly-reviews-total
+  Devuelve (echo) el número total de reseñas. Fuente configurable para
+  integrarse con la app de reseñas (revie.lat) u otra que escriba en metafields.
+
+  Estrategia:
+    1. Si source == 'manual'        → usa manual_number.
+    2. Si hay un metafield de tienda (shop) con el total → lo usa directo.
+       (algunas apps guardan un total agregado a nivel shop)
+    3. Si no, suma el metafield de cada producto (namespace.key) en collections.all.
+    4. Si el resultado es 0 → cae a manual_number (respaldo).
+
+  Params (todos opcionales):
+    - source (string): 'auto' (default) | 'manual'
+    - namespace (string): namespace del metafield de producto (default 'reviews')
+    - key (string): key del metafield de producto (default 'rating_count')
+    - shop_namespace / shop_key (string): metafield de tienda con el total agregado
+    - manual_number (string): número de respaldo (default '3,400')
+
+  Uso:
+    {%- capture reviews_number -%}
+      {%- render 'fuly-reviews-total',
+        source: section.settings.reviews_source,
+        namespace: section.settings.reviews_namespace,
+        key: section.settings.reviews_key,
+        manual_number: section.settings.reviews_manual_number -%}
+    {%- endcapture -%}
+
+  Cómo conectar revie.lat:
+    Revisar en Shopify admin → Settings → Custom data → Metafields el namespace/key
+    que usa Revie. Si escribe en reviews.rating_count, funciona out-of-the-box.
+    Si usa uno propio (p. ej. revie.rating_count), setéalo en namespace/key.
+    Si Revie expone un total a nivel tienda, usa shop_namespace/shop_key.
+{%- endcomment -%}
+{%- liquid
+  assign rt_source = source | default: 'auto'
+  assign rt_namespace = namespace | default: 'reviews'
+  assign rt_key = key | default: 'rating_count'
+  assign rt_manual = manual_number | default: '3,400'
+
+  assign rt_total = 0
+
+  if rt_source != 'manual'
+    comment
+      1) Metafield de tienda con total agregado (si la app lo provee).
+    endcomment
+    if shop_namespace != blank and shop_key != blank
+      assign rt_shop_value = shop.metafields[shop_namespace][shop_key].value | default: 0
+      assign rt_total = rt_total | plus: rt_shop_value
+    endif
+
+    comment
+      2) Si aún es 0, sumar el metafield por producto.
+    endcomment
+    if rt_total == 0
+      for rt_product in collections.all.products
+        assign rt_value = rt_product.metafields[rt_namespace][rt_key].value | default: 0
+        assign rt_total = rt_total | plus: rt_value
+      endfor
+    endif
+  endif
+
+  if rt_source == 'manual' or rt_total == 0
+    echo rt_manual
+  else
+    echo rt_total
+  endif
+-%}

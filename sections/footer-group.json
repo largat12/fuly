@@ -82,8 +82,8 @@
           "type": "footer_link",
           "settings": {
             "column": "COMUNIDAD",
-            "link_text": "Blog",
-            "link_url": "/blog"
+            "link_text": "Más Niños",
+            "link_url": "/pages/mas-ninos"
           }
         },
         "legal-1": {

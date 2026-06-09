@@ -3,6 +3,8 @@
   Inputs (passed via render args):
     - name (string)
     - functional_benefit (string)
+    - expert (string)            ← descripción corta (metafield custom.expert), prioritaria
+    - talle (string)             ← talle/size (metafield custom.talle)
     - category_label (string)
     - price_formatted (string)
     - format (string)
@@ -61,10 +63,12 @@
     <a href="{{ card_href }}" style="text-decoration:none;color:inherit;">
       <h3 class="fuly-product-card__title">{{ name }}</h3>
     </a>
-    {% if functional_benefit != blank %}
-      <p class="fuly-product-card__benefit">{{ functional_benefit }}</p>
+    {%- assign card_desc = expert | default: functional_benefit -%}
+    {% if card_desc != blank %}
+      <p class="fuly-product-card__benefit">{{ card_desc }}</p>
     {% endif %}
-    <p class="fuly-product-card__format">{{ format }}</p>
+    {% if format != blank %}<p class="fuly-product-card__format">{{ format }}</p>{% endif %}
+    {% if talle != blank %}<p class="fuly-product-card__talle">Talle: {{ talle }}</p>{% endif %}
     <div class="fuly-product-card__footer">
       <span class="fuly-product-card__price">{{ price_formatted }}</span>
       <a href="{{ card_href }}" class="fuly-product-card__btn" aria-label="Ver {{ name | escape }}">

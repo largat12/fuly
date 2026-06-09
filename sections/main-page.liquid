@@ -4,10 +4,13 @@
   FULY override: para handles específicos renderizamos contenido Fuly
   (en vez del default Dawn) cuando el merchant no asignó un template
   dedicado. Esto evita el paso manual en el admin.
+
+  NOTA: 'preguntas-frecuentes' ya NO se renderiza aquí. Su página usa el
+  template editable `page.preguntas-frecuentes` (sección Fuly FAQ Page), que
+  permite agregar/quitar/editar preguntas desde el editor de temas.
+  Asegúrate de que la página FAQ tenga asignado ese template en el admin.
 {%- endcomment -%}
-{%- if page.handle == 'preguntas-frecuentes' -%}
-  {%- render 'fuly-faq-content' -%}
-{%- elsif page.handle == 'fuly-semilla' -%}
+{%- if page.handle == 'fuly-semilla' -%}
   {%- render 'fuly-semilla-content' -%}
 {%- elsif page.handle == 'nosotros' -%}
   {%- render 'fuly-nosotros-content' -%}

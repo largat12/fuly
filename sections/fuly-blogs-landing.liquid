@@ -144,46 +144,307 @@
   }
 </style>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly — Más niños (blogs)",
   "settings": [
-    { "type": "text", "id": "tag_label", "label": "Tag (opcional)", "default": "FULY" },
-    { "type": "text", "id": "heading", "label": "Título", "default": "MÁS NIÑOS" },
-    { "type": "textarea", "id": "subheading", "label": "Subtítulo", "default": "Contenido para acompañarte: recetas, podcast y nuestro newsletter." },
-
-    { "type": "header", "content": "Responsive — Columnas" },
-    { "type": "range", "id": "cols_mobile", "label": "Columnas — Móvil", "min": 1, "max": 4, "step": 1, "default": 1 },
-    { "type": "range", "id": "cols_tablet", "label": "Columnas — Tablet", "min": 1, "max": 4, "step": 1, "default": 3 },
-    { "type": "range", "id": "cols_desktop", "label": "Columnas — Desktop", "min": 1, "max": 4, "step": 1, "default": 3 },
-
-    { "type": "header", "content": "Responsive — Separación (gap)" },
-    { "type": "range", "id": "gap_mobile", "label": "Separación — Móvil", "unit": "px", "min": 0, "max": 64, "step": 1, "default": 24 },
-    { "type": "range", "id": "gap_tablet", "label": "Separación — Tablet", "unit": "px", "min": 0, "max": 64, "step": 1, "default": 24 },
-    { "type": "range", "id": "gap_desktop", "label": "Separación — Desktop", "unit": "px", "min": 0, "max": 64, "step": 1, "default": 24 },
-
-    { "type": "header", "content": "Responsive — Tamaño de título de tarjeta" },
-    { "type": "range", "id": "title_size_mobile", "label": "Título tarjeta — Móvil", "unit": "px", "min": 12, "max": 40, "step": 1, "default": 18 },
-    { "type": "range", "id": "title_size_tablet", "label": "Título tarjeta — Tablet", "unit": "px", "min": 12, "max": 40, "step": 1, "default": 20 },
-    { "type": "range", "id": "title_size_desktop", "label": "Título tarjeta — Desktop", "unit": "px", "min": 12, "max": 40, "step": 1, "default": 20 },
-
-    { "type": "header", "content": "Responsive — Padding vertical" },
-    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical — Móvil", "unit": "px", "min": 0, "max": 200, "step": 2, "default": 48 },
-    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical — Tablet", "unit": "px", "min": 0, "max": 200, "step": 2, "default": 96 },
-    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical — Desktop", "unit": "px", "min": 0, "max": 200, "step": 2, "default": 96 }
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Tag (opcional)",
+      "default": "FULY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "MÁS NIÑOS"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Contenido para acompañarte: recetas, podcast y nuestro newsletter."
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Columnas"
+    },
+    {
+      "type": "range",
+      "id": "cols_mobile",
+      "label": "Columnas — Móvil",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "cols_tablet",
+      "label": "Columnas — Tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "cols_desktop",
+      "label": "Columnas — Desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Separación (gap)"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Separación — Móvil",
+      "unit": "px",
+      "min": 0,
+      "max": 64,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Separación — Tablet",
+      "unit": "px",
+      "min": 0,
+      "max": 64,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Separación — Desktop",
+      "unit": "px",
+      "min": 0,
+      "max": 64,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño de título de tarjeta"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Título tarjeta — Móvil",
+      "unit": "px",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "title_size_tablet",
+      "label": "Título tarjeta — Tablet",
+      "unit": "px",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Título tarjeta — Desktop",
+      "unit": "px",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "label": "Padding vertical — Móvil",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "label": "Padding vertical — Tablet",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "label": "Padding vertical — Desktop",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ],
   "blocks": [
     {
       "type": "blog_card",
       "name": "Blog",
       "settings": [
-        { "type": "blog", "id": "blog", "label": "Blog (toma título y enlace automáticamente)" },
-        { "type": "text", "id": "title", "label": "Título (override, opcional)" },
-        { "type": "textarea", "id": "description", "label": "Descripción corta" },
-        { "type": "image_picker", "id": "image", "label": "Imagen" },
-        { "type": "color", "id": "accent", "label": "Color de acento", "default": "#FFE135" },
-        { "type": "url", "id": "link", "label": "Enlace (override, opcional)" },
-        { "type": "text", "id": "cta_label", "label": "Texto del enlace", "default": "Ver más →" }
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Blog (toma título y enlace automáticamente)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título (override, opcional)"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción corta"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "color",
+          "id": "accent",
+          "label": "Color de acento",
+          "default": "#FFE135"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace (override, opcional)"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Texto del enlace",
+          "default": "Ver más →"
+        }
       ]
     }
   ],
@@ -191,9 +452,27 @@
     {
       "name": "Fuly — Más niños (blogs)",
       "blocks": [
-        { "type": "blog_card", "settings": { "title": "Newsletter", "description": "Una herramienta práctica cada semana para el bienestar de tus hijos." } },
-        { "type": "blog_card", "settings": { "title": "Podcast", "description": "Conversaciones sobre nutrición, crianza y desarrollo infantil." } },
-        { "type": "blog_card", "settings": { "title": "Recetas", "description": "Ideas fáciles y deliciosas para preparar Fuly en casa." } }
+        {
+          "type": "blog_card",
+          "settings": {
+            "title": "Newsletter",
+            "description": "Una herramienta práctica cada semana para el bienestar de tus hijos."
+          }
+        },
+        {
+          "type": "blog_card",
+          "settings": {
+            "title": "Podcast",
+            "description": "Conversaciones sobre nutrición, crianza y desarrollo infantil."
+          }
+        },
+        {
+          "type": "blog_card",
+          "settings": {
+            "title": "Recetas",
+            "description": "Ideas fáciles y deliciosas para preparar Fuly en casa."
+          }
+        }
       ]
     }
   ]

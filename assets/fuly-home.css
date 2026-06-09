@@ -571,6 +571,16 @@
   margin: 0 0 0.8rem;
 }
 
+.fuly-product-card__talle {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: clamp(10px, 1vw, 13px);
+  color: hsl(var(--cartoon-black));
+  opacity: 0.6;
+  margin: 0 0 0.8rem;
+}
+
 .fuly-product-card__footer {
   margin-top: auto;
   display: flex;

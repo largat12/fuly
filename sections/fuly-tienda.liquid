@@ -116,7 +116,9 @@
               endif
             endif
             assign p_format = product.metafields.custom.formato | default: product.metafields.fuly.format | default: ''
-            assign p_functional = product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit | default: ''
+            assign p_expert = product.metafields.custom.expert
+            assign p_functional = p_expert | default: product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit | default: ''
+            assign p_talle = product.metafields.custom.talle
             assign p_category_label = product.metafields.fuly.category_label | default: product.type
             if p_category_label == blank
               assign p_category_label = collection.title
@@ -168,6 +170,9 @@
               {%- if p_format != blank -%}
                 <p class="fuly-product-card__format">{{ p_format }}</p>
               {%- endif -%}
+              {%- if p_talle != blank -%}
+                <p class="fuly-product-card__talle">Talle: {{ p_talle }}</p>
+              {%- endif -%}
               <div class="fuly-product-card__footer">
                 <span class="fuly-product-card__price">{{ p_price_formatted }}</span>
                 <a href="{{ product.url }}" class="fuly-product-card__btn" aria-label="Ver {{ product.title | escape }}">
@@ -189,6 +194,21 @@
     {%- endif -%}
   </div>
 </section>
+
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
 
 {% schema %}
 {
@@ -374,6 +394,94 @@
       "step": 2,
       "unit": "px",
       "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
     }
   ]
 }

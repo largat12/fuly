@@ -93,27 +93,245 @@
   </div>
 </section>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly Home Benefits",
   "settings": [
-    { "type": "header", "content": "Carrusel" },
-    { "type": "checkbox", "id": "auto_scroll", "label": "Mover automáticamente (carrusel)", "default": true },
-    { "type": "range", "id": "scroll_speed", "min": 10, "max": 60, "step": 1, "unit": "s", "label": "Velocidad (segundos por vuelta)", "default": 30 },
-    { "type": "header", "content": "Responsive — Padding vertical" },
-    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Móvil", "default": 51 },
-    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Tablet", "default": 51 },
-    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Desktop", "default": 51 },
-    { "type": "header", "content": "Responsive — Espacio entre tags" },
-    { "type": "range", "id": "tag_gap_mobile", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Móvil", "default": 12 },
-    { "type": "range", "id": "tag_gap_tablet", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Tablet", "default": 12 },
-    { "type": "range", "id": "tag_gap_desktop", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Desktop", "default": 12 },
-    { "type": "header", "content": "Responsive — Tamaño de fuente del tag" },
-    { "type": "range", "id": "tag_font_size_mobile", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Móvil", "default": 13 },
-    { "type": "range", "id": "tag_font_size_tablet", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Tablet", "default": 13 },
-    { "type": "range", "id": "tag_font_size_desktop", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Desktop", "default": 13 },
-    { "type": "header", "content": "Color" },
-    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFBEA" }
+    {
+      "type": "header",
+      "content": "Carrusel"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_scroll",
+      "label": "Mover automáticamente (carrusel)",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Velocidad (segundos por vuelta)",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 51
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 51
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 51
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Espacio entre tags"
+    },
+    {
+      "type": "range",
+      "id": "tag_gap_mobile",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tag_gap_tablet",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tag_gap_desktop",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño de fuente del tag"
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size_mobile",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size_tablet",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size_desktop",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo",
+      "default": "#FFFBEA"
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ],
   "blocks": [
     {

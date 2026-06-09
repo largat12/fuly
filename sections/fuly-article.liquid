@@ -142,34 +142,228 @@
   </div>
 </section>
 
+<style>
+  {%- if section.settings.heading_font != blank and section.settings.heading_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} h1,
+  #shopify-section-{{ section.id }} h2,
+  #shopify-section-{{ section.id }} h3,
+  #shopify-section-{{ section.id }} h4 { font-family: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %} !important; }
+  {%- endif -%}
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} p,
+  #shopify-section-{{ section.id }} li,
+  #shopify-section-{{ section.id }} summary,
+  #shopify-section-{{ section.id }} blockquote { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
 {% schema %}
 {
   "name": "Fuly — Artículo",
   "tag": "section",
   "settings": [
-    { "type": "header", "content": "Cabecera" },
-    { "type": "checkbox", "id": "show_date", "label": "Mostrar fecha", "default": true },
-    { "type": "checkbox", "id": "show_author", "label": "Mostrar autor", "default": false },
-
-    { "type": "header", "content": "Volver / Compartir" },
-    { "type": "checkbox", "id": "show_back", "label": "Mostrar 'Volver a la categoría'", "default": true },
-    { "type": "text", "id": "back_label", "label": "Texto de volver", "default": "Volver a" },
-    { "type": "checkbox", "id": "show_share", "label": "Mostrar botones de compartir", "default": true },
-    { "type": "text", "id": "share_label", "label": "Etiqueta de compartir", "default": "Compartir" },
-
-    { "type": "header", "content": "Artículos relacionados" },
-    { "type": "checkbox", "id": "show_related", "label": "Mostrar relacionados (misma categoría)", "default": true },
-    { "type": "text", "id": "related_title", "label": "Título", "default": "Artículos relacionados" },
-    { "type": "range", "id": "related_count", "label": "Cantidad", "min": 2, "max": 4, "step": 1, "default": 3 },
-    { "type": "text", "id": "related_btn_label", "label": "Texto del botón de la card", "default": "Leer artículo" },
-
-    { "type": "header", "content": "CTA final" },
-    { "type": "checkbox", "id": "show_cta", "label": "Mostrar CTA", "default": true },
-    { "type": "text", "id": "cta_heading", "label": "Título CTA", "default": "Ciencia deliciosa para más niños" },
-    { "type": "textarea", "id": "cta_text", "label": "Texto CTA", "default": "Descubre los alimentos funcionales de Fuly para fortalecer a tus hijos." },
-    { "type": "text", "id": "cta_btn_label", "label": "Texto del botón", "default": "Ver productos" },
-    { "type": "url", "id": "cta_btn_url", "label": "Enlace del botón" },
-    { "type": "color", "id": "cta_bg", "label": "Fondo CTA", "default": "#FFE135" }
+    {
+      "type": "header",
+      "content": "Cabecera"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Mostrar fecha",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Mostrar autor",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Volver / Compartir"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_back",
+      "label": "Mostrar 'Volver a la categoría'",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "back_label",
+      "label": "Texto de volver",
+      "default": "Volver a"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share",
+      "label": "Mostrar botones de compartir",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "share_label",
+      "label": "Etiqueta de compartir",
+      "default": "Compartir"
+    },
+    {
+      "type": "header",
+      "content": "Artículos relacionados"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_related",
+      "label": "Mostrar relacionados (misma categoría)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "related_title",
+      "label": "Título",
+      "default": "Artículos relacionados"
+    },
+    {
+      "type": "range",
+      "id": "related_count",
+      "label": "Cantidad",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "related_btn_label",
+      "label": "Texto del botón de la card",
+      "default": "Leer artículo"
+    },
+    {
+      "type": "header",
+      "content": "CTA final"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Mostrar CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Título CTA",
+      "default": "Ciencia deliciosa para más niños"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "Texto CTA",
+      "default": "Descubre los alimentos funcionales de Fuly para fortalecer a tus hijos."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_label",
+      "label": "Texto del botón",
+      "default": "Ver productos"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_url",
+      "label": "Enlace del botón"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg",
+      "label": "Fondo CTA",
+      "default": "#FFE135"
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente de títulos",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font_picker",
+      "label": "Fuente personalizada (títulos)",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del texto",
+      "default": "inherit",
+      "options": [
+        {
+          "value": "inherit",
+          "label": "Predeterminada (del tema)"
+        },
+        {
+          "value": "display",
+          "label": "Marca — Títulos (PP Pangram Rounded)"
+        },
+        {
+          "value": "body",
+          "label": "Marca — Cuerpo (Arial)"
+        },
+        {
+          "value": "mono",
+          "label": "Marca — Martian Mono"
+        },
+        {
+          "value": "shopify_heading",
+          "label": "Shopify — Fuente de títulos"
+        },
+        {
+          "value": "shopify_body",
+          "label": "Shopify — Fuente de cuerpo"
+        },
+        {
+          "value": "custom",
+          "label": "Personalizada (elegir abajo)"
+        }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (texto)",
+      "default": "assistant_n4"
+    }
   ]
 }
 {% endschema %}

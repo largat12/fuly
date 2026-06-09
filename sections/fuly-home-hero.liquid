@@ -9,17 +9,11 @@
   assign secondary_label = section.settings.secondary_label | default: 'VER PRODUCTOS'
   assign secondary_link = section.settings.secondary_link | default: '/collections/tienda'
 
-  # Badge de reseñas: número dinámico (suma reviews.rating_count); si da 0, usa el manual.
-  assign reviews_total = 0
-  for review_product in collections.all.products
-    assign reviews_total = reviews_total | plus: review_product.metafields.reviews.rating_count
-  endfor
-  assign reviews_manual = section.settings.reviews_manual_number | default: '3,400'
-  if reviews_total == 0
-    assign reviews_number = reviews_manual
-  else
-    assign reviews_number = reviews_total
-  endif
+  # Badge de reseñas: número configurable (ver snippet fuly-reviews-total).
+  capture reviews_number
+    render 'fuly-reviews-total', source: section.settings.reviews_source, namespace: section.settings.reviews_namespace, key: section.settings.reviews_key, shop_namespace: section.settings.reviews_shop_namespace, shop_key: section.settings.reviews_shop_key, manual_number: section.settings.reviews_manual_number
+  endcapture
+  assign reviews_number = reviews_number | strip
   assign reviews_text = section.settings.reviews_text | default: 'reseñas verificadas con 5 estrellas ⭐'
   assign badge_text = section.settings.tagline
   if badge_text == blank
@@ -41,6 +35,8 @@
     --r-heading-color: {{ section.settings.heading_color | default: '#1A1A1A' }};
     --r-subtitle-color: {{ section.settings.subtitle_color | default: '#555555' }};
     --r-badge-bg: {{ section.settings.badge_bg_color | default: '#FFE135' }};
+    --r-heading-font: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %};
+    --r-body-font: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %};
   }
   @media (min-width: 768px) {
     #shopify-section-{{ section.id }} {
@@ -62,8 +58,8 @@
       --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
     }
   }
-  #shopify-section-{{ section.id }} .fuly-hero-title { font-size: var(--r-title-size); color: var(--r-heading-color); }
-  #shopify-section-{{ section.id }} .fuly-hero-tagline { font-size: var(--r-subtitle-size); color: var(--r-subtitle-color); }
+  #shopify-section-{{ section.id }} .fuly-hero-title { font-size: var(--r-title-size); color: var(--r-heading-color); font-family: var(--r-heading-font); }
+  #shopify-section-{{ section.id }} .fuly-hero-tagline { font-size: var(--r-subtitle-size); color: var(--r-subtitle-color); font-family: var(--r-body-font); }
   #shopify-section-{{ section.id }} .fuly-hero-content { gap: var(--r-content-gap); }
   #shopify-section-{{ section.id }} .fuly-hero-buttons { gap: var(--r-buttons-gap); }
   #shopify-section-{{ section.id }} .fuly-hero-image { height: var(--r-image-height); }
@@ -95,14 +91,18 @@
       {%- endif -%}
       <h1 class="fuly-hero-title">{{ title }}</h1>
       <p class="fuly-hero-tagline">{{ subtitle }}</p>
-      <div class="fuly-hero-buttons">
-        <a href="{{ primary_link }}" class="fuly-cartoon-btn fuly-cartoon-btn-primary" style="font-size:18px;">
-          {{ primary_label }}
-        </a>
-        {%- if secondary_label != blank -%}
-          <a href="{{ secondary_link }}" class="fuly-btn-outline">{{ secondary_label }}</a>
-        {%- endif -%}
-      </div>
+      {%- if section.settings.show_primary_button or section.settings.show_secondary_button -%}
+        <div class="fuly-hero-buttons">
+          {%- if section.settings.show_primary_button and primary_label != blank -%}
+            <a href="{{ primary_link }}" class="fuly-cartoon-btn fuly-cartoon-btn-primary" style="font-size:18px;">
+              {{ primary_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.show_secondary_button and secondary_label != blank -%}
+            <a href="{{ secondary_link }}" class="fuly-btn-outline">{{ secondary_label }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -128,6 +128,41 @@
       "label": "Texto del badge (vacío = automático con # reseñas)"
     },
     {
+      "type": "select",
+      "id": "reviews_source",
+      "label": "Fuente del número de reseñas",
+      "options": [
+        { "value": "auto", "label": "Automático (metafield de la app)" },
+        { "value": "manual", "label": "Manual (número fijo)" }
+      ],
+      "default": "auto",
+      "info": "Automático suma el metafield de reseñas; si da 0, usa el número manual."
+    },
+    {
+      "type": "text",
+      "id": "reviews_namespace",
+      "label": "Reseñas · namespace del metafield (producto)",
+      "default": "reviews",
+      "info": "Revisa Settings → Custom data → Metafields qué usa tu app (revie.lat). Default: reviews"
+    },
+    {
+      "type": "text",
+      "id": "reviews_key",
+      "label": "Reseñas · key del metafield (producto)",
+      "default": "rating_count"
+    },
+    {
+      "type": "text",
+      "id": "reviews_shop_namespace",
+      "label": "Reseñas · namespace metafield de tienda (opcional)",
+      "info": "Si la app guarda un total agregado a nivel tienda."
+    },
+    {
+      "type": "text",
+      "id": "reviews_shop_key",
+      "label": "Reseñas · key metafield de tienda (opcional)"
+    },
+    {
       "type": "text",
       "id": "reviews_manual_number",
       "label": "Número manual / respaldo",
@@ -151,6 +186,13 @@
       "label": "Subtitle",
       "default": "Formulados por científicos. Disfrutados por niños."
     },
+    { "type": "header", "content": "Botones" },
+    {
+      "type": "checkbox",
+      "id": "show_primary_button",
+      "label": "Mostrar botón principal",
+      "default": true
+    },
     {
       "type": "text",
       "id": "primary_label",
@@ -161,6 +203,12 @@
       "type": "url",
       "id": "primary_link",
       "label": "Primary button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_button",
+      "label": "Mostrar botón secundario",
+      "default": true
     },
     {
       "type": "text",
@@ -200,7 +248,39 @@
     { "type": "header", "content": "Responsive — Colores" },
     { "type": "color", "id": "heading_color", "label": "Color del título", "default": "#1A1A1A" },
     { "type": "color", "id": "subtitle_color", "label": "Color del subtítulo", "default": "#555555" },
-    { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#FFE135" }
+    { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#FFE135" },
+
+    { "type": "header", "content": "Tipografía" },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Fuente del título",
+      "options": [
+        { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
+        { "value": "body", "label": "Marca — Cuerpo (Arial)" },
+        { "value": "mono", "label": "Marca — Martian Mono" },
+        { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
+        { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
+        { "value": "custom", "label": "Personalizada (elegir abajo)" }
+      ],
+      "default": "display"
+    },
+    { "type": "font_picker", "id": "heading_font_picker", "label": "Fuente personalizada del título", "default": "assistant_n4" },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del subtítulo",
+      "options": [
+        { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
+        { "value": "body", "label": "Marca — Cuerpo (Arial)" },
+        { "value": "mono", "label": "Marca — Martian Mono" },
+        { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
+        { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
+        { "value": "custom", "label": "Personalizada (elegir abajo)" }
+      ],
+      "default": "body"
+    },
+    { "type": "font_picker", "id": "body_font_picker", "label": "Fuente personalizada del subtítulo", "default": "assistant_n4" }
   ],
   "presets": [
     {
