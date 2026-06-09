@@ -14,7 +14,7 @@
 }
 
 .fuly-article__container {
-  max-width: 102.4rem;
+  max-width: 128rem;
   margin: 0 auto;
 }
 
@@ -135,7 +135,7 @@
 
 /* ---- CUERPO ---- */
 .fuly-article__content {
-  max-width: 72rem;
+  max-width: 100%;
   margin: 4rem auto 0;
   font-family: var(--fuly-font-body, Arial, sans-serif);
   font-size: 1.7rem;
@@ -277,7 +277,7 @@
 /* ---- CTA final ---- */
 .fuly-article__cta {
   margin: 6.4rem auto 0;
-  max-width: 72rem;
+  max-width: 100%;
   text-align: center;
   padding: 4rem 2.4rem;
 }

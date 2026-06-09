@@ -5,12 +5,14 @@
   (en vez del default Dawn) cuando el merchant no asignó un template
   dedicado. Esto evita el paso manual en el admin.
 
-  NOTA: 'preguntas-frecuentes' ya NO se renderiza aquí. Su página usa el
-  template editable `page.preguntas-frecuentes` (sección Fuly FAQ Page), que
-  permite agregar/quitar/editar preguntas desde el editor de temas.
-  Asegúrate de que la página FAQ tenga asignado ese template en el admin.
+  FAQ: para las páginas con handle 'faqs' o 'preguntas-frecuentes' mostramos el
+  contenido FAQ aquí como respaldo (siempre visible). Para edición completa desde
+  el editor, asigna a la página el template `faqs` (page.faqs) o
+  `preguntas-frecuentes`; al hacerlo, esta plantilla por defecto deja de usarse.
 {%- endcomment -%}
-{%- if page.handle == 'fuly-semilla' -%}
+{%- if page.handle == 'faqs' or page.handle == 'preguntas-frecuentes' -%}
+  {%- render 'fuly-faq-content' -%}
+{%- elsif page.handle == 'fuly-semilla' -%}
   {%- render 'fuly-semilla-content' -%}
 {%- elsif page.handle == 'nosotros' -%}
   {%- render 'fuly-nosotros-content' -%}

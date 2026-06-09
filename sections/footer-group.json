@@ -43,7 +43,7 @@
           "settings": {
             "column": "AYUDA",
             "link_text": "Preguntas frecuentes",
-            "link_url": "/pages/preguntas-frecuentes"
+            "link_url": "/pages/faqs"
           }
         },
         "ayuda-2": {

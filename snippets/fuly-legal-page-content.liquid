@@ -48,7 +48,12 @@
     </div>
 
     <div class="fuly-legal-page__content">
-      {%- if legal_handle == 'terminos-y-condiciones' -%}
+      {%- if page.content != blank -%}
+        {%- comment -%} Prioridad: contenido editado en el Admin (cuerpo de la página). {%- endcomment -%}
+        <section class="fuly-legal-page__section fuly-legal-page__rte rte">
+          {{ page.content }}
+        </section>
+      {%- elsif legal_handle == 'terminos-y-condiciones' -%}
         <section class="fuly-legal-page__section">
           <h2>1. Aceptación del uso del sitio</h2>
           <p>Al ingresar, navegar o comprar en este sitio aceptas estos términos y condiciones, así como las políticas publicadas por Fuly Kids y la normativa aplicable en Colombia.</p>
@@ -258,6 +263,21 @@
     line-height: 1.8;
     color: rgba(0, 0, 0, 0.82);
   }
+
+  /* Contenido editable desde el Admin (page.content): espaciado entre bloques */
+  .fuly-legal-page__rte > * { margin-top: 0; margin-bottom: 0; }
+  .fuly-legal-page__rte > * + * { margin-top: 1.4rem; }
+  .fuly-legal-page__rte h2 { margin-top: 2.4rem; }
+  .fuly-legal-page__rte > :first-child { margin-top: 0; }
+  .fuly-legal-page__rte ul,
+  .fuly-legal-page__rte ol {
+    margin-top: 1.4rem;
+    padding-left: 2rem;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.82);
+  }
+  .fuly-legal-page__rte li { margin: 0.4rem 0; }
 
   .fuly-legal-page__section a,
   .fuly-legal-page__meta-card a {

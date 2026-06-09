@@ -100,7 +100,7 @@
           "type": "nav_link",
           "settings": {
             "label": "FAQ",
-            "url": "/pages/preguntas-frecuentes",
+            "url": "/pages/faqs",
             "is_external": false,
             "show_external_icon": false
           }

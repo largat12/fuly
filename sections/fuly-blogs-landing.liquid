@@ -54,42 +54,100 @@
       {%- endif -%}
     </div>
 
+    {%- assign ll_source = section.settings.source | default: 'menu' -%}
+    {%- assign ll_default_cta = section.settings.default_cta | default: 'Ver más →' -%}
+    {%- assign ll_default_accent = section.settings.default_accent | default: '#FFE135' -%}
+    {%- comment -%}
+      Nota: Shopify Liquid no permite listar todos los blogs (el objeto `blogs`
+      no es iterable). Para que sea dinámico se usa un MENÚ (lista de enlaces)
+      donde agregas los blogs; la sección recorre ese menú.
+    {%- endcomment -%}
     <div class="fuly-blogs-landing__grid">
-      {%- for block in section.blocks -%}
-        {%- liquid
-          assign blk_link = block.settings.link
-          if blk_link == blank and block.settings.blog != blank
-            assign blk_blog = blogs[block.settings.blog]
-            assign blk_link = blk_blog.url
-          endif
-          assign blk_title = block.settings.title
-          if blk_title == blank and block.settings.blog != blank
-            assign blk_title = blogs[block.settings.blog].title
-          endif
-        -%}
-        <a
-          href="{{ blk_link | default: '#' }}"
-          class="fuly-blogs-landing__card fuly-cartoon-card fuly-cartoon-shadow-hover"
-          style="--fuly-blog-accent: {{ block.settings.accent | default: '#FFE135' }};"
-          {{ block.shopify_attributes }}
-        >
-          <span
-            class="fuly-blogs-landing__media"
-            style="background: linear-gradient(135deg, {{ block.settings.accent | default: '#FFE135' }}22, {{ block.settings.accent | default: '#FFE135' }}44);"
+      {%- if ll_source != 'menu' or section.settings.menu == blank -%}
+        {%- comment -%} Modo manual (o automático sin menú seleccionado): tarjetas por bloque {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign blk_link = block.settings.link
+            if blk_link == blank and block.settings.blog != blank
+              assign blk_blog = blogs[block.settings.blog]
+              assign blk_link = blk_blog.url
+            endif
+            assign blk_title = block.settings.title
+            if blk_title == blank and block.settings.blog != blank
+              assign blk_title = blogs[block.settings.blog].title
+            endif
+            assign blk_accent = block.settings.accent | default: ll_default_accent
+          -%}
+          <a
+            href="{{ blk_link | default: '#' }}"
+            class="fuly-blogs-landing__card fuly-cartoon-card fuly-cartoon-shadow-hover"
+            style="--fuly-blog-accent: {{ blk_accent }};"
+            {{ block.shopify_attributes }}
           >
-            {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fuly-blogs-landing__img', alt: blk_title | escape }}
-            {%- endif -%}
-          </span>
-          <div class="fuly-blogs-landing__body">
-            <h3 class="fuly-product-card__title">{{ blk_title }}</h3>
-            {%- if block.settings.description != blank -%}
-              <p class="fuly-product-card__benefit">{{ block.settings.description }}</p>
-            {%- endif -%}
-            <span class="fuly-blogs-landing__cta">{{ block.settings.cta_label | default: 'Ver más →' }}</span>
-          </div>
-        </a>
-      {%- endfor -%}
+            <span class="fuly-blogs-landing__media" style="background: linear-gradient(135deg, {{ blk_accent }}22, {{ blk_accent }}44);">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fuly-blogs-landing__img', alt: blk_title | escape }}
+              {%- endif -%}
+            </span>
+            <div class="fuly-blogs-landing__body">
+              <h3 class="fuly-product-card__title">{{ blk_title }}</h3>
+              {%- if block.settings.description != blank -%}
+                <p class="fuly-product-card__benefit">{{ block.settings.description }}</p>
+              {%- endif -%}
+              <span class="fuly-blogs-landing__cta">{{ block.settings.cta_label | default: ll_default_cta }}</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%}
+          Modo automático (menú): recorre los enlaces del menú elegido.
+          Si el enlace es a un blog, toma foto/descripción/color del metafield
+          del blog (custom.imagen / custom.descripcion / custom.color); si no
+          hay, usa la imagen y el extracto del artículo más reciente.
+        {%- endcomment -%}
+        {%- assign ll_menu = section.settings.menu -%}
+        {%- for link in ll_menu.links -%}
+          {%- liquid
+            assign bl_blog = nil
+            if link.type == 'blog_link'
+              assign bl_blog = link.object
+            endif
+            assign bl_first = bl_blog.articles.first
+            assign bl_accent = bl_blog.metafields.custom.color | default: ll_default_accent
+
+            assign bl_img = bl_blog.metafields.custom.imagen
+            if bl_img == blank
+              assign bl_img = bl_first.image
+            endif
+
+            assign bl_desc = bl_blog.metafields.custom.descripcion
+            if bl_desc == blank
+              assign bl_desc = bl_first.excerpt
+            endif
+            if bl_desc == blank and bl_first != blank
+              assign bl_desc = bl_first.content | strip_html | truncatewords: 18
+            endif
+          -%}
+          <a
+            href="{{ link.url }}"
+            class="fuly-blogs-landing__card fuly-cartoon-card fuly-cartoon-shadow-hover"
+            style="--fuly-blog-accent: {{ bl_accent }};"
+          >
+            <span class="fuly-blogs-landing__media" style="background: linear-gradient(135deg, {{ bl_accent }}22, {{ bl_accent }}44);">
+              {%- if bl_img != blank -%}
+                {{ bl_img | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fuly-blogs-landing__img', alt: link.title | escape }}
+              {%- endif -%}
+            </span>
+            <div class="fuly-blogs-landing__body">
+              <h3 class="fuly-product-card__title">{{ link.title }}</h3>
+              {%- if bl_desc != blank -%}
+                <p class="fuly-product-card__benefit">{{ bl_desc }}</p>
+              {%- endif -%}
+              <span class="fuly-blogs-landing__cta">{{ ll_default_cta }}</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -163,6 +221,35 @@
 {
   "name": "Fuly — Más niños (blogs)",
   "settings": [
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Origen de las categorías",
+      "options": [
+        { "value": "menu", "label": "Automático (desde un menú de blogs)" },
+        { "value": "manual", "label": "Manual (tarjetas por bloque)" }
+      ],
+      "default": "menu",
+      "info": "Shopify no permite listar todos los blogs automáticamente. Crea un menú con los blogs (Navegación) y selecciónalo abajo; la sección los pinta todos. Foto/descripción/color por metafield del blog (custom.imagen, custom.descripcion, custom.color); si no hay, usa el artículo más reciente."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menú de blogs (modo automático)",
+      "info": "Crea un menú en Online Store → Navigation con cada blog como enlace."
+    },
+    {
+      "type": "text",
+      "id": "default_cta",
+      "label": "Texto del botón (modo automático)",
+      "default": "Ver más →"
+    },
+    {
+      "type": "color",
+      "id": "default_accent",
+      "label": "Color de acento por defecto",
+      "default": "#FFE135"
+    },
     {
       "type": "text",
       "id": "tag_label",

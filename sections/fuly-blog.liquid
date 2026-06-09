@@ -20,22 +20,20 @@
     </header>
 
     <div class="fuly-collection-toolbar">
-      <nav class="fuly-collection-filters" aria-label="Filtrar por etiqueta">
-        <a
-          href="{{ blog.url }}"
-          class="fuly-collection-chip{% if current_tag == '' %} fuly-collection-chip--active{% endif %}"
-        >{{ section.settings.filter_all_label }}</a>
-        {%- for tag in blog.all_tags -%}
-          {%- unless tag == 'Promoción' or tag == 'Destacado' -%}
-            <a
-              href="{{ blog.url }}?tag={{ tag | url_encode }}"
-              class="fuly-collection-chip{% if tag == current_tag %} fuly-collection-chip--active{% endif %}"
-            >{{ tag }}</a>
-          {%- endunless -%}
-        {%- endfor -%}
-      </nav>
+      <form method="get" action="{{ blog.url }}" class="fuly-collection-sort fuly-blog-filter">
+        <label class="fuly-collection-sr-only" for="fuly-blog-tag">{{ section.settings.filter_label | default: 'Categoría' }}</label>
+        <select id="fuly-blog-tag" name="tag" onchange="this.form.submit()">
+          <option value="">{{ section.settings.filter_all_label }}</option>
+          {%- for tag in blog.all_tags -%}
+            {%- unless tag == 'Promoción' or tag == 'Destacado' -%}
+              <option value="{{ tag | escape }}"{% if tag == current_tag %} selected{% endif %}>{{ tag }}</option>
+            {%- endunless -%}
+          {%- endfor -%}
+        </select>
+        {%- if sort_value != 'manual' -%}<input type="hidden" name="sort_by" value="{{ sort_value }}">{%- endif -%}
+      </form>
 
-      <form method="get" class="fuly-collection-sort">
+      <form method="get" action="{{ blog.url }}" class="fuly-collection-sort">
         <label class="fuly-collection-sr-only" for="fuly-blog-sort">{{ section.settings.sort_label }}</label>
         <select id="fuly-blog-sort" name="sort_by" onchange="this.form.submit()">
           <option value="manual"{% if sort_value == 'manual' %} selected{% endif %}>{{ section.settings.sort_label }}</option>
@@ -43,6 +41,7 @@
           <option value="oldest"{% if sort_value == 'oldest' %} selected{% endif %}>Más antiguo</option>
           <option value="title-asc"{% if sort_value == 'title-asc' %} selected{% endif %}>Título A-Z</option>
         </select>
+        {%- if current_tag != '' -%}<input type="hidden" name="tag" value="{{ current_tag | escape }}">{%- endif -%}
       </form>
     </div>
 
@@ -93,7 +92,7 @@
   }
 
   .fuly-blog-container {
-    max-width: 76.8rem;
+    max-width: 128rem;
     margin: 0 auto;
     padding: 0;
   }
@@ -211,6 +210,31 @@
     color: rgba(0, 0, 0, 0.6);
     font-size: 1.6rem;
   }
+
+  /* Toolbar de filtros (categoría + orden) como dropdowns en lista */
+  .fuly-blog-section .fuly-collection-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    margin: 0 0 3.2rem;
+  }
+  .fuly-blog-section .fuly-collection-sort { min-width: 200px; }
+  .fuly-blog-section .fuly-collection-sort select {
+    width: 100%;
+    padding: 1rem 1.4rem;
+    border: 2px solid #1a1a1a;
+    border-radius: 9999px;
+    background: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  @media (max-width: 640px) {
+    .fuly-blog-section .fuly-collection-toolbar { flex-direction: column; align-items: stretch; }
+    .fuly-blog-section .fuly-collection-sort { min-width: 0; width: 100%; }
+  }
 </style>
 
 <style>
@@ -249,6 +273,12 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "Artículos, tips y novedades sobre nutrición y bienestar"
+    },
+    {
+      "type": "text",
+      "id": "filter_label",
+      "label": "Label del dropdown de categorías",
+      "default": "Categoría"
     },
     {
       "type": "text",
