@@ -1,0 +1,568 @@
+{%- comment -%}
+  FULY GIVE-BACK content — pixel port of react-lovable/src/pages/FulySemilla.tsx.
+  10 sections: Hero, Impacto, Impacto Neuronal, Dos Caminos, Tabs Donación,
+  Cómo se Prepara, Donación Interactiva, FAQ, Sobre Fuly Give-Back, CTA Final.
+  Styles in assets/fuly-semilla.css. Behavior in assets/fuly-semilla.js.
+{%- endcomment -%}
+
+<div class="fuly-semilla">
+
+  {%- comment -%} ── 1. HERO ─────────────────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-hero">
+    <div class="fuly-semilla-hero__inner">
+      <span class="fuly-semilla-badge">
+        FULY
+        <svg class="fuly-semilla-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 20h10"/>
+          <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+          <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+          <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+        </svg>
+        GIVE-BACK
+      </span>
+      <span class="fuly-tag-label">FULY GIVE-BACK</span>
+      <h1 class="fuly-semilla-hero__title">Siembra nutrición, cosecha futuro</h1>
+      <p class="fuly-semilla-hero__copy">
+        Es un tratamiento de 120 dosis en un año que posibilita el desarrollo neuronal completo de niños en situación de riesgo de desnutrición.
+      </p>
+      <button type="button" class="fuly-semilla-btn fuly-semilla-btn--accent" data-fuly-scroll-to-donate>
+        UNIRME
+      </button>
+    </div>
+  </section>
+
+  {%- comment -%} ── 2. IMPACTO ───────────────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-impacto">
+    <div class="fuly-semilla-impacto__inner">
+      <div class="fuly-semilla-impacto__head">
+        <span class="fuly-tag-label">NUESTRO IMPACTO</span>
+        <div class="fuly-semilla-impacto__big-number">506</div>
+        <h2 class="fuly-semilla-h2">Niños Beneficiados</h2>
+      </div>
+
+      <div class="fuly-semilla-impacto__list">
+        <div class="fuly-semilla-org-card">
+          <div class="fuly-semilla-org-card__emoji"><span>🌱</span></div>
+          <div class="fuly-semilla-org-card__info">
+            <p class="fuly-semilla-org-card__name">Corporación Sembramos Futuro</p>
+            <span class="fuly-semilla-org-card__mono">fundación aliada</span>
+          </div>
+          <div class="fuly-semilla-org-card__count">
+            <p class="fuly-semilla-org-card__kids">156</p>
+            <span class="fuly-semilla-org-card__mono fuly-semilla-org-card__mono--xs">niños</span>
+          </div>
+        </div>
+
+        <div class="fuly-semilla-org-card">
+          <div class="fuly-semilla-org-card__emoji"><span>💡</span></div>
+          <div class="fuly-semilla-org-card__info">
+            <p class="fuly-semilla-org-card__name">Fundación Conciencia</p>
+            <span class="fuly-semilla-org-card__mono">fundación aliada</span>
+          </div>
+          <div class="fuly-semilla-org-card__count">
+            <p class="fuly-semilla-org-card__kids">300</p>
+            <span class="fuly-semilla-org-card__mono fuly-semilla-org-card__mono--xs">niños</span>
+          </div>
+        </div>
+
+        <div class="fuly-semilla-org-card">
+          <div class="fuly-semilla-org-card__emoji"><span>🏠</span></div>
+          <div class="fuly-semilla-org-card__info">
+            <p class="fuly-semilla-org-card__name">Casa Embera</p>
+            <span class="fuly-semilla-org-card__mono">fundación aliada</span>
+          </div>
+          <div class="fuly-semilla-org-card__count">
+            <p class="fuly-semilla-org-card__kids">50</p>
+            <span class="fuly-semilla-org-card__mono fuly-semilla-org-card__mono--xs">niños</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="fuly-semilla-impacto__footer">Y seguimos creciendo cada mes</p>
+    </div>
+  </section>
+
+  {%- comment -%} ── 3. IMPACTO NEURONAL ─────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-neuronal">
+    <div class="fuly-semilla-neuronal__inner">
+      <span class="fuly-tag-label">¿POR QUÉ IMPORTA?</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-neuronal__title">
+        La nutrición transforma el desarrollo cerebral
+      </h2>
+
+      <div class="fuly-semilla-neuronal__brains">
+        <div class="fuly-semilla-brain">
+          <div class="fuly-semilla-brain__circle">
+            <svg class="fuly-semilla-brain__icon fuly-semilla-brain__icon--full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+              <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+              <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+              <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
+              <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
+              <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
+              <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
+              <path d="M6 18a4 4 0 0 1-1.967-.516"/>
+              <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+            </svg>
+          </div>
+          <span class="fuly-semilla-brain__mono">Desarrollo neuronal normal</span>
+          <p class="fuly-semilla-brain__desc">Un niño bien nutrido desarrolla conexiones neuronales completas</p>
+        </div>
+
+        <div class="fuly-semilla-brain">
+          <div class="fuly-semilla-brain__circle">
+            <svg class="fuly-semilla-brain__icon fuly-semilla-brain__icon--dim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+              <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+              <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+              <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
+              <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
+              <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
+              <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
+              <path d="M6 18a4 4 0 0 1-1.967-.516"/>
+              <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+            </svg>
+          </div>
+          <span class="fuly-semilla-brain__mono">Desarrollo con desnutrición</span>
+          <p class="fuly-semilla-brain__desc">La falta de nutrientes afecta irreversiblemente el desarrollo del cerebro</p>
+        </div>
+      </div>
+
+      <p class="fuly-semilla-neuronal__lead">
+        Fuly Give-Back contiene 10 vitaminas y 5 minerales que:
+      </p>
+
+      <div class="fuly-semilla-neuronal__benefits">
+        <div class="fuly-semilla-benefit-card">
+          <svg class="fuly-semilla-benefit-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+          </svg>
+          <span class="fuly-semilla-benefit-card__text">Previenen la anemia</span>
+        </div>
+
+        <div class="fuly-semilla-benefit-card">
+          <svg class="fuly-semilla-benefit-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+            <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+            <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+          </svg>
+          <span class="fuly-semilla-benefit-card__text">Favorecen el desarrollo cerebral y neuronal</span>
+        </div>
+
+        <div class="fuly-semilla-benefit-card">
+          <svg class="fuly-semilla-benefit-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+          </svg>
+          <span class="fuly-semilla-benefit-card__text">Fortalecen el sistema inmunológico</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 4. DOS CAMINOS ──────────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-caminos">
+    <div class="fuly-semilla-caminos__inner">
+      <span class="fuly-tag-label">¿CÓMO PUEDES AYUDAR?</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-caminos__title">Elige tu camino</h2>
+
+      <div class="fuly-semilla-caminos__grid">
+        <div class="fuly-semilla-camino-card">
+          <svg class="fuly-semilla-camino-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="fuly-tag-label">PERSONA</span>
+          <h3 class="fuly-semilla-camino-card__title">Soy una persona que quiere ayudar</h3>
+          <p class="fuly-semilla-camino-card__copy">Dona un tratamiento anual o mensual para un niño que lo necesita.</p>
+          <button type="button" class="fuly-semilla-btn fuly-semilla-btn--accent fuly-semilla-btn--sm" data-fuly-scroll-to-donate>
+            Quiero donar
+          </button>
+        </div>
+
+        <div class="fuly-semilla-camino-card">
+          <svg class="fuly-semilla-camino-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <path d="M9 22v-4h6v4"/>
+            <path d="M8 6h.01"/>
+            <path d="M16 6h.01"/>
+            <path d="M12 6h.01"/>
+            <path d="M12 10h.01"/>
+            <path d="M12 14h.01"/>
+            <path d="M16 10h.01"/>
+            <path d="M16 14h.01"/>
+            <path d="M8 10h.01"/>
+            <path d="M8 14h.01"/>
+          </svg>
+          <span class="fuly-tag-label">EMPRESA</span>
+          <h3 class="fuly-semilla-camino-card__title">Soy una empresa que quiere ayudar</h3>
+          <p class="fuly-semilla-camino-card__copy">Únete como aliado corporativo y lleva nutrición a más niños.</p>
+          <button type="button" class="fuly-semilla-btn fuly-semilla-btn--accent fuly-semilla-btn--sm" data-fuly-scroll-to-donate>
+            Quiero ser aliado
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 5. TABS DONACIÓN ────────────────────────────── {%- endcomment -%}
+  <section id="donate-tabs" class="fuly-semilla-section fuly-semilla-tabs">
+    <div class="fuly-semilla-tabs__inner">
+      <span class="fuly-tag-label">ELIGE CÓMO AYUDAR</span>
+
+      <div class="fuly-semilla-tabs__nav" role="tablist">
+        <button type="button"
+                class="fuly-semilla-tab-btn fuly-semilla-tab-btn--left fuly-semilla-tab-btn--active"
+                data-fuly-semilla-tab="once"
+                role="tab"
+                aria-selected="true">
+          UNA VEZ
+        </button>
+        <button type="button"
+                class="fuly-semilla-tab-btn fuly-semilla-tab-btn--right"
+                data-fuly-semilla-tab="monthly"
+                role="tab"
+                aria-selected="false">
+          MENSUAL
+        </button>
+      </div>
+
+      {%- comment -%} Panel: Una vez {%- endcomment -%}
+      <div class="fuly-semilla-tab-panel fuly-semilla-tab-panel--active"
+           data-fuly-semilla-panel="once"
+           role="tabpanel">
+        <div class="fuly-semilla-amount-row"
+             data-fuly-amount-selector="once"
+             data-fuly-amount-multiplier="60000">
+          <button type="button"
+                  class="fuly-semilla-amount-btn fuly-semilla-amount-btn--active"
+                  data-fuly-amount="1"
+                  data-fuly-amount-label="1 Niño">
+            1 Niño
+          </button>
+          <button type="button"
+                  class="fuly-semilla-amount-btn"
+                  data-fuly-amount="5"
+                  data-fuly-amount-label="5 Niños">
+            5 Niños
+          </button>
+          <button type="button"
+                  class="fuly-semilla-amount-btn"
+                  data-fuly-amount="10"
+                  data-fuly-amount-label="10 Niños">
+            10 Niños
+          </button>
+        </div>
+
+        <p class="fuly-semilla-price" data-fuly-price-display="once">$60.000 COP</p>
+        <p class="fuly-semilla-price-sub">Tratamiento anual completo</p>
+
+        <button type="button"
+                class="fuly-semilla-btn fuly-semilla-btn--whatsapp"
+                data-fuly-whatsapp-button="once"
+                data-fuly-whatsapp-type="Tratamiento anual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+          </svg>
+          <span data-fuly-whatsapp-label>Donar $60.000</span>
+        </button>
+      </div>
+
+      {%- comment -%} Panel: Mensual {%- endcomment -%}
+      <div class="fuly-semilla-tab-panel"
+           data-fuly-semilla-panel="monthly"
+           role="tabpanel"
+           hidden>
+        <div class="fuly-semilla-amount-row"
+             data-fuly-amount-selector="monthly">
+          <button type="button"
+                  class="fuly-semilla-amount-btn fuly-semilla-amount-btn--active"
+                  data-fuly-amount="5000"
+                  data-fuly-amount-label="$5.000 mensuales">
+            $5.000
+          </button>
+          <button type="button"
+                  class="fuly-semilla-amount-btn"
+                  data-fuly-amount="10000"
+                  data-fuly-amount-label="$10.000 mensuales">
+            $10.000
+          </button>
+          <button type="button"
+                  class="fuly-semilla-amount-btn"
+                  data-fuly-amount="20000"
+                  data-fuly-amount-label="$20.000 mensuales">
+            $20.000
+          </button>
+          <button type="button"
+                  class="fuly-semilla-amount-btn"
+                  data-fuly-amount="0"
+                  data-fuly-amount-label="Monto personalizado">
+            Otro monto
+          </button>
+        </div>
+
+        <p class="fuly-semilla-price-sub fuly-semilla-price-sub--monthly">Tu aporte mensual hace la diferencia</p>
+
+        <button type="button"
+                class="fuly-semilla-btn fuly-semilla-btn--whatsapp"
+                data-fuly-whatsapp-button="monthly"
+                data-fuly-whatsapp-type="Donación mensual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+          </svg>
+          <span>Donar mensualmente</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 6. CÓMO SE PREPARA ──────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-prep fuly-lab-grid-bg">
+    <div class="fuly-semilla-prep__inner">
+      <span class="fuly-tag-label">PREPARACIÓN</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-prep__title">
+        Así de fácil es preparar Fuly Give-Back
+      </h2>
+      <p class="fuly-semilla-prep__lead">
+        Es un alimento en polvo fácil de usar y listo para consumir. Puede ser agregado a cualquier comida y no varía el sabor de los alimentos.
+      </p>
+
+      <div class="fuly-semilla-prep__grid">
+        <div class="fuly-semilla-step-card">
+          <div class="fuly-semilla-step-card__circle">
+            <span>1</span>
+          </div>
+          <p class="fuly-semilla-step-card__text">
+            Vierte todo el contenido del sobre en cualquier alimento espeso (sopa, arroz, puré, papilla) listo para consumir y que no esté muy caliente.
+          </p>
+        </div>
+
+        <div class="fuly-semilla-step-card">
+          <div class="fuly-semilla-step-card__circle">
+            <span>2</span>
+          </div>
+          <p class="fuly-semilla-step-card__text">
+            Mezcla bien y consume en el menor tiempo posible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 7. DONACIÓN INTERACTIVA ─────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-interactive">
+    <div class="fuly-semilla-interactive__inner">
+      <h2 class="fuly-semilla-h2 fuly-semilla-interactive__title">
+        ¿Te gustaría donar a más niños?
+      </h2>
+      <p class="fuly-semilla-interactive__lead">
+        La cantidad de niños a los que deseas brindar apoyo con tu donación está en tus manos.
+      </p>
+
+      <div class="fuly-semilla-interactive__row"
+           data-fuly-amount-selector="interactive"
+           data-fuly-amount-multiplier="60000">
+        <button type="button"
+                class="fuly-semilla-circle-btn fuly-semilla-circle-btn--active"
+                data-fuly-amount="1"
+                data-fuly-amount-label="1 niño">
+          <span class="fuly-semilla-circle-btn__circle">
+            <span class="fuly-semilla-circle-btn__num">1</span>
+          </span>
+          <span class="fuly-semilla-circle-btn__label">NIÑO</span>
+        </button>
+
+        <button type="button"
+                class="fuly-semilla-circle-btn"
+                data-fuly-amount="5"
+                data-fuly-amount-label="5 niños">
+          <span class="fuly-semilla-circle-btn__circle">
+            <span class="fuly-semilla-circle-btn__num">5</span>
+          </span>
+          <span class="fuly-semilla-circle-btn__label">NIÑOS</span>
+        </button>
+
+        <button type="button"
+                class="fuly-semilla-circle-btn"
+                data-fuly-amount="10"
+                data-fuly-amount-label="10 niños">
+          <span class="fuly-semilla-circle-btn__circle">
+            <span class="fuly-semilla-circle-btn__num">10</span>
+          </span>
+          <span class="fuly-semilla-circle-btn__label">NIÑOS</span>
+        </button>
+      </div>
+
+      <p class="fuly-semilla-price fuly-semilla-price--lg" data-fuly-price-display="interactive">$60.000 COP</p>
+
+      <button type="button"
+              class="fuly-semilla-btn fuly-semilla-btn--whatsapp"
+              data-fuly-whatsapp-button="interactive"
+              data-fuly-whatsapp-type="Tratamiento anual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+        </svg>
+        <span>Donar ahora</span>
+      </button>
+    </div>
+  </section>
+
+  {%- comment -%} ── 8. FAQ ──────────────────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-faq">
+    <div class="fuly-semilla-faq__inner">
+      <div class="fuly-semilla-faq__head">
+        <span class="fuly-tag-label">FAQ</span>
+        <h2 class="fuly-semilla-h2 fuly-semilla-faq__title">Preguntas Frecuentes</h2>
+        <p class="fuly-semilla-faq__lead">Todo lo que debes saber sobre Fuly Give-Back</p>
+      </div>
+
+      <div class="fuly-semilla-faq__list">
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Fuly Give-Back es una fundación?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>No. Fuly Give-Back es una iniciativa privada de Fuly con la misión de llevar nutrientes a los niños que más lo necesitan.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Al comprar Fuly Give-Back recibo mi certificado de donación para descontar de impuestos?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>Sí. Al realizar tu donación recibirás un certificado que puedes usar para deducción de impuestos según la normativa vigente.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Cuánto vale el tratamiento de un niño por un año?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>El tratamiento nutricional anual tiene un costo de $60.000 COP por niño. Esto cubre los nutrientes esenciales durante 12 meses.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Los $60.000 para el tratamiento de un niño por un año incluye IVA?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>Sí, el valor de $60.000 COP incluye IVA.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿En qué se utilizan los dineros percibidos por la venta de Fuly Give-Back?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>El 100% de los fondos se destinan a la compra y distribución de sobres nutricionales Fuly Give-Back para niños en comunidades vulnerables a través de nuestras organizaciones aliadas.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Cómo puedo llevar Fuly Give-Back a una población vulnerable que conozco?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>Contáctanos a través de nuestro formulario o WhatsApp y cuéntanos sobre la comunidad. Evaluaremos la viabilidad y coordinaremos la entrega con nuestras fundaciones aliadas.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Tienen algún tipo de descuento por volumen?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>Sí, para donaciones de 10 o más tratamientos ofrecemos condiciones especiales. Contáctanos para más información.</p>
+          </div>
+        </details>
+
+        <details class="fuly-semilla-faq-item">
+          <summary class="fuly-semilla-faq-item__summary">
+            <span class="fuly-semilla-faq-item__q">¿Cómo puedo hacer para que mi empresa se vincule?</span>
+            <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="fuly-semilla-faq-item__a">
+            <p>Escríbenos a través de nuestro canal de contacto empresarial. Tenemos programas de alianza corporativa con beneficios para tu empresa y certificados de responsabilidad social.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 9. SOBRE FULY GIVE-BACK ─────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-sobre">
+    <div class="fuly-semilla-sobre__inner">
+      <span class="fuly-tag-label">SOBRE FULY GIVE-BACK</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-sobre__title">¿De quién es Fuly Give-Back?</h2>
+
+      <p class="fuly-semilla-sobre__lead">Fuly Give-Back, una plataforma creada por:</p>
+
+      <div class="fuly-semilla-sobre__brand">
+        <span>Fuly</span>
+      </div>
+
+      <p class="fuly-semilla-sobre__lead">A la que se han sumado:</p>
+
+      <div class="fuly-semilla-sobre__allies">
+        <div class="fuly-semilla-ally" title="Sembramos Futuro"><span>🌱</span></div>
+        <div class="fuly-semilla-ally" title="Conciencia"><span>💡</span></div>
+        <div class="fuly-semilla-ally" title="Casa Embera"><span>🏠</span></div>
+        <div class="fuly-semilla-ally" title="Aliado 4"><span>🤝</span></div>
+        <div class="fuly-semilla-ally" title="Aliado 5"><span>💚</span></div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── 10. CTA FINAL ───────────────────────────────── {%- endcomment -%}
+  <section class="fuly-semilla-section fuly-semilla-cta-final">
+    <div class="fuly-semilla-cta-final__inner">
+      <svg class="fuly-semilla-cta-final__sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+        <path d="M20 3v4"/>
+        <path d="M22 5h-4"/>
+        <path d="M4 17v2"/>
+        <path d="M5 18H3"/>
+      </svg>
+      <h2 class="fuly-semilla-cta-final__title">Cada niño merece buena nutrición</h2>
+      <p class="fuly-semilla-cta-final__copy">Únete a Fuly Give-Back y transforma vidas</p>
+
+      <button type="button"
+              class="fuly-semilla-btn fuly-semilla-btn--whatsapp"
+              data-fuly-whatsapp-button="cta-final"
+              data-fuly-whatsapp-type="Quiero unirme"
+              data-fuly-whatsapp-detail="Me gustaría saber cómo ayudar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+        </svg>
+        <span>UNIRME AHORA</span>
+      </button>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,138 @@
+{%- comment -%}
+  FULY Home — Benefits row (section 5). Yellow-tinted strip with tag-label pills.
+{%- endcomment -%}
+{%- liquid
+  assign default_benefits = 'FUENTE DE VITAMINAS Y MINERALES|FORMULADOS POR CIENTÍFICOS|SIN AZÚCAR ADICIONADA|SIN INGREDIENTES CONTROVERSIALES|LES ENCANTA EL SABOR'
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 51 }}px;
+    --r-tag-gap: {{ section.settings.tag_gap_mobile | default: 12 }}px;
+    --r-tag-font-size: {{ section.settings.tag_font_size_mobile | default: 13 }}px;
+    --r-bg: {{ section.settings.bg_color | default: '#FFFBEA' }};
+    --r-duration: {{ section.settings.scroll_speed | default: 30 }}s;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 51 }}px;
+      --r-tag-gap: {{ section.settings.tag_gap_tablet | default: 12 }}px;
+      --r-tag-font-size: {{ section.settings.tag_font_size_tablet | default: 13 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 51 }}px;
+      --r-tag-gap: {{ section.settings.tag_gap_desktop | default: 12 }}px;
+      --r-tag-font-size: {{ section.settings.tag_font_size_desktop | default: 13 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-benefits-section { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); background-color: var(--r-bg); }
+  #shopify-section-{{ section.id }} .fuly-benefits-section .fuly-tag-label { font-size: var(--r-tag-font-size); white-space: nowrap; }
+
+  /* #7 — Carrusel de beneficios que se mueve (marquee continuo) en todos los tamaños */
+  #shopify-section-{{ section.id }} .fuly-benefits-marquee { overflow: hidden; }
+  #shopify-section-{{ section.id }} .fuly-benefits-track {
+    display: flex;
+    width: max-content;
+    animation: fuly-benefits-scroll var(--r-duration) linear infinite;
+  }
+  #shopify-section-{{ section.id }} .fuly-benefits-track:hover { animation-play-state: paused; }
+  #shopify-section-{{ section.id }} .fuly-benefits-group {
+    display: flex;
+    gap: var(--r-tag-gap);
+    padding-right: var(--r-tag-gap);
+    flex-shrink: 0;
+  }
+  /* Variante estática (auto-scroll desactivado): scroll manual horizontal */
+  #shopify-section-{{ section.id }} .fuly-benefits-scroll-static {
+    display: flex;
+    gap: var(--r-tag-gap);
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0.4rem 0;
+  }
+  #shopify-section-{{ section.id }} .fuly-benefits-scroll-static::-webkit-scrollbar { display: none; }
+  @keyframes fuly-benefits-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .fuly-benefits-track { animation: none; }
+  }
+{%- endstyle -%}
+<section class="fuly-benefits-section">
+  <div class="fuly-container" style="padding:0 1.6rem;">
+    {%- if section.settings.auto_scroll -%}
+      <div class="fuly-benefits-marquee">
+        <div class="fuly-benefits-track">
+          <div class="fuly-benefits-group">
+            {%- if section.blocks.size > 0 -%}
+              {%- for block in section.blocks -%}<span class="fuly-tag-label" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>{%- endfor -%}
+            {%- else -%}
+              {%- assign benefits = default_benefits | split: '|' -%}
+              {%- for b in benefits -%}<span class="fuly-tag-label">{{ b }}</span>{%- endfor -%}
+            {%- endif -%}
+          </div>
+          <div class="fuly-benefits-group" aria-hidden="true">
+            {%- if section.blocks.size > 0 -%}
+              {%- for block in section.blocks -%}<span class="fuly-tag-label">{{ block.settings.label }}</span>{%- endfor -%}
+            {%- else -%}
+              {%- assign benefits = default_benefits | split: '|' -%}
+              {%- for b in benefits -%}<span class="fuly-tag-label">{{ b }}</span>{%- endfor -%}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="fuly-benefits-scroll-static">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}<span class="fuly-tag-label" {{ block.shopify_attributes }}>{{ block.settings.label }}</span>{%- endfor -%}
+        {%- else -%}
+          {%- assign benefits = default_benefits | split: '|' -%}
+          {%- for b in benefits -%}<span class="fuly-tag-label">{{ b }}</span>{%- endfor -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Benefits",
+  "settings": [
+    { "type": "header", "content": "Carrusel" },
+    { "type": "checkbox", "id": "auto_scroll", "label": "Mover automáticamente (carrusel)", "default": true },
+    { "type": "range", "id": "scroll_speed", "min": 10, "max": 60, "step": 1, "unit": "s", "label": "Velocidad (segundos por vuelta)", "default": 30 },
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Móvil", "default": 51 },
+    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Tablet", "default": 51 },
+    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Desktop", "default": 51 },
+    { "type": "header", "content": "Responsive — Espacio entre tags" },
+    { "type": "range", "id": "tag_gap_mobile", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Móvil", "default": 12 },
+    { "type": "range", "id": "tag_gap_tablet", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Tablet", "default": 12 },
+    { "type": "range", "id": "tag_gap_desktop", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Desktop", "default": 12 },
+    { "type": "header", "content": "Responsive — Tamaño de fuente del tag" },
+    { "type": "range", "id": "tag_font_size_mobile", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Móvil", "default": 13 },
+    { "type": "range", "id": "tag_font_size_tablet", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Tablet", "default": 13 },
+    { "type": "range", "id": "tag_font_size_desktop", "min": 8, "max": 24, "step": 1, "unit": "px", "label": "Desktop", "default": 13 },
+    { "type": "header", "content": "Color" },
+    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFBEA" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "FUENTE DE VITAMINAS Y MINERALES"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Benefits"
+    }
+  ]
+}
+{% endschema %}

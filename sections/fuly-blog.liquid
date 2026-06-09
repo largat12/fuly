@@ -1,0 +1,270 @@
+{%- comment -%}
+  FULY Blog — pixel port replicando fuly-tienda structure
+  Dinámico: lista artículos de blog con filtros por tags y sort.
+{%- endcomment -%}
+
+{%- liquid
+  assign current_tag = request.params.tag | default: ''
+  assign sort_value = request.params.sort_by | default: 'manual'
+  if sort_value == blank
+    assign sort_value = 'manual'
+  endif
+-%}
+
+<section class="fuly-blog-section fuly-lab-grid-bg">
+  <div class="fuly-blog-container">
+    <header class="fuly-blog-header">
+      <span class="fuly-tag-label">{{ section.settings.eyebrow | default: 'BLOG' }}</span>
+      <h1 class="fuly-blog-title">{{ section.settings.title | default: 'Blog Fuly' }}</h1>
+      <p class="fuly-blog-subtitle">{{ section.settings.subtitle | default: 'Artículos, tips y novedades sobre nutrición y bienestar' }}</p>
+    </header>
+
+    <div class="fuly-collection-toolbar">
+      <nav class="fuly-collection-filters" aria-label="Filtrar por etiqueta">
+        <a
+          href="{{ blog.url }}"
+          class="fuly-collection-chip{% if current_tag == '' %} fuly-collection-chip--active{% endif %}"
+        >{{ section.settings.filter_all_label }}</a>
+        {%- for tag in blog.all_tags -%}
+          {%- unless tag == 'Promoción' or tag == 'Destacado' -%}
+            <a
+              href="{{ blog.url }}?tag={{ tag | url_encode }}"
+              class="fuly-collection-chip{% if tag == current_tag %} fuly-collection-chip--active{% endif %}"
+            >{{ tag }}</a>
+          {%- endunless -%}
+        {%- endfor -%}
+      </nav>
+
+      <form method="get" class="fuly-collection-sort">
+        <label class="fuly-collection-sr-only" for="fuly-blog-sort">{{ section.settings.sort_label }}</label>
+        <select id="fuly-blog-sort" name="sort_by" onchange="this.form.submit()">
+          <option value="manual"{% if sort_value == 'manual' %} selected{% endif %}>{{ section.settings.sort_label }}</option>
+          <option value="newest"{% if sort_value == 'newest' %} selected{% endif %}>Más reciente</option>
+          <option value="oldest"{% if sort_value == 'oldest' %} selected{% endif %}>Más antiguo</option>
+          <option value="title-asc"{% if sort_value == 'title-asc' %} selected{% endif %}>Título A-Z</option>
+        </select>
+      </form>
+    </div>
+
+    {%- liquid
+      assign articles_filtered = blog.articles
+      if current_tag != ''
+        assign articles_filtered = blog.articles | where: 'tags', current_tag
+      endif
+      if sort_value == 'newest'
+        assign articles_filtered = articles_filtered | sort: 'published_at' | reverse
+      elsif sort_value == 'oldest'
+        assign articles_filtered = articles_filtered | sort: 'published_at'
+      elsif sort_value == 'title-asc'
+        assign articles_filtered = articles_filtered | sort: 'title'
+      endif
+    -%}
+
+    {%- if articles_filtered.size > 0 -%}
+      <div class="fuly-blog-grid">
+        {%- for article in articles_filtered -%}
+          {%- render 'fuly-blog-card',
+            article: article,
+            btn_label: section.settings.btn_label,
+            excerpt_words: section.settings.excerpt_words
+          -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="fuly-blog-empty">{{ section.settings.empty_message }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .fuly-blog-section {
+    padding: 4.8rem 1.6rem;
+    /* Fondo de cuadrícula (igual que tienda/búsqueda); se conserva la clase fuly-lab-grid-bg */
+    background-color: #FFFFFF;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  @media (min-width: 768px) {
+    .fuly-blog-section {
+      padding: 8rem 1.6rem;
+    }
+  }
+
+  .fuly-blog-container {
+    max-width: 76.8rem;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .fuly-blog-header {
+    text-align: center;
+    margin-bottom: 4.8rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-blog-header {
+      margin-bottom: 6.4rem;
+    }
+  }
+
+  .fuly-blog-title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    color: hsl(var(--cartoon-black));
+    font-size: clamp(3.6rem, 5vw, 5.6rem);
+    margin: 1.2rem 0 0;
+    line-height: 1.1;
+  }
+
+  .fuly-blog-subtitle {
+    font-family: Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+  }
+
+  .fuly-blog-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 640px) {
+    .fuly-blog-toolbar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.6rem;
+    }
+  }
+
+  .fuly-blog-filters {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  .fuly-blog-chip {
+    padding: 0.8rem 1.6rem;
+    border-radius: 9999px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .fuly-blog-chip:hover {
+    background: #f5f5f5;
+  }
+  .fuly-blog-chip--active {
+    background: hsl(var(--primary, 354 100% 45%));
+    color: white;
+    border-color: hsl(var(--primary, 354 100% 45%));
+  }
+
+  .fuly-blog-sort {
+    min-width: 200px;
+  }
+  .fuly-blog-sort select {
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    width: 100%;
+    background: white;
+    cursor: pointer;
+  }
+
+  .fuly-blog-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .fuly-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  @media (min-width: 1024px) {
+    .fuly-blog-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+  }
+
+  .fuly-blog-empty {
+    text-align: center;
+    padding: 3.2rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.6rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fuly Blog",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "BLOG"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Blog Fuly"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Artículos, tips y novedades sobre nutrición y bienestar"
+    },
+    {
+      "type": "text",
+      "id": "filter_all_label",
+      "label": "Label para 'Ver todos'",
+      "default": "Todos"
+    },
+    {
+      "type": "text",
+      "id": "sort_label",
+      "label": "Label del dropdown de ordenamiento",
+      "default": "Ordenar por"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Label del botón de lectura",
+      "default": "Leer artículo"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Mensaje cuando no hay artículos",
+      "default": "No hay artículos en esta categoría."
+    },
+    {
+      "type": "number",
+      "id": "excerpt_words",
+      "label": "Palabras del resumen",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "fuly_blog": {
+      "type": "fuly-blog",
+      "settings": {}
+    }
+  },
+  "order": ["fuly_blog"]
+}

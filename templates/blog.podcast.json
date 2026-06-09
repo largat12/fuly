@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "fuly_blog": {
+      "type": "fuly-blog",
+      "settings": {
+        "eyebrow": "PODCAST",
+        "title": "Podcast",
+        "subtitle": "Conversaciones sobre nutrición, crianza y desarrollo infantil.",
+        "empty_message": "Pronto publicaremos episodios. ¡Vuelve pronto!"
+      }
+    }
+  },
+  "order": ["fuly_blog"]
+}

@@ -1,0 +1,99 @@
+{%- comment -%}
+  FULY Home — Marquee (section 4). Pure CSS animation, duplicated track for seamless loop.
+{%- endcomment -%}
+{%- liquid
+  assign default_items = '+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB'
+  assign items_string = section.settings.items | default: default_items
+  assign items = items_string | split: '|'
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-font-size: {{ section.settings.font_size_mobile | default: 18 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 16 }}px;
+    --r-item-gap: {{ section.settings.item_gap_mobile | default: 24 }}px;
+    --r-duration: {{ section.settings.duration_mobile | default: 10 }}s;
+    --r-bg: {{ section.settings.bg_color | default: '#1A1A1A' }};
+    --r-text: {{ section.settings.text_color | default: '#FFFFFF' }};
+    --r-star: {{ section.settings.star_color | default: '#FFE135' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-font-size: {{ section.settings.font_size_tablet | default: 18 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 16 }}px;
+      --r-item-gap: {{ section.settings.item_gap_tablet | default: 24 }}px;
+      --r-duration: {{ section.settings.duration_tablet | default: 10 }}s;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-font-size: {{ section.settings.font_size_desktop | default: 18 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 16 }}px;
+      --r-item-gap: {{ section.settings.item_gap_desktop | default: 24 }}px;
+      --r-duration: {{ section.settings.duration_desktop | default: 10 }}s;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-marquee-section { background-color: var(--r-bg); padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-marquee-track { font-size: var(--r-font-size); color: var(--r-text); animation-duration: var(--r-duration); }
+  #shopify-section-{{ section.id }} .fuly-marquee-item { gap: var(--r-item-gap); }
+  #shopify-section-{{ section.id }} .fuly-marquee-item .fuly-star { color: var(--r-star); }
+{%- endstyle -%}
+<section class="fuly-marquee-section">
+  <div class="fuly-marquee-track">
+    <div class="fuly-marquee-group">
+      {%- for item in items -%}
+        <span class="fuly-marquee-item">
+          <span>{{ item | strip }}</span>
+          <span class="fuly-star" aria-hidden="true">★</span>
+        </span>
+      {%- endfor -%}
+    </div>
+    <div class="fuly-marquee-group" aria-hidden="true">
+      {%- for item in items -%}
+        <span class="fuly-marquee-item">
+          <span>{{ item | strip }}</span>
+          <span class="fuly-star">★</span>
+        </span>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Marquee",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "Items (pipe `|` separated)",
+      "default": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB"
+    },
+    { "type": "header", "content": "Animación" },
+    { "type": "header", "content": "Velocidad (menos segundos = más rápido)" },
+    { "type": "range", "id": "duration_mobile", "min": 5, "max": 60, "step": 1, "unit": "s", "label": "Móvil", "default": 10 },
+    { "type": "range", "id": "duration_tablet", "min": 5, "max": 60, "step": 1, "unit": "s", "label": "Tablet", "default": 10 },
+    { "type": "range", "id": "duration_desktop", "min": 5, "max": 60, "step": 1, "unit": "s", "label": "Desktop", "default": 10 },
+    { "type": "header", "content": "Responsive — Tamaño de fuente" },
+    { "type": "range", "id": "font_size_mobile", "min": 10, "max": 48, "step": 1, "unit": "px", "label": "Móvil", "default": 18 },
+    { "type": "range", "id": "font_size_tablet", "min": 10, "max": 48, "step": 1, "unit": "px", "label": "Tablet", "default": 18 },
+    { "type": "range", "id": "font_size_desktop", "min": 10, "max": 48, "step": 1, "unit": "px", "label": "Desktop", "default": 18 },
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Móvil", "default": 16 },
+    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Tablet", "default": 16 },
+    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Desktop", "default": 16 },
+    { "type": "header", "content": "Responsive — Espacio entre items" },
+    { "type": "range", "id": "item_gap_mobile", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Móvil", "default": 24 },
+    { "type": "range", "id": "item_gap_tablet", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Tablet", "default": 24 },
+    { "type": "range", "id": "item_gap_desktop", "min": 0, "max": 80, "step": 1, "unit": "px", "label": "Desktop", "default": 24 },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#1A1A1A" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#FFFFFF" },
+    { "type": "color", "id": "star_color", "label": "Estrella", "default": "#FFE135" }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Marquee"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,154 @@
+{%- comment -%}
+  Product Details Accordion - Información detallada del producto
+  Muestra: Ingredientes, Tabla Nutricional, Cómo Preparar, Beneficios
+  Usa el mismo diseño que FAQ
+{%- endcomment -%}
+
+{%- if product -%}
+  <section class="fuly-product-details-section">
+    <div class="fuly-container-tight">
+      <div class="fuly-section-head">
+        <h2>Detalles del Producto</h2>
+      </div>
+
+      <div class="fuly-faq-list">
+        {%- comment -%}
+          Tabla Nutricional
+        {%- endcomment -%}
+        {%- assign nutrition_info = product.metafields.custom.informacion_nutricional -%}
+        {%- if nutrition_info != blank -%}
+          <details class="fuly-faq-item">
+            <summary>Tabla Nutricional</summary>
+            <div class="fuly-faq-answer">
+              {{ nutrition_info }}
+            </div>
+          </details>
+        {%- endif -%}
+
+        {%- comment -%}
+          Ingredientes
+        {%- endcomment -%}
+        {%- assign ingredients = product.metafields.custom.ingredientes -%}
+        {%- if ingredients != blank -%}
+          <details class="fuly-faq-item">
+            <summary>Ingredientes</summary>
+            <div class="fuly-faq-answer">
+              {{ ingredients }}
+            </div>
+          </details>
+        {%- endif -%}
+
+        {%- comment -%}
+          Cómo Preparar
+        {%- endcomment -%}
+        {%- assign how_to_prepare = product.metafields.custom.modo_preparacion -%}
+        {%- if how_to_prepare != blank -%}
+          <details class="fuly-faq-item">
+            <summary>Cómo Preparar</summary>
+            <div class="fuly-faq-answer">
+              {{ how_to_prepare }}
+            </div>
+          </details>
+        {%- endif -%}
+
+        {%- comment -%}
+          Beneficios
+        {%- endcomment -%}
+        {%- assign benefits_raw = product.metafields.custom.beneficios -%}
+        {%- if benefits_raw != blank -%}
+          <details class="fuly-faq-item">
+            <summary>Beneficios</summary>
+            <div class="fuly-faq-answer">
+              {%- assign benefits = benefits_raw | parse_json -%}
+              {%- if benefits -%}
+                <ul class="fuly-benefits-list-product">
+                  {%- for benefit in benefits -%}
+                    <li>{{ benefit }}</li>
+                  {%- endfor -%}
+                </ul>
+              {%- else -%}
+                {{ benefits_raw }}
+              {%- endif -%}
+            </div>
+          </details>
+        {%- endif -%}
+
+        {%- comment -%}
+          Beneficio Funcional
+        {%- endcomment -%}
+        {%- assign functional_benefit = product.metafields.custom.beneficio_funcional -%}
+        {%- if functional_benefit != blank -%}
+          <details class="fuly-faq-item">
+            <summary>Beneficio Funcional</summary>
+            <div class="fuly-faq-answer">
+              <strong>{{ functional_benefit }}</strong>
+            </div>
+          </details>
+        {%- endif -%}
+
+        {%- comment -%}
+          Alergenos
+        {%- endcomment -%}
+        {%- assign allergens = product.metafields.custom.alergenos -%}
+        {%- if allergens != blank -%}
+          <details class="fuly-faq-item">
+            <summary>Alergenos</summary>
+            <div class="fuly-faq-answer">
+              {{ allergens }}
+            </div>
+          </details>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .fuly-product-details-section {
+      padding: 4.8rem 2rem;
+    }
+
+    .fuly-product-details-section .fuly-section-head {
+      margin-bottom: 2.4rem;
+    }
+
+    .fuly-product-details-section .fuly-section-head h2 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--fuly-cartoon-black, #212121);
+    }
+
+    .fuly-benefits-list-product {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .fuly-benefits-list-product li {
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .fuly-benefits-list-product li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: #4CAF50;
+    }
+
+    @media (max-width: 749px) {
+      .fuly-product-details-section {
+        padding: 3rem 1.5rem;
+      }
+
+      .fuly-product-details-section .fuly-section-head h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+{%- endif -%}

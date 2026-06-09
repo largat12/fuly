@@ -1,0 +1,65 @@
+{%- comment -%}
+  FULY · Card de artículo de blog (reutilizable).
+  Estilo cartoon coherente con el PDP. Estilos en assets/fuly-blog-card.css.
+
+  Parámetros:
+    - article       (objeto article, requerido)
+    - btn_label     (string, opcional · default 'Leer artículo')
+    - excerpt_words (number, opcional · default 20)
+{%- endcomment -%}
+{%- liquid
+  assign card_btn_label = btn_label | default: 'Leer artículo'
+  assign card_excerpt_words = excerpt_words | default: 20
+  assign a_image_url = ''
+  if article.image
+    assign a_image_url = article.image | image_url: width: 600
+  endif
+  assign a_excerpt = article.excerpt | strip_html | truncatewords: card_excerpt_words
+  assign a_date = article.published_at | date: '%d de %B de %Y'
+  assign a_color = article.metafields.fuly.color | default: '#6B3FA0'
+-%}
+<article class="fuly-blog-card">
+  <a
+    href="{{ article.url }}"
+    class="fuly-blog-card__image-wrap"
+    style="background: linear-gradient(135deg, {{ a_color }}22, {{ a_color }}44);"
+  >
+    <span class="fuly-blog-card__grid-overlay" aria-hidden="true"></span>
+    {%- if a_image_url != blank -%}
+      <img
+        src="{{ a_image_url }}"
+        alt="{{ article.title | escape }}"
+        class="fuly-blog-card__image fuly-animate-float"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    {%- else -%}
+      <span
+        class="fuly-animate-float"
+        style="display:inline-block;width:80px;height:80px;border-radius:9999px;background-color:{{ a_color }}33;border:3px solid {{ a_color }};"
+        aria-hidden="true"
+      ></span>
+    {%- endif -%}
+    <span class="fuly-blog-card__tag">
+      <span class="fuly-tag-label">{{ article.tags.first | default: 'Blog' }}</span>
+    </span>
+  </a>
+  <div class="fuly-blog-card__body">
+    <time class="fuly-blog-card__date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ a_date }}</time>
+    <a href="{{ article.url }}" style="text-decoration:none;color:inherit;">
+      <h3 class="fuly-blog-card__title">{{ article.title }}</h3>
+    </a>
+    {%- if a_excerpt != blank -%}
+      <p class="fuly-blog-card__excerpt">{{ a_excerpt }}</p>
+    {%- endif -%}
+    <div class="fuly-blog-card__footer">
+      <a href="{{ article.url }}" class="fuly-blog-card__btn" aria-label="Leer {{ article.title | escape }}">
+        <span class="fuly-blog-card__btn-text">{{ card_btn_label }}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,254 @@
+{%- comment -%}
+  FULY FAQ Page Section — Fully editable FAQ with categories and items
+  Uses flat blocks structure (Shopify doesn't support nested blocks)
+{%- endcomment -%}
+
+<section class="fuly-faq-page fuly-section-padding fuly-lab-grid-bg">
+  <div class="fuly-faq-page__container">
+    <header class="fuly-faq-page__header">
+      <span class="fuly-tag-label">{{ section.settings.eyebrow }}</span>
+      <h1 class="fuly-faq-page__title">{{ section.settings.title }}</h1>
+      <p class="fuly-faq-page__subtitle">{{ section.settings.subtitle }}</p>
+    </header>
+
+    <div class="fuly-faq-page__categories">
+      {%- assign current_category = '' -%}
+      {%- assign categories = '' -%}
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+          {%- unless categories contains block.settings.category -%}
+            {%- assign categories = categories | append: block.settings.category | append: '|' -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- assign category_list = categories | split: '|' -%}
+      {%- for category in category_list -%}
+        {%- if category != '' -%}
+          <div class="fuly-faq-page__category">
+            <h2 class="fuly-faq-page__category-title">{{ category }}</h2>
+            <div class="fuly-faq-list">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'faq_item' and block.settings.category == category -%}
+                  <details class="fuly-faq-item">
+                    <summary>{{ block.settings.question }}</summary>
+                    <div class="fuly-faq-answer">
+                      {{ block.settings.answer }}
+                    </div>
+                  </details>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fuly-faq-page__container {
+    max-width: 76.8rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+  .fuly-faq-page__header {
+    text-align: center;
+    margin-bottom: 4.8rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-faq-page__header {
+      margin-bottom: 6.4rem;
+    }
+  }
+  .fuly-faq-page__title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    color: hsl(var(--cartoon-black));
+    font-size: clamp(3.6rem, 5vw, 5.6rem);
+    margin: 1.2rem 0 0;
+    line-height: 1.1;
+  }
+  .fuly-faq-page__subtitle {
+    font-family: Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+  }
+  .fuly-faq-page__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-faq-page__categories {
+      gap: 4rem;
+    }
+  }
+  .fuly-faq-page__category-title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: hsl(var(--cartoon-black));
+    font-size: 2rem;
+    margin: 0 0 1.6rem;
+  }
+  .fuly-faq-page__link {
+    color: hsl(var(--primary, 354 100% 45%));
+    text-decoration: underline;
+    font-weight: 700;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fuly FAQ Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Preguntas frecuentes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Todo lo que necesitas saber sobre Fuly."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Pregunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Categoría",
+          "default": "General"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "¿Cuál es tu pregunta?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "<p>Tu respuesta aquí.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly FAQ Page",
+      "settings": {
+        "eyebrow": "FAQ",
+        "title": "Preguntas frecuentes",
+        "subtitle": "Todo lo que necesitas saber sobre Fuly."
+      },
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Producto",
+            "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
+            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Producto",
+            "question": "¿Adicionan azúcar a sus productos?",
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. En algunos Fuly vas a ver azúcares añadidos en la etiqueta. Esto se debe a que son alimentos procesados. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Producto",
+            "question": "¿Son seguros los ingredientes?",
+            "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Producto",
+            "question": "¿Qué son los betaglucanos?",
+            "answer": "<p>Los betaglucanos son fibras naturales que estimulan el sistema inmunológico. Los obtenemos de fuentes como la levadura y la avena.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Envíos",
+            "question": "¿Cómo funciona el envío?",
+            "answer": "<p>Realizamos envíos a todo Colombia. Si compras antes de las 3 p.m., tu pedido sale el mismo día. El tiempo de entrega varía entre 1-3 días hábiles.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Envíos",
+            "question": "¿Cuánto cuesta el envío?",
+            "answer": "<p>El envío es gratis en pedidos superiores a $100.000 COP. Para pedidos menores, el costo varía según la ciudad.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Envíos",
+            "question": "¿Hacen envíos internacionales?",
+            "answer": "<p>Por ahora solo realizamos envíos dentro de Colombia. Estamos trabajando para expandirnos pronto.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Suscripción",
+            "question": "¿Qué beneficios tiene la suscripción?",
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas. Puedes modificar o pausar la suscripción en cualquier momento.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Suscripción",
+            "question": "¿Puedo cancelar mi suscripción?",
+            "answer": "<p>Sí, puedes cancelar tu suscripción en cualquier momento sin penalidad.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Devoluciones",
+            "question": "¿Tienen garantía de satisfacción?",
+            "answer": "<p>Si nunca has probado nuestros productos y temes que no sea una buena experiencia, para compras menores a $200.000 realizadas directamente en nuestra página web, te devolvemos tu dinero si no estás satisfecho. Esta garantía no aplica para productos comprados en otros aliados comerciales. <a href=\"/pages/garantia\">Revisa las condiciones y requisitos aquí</a>.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Devoluciones",
+            "question": "¿Cómo solicito una devolución?",
+            "answer": "<p>Escríbenos a nuestro WhatsApp o correo electrónico con tu número de pedido y te guiamos en el proceso.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,238 @@
+/* =========================================================
+   FULY KIDS · DESIGN TOKENS
+   Variables CSS para el rediseño cartoon del tema Taste.
+   Se carga después de base.css para sobrescribir tokens Dawn.
+   ========================================================= */
+
+:root {
+  /* -------- PALETA FULY -------- */
+  --fuly-cartoon-black: #1A1A1A;
+  --fuly-white-lab: #FFFFFF;
+  --fuly-yellow-spark: #FFE135;
+  --fuly-amarillo-fruta: #FFDD00;
+  --fuly-cereza: #E5006A;
+  --fuly-rosa-fresa: #FF8CB0;
+  --fuly-cyan-menta: #00E5CC;
+  --fuly-violeta: #6B3FA0;
+  --fuly-violeta-claro: #C4A7DE;
+  --fuly-naranja: #FF7A00;
+  --fuly-caramelo: #D4A056;
+  --fuly-chocolate: #8B5E3C;
+  --fuly-vainilla: #F4D7A1;
+  --fuly-muted: #F5F5F5;
+  --fuly-muted-text: #666666;
+  --fuly-muted-text-light: #555555;
+
+  /* -------- WHATSAPP & SOCIAL -------- */
+  --fuly-whatsapp: #25D366;
+  --fuly-whatsapp-dark: #128C7E;
+
+  /* -------- TIPOGRAFÍA (brandbook) --------
+     Fuentes de marca: PP Pangram Sans Rounded (display/títulos, Extrabold+Bold),
+     Arial (cuerpo/UI), Georgia (serif editorial). PP Pangram se carga vía
+     @font-face local (snippet fuly-fonts), con Martian Mono / fallbacks Google
+     mientras carga; Arial y Georgia son del sistema.
+  */
+  --fuly-font-display: "PP Pangram Sans Rounded Compressed", "Martian Mono", Arial, sans-serif;
+  --fuly-font-heading: "PP Pangram Sans Rounded Compressed", "Martian Mono", Arial, "Helvetica Neue", sans-serif;
+  --fuly-font-body: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --fuly-font-serif: Georgia, "Times New Roman", serif;
+  --fuly-font-label: "Martian Mono", "JetBrains Mono", "Courier New", monospace;
+
+  /* -------- TIPOGRAFÍA ESCALAS -------- */
+  --fuly-font-size-h1-hero: clamp(40px, 7vw, 80px);
+  --fuly-font-size-h1: clamp(36px, 5vw, 64px);
+  --fuly-font-size-h2-xl: clamp(32px, 5vw, 40px);
+  --fuly-font-size-h2: clamp(28px, 4vw, 44px);
+  --fuly-font-size-h2-sm: clamp(24px, 4vw, 28px);
+  --fuly-font-size-h3: clamp(16px, 2vw, 22px);
+  --fuly-font-size-h4: clamp(14px, 1.5vw, 18px);
+  --fuly-font-size-body: 16px;
+  --fuly-font-size-body-lg: 18px;
+  --fuly-font-size-label: clamp(10px, 1vw, 13px);
+  --fuly-font-size-label-sm: 10px;
+
+  --fuly-line-height-heading-tight: 0.95;
+  --fuly-line-height-heading: 1.1;
+  --fuly-line-height-body: 1.6;
+  --fuly-letter-spacing-label: 0.05em;
+  --fuly-letter-spacing-marquee: 0.02em;
+  --fuly-letter-spacing-heading: -0.01em;
+
+  /* -------- CARTOON BORDERS + SHADOWS -------- */
+  --fuly-border-width: 3px;
+  --fuly-border-width-mobile: 2px;
+  --fuly-border-width-sm: 2px;
+  --fuly-border: var(--fuly-border-width) solid var(--fuly-cartoon-black);
+  --fuly-border-sm: var(--fuly-border-width-sm) solid var(--fuly-cartoon-black);
+
+  --fuly-shadow: 4px 4px 0 var(--fuly-cartoon-black);
+  --fuly-shadow-mobile: 3px 3px 0 var(--fuly-cartoon-black);
+  --fuly-shadow-hover: 2px 2px 0 var(--fuly-cartoon-black);
+  --fuly-shadow-lg: 6px 6px 0 var(--fuly-cartoon-black);
+  --fuly-shadow-sm: 2px 2px 0 var(--fuly-cartoon-black);
+  --fuly-shadow-whatsapp: 2px 4px 12px rgba(0, 0, 0, 0.25);
+  --fuly-shadow-whatsapp-peak: 2px 4px 20px rgba(37, 211, 102, 0.4);
+
+  /* -------- RADIOS -------- */
+  --fuly-radius-sm: 8px;
+  --fuly-radius: 16px;
+  --fuly-radius-lg: 24px;
+  --fuly-radius-pill: 25px;
+  --fuly-radius-full: 9999px;
+
+  /* -------- ESPACIADO -------- */
+  --fuly-space-1: 4px;
+  --fuly-space-2: 8px;
+  --fuly-space-3: 12px;
+  --fuly-space-4: 16px;
+  --fuly-space-5: 20px;
+  --fuly-space-6: 24px;
+  --fuly-space-8: 32px;
+  --fuly-space-10: 40px;
+  --fuly-space-12: 48px;
+  --fuly-space-16: 64px;
+  --fuly-space-20: 80px;
+  --fuly-space-24: 96px;
+
+  --fuly-section-padding-inline-mobile: 16px;
+  --fuly-section-padding-inline-tablet: 32px;
+  --fuly-section-padding-inline-desktop: 64px;
+
+  --fuly-section-padding-block-mobile: 48px;
+  --fuly-section-padding-block-desktop: 96px;
+
+  /* -------- Z-INDEX SCALE -------- */
+  --fuly-z-announcement: 40;
+  --fuly-z-header: 50;
+  --fuly-z-mobile-menu: 60;
+  --fuly-z-drawer-overlay: 70;
+  --fuly-z-drawer-panel: 71;
+  --fuly-z-popup-overlay: 100;
+  --fuly-z-popup-panel: 101;
+  --fuly-z-whatsapp-fab: 9999;
+  --fuly-z-toast: 10000;
+
+  /* -------- GRID PATTERN -------- */
+  --fuly-grid-pattern-size: 24px;
+  --fuly-grid-pattern-size-sm: 20px;
+  --fuly-grid-pattern-opacity-light: 0.06;
+  --fuly-grid-pattern-opacity-lighter: 0.03;
+  --fuly-grid-pattern-opacity-dark: 0.04;
+  --fuly-grid-pattern-light:
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  --fuly-grid-pattern-dark:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+
+  /* -------- TRANSICIONES -------- */
+  --fuly-transition-fast: all 0.15s ease;
+  --fuly-transition: all 0.2s ease;
+  --fuly-transition-slow: all 0.3s ease-out;
+  --fuly-transition-color: color 0.2s ease, background-color 0.2s ease;
+
+  /* -------- FOCUS -------- */
+  --fuly-focus-ring: 3px solid var(--fuly-cereza);
+  --fuly-focus-offset: 4px;
+
+  /* -------- LAYOUT -------- */
+  --fuly-max-content: 1280px;
+  --fuly-max-narrow: 1024px;
+  --fuly-max-prose: 768px;
+
+  /* -------- PRODUCTO (IMÁGENES) -------- */
+  --fuly-image-blend: multiply;
+  --fuly-image-scale-default: 1;
+  --fuly-image-scale-boosters: 0.85;
+  --fuly-image-scale-drinks-tarro: 1.1;
+  --fuly-image-scale-drinks-plegadiza: 0.95;
+  --fuly-image-scale-malteadas: 1;
+  --fuly-image-scale-esparcibles: 1.05;
+
+  /* -------- SOBRESCRITURAS DE DAWN / TASTE --------
+     Estas variables las expone theme.liquid y controlan botones,
+     media, cards, etc. de todo el tema. Al sobrescribirlas aquí
+     el estilo cartoon se propaga automáticamente a componentes
+     nativos sin tocar ningún .liquid.
+  */
+
+  /* Botones */
+  --buttons-radius: var(--fuly-radius-pill) !important;
+  --buttons-radius-outset: calc(var(--fuly-radius-pill) + 3px) !important;
+  --buttons-border-width: var(--fuly-border-width) !important;
+  --buttons-border-opacity: 1 !important;
+  --buttons-shadow-opacity: 0 !important;
+  --buttons-border-offset: 0 !important;
+
+  /* Variant pills */
+  --variant-pills-radius: var(--fuly-radius) !important;
+  --variant-pills-border-width: var(--fuly-border-width) !important;
+  --variant-pills-border-opacity: 1 !important;
+  --variant-pills-shadow-opacity: 0 !important;
+
+  /* Inputs */
+  --inputs-radius: var(--fuly-radius) !important;
+  --inputs-radius-outset: calc(var(--fuly-radius) + 3px) !important;
+  --inputs-border-width: var(--fuly-border-width) !important;
+  --inputs-border-opacity: 1 !important;
+
+  /* Media */
+  --media-radius: var(--fuly-radius) !important;
+  --media-border-width: var(--fuly-border-width) !important;
+  --media-border-opacity: 1 !important;
+
+  /* Cards */
+  --product-card-corner-radius: var(--fuly-radius) !important;
+  --product-card-border-width: var(--fuly-border-width) !important;
+  --product-card-border-opacity: 1 !important;
+  --collection-card-corner-radius: var(--fuly-radius) !important;
+  --collection-card-border-width: var(--fuly-border-width) !important;
+  --collection-card-border-opacity: 1 !important;
+  --blog-card-corner-radius: var(--fuly-radius) !important;
+  --blog-card-border-width: var(--fuly-border-width) !important;
+  --blog-card-border-opacity: 1 !important;
+
+  /* Badges */
+  --badge-corner-radius: var(--fuly-radius-sm) !important;
+
+  /* Popups & drawers */
+  --popup-border-width: var(--fuly-border-width) !important;
+  --popup-corner-radius: var(--fuly-radius) !important;
+  --drawer-border-width: var(--fuly-border-width) !important;
+
+  /* Text boxes */
+  --text-boxes-radius: var(--fuly-radius) !important;
+  --text-boxes-border-width: var(--fuly-border-width) !important;
+  --text-boxes-border-opacity: 1 !important;
+}
+
+/* =========================================================
+   @FONT-FACE · Fuentes Google (free tier) como fallback
+   hasta que se carguen las woff2 comerciales (PP Pangram
+   Sans Rounded + Polymath Text).
+   Comentado: preload y preconnect viven en theme.liquid.
+   ========================================================= */
+
+/* Anti-aliasing global para renderizar las fuentes gruesas
+   de manera consistente cross-OS. */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   prefers-reduced-motion · desactivar todas las animaciones
+   para usuarios que lo piden desde el sistema.
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

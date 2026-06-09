@@ -1,0 +1,19 @@
+<section style="background: #fff3cd; padding: 20px; margin: 20px 0; border: 2px solid red;">
+  <h2 style="color: red;">🔴 TEST: La sección se está renderizando</h2>
+
+  <div style="background: white; padding: 15px;">
+    <p><strong>Product disponible:</strong> {{ page.product.title }}</p>
+    <p><strong>Product ID:</strong> {{ page.product.id }}</p>
+
+    <h3>Intentando acceder a metafields:</h3>
+    <p>custom.ingredientes = {{ page.product.metafields.custom.ingredientes }}</p>
+    <p>custom.informacion_nutricional = {{ page.product.metafields.custom.informacion_nutricional }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Test Product Section",
+  "settings": []
+}
+{% endschema %}

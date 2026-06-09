@@ -1,0 +1,201 @@
+{%- comment -%}
+  FULY — Landing "MÁS NIÑOS": agrupa los blogs (newsletter, podcast, recetas).
+  Cada bloque enlaza a un blog. Estética cartoon coherente con el home.
+{%- endcomment -%}
+{%- liquid
+  assign tag_label = section.settings.tag_label
+  assign heading = section.settings.heading | default: 'MÁS NIÑOS'
+  assign subheading = section.settings.subheading
+-%}
+{{ 'fuly-home.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-cols: {{ section.settings.cols_mobile | default: 1 }};
+    --r-gap: {{ section.settings.gap_mobile | default: 24 }}px;
+    --r-title-size: {{ section.settings.title_size_mobile | default: 18 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_tablet | default: 3 }};
+      --r-gap: {{ section.settings.gap_tablet | default: 24 }}px;
+      --r-title-size: {{ section.settings.title_size_tablet | default: 20 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 96 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_desktop | default: 3 }};
+      --r-gap: {{ section.settings.gap_desktop | default: 24 }}px;
+      --r-title-size: {{ section.settings.title_size_desktop | default: 20 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-section-padding { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-blogs-landing__grid {
+    grid-template-columns: repeat(var(--r-cols), minmax(0, 1fr));
+    gap: var(--r-gap);
+  }
+  #shopify-section-{{ section.id }} .fuly-blogs-landing__body .fuly-product-card__title { font-size: var(--r-title-size); }
+{%- endstyle -%}
+
+<section class="fuly-section-padding fuly-lab-grid-bg">
+  <div class="fuly-container">
+    <div class="fuly-section-head">
+      {%- if tag_label != blank -%}
+        <span class="fuly-tag-label">{{ tag_label }}</span>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h2>{{ heading }}</h2>
+      {%- endif -%}
+      {%- if subheading != blank -%}
+        <p class="fuly-blogs-landing__subheading">{{ subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="fuly-blogs-landing__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign blk_link = block.settings.link
+          if blk_link == blank and block.settings.blog != blank
+            assign blk_blog = blogs[block.settings.blog]
+            assign blk_link = blk_blog.url
+          endif
+          assign blk_title = block.settings.title
+          if blk_title == blank and block.settings.blog != blank
+            assign blk_title = blogs[block.settings.blog].title
+          endif
+        -%}
+        <a
+          href="{{ blk_link | default: '#' }}"
+          class="fuly-blogs-landing__card fuly-cartoon-card fuly-cartoon-shadow-hover"
+          style="--fuly-blog-accent: {{ block.settings.accent | default: '#FFE135' }};"
+          {{ block.shopify_attributes }}
+        >
+          <span
+            class="fuly-blogs-landing__media"
+            style="background: linear-gradient(135deg, {{ block.settings.accent | default: '#FFE135' }}22, {{ block.settings.accent | default: '#FFE135' }}44);"
+          >
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'fuly-blogs-landing__img', alt: blk_title | escape }}
+            {%- endif -%}
+          </span>
+          <div class="fuly-blogs-landing__body">
+            <h3 class="fuly-product-card__title">{{ blk_title }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p class="fuly-product-card__benefit">{{ block.settings.description }}</p>
+            {%- endif -%}
+            <span class="fuly-blogs-landing__cta">{{ block.settings.cta_label | default: 'Ver más →' }}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fuly-blogs-landing__subheading {
+    max-width: 60rem;
+    margin: 1.2rem auto 0;
+    text-align: center;
+    color: #555;
+  }
+  .fuly-blogs-landing__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    margin-top: 3.2rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-blogs-landing__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .fuly-blogs-landing__card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+    overflow: hidden;
+  }
+  .fuly-blogs-landing__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .fuly-blogs-landing__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .fuly-blogs-landing__body {
+    padding: 2rem;
+  }
+  .fuly-blogs-landing__cta {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-family: 'Martian Mono', 'Courier New', monospace;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fuly — Más niños (blogs)",
+  "settings": [
+    { "type": "text", "id": "tag_label", "label": "Tag (opcional)", "default": "FULY" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "MÁS NIÑOS" },
+    { "type": "textarea", "id": "subheading", "label": "Subtítulo", "default": "Contenido para acompañarte: recetas, podcast y nuestro newsletter." },
+
+    { "type": "header", "content": "Responsive — Columnas" },
+    { "type": "range", "id": "cols_mobile", "label": "Columnas — Móvil", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "range", "id": "cols_tablet", "label": "Columnas — Tablet", "min": 1, "max": 4, "step": 1, "default": 3 },
+    { "type": "range", "id": "cols_desktop", "label": "Columnas — Desktop", "min": 1, "max": 4, "step": 1, "default": 3 },
+
+    { "type": "header", "content": "Responsive — Separación (gap)" },
+    { "type": "range", "id": "gap_mobile", "label": "Separación — Móvil", "unit": "px", "min": 0, "max": 64, "step": 1, "default": 24 },
+    { "type": "range", "id": "gap_tablet", "label": "Separación — Tablet", "unit": "px", "min": 0, "max": 64, "step": 1, "default": 24 },
+    { "type": "range", "id": "gap_desktop", "label": "Separación — Desktop", "unit": "px", "min": 0, "max": 64, "step": 1, "default": 24 },
+
+    { "type": "header", "content": "Responsive — Tamaño de título de tarjeta" },
+    { "type": "range", "id": "title_size_mobile", "label": "Título tarjeta — Móvil", "unit": "px", "min": 12, "max": 40, "step": 1, "default": 18 },
+    { "type": "range", "id": "title_size_tablet", "label": "Título tarjeta — Tablet", "unit": "px", "min": 12, "max": 40, "step": 1, "default": 20 },
+    { "type": "range", "id": "title_size_desktop", "label": "Título tarjeta — Desktop", "unit": "px", "min": 12, "max": 40, "step": 1, "default": 20 },
+
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical — Móvil", "unit": "px", "min": 0, "max": 200, "step": 2, "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical — Tablet", "unit": "px", "min": 0, "max": 200, "step": 2, "default": 96 },
+    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical — Desktop", "unit": "px", "min": 0, "max": 200, "step": 2, "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "blog_card",
+      "name": "Blog",
+      "settings": [
+        { "type": "blog", "id": "blog", "label": "Blog (toma título y enlace automáticamente)" },
+        { "type": "text", "id": "title", "label": "Título (override, opcional)" },
+        { "type": "textarea", "id": "description", "label": "Descripción corta" },
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "color", "id": "accent", "label": "Color de acento", "default": "#FFE135" },
+        { "type": "url", "id": "link", "label": "Enlace (override, opcional)" },
+        { "type": "text", "id": "cta_label", "label": "Texto del enlace", "default": "Ver más →" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly — Más niños (blogs)",
+      "blocks": [
+        { "type": "blog_card", "settings": { "title": "Newsletter", "description": "Una herramienta práctica cada semana para el bienestar de tus hijos." } },
+        { "type": "blog_card", "settings": { "title": "Podcast", "description": "Conversaciones sobre nutrición, crianza y desarrollo infantil." } },
+        { "type": "blog_card", "settings": { "title": "Recetas", "description": "Ideas fáciles y deliciosas para preparar Fuly en casa." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

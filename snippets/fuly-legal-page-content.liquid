@@ -1,0 +1,269 @@
+{%- comment -%}
+  FULY Legal pages
+  Reusable renderer for:
+  - /pages/terminos-y-condiciones
+  - /pages/politica-de-privacidad
+  - /pages/politica-de-cookies
+{%- endcomment -%}
+
+{%- liquid
+  assign legal_handle = page.handle
+  assign legal_title = page.title
+  assign legal_eyebrow = 'LEGAL'
+  assign legal_intro = ''
+  assign legal_updated = '27 de abril de 2026'
+
+  if legal_handle == 'terminos-y-condiciones'
+    assign legal_eyebrow = 'TÉRMINOS'
+    assign legal_title = 'Términos y condiciones'
+    assign legal_intro = 'Estas condiciones regulan el acceso, navegación y compra de productos Fuly Kids a través de este sitio web.'
+  elsif legal_handle == 'politica-de-privacidad'
+    assign legal_eyebrow = 'PRIVACIDAD'
+    assign legal_title = 'Política de privacidad'
+    assign legal_intro = 'Aquí te contamos qué datos recopilamos, para qué los usamos y cómo puedes ejercer tus derechos como titular de la información.'
+  elsif legal_handle == 'politica-de-cookies'
+    assign legal_eyebrow = 'COOKIES'
+    assign legal_title = 'Política de cookies'
+    assign legal_intro = 'Usamos cookies y tecnologías similares para que el sitio funcione mejor, entender su uso y mejorar la experiencia de navegación.'
+  endif
+-%}
+
+<section class="fuly-legal-page fuly-lab-grid-bg">
+  <div class="fuly-legal-page__container">
+    <header class="fuly-legal-page__header">
+      <span class="fuly-tag-label">{{ legal_eyebrow }}</span>
+      <h1 class="fuly-legal-page__title">{{ legal_title }}</h1>
+      <p class="fuly-legal-page__subtitle">{{ legal_intro }}</p>
+    </header>
+
+    <div class="fuly-legal-page__meta">
+      <div class="fuly-legal-page__meta-card">
+        <span class="fuly-legal-page__meta-label">Última actualización</span>
+        <strong>{{ legal_updated }}</strong>
+      </div>
+      <div class="fuly-legal-page__meta-card">
+        <span class="fuly-legal-page__meta-label">Canal de contacto</span>
+        <a href="mailto:hola@fulykids.com">hola@fulykids.com</a>
+      </div>
+    </div>
+
+    <div class="fuly-legal-page__content">
+      {%- if legal_handle == 'terminos-y-condiciones' -%}
+        <section class="fuly-legal-page__section">
+          <h2>1. Aceptación del uso del sitio</h2>
+          <p>Al ingresar, navegar o comprar en este sitio aceptas estos términos y condiciones, así como las políticas publicadas por Fuly Kids y la normativa aplicable en Colombia.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>2. Información comercial</h2>
+          <p>Fuly Kids comercializa alimentos funcionales y productos relacionados para niños y familias. Nos esforzamos por mantener la información del sitio actualizada, aunque precios, disponibilidad, promociones y contenidos pueden cambiar sin previo aviso.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>3. Pedidos, pagos y disponibilidad</h2>
+          <p>La confirmación de compra está sujeta a validación del pago, disponibilidad del inventario y verificación de la orden. Si se presenta alguna novedad con tu pedido, nuestro equipo te contactará usando los datos registrados en la compra.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>4. Envíos, cambios y devoluciones</h2>
+          <p>Las condiciones de envío, tiempos estimados, garantías, cambios y devoluciones pueden variar según la ciudad, el producto y la campaña comercial vigente. Cuando aplique, estas condiciones se complementan con la información publicada en la página de <a href="/pages/envios-y-devoluciones">envíos y devoluciones</a>.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>5. Uso adecuado del contenido</h2>
+          <p>Todo el contenido del sitio, incluyendo textos, imágenes, logos, diseño, marcas y piezas gráficas, pertenece a Fuly Kids o a sus licenciantes. No está permitido copiarlo, reproducirlo o usarlo con fines comerciales sin autorización previa y por escrito.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>6. Responsabilidad del usuario</h2>
+          <p>El usuario se compromete a suministrar información veraz, no realizar actividades fraudulentas y usar el sitio de conformidad con la ley. Fuly Kids podrá restringir el acceso cuando detecte conductas que afecten la operación, la seguridad o a otros usuarios.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>7. Modificaciones</h2>
+          <p>Podemos actualizar estos términos y condiciones en cualquier momento. La versión vigente será la publicada en esta página con su fecha de actualización correspondiente.</p>
+        </section>
+      {%- elsif legal_handle == 'politica-de-privacidad' -%}
+        <section class="fuly-legal-page__section">
+          <h2>1. Datos que podemos recopilar</h2>
+          <p>Podemos recopilar datos como nombre, correo electrónico, teléfono, dirección de entrega, historial de pedidos, preferencias de compra y la información que compartes cuando diligencias formularios o te comunicas con nosotros.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>2. Finalidades del tratamiento</h2>
+          <p>Usamos tus datos para procesar compras, coordinar envíos, atender solicitudes, enviar comunicaciones relacionadas con tus pedidos, brindar soporte, mejorar nuestros productos y, cuando exista autorización, compartir información comercial o educativa de la marca.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>3. Protección y conservación</h2>
+          <p>Implementamos medidas administrativas, técnicas y operativas razonables para proteger la información personal frente a pérdida, uso no autorizado, alteración o divulgación indebida. Conservamos los datos por el tiempo necesario para cumplir las finalidades informadas y obligaciones legales aplicables.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>4. Derechos del titular</h2>
+          <p>Como titular de los datos personales puedes conocer, actualizar, rectificar y suprimir tu información, así como revocar la autorización cuando sea procedente. Este tratamiento se rige, entre otras normas aplicables, por la Ley 1581 de 2012 y sus decretos reglamentarios en Colombia.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>5. Transferencia y terceros</h2>
+          <p>Podemos apoyarnos en proveedores tecnológicos, logísticos, de pagos, analítica o atención al cliente para operar el sitio y prestar el servicio. En esos casos, el acceso a la información se limita a lo necesario para cumplir la finalidad correspondiente.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>6. Canales de contacto</h2>
+          <p>Si quieres ejercer tus derechos o resolver dudas sobre el tratamiento de tus datos, escríbenos a <a href="mailto:hola@fulykids.com">hola@fulykids.com</a> o visita nuestra página de <a href="/pages/contacto">contacto</a>.</p>
+        </section>
+      {%- elsif legal_handle == 'politica-de-cookies' -%}
+        <section class="fuly-legal-page__section">
+          <h2>1. Qué son las cookies</h2>
+          <p>Las cookies son pequeños archivos que se almacenan en tu navegador y permiten recordar información sobre tu visita, como idioma, sesión, preferencias o comportamiento de navegación.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>2. Qué tipos usamos</h2>
+          <p>Podemos usar cookies esenciales para el funcionamiento del sitio, cookies de rendimiento o analítica para entender cómo se usa la tienda y cookies funcionales o publicitarias cuando la configuración del sitio o las herramientas integradas así lo requieran.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>3. Para qué las usamos</h2>
+          <p>Las usamos para mantener el carrito activo, facilitar el inicio de sesión, medir tráfico, detectar errores, optimizar la experiencia de compra y personalizar ciertos contenidos o campañas.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>4. Cookies de terceros</h2>
+          <p>Algunas herramientas integradas en la tienda, como pasarelas de pago, analítica, automatización o redes sociales, pueden instalar sus propias cookies sujetas a sus políticas y configuraciones independientes.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>5. Cómo gestionarlas</h2>
+          <p>Puedes bloquear, eliminar o limitar el uso de cookies desde la configuración de tu navegador. Ten en cuenta que, si desactivas ciertas cookies, algunas funcionalidades de la tienda podrían dejar de operar correctamente.</p>
+        </section>
+
+        <section class="fuly-legal-page__section">
+          <h2>6. Actualizaciones</h2>
+          <p>Esta política puede actualizarse cuando cambien nuestras herramientas, procesos o requerimientos legales. La versión vigente será siempre la publicada en esta página.</p>
+        </section>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fuly-legal-page {
+    padding: 4.8rem 1.6rem 6.4rem;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-legal-page {
+      padding: 8rem 3.2rem 9.6rem;
+    }
+  }
+
+  .fuly-legal-page__container {
+    max-width: 88rem;
+    margin: 0 auto;
+  }
+
+  .fuly-legal-page__header {
+    text-align: center;
+    margin-bottom: 3.2rem;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-legal-page__header {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .fuly-legal-page__title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: hsl(var(--cartoon-black));
+    font-size: clamp(3.6rem, 5vw, 6rem);
+    line-height: 0.95;
+    margin: 1.2rem 0 0;
+  }
+
+  .fuly-legal-page__subtitle {
+    max-width: 68rem;
+    margin: 1.6rem auto 0;
+    font-size: 1.7rem;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  .fuly-legal-page__meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    margin-bottom: 2.4rem;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-legal-page__meta {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  .fuly-legal-page__meta-card,
+  .fuly-legal-page__section {
+    background: var(--fuly-white-lab, #faf7f2);
+    border: 3px solid hsl(var(--cartoon-black));
+    border-radius: 2rem;
+    box-shadow: 6px 6px 0 hsl(var(--cartoon-black));
+  }
+
+  .fuly-legal-page__meta-card {
+    padding: 1.8rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .fuly-legal-page__meta-label {
+    font-family: var(--fuly-font-label);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.75;
+  }
+
+  .fuly-legal-page__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .fuly-legal-page__section {
+    padding: 2.2rem 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-legal-page__section {
+      padding: 2.8rem;
+    }
+  }
+
+  .fuly-legal-page__section h2 {
+    margin: 0 0 1.2rem;
+    font-size: clamp(2rem, 2.5vw, 2.6rem);
+  }
+
+  .fuly-legal-page__section p {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.82);
+  }
+
+  .fuly-legal-page__section a,
+  .fuly-legal-page__meta-card a {
+    color: var(--fuly-cereza, #d0024b);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+</style>

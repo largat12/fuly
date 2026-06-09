@@ -1,0 +1,144 @@
+{%- comment -%}
+  FULY Home — Testimonials (section 10). Horizontal scroll carousel with prev/next arrows.
+{%- endcomment -%}
+{%- liquid
+  assign tag_label = section.settings.tag_label | default: 'TESTIMONIOS'
+  assign heading = section.settings.heading | default: 'LO QUE DICEN LAS FAMILIAS'
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-card-width: {{ section.settings.card_width_mobile | default: 260 }}px;
+    --r-text-size: {{ section.settings.text_size_mobile | default: 16 }}px;
+    --r-track-gap: {{ section.settings.track_gap_mobile | default: 16 }}px;
+    --r-heading-size: {{ section.settings.heading_size_mobile | default: 28 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-star-color: {{ section.settings.star_color | default: '#FFE135' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-card-width: {{ section.settings.card_width_tablet | default: 280 }}px;
+      --r-text-size: {{ section.settings.text_size_tablet | default: 16 }}px;
+      --r-track-gap: {{ section.settings.track_gap_tablet | default: 16 }}px;
+      --r-heading-size: {{ section.settings.heading_size_tablet | default: 36 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 96 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-card-width: {{ section.settings.card_width_desktop | default: 280 }}px;
+      --r-text-size: {{ section.settings.text_size_desktop | default: 16 }}px;
+      --r-track-gap: {{ section.settings.track_gap_desktop | default: 16 }}px;
+      --r-heading-size: {{ section.settings.heading_size_desktop | default: 44 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-section-padding { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-testimonials-track { gap: var(--r-track-gap); }
+  #shopify-section-{{ section.id }} .fuly-testimonial-card { min-width: var(--r-card-width); max-width: var(--r-card-width); }
+  #shopify-section-{{ section.id }} .fuly-testimonial-text { font-size: var(--r-text-size); }
+  #shopify-section-{{ section.id }} .fuly-testimonial-stars { color: var(--r-star-color); }
+  #shopify-section-{{ section.id }} .fuly-section-head h2 { font-size: var(--r-heading-size); }
+{%- endstyle -%}
+<section class="fuly-section-padding" data-fuly-testimonials-section>
+  <div class="fuly-container">
+    <div class="fuly-section-head">
+      <span class="fuly-tag-label">{{ tag_label }}</span>
+      <h2>{{ heading }}</h2>
+    </div>
+
+    <div class="fuly-testimonials-wrap">
+      <button
+        type="button"
+        class="fuly-testimonials-arrow fuly-testimonials-arrow--prev"
+        aria-label="Anterior"
+        data-fuly-testimonials-prev
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="fuly-testimonials-track" data-fuly-testimonials-track>
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <article class="fuly-testimonial-card" {{ block.shopify_attributes }}>
+              <div class="fuly-testimonial-stars" aria-label="5 estrellas">
+                {%- for i in (1..5) -%}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                {%- endfor -%}
+              </div>
+              <p class="fuly-testimonial-text">"{{ block.settings.text }}"</p>
+              <div>
+                <p class="fuly-testimonial-name">{{ block.settings.name }}</p>
+                <p class="fuly-testimonial-city">{{ block.settings.city }}</p>
+                <span class="fuly-testimonial-tag">{{ block.settings.product_tag }}</span>
+              </div>
+            </article>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      <button
+        type="button"
+        class="fuly-testimonials-arrow fuly-testimonials-arrow--next"
+        aria-label="Siguiente"
+        data-fuly-testimonials-next
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Testimonials",
+  "settings": [
+    { "type": "text", "id": "tag_label", "label": "Tag", "default": "TESTIMONIOS" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "LO QUE DICEN LAS FAMILIAS" },
+    { "type": "header", "content": "Responsive — Ancho de tarjeta" },
+    { "type": "range", "id": "card_width_mobile", "label": "Ancho tarjeta (móvil)", "min": 200, "max": 400, "step": 5, "unit": "px", "default": 260 },
+    { "type": "range", "id": "card_width_tablet", "label": "Ancho tarjeta (tablet)", "min": 200, "max": 400, "step": 5, "unit": "px", "default": 280 },
+    { "type": "range", "id": "card_width_desktop", "label": "Ancho tarjeta (desktop)", "min": 200, "max": 400, "step": 5, "unit": "px", "default": 280 },
+    { "type": "header", "content": "Responsive — Texto de testimonio" },
+    { "type": "range", "id": "text_size_mobile", "label": "Texto (móvil)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "text_size_tablet", "label": "Texto (tablet)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "text_size_desktop", "label": "Texto (desktop)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Responsive — Espaciado del carrusel" },
+    { "type": "range", "id": "track_gap_mobile", "label": "Gap carrusel (móvil)", "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "track_gap_tablet", "label": "Gap carrusel (tablet)", "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "track_gap_desktop", "label": "Gap carrusel (desktop)", "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Responsive — Encabezado" },
+    { "type": "range", "id": "heading_size_mobile", "label": "Encabezado (móvil)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "heading_size_tablet", "label": "Encabezado (tablet)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 36 },
+    { "type": "range", "id": "heading_size_desktop", "label": "Encabezado (desktop)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 44 },
+    { "type": "header", "content": "Responsive — Padding vertical de sección" },
+    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical (móvil)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical (tablet)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "star_color", "label": "Color de estrellas", "default": "#FFE135" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Carolina M." },
+        { "type": "text", "id": "city", "label": "City", "default": "Bogotá" },
+        { "type": "textarea", "id": "text", "label": "Quote", "default": "Mis hijos piden su Booster Día Frutos Rojos todas las mañanas." },
+        { "type": "text", "id": "product_tag", "label": "Product tag", "default": "BOOSTER DÍA" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Testimonials"
+    }
+  ]
+}
+{% endschema %}

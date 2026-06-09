@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "fuly_blog": {
+      "type": "fuly-blog",
+      "settings": {
+        "eyebrow": "NEWSLETTER",
+        "title": "Newsletter",
+        "subtitle": "Cada semana, una herramienta práctica y fácil para cuidar el bienestar de tus hijos.",
+        "empty_message": "Pronto publicaremos contenido. ¡Vuelve pronto!"
+      }
+    }
+  },
+  "order": ["fuly_blog"]
+}

@@ -1,0 +1,211 @@
+{%- comment -%}
+  FULY Home — Hero (section 3 in Lovable Index.tsx).
+{%- endcomment -%}
+{%- liquid
+  assign title = section.settings.title | default: 'EL FUTURO SABE RICO'
+  assign subtitle = section.settings.subtitle | default: 'Formulados por científicos. Disfrutados por niños.'
+  assign primary_label = section.settings.primary_label | default: 'COMPRAR AHORA'
+  assign primary_link = section.settings.primary_link | default: '/collections/tienda'
+  assign secondary_label = section.settings.secondary_label | default: 'VER PRODUCTOS'
+  assign secondary_link = section.settings.secondary_link | default: '/collections/tienda'
+
+  # Badge de reseñas: número dinámico (suma reviews.rating_count); si da 0, usa el manual.
+  assign reviews_total = 0
+  for review_product in collections.all.products
+    assign reviews_total = reviews_total | plus: review_product.metafields.reviews.rating_count
+  endfor
+  assign reviews_manual = section.settings.reviews_manual_number | default: '3,400'
+  if reviews_total == 0
+    assign reviews_number = reviews_manual
+  else
+    assign reviews_number = reviews_total
+  endif
+  assign reviews_text = section.settings.reviews_text | default: 'reseñas verificadas con 5 estrellas ⭐'
+  assign badge_text = section.settings.tagline
+  if badge_text == blank
+    capture badge_text
+      echo reviews_number
+      echo '+ '
+      echo reviews_text
+    endcapture
+  endif
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-title-size: {{ section.settings.title_size_mobile | default: 56 }}px;
+    --r-subtitle-size: {{ section.settings.subtitle_size_mobile | default: 18 }}px;
+    --r-content-gap: {{ section.settings.content_gap_mobile | default: 16 }}px;
+    --r-buttons-gap: {{ section.settings.buttons_gap_mobile | default: 12 }}px;
+    --r-image-height: {{ section.settings.image_height_mobile | default: 224 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-heading-color: {{ section.settings.heading_color | default: '#1A1A1A' }};
+    --r-subtitle-color: {{ section.settings.subtitle_color | default: '#555555' }};
+    --r-badge-bg: {{ section.settings.badge_bg_color | default: '#FFE135' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-title-size: {{ section.settings.title_size_tablet | default: 68 }}px;
+      --r-subtitle-size: {{ section.settings.subtitle_size_tablet | default: 18 }}px;
+      --r-content-gap: {{ section.settings.content_gap_tablet | default: 24 }}px;
+      --r-buttons-gap: {{ section.settings.buttons_gap_tablet | default: 12 }}px;
+      --r-image-height: {{ section.settings.image_height_tablet | default: 450 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 96 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-title-size: {{ section.settings.title_size_desktop | default: 80 }}px;
+      --r-subtitle-size: {{ section.settings.subtitle_size_desktop | default: 18 }}px;
+      --r-content-gap: {{ section.settings.content_gap_desktop | default: 24 }}px;
+      --r-buttons-gap: {{ section.settings.buttons_gap_desktop | default: 12 }}px;
+      --r-image-height: {{ section.settings.image_height_desktop | default: 450 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-hero-title { font-size: var(--r-title-size); color: var(--r-heading-color); }
+  #shopify-section-{{ section.id }} .fuly-hero-tagline { font-size: var(--r-subtitle-size); color: var(--r-subtitle-color); }
+  #shopify-section-{{ section.id }} .fuly-hero-content { gap: var(--r-content-gap); }
+  #shopify-section-{{ section.id }} .fuly-hero-buttons { gap: var(--r-buttons-gap); }
+  #shopify-section-{{ section.id }} .fuly-hero-image { height: var(--r-image-height); }
+  #shopify-section-{{ section.id }} .fuly-section-padding { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-hero-content .fuly-tag-label { background-color: var(--r-badge-bg); }
+{%- endstyle -%}
+<section class="fuly-section-padding">
+  <div class="fuly-container fuly-hero-grid">
+    <div class="fuly-hero-image">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 900
+          | image_tag: loading: 'eager', alt: section.settings.image.alt | default: 'Fuly hero'
+        }}
+      {% else %}
+        <img
+          src="{{ 'hero_kid.png' | asset_url }}"
+          alt="Niño disfrutando Fuly"
+          loading="eager"
+          width="900"
+          height="600"
+        >
+      {% endif %}
+    </div>
+    <div class="fuly-hero-content">
+      {%- if section.settings.show_badge -%}
+        <span class="fuly-tag-label" style="align-self:flex-start;">{{ badge_text }}</span>
+      {%- endif -%}
+      <h1 class="fuly-hero-title">{{ title }}</h1>
+      <p class="fuly-hero-tagline">{{ subtitle }}</p>
+      <div class="fuly-hero-buttons">
+        <a href="{{ primary_link }}" class="fuly-cartoon-btn fuly-cartoon-btn-primary" style="font-size:18px;">
+          {{ primary_label }}
+        </a>
+        {%- if secondary_label != blank -%}
+          <a href="{{ secondary_link }}" class="fuly-btn-outline">{{ secondary_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Mostrar badge de reseñas",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Texto del badge (vacío = automático con # reseñas)"
+    },
+    {
+      "type": "text",
+      "id": "reviews_manual_number",
+      "label": "Número manual / respaldo",
+      "default": "3,400"
+    },
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Texto tras el número",
+      "default": "reseñas verificadas con 5 estrellas ⭐"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "EL FUTURO SABE RICO"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Formulados por científicos. Disfrutados por niños."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "COMPRAR AHORA"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Botón secundario (vacío = oculto)",
+      "default": "VER PRODUCTOS"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    { "type": "header", "content": "Responsive — Título" },
+    { "type": "range", "id": "title_size_mobile", "min": 24, "max": 100, "step": 1, "unit": "px", "label": "Móvil", "default": 56 },
+    { "type": "range", "id": "title_size_tablet", "min": 24, "max": 100, "step": 1, "unit": "px", "label": "Tablet", "default": 68 },
+    { "type": "range", "id": "title_size_desktop", "min": 24, "max": 120, "step": 1, "unit": "px", "label": "Desktop", "default": 80 },
+    { "type": "header", "content": "Responsive — Subtítulo" },
+    { "type": "range", "id": "subtitle_size_mobile", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "Móvil", "default": 18 },
+    { "type": "range", "id": "subtitle_size_tablet", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "Tablet", "default": 18 },
+    { "type": "range", "id": "subtitle_size_desktop", "min": 12, "max": 40, "step": 1, "unit": "px", "label": "Desktop", "default": 18 },
+    { "type": "header", "content": "Responsive — Espacio entre contenido" },
+    { "type": "range", "id": "content_gap_mobile", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Móvil", "default": 16 },
+    { "type": "range", "id": "content_gap_tablet", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Tablet", "default": 24 },
+    { "type": "range", "id": "content_gap_desktop", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Desktop", "default": 24 },
+    { "type": "header", "content": "Responsive — Espacio entre botones" },
+    { "type": "range", "id": "buttons_gap_mobile", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Móvil", "default": 12 },
+    { "type": "range", "id": "buttons_gap_tablet", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Tablet", "default": 12 },
+    { "type": "range", "id": "buttons_gap_desktop", "min": 0, "max": 48, "step": 1, "unit": "px", "label": "Desktop", "default": 12 },
+    { "type": "header", "content": "Responsive — Altura de imagen" },
+    { "type": "range", "id": "image_height_mobile", "min": 120, "max": 620, "step": 5, "unit": "px", "label": "Móvil", "default": 225 },
+    { "type": "range", "id": "image_height_tablet", "min": 120, "max": 620, "step": 5, "unit": "px", "label": "Tablet", "default": 450 },
+    { "type": "range", "id": "image_height_desktop", "min": 120, "max": 620, "step": 5, "unit": "px", "label": "Desktop", "default": 450 },
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Móvil", "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Tablet", "default": 96 },
+    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Desktop", "default": 96 },
+    { "type": "header", "content": "Responsive — Colores" },
+    { "type": "color", "id": "heading_color", "label": "Color del título", "default": "#1A1A1A" },
+    { "type": "color", "id": "subtitle_color", "label": "Color del subtítulo", "default": "#555555" },
+    { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#FFE135" }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,149 @@
+{%- comment -%}
+  FULY Home — Science (section 8). Dark background with grid, ingredient cards.
+{%- endcomment -%}
+{%- liquid
+  assign tag_label = section.settings.tag_label | default: 'NUESTROS INGREDIENTES'
+  assign heading = section.settings.heading | default: 'HECHO CON CIENCIA DELICIOSA EN EL FULY LAB'
+  assign cta_label = section.settings.cta_label | default: 'CONOCE NUESTROS INGREDIENTES'
+  assign cta_link = section.settings.cta_link | default: '/pages/nosotros'
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-cols: {{ section.settings.cols_mobile | default: 1 }};
+    --r-gap: {{ section.settings.gap_mobile | default: 16 }}px;
+    --r-card-pad: {{ section.settings.card_padding_mobile | default: 24 }}px;
+    --r-name-size: {{ section.settings.name_size_mobile | default: 18 }}px;
+    --r-benefit-size: {{ section.settings.benefit_size_mobile | default: 15 }}px;
+    --r-heading-size: {{ section.settings.heading_size_mobile | default: 28 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-section-bg: {{ section.settings.section_bg_color | default: '#1A1A1A' }};
+    --r-card-bg: {{ section.settings.card_bg_color | default: '#262626' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_tablet | default: 2 }};
+      --r-gap: {{ section.settings.gap_tablet | default: 16 }}px;
+      --r-card-pad: {{ section.settings.card_padding_tablet | default: 24 }}px;
+      --r-name-size: {{ section.settings.name_size_tablet | default: 18 }}px;
+      --r-benefit-size: {{ section.settings.benefit_size_tablet | default: 15 }}px;
+      --r-heading-size: {{ section.settings.heading_size_tablet | default: 32 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 96 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_desktop | default: 2 }};
+      --r-gap: {{ section.settings.gap_desktop | default: 16 }}px;
+      --r-card-pad: {{ section.settings.card_padding_desktop | default: 24 }}px;
+      --r-name-size: {{ section.settings.name_size_desktop | default: 18 }}px;
+      --r-benefit-size: {{ section.settings.benefit_size_desktop | default: 15 }}px;
+      --r-heading-size: {{ section.settings.heading_size_desktop | default: 36 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-section-padding { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-lab-grid-bg-dark { background-color: var(--r-section-bg); }
+  #shopify-section-{{ section.id }} .fuly-science-grid { grid-template-columns: repeat(var(--r-cols), minmax(0, 1fr)); gap: var(--r-gap); }
+  #shopify-section-{{ section.id }} .fuly-science-card { padding: var(--r-card-pad); background: var(--r-card-bg); }
+  #shopify-section-{{ section.id }} .fuly-science-card__name { font-size: var(--r-name-size); }
+  #shopify-section-{{ section.id }} .fuly-science-card__benefit { font-size: var(--r-benefit-size); }
+  #shopify-section-{{ section.id }} .fuly-section-head--white h2 { font-size: var(--r-heading-size); }
+{%- endstyle -%}
+<section class="fuly-section-padding fuly-lab-grid-bg-dark">
+  <div class="fuly-container-narrow">
+    <div class="fuly-section-head fuly-section-head--white">
+      <span class="fuly-tag-label">{{ tag_label }}</span>
+      <h2>{{ heading }}</h2>
+    </div>
+
+    <div class="fuly-science-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="fuly-science-card" {{ block.shopify_attributes }}>
+            <h3 class="fuly-science-card__name">{{ block.settings.name }}</h3>
+            <p class="fuly-science-card__benefit">{{ block.settings.benefit }}</p>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <div class="fuly-science-card">
+          <h3 class="fuly-science-card__name">GANODERMA</h3>
+          <p class="fuly-science-card__benefit">Hongo adaptógeno que fortalece las defensas naturales.</p>
+        </div>
+        <div class="fuly-science-card">
+          <h3 class="fuly-science-card__name">MELENA DE LEÓN</h3>
+          <p class="fuly-science-card__benefit">Hongo nootrópico que apoya la concentración y el desarrollo cognitivo.</p>
+        </div>
+        <div class="fuly-science-card">
+          <h3 class="fuly-science-card__name">VITAMINA C</h3>
+          <p class="fuly-science-card__benefit">Antioxidante esencial para el sistema inmune y la absorción de hierro.</p>
+        </div>
+        <div class="fuly-science-card">
+          <h3 class="fuly-science-card__name">MAGNESIO</h3>
+          <p class="fuly-science-card__benefit">Mineral clave para el sueño, la relajación y el crecimiento óseo.</p>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="fuly-science-cta">
+      <a href="{{ cta_link }}" class="fuly-cartoon-btn fuly-cartoon-btn-primary">{{ cta_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Science",
+  "settings": [
+    { "type": "text", "id": "tag_label", "label": "Tag", "default": "NUESTROS INGREDIENTES" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "HECHO CON CIENCIA DELICIOSA EN EL FULY LAB" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "CONOCE NUESTROS INGREDIENTES" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "header", "content": "Responsive — Columnas" },
+    { "type": "range", "id": "cols_mobile", "label": "Columnas (móvil)", "min": 1, "max": 4, "step": 1, "default": 1 },
+    { "type": "range", "id": "cols_tablet", "label": "Columnas (tablet)", "min": 1, "max": 4, "step": 1, "default": 2 },
+    { "type": "range", "id": "cols_desktop", "label": "Columnas (desktop)", "min": 1, "max": 4, "step": 1, "default": 2 },
+    { "type": "header", "content": "Responsive — Espaciado entre tarjetas" },
+    { "type": "range", "id": "gap_mobile", "label": "Gap (móvil)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "gap_tablet", "label": "Gap (tablet)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "gap_desktop", "label": "Gap (desktop)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Responsive — Padding de tarjeta" },
+    { "type": "range", "id": "card_padding_mobile", "label": "Padding tarjeta (móvil)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_padding_tablet", "label": "Padding tarjeta (tablet)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "card_padding_desktop", "label": "Padding tarjeta (desktop)", "min": 0, "max": 64, "step": 2, "unit": "px", "default": 24 },
+    { "type": "header", "content": "Responsive — Nombre de ingrediente" },
+    { "type": "range", "id": "name_size_mobile", "label": "Nombre (móvil)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 18 },
+    { "type": "range", "id": "name_size_tablet", "label": "Nombre (tablet)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 18 },
+    { "type": "range", "id": "name_size_desktop", "label": "Nombre (desktop)", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 18 },
+    { "type": "header", "content": "Responsive — Beneficio" },
+    { "type": "range", "id": "benefit_size_mobile", "label": "Beneficio (móvil)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "benefit_size_tablet", "label": "Beneficio (tablet)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "benefit_size_desktop", "label": "Beneficio (desktop)", "min": 10, "max": 28, "step": 1, "unit": "px", "default": 15 },
+    { "type": "header", "content": "Responsive — Encabezado" },
+    { "type": "range", "id": "heading_size_mobile", "label": "Encabezado (móvil)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 28 },
+    { "type": "range", "id": "heading_size_tablet", "label": "Encabezado (tablet)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 32 },
+    { "type": "range", "id": "heading_size_desktop", "label": "Encabezado (desktop)", "min": 18, "max": 80, "step": 1, "unit": "px", "default": 36 },
+    { "type": "header", "content": "Responsive — Padding vertical de sección" },
+    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical (móvil)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical (tablet)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "header", "content": "Colores" },
+    { "type": "color", "id": "section_bg_color", "label": "Fondo de sección", "default": "#1A1A1A" },
+    { "type": "color", "id": "card_bg_color", "label": "Fondo de tarjeta", "default": "#262626" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Ingredient name", "default": "GANODERMA" },
+        { "type": "text", "id": "benefit", "label": "Benefit", "default": "Hongo adaptógeno que fortalece las defensas naturales." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Science"
+    }
+  ]
+}
+{% endschema %}

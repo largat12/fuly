@@ -1,0 +1,726 @@
+{%- comment -%}
+  FULY Semilla - Donation Interactive Section
+  Tabs: UNA VEZ (one-time) vs MENSUAL (monthly)
+  With pricing calculations and WhatsApp integration
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-cols: {{ section.settings.cols_mobile | default: 1 }};
+    --r-gap: {{ section.settings.gap_mobile | default: 16 }}px;
+    --r-tab-size: {{ section.settings.tab_size_mobile | default: 16 }}px;
+    --r-button-size: {{ section.settings.button_size_mobile | default: 16 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_tablet | default: 3 }};
+      --r-gap: {{ section.settings.gap_tablet | default: 24 }}px;
+      --r-tab-size: {{ section.settings.tab_size_tablet | default: 16 }}px;
+      --r-button-size: {{ section.settings.button_size_tablet | default: 18 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 48 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_desktop | default: 3 }};
+      --r-gap: {{ section.settings.gap_desktop | default: 24 }}px;
+      --r-tab-size: {{ section.settings.tab_size_desktop | default: 16 }}px;
+      --r-button-size: {{ section.settings.button_size_desktop | default: 18 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 48 }}px;
+    }
+  }
+  /* Consumo — id + clase para ganar especificidad sobre el CSS base */
+  #shopify-section-{{ section.id }} .fuly-semilla-donation {
+    padding-top: var(--r-pad-block);
+    padding-bottom: var(--r-pad-block);
+  }
+  #shopify-section-{{ section.id }} .fuly-donation-options {
+    grid-template-columns: repeat(var(--r-cols), minmax(0, 1fr));
+    gap: var(--r-gap);
+  }
+  #shopify-section-{{ section.id }} .fuly-donation-tab {
+    font-size: var(--r-tab-size);
+  }
+  #shopify-section-{{ section.id }} .fuly-donation-button {
+    font-size: var(--r-button-size);
+  }
+{%- endstyle -%}
+
+<section class="fuly-semilla-donation fuly-section-padding"
+  data-whatsapp="{{ section.settings.whatsapp_number }}"
+  data-price-per-child="{{ section.settings.price_per_child }}"
+  data-once-kids-1="{{ section.settings.once_kids_1 }}"
+  data-once-kids-2="{{ section.settings.once_kids_2 }}"
+  data-once-kids-3="{{ section.settings.once_kids_3 }}"
+  data-monthly-1="{{ section.settings.monthly_amount_1 }}"
+  data-monthly-2="{{ section.settings.monthly_amount_2 }}"
+  data-monthly-3="{{ section.settings.monthly_amount_3 }}"
+  data-msg-once="{{ section.settings.whatsapp_msg_once | escape }}"
+  data-msg-monthly="{{ section.settings.whatsapp_msg_monthly | escape }}">
+  <div class="fuly-container-tight">
+    <div class="fuly-donation-header">
+      <h2 class="fuly-section-title">{{ section.settings.heading }}</h2>
+    </div>
+
+    <!-- Tab Selector -->
+    <div class="fuly-donation-tabs">
+      <button class="fuly-donation-tab active" data-tab="once">
+        {{ section.settings.tab_once_label }}
+      </button>
+      <button class="fuly-donation-tab" data-tab="monthly">
+        {{ section.settings.tab_monthly_label }}
+      </button>
+    </div>
+
+    <!-- UNA VEZ TAB -->
+    <div class="fuly-donation-content active" id="tab-once">
+      <div class="fuly-donation-options">
+        <div class="fuly-donation-option" data-value="{{ section.settings.once_kids_1 }}">
+          <div class="fuly-option-label">{{ section.settings.once_kids_1 }} Niño{% if section.settings.once_kids_1 > 1 %}s{% endif %}</div>
+          <div class="fuly-option-price">${{ section.settings.once_kids_1 | times: section.settings.price_per_child | money_without_currency }} COP</div>
+        </div>
+        <div class="fuly-donation-option" data-value="{{ section.settings.once_kids_2 }}">
+          <div class="fuly-option-label">{{ section.settings.once_kids_2 }} Niños</div>
+          <div class="fuly-option-price">${{ section.settings.once_kids_2 | times: section.settings.price_per_child | money_without_currency }} COP</div>
+        </div>
+        <div class="fuly-donation-option" data-value="{{ section.settings.once_kids_3 }}">
+          <div class="fuly-option-label">{{ section.settings.once_kids_3 }} Niños</div>
+          <div class="fuly-option-price">${{ section.settings.once_kids_3 | times: section.settings.price_per_child | money_without_currency }} COP</div>
+        </div>
+      </div>
+
+      <div class="fuly-donation-total">
+        <span class="fuly-total-label">Total:</span>
+        <span class="fuly-total-amount" id="total-once">$60.000 COP</span>
+      </div>
+
+      <button class="fuly-donation-button" id="donate-once-btn">
+        <svg class="fuly-whatsapp-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.864 1.235c-1.504.89-2.584 2.304-3.096 3.93-.598 1.965-.07 4.092 1.43 5.591 1.499 1.5 3.627 2.027 5.592 1.429 1.626-.512 3.04-1.592 3.93-3.096a9.9 9.9 0 001.212-3.556 3.89 3.89 0 00.042-.277V10.855c0-.344-.033-.687-.1-1.025A10.736 10.736 0 0011.07 6.77c-.892-1.5-2.305-2.579-3.93-3.09A9.9 9.9 0 0011.051 6.979z"/>
+        </svg>
+        Donar vía WhatsApp
+      </button>
+
+      <p class="fuly-donation-text">{{ section.settings.donation_note }}</p>
+    </div>
+
+    <!-- MENSUAL TAB -->
+    <div class="fuly-donation-content" id="tab-monthly">
+      <div class="fuly-donation-options">
+        <div class="fuly-donation-option monthly" data-value="{{ section.settings.monthly_amount_1 }}">
+          <div class="fuly-option-label">${{ section.settings.monthly_amount_1 | money_without_currency }}</div>
+          <div class="fuly-option-price">Mensual</div>
+        </div>
+        <div class="fuly-donation-option monthly" data-value="{{ section.settings.monthly_amount_2 }}">
+          <div class="fuly-option-label">${{ section.settings.monthly_amount_2 | money_without_currency }}</div>
+          <div class="fuly-option-price">Mensual</div>
+        </div>
+        <div class="fuly-donation-option monthly" data-value="{{ section.settings.monthly_amount_3 }}">
+          <div class="fuly-option-label">${{ section.settings.monthly_amount_3 | money_without_currency }}</div>
+          <div class="fuly-option-price">Mensual</div>
+        </div>
+      </div>
+
+      <div class="fuly-donation-custom">
+        <label for="custom-amount">O ingresa un monto personalizado:</label>
+        <div class="fuly-custom-input-wrapper">
+          <span class="fuly-currency">$</span>
+          <input type="number" id="custom-amount" placeholder="Monto en COP" min="1000" step="1000">
+          <span class="fuly-currency">COP</span>
+        </div>
+      </div>
+
+      <div class="fuly-donation-total">
+        <span class="fuly-total-label">Donación mensual:</span>
+        <span class="fuly-total-amount" id="total-monthly">$5.000 COP</span>
+      </div>
+
+      <button class="fuly-donation-button" id="donate-monthly-btn">
+        <svg class="fuly-whatsapp-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.864 1.235c-1.504.89-2.584 2.304-3.096 3.93-.598 1.965-.07 4.092 1.43 5.591 1.499 1.5 3.627 2.027 5.592 1.429 1.626-.512 3.04-1.592 3.93-3.096a9.9 9.9 0 001.212-3.556 3.89 3.89 0 00.042-.277V10.855c0-.344-.033-.687-.1-1.025A10.736 10.736 0 0011.07 6.77c-.892-1.5-2.305-2.579-3.93-3.09A9.9 9.9 0 0011.051 6.979z"/>
+        </svg>
+        Donar vía WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fuly-semilla-donation {
+    padding-top: 4.8rem;
+    padding-bottom: 4.8rem;
+  }
+
+  .fuly-donation-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .fuly-section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--fuly-cartoon-black, #212121);
+    margin: 0;
+  }
+
+  .fuly-donation-tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .fuly-donation-tab {
+    padding: 0.75rem 2rem;
+    border: 3px solid var(--fuly-cartoon-black, #212121);
+    background: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .fuly-donation-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 var(--fuly-cartoon-black, #212121);
+  }
+
+  .fuly-donation-tab.active {
+    background: var(--fuly-cartoon-black, #212121);
+    color: white;
+    box-shadow: 4px 4px 0 var(--fuly-cartoon-black, #212121);
+  }
+
+  .fuly-donation-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .fuly-donation-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fuly-donation-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .fuly-donation-option {
+    padding: 1.5rem;
+    border: 3px solid var(--fuly-cartoon-black, #212121);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .fuly-donation-option:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 var(--fuly-cartoon-black, #212121);
+  }
+
+  .fuly-donation-option.active {
+    background: var(--fuly-cartoon-black, #212121);
+    color: white;
+    box-shadow: 6px 6px 0 var(--fuly-cartoon-black, #212121);
+  }
+
+  .fuly-option-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .fuly-option-price {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .fuly-donation-custom {
+    margin-bottom: 2rem;
+  }
+
+  .fuly-donation-custom label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .fuly-custom-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 3px solid var(--fuly-cartoon-black, #212121);
+    padding: 0.75rem;
+    background: white;
+  }
+
+  .fuly-currency {
+    font-weight: 700;
+  }
+
+  .fuly-custom-input-wrapper input {
+    flex: 1;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+  }
+
+  .fuly-custom-input-wrapper input::placeholder {
+    color: #999;
+  }
+
+  .fuly-donation-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px solid var(--fuly-cartoon-black, #212121);
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .fuly-donation-button {
+    width: 100%;
+    padding: 1rem;
+    background: #25D366;
+    color: white;
+    border: 3px solid var(--fuly-cartoon-black, #212121);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .fuly-donation-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 0 var(--fuly-cartoon-black, #212121);
+  }
+
+  .fuly-whatsapp-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fuly-donation-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    .fuly-semilla-donation {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .fuly-section-title {
+      font-size: 1.5rem;
+    }
+
+    .fuly-donation-tabs {
+      gap: 0.75rem;
+    }
+
+    .fuly-donation-tab {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    .fuly-donation-options {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const section = document.querySelector('.fuly-semilla-donation');
+  const WHATSAPP_NUMBER = section.dataset.whatsapp;
+  const PRICE_PER_CHILD = parseInt(section.dataset.pricePerChild);
+  const ONCE_KIDS_1 = parseInt(section.dataset.onceKids1);
+  const ONCE_KIDS_2 = parseInt(section.dataset.onceKids2);
+  const ONCE_KIDS_3 = parseInt(section.dataset.onceKids3);
+  const MONTHLY_1 = parseInt(section.dataset.monthly1);
+  const MONTHLY_2 = parseInt(section.dataset.monthly2);
+  const MONTHLY_3 = parseInt(section.dataset.monthly3);
+  const MSG_ONCE_TEMPLATE = section.dataset.msgOnce;
+  const MSG_MONTHLY_TEMPLATE = section.dataset.msgMonthly;
+
+  // Tab switching
+  document.querySelectorAll('.fuly-donation-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      const tabType = this.dataset.tab;
+
+      // Update active tab
+      document.querySelectorAll('.fuly-donation-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+
+      // Update active content
+      document.querySelectorAll('.fuly-donation-content').forEach(c => c.classList.remove('active'));
+      document.getElementById(`tab-${tabType}`).classList.add('active');
+    });
+  });
+
+  // UNA VEZ options
+  document.querySelectorAll('#tab-once .fuly-donation-option').forEach(option => {
+    option.addEventListener('click', function() {
+      document.querySelectorAll('#tab-once .fuly-donation-option').forEach(o => o.classList.remove('active'));
+      this.classList.add('active');
+
+      const kids = parseInt(this.dataset.value);
+      const price = kids * PRICE_PER_CHILD;
+      document.getElementById('total-once').textContent = `$${price.toLocaleString('es-CO')} COP`;
+    });
+  });
+
+  // MENSUAL options
+  document.querySelectorAll('#tab-monthly .fuly-donation-option').forEach(option => {
+    option.addEventListener('click', function() {
+      document.querySelectorAll('#tab-monthly .fuly-donation-option').forEach(o => o.classList.remove('active'));
+      this.classList.add('active');
+
+      const amount = parseInt(this.dataset.value);
+      document.getElementById('total-monthly').textContent = `$${amount.toLocaleString('es-CO')} COP`;
+      document.getElementById('custom-amount').value = '';
+    });
+  });
+
+  // Custom amount input
+  document.getElementById('custom-amount')?.addEventListener('input', function() {
+    const amount = parseInt(this.value) || 0;
+    if (amount > 0) {
+      document.querySelectorAll('#tab-monthly .fuly-donation-option').forEach(o => o.classList.remove('active'));
+      document.getElementById('total-monthly').textContent = `$${amount.toLocaleString('es-CO')} COP`;
+    }
+  });
+
+  // Donate buttons
+  document.getElementById('donate-once-btn').addEventListener('click', function() {
+    const totalText = document.getElementById('total-once').textContent;
+    const kids = document.querySelector('#tab-once .fuly-donation-option.active')?.dataset.value || ONCE_KIDS_1;
+    const message = MSG_ONCE_TEMPLATE
+      .replace('{kids}', kids)
+      .replace('{amount}', totalText);
+    openWhatsAppDonation(message);
+  });
+
+  document.getElementById('donate-monthly-btn').addEventListener('click', function() {
+    const totalText = document.getElementById('total-monthly').textContent;
+    const message = MSG_MONTHLY_TEMPLATE
+      .replace('{amount}', totalText);
+    openWhatsAppDonation(message);
+  });
+
+  function openWhatsAppDonation(message) {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // Set first option as active by default and initialize totals
+  const firstOnceOption = document.querySelector('#tab-once .fuly-donation-option');
+  if (firstOnceOption) {
+    firstOnceOption.classList.add('active');
+    const kids = parseInt(firstOnceOption.dataset.value);
+    const price = kids * PRICE_PER_CHILD;
+    document.getElementById('total-once').textContent = `$${price.toLocaleString('es-CO')} COP`;
+  }
+
+  const firstMonthlyOption = document.querySelector('#tab-monthly .fuly-donation-option');
+  if (firstMonthlyOption) {
+    firstMonthlyOption.classList.add('active');
+    const amount = parseInt(firstMonthlyOption.dataset.value);
+    document.getElementById('total-monthly').textContent = `$${amount.toLocaleString('es-CO')} COP`;
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Fuly Semilla Donation",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título de la sección",
+      "default": "Elige Cómo Ayudar"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "Número de WhatsApp",
+      "placeholder": "573164737772",
+      "default": "573164737772"
+    },
+    {
+      "type": "number",
+      "id": "price_per_child",
+      "label": "Precio por niño (COP)",
+      "default": 60000
+    },
+    {
+      "type": "text",
+      "id": "tab_once_label",
+      "label": "Etiqueta de tab UNA VEZ",
+      "default": "UNA VEZ"
+    },
+    {
+      "type": "text",
+      "id": "tab_monthly_label",
+      "label": "Etiqueta de tab MENSUAL",
+      "default": "MENSUAL"
+    },
+    {
+      "type": "number",
+      "id": "once_kids_1",
+      "label": "Primera opción UNA VEZ (cantidad de niños)",
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "once_kids_2",
+      "label": "Segunda opción UNA VEZ (cantidad de niños)",
+      "default": 5
+    },
+    {
+      "type": "number",
+      "id": "once_kids_3",
+      "label": "Tercera opción UNA VEZ (cantidad de niños)",
+      "default": 10
+    },
+    {
+      "type": "number",
+      "id": "monthly_amount_1",
+      "label": "Primera opción MENSUAL (monto en COP)",
+      "default": 5000
+    },
+    {
+      "type": "number",
+      "id": "monthly_amount_2",
+      "label": "Segunda opción MENSUAL (monto en COP)",
+      "default": 10000
+    },
+    {
+      "type": "number",
+      "id": "monthly_amount_3",
+      "label": "Tercera opción MENSUAL (monto en COP)",
+      "default": 20000
+    },
+    {
+      "type": "text",
+      "id": "donation_note",
+      "label": "Nota de donación (bajo UNA VEZ)",
+      "default": "Tratamiento anual completo"
+    },
+    {
+      "type": "textarea",
+      "id": "whatsapp_msg_once",
+      "label": "Plantilla de mensaje WhatsApp - UNA VEZ",
+      "default": "¡Hola! Quiero unirme a Fuly Give-Back\n\nMi donación:\nUNA VEZ: {kids} Niño(s) - {amount}\n\n¡Quiero saber cómo proceder!"
+    },
+    {
+      "type": "textarea",
+      "id": "whatsapp_msg_monthly",
+      "label": "Plantilla de mensaje WhatsApp - MENSUAL",
+      "default": "¡Hola! Quiero unirme a Fuly Give-Back\n\nMi donación:\nMENSUAL: {amount}\n\n¡Quiero saber cómo proceder!"
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Columnas de opciones"
+    },
+    {
+      "type": "range",
+      "id": "cols_mobile",
+      "label": "Columnas (móvil)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "cols_tablet",
+      "label": "Columnas (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "cols_desktop",
+      "label": "Columnas (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Separación (gap)"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (móvil)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Gap (tablet)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap (desktop)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño de tabs"
+    },
+    {
+      "type": "range",
+      "id": "tab_size_mobile",
+      "label": "Tamaño de tab (móvil)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_size_tablet",
+      "label": "Tamaño de tab (tablet)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_size_desktop",
+      "label": "Tamaño de tab (desktop)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño de botón"
+    },
+    {
+      "type": "range",
+      "id": "button_size_mobile",
+      "label": "Tamaño de botón (móvil)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_size_tablet",
+      "label": "Tamaño de botón (tablet)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "button_size_desktop",
+      "label": "Tamaño de botón (desktop)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "label": "Padding vertical (móvil)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "label": "Padding vertical (tablet)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "label": "Padding vertical (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ]
+}
+{% endschema %}

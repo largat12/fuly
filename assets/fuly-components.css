@@ -1,0 +1,550 @@
+/* =========================================================
+   FULY KIDS · COMPONENTES GLOBALES
+   Sobrescribe .button, inputs, .card, accordions, badges,
+   pagination con estilo cartoon. Usa selectores del tema
+   Taste para propagarse sin tocar Liquid.
+   ========================================================= */
+
+/* =========================================================
+   BOTONES · estilo cartoon
+   El tema Taste aplica .button base; nosotros sobrescribimos.
+   ========================================================= */
+
+.button,
+.shopify-payment-button__button--unbranded,
+.shopify-challenge__button,
+.customer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fuly-space-2);
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  font-size: var(--fuly-font-size-body) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.01em;
+  padding: 14px 28px !important;
+  border-radius: var(--fuly-radius-pill) !important;
+  border: var(--fuly-border) !important;
+  box-shadow: var(--fuly-shadow) !important;
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+  cursor: pointer;
+  transition: transform var(--fuly-transition), box-shadow var(--fuly-transition);
+  min-height: 44px;
+  text-decoration: none !important;
+  min-width: 44px;
+}
+
+.button::before,
+.button::after {
+  display: none !important;
+}
+
+.button:hover,
+.shopify-payment-button__button--unbranded:hover,
+.shopify-challenge__button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--fuly-shadow-hover) !important;
+}
+
+.button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--fuly-cartoon-black) !important;
+}
+
+.button[disabled],
+.button.disabled,
+.button--disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* Botón secundario (outline-style) */
+.button--secondary,
+.button.button--secondary {
+  background-color: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+}
+
+/* Botón tertiary (link con flecha) */
+.button--tertiary,
+.button.button--tertiary {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: underline !important;
+  padding: 8px 0 !important;
+}
+
+.button--tertiary:hover {
+  color: var(--fuly-cereza) !important;
+  transform: none;
+  box-shadow: none !important;
+}
+
+/* Buy buttons primarias (add to cart) — siempre amarillo */
+.product-form__submit,
+.shopify-payment-button__button {
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+}
+
+.product-form__submit[aria-disabled='true'],
+.product-form__submit[disabled] {
+  background-color: var(--fuly-muted) !important;
+  color: var(--fuly-muted-text) !important;
+}
+
+/* Botones de pagination */
+.pagination__item,
+.pagination__item-arrow {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  border-radius: var(--fuly-radius-sm) !important;
+  border: var(--fuly-border-sm) !important;
+  padding: 8px 12px !important;
+  margin: 0 4px;
+  background-color: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.pagination__item.pagination__item--current {
+  background-color: var(--fuly-yellow-spark) !important;
+  box-shadow: var(--fuly-shadow-sm) !important;
+}
+
+/* =========================================================
+   INPUTS / FORMULARIOS · estilo cartoon
+   ========================================================= */
+
+.field__input,
+.select__select,
+.select select,
+input[type='text'],
+input[type='search'],
+input[type='email'],
+input[type='tel'],
+input[type='url'],
+input[type='password'],
+input[type='number'],
+textarea {
+  font-family: var(--fuly-font-body) !important;
+  font-size: 16px !important; /* evita iOS autozoom */
+  border-radius: var(--fuly-radius) !important;
+  border: var(--fuly-border) !important;
+  box-shadow: none !important;
+  background-color: var(--fuly-white-lab);
+  color: var(--fuly-cartoon-black);
+  padding: 14px 18px !important;
+  min-height: 44px;
+}
+
+.field__input:focus,
+.select__select:focus,
+.select select:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--fuly-cereza) !important;
+  outline-offset: 2px !important;
+  border-color: var(--fuly-cartoon-black) !important;
+}
+
+.field::before,
+.field::after,
+.select::before,
+.select::after {
+  display: none !important;
+}
+
+.field__label {
+  font-family: var(--fuly-font-label) !important;
+  font-size: var(--fuly-font-size-label) !important;
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  color: var(--fuly-cartoon-black);
+  background-color: var(--fuly-white-lab);
+  padding: 0 8px;
+}
+
+/* Select wrapper */
+.select {
+  border-radius: var(--fuly-radius) !important;
+  border: none !important;
+}
+
+.select::after {
+  display: none !important;
+}
+
+.select .icon-caret {
+  right: 18px;
+  color: var(--fuly-cartoon-black);
+}
+
+/* Checkbox & radio nativos */
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--fuly-yellow-spark);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* =========================================================
+   CARDS · producto / colección / blog
+   ========================================================= */
+
+.card,
+.card-wrapper {
+  border-radius: var(--fuly-radius);
+  overflow: visible;
+}
+
+.card--standard.card--media > .card__content,
+.card-wrapper .card__content {
+  padding-top: var(--fuly-space-4);
+}
+
+.card-information {
+  row-gap: var(--fuly-space-2);
+}
+
+.card__heading,
+.card__information .card__heading {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  font-size: var(--fuly-font-size-h4);
+}
+
+.card__heading a {
+  color: var(--fuly-cartoon-black);
+  text-decoration: none;
+}
+
+.card__heading a:hover {
+  color: var(--fuly-cereza);
+}
+
+/* Media wrapper de card con borde+sombra cartoon */
+.card-wrapper .card__media .media,
+.card.card--media .card__inner .card__media .media {
+  border-radius: var(--fuly-radius);
+  border: var(--fuly-border);
+  box-shadow: var(--fuly-shadow);
+  transition: transform var(--fuly-transition), box-shadow var(--fuly-transition);
+  overflow: hidden;
+}
+
+.card-wrapper:hover .card__media .media {
+  transform: translate(2px, 2px);
+  box-shadow: var(--fuly-shadow-hover);
+}
+
+/* Imagen de producto con float + blend mode */
+.card-wrapper .card__media .media img {
+  mix-blend-mode: var(--fuly-image-blend);
+  transition: transform 0.3s ease;
+}
+
+.card-wrapper:hover .card__media .media img {
+  transform: scale(1.03);
+}
+
+/* =========================================================
+   PRECIOS
+   ========================================================= */
+
+.price {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+}
+
+.price__regular .price-item--regular,
+.price__sale .price-item--sale {
+  font-size: var(--fuly-font-size-h3);
+  font-weight: 800;
+  color: var(--fuly-cartoon-black);
+}
+
+.price__sale .price-item--regular {
+  color: var(--fuly-muted-text);
+  text-decoration: line-through;
+}
+
+.price__badge-sale,
+.price__badge-sold-out {
+  font-family: var(--fuly-font-label);
+  font-size: var(--fuly-font-size-label-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  border-radius: var(--fuly-radius-sm);
+  border: var(--fuly-border-sm);
+  padding: 4px 10px;
+  background-color: var(--fuly-cereza);
+  color: var(--fuly-white-lab);
+}
+
+/* =========================================================
+   BADGES · sale, sold out
+   ========================================================= */
+
+.badge {
+  font-family: var(--fuly-font-label) !important;
+  font-size: var(--fuly-font-size-label-sm) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  padding: 6px 12px !important;
+  border-radius: var(--fuly-radius-sm) !important;
+  border: var(--fuly-border-sm) !important;
+}
+
+.badge.badge--bottom-left,
+.badge.badge--top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.badge.badge--bottom-right,
+.badge.badge--top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Tag label (equiv. TagLabel de React) */
+.fuly-tag-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--fuly-font-label);
+  font-size: var(--fuly-font-size-label-sm);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  padding: 6px 12px;
+  background-color: var(--fuly-yellow-spark);
+  color: var(--fuly-cartoon-black);
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius-sm);
+  box-shadow: var(--fuly-shadow-sm);
+}
+
+.fuly-mini-tag {
+  display: inline-block;
+  font-family: var(--fuly-font-label);
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  padding: 2px 10px;
+  background-color: var(--fuly-white-lab);
+  color: var(--fuly-cartoon-black);
+  border: var(--fuly-border-sm);
+  border-radius: var(--fuly-radius-full);
+}
+
+/* =========================================================
+   ACCORDIONS · <details> / <summary>
+   ========================================================= */
+
+.product__accordion.accordion,
+.accordion {
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius);
+  box-shadow: var(--fuly-shadow);
+  margin-bottom: var(--fuly-space-4);
+  background-color: var(--fuly-white-lab);
+  overflow: hidden;
+}
+
+.product__accordion.accordion summary,
+.accordion summary {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  font-size: var(--fuly-font-size-h4) !important;
+  text-transform: uppercase;
+  padding: 18px 20px !important;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: transparent;
+  border-top: none;
+  border-bottom: none;
+}
+
+.product__accordion.accordion summary::-webkit-details-marker,
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.product__accordion.accordion summary .icon,
+.product__accordion.accordion summary .icon-caret,
+.accordion summary .icon-caret {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.product__accordion.accordion[open] summary .icon-caret,
+.accordion[open] summary .icon-caret {
+  transform: rotate(90deg);
+}
+
+.product__accordion.accordion[open] summary,
+.accordion[open] summary {
+  border-bottom: var(--fuly-border);
+}
+
+.product__accordion.accordion .accordion__content,
+.accordion .accordion__content {
+  padding: 18px 20px !important;
+  font-family: var(--fuly-font-body);
+  font-size: var(--fuly-font-size-body);
+  line-height: var(--fuly-line-height-body);
+  color: var(--fuly-cartoon-black);
+  background-color: transparent;
+}
+
+/* =========================================================
+   QUANTITY INPUT · +/- cartoon
+   ========================================================= */
+
+.quantity {
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius-pill);
+  box-shadow: var(--fuly-shadow-sm);
+  overflow: hidden;
+  width: auto;
+  display: inline-flex;
+  background-color: var(--fuly-white-lab);
+  min-height: 48px;
+}
+
+.quantity input[type='number'],
+.quantity__input {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  font-size: var(--fuly-font-size-body) !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 8px 0 !important;
+  width: 56px;
+  text-align: center;
+  background-color: transparent;
+  color: var(--fuly-cartoon-black);
+}
+
+.quantity__button {
+  border: none !important;
+  background: transparent !important;
+  color: var(--fuly-cartoon-black) !important;
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: background-color var(--fuly-transition);
+}
+
+.quantity__button:hover {
+  background-color: var(--fuly-muted) !important;
+}
+
+/* =========================================================
+   TABS · variant pills + tab groups
+   ========================================================= */
+
+.variant-input-wrapper,
+.product-form__input input[type='radio'] + label,
+fieldset.js.product-form__input input[type='radio'] + label {
+  border-radius: var(--fuly-radius) !important;
+  border: var(--fuly-border) !important;
+  padding: 10px 18px !important;
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  background-color: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+  cursor: pointer;
+  transition: var(--fuly-transition);
+  margin: 0 8px 8px 0;
+}
+
+.product-form__input input[type='radio']:checked + label,
+fieldset.js.product-form__input input[type='radio']:checked + label {
+  background-color: var(--fuly-yellow-spark) !important;
+  box-shadow: var(--fuly-shadow-sm) !important;
+}
+
+.product-form__input input[type='radio']:focus-visible + label {
+  outline: var(--fuly-focus-ring);
+  outline-offset: var(--fuly-focus-offset);
+}
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.breadcrumb {
+  font-family: var(--fuly-font-label);
+  font-size: var(--fuly-font-size-label);
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  padding: var(--fuly-space-4) 0;
+}
+
+.breadcrumb a {
+  color: var(--fuly-muted-text);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--fuly-cereza);
+}
+
+.breadcrumb__separator {
+  margin: 0 var(--fuly-space-2);
+  color: var(--fuly-muted-text);
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+  border-radius: var(--fuly-radius);
+  overflow: hidden;
+  border: var(--fuly-border);
+}
+
+table th,
+table td {
+  padding: 12px 16px;
+  border-bottom: var(--fuly-border-sm);
+}
+
+table th {
+  font-family: var(--fuly-font-label);
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+  background-color: var(--fuly-muted);
+}
+
+/* =========================================================
+   Utility · Hide scrollbars en sliders
+   ========================================================= */
+
+.fuly-no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fuly-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

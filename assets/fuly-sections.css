@@ -1,0 +1,1024 @@
+/* =========================================================
+   FULY KIDS · SECCIONES GLOBALES
+   Header, Footer, Announcement Bar, Cart, WhatsApp FAB.
+   ========================================================= */
+
+/* =========================================================
+   ANNOUNCEMENT BAR · amarilla rotativa
+   ========================================================= */
+
+.utility-bar,
+.announcement-bar-section .utility-bar {
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+  border-bottom: var(--fuly-border) !important;
+  padding: 10px 16px;
+  min-height: 44px;
+  position: relative;
+  z-index: var(--fuly-z-announcement);
+}
+
+.utility-bar .announcement-bar__message,
+.announcement-bar-section .announcement-bar__message {
+  font-family: var(--fuly-font-label) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--fuly-cartoon-black) !important;
+}
+
+@media screen and (min-width: 750px) {
+  .utility-bar .announcement-bar__message {
+    font-size: 13px !important;
+  }
+}
+
+.announcement-bar__link {
+  color: var(--fuly-cartoon-black) !important;
+  text-decoration: none;
+}
+
+.announcement-bar-section .slider-button {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--fuly-cartoon-black) !important;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.announcement-bar-section .slider-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.announcement-bar-section .slider-button:hover {
+  background-color: transparent !important;
+  color: var(--fuly-cereza) !important;
+  transform: none;
+}
+
+/* =========================================================
+   HEADER · navegación cartoon
+   ========================================================= */
+
+.section-header,
+.shopify-section-header {
+  z-index: var(--fuly-z-header);
+}
+
+.header,
+.shopify-section-header .header {
+  padding: 12px 16px;
+  border-bottom: var(--fuly-border);
+  background-color: var(--fuly-white-lab);
+}
+
+@media screen and (min-width: 990px) {
+  .header {
+    padding: 16px 64px;
+  }
+}
+
+.header__heading-logo,
+.header__heading-link {
+  display: inline-flex;
+}
+
+.header__heading-logo {
+  max-width: 120px;
+  height: auto;
+}
+
+@media screen and (min-width: 750px) {
+  .header__heading-logo {
+    max-width: 160px;
+  }
+}
+
+/* Nav menú principal */
+.header__menu-item,
+.list-menu__item {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--fuly-cartoon-black) !important;
+  transition: color var(--fuly-transition);
+  padding: 8px 12px !important;
+}
+
+.header__menu-item:hover,
+.list-menu__item:hover {
+  color: var(--fuly-cereza) !important;
+  background-color: transparent !important;
+}
+
+.header__menu-item span:not(.svg-wrapper) {
+  padding-bottom: 0;
+  text-decoration: none;
+}
+
+/* Header icons: search, cart, account */
+.header__icon {
+  color: var(--fuly-cartoon-black);
+  background: transparent;
+  border-radius: var(--fuly-radius-full);
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__icon:hover {
+  background-color: var(--fuly-muted);
+}
+
+.header__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Cart bubble */
+.cart-count-bubble {
+  background-color: var(--fuly-cereza) !important;
+  color: var(--fuly-white-lab) !important;
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  border-radius: var(--fuly-radius-full);
+  border: var(--fuly-border-sm);
+  min-width: 20px;
+  height: 20px;
+  font-size: 11px;
+  right: -4px;
+  top: -4px;
+}
+
+/* Mobile menu drawer */
+.menu-drawer {
+  border-right: var(--fuly-border);
+  padding-top: var(--fuly-space-4);
+}
+
+.menu-drawer__navigation .menu-drawer__menu-item {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  font-size: 18px !important;
+  padding: 16px 24px !important;
+  border-bottom: var(--fuly-border-sm);
+  color: var(--fuly-cartoon-black) !important;
+}
+
+.menu-drawer__navigation .menu-drawer__menu-item:hover {
+  color: var(--fuly-cereza) !important;
+  background-color: var(--fuly-muted) !important;
+}
+
+.header__icon--menu {
+  color: var(--fuly-cartoon-black);
+}
+
+/* Search form overlay */
+.header__search-input,
+.predictive-search__input {
+  font-family: var(--fuly-font-body);
+  border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius) !important;
+}
+
+/* =========================================================
+   HEADER · matching pixel-a-pixel con Lovable Header.tsx
+   Spec exacto:
+   - nav: px-4 md:px-8 lg:px-16 py-3 (12px vertical)
+   - cartoon-border border-x-0 border-t-0 (borde solo abajo, 3px)
+   - bg-white-lab (#FFFFFF)
+   - logo h-8 mobile, h-10 desktop, max-w-[120px]
+   - logo absolutamente centrado en mobile, mr-auto en desktop
+   - menu items: font-label uppercase tracking-widest text-cartoon-black
+     font-size: 13px, letter-spacing: 0.05em
+   - gap-8 (32px) entre items en desktop
+   - "+" button: w-8 h-8 (32px) rounded-full cartoon-border, font-heading
+   - search/cart: 44x44 hover:bg-muted rounded-full, icon size 20
+   - cart badge: -top-1 -right-1, bg-cereza, w-5 h-5
+   ========================================================= */
+
+/* Fondo blanco del header (gana al color_scheme) */
+.section-header,
+.shopify-section-header,
+.shopify-section-header-group-header-group .header-wrapper,
+.header-wrapper {
+  background-color: var(--fuly-white-lab) !important;
+  background-image: none !important;
+}
+
+.header {
+  background-color: var(--fuly-white-lab) !important;
+  background-image: none !important;
+  /* Padding como nav de Lovable: px-4 md:px-8 lg:px-16 py-3 */
+  padding: 12px 16px !important;
+  /* cartoon-border border-x-0 border-t-0 → border-bottom 3px solid black */
+  border-bottom: var(--fuly-border) !important;
+}
+
+@media screen and (min-width: 750px) {
+  .header {
+    padding: 12px 32px !important;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .header {
+    padding: 12px 64px !important;
+  }
+}
+
+/* Quitar el border-bottom adicional del wrapper (lo aplicamos en .header) */
+.header-wrapper--border-bottom {
+  border-bottom: none !important;
+}
+
+/* Ocultar account icon (login) — Lovable solo tiene search + cart */
+.header__icon--account,
+.header .header__icon--account {
+  display: none !important;
+}
+
+/* === LOGO === */
+.header__heading-logo {
+  height: 32px !important;        /* h-8 mobile */
+  width: auto !important;
+  max-width: 120px !important;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 750px) {
+  .header__heading-logo {
+    height: 40px !important;       /* md:h-10 desktop */
+  }
+}
+
+/* En desktop, push logo a la izquierda y menú a la derecha
+   Lovable: logo tiene mr-auto, después viene el menú con gap-8 */
+@media screen and (min-width: 990px) {
+  .header--middle-left .header__heading,
+  .header--middle-left .header__heading-link {
+    margin-right: auto;
+  }
+}
+
+/* === MENÚ PRINCIPAL === */
+.header__inline-menu {
+  display: flex;
+  align-items: center;
+}
+
+.header__inline-menu .list-menu--inline {
+  align-items: center;
+  gap: 32px !important;             /* gap-8 = 32px */
+}
+
+@media screen and (max-width: 989px) {
+  .header__inline-menu .list-menu--inline {
+    gap: 16px !important;
+  }
+}
+
+.header__menu-item,
+.header__inline-menu .list-menu--inline .list-menu__item--link {
+  font-family: var(--fuly-font-label) !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: var(--fuly-cartoon-black) !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  transition: color var(--fuly-transition) !important;
+}
+
+.header__menu-item:hover,
+.header__inline-menu .list-menu--inline .list-menu__item--link:hover {
+  color: var(--fuly-cereza) !important;
+  background-color: transparent !important;
+}
+
+.header__menu-item span:not(.svg-wrapper) {
+  text-decoration: none !important;
+}
+
+/* === BOTÓN "+" CIRCULAR === */
+/* Targeting: último <li> del inline menu cuando contiene un <header-menu> con <details><summary>.
+   En Lovable: w-8 h-8 (32px) rounded-full cartoon-border (3px black border) */
+.header__inline-menu .list-menu--inline > li:last-child > header-menu > details > summary {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius-full) !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  background-color: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+  cursor: pointer;
+  transition: var(--fuly-transition);
+}
+
+.header__inline-menu .list-menu--inline > li:last-child > header-menu > details > summary:hover {
+  color: var(--fuly-cereza) !important;
+  background-color: var(--fuly-white-lab) !important;
+}
+
+/* El span dentro del summary "+" — quitar padding, hacer que el "+" se vea bien centrado */
+.header__inline-menu .list-menu--inline > li:last-child > header-menu > details > summary > span {
+  padding: 0 !important;
+  margin-top: -2px;  /* alineación óptica del símbolo "+" */
+}
+
+/* Ocultar el caret (▼) del "+" */
+.header__inline-menu .list-menu--inline > li:last-child > header-menu > details > summary .icon-caret,
+.header__inline-menu .list-menu--inline > li:last-child > header-menu > details > summary svg {
+  display: none !important;
+}
+
+/* Submenu del "+" — dropdown cartoon con borde negro */
+.header__inline-menu .list-menu--inline > li:last-child > header-menu .header__submenu {
+  border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius) !important;
+  background-color: var(--fuly-white-lab) !important;
+  padding: 8px !important;
+  margin-top: 8px;
+  box-shadow: var(--fuly-shadow-sm);
+  min-width: 180px;
+}
+
+.header__inline-menu .list-menu--inline > li:last-child > header-menu .header__submenu .list-menu__item--link {
+  padding: 8px 12px !important;
+  border-radius: var(--fuly-radius-sm);
+}
+
+.header__inline-menu .list-menu--inline > li:last-child > header-menu .header__submenu .list-menu__item--link:hover {
+  background-color: var(--fuly-muted) !important;
+  color: var(--fuly-cereza) !important;
+}
+
+/* === ÍCONOS SEARCH + CART === */
+.header__icons {
+  gap: 8px !important;
+}
+
+.header__icon--search,
+.header__icon--cart,
+.header__icons .header__icon {
+  border: none !important;
+  background-color: transparent !important;
+  border-radius: var(--fuly-radius-full) !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  width: 44px;
+  height: 44px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fuly-cartoon-black) !important;
+  transition: var(--fuly-transition);
+}
+
+.header__icon--search:hover,
+.header__icon--cart:hover,
+.header__icons .header__icon:hover {
+  background-color: var(--fuly-muted) !important;
+}
+
+.header__icon svg,
+.header__icon--search svg,
+.header__icon--cart svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: var(--fuly-cartoon-black) !important;
+}
+
+/* === CART BADGE === */
+.cart-count-bubble {
+  background-color: var(--fuly-cereza) !important;
+  color: var(--fuly-white-lab) !important;
+  font-family: var(--fuly-font-label) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  border: 2px solid var(--fuly-cartoon-black) !important;
+  border-radius: var(--fuly-radius-full) !important;
+  min-width: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute !important;
+  top: 4px !important;
+  right: 4px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === ANNOUNCEMENT BAR (slider amarillo arriba) === */
+/* Esconder TODAS las flechas (Lovable no las tiene) */
+.announcement-bar-section .slider-button,
+.announcement-bar-section .slider-buttons,
+.announcement-bar-section button[name="previous"],
+.announcement-bar-section button[name="next"],
+.announcement-bar .slider-button {
+  display: none !important;
+}
+
+/* Bg amarillo + borde negro abajo */
+.utility-bar,
+.announcement-bar-section .utility-bar {
+  background-color: var(--fuly-yellow-spark) !important;
+  border-bottom: var(--fuly-border) !important;
+  padding: 10px 16px !important;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centrar el contenido del slide aunque tenga margin de los botones */
+.announcement-bar-section .slider {
+  margin: 0 !important;
+}
+
+/* Mensaje del announcement: font-label uppercase 12-13px */
+.utility-bar .announcement-bar__message,
+.announcement-bar-section .announcement-bar__message {
+  font-family: var(--fuly-font-label) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: var(--fuly-cartoon-black) !important;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  .utility-bar .announcement-bar__message {
+    font-size: 13px !important;
+  }
+}
+
+/* =========================================================
+   FOOTER · negro con 4–5 columnas
+   ========================================================= */
+
+.footer {
+  background-color: var(--fuly-cartoon-black) !important;
+  color: var(--fuly-white-lab) !important;
+  padding: 48px 16px !important;
+  border-top: var(--fuly-border);
+}
+
+@media screen and (min-width: 990px) {
+  .footer {
+    padding: 80px 64px !important;
+  }
+}
+
+.footer-block__heading,
+.footer__heading {
+  font-family: var(--fuly-font-label) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fuly-yellow-spark) !important;
+  margin-bottom: var(--fuly-space-4) !important;
+}
+
+/* Logo del footer (brand_information) — fondo negro pide logo blanco.
+   Como subimos el SVG en negro, invertimos para que se vea blanco. */
+.footer-block__brand-info .footer-block__image-wrapper img {
+  filter: invert(1) brightness(1.1);
+  max-width: 100px;
+}
+
+.footer-block__brand-info .rte {
+  font-family: var(--fuly-font-body);
+  font-size: 14px;
+  color: var(--fuly-white-lab);
+  opacity: 0.85;
+  margin-top: var(--fuly-space-3);
+}
+
+/* Wrapper del footer — asegurar fondo negro aún cuando el color_scheme
+   inyecta un wrapper con su propio bg. */
+.shopify-section-group-footer-group,
+.shopify-section-group-footer-group .footer-wrapper,
+.shopify-section-group-footer-group .footer {
+  background-color: var(--fuly-cartoon-black) !important;
+  background-image: none !important;
+  color: var(--fuly-white-lab) !important;
+}
+
+/* Grid de columnas — alineación arriba */
+.footer__content-top .footer-block-wrapper,
+.footer__blocks-wrapper {
+  align-items: flex-start;
+}
+
+/* La columna brand más ancha que las demás */
+@media screen and (min-width: 990px) {
+  .footer__content-top {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.footer-block__details-content,
+.footer__list-social {
+  font-family: var(--fuly-font-body);
+  color: var(--fuly-white-lab);
+}
+
+.footer a {
+  color: var(--fuly-white-lab) !important;
+  text-decoration: none;
+  transition: color var(--fuly-transition);
+}
+
+.footer a:hover {
+  color: var(--fuly-yellow-spark) !important;
+}
+
+.footer .link-list li {
+  margin-bottom: var(--fuly-space-2);
+  list-style: none;
+}
+
+/* Social icons */
+.list-social__item {
+  display: inline-flex;
+}
+
+.list-social__link {
+  color: var(--fuly-white-lab) !important;
+  background-color: transparent;
+  padding: 8px;
+  border-radius: var(--fuly-radius-full);
+  transition: var(--fuly-transition);
+}
+
+.list-social__link:hover {
+  color: var(--fuly-yellow-spark) !important;
+  transform: translateY(-2px);
+}
+
+.footer__copyright,
+.copyright__content {
+  font-family: var(--fuly-font-label);
+  font-size: var(--fuly-font-size-label);
+  letter-spacing: var(--fuly-letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--fuly-white-lab);
+  opacity: 0.7;
+  padding-top: var(--fuly-space-8);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Marca del footer (logo + tagline) */
+.footer-block--newsletter .footer-block__newsletter,
+.footer-block__brand-info {
+  color: var(--fuly-white-lab);
+}
+
+.footer-block__brand-info img {
+  filter: brightness(0) invert(1);
+}
+
+/* =========================================================
+   CART · notification + drawer + cart page
+   ========================================================= */
+
+.cart-notification,
+.cart-drawer {
+  /*border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius) !important;
+  box-shadow: var(--fuly-shadow) !important;
+  background-color: var(--fuly-white-lab) !important;*/
+}
+
+.cart-notification__heading,
+.drawer__heading {
+  font-family: var(--fuly-font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.cart-notification__links .link,
+.cart-drawer .drawer__footer .button {
+  width: 100%;
+}
+
+/* Cart item rows (cart page) */
+.cart-item {
+  border-bottom: var(--fuly-border-sm);
+  padding: var(--fuly-space-4) 0;
+}
+
+.cart-item__name {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cart-item__details .product-option {
+  font-family: var(--fuly-font-label);
+  font-size: var(--fuly-font-size-label);
+  letter-spacing: var(--fuly-letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--fuly-muted-text);
+}
+
+.cart-item .cart-remove-button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--fuly-cereza) !important;
+  padding: 8px !important;
+}
+
+.cart-item .cart-remove-button:hover {
+  color: var(--fuly-cartoon-black) !important;
+  transform: none;
+  background: var(--fuly-muted) !important;
+  border-radius: var(--fuly-radius-full) !important;
+}
+
+/* Cart totals */
+.totals,
+.cart__footer .totals {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: var(--fuly-font-size-h3);
+  text-transform: uppercase;
+  padding: var(--fuly-space-4) 0;
+  border-top: var(--fuly-border);
+  margin-top: var(--fuly-space-4);
+}
+
+.totals__total-value {
+  color: var(--fuly-cereza);
+}
+
+.cart__ctas .button,
+.drawer__footer .button {
+  background-color: var(--fuly-yellow-spark) !important;
+  width: 100%;
+}
+
+.cart-drawer .cart__ctas {
+  display: grid;
+  gap: var(--fuly-space-3);
+}
+
+.cart-drawer .cart__ctas .cart__view-cart-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+  border: var(--fuly-border) !important;
+}
+
+.cart-drawer .cart__ctas .cart__checkout-button {
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+  border: var(--fuly-border) !important;
+}
+
+/* Quantity control parity with PDP (cart page + cart drawer) */
+.cart-items .quantity.cart-quantity,
+.cart-drawer .quantity.cart-quantity {
+  border: 3px solid var(--fuly-cartoon-black) !important;
+  border-radius: 9999px !important;
+  box-shadow: none !important;
+  background-color: var(--fuly-white-lab) !important;
+  min-height: 0 !important;
+  width: fit-content !important;
+  overflow: hidden !important;
+}
+
+.cart-items .quantity.cart-quantity::before,
+.cart-items .quantity.cart-quantity::after,
+.cart-drawer .quantity.cart-quantity::before,
+.cart-drawer .quantity.cart-quantity::after {
+  display: none !important;
+}
+
+.cart-items .quantity.cart-quantity .quantity__input,
+.cart-drawer .quantity.cart-quantity .quantity__input {
+  border-left: 3px solid var(--fuly-cartoon-black) !important;
+  border-right: 3px solid var(--fuly-cartoon-black) !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  font-family: var(--fuly-font-label) !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+}
+
+.cart-items .quantity.cart-quantity .quantity__button,
+.cart-drawer .quantity.cart-quantity .quantity__button {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+}
+
+.cart-items .quantity.cart-quantity .quantity__button:first-child,
+.cart-items .quantity.cart-quantity .quantity__button:last-child,
+.cart-drawer .quantity.cart-quantity .quantity__button:first-child,
+.cart-drawer .quantity.cart-quantity .quantity__button:last-child {
+  margin: 0 !important;
+}
+
+.cart-items .quantity.cart-quantity .quantity__button .svg-wrapper,
+.cart-drawer .quantity.cart-quantity .quantity__button .svg-wrapper {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.cart-items .quantity.cart-quantity .quantity__button .svg-wrapper svg,
+.cart-drawer .quantity.cart-quantity .quantity__button .svg-wrapper svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke-width: 2.4 !important;
+}
+
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+   ========================================================= */
+
+.fuly-whatsapp-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: var(--fuly-z-whatsapp-fab);
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fuly-whatsapp);
+  color: var(--fuly-white-lab);
+  border-radius: var(--fuly-radius-full);
+  box-shadow: var(--fuly-shadow-whatsapp);
+  animation: fuly-whatsapp-pulse 5s ease-in-out infinite;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--fuly-transition);
+}
+
+.fuly-whatsapp-fab:hover {
+  transform: scale(1.05);
+  color: var(--fuly-white-lab);
+}
+
+.fuly-whatsapp-fab:focus-visible {
+  outline: var(--fuly-focus-ring);
+  outline-offset: var(--fuly-focus-offset);
+}
+
+.fuly-whatsapp-fab svg,
+.fuly-whatsapp-fab img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Legacy inline WhatsApp button (backward compat) */
+.whatsapp-float {
+  z-index: var(--fuly-z-whatsapp-fab);
+  animation: fuly-whatsapp-pulse 5s ease-in-out infinite;
+}
+
+/* =========================================================
+   NEWSLETTER SECTION · cyan block
+   ========================================================= */
+
+.newsletter {
+  padding: var(--fuly-space-16) var(--fuly-space-4);
+  background-color: var(--fuly-cyan-menta) !important;
+  border-block: var(--fuly-border);
+  text-align: center;
+}
+
+@media screen and (min-width: 990px) {
+  .newsletter {
+    padding: var(--fuly-space-24) var(--fuly-space-16);
+  }
+}
+
+.newsletter-form__field-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   COLLAPSIBLE CONTENT · FAQ
+   ========================================================= */
+
+.collapsible-content {
+  padding: var(--fuly-space-12) var(--fuly-space-4);
+}
+
+@media screen and (min-width: 990px) {
+  .collapsible-content {
+    padding: var(--fuly-space-16) var(--fuly-space-16);
+  }
+}
+
+/* =========================================================
+   FEATURED COLLECTION / PRODUCT-GRID
+   ========================================================= */
+
+.product-grid-container,
+.section--featured-collection {
+  padding-block: var(--fuly-space-12);
+}
+
+.grid.product-grid {
+  gap: var(--fuly-space-6);
+}
+
+/* =========================================================
+   SLIDESHOW / HERO IMAGE-BANNER
+   ========================================================= */
+
+.image-banner,
+.slideshow__slide {
+  border-radius: var(--fuly-radius);
+  overflow: hidden;
+}
+
+.banner__heading,
+.slideshow__text-wrapper .slideshow__heading {
+  font-family: var(--fuly-font-display) !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: var(--fuly-line-height-heading-tight);
+}
+
+.banner__buttons .button {
+  min-height: 48px;
+}
+
+/* =========================================================
+   IMAGE-WITH-TEXT
+   ========================================================= */
+
+.image-with-text__content {
+  padding: var(--fuly-space-8);
+}
+
+.image-with-text__heading {
+  font-family: var(--fuly-font-display) !important;
+}
+
+/* =========================================================
+   RICH TEXT
+   ========================================================= */
+
+.rich-text__blocks .rich-text__heading {
+  font-family: var(--fuly-font-display) !important;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MULTICOLUMN
+   ========================================================= */
+
+.multicolumn-card {
+  background: transparent;
+}
+
+.multicolumn-card__info {
+  padding: var(--fuly-space-4);
+}
+
+.multicolumn-card__info h3 {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   FULY MARQUEE · beneficios del home
+   ========================================================= */
+
+.fuly-marquee {
+  display: flex;
+  overflow: hidden;
+  background-color: var(--fuly-cartoon-black);
+  color: var(--fuly-white-lab);
+  padding: var(--fuly-space-4) 0;
+  border-block: var(--fuly-border);
+}
+
+.fuly-marquee__track {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: var(--fuly-space-12);
+  padding-inline: var(--fuly-space-6);
+  animation: fuly-marquee-scroll 30s linear infinite;
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-marquee);
+  white-space: nowrap;
+}
+
+.fuly-marquee:hover .fuly-marquee__track {
+  animation-play-state: paused;
+}
+
+.fuly-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fuly-space-2);
+}
+
+/* =========================================================
+   FORMS · contact, newsletter, customer
+   ========================================================= */
+
+.contact__form,
+.customer form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--fuly-space-6);
+}
+
+.customer h1 {
+  text-align: center;
+  margin-bottom: var(--fuly-space-6);
+}
+
+.customer__login,
+.customer__register {
+  padding: var(--fuly-space-12) var(--fuly-space-4);
+}
+
+/* =========================================================
+   TEMPLATE-404
+   ========================================================= */
+
+.template-404 {
+  text-align: center;
+  padding: var(--fuly-space-24) var(--fuly-space-4);
+}
+
+.template-404 h1 {
+  font-size: clamp(80px, 15vw, 160px);
+  color: var(--fuly-cereza);
+  margin-bottom: var(--fuly-space-4);
+}
+
+/* =========================================================
+   PREDICTIVE SEARCH · dropdown
+   ========================================================= */
+
+predictive-search .predictive-search {
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius);
+  box-shadow: var(--fuly-shadow);
+  background-color: var(--fuly-white-lab);
+}
+
+.predictive-search__list-item {
+  border-bottom: var(--fuly-border-sm);
+}
+
+.predictive-search__item-heading {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+}

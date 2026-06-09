@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "blogs_landing": {
+      "type": "fuly-blogs-landing",
+      "blocks": {
+        "blog_newsletter": {
+          "type": "blog_card",
+          "settings": {
+            "blog": "newsletter",
+            "title": "Newsletter",
+            "description": "Una herramienta práctica cada semana para el bienestar de tus hijos.",
+            "accent": "#00E5CC",
+            "cta_label": "Leer newsletter →"
+          }
+        },
+        "blog_podcast": {
+          "type": "blog_card",
+          "settings": {
+            "blog": "podcast",
+            "title": "Podcast",
+            "description": "Conversaciones sobre nutrición, crianza y desarrollo infantil.",
+            "accent": "#6B3FA0",
+            "cta_label": "Escuchar podcast →"
+          }
+        },
+        "blog_recetas": {
+          "type": "blog_card",
+          "settings": {
+            "blog": "recetas",
+            "title": "Recetas",
+            "description": "Ideas fáciles y deliciosas para preparar Fuly en casa.",
+            "accent": "#FF7A00",
+            "cta_label": "Ver recetas →"
+          }
+        }
+      },
+      "block_order": ["blog_newsletter", "blog_podcast", "blog_recetas"],
+      "settings": {
+        "tag_label": "BLOG",
+        "heading": "BLOG FULY",
+        "subheading": "Explora nuestras categorías: recetas, podcast y newsletter."
+      }
+    }
+  },
+  "order": ["blogs_landing"]
+}

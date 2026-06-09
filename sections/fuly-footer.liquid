@@ -1,0 +1,522 @@
+{%- comment -%}
+  FULY Footer Section — Matches React design with 5-column grid layout
+  Column 1: Logo + tagline | Columns 2-5: Footer sections (TIENDA, AYUDA, COMUNIDAD, LEGAL)
+{%- endcomment -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-cols: {{ section.settings.cols_mobile | default: 1 }};
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-logo-height: {{ section.settings.logo_height_mobile | default: 40 }}px;
+    --r-link-size: {{ section.settings.link_size_mobile | default: 14 }}px;
+    --r-bg: {{ section.settings.bg_color | default: '#1A1A1A' }};
+    --r-accent: {{ section.settings.accent_color | default: '#FFE135' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_tablet | default: 5 }};
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 64 }}px;
+      --r-logo-height: {{ section.settings.logo_height_tablet | default: 40 }}px;
+      --r-link-size: {{ section.settings.link_size_tablet | default: 14 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_desktop | default: 5 }};
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 64 }}px;
+      --r-logo-height: {{ section.settings.logo_height_desktop | default: 40 }}px;
+      --r-link-size: {{ section.settings.link_size_desktop | default: 14 }}px;
+    }
+  }
+  /* Consumo de variables — id + clase para ganar especificidad sobre el CSS base */
+  #shopify-section-{{ section.id }} .fuly-footer {
+    background: var(--r-bg);
+    padding-top: var(--r-pad-block);
+    padding-bottom: var(--r-pad-block);
+  }
+  #shopify-section-{{ section.id }} .fuly-footer__logo {
+    height: var(--r-logo-height);
+    width: auto;
+  }
+  #shopify-section-{{ section.id }} .fuly-footer__col-title {
+    color: var(--r-accent);
+  }
+  #shopify-section-{{ section.id }} .fuly-footer__link {
+    font-size: var(--r-link-size);
+  }
+  #shopify-section-{{ section.id }} .fuly-footer__link:hover {
+    color: var(--r-accent);
+  }
+  #shopify-section-{{ section.id }} .fuly-footer__social-link:hover {
+    color: var(--r-accent);
+  }
+  /* Columnas configurables — sobrescribe el grid base manteniendo bloques por columna */
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .fuly-footer__top {
+      grid-template-columns: repeat(var(--r-cols), minmax(0, 1fr));
+    }
+  }
+{%- endstyle -%}
+
+<footer class="fuly-footer">
+  <div class="fuly-footer__wrapper">
+    <div class="fuly-footer__top">
+      {%- comment -%} Column 1: Logo + Tagline {%- endcomment -%}
+      <div class="fuly-footer__brand">
+        {%- if section.settings.logo -%}
+          <img
+            src="{{ section.settings.logo | image_url }}"
+            alt="Fuly"
+            class="fuly-footer__logo"
+            width="100"
+            height="40"
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'fuly_logo.svg' | asset_url }}"
+            alt="Fuly"
+            class="fuly-footer__logo"
+            width="100"
+            height="40"
+            loading="lazy"
+          >
+        {%- endif -%}
+        <p class="fuly-footer__tagline">{{ section.settings.tagline }}</p>
+      </div>
+
+      {%- comment -%} Generate unique columns from blocks {%- endcomment -%}
+      {%- assign columns = '' -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'footer_link' -%}
+          {%- unless columns contains block.settings.column -%}
+            {%- assign columns = columns | append: block.settings.column | append: '|' -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- comment -%} Render each footer column {%- endcomment -%}
+      {%- assign column_list = columns | split: '|' -%}
+      {%- for column in column_list -%}
+        {%- if column != '' -%}
+          <div class="fuly-footer__col">
+            <h4 class="fuly-footer__col-title">{{ column }}</h4>
+            <div class="fuly-footer__links">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'footer_link' and block.settings.column == column -%}
+                  <a href="{{ block.settings.link_url }}" class="fuly-footer__link">{{ block.settings.link_text }}</a>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Copyright + Social Icons {%- endcomment -%}
+    <div class="fuly-footer__bottom">
+      <p class="fuly-footer__copyright">{{ section.settings.copyright }}</p>
+      <div class="fuly-footer__social">
+        {%- if section.settings.instagram_url != blank -%}
+          <a href="{{ section.settings.instagram_url }}" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="fuly-footer__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.facebook_url != blank -%}
+          <a href="{{ section.settings.facebook_url }}" aria-label="Facebook" target="_blank" rel="noopener noreferrer" class="fuly-footer__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.youtube_url != blank -%}
+          <a href="{{ section.settings.youtube_url }}" aria-label="YouTube" target="_blank" rel="noopener noreferrer" class="fuly-footer__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.tiktok_url != blank -%}
+          <a href="{{ section.settings.tiktok_url }}" aria-label="TikTok" target="_blank" rel="noopener noreferrer" class="fuly-footer__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.24 8.24 0 004.76 1.51v-3.5a4.85 4.85 0 01-1-.01z"></path>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .fuly-footer {
+    background: #212121;
+    padding: 6rem 1rem 4rem 1rem;
+    color: #fff;
+  }
+
+  .fuly-footer__wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .fuly-footer__top {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-footer__top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+  }
+
+  .fuly-footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-footer__brand {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  .fuly-footer__logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: invert(1);
+  }
+
+  .fuly-footer__tagline {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    color: #ccc;
+    margin: 0;
+    line-height: 1.5;
+    max-width: 200px;
+  }
+
+  .fuly-footer__col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fuly-footer__col-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #FFD700;
+    margin: 0 0 1rem 0;
+  }
+
+  .fuly-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .fuly-footer__link {
+    font-size: 1.4rem;
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.5;
+  }
+
+  .fuly-footer__link:hover {
+    color: #FFD700;
+  }
+
+  .fuly-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .fuly-footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .fuly-footer__copyright {
+    font-size: 1.4rem;
+    color: #999;
+    opacity: 1;
+    margin: 0;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .fuly-footer__copyright {
+      text-align: left;
+      flex: 1;
+    }
+  }
+
+  .fuly-footer__social {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .fuly-footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: #ccc;
+    transition: color 0.2s ease;
+  }
+
+  .fuly-footer__social-link:hover {
+    color: #FFD700;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Fuly Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Eslogan o descripción",
+      "default": "Ciencia deliciosa para más niños."
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Texto de copyright",
+      "default": "© The Functional Nutrition Company S.A.S. 2024. Todos los derechos reservados."
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "URL de Instagram"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "URL de Facebook"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "URL de YouTube"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "URL de TikTok"
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Columnas"
+    },
+    {
+      "type": "range",
+      "id": "cols_mobile",
+      "label": "Columnas (móvil)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "cols_tablet",
+      "label": "Columnas (tablet)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "cols_desktop",
+      "label": "Columnas (desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "label": "Padding vertical (móvil)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "label": "Padding vertical (tablet)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "label": "Padding vertical (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "label": "Altura del logo (móvil)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_height_tablet",
+      "label": "Altura del logo (tablet)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_height_desktop",
+      "label": "Altura del logo (desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño de links"
+    },
+    {
+      "type": "range",
+      "id": "link_size_mobile",
+      "label": "Tamaño de link (móvil)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "link_size_tablet",
+      "label": "Tamaño de link (tablet)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "link_size_desktop",
+      "label": "Tamaño de link (desktop)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de fondo",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Color de acento (títulos y hover)",
+      "default": "#FFE135"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "footer_link",
+      "name": "Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column",
+          "label": "Nombre de columna",
+          "default": "Columna"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Texto del link",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "URL del link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Footer"
+    }
+  ]
+}
+{% endschema %}

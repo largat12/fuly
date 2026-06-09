@@ -1,0 +1,122 @@
+{
+  "name": "Footer",
+  "type": "footer",
+  "sections": {
+    "fuly-footer": {
+      "type": "fuly-footer",
+      "blocks": {
+        "tienda-1": {
+          "type": "footer_link",
+          "settings": {
+            "column": "TIENDA",
+            "link_text": "Todos los productos",
+            "link_url": "/collections/tienda"
+          }
+        },
+        "tienda-2": {
+          "type": "footer_link",
+          "settings": {
+            "column": "TIENDA",
+            "link_text": "Boosters",
+            "link_url": "/collections/tienda?cat=boosters"
+          }
+        },
+        "tienda-3": {
+          "type": "footer_link",
+          "settings": {
+            "column": "TIENDA",
+            "link_text": "Malteadas",
+            "link_url": "/collections/tienda?cat=malteadas"
+          }
+        },
+        "ayuda-1": {
+          "type": "footer_link",
+          "settings": {
+            "column": "AYUDA",
+            "link_text": "Preguntas frecuentes",
+            "link_url": "/pages/preguntas-frecuentes"
+          }
+        },
+        "ayuda-2": {
+          "type": "footer_link",
+          "settings": {
+            "column": "AYUDA",
+            "link_text": "Envíos y devoluciones",
+            "link_url": "/pages/envios-y-devoluciones"
+          }
+        },
+        "ayuda-3": {
+          "type": "footer_link",
+          "settings": {
+            "column": "AYUDA",
+            "link_text": "Contacto",
+            "link_url": "/pages/contacto"
+          }
+        },
+        "comunidad-1": {
+          "type": "footer_link",
+          "settings": {
+            "column": "COMUNIDAD",
+            "link_text": "Nuestra historia",
+            "link_url": "/pages/nosotros"
+          }
+        },
+        "comunidad-2": {
+          "type": "footer_link",
+          "settings": {
+            "column": "COMUNIDAD",
+            "link_text": "Fuly Give-Back",
+            "link_url": "/pages/fuly-semilla"
+          }
+        },
+        "comunidad-3": {
+          "type": "footer_link",
+          "settings": {
+            "column": "COMUNIDAD",
+            "link_text": "Blog",
+            "link_url": "/blog"
+          }
+        },
+        "legal-1": {
+          "type": "footer_link",
+          "settings": {
+            "column": "LEGAL",
+            "link_text": "Términos y condiciones",
+            "link_url": "/pages/terminos-y-condiciones"
+          }
+        },
+        "legal-2": {
+          "type": "footer_link",
+          "settings": {
+            "column": "LEGAL",
+            "link_text": "Política de privacidad",
+            "link_url": "/pages/politica-de-privacidad"
+          }
+        },
+        "legal-3": {
+          "type": "footer_link",
+          "settings": {
+            "column": "LEGAL",
+            "link_text": "Política de cookies",
+            "link_url": "/pages/politica-de-cookies"
+          }
+        }
+      },
+      "block_order": [
+        "tienda-1", "tienda-2", "tienda-3",
+        "ayuda-1", "ayuda-2", "ayuda-3",
+        "comunidad-1", "comunidad-2", "comunidad-3",
+        "legal-1", "legal-2", "legal-3"
+      ],
+      "settings": {
+        "tagline": "Ciencia deliciosa para más niños.",
+        "copyright": "© The Functional Nutrition Company S.A.S. 2024. Todos los derechos reservados.",
+        "instagram_url": "https://instagram.com/fulykids",
+        "facebook_url": "https://facebook.com/fulykids",
+        "youtube_url": "https://youtube.com/@fulykids",
+        "tiktok_url": "https://tiktok.com/@fulykids"
+      }
+    }
+  },
+  "order": ["fuly-footer"]
+}

@@ -1,0 +1,274 @@
+{
+  "sections": {
+    "fuly_home_slideshow": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "heading": "",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": ["slide_1"],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "show_text_content": true
+      }
+    },
+    "fuly_home_hero": {
+      "type": "fuly-home-hero",
+      "settings": {}
+    },
+    "fuly_home_marquee": {
+      "type": "fuly-home-marquee",
+      "settings": {}
+    },
+    "fuly_home_benefits": {
+      "type": "fuly-home-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "label": "FUENTE DE VITAMINAS Y MINERALES"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "label": "FORMULADOS POR CIENTÍFICOS"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "label": "SIN AZÚCAR ADICIONADA"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "label": "SIN INGREDIENTES CONTROVERSIALES"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "label": "LES ENCANTA EL SABOR"
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4", "benefit_5"],
+      "settings": {}
+    },
+    "fuly_home_products": {
+      "type": "fuly-home-products",
+      "settings": {
+        "collection": "favoritos"
+      }
+    },
+    "fuly_home_how_it_works": {
+      "type": "fuly-home-how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "num": "01",
+            "title": "ELIGE TU FULY",
+            "desc": "Boosters, malteadas o drinks para cada momento del día."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "num": "02",
+            "title": "PREPÁRALO EN SEGUNDOS",
+            "desc": "Solo mezcla con agua, leche o tu bebida favorita."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "num": "03",
+            "title": "DISFRUTA LOS RESULTADOS",
+            "desc": "Nutrición funcional que les encanta."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3"],
+      "settings": {}
+    },
+    "fuly_home_science": {
+      "type": "fuly-home-science",
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "GANODERMA",
+            "benefit": "Hongo adaptógeno que fortalece las defensas naturales."
+          }
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "MELENA DE LEÓN",
+            "benefit": "Hongo nootrópico que apoya la concentración y el desarrollo cognitivo."
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "VITAMINA C",
+            "benefit": "Antioxidante esencial para el sistema inmune y la absorción de hierro."
+          }
+        },
+        "ingredient_4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "MAGNESIO",
+            "benefit": "Mineral clave para el sueño, la relajación y el crecimiento óseo."
+          }
+        }
+      },
+      "block_order": ["ingredient_1", "ingredient_2", "ingredient_3", "ingredient_4"],
+      "settings": {}
+    },
+    "fuly_home_why": {
+      "type": "fuly-home-why",
+      "settings": {}
+    },
+    "fuly_home_testimonials": {
+      "type": "fuly-home-testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Carolina M.",
+            "city": "Bogotá",
+            "text": "Mis hijos piden su Booster Día Frutos Rojos todas las mañanas. Desde que lo toman, tienen más energía y comen mucho mejor. ¡Gracias Fuly!",
+            "product_tag": "BOOSTER DÍA"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Andrés P.",
+            "city": "Medellín",
+            "text": "El Booster Noche Uva - Azaí cambió las noches en nuestra casa. Mi hija ahora se duerme tranquila y descansa toda la noche. Un antes y un después.",
+            "product_tag": "BOOSTER NOCHE"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Laura G.",
+            "city": "Cali",
+            "text": "La malteada de chocolate es increíble. Mi hijo no sabe que está tomando algo nutritivo y eso me encanta. Ciencia deliciosa de verdad.",
+            "product_tag": "MALTEADA"
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Felipe R.",
+            "city": "Barranquilla",
+            "text": "Como padre investigador, revisé cada ingrediente. Estoy impresionado con la formulación. Fuly hace las cosas bien.",
+            "product_tag": "BOOSTER DÍA"
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "settings": {
+            "name": "María T.",
+            "city": "Bucaramanga",
+            "text": "El Booster Día Limón Mandarino le ayudó mucho a mi hija con su digestión. Ahora lo pide todos los días después del almuerzo.",
+            "product_tag": "BOOSTER DÍA"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3", "testimonial_4", "testimonial_5"],
+      "settings": {}
+    },
+    "fuly_home_cta": {
+      "type": "fuly-home-cta",
+      "settings": {}
+    },
+    "fuly_home_faq": {
+      "type": "fuly-home-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
+            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Adicionan azúcar a sus productos?",
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Son seguros los ingredientes?",
+            "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo funciona el envío?",
+            "answer": "<p>Realizamos envíos a todo Colombia. Si compras antes de las 3 p.m., tu pedido sale el mismo día. El tiempo de entrega varía entre 1-3 días hábiles.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Qué beneficios tiene la suscripción?",
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.</p>"
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {}
+    },
+    "fuly_home_newsletter": {
+      "type": "fuly-home-newsletter",
+      "settings": {}
+    }
+  },
+  "order": [
+    "fuly_home_slideshow",
+    "fuly_home_hero",
+    "fuly_home_marquee",
+    "fuly_home_benefits",
+    "fuly_home_products",
+    "fuly_home_how_it_works",
+    "fuly_home_science",
+    "fuly_home_why",
+    "fuly_home_testimonials",
+    "fuly_home_cta",
+    "fuly_home_faq",
+    "fuly_home_newsletter"
+  ]
+}

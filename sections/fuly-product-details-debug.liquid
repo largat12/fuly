@@ -1,0 +1,95 @@
+{%- comment -%}
+  DEBUG VERSION - Detalles del Producto
+{%- endcomment -%}
+
+{%- liquid
+  assign product = all_products[section.settings.product_handle]
+  if product == blank
+    assign product = page.product
+  endif
+-%}
+
+{%- if product != blank -%}
+  <section class="fuly-product-details-section" style="background: #f5f5f5; padding: 20px; margin: 20px 0;">
+    <div class="fuly-container-tight">
+      <h2 style="color: red; font-size: 20px;">🔍 DEBUG - Detalles del Producto</h2>
+
+      <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 5px;">
+        <p><strong>Producto:</strong> {{ product.title }}</p>
+        <p><strong>Handle:</strong> {{ product.handle }}</p>
+        <p><strong>ID:</strong> {{ product.id }}</p>
+      </div>
+
+      <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 5px;">
+        <h3>Metafields disponibles:</h3>
+        <p><strong>Namespace "custom":</strong></p>
+        <ul>
+          <li>informacion_nutricional: {{ product.metafields.custom.informacion_nutricional | default: 'VACÍO' }}</li>
+          <li>ingredientes: {{ product.metafields.custom.ingredientes | default: 'VACÍO' }}</li>
+          <li>modo_preparacion: {{ product.metafields.custom.modo_preparacion | default: 'VACÍO' }}</li>
+          <li>beneficios: {{ product.metafields.custom.beneficios | default: 'VACÍO' }}</li>
+          <li>beneficio_funcional: {{ product.metafields.custom.beneficio_funcional | default: 'VACÍO' }}</li>
+          <li>alergenos: {{ product.metafields.custom.alergenos | default: 'VACÍO' }}</li>
+        </ul>
+      </div>
+
+      <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 5px;">
+        <h3>Verificación de condiciones:</h3>
+        {%- if product.metafields.custom.informacion_nutricional != blank -%}
+          <p>✅ informacion_nutricional tiene contenido</p>
+        {%- else -%}
+          <p>❌ informacion_nutricional está vacío</p>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.ingredientes != blank -%}
+          <p>✅ ingredientes tiene contenido</p>
+        {%- else -%}
+          <p>❌ ingredientes está vacío</p>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.modo_preparacion != blank -%}
+          <p>✅ modo_preparacion tiene contenido</p>
+        {%- else -%}
+          <p>❌ modo_preparacion está vacío</p>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.beneficios != blank -%}
+          <p>✅ beneficios tiene contenido</p>
+        {%- else -%}
+          <p>❌ beneficios está vacío</p>
+        {%- endif -%}
+
+        {%- if product.metafields.custom.beneficio_funcional != blank -%}
+          <p>✅ beneficio_funcional tiene contenido</p>
+        {%- else -%}
+          <p>❌ beneficio_funcional está vacío</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- else -%}
+  <section style="background: #fee; padding: 20px; color: red;">
+    <h2>❌ Producto no encontrado en el contexto</h2>
+    <p>page.product: {{ page.product }}</p>
+    <p>section.settings.product_handle: {{ section.settings.product_handle }}</p>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Detalles Producto Debug",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_handle",
+      "label": "Producto (handle/ID)",
+      "info": "Dejar en blanco para usar el producto de la página actual"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Debug — Detalles Producto"
+    }
+  ]
+}
+{% endschema %}

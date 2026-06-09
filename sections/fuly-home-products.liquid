@@ -1,0 +1,369 @@
+{%- comment -%}
+  FULY Home — Featured Products (section 6). Dinámico desde colección Shopify.
+{%- endcomment -%}
+{%- liquid
+  assign tag_label = section.settings.tag_label
+  assign heading = section.settings.heading
+  assign cta_label = section.settings.cta_label | default: 'Ver todos los productos →'
+  assign cta_link = section.settings.cta_link | default: '/collections/tienda'
+
+  comment
+    Badge de reseñas (#3 + PD): número dinámico sumando el metacampo estándar
+    reviews.rating_count de todos los productos. Si está en 0 (la app de reseñas
+    aún no lo poblo o usa otro namespace), cae al número manual de respaldo.
+  endcomment
+  assign reviews_total = 0
+  for review_product in collections.all.products
+    assign reviews_total = reviews_total | plus: review_product.metafields.reviews.rating_count
+  endfor
+  assign reviews_manual = section.settings.reviews_manual_number | default: '3,400'
+  if section.settings.reviews_source == 'manual' or reviews_total == 0
+    assign reviews_number = reviews_manual
+  else
+    assign reviews_number = reviews_total
+  endif
+  assign reviews_text = section.settings.reviews_text | default: 'reseñas verificadas con 5 estrellas ★'
+
+  assign featured_collection = nil
+  if section.settings.collection != blank
+    assign featured_collection = section.settings.collection
+    if featured_collection == blank
+      assign featured_collection = collections[section.settings.collection]
+    endif
+  endif
+  if featured_collection == blank or featured_collection.products.size == 0
+    if section.settings.fallback_collection != blank
+      assign featured_collection = collections[section.settings.fallback_collection]
+    endif
+  endif
+  if featured_collection == blank or featured_collection.products.size == 0
+    assign featured_collection = collections['favoritos']
+  endif
+  if featured_collection == blank or featured_collection.products.size == 0
+    assign featured_collection = collections['tienda']
+  endif
+  if featured_collection == blank or featured_collection.products.size == 0
+    assign featured_collection = collections['all']
+  endif
+
+  assign products_limit = section.settings.products_limit | default: 4
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-grid-cols: {{ section.settings.grid_cols_mobile | default: 1 }};
+    --r-grid-gap: {{ section.settings.grid_gap_mobile | default: 12 }}px;
+    --r-card-img-h: {{ section.settings.card_image_height_mobile | default: 160 }}px;
+    --r-card-title-size: {{ section.settings.card_title_size_mobile | default: 16 }}px;
+    --r-card-price-size: {{ section.settings.card_price_size_mobile | default: 18 }}px;
+    --r-heading-size: {{ section.settings.heading_size_mobile | default: 28 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-grid-cols: {{ section.settings.grid_cols_tablet | default: 2 }};
+      --r-grid-gap: {{ section.settings.grid_gap_tablet | default: 24 }}px;
+      --r-card-img-h: {{ section.settings.card_image_height_tablet | default: 224 }}px;
+      --r-card-title-size: {{ section.settings.card_title_size_tablet | default: 18 }}px;
+      --r-card-price-size: {{ section.settings.card_price_size_tablet | default: 20 }}px;
+      --r-heading-size: {{ section.settings.heading_size_tablet | default: 36 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 96 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-grid-cols: {{ section.settings.grid_cols_desktop | default: 4 }};
+      --r-grid-gap: {{ section.settings.grid_gap_desktop | default: 24 }}px;
+      --r-card-img-h: {{ section.settings.card_image_height_desktop | default: 224 }}px;
+      --r-card-title-size: {{ section.settings.card_title_size_desktop | default: 18 }}px;
+      --r-card-price-size: {{ section.settings.card_price_size_desktop | default: 20 }}px;
+      --r-heading-size: {{ section.settings.heading_size_desktop | default: 44 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-products-grid { grid-template-columns: repeat(var(--r-grid-cols), minmax(0, 1fr)); gap: var(--r-grid-gap); }
+  #shopify-section-{{ section.id }} .fuly-product-card__image-wrap { height: var(--r-card-img-h); }
+  #shopify-section-{{ section.id }} .fuly-product-card__title { font-size: var(--r-card-title-size); }
+  #shopify-section-{{ section.id }} .fuly-product-card__price { font-size: var(--r-card-price-size); }
+  #shopify-section-{{ section.id }} .fuly-section-head h2 { font-size: var(--r-heading-size); }
+  #shopify-section-{{ section.id }} .fuly-section-padding { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+{%- endstyle -%}
+<section
+  class="fuly-section-padding fuly-lab-grid-bg"
+>
+  <div class="fuly-container">
+    <div class="fuly-section-head">
+      {%- if section.settings.show_reviews_badge -%}
+        <span class="fuly-tag-label fuly-tag-label--reviews">{{ reviews_number }}+ {{ reviews_text }}</span>
+      {%- endif -%}
+      {%- if tag_label != blank -%}
+        <span class="fuly-tag-label">{{ tag_label }}</span>
+      {%- endif -%}
+      {%- if heading != blank -%}
+        <h2>{{ heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="fuly-products-grid">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {% render 'fuly-product-card',
+            name: block.settings.name,
+            functional_benefit: block.settings.functional_benefit,
+            category_label: block.settings.category_label,
+            price_formatted: block.settings.price_formatted,
+            format: block.settings.format,
+            image: block.settings.image_filename,
+            color: block.settings.color,
+            category: block.settings.category,
+            href: block.settings.link
+          %}
+        {%- endfor -%}
+      {%- elsif featured_collection and featured_collection.products.size > 0 -%}
+        {%- for product in featured_collection.products limit: products_limit -%}
+          {%- liquid
+            assign p_image_url = ''
+            if product.featured_image
+              assign p_image_url = product.featured_image | image_url: width: 600
+            endif
+            assign p_price_formatted = product.price | money
+            assign p_color = product.metafields.custom.color_marca | default: product.metafields.fuly.color
+            if p_color == blank
+              assign p_title_lower = product.title | downcase
+              assign p_color = '#FF7A00'
+              if p_title_lower contains 'chocolate'
+                assign p_color = '#8B5E3C'
+              elsif p_title_lower contains 'vainilla'
+                assign p_color = '#D4A056'
+              elsif p_title_lower contains 'almendra'
+                assign p_color = '#E8A04C'
+              elsif p_title_lower contains 'uva' or p_title_lower contains 'azaí' or p_title_lower contains 'azai' or p_title_lower contains 'noche' or p_title_lower contains 'sueño' or p_title_lower contains 'sueno' or p_title_lower contains 'dreamy'
+                assign p_color = '#6B3FA0'
+              elsif p_title_lower contains 'limón' or p_title_lower contains 'limon' or p_title_lower contains 'mandarino'
+                assign p_color = '#FFE135'
+              elsif p_title_lower contains 'frutos rojos' or p_title_lower contains 'immuny' or p_title_lower contains 'defensa'
+                assign p_color = '#FF7A00'
+              endif
+            endif
+            assign p_format = product.metafields.custom.formato | default: product.metafields.fuly.format | default: ''
+            comment
+              #4: descripción corta de ingredientes bajo el nombre. Prioridad:
+              1) custom.beneficio_funcional (donde el cliente tiene el dato real)
+              2) fuly.functional_benefit / descriptors.subtitle
+              3) primeras palabras de la descripción del producto
+            endcomment
+            assign p_functional = product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit
+            if p_functional == blank
+              assign p_functional = product.metafields.descriptors.subtitle
+            endif
+            if p_functional == blank and product.description != blank
+              assign p_functional = product.description | strip_html | truncatewords: 8
+            endif
+            assign p_functional = p_functional | default: ''
+            assign p_category_label = product.metafields.fuly.category_label | default: product.type
+            if p_category_label == blank
+              assign p_category_label = featured_collection.title
+            endif
+            assign p_category = product.metafields.fuly.category | default: ''
+          -%}
+          {% render 'fuly-product-card',
+            name: product.title,
+            functional_benefit: p_functional,
+            category_label: p_category_label,
+            price_formatted: p_price_formatted,
+            format: p_format,
+            image_url: p_image_url,
+            color: p_color,
+            category: p_category,
+            href: product.url
+          %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    <div class="fuly-products-cta">
+      <a href="{{ cta_link }}" class="fuly-cartoon-btn fuly-cartoon-btn-secondary">{{ cta_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge de reseñas"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews_badge",
+      "label": "Mostrar badge de reseñas",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "reviews_source",
+      "label": "Fuente del número",
+      "options": [
+        { "value": "dynamic", "label": "Dinámico (suma de reseñas reales)" },
+        { "value": "manual", "label": "Manual (número fijo)" }
+      ],
+      "default": "dynamic",
+      "info": "Dinámico suma reviews.rating_count; si da 0, usa el número manual."
+    },
+    {
+      "type": "text",
+      "id": "reviews_manual_number",
+      "label": "Número manual / respaldo",
+      "default": "3,400"
+    },
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Texto del badge",
+      "default": "reseñas verificadas con 5 estrellas ★"
+    },
+    {
+      "type": "header",
+      "content": "Encabezados (opcionales)"
+    },
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Tag (vacío para ocultar)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading (vacío para ocultar)"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección (para mostrar productos dinámicos)"
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Colección alternativa (fallback)",
+      "info": "Se usa si la colección principal está vacía"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Número de productos a mostrar"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Ver todos los productos →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    { "type": "header", "content": "Responsive — Columnas del grid" },
+    { "type": "range", "id": "grid_cols_mobile", "min": 1, "max": 6, "step": 1, "label": "Móvil", "default": 1 },
+    { "type": "range", "id": "grid_cols_tablet", "min": 1, "max": 6, "step": 1, "label": "Tablet", "default": 2 },
+    { "type": "range", "id": "grid_cols_desktop", "min": 1, "max": 6, "step": 1, "label": "Desktop", "default": 4 },
+    { "type": "header", "content": "Responsive — Espacio del grid" },
+    { "type": "range", "id": "grid_gap_mobile", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Móvil", "default": 12 },
+    { "type": "range", "id": "grid_gap_tablet", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Tablet", "default": 24 },
+    { "type": "range", "id": "grid_gap_desktop", "min": 0, "max": 64, "step": 1, "unit": "px", "label": "Desktop", "default": 24 },
+    { "type": "header", "content": "Responsive — Altura de imagen de tarjeta" },
+    { "type": "range", "id": "card_image_height_mobile", "min": 80, "max": 400, "step": 4, "unit": "px", "label": "Móvil", "default": 160 },
+    { "type": "range", "id": "card_image_height_tablet", "min": 80, "max": 400, "step": 4, "unit": "px", "label": "Tablet", "default": 224 },
+    { "type": "range", "id": "card_image_height_desktop", "min": 80, "max": 400, "step": 4, "unit": "px", "label": "Desktop", "default": 224 },
+    { "type": "header", "content": "Responsive — Tamaño título de tarjeta" },
+    { "type": "range", "id": "card_title_size_mobile", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Móvil", "default": 16 },
+    { "type": "range", "id": "card_title_size_tablet", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Tablet", "default": 18 },
+    { "type": "range", "id": "card_title_size_desktop", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Desktop", "default": 18 },
+    { "type": "header", "content": "Responsive — Tamaño precio de tarjeta" },
+    { "type": "range", "id": "card_price_size_mobile", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Móvil", "default": 18 },
+    { "type": "range", "id": "card_price_size_tablet", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Tablet", "default": 20 },
+    { "type": "range", "id": "card_price_size_desktop", "min": 10, "max": 40, "step": 1, "unit": "px", "label": "Desktop", "default": 20 },
+    { "type": "header", "content": "Responsive — Tamaño del encabezado" },
+    { "type": "range", "id": "heading_size_mobile", "min": 16, "max": 80, "step": 1, "unit": "px", "label": "Móvil", "default": 28 },
+    { "type": "range", "id": "heading_size_tablet", "min": 16, "max": 80, "step": 1, "unit": "px", "label": "Tablet", "default": 36 },
+    { "type": "range", "id": "heading_size_desktop", "min": 16, "max": 100, "step": 1, "unit": "px", "label": "Desktop", "default": 44 },
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Móvil", "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Tablet", "default": 96 },
+    { "type": "range", "id": "padding_block_desktop", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Desktop", "default": 96 }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "functional_benefit",
+          "label": "Functional benefit"
+        },
+        {
+          "type": "text",
+          "id": "category_label",
+          "label": "Category label"
+        },
+        {
+          "type": "text",
+          "id": "price_formatted",
+          "label": "Price (formatted)"
+        },
+        {
+          "type": "text",
+          "id": "format",
+          "label": "Format"
+        },
+        {
+          "type": "text",
+          "id": "image_filename",
+          "label": "Image filename in /assets/",
+          "info": "e.g. booster_frutos_rojos.png"
+        },
+        {
+          "type": "text",
+          "id": "color",
+          "label": "Color hex",
+          "default": "#FFE135"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "boosters", "label": "Boosters" },
+            { "value": "drinks-tarro", "label": "Drinks Tarro" },
+            { "value": "drinks-plegadiza", "label": "Drinks Plegadiza" },
+            { "value": "malteadas", "label": "Malteadas" },
+            { "value": "esparcibles", "label": "Esparcibles" }
+          ],
+          "default": "boosters"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Products"
+    }
+  ]
+}
+{% endschema %}

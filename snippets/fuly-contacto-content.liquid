@@ -1,0 +1,328 @@
+{%- comment -%}
+  FULY Contacto — pixel port of react-lovable/src/pages/Contacto.tsx
+  Form usa el endpoint nativo de Shopify {% form 'contact' %} (envía email
+  al store owner). Mantiene el visual cartoon-card de Lovable.
+{%- endcomment -%}
+
+<section class="fuly-contacto-section fuly-lab-grid-bg">
+  <div class="fuly-contacto-container">
+    <header class="fuly-contacto-header">
+      <span class="fuly-tag-label">CONTACTO</span>
+      <h1 class="fuly-contacto-title">¿Hablamos?</h1>
+      <p class="fuly-contacto-subtitle">Estamos aquí para ayudarte. Escríbenos por el medio que prefieras.</p>
+    </header>
+
+    <div class="fuly-contacto-grid">
+
+      {%- comment -%} Columna izquierda: form Shopify nativo {%- endcomment -%}
+      <div class="fuly-contacto-form-wrap">
+        {%- form 'contact', class: 'fuly-contacto-form', novalidate: 'novalidate' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="fuly-contacto-success">
+              <span class="fuly-contacto-success__emoji" aria-hidden="true">📬</span>
+              <h2 class="fuly-contacto-success__title">¡Mensaje enviado!</h2>
+              <p class="fuly-contacto-success__copy">Te responderemos lo antes posible.</p>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <div class="fuly-contacto-errors" role="alert">
+                <strong>Revisa los datos:</strong>
+                <ul>
+                  {%- for field in form.errors -%}
+                    <li>{{ form.errors.messages[field] }}</li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+            <input
+              type="text"
+              name="contact[Nombre]"
+              placeholder="Nombre completo"
+              required
+              class="fuly-contacto-input"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            >
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="Email"
+              required
+              autocomplete="email"
+              class="fuly-contacto-input"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            >
+            <input
+              type="tel"
+              name="contact[Teléfono]"
+              placeholder="Teléfono (opcional)"
+              autocomplete="tel"
+              class="fuly-contacto-input"
+              value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            >
+            <textarea
+              name="contact[body]"
+              placeholder="Tu mensaje..."
+              required
+              rows="5"
+              class="fuly-contacto-input fuly-contacto-textarea"
+            >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            <button type="submit" class="fuly-contacto-submit">Enviar mensaje</button>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+      {%- comment -%} Columna derecha: 4 cards de contacto {%- endcomment -%}
+      <div class="fuly-contacto-cards">
+
+        <div class="fuly-contacto-card">
+          <div class="fuly-contacto-card__icon" style="background-color: #25D366;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #FAFAFA;">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </div>
+          <div class="fuly-contacto-card__body">
+            <h3 class="fuly-contacto-card__title">WhatsApp</h3>
+            <p class="fuly-contacto-card__copy">Respuesta inmediata de lunes a sábado</p>
+            <a href="https://wa.me/573164737772" target="_blank" rel="noopener" class="fuly-contacto-card__link">+57 316 473 7772</a>
+          </div>
+        </div>
+
+        <div class="fuly-contacto-card">
+          <div class="fuly-contacto-card__icon fuly-contacto-card__icon--bordered" style="background-color: var(--yellow-spark);">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="fuly-contacto-card__body">
+            <h3 class="fuly-contacto-card__title">Email</h3>
+            <p class="fuly-contacto-card__copy">Respuesta en 24 horas hábiles</p>
+            <span class="fuly-contacto-card__link">hola@fulykids.com</span>
+          </div>
+        </div>
+
+        <div class="fuly-contacto-card">
+          <div class="fuly-contacto-card__icon fuly-contacto-card__icon--bordered" style="background-color: #00E5CC;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="fuly-contacto-card__body">
+            <h3 class="fuly-contacto-card__title">Ubicación</h3>
+            <p class="fuly-contacto-card__copy">Bogotá, Colombia 🇨🇴</p>
+          </div>
+        </div>
+
+        <div class="fuly-contacto-card">
+          <div class="fuly-contacto-card__icon fuly-contacto-card__icon--bordered" style="background-color: #FF8CB0;">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="fuly-contacto-card__body">
+            <h3 class="fuly-contacto-card__title">Teléfono</h3>
+            <p class="fuly-contacto-card__copy">Lunes a viernes 8am - 6pm</p>
+            <span class="fuly-contacto-card__link">+57 (1) 234 5678</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fuly-contacto-section {
+    padding: 4.8rem 1.6rem;
+  }
+  @media (min-width: 768px) { .fuly-contacto-section { padding: 9.6rem 3.2rem; } }
+  @media (min-width: 1024px) { .fuly-contacto-section { padding: 9.6rem 6.4rem; } }
+
+  .fuly-contacto-container {
+    max-width: 102.4rem;
+    margin: 0 auto;
+  }
+
+  .fuly-contacto-header {
+    text-align: center;
+    margin-bottom: 3.2rem;
+  }
+  @media (min-width: 768px) { .fuly-contacto-header { margin-bottom: 4.8rem; } }
+
+  .fuly-contacto-title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: hsl(var(--cartoon-black));
+    font-size: clamp(3.6rem, 5vw, 6.4rem);
+    line-height: 0.95;
+    margin: 1.2rem 0 0;
+  }
+  .fuly-contacto-subtitle {
+    font-family: Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-top: 1.6rem;
+  }
+
+  .fuly-contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-contacto-grid { grid-template-columns: 1fr 1fr; gap: 3.2rem; }
+  }
+
+  /* === Form === */
+  .fuly-contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .fuly-contacto-input {
+    width: 100%;
+    padding: 1.4rem 1.6rem;
+    border: 3px solid hsl(var(--cartoon-black));
+    border-radius: 1.2rem;
+    background-color: var(--white-lab);
+    color: hsl(var(--cartoon-black));
+    font-family: Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    outline: none;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease;
+  }
+  .fuly-contacto-input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  .fuly-contacto-input:focus {
+    box-shadow: 0 0 0 3px var(--yellow-spark);
+  }
+  .fuly-contacto-textarea {
+    resize: none;
+    min-height: 12rem;
+  }
+  .fuly-contacto-submit {
+    width: 100%;
+    padding: 1.6rem 2.4rem;
+    border: 3px solid hsl(var(--cartoon-black));
+    border-radius: 1.2rem;
+    background-color: var(--yellow-spark);
+    color: hsl(var(--cartoon-black));
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .fuly-contacto-submit:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+  }
+
+  .fuly-contacto-errors {
+    border: 3px solid #E5006A;
+    border-radius: 1.2rem;
+    background-color: rgba(229, 0, 106, 0.08);
+    padding: 1.4rem 1.6rem;
+    color: #E5006A;
+    font-family: Arial, sans-serif;
+    font-size: 1.4rem;
+  }
+  .fuly-contacto-errors ul { margin: 0.6rem 0 0 1.6rem; padding: 0; }
+
+  /* Success state (in-form) */
+  .fuly-contacto-success {
+    border: 3px solid hsl(var(--cartoon-black));
+    border-radius: 1.6rem;
+    background-color: var(--white-lab);
+    box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+    padding: 4rem 2.4rem;
+    text-align: center;
+  }
+  .fuly-contacto-success__emoji { font-size: 4.8rem; display: block; margin-bottom: 1.6rem; }
+  .fuly-contacto-success__title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: hsl(var(--cartoon-black));
+    font-size: 2.8rem;
+    margin: 0 0 1.2rem;
+  }
+  .fuly-contacto-success__copy {
+    font-family: Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  /* === Contact cards === */
+  .fuly-contacto-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-contacto-cards { gap: 2.4rem; }
+  }
+  .fuly-contacto-card {
+    border: 3px solid hsl(var(--cartoon-black));
+    border-radius: 1.6rem;
+    background-color: var(--white-lab);
+    box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.6rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-contacto-card { padding: 2.4rem; }
+  }
+  .fuly-contacto-card__icon {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: hsl(var(--cartoon-black));
+  }
+  .fuly-contacto-card__icon--bordered {
+    border: 3px solid hsl(var(--cartoon-black));
+  }
+  .fuly-contacto-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+  .fuly-contacto-card__title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: hsl(var(--cartoon-black));
+    font-size: 1.8rem;
+    margin: 0 0 0.4rem;
+  }
+  .fuly-contacto-card__copy {
+    font-family: Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin: 0 0 0.6rem;
+  }
+  .fuly-contacto-card__link {
+    display: inline-block;
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 700;
+    color: #E5006A;
+    text-decoration: none;
+    font-size: 1.6rem;
+  }
+  a.fuly-contacto-card__link:hover { text-decoration: underline; }
+</style>

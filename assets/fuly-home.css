@@ -1,0 +1,1294 @@
+/* === FULY HOME · Footer + Home (11 sections) === */
+/* Tokens used: --cartoon-black (HSL components), --yellow-spark (hex literal),
+   --white-lab (hex literal), --primary (HSL components, == yellow-spark hue/sat/light).
+   See base.css lines 1-125 for token definitions. */
+
+/* === Utility classes recreated from Lovable's index.css === */
+.fuly-cartoon-border {
+  border: 2px solid hsl(var(--cartoon-black));
+}
+
+.fuly-cartoon-shadow {
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+}
+
+@media (max-width: 767px) {
+  .fuly-cartoon-shadow {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-cartoon-shadow-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.fuly-cartoon-shadow-hover:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+}
+
+.fuly-cartoon-card {
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  border-radius: 1.6rem;
+  background-color: var(--white-lab);
+  padding: 2rem;
+}
+
+@media (max-width: 767px) {
+  .fuly-cartoon-card {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-cartoon-btn {
+  border: 3px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 25px;
+  padding: 12px 28px;
+  cursor: pointer;
+  min-height: 48px;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fuly-cartoon-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+}
+
+@media (max-width: 767px) {
+  .fuly-cartoon-btn {
+    width: 100%;
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+  .fuly-cartoon-btn:hover {
+    box-shadow: 1px 1px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-cartoon-btn-primary {
+  background-color: var(--yellow-spark);
+  color: hsl(var(--cartoon-black));
+}
+
+.fuly-cartoon-btn-secondary {
+  background-color: var(--white-lab);
+  color: hsl(var(--cartoon-black));
+}
+
+/* Outlined transparent button used in hero / mission "VER PRODUCTOS / CONOCE NUESTRA HISTORIA" */
+.fuly-btn-outline {
+  border: 3px solid hsl(var(--cartoon-black));
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: 25px;
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  color: hsl(var(--cartoon-black));
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.fuly-btn-outline:hover {
+  background-color: hsl(var(--cartoon-black));
+  color: var(--white-lab);
+}
+
+.fuly-tag-label {
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  display: inline-block;
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  font-size: clamp(10px, 1vw, 13px);
+  background-color: var(--yellow-spark);
+  color: hsl(var(--cartoon-black));
+  border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+  .fuly-tag-label {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+/* Badge de reseñas reubicado (#3): un poco más grande que el tag normal */
+.fuly-tag-label--reviews {
+  font-size: clamp(13px, 1.6vw, 18px);
+  padding: 8px 18px;
+  letter-spacing: 0.04em;
+}
+
+.fuly-lab-label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  font-size: clamp(10px, 1vw, 13px);
+  color: hsl(var(--cartoon-black));
+  opacity: 0.6;
+}
+
+.fuly-section-padding {
+  padding: 4.8rem 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-section-padding {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fuly-section-padding {
+    padding: 9.6rem 6.4rem;
+  }
+}
+
+.fuly-lab-grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.fuly-lab-grid-bg-dark {
+  background-color: #1A1A1A;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* === Marquee animation === */
+.fuly-marquee-track {
+  display: flex;
+  animation: fuly-marquee-scroll 30s linear infinite;
+  white-space: nowrap;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white-lab);
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.fuly-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.fuly-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.fuly-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.4rem;
+  margin: 0 1.2rem;
+}
+
+.fuly-marquee-item .fuly-star {
+  color: var(--yellow-spark);
+}
+
+@keyframes fuly-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === Float animation for product images === */
+.fuly-animate-float {
+  animation: fuly-float 3s ease-in-out infinite;
+}
+
+@keyframes fuly-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* === Typography helpers (use system stack since woff2 doesn't exist) === */
+.fuly-font-heading {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+.fuly-font-subtitle {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.fuly-font-body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.fuly-font-label {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === Layout helpers === */
+.fuly-container {
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+.fuly-container-narrow {
+  max-width: 102.4rem;
+  margin: 0 auto;
+}
+
+.fuly-container-tight {
+  max-width: 76.8rem;
+  margin: 0 auto;
+}
+
+/* === HERO === */
+.fuly-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .fuly-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4.8rem;
+  }
+}
+
+.fuly-hero-image {
+  height: 22.4rem;
+  border-radius: 16px;
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .fuly-hero-image {
+    height: 450px;
+  }
+}
+
+.fuly-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fuly-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .fuly-hero-content {
+    gap: 2.4rem;
+  }
+}
+
+.fuly-hero-title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  font-size: clamp(56px, 7vw, 80px);
+  color: hsl(var(--cartoon-black));
+  margin-top: 1.2rem;
+  margin-bottom: 0;
+}
+
+.fuly-hero-tagline {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  color: #555555;
+  margin: 0;
+}
+
+.fuly-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+@media (min-width: 640px) {
+  .fuly-hero-buttons {
+    flex-direction: row;
+  }
+}
+
+/* === MARQUEE === */
+.fuly-marquee-section {
+  background-color: hsl(var(--cartoon-black));
+  overflow: hidden;
+  padding: 16px 0;
+}
+
+/* === BENEFITS === */
+.fuly-benefits-section {
+  padding: 3.2rem 0;
+  border-top: 2px solid hsl(var(--cartoon-black));
+  border-bottom: 2px solid hsl(var(--cartoon-black));
+  background-color: rgba(255, 225, 53, 0.1);
+}
+
+.fuly-benefits-row-desktop {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .fuly-benefits-row-desktop {
+    display: flex;
+  }
+}
+
+.fuly-benefits-row-mobile {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding: 0.8rem 1.6rem;
+  scrollbar-width: none;
+}
+
+.fuly-benefits-row-mobile::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .fuly-benefits-row-mobile {
+    display: none;
+  }
+}
+
+.fuly-benefits-row-desktop .fuly-tag-label,
+.fuly-benefits-row-mobile .fuly-tag-label {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* === Section headings === */
+.fuly-section-head {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-section-head {
+    margin-bottom: 4.8rem;
+  }
+}
+
+.fuly-section-head h2 {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  font-size: clamp(28px, 4vw, 44px);
+  color: hsl(var(--cartoon-black));
+  margin-top: 1.2rem;
+  margin-bottom: 0;
+}
+
+.fuly-section-head--white h2 {
+  color: var(--white-lab);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(28px, 4vw, 36px);
+}
+
+/* === FEATURED PRODUCTS === */
+.fuly-products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-products-grid {
+    gap: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fuly-products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fuly-products-cta {
+  text-align: center;
+  margin-top: 3.2rem;
+}
+
+/* === Product card (snippet) === */
+.fuly-product-card {
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  border-radius: 1.6rem;
+  background-color: var(--white-lab);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fuly-product-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+}
+
+@media (max-width: 767px) {
+  .fuly-product-card {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-product-card__image-wrap {
+  height: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-product-card__image-wrap {
+    height: 22.4rem;
+  }
+}
+
+.fuly-product-card__grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.fuly-product-card__image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+.fuly-product-card__image--scale-up {
+  transform: scale(1.10);
+}
+
+.fuly-product-card__image--scale-down {
+  transform: scale(0.85);
+}
+
+.fuly-product-card__tag {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 3;
+}
+
+.fuly-product-card__body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .fuly-product-card__body {
+    padding: 1.6rem;
+  }
+}
+
+.fuly-product-card__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: hsl(var(--cartoon-black));
+  margin: 0 0 0.4rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .fuly-product-card__title {
+    font-size: 18px;
+  }
+}
+
+.fuly-product-card__benefit {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11px;
+  color: hsl(var(--cartoon-black));
+  opacity: 0.6;
+  margin: 0 0 0.4rem;
+}
+
+.fuly-product-card__format {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: clamp(10px, 1vw, 13px);
+  color: hsl(var(--cartoon-black));
+  opacity: 0.6;
+  margin: 0 0 0.8rem;
+}
+
+.fuly-product-card__footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 1.2rem;
+}
+
+@media (min-width: 640px) {
+  .fuly-product-card__footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 1rem;
+  }
+
+  /* El botón se pega a la derecha; si no cabe junto al precio,
+     flex-wrap lo baja a la línea de abajo (sin recortarse). */
+  .fuly-product-card__footer .fuly-product-card__btn {
+    margin-left: auto;
+  }
+}
+
+.fuly-product-card__price {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: hsl(var(--cartoon-black));
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .fuly-product-card__price {
+    font-size: 20px;
+  }
+}
+
+.fuly-product-card__btn {
+  background-color: var(--yellow-spark);
+  color: hsl(var(--cartoon-black));
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 25px;
+  padding: 0.8rem 1.2rem;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fuly-product-card__btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+}
+
+.fuly-product-card__btn-text-wide {
+  display: inline;
+}
+
+.fuly-product-card__btn-text-narrow {
+  display: none;
+}
+
+/* === HOW IT WORKS === */
+.fuly-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fuly-step-card {
+  background-color: var(--white-lab);
+  border: 2px solid hsl(var(--cartoon-black));
+  border-radius: 16px;
+  padding: 3.2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fuly-step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 hsl(var(--cartoon-black));
+}
+
+.fuly-step-card__num {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--yellow-spark);
+  font-size: 14px;
+  margin: 0 0 0.8rem;
+  font-weight: 700;
+}
+
+.fuly-step-card__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: hsl(var(--cartoon-black));
+  font-size: 20px;
+  margin: 0 0 1.2rem;
+}
+
+.fuly-step-card__desc {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* === SCIENCE === */
+.fuly-science-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-science-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fuly-science-card {
+  padding: 2.4rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.fuly-science-card__name {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--yellow-spark);
+  font-size: 18px;
+  margin: 0 0 0.8rem;
+}
+
+.fuly-science-card__benefit {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.fuly-science-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.fuly-science-cta .fuly-cartoon-btn {
+  border-color: white;
+}
+
+/* === WHY (Mission) === */
+.fuly-why-bg {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.fuly-why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .fuly-why-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4.8rem;
+  }
+}
+
+.fuly-why-image {
+  border: 2px solid hsl(var(--cartoon-black));
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fuly-why-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fuly-why-image-placeholder {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 0 1.6rem;
+}
+
+.fuly-why-text h2 {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  font-size: clamp(28px, 4vw, 44px);
+  color: hsl(var(--cartoon-black));
+  margin-top: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.fuly-why-text p {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  color: #555;
+  max-width: 560px;
+  margin: 0 0 3.2rem;
+}
+
+/* === TESTIMONIALS === */
+.fuly-testimonials-wrap {
+  position: relative;
+}
+
+.fuly-testimonials-track {
+  display: flex;
+  gap: 1.6rem;
+  overflow-x: auto;
+  padding: 0 0.4rem 1.6rem;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.fuly-testimonials-track::-webkit-scrollbar {
+  display: none;
+}
+
+.fuly-testimonial-card {
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  border-radius: 1.6rem;
+  background-color: var(--white-lab);
+  padding: 2rem;
+  min-width: 260px;
+  max-width: 280px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .fuly-testimonial-card {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-testimonial-stars {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--yellow-spark);
+}
+
+.fuly-testimonial-text {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 1.2rem;
+}
+
+.fuly-testimonial-name {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 0;
+}
+
+.fuly-testimonial-city {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: clamp(10px, 1vw, 13px);
+  color: hsl(var(--cartoon-black));
+  opacity: 0.6;
+  margin: 0;
+}
+
+.fuly-testimonial-tag {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  background-color: var(--yellow-spark);
+  color: hsl(var(--cartoon-black));
+  border: 2px solid hsl(var(--cartoon-black));
+  font-size: 10px;
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+
+.fuly-testimonials-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  border: 3px solid hsl(var(--cartoon-black));
+  background-color: var(--white-lab);
+  border-radius: 9999px;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: hsl(var(--cartoon-black));
+}
+
+@media (min-width: 768px) {
+  .fuly-testimonials-arrow {
+    display: block;
+  }
+}
+
+.fuly-testimonials-arrow:hover {
+  transform: translateY(calc(-50% + 2px)) translateX(2px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+}
+
+.fuly-testimonials-arrow--prev {
+  left: -1.6rem;
+}
+
+.fuly-testimonials-arrow--next {
+  right: -1.6rem;
+}
+
+/* === POST-TESTIMONIALS CTA === */
+.fuly-cta-section {
+  text-align: center;
+  background-color: #E5006A;
+  padding: 48px 24px;
+}
+
+.fuly-cta-section h2 {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--white-lab);
+  margin: 0 0 2.4rem;
+  font-size: clamp(24px, 4vw, 28px);
+}
+
+.fuly-cta-section a {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  background-color: var(--white-lab);
+  color: hsl(var(--cartoon-black));
+  border: 2px solid hsl(var(--cartoon-black));
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fuly-cta-section a:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+}
+
+/* === FAQ === */
+.fuly-faq-bg {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.fuly-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.fuly-faq-item {
+  border: 2px solid hsl(var(--cartoon-black));
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  border-radius: 1.6rem;
+  background-color: var(--white-lab);
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .fuly-faq-item {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-faq-item summary {
+  padding: 2rem;
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: hsl(var(--cartoon-black));
+}
+
+.fuly-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.fuly-faq-item summary::after {
+  content: '›';
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-left: 0.8rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.fuly-faq-item[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.fuly-faq-answer {
+  padding: 1.6rem 2rem 2rem;
+  font-family: Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+  border-top: 2px solid hsl(var(--cartoon-black));
+  font-size: 16px;
+}
+
+.fuly-faq-post-cta {
+  text-align: center;
+  margin-top: 4.8rem;
+}
+
+.fuly-faq-post-cta h3 {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: hsl(var(--cartoon-black));
+  font-size: 20px;
+  margin: 0 0 1.6rem;
+}
+
+/* === NEWSLETTER === */
+.fuly-newsletter-section {
+  padding: 4.8rem 1.6rem;
+  background-color: #00E5CC;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .fuly-newsletter-section {
+    padding: 6.4rem 1.6rem;
+  }
+}
+
+.fuly-newsletter-inner {
+  max-width: 57.6rem;
+  margin: 0 auto;
+}
+
+.fuly-newsletter-section h2 {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--white-lab);
+  margin: 0 0 1.6rem;
+  font-size: clamp(32px, 5vw, 40px);
+}
+
+.fuly-newsletter-section p {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0 0 2.4rem;
+}
+
+.fuly-newsletter-badge {
+  display: inline-block;
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  background-color: var(--yellow-spark);
+  color: hsl(var(--cartoon-black));
+  border: 2px solid hsl(var(--cartoon-black));
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.6rem;
+}
+
+.fuly-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .fuly-newsletter-form {
+    flex-direction: row;
+  }
+}
+
+.fuly-newsletter-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  padding: 1.2rem 1.6rem;
+  border-radius: 25px;
+  border: 2px solid hsl(var(--cartoon-black));
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  background-color: var(--white-lab);
+  color: hsl(var(--cartoon-black));
+  outline: none;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .fuly-newsletter-input {
+    min-width: 34rem;
+  }
+}
+
+.fuly-newsletter-input:focus {
+  outline: 2px solid var(--yellow-spark);
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .fuly-newsletter-form .fuly-cartoon-btn {
+    width: auto;
+  }
+}
+
+/* === FOOTER (snippet) === */
+.fuly-footer {
+  background-color: hsl(var(--cartoon-black));
+  color: var(--white-lab);
+}
+
+.fuly-footer__inner {
+  padding: 4.8rem 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-footer__inner {
+    padding: 6.4rem 3.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fuly-footer__inner {
+    padding: 6.4rem 6.4rem;
+  }
+}
+
+.fuly-footer__top {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-footer__top {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3.2rem;
+  }
+}
+
+.fuly-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .fuly-footer__brand {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.fuly-footer__logo {
+  height: 40px;
+  margin-bottom: 1.6rem;
+  max-width: 100px;
+  filter: invert(1) brightness(2);
+}
+
+.fuly-footer__tagline {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.fuly-footer__col h4 {
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+  margin: 0 0 1.6rem;
+  color: var(--yellow-spark);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.fuly-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.fuly-footer__links a {
+  display: block;
+  padding: 0.8rem 0;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .fuly-footer__links a {
+    padding: 0;
+  }
+}
+
+.fuly-footer__links a:hover {
+  color: var(--yellow-spark);
+}
+
+.fuly-footer__bottom {
+  margin-top: 4.8rem;
+  padding-top: 3.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.fuly-footer__copyright {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0.5;
+  margin: 0;
+  text-align: center;
+}
+
+.fuly-footer__social {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.fuly-footer__social a {
+  color: inherit;
+  padding: 0.8rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fuly-footer__social a:hover {
+  color: var(--yellow-spark);
+}
+
+.fuly-footer__social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}

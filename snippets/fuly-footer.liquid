@@ -1,0 +1,88 @@
+{%- comment -%}
+  FULY Footer — pixel port of react-lovable/src/components/Footer.tsx
+  Renders 4 columns + brand + social row. Hardcoded data per brief (no merchant editing).
+{%- endcomment -%}
+<footer class="fuly-footer">
+  <div class="fuly-footer__inner">
+    <div class="fuly-footer__top">
+      <div class="fuly-footer__brand">
+        <img
+          src="{{ 'fuly_logo_footer.svg' | asset_url }}"
+          alt="Fuly"
+          class="fuly-footer__logo"
+          width="100"
+          height="40"
+          loading="lazy"
+        >
+        <p class="fuly-footer__tagline">Ciencia deliciosa para más niños.</p>
+      </div>
+
+      <div class="fuly-footer__col">
+        <h4>Tienda</h4>
+        <div class="fuly-footer__links">
+          <a href="{{ routes.collections_url }}/tienda">Todos los productos</a>
+          <a href="{{ routes.collections_url }}/tienda?cat=boosters">Boosters</a>
+          <a href="{{ routes.collections_url }}/tienda?cat=malteadas">Malteadas</a>
+        </div>
+      </div>
+
+      <div class="fuly-footer__col">
+        <h4>Ayuda</h4>
+        <div class="fuly-footer__links">
+          <a href="/pages/preguntas-frecuentes">Preguntas frecuentes</a>
+          <a href="/pages/envios-y-devoluciones">Envíos y devoluciones</a>
+          <a href="/pages/contacto">Contacto</a>
+        </div>
+      </div>
+
+      <div class="fuly-footer__col">
+        <h4>Descubre Fuly</h4>
+        <div class="fuly-footer__links">
+          <a href="/pages/suscripciones">Suscripciones</a>
+          <a href="/pages/nosotros">Nuestra historia</a>
+          <a href="/pages/fuly-semilla">Fuly Give-Back</a>
+        </div>
+      </div>
+
+      <div class="fuly-footer__col">
+        <h4>Legal</h4>
+        <div class="fuly-footer__links">
+          <a href="/pages/terminos-y-condiciones">Términos y condiciones</a>
+          <a href="/pages/politica-de-privacidad">Política de privacidad</a>
+          <a href="/pages/politica-de-cookies">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="fuly-footer__bottom">
+      <p class="fuly-footer__copyright">
+        &copy; The Functional Nutrition Company S.A.S. {{ 'now' | date: '%Y' }}. Todos los derechos reservados.
+      </p>
+      <div class="fuly-footer__social">
+        <a href="#" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+          </svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.24 8.24 0 004.76 1.51v-3.5a4.85 4.85 0 01-1-.01z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

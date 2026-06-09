@@ -1,0 +1,358 @@
+/* =========================================================
+   FULY KIDS · BASE / RESET + TIPOGRAFÍA
+   Sobrescribe la tipografía base del tema Taste con la
+   identidad cartoon: display thick + heading rounded +
+   body serif + labels monospace UPPERCASE.
+   ========================================================= */
+
+/* -------- Body / foundations -------- */
+html,
+body {
+  font-family: var(--fuly-font-body);
+  font-weight: 400;
+  line-height: var(--fuly-line-height-body);
+  color: var(--fuly-cartoon-black);
+  background-color: var(--fuly-white-lab);
+}
+
+/* Permite que los fondos cartoon respiren sin overflow X en scroll móviles */
+body {
+  overflow-x: clip;
+}
+
+/* =========================================================
+   Lab-grid-bg en los wrappers Shopify de secciones específicas.
+   Targeting por sufijo del id auto-generado (template-XXX__SECTION_ID).
+   Equivalente visual al body lab-grid-bg de Lovable, pero localizado.
+   ========================================================= */
+[id*="__fuly_home_hero"],
+[id*="__fuly_home_benefits"],
+[id*="__fuly_product_details"],
+[id*="__fuly-product-details"],
+[id*="__fuly_collection"],
+[id*="__related-products"],
+[id$="__1746798531837b132f"] {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Dawn envuelve el contenido en .color-scheme-N.gradient con background opaco
+   que tapa el lab-grid del wrapper exterior. Lo hacemos transparente
+   para los wrappers Fuly específicos. */
+[id*="__fuly_product_details"] > .gradient,
+[id*="__fuly-product-details"] > .gradient,
+[id*="__related-products"] > .gradient,
+[id$="__1746798531837b132f"] > .gradient {
+  background: transparent !important;
+}
+
+/* -------- Cart layout tweaks -------- */
+div#main-cart-items {
+  padding-bottom: 0;
+}
+
+div#main-cart-footer {
+  margin-bottom: 50px;
+}
+
+/* -------- Headings -------- */
+h1,
+.h1 {
+  font-weight: 800;
+  font-size: var(--fuly-font-size-h1);
+  line-height: var(--fuly-line-height-heading-tight);
+  letter-spacing: var(--fuly-letter-spacing-heading);
+  text-transform: uppercase;
+  color: var(--fuly-cartoon-black);
+  margin: 0 0 var(--fuly-space-4);
+}
+
+h1.h1--hero,
+.h1--hero {
+  font-size: var(--fuly-font-size-h1-hero);
+}
+
+h2,
+.h2 {
+  font-weight: 800;
+  font-size: var(--fuly-font-size-h2);
+  line-height: var(--fuly-line-height-heading-tight);
+  letter-spacing: var(--fuly-letter-spacing-heading);
+  text-transform: uppercase;
+  color: var(--fuly-cartoon-black);
+  margin: 0 0 var(--fuly-space-4);
+}
+
+h2.h2--xl,
+.h2--xl {
+  font-size: var(--fuly-font-size-h2-xl);
+}
+
+h2.h2--sm,
+.h2--sm {
+  font-size: var(--fuly-font-size-h2-sm);
+}
+
+h3,
+.h3 {
+  font-family: var(--fuly-font-heading) ;
+  font-weight: 800;
+  font-size: var(--fuly-font-size-h3);
+  line-height: var(--fuly-line-height-heading);
+  text-transform: uppercase;
+  color: var(--fuly-cartoon-black);
+  margin: 0 0 var(--fuly-space-3);
+}
+
+h4,
+.h4 {
+  font-family: var(--fuly-font-heading) ;
+  font-weight: 800;
+  font-size: var(--fuly-font-size-h4);
+  line-height: var(--fuly-line-height-heading);
+  text-transform: uppercase;
+  color: var(--fuly-cartoon-black);
+  margin: 0 0 var(--fuly-space-2);
+}
+
+h5,
+.h5 {
+  font-family: var(--fuly-font-heading) ;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: var(--fuly-line-height-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--fuly-cartoon-black);
+  margin: 0 0 var(--fuly-space-2);
+}
+
+/* -------- Párrafos y listas -------- */
+p,
+li,
+td,
+th,
+blockquote {
+  font-family: var(--fuly-font-body);
+  font-size: var(--fuly-font-size-body);
+  line-height: var(--fuly-line-height-body);
+  color: var(--fuly-cartoon-black);
+}
+
+@media screen and (min-width: 750px) {
+  p,
+  li,
+  td,
+  th,
+  blockquote {
+    font-size: var(--fuly-font-size-body);
+  }
+}
+
+/* -------- Labels / monospace UPPERCASE (Martian Mono en react) -------- */
+.fuly-label,
+small.fuly-label,
+.caption,
+.caption-large,
+.caption-with-letter-spacing {
+  font-family: var(--fuly-font-label) !important;
+  font-size: var(--fuly-font-size-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label);
+}
+
+/* -------- Links -------- */
+a {
+  color: inherit;
+  transition: var(--fuly-transition-color);
+}
+
+a:hover {
+  color: var(--fuly-cereza);
+}
+
+/* -------- Focus visible · cartoon-safe -------- */
+:focus-visible {
+  outline: var(--fuly-focus-ring);
+  outline-offset: var(--fuly-focus-offset);
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus,
+details:focus,
+summary:focus {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: var(--fuly-focus-ring);
+  outline-offset: var(--fuly-focus-offset);
+}
+
+/* Tema Taste usa box-shadow para focus; neutralizamos y reemplazamos */
+.focused,
+.focus-inset:focus-visible {
+  outline: var(--fuly-focus-ring) !important;
+  outline-offset: var(--fuly-focus-offset) !important;
+  box-shadow: none !important;
+}
+
+/* -------- Skip-to-content (mejorar el existente del tema) -------- */
+.skip-to-content-link {
+  font-family: var(--fuly-font-heading) !important;
+  text-transform: uppercase;
+  border: var(--fuly-border) !important;
+  box-shadow: var(--fuly-shadow) !important;
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+  border-radius: var(--fuly-radius) !important;
+}
+
+/* -------- Grid pattern utilities -------- */
+.fuly-grid-bg {
+  background-image: var(--fuly-grid-pattern-light);
+  background-size: var(--fuly-grid-pattern-size) var(--fuly-grid-pattern-size);
+}
+
+.fuly-lab-grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.fuly-grid-bg--sm {
+  background-image: var(--fuly-grid-pattern-light);
+  background-size: var(--fuly-grid-pattern-size-sm) var(--fuly-grid-pattern-size-sm);
+}
+
+.fuly-grid-bg--dark {
+  background-image: var(--fuly-grid-pattern-dark);
+  background-size: var(--fuly-grid-pattern-size) var(--fuly-grid-pattern-size);
+}
+
+/* -------- Section padding -------- */
+.fuly-section {
+  padding-inline: var(--fuly-section-padding-inline-mobile);
+  padding-block: var(--fuly-section-padding-block-mobile);
+}
+
+@media screen and (min-width: 750px) {
+  .fuly-section {
+    padding-inline: var(--fuly-section-padding-inline-tablet);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .fuly-section {
+    padding-inline: var(--fuly-section-padding-inline-desktop);
+    padding-block: var(--fuly-section-padding-block-desktop);
+  }
+}
+
+/* -------- Reveal on scroll (compatible con scroll-trigger del tema) -------- */
+.fuly-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fuly-reveal.fuly-reveal--visible,
+.scroll-trigger.fuly-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------- Animaciones clave -------- */
+@keyframes fuly-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fuly-slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fuly-slide-out-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fuly-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes fuly-whatsapp-pulse {
+  0%,
+  80%,
+  100% {
+    transform: scale(1);
+    box-shadow: var(--fuly-shadow-whatsapp);
+  }
+  90% {
+    transform: scale(1.1);
+    box-shadow: var(--fuly-shadow-whatsapp-peak);
+  }
+}
+
+@keyframes fuly-marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.fuly-animate-float {
+  animation: fuly-float 3s ease-in-out infinite;
+}
+
+.fuly-animate-fade-in-up {
+  animation: fuly-fade-in-up 0.5s ease-out;
+}
+
+/* -------- Print styles -------- */
+@media print {
+  .fuly-whatsapp-fab,
+  .announcement-bar-section,
+  .shopify-section--header {
+    display: none !important;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+}

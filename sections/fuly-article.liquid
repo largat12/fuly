@@ -1,0 +1,175 @@
+{%- comment -%}
+  FULY · Artículo individual (estilo cartoon coherente con el PDP).
+  Layout: hero ancho (imagen + tag + título + meta) → cuerpo centrado →
+  volver a la categoría + compartir → artículos relacionados → CTA.
+  Estilos en assets/fuly-article.css.
+{%- endcomment -%}
+{{ 'fuly-article.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign accent = article.metafields.fuly.color | default: '#FFE135'
+  assign show_date = section.settings.show_date
+  assign show_author = section.settings.show_author
+  assign read_time = article.metafields.fuly.read_time
+  assign share_url = canonical_url
+  assign share_title = article.title | url_encode
+-%}
+
+<section class="fuly-article fuly-lab-grid-bg" style="--fuly-article-accent: {{ accent }};">
+  <div class="fuly-article__container">
+
+    {%- comment -%} Migas / volver arriba {%- endcomment -%}
+    <nav class="fuly-article__breadcrumb" aria-label="Migas de pan">
+      <a href="{{ blog.url }}" class="fuly-article__breadcrumb-link">{{ blog.title }}</a>
+      <span aria-hidden="true">/</span>
+      <span class="fuly-article__breadcrumb-current">{{ article.title }}</span>
+    </nav>
+
+    {%- comment -%} HERO ancho: imagen + tag + título + meta {%- endcomment -%}
+    <header
+      class="fuly-article__hero{% unless article.image %} fuly-article__hero--noimg{% endunless %}"
+      style="background: linear-gradient(135deg, {{ accent }}22, {{ accent }}55);"
+    >
+      {%- if article.image -%}
+        <img
+          src="{{ article.image | image_url: width: 1600 }}"
+          srcset="{{ article.image | image_url: width: 800 }} 800w, {{ article.image | image_url: width: 1200 }} 1200w, {{ article.image | image_url: width: 1600 }} 1600w"
+          sizes="(min-width: 1024px) 1024px, 100vw"
+          alt="{{ article.title | escape }}"
+          class="fuly-article__hero-img"
+          width="1600"
+          height="900"
+          loading="eager"
+          fetchpriority="high"
+        >
+        <span class="fuly-article__hero-scrim" aria-hidden="true"></span>
+      {%- endif -%}
+
+      <div class="fuly-article__hero-content">
+        {%- if article.tags.first != blank -%}
+          <span class="fuly-tag-label fuly-article__tag">{{ article.tags.first }}</span>
+        {%- endif -%}
+        <h1 class="fuly-article__title">{{ article.title }}</h1>
+        <div class="fuly-article__meta">
+          {%- if show_date -%}
+            <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d de %B de %Y' }}</time>
+          {%- endif -%}
+          {%- if show_author and article.author != blank -%}
+            <span class="fuly-article__meta-sep" aria-hidden="true">·</span>
+            <span>{{ article.author }}</span>
+          {%- endif -%}
+          {%- if read_time != blank -%}
+            <span class="fuly-article__meta-sep" aria-hidden="true">·</span>
+            <span>{{ read_time }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    </header>
+
+    {%- comment -%} CUERPO {%- endcomment -%}
+    <div class="fuly-article__content rte">
+      {{ article.content }}
+    </div>
+
+    {%- comment -%} Volver + compartir {%- endcomment -%}
+    <div class="fuly-article__actions">
+      {%- if section.settings.show_back -%}
+        <a href="{{ blog.url }}" class="fuly-article__back">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          {{ section.settings.back_label | default: 'Volver a' }} {{ blog.title }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.show_share -%}
+        <div class="fuly-article__share">
+          <span class="fuly-article__share-label">{{ section.settings.share_label | default: 'Compartir' }}</span>
+          <a class="fuly-article__share-btn" href="https://wa.me/?text={{ share_title }}%20{{ share_url }}" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.74-.86-2-.96-.27-.1-.46-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.74-.71 1.98-1.4.24-.69.24-1.28.17-1.4-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.43 9.43 0 01-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47 2.53 0 4.9.99 6.69 2.78a9.4 9.4 0 012.77 6.7c0 5.22-4.25 9.47-9.48 9.47zm8.06-17.53A11.36 11.36 0 0012.04.62C5.76.62.66 5.72.66 12c0 2.01.53 3.98 1.53 5.71L.56 23.4l5.83-1.53a11.34 11.34 0 005.65 1.44h.01c6.27 0 11.38-5.1 11.38-11.38 0-3.04-1.18-5.9-3.33-8.05z"/></svg>
+          </a>
+          <a class="fuly-article__share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+          </a>
+          <a class="fuly-article__share-btn" href="https://twitter.com/intent/tweet?text={{ share_title }}&url={{ share_url }}" target="_blank" rel="noopener noreferrer" aria-label="Compartir en X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.5h3.68l-8.04 9.19L24 22.5h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.5h7.6l5.24 6.93L18.9 1.5zm-1.29 18.8h2.04L6.48 3.6H4.3l13.31 16.7z"/></svg>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} RELACIONADOS · misma categoría, excluye el actual {%- endcomment -%}
+    {%- if section.settings.show_related -%}
+      {%- liquid
+        assign related_count = section.settings.related_count | default: 3
+        assign shown = 0
+      -%}
+      {%- assign has_related = false -%}
+      {%- for a in blog.articles -%}
+        {%- if a.id != article.id -%}{%- assign has_related = true -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if has_related -%}
+        <section class="fuly-article__related">
+          <h2 class="fuly-article__related-title">{{ section.settings.related_title | default: 'Artículos relacionados' }}</h2>
+          <div class="fuly-article__related-grid">
+            {%- for a in blog.articles -%}
+              {%- if a.id != article.id -%}
+                {%- render 'fuly-blog-card', article: a, btn_label: section.settings.related_btn_label -%}
+                {%- assign shown = shown | plus: 1 -%}
+                {%- if shown >= related_count -%}{%- break -%}{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </section>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} CTA final {%- endcomment -%}
+    {%- if section.settings.show_cta -%}
+      <aside class="fuly-article__cta fuly-cartoon-card" style="background: {{ section.settings.cta_bg | default: '#FFE135' }};">
+        {%- if section.settings.cta_heading != blank -%}
+          <h2 class="fuly-article__cta-heading">{{ section.settings.cta_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.cta_text != blank -%}
+          <p class="fuly-article__cta-text">{{ section.settings.cta_text }}</p>
+        {%- endif -%}
+        {%- if section.settings.cta_btn_label != blank -%}
+          <a href="{{ section.settings.cta_btn_url | default: '/collections/tienda' }}" class="fuly-cartoon-btn fuly-cartoon-btn-secondary">{{ section.settings.cta_btn_label }}</a>
+        {%- endif -%}
+      </aside>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly — Artículo",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Cabecera" },
+    { "type": "checkbox", "id": "show_date", "label": "Mostrar fecha", "default": true },
+    { "type": "checkbox", "id": "show_author", "label": "Mostrar autor", "default": false },
+
+    { "type": "header", "content": "Volver / Compartir" },
+    { "type": "checkbox", "id": "show_back", "label": "Mostrar 'Volver a la categoría'", "default": true },
+    { "type": "text", "id": "back_label", "label": "Texto de volver", "default": "Volver a" },
+    { "type": "checkbox", "id": "show_share", "label": "Mostrar botones de compartir", "default": true },
+    { "type": "text", "id": "share_label", "label": "Etiqueta de compartir", "default": "Compartir" },
+
+    { "type": "header", "content": "Artículos relacionados" },
+    { "type": "checkbox", "id": "show_related", "label": "Mostrar relacionados (misma categoría)", "default": true },
+    { "type": "text", "id": "related_title", "label": "Título", "default": "Artículos relacionados" },
+    { "type": "range", "id": "related_count", "label": "Cantidad", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "text", "id": "related_btn_label", "label": "Texto del botón de la card", "default": "Leer artículo" },
+
+    { "type": "header", "content": "CTA final" },
+    { "type": "checkbox", "id": "show_cta", "label": "Mostrar CTA", "default": true },
+    { "type": "text", "id": "cta_heading", "label": "Título CTA", "default": "Ciencia deliciosa para más niños" },
+    { "type": "textarea", "id": "cta_text", "label": "Texto CTA", "default": "Descubre los alimentos funcionales de Fuly para fortalecer a tus hijos." },
+    { "type": "text", "id": "cta_btn_label", "label": "Texto del botón", "default": "Ver productos" },
+    { "type": "url", "id": "cta_btn_url", "label": "Enlace del botón" },
+    { "type": "color", "id": "cta_bg", "label": "Fondo CTA", "default": "#FFE135" }
+  ]
+}
+{% endschema %}

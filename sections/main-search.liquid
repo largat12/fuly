@@ -1,0 +1,368 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-search.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+  {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+<script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .template-search__header { margin-bottom: 3rem; }
+  .template-search__search { margin: 0 auto 3.5rem; max-width: 74.1rem; }
+  .template-search__search .search { margin-top: 3rem; }
+  .template-search--empty { padding-bottom: 18rem; }
+  @media screen and (min-width: 750px) {
+    .template-search__header { margin-bottom: 5rem; }
+  }
+  .search__button .icon { height: 1.8rem; }
+
+  /* El área de búsqueda (input + dropdown predictivo) por encima de la grilla de resultados */
+  .template-search__search { position: relative; z-index: 20; }
+  /* Panel predictivo: fondo blanco sólido (no se mezcla con el fondo/tarjetas) + estilo cartoon */
+  .predictive-search,
+  .predictive-search--search-template {
+    background: #FFFFFF !important;
+    z-index: 20 !important;
+    border: 2px solid #1A1A1A !important;
+    box-shadow: 4px 4px 0 rgba(26, 26, 26, 0.15) !important;
+  }
+  /* Cada resultado con fondo blanco e hover gris suave (como el carrito) */
+  .predictive-search__list-item { background: #FFFFFF; }
+  .predictive-search__item:hover { background: rgba(26, 26, 26, 0.04); }
+
+  /* La etiqueta flotante "Búsqueda" se montaba sobre el texto escrito (input grande
+     + padding uniforme de Fuly). La ocultamos visualmente (accesible para lectores)
+     y mostramos el placeholder; el texto escrito queda centrado y limpio. */
+  .template-search__search .field__label {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0; border: 0;
+    clip: rect(0 0 0 0); clip-path: inset(50%);
+    overflow: hidden; white-space: nowrap;
+  }
+  .template-search__search .field__input {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
+  .template-search__search .field__input::placeholder {
+    opacity: 1 !important;
+    color: rgba(26, 26, 26, 0.5) !important;
+  }
+</style>
+
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign terms = search.terms | escape
+  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- assign products_only = search.results | where: 'object_type', 'product' -%}
+{%- assign products_count = products_only.size -%}
+
+{% paginate search.results by 24 %}
+  <div class="template-search fuly-lab-grid-bg{% unless search.performed and products_count > 0 %} template-search--empty{% endunless %} section-{{ section.id }}-padding">
+    <div class="template-search__header page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      <h1 class="h2 center">
+        {%- if search.performed -%}
+          {{ 'templates.search.title' | t }}
+        {%- else -%}
+          {{ 'general.search.search' | t }}
+        {%- endif -%}
+      </h1>
+
+      <div class="template-search__search">
+        {%- if settings.predictive_search_enabled -%}
+          <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
+        {%- endif -%}
+        <main-search>
+          <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+            <div class="field">
+              <input
+                class="search__input field__input"
+                id="Search-In-Template"
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                placeholder="{{ 'general.search.search' | t }}"
+                {%- if settings.predictive_search_enabled -%}
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-owns="predictive-search-results"
+                  aria-controls="predictive-search-results"
+                  aria-haspopup="listbox"
+                  aria-autocomplete="list"
+                  autocorrect="off"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                {%- endif -%}
+              >
+              <label class="field__label" for="Search-In-Template">{{ 'general.search.search' | t }}</label>
+
+              <input name="options[prefix]" type="hidden" value="last">
+              <input name="type" type="hidden" value="product">
+
+              {%- if settings.predictive_search_enabled -%}
+                <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
+                  {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+                </div>
+                <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+              {%- endif -%}
+
+              <button
+                type="reset"
+                class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                aria-label="{{ 'general.search.reset' | t }}"
+              >
+                <span class="svg-wrapper">{{ 'icon-reset.svg' | inline_asset_content }}</span>
+              </button>
+              <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                <span class="svg-wrapper">{{ 'icon-search.svg' | inline_asset_content }}</span>
+              </button>
+            </div>
+          </form>
+        </main-search>
+        {%- if settings.predictive_search_enabled -%}
+          </predictive-search>
+        {%- endif -%}
+      </div>
+
+      {%- if search.performed -%}
+        {%- unless section.settings.enable_filtering or section.settings.enable_sorting -%}
+          {%- if products_count > 0 -%}
+            <p role="status">
+              {{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: products_count }}
+            </p>
+          {%- endif -%}
+        {%- endunless -%}
+        {%- if products_count == 0 and search.filters == empty -%}
+          <p role="status">{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- if search.performed -%}
+      {%- if section.settings.enable_sorting
+        and section.settings.filter_type == 'vertical'
+        and search.filters != empty
+      -%}
+        <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
+          <form class="facets-vertical-form" id="FacetSortForm">
+            <div class="facet-filters sorting caption">
+              <div class="facet-filters__field">
+                <h2 class="facet-filters__label caption-large text-body">
+                  <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
+                </h2>
+                <div class="select">
+                  {%- assign sort_by = search.sort_by | default: search.default_sort_by -%}
+                  <select
+                    name="sort_by"
+                    class="facet-filters__sort select__select caption-large"
+                    id="SortBy"
+                    aria-describedby="a11y-refresh-page-message"
+                  >
+                    {%- for option in search.sort_options -%}
+                      <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected="selected"{% endif %}>
+                        {{ option.name | escape }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-count-vertical light" role="status">
+              <h2 class="product-count__text text-body">
+                <span id="ProductCountDesktop">
+                  {{ 'templates.search.results_with_count' | t: count: products_count }}
+                </span>
+              </h2>
+              {%- render 'loading-spinner' -%}
+            </div>
+          </form>
+        </facet-filters-form>
+      {%- endif -%}
+
+      <div {% if section.settings.filter_type == 'vertical' %}class="facets-vertical page-width"{% endif %}>
+        {%- if search.performed and products_count > 0 and section.settings.enable_sorting -%}
+          <div class="fuly-collection-toolbar page-width" style="margin-bottom:2.4rem;">
+            <span class="fuly-collection-count" style="font-family:'Martian Mono','Courier New',monospace;font-size:13px;color:#1A1A1A;">
+              {{ 'templates.search.results_with_count' | t: count: products_count }}
+            </span>
+            <form method="get" class="fuly-collection-sort">
+              <input type="hidden" name="q" value="{{ search.terms | escape }}">
+              <input type="hidden" name="type" value="product">
+              <input type="hidden" name="options[prefix]" value="last">
+              <label class="fuly-collection-sr-only" for="fuly-search-sort">Ordenar por</label>
+              {%- assign search_sort_by = search.sort_by | default: search.default_sort_by -%}
+              <select id="fuly-search-sort" name="sort_by" onchange="this.form.submit()">
+                {%- for option in search.sort_options -%}
+                  <option value="{{ option.value | escape }}"{% if option.value == search_sort_by %} selected{% endif %}>{{ option.name | escape }}</option>
+                {%- endfor -%}
+              </select>
+            </form>
+          </div>
+        {%- endif -%}
+
+        <div class="product-grid-container" id="ProductGridContainer">
+          {%- if products_count == 0 and search.filters != empty -%}
+            <div
+              class="template-search__results collection collection--empty{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+              id="product-grid"
+              data-id="{{ section.id }}"
+            >
+              <div class="loading-overlay gradient"></div>
+              <div class="title-wrapper center">
+                <h2 class="title title--primary">
+                  {{ 'sections.collection_template.empty' | t -}}
+                  <br>
+                  {{
+                    'sections.collection_template.use_fewer_filters_html'
+                    | t: link: search_url, class: 'underlined-link link'
+                  }}
+                </h2>
+              </div>
+            </div>
+          {%- else -%}
+            <div
+              class="template-search__results collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+              id="product-grid"
+              data-id="{{ section.id }}"
+            >
+              <div class="loading-overlay gradient"></div>
+              <div class="fuly-collection-grid fuly-search-grid">
+                {%- for item in search.results -%}
+                  {%- if item.object_type == 'product' -%}
+                    {%- liquid
+                      assign product = item
+                      assign p_image_url = ''
+                      if product.featured_image
+                        assign p_image_url = product.featured_image | image_url: width: 600
+                      endif
+                      assign p_price_formatted = product.price | money
+                      assign p_color = product.metafields.custom.color_marca | default: product.metafields.fuly.color
+                      if p_color == blank
+                        assign p_title_lower = product.title | downcase
+                        assign p_color = '#FF7A00'
+                        if p_title_lower contains 'chocolate'
+                          assign p_color = '#8B5E3C'
+                        elsif p_title_lower contains 'vainilla'
+                          assign p_color = '#D4A056'
+                        elsif p_title_lower contains 'almendra'
+                          assign p_color = '#E8A04C'
+                        elsif p_title_lower contains 'uva' or p_title_lower contains 'azaí' or p_title_lower contains 'azai' or p_title_lower contains 'noche' or p_title_lower contains 'sueño' or p_title_lower contains 'sueno' or p_title_lower contains 'dreamy'
+                          assign p_color = '#6B3FA0'
+                        elsif p_title_lower contains 'limón' or p_title_lower contains 'limon' or p_title_lower contains 'mandarino'
+                          assign p_color = '#FFE135'
+                        elsif p_title_lower contains 'frutos rojos' or p_title_lower contains 'immuny' or p_title_lower contains 'defensa'
+                          assign p_color = '#FF7A00'
+                        endif
+                      endif
+                      assign p_format = product.metafields.custom.formato | default: product.metafields.fuly.format | default: ''
+                      assign p_functional = product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit | default: ''
+                      assign p_category_label = product.metafields.fuly.category_label | default: product.type
+                      assign p_category = product.metafields.fuly.category | default: ''
+                    -%}
+                    {% render 'fuly-product-card',
+                      name: product.title,
+                      functional_benefit: p_functional,
+                      category_label: p_category_label,
+                      price_formatted: p_price_formatted,
+                      format: p_format,
+                      image_url: p_image_url,
+                      color: p_color,
+                      category: p_category,
+                      href: product.url
+                    %}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+
+              {%- if paginate.pages > 1 -%}
+                {% render 'pagination', paginate: paginate %}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+{% endpaginate %}
+
+{% if section.settings.image_shape == 'arch' %}
+  {{ 'mask-arch.svg' | inline_asset_content }}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-search.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "range", "id": "columns_desktop", "min": 1, "max": 6, "step": 1, "default": 4, "label": "t:sections.main-search.settings.columns_desktop.label" },
+    { "type": "select", "id": "columns_mobile", "default": "2", "label": "t:sections.main-search.settings.columns_mobile.label", "options": [
+        { "value": "1", "label": "t:sections.main-search.settings.columns_mobile.options__1.label" },
+        { "value": "2", "label": "t:sections.main-search.settings.columns_mobile.options__2.label" }
+      ]
+    },
+    { "type": "header", "content": "t:sections.main-search.settings.header__1.content" },
+    { "type": "select", "id": "image_ratio", "options": [
+        { "value": "adapt", "label": "t:sections.main-search.settings.image_ratio.options__1.label" },
+        { "value": "portrait", "label": "t:sections.main-search.settings.image_ratio.options__2.label" },
+        { "value": "square", "label": "t:sections.main-search.settings.image_ratio.options__3.label" }
+      ], "default": "adapt", "label": "t:sections.main-search.settings.image_ratio.label"
+    },
+    { "type": "select", "id": "image_shape", "options": [
+        { "value": "default", "label": "t:sections.all.image_shape.options__1.label" },
+        { "value": "arch", "label": "t:sections.all.image_shape.options__2.label" },
+        { "value": "blob", "label": "t:sections.all.image_shape.options__3.label" },
+        { "value": "chevronleft", "label": "t:sections.all.image_shape.options__4.label" },
+        { "value": "chevronright", "label": "t:sections.all.image_shape.options__5.label" },
+        { "value": "diamond", "label": "t:sections.all.image_shape.options__6.label" },
+        { "value": "parallelogram", "label": "t:sections.all.image_shape.options__7.label" },
+        { "value": "round", "label": "t:sections.all.image_shape.options__8.label" }
+      ], "default": "default", "label": "t:sections.all.image_shape.label"
+    },
+    { "type": "checkbox", "id": "show_secondary_image", "default": false, "label": "t:sections.main-search.settings.show_secondary_image.label" },
+    { "type": "checkbox", "id": "show_vendor", "default": false, "label": "t:sections.main-search.settings.show_vendor.label" },
+    { "type": "checkbox", "id": "show_rating", "default": false, "label": "t:sections.main-search.settings.show_rating.label", "info": "t:sections.main-search.settings.show_rating.info" },
+    { "type": "header", "content": "t:sections.main-collection-product-grid.settings.header__1.content" },
+    { "type": "checkbox", "id": "enable_filtering", "default": true, "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label", "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info" },
+    { "type": "select", "id": "filter_type", "options": [
+        { "value": "horizontal", "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label" },
+        { "value": "vertical", "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label" },
+        { "value": "drawer", "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label" }
+      ], "default": "horizontal", "label": "t:sections.main-collection-product-grid.settings.filter_type.label"
+    },
+    { "type": "checkbox", "id": "enable_sorting", "default": true, "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label" },
+    { "type": "header", "content": "t:sections.main-search.settings.header__2.content" },
+    { "type": "checkbox", "id": "article_show_date", "default": true, "label": "t:sections.main-search.settings.article_show_date.label" },
+    { "type": "checkbox", "id": "article_show_author", "default": false, "label": "t:sections.main-search.settings.article_show_author.label" },
+    { "type": "header", "content": "t:sections.all.padding.section_padding_heading" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 36 }
+  ]
+}
+{% endschema %}

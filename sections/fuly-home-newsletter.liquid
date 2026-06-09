@@ -1,0 +1,103 @@
+{%- comment -%}
+  FULY Home — Newsletter (section 12). Cyan (#00E5CC) full-bleed band, uses Shopify customer form.
+{%- endcomment -%}
+{%- liquid
+  assign heading = section.settings.heading | default: 'ÚNETE AL FULYVERSO'
+  assign body = section.settings.body | default: 'Descuentos exclusivos, lanzamientos y herramientas para una crianza más fácil.'
+  assign badge = section.settings.badge | default: 'RECIBE 10% EN TU PRIMERA COMPRA'
+  assign placeholder = section.settings.placeholder | default: 'tu@email.com'
+  assign submit_label = section.settings.submit_label | default: 'Suscribirme'
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-heading-size: {{ section.settings.heading_size_mobile | default: 32 }}px;
+    --r-body-size: {{ section.settings.body_size_mobile | default: 16 }}px;
+    --r-input-size: {{ section.settings.input_size_mobile | default: 14 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-bg: {{ section.settings.bg_color | default: '#00E5CC' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-heading-size: {{ section.settings.heading_size_tablet | default: 36 }}px;
+      --r-body-size: {{ section.settings.body_size_tablet | default: 16 }}px;
+      --r-input-size: {{ section.settings.input_size_tablet | default: 14 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 64 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-heading-size: {{ section.settings.heading_size_desktop | default: 40 }}px;
+      --r-body-size: {{ section.settings.body_size_desktop | default: 16 }}px;
+      --r-input-size: {{ section.settings.input_size_desktop | default: 14 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 64 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-newsletter-section {
+    background-color: var(--r-bg);
+    padding-top: var(--r-pad-block);
+    padding-bottom: var(--r-pad-block);
+  }
+  #shopify-section-{{ section.id }} .fuly-newsletter-section h2 { font-size: var(--r-heading-size); }
+  #shopify-section-{{ section.id }} .fuly-newsletter-section p { font-size: var(--r-body-size); }
+  #shopify-section-{{ section.id }} .fuly-newsletter-input { font-size: var(--r-input-size); }
+{%- endstyle -%}
+<section class="fuly-newsletter-section">
+  <div class="fuly-newsletter-inner">
+    <h2>{{ heading }}</h2>
+    <p>{{ body }}</p>
+    <span class="fuly-newsletter-badge">{{ badge }}</span>
+    {%- form 'customer', id: 'FulyNewsletter', class: 'fuly-newsletter-form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input
+        type="email"
+        name="contact[email]"
+        class="fuly-newsletter-input"
+        placeholder="{{ placeholder }}"
+        aria-label="Email"
+        required
+      >
+      <button type="submit" class="fuly-cartoon-btn fuly-cartoon-btn-primary">{{ submit_label }}</button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home Newsletter",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "ÚNETE AL FULYVERSO" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Descuentos exclusivos, lanzamientos y herramientas para una crianza más fácil." },
+    { "type": "text", "id": "badge", "label": "Badge", "default": "RECIBE 10% EN TU PRIMERA COMPRA" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "tu@email.com" },
+    { "type": "text", "id": "submit_label", "label": "Submit label", "default": "Suscribirme" },
+
+    { "type": "header", "content": "Responsive — Color" },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#00E5CC" },
+
+    { "type": "header", "content": "Responsive — Tamaño de título" },
+    { "type": "range", "id": "heading_size_mobile", "label": "Título — Móvil", "unit": "px", "min": 16, "max": 72, "step": 1, "default": 32 },
+    { "type": "range", "id": "heading_size_tablet", "label": "Título — Tablet", "unit": "px", "min": 16, "max": 72, "step": 1, "default": 36 },
+    { "type": "range", "id": "heading_size_desktop", "label": "Título — Desktop", "unit": "px", "min": 16, "max": 72, "step": 1, "default": 40 },
+
+    { "type": "header", "content": "Responsive — Tamaño de cuerpo" },
+    { "type": "range", "id": "body_size_mobile", "label": "Cuerpo — Móvil", "unit": "px", "min": 12, "max": 32, "step": 1, "default": 16 },
+    { "type": "range", "id": "body_size_tablet", "label": "Cuerpo — Tablet", "unit": "px", "min": 12, "max": 32, "step": 1, "default": 16 },
+    { "type": "range", "id": "body_size_desktop", "label": "Cuerpo — Desktop", "unit": "px", "min": 12, "max": 32, "step": 1, "default": 16 },
+
+    { "type": "header", "content": "Responsive — Tamaño del input" },
+    { "type": "range", "id": "input_size_mobile", "label": "Input — Móvil", "unit": "px", "min": 12, "max": 24, "step": 1, "default": 14 },
+    { "type": "range", "id": "input_size_tablet", "label": "Input — Tablet", "unit": "px", "min": 12, "max": 24, "step": 1, "default": 14 },
+    { "type": "range", "id": "input_size_desktop", "label": "Input — Desktop", "unit": "px", "min": 12, "max": 24, "step": 1, "default": 14 },
+
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical — Móvil", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical — Tablet", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 64 },
+    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical — Desktop", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 64 }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — Newsletter"
+    }
+  ]
+}
+{% endschema %}

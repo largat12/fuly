@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "fuly-semilla-donation": {
+      "type": "fuly-semilla-donation",
+      "settings": {}
+    }
+  },
+  "order": ["fuly-semilla-donation"]
+}

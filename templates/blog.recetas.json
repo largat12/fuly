@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "fuly_blog": {
+      "type": "fuly-blog",
+      "settings": {
+        "eyebrow": "RECETAS",
+        "title": "Recetas",
+        "subtitle": "Ideas fáciles y deliciosas para preparar Fuly en casa.",
+        "empty_message": "Pronto publicaremos recetas. ¡Vuelve pronto!"
+      }
+    }
+  },
+  "order": ["fuly_blog"]
+}

@@ -1,0 +1,81 @@
+{%- comment -%}
+  FULY Product Card — pixel port of react-lovable/src/components/ProductCard.tsx
+  Inputs (passed via render args):
+    - name (string)
+    - functional_benefit (string)
+    - category_label (string)
+    - price_formatted (string)
+    - format (string)
+    - image (string, asset filename)
+    - image_url (string, absolute/Shopify CDN URL)
+    - color (hex string e.g. "#FF7A00")
+    - category (string for image-scale class)
+    - href (optional link target; defaults to "#")
+{%- endcomment -%}
+{%- liquid
+  assign card_href = href | default: '#'
+  assign card_color = color | default: '#FFE135'
+  assign card_category = category | default: ''
+  assign card_image_src = ''
+  if image_url != blank
+    assign card_image_src = image_url
+  elsif image != blank
+    assign card_image_src = image | asset_url
+  endif
+  assign image_class = 'fuly-product-card__image'
+  if card_category == 'drinks-tarro' or card_category == 'malteadas'
+    assign image_class = 'fuly-product-card__image fuly-product-card__image--scale-up'
+  endif
+  if card_category == 'boosters' or card_category == 'drinks-plegadiza'
+    assign image_class = 'fuly-product-card__image fuly-product-card__image--scale-down'
+  endif
+-%}
+<article class="fuly-product-card">
+  <a
+    href="{{ card_href }}"
+    class="fuly-product-card__image-wrap"
+    style="background: linear-gradient(135deg, {{ card_color }}22, {{ card_color }}44);"
+  >
+    <span class="fuly-product-card__grid-overlay" aria-hidden="true"></span>
+    {% if card_image_src != blank %}
+      <img
+        src="{{ card_image_src }}"
+        alt="{{ name | escape }}"
+        class="{{ image_class }} fuly-animate-float"
+        loading="lazy"
+        width="200"
+        height="200"
+      >
+    {% else %}
+      <span
+        class="fuly-animate-float"
+        style="display:inline-block;width:80px;height:80px;border-radius:9999px;background-color:{{ card_color }}33;border:3px solid {{ card_color }};"
+        aria-hidden="true"
+      ></span>
+    {% endif %}
+    <span class="fuly-product-card__tag">
+      <span class="fuly-tag-label">{{ category_label }}</span>
+    </span>
+  </a>
+  <div class="fuly-product-card__body">
+    <a href="{{ card_href }}" style="text-decoration:none;color:inherit;">
+      <h3 class="fuly-product-card__title">{{ name }}</h3>
+    </a>
+    {% if functional_benefit != blank %}
+      <p class="fuly-product-card__benefit">{{ functional_benefit }}</p>
+    {% endif %}
+    <p class="fuly-product-card__format">{{ format }}</p>
+    <div class="fuly-product-card__footer">
+      <span class="fuly-product-card__price">{{ price_formatted }}</span>
+      <a href="{{ card_href }}" class="fuly-product-card__btn" aria-label="Ver {{ name | escape }}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="fuly-product-card__btn-text-wide">Agregar</span>
+        <span class="fuly-product-card__btn-text-narrow">+</span>
+      </a>
+    </div>
+  </div>
+</article>

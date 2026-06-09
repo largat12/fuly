@@ -1,0 +1,71 @@
+{%- comment -%}
+  Fuly Kids · Declaración @font-face de la tipografía comercial.
+
+  ARCHIVOS INSTALADOS (theme/assets/):
+    - PPPangramSansRounded-Extrabold.woff2  (+ .ttf fallback)  → display / h1-h2
+    - PPPangramSansRounded-Bold.woff2       (+ .ttf fallback)  → h3-h4 / headings 2º
+
+  IMPORTANTE — nombre de familia:
+  Todo el tema (base.css --font-heading, fuly-collection.css, fuly-semilla.css,
+  snippets de contenido, fuly-tokens.css, theme.liquid) referencia la familia
+  con el literal 'PP Pangram Sans Rounded Compressed'. Por eso el @font-face se
+  declara EXACTAMENTE con ese nombre, para que las 30+ reglas existentes
+  resuelvan sin tocar nada más.
+
+  Los archivos provistos son la cut estándar de PP Pangram Sans Rounded
+  (name table interno: "PP Pangram Sans Rounded"); aquí se mapean al nombre
+  'Compressed' que el branding ya usa en todo el tema. Si en el futuro se sube
+  la verdadera cut Compressed, basta con reemplazar los .woff2/.ttf de assets/.
+
+  Para volver a los fallbacks Google, pon `fuly_fonts_enabled` en false.
+{%- endcomment -%}
+
+{%- assign fuly_fonts_enabled = true -%}
+
+{%- if fuly_fonts_enabled -%}
+  {%- comment -%} Preload de la fuente crítica above-the-fold (display/h1-h2). {%- endcomment -%}
+  <link
+    rel="preload"
+    as="font"
+    type="font/woff2"
+    href="{{ 'PPPangramSansRounded-Extrabold.woff2' | asset_url }}"
+    crossorigin
+  >
+
+  <style>
+    /*
+      @font-face de la tipografía comercial Fuly.
+      ascent/descent-override aproximados para minimizar el CLS al hacer
+      swap desde los fallbacks Google (Lilita One / Fredoka).
+      Ajustar si se aprecia shift al recargar.
+    */
+
+    /* Extrabold · display y h1/h2 */
+    @font-face {
+      font-family: 'PP Pangram Sans Rounded Compressed';
+      src:
+        url('{{ 'PPPangramSansRounded-Extrabold.woff2' | asset_url }}') format('woff2'),
+        url('{{ 'PPPangramSansRounded-Extrabold.ttf' | asset_url }}') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+      ascent-override: 95%;
+      descent-override: 20%;
+      line-gap-override: 0%;
+    }
+
+    /* Bold · h3/h4 y headings secundarios */
+    @font-face {
+      font-family: 'PP Pangram Sans Rounded Compressed';
+      src:
+        url('{{ 'PPPangramSansRounded-Bold.woff2' | asset_url }}') format('woff2'),
+        url('{{ 'PPPangramSansRounded-Bold.ttf' | asset_url }}') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      ascent-override: 95%;
+      descent-override: 20%;
+      line-gap-override: 0%;
+    }
+  </style>
+{%- endif -%}

@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "fuly_collection": {
+      "type": "fuly-tienda",
+      "settings": {}
+    }
+  },
+  "order": ["fuly_collection"]
+}

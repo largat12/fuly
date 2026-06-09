@@ -1,0 +1,77 @@
+{%- comment -%}
+  FULY Home — Post-testimonials CTA. Pink (#E5006A) full-bleed band.
+{%- endcomment -%}
+{%- liquid
+  assign heading = section.settings.heading | default: 'ÚNETE A +3,400 FAMILIAS QUE CONFÍAN EN FULY'
+  assign cta_label = section.settings.cta_label | default: 'VER PRODUCTOS'
+  assign cta_link = section.settings.cta_link | default: '/collections/tienda'
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-heading-size: {{ section.settings.heading_size_mobile | default: 24 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-bg: {{ section.settings.bg_color | default: '#E5006A' }};
+    --r-text: {{ section.settings.text_color | default: '#FFFFFF' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-heading-size: {{ section.settings.heading_size_tablet | default: 28 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 48 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-heading-size: {{ section.settings.heading_size_desktop | default: 28 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 48 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-cta-section {
+    background-color: var(--r-bg);
+    padding-top: var(--r-pad-block);
+    padding-bottom: var(--r-pad-block);
+  }
+  #shopify-section-{{ section.id }} .fuly-cta-section h2 { font-size: var(--r-heading-size); color: var(--r-text); }
+  {%- if section.settings.button_full_width_mobile -%}
+  #shopify-section-{{ section.id }} .fuly-cta-section a { width: 100%; box-sizing: border-box; text-align: center; }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .fuly-cta-section a { width: auto; }
+  }
+  {%- endif -%}
+{%- endstyle -%}
+<section class="fuly-cta-section">
+  <h2>{{ heading }}</h2>
+  <a href="{{ cta_link }}">{{ cta_label }}</a>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Home CTA",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "ÚNETE A +3,400 FAMILIAS QUE CONFÍAN EN FULY" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "VER PRODUCTOS" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+
+    { "type": "header", "content": "Responsive — Colores" },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#E5006A" },
+    { "type": "color", "id": "text_color", "label": "Color del texto", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Responsive — Tamaño de título" },
+    { "type": "range", "id": "heading_size_mobile", "label": "Título — Móvil", "unit": "px", "min": 16, "max": 60, "step": 1, "default": 24 },
+    { "type": "range", "id": "heading_size_tablet", "label": "Título — Tablet", "unit": "px", "min": 16, "max": 60, "step": 1, "default": 28 },
+    { "type": "range", "id": "heading_size_desktop", "label": "Título — Desktop", "unit": "px", "min": 16, "max": 60, "step": 1, "default": 28 },
+
+    { "type": "header", "content": "Responsive — Padding vertical" },
+    { "type": "range", "id": "padding_block_mobile", "label": "Padding vertical — Móvil", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 48 },
+    { "type": "range", "id": "padding_block_tablet", "label": "Padding vertical — Tablet", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 48 },
+    { "type": "range", "id": "padding_block_desktop", "label": "Padding vertical — Desktop", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 48 },
+
+    { "type": "header", "content": "Responsive — Botón" },
+    { "type": "checkbox", "id": "button_full_width_mobile", "label": "Botón ancho completo en móvil", "default": false }
+  ],
+  "presets": [
+    {
+      "name": "Fuly Home — CTA"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,199 @@
+/* === FULY COLLECTION · pixel port of react-lovable/src/pages/Tienda.tsx ===
+   Tokens used: --cartoon-black (HSL components), --yellow-spark (hex literal),
+   --white-lab (hex literal), --muted-foreground (HSL components).
+   See base.css lines 1-125 for token definitions.
+   All rem values use Dawn's 10px-root convention (1rem == 10px).
+*/
+
+.fuly-collection-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* === Outer wrapper (mirrors Lovable's section-padding) === */
+.fuly-collection-section {
+  padding: 4.8rem 1.6rem;
+  /* No background-color: deja ver el lab-grid-bg del body (matchea Lovable). */
+}
+
+@media (min-width: 768px) {
+  .fuly-collection-section {
+    padding: 9.6rem 3.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fuly-collection-section {
+    padding: 9.6rem 6.4rem;
+  }
+}
+
+.fuly-collection-container {
+  max-width: 128rem;
+  margin: 0 auto;
+}
+
+/* === Header === */
+.fuly-collection-header {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-collection-header {
+    margin-bottom: 4.8rem;
+  }
+}
+
+.fuly-collection-title {
+  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+  font-size: clamp(36px, 5vw, 64px);
+  color: hsl(var(--cartoon-black));
+  margin: 1.2rem 0 0;
+}
+
+/* === Toolbar (filters + sort) === */
+.fuly-collection-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3.2rem;
+  align-items: stretch;
+}
+
+@media (min-width: 640px) {
+  .fuly-collection-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.fuly-collection-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .fuly-collection-filters {
+    width: auto;
+  }
+}
+
+/* === Chip (filter pill) === */
+.fuly-collection-chip {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 25px;
+  border: 3px solid hsl(var(--cartoon-black));
+  background-color: var(--white-lab);
+  color: hsl(var(--cartoon-black));
+  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+  cursor: pointer;
+  min-height: 40px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (max-width: 767px) {
+  .fuly-collection-chip {
+    box-shadow: 3px 3px 0 hsl(var(--cartoon-black));
+  }
+}
+
+.fuly-collection-chip:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+}
+
+.fuly-collection-chip--active {
+  background-color: var(--yellow-spark);
+}
+
+/* === Sort select === */
+.fuly-collection-sort {
+  width: 100%;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .fuly-collection-sort {
+    width: auto;
+  }
+}
+
+.fuly-collection-sort select {
+  width: 100%;
+  padding: 1.2rem 4rem 1.2rem 1.6rem;
+  border-radius: 25px;
+  border: 3px solid hsl(var(--cartoon-black));
+  background-color: var(--white-lab);
+  color: hsl(var(--cartoon-black));
+  font-family: var(--fuly-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1.6rem center;
+  background-size: 12px 8px;
+}
+
+.fuly-collection-sort select:focus {
+  outline: 2px solid var(--yellow-spark);
+  outline-offset: 2px;
+}
+
+/* === Grid === */
+.fuly-collection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-collection-grid {
+    gap: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fuly-collection-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* === Empty state === */
+.fuly-collection-empty {
+  text-align: center;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: hsl(var(--muted-foreground));
+  padding: 4.8rem 0;
+  margin: 0;
+}

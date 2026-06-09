@@ -1,0 +1,380 @@
+{%- comment -%}
+  FULY Collection — pixel port of react-lovable/src/pages/Tienda.tsx
+  Reusable for every /collections/* URL.
+  - Filter chips are auto-generated from the store's actual collections.
+  - Sort uses Shopify native ?sort_by= URL param.
+{%- endcomment -%}
+
+{%- liquid
+  assign current_handle = collection.handle | default: ''
+  assign sort_value = collection.sort_by | default: 'manual'
+  if sort_value == blank
+    assign sort_value = 'manual'
+  endif
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-cols: {{ section.settings.cols_mobile | default: 2 }};
+    --r-gap: {{ section.settings.gap_mobile | default: 12 }}px;
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
+    --r-title-size: {{ section.settings.title_size_mobile | default: 36 }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_tablet | default: 2 }};
+      --r-gap: {{ section.settings.gap_tablet | default: 24 }}px;
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 96 }}px;
+      --r-title-size: {{ section.settings.title_size_tablet | default: 50 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-cols: {{ section.settings.cols_desktop | default: 3 }};
+      --r-gap: {{ section.settings.gap_desktop | default: 24 }}px;
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 96 }}px;
+      --r-title-size: {{ section.settings.title_size_desktop | default: 64 }}px;
+    }
+  }
+  /* Consumo — id + clase para ganar especificidad sobre el CSS base */
+  #shopify-section-{{ section.id }} .fuly-collection-grid {
+    grid-template-columns: repeat(var(--r-cols), minmax(0, 1fr));
+    gap: var(--r-gap);
+  }
+  #shopify-section-{{ section.id }} .fuly-collection-section {
+    padding-top: var(--r-pad-block);
+    padding-bottom: var(--r-pad-block);
+  }
+  #shopify-section-{{ section.id }} .fuly-collection-title {
+    font-size: var(--r-title-size);
+  }
+{%- endstyle -%}
+
+<section class="fuly-collection-section">
+  <div class="fuly-collection-container">
+    <header class="fuly-collection-header">
+      <span class="fuly-tag-label">{{ section.settings.eyebrow | default: 'CATÁLOGO' }}</span>
+      <h1 class="fuly-collection-title">{{ collection.title | default: 'Tienda' }}</h1>
+    </header>
+
+    <div class="fuly-collection-toolbar">
+      <nav class="fuly-collection-filters" aria-label="Filtrar por categoría">
+        <a
+          href="{{ routes.all_products_collection_url }}"
+          class="fuly-collection-chip{% if current_handle == '' or current_handle == 'all' %} fuly-collection-chip--active{% endif %}"
+        >{{ section.settings.filter_all_label }}</a>
+        {%- for c in collections -%}
+          {%- unless c.handle == 'all' or c.handle == 'frontpage' -%}
+            <a
+              href="{{ c.url }}"
+              class="fuly-collection-chip{% if c.handle == current_handle %} fuly-collection-chip--active{% endif %}"
+            >{{ c.title }}</a>
+          {%- endunless -%}
+        {%- endfor -%}
+      </nav>
+
+      <form method="get" class="fuly-collection-sort">
+        <label class="fuly-collection-sr-only" for="fuly-sort">{{ section.settings.sort_label }}</label>
+        <select id="fuly-sort" name="sort_by" onchange="this.form.submit()">
+          <option value="manual"{% if sort_value == 'manual' %} selected{% endif %}>{{ section.settings.sort_label }}</option>
+          <option value="price-ascending"{% if sort_value == 'price-ascending' %} selected{% endif %}>{{ section.settings.sort_asc_label }}</option>
+          <option value="price-descending"{% if sort_value == 'price-descending' %} selected{% endif %}>{{ section.settings.sort_desc_label }}</option>
+          <option value="title-ascending"{% if sort_value == 'title-ascending' %} selected{% endif %}>{{ section.settings.sort_alpha_label }}</option>
+        </select>
+      </form>
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <div class="fuly-collection-grid">
+        {%- for product in collection.products -%}
+          {%- liquid
+            assign p_image_url = ''
+            if product.featured_image
+              assign p_image_url = product.featured_image | image_url: width: 600
+            endif
+            assign p_price_formatted = product.price | money
+            assign p_color = product.metafields.custom.color_marca | default: product.metafields.fuly.color
+            if p_color == blank
+              comment
+                Derivar color por keyword del título cuando el producto no tiene metafield fuly.color.
+                Mapping basado en react-lovable/src/data/products.ts.
+              endcomment
+              assign p_title_lower = product.title | downcase
+              assign p_color = '#FF7A00'
+              if p_title_lower contains 'chocolate'
+                assign p_color = '#8B5E3C'
+              elsif p_title_lower contains 'vainilla'
+                assign p_color = '#D4A056'
+              elsif p_title_lower contains 'almendra'
+                assign p_color = '#E8A04C'
+              elsif p_title_lower contains 'uva' or p_title_lower contains 'azaí' or p_title_lower contains 'azai' or p_title_lower contains 'noche' or p_title_lower contains 'sueño' or p_title_lower contains 'sueno' or p_title_lower contains 'dreamy'
+                assign p_color = '#6B3FA0'
+              elsif p_title_lower contains 'limón' or p_title_lower contains 'limon' or p_title_lower contains 'mandarino'
+                assign p_color = '#FFE135'
+              elsif p_title_lower contains 'frutos rojos' or p_title_lower contains 'immuny' or p_title_lower contains 'defensa'
+                assign p_color = '#FF7A00'
+              endif
+            endif
+            assign p_format = product.metafields.custom.formato | default: product.metafields.fuly.format | default: ''
+            assign p_functional = product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit | default: ''
+            assign p_category_label = product.metafields.fuly.category_label | default: product.type
+            if p_category_label == blank
+              assign p_category_label = collection.title
+            endif
+            assign p_category = product.metafields.fuly.category | default: ''
+
+            assign image_class = 'fuly-product-card__image'
+            if p_category == 'drinks-tarro' or p_category == 'malteadas'
+              assign image_class = 'fuly-product-card__image fuly-product-card__image--scale-up'
+            endif
+            if p_category == 'boosters' or p_category == 'drinks-plegadiza'
+              assign image_class = 'fuly-product-card__image fuly-product-card__image--scale-down'
+            endif
+          -%}
+          <article class="fuly-product-card">
+            <a
+              href="{{ product.url }}"
+              class="fuly-product-card__image-wrap"
+              style="background: linear-gradient(135deg, {{ p_color }}22, {{ p_color }}44);"
+            >
+              <span class="fuly-product-card__grid-overlay" aria-hidden="true"></span>
+              {%- if p_image_url != blank -%}
+                <img
+                  src="{{ p_image_url }}"
+                  alt="{{ product.title | escape }}"
+                  class="{{ image_class }} fuly-animate-float"
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                >
+              {%- else -%}
+                <span
+                  class="fuly-animate-float"
+                  style="display:inline-block;width:80px;height:80px;border-radius:9999px;background-color:{{ p_color }}33;border:3px solid {{ p_color }};"
+                  aria-hidden="true"
+                ></span>
+              {%- endif -%}
+              <span class="fuly-product-card__tag">
+                <span class="fuly-tag-label">{{ p_category_label }}</span>
+              </span>
+            </a>
+            <div class="fuly-product-card__body">
+              <a href="{{ product.url }}" style="text-decoration:none;color:inherit;">
+                <h3 class="fuly-product-card__title">{{ product.title }}</h3>
+              </a>
+              {%- if p_functional != blank -%}
+                <p class="fuly-product-card__benefit">{{ p_functional }}</p>
+              {%- endif -%}
+              {%- if p_format != blank -%}
+                <p class="fuly-product-card__format">{{ p_format }}</p>
+              {%- endif -%}
+              <div class="fuly-product-card__footer">
+                <span class="fuly-product-card__price">{{ p_price_formatted }}</span>
+                <a href="{{ product.url }}" class="fuly-product-card__btn" aria-label="Ver {{ product.title | escape }}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  <span class="fuly-product-card__btn-text-wide">{{ section.settings.add_btn_label }}</span>
+                  <span class="fuly-product-card__btn-text-narrow">+</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="fuly-collection-empty">{{ section.settings.empty_message }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "CATÁLOGO"
+    },
+    {
+      "type": "text",
+      "id": "filter_all_label",
+      "label": "Label para 'Ver todos'",
+      "default": "Todos"
+    },
+    {
+      "type": "text",
+      "id": "sort_label",
+      "label": "Label del dropdown de ordenamiento",
+      "default": "Ordenar por"
+    },
+    {
+      "type": "text",
+      "id": "sort_asc_label",
+      "label": "Label: Precio ascendente",
+      "default": "Precio: menor a mayor"
+    },
+    {
+      "type": "text",
+      "id": "sort_desc_label",
+      "label": "Label: Precio descendente",
+      "default": "Precio: mayor a menor"
+    },
+    {
+      "type": "text",
+      "id": "sort_alpha_label",
+      "label": "Label: Orden alfabético",
+      "default": "Nombre A-Z"
+    },
+    {
+      "type": "text",
+      "id": "add_btn_label",
+      "label": "Label del botón Agregar",
+      "default": "Agregar"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Mensaje cuando no hay productos",
+      "default": "No hay productos en esta categoría."
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Columnas de la grilla"
+    },
+    {
+      "type": "range",
+      "id": "cols_mobile",
+      "label": "Columnas (móvil)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "cols_tablet",
+      "label": "Columnas (tablet)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "cols_desktop",
+      "label": "Columnas (desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Separación (gap)"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (móvil)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "gap_tablet",
+      "label": "Gap (tablet)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap (desktop)",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "label": "Padding vertical (móvil)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "label": "Padding vertical (tablet)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "label": "Padding vertical (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño del título"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "label": "Tamaño del título (móvil)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "title_size_tablet",
+      "label": "Tamaño del título (tablet)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "title_size_desktop",
+      "label": "Tamaño del título (desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    }
+  ]
+}
+{% endschema %}

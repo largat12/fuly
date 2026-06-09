@@ -1,0 +1,147 @@
+{%- comment -%}
+  FULY FAQ content — pixel port of react-lovable/src/pages/FAQ.tsx
+  4 categorías hardcoded (Producto, Envíos, Suscripción, Devoluciones).
+  Optional render args: eyebrow, title, subtitle.
+{%- endcomment -%}
+
+{%- liquid
+  assign faq_eyebrow = eyebrow | default: 'FAQ'
+  assign faq_title = title | default: 'Preguntas frecuentes'
+  assign faq_subtitle = subtitle | default: 'Todo lo que necesitas saber sobre Fuly.'
+-%}
+
+<section class="fuly-faq-page fuly-section-padding fuly-lab-grid-bg">
+  <div class="fuly-faq-page__container">
+    <header class="fuly-faq-page__header">
+      <span class="fuly-tag-label">{{ faq_eyebrow }}</span>
+      <h1 class="fuly-faq-page__title">{{ faq_title }}</h1>
+      <p class="fuly-faq-page__subtitle">{{ faq_subtitle }}</p>
+    </header>
+
+    <div class="fuly-faq-page__categories">
+
+      <div class="fuly-faq-page__category">
+        <h2 class="fuly-faq-page__category-title">Producto</h2>
+        <div class="fuly-faq-list">
+          <details class="fuly-faq-item">
+            <summary>¿A partir de qué edad pueden tomar los productos Fuly?</summary>
+            <div class="fuly-faq-answer">Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Adicionan azúcar a sus productos?</summary>
+            <div class="fuly-faq-answer">No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. En algunos Fuly vas a ver azúcares añadidos en la etiqueta. Esto se debe a que son alimentos procesados. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Son seguros los ingredientes?</summary>
+            <div class="fuly-faq-answer">Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Qué son los betaglucanos?</summary>
+            <div class="fuly-faq-answer">Los betaglucanos son fibras naturales que estimulan el sistema inmunológico. Los obtenemos de fuentes como la levadura y la avena.</div>
+          </details>
+        </div>
+      </div>
+
+      <div class="fuly-faq-page__category">
+        <h2 class="fuly-faq-page__category-title">Envíos</h2>
+        <div class="fuly-faq-list">
+          <details class="fuly-faq-item">
+            <summary>¿Cómo funciona el envío?</summary>
+            <div class="fuly-faq-answer">Realizamos envíos a todo Colombia. Si compras antes de las 3 p.m., tu pedido sale el mismo día. El tiempo de entrega varía entre 1-3 días hábiles.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Cuánto cuesta el envío?</summary>
+            <div class="fuly-faq-answer">El envío es gratis en pedidos superiores a $100.000 COP. Para pedidos menores, el costo varía según la ciudad.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Hacen envíos internacionales?</summary>
+            <div class="fuly-faq-answer">Por ahora solo realizamos envíos dentro de Colombia. Estamos trabajando para expandirnos pronto.</div>
+          </details>
+        </div>
+      </div>
+
+      <div class="fuly-faq-page__category">
+        <h2 class="fuly-faq-page__category-title">Suscripción</h2>
+        <div class="fuly-faq-list">
+          <details class="fuly-faq-item">
+            <summary>¿Qué beneficios tiene la suscripción?</summary>
+            <div class="fuly-faq-answer">Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas. Puedes modificar o pausar la suscripción en cualquier momento.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Puedo cancelar mi suscripción?</summary>
+            <div class="fuly-faq-answer">Sí, puedes cancelar tu suscripción en cualquier momento sin penalidad.</div>
+          </details>
+        </div>
+      </div>
+
+      <div class="fuly-faq-page__category">
+        <h2 class="fuly-faq-page__category-title">Devoluciones</h2>
+        <div class="fuly-faq-list">
+          <details class="fuly-faq-item">
+            <summary>¿Tienen garantía de satisfacción?</summary>
+            <div class="fuly-faq-answer">Si nunca has probado nuestros productos y temes que no sea una buena experiencia, para compras menores a $200.000 realizadas directamente en nuestra página web, te devolvemos tu dinero si no estás satisfecho. Esta garantía no aplica para productos comprados en otros aliados comerciales. <a href="/pages/garantia" class="fuly-faq-page__link">Revisa las condiciones y requisitos aquí</a>.</div>
+          </details>
+          <details class="fuly-faq-item">
+            <summary>¿Cómo solicito una devolución?</summary>
+            <div class="fuly-faq-answer">Escríbenos a nuestro WhatsApp o correo electrónico con tu número de pedido y te guiamos en el proceso.</div>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .fuly-faq-page__container {
+    max-width: 76.8rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+  .fuly-faq-page__header {
+    text-align: center;
+    margin-bottom: 4.8rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-faq-page__header {
+      margin-bottom: 6.4rem;
+    }
+  }
+  .fuly-faq-page__title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    color: hsl(var(--cartoon-black));
+    font-size: clamp(3.6rem, 5vw, 5.6rem);
+    margin: 1.2rem 0 0;
+    line-height: 1.1;
+  }
+  .fuly-faq-page__subtitle {
+    font-family: Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+  }
+  .fuly-faq-page__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+  @media (min-width: 768px) {
+    .fuly-faq-page__categories {
+      gap: 4rem;
+    }
+  }
+  .fuly-faq-page__category-title {
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: hsl(var(--cartoon-black));
+    font-size: 2rem;
+    margin: 0 0 1.6rem;
+  }
+  .fuly-faq-page__link {
+    color: hsl(var(--primary, 354 100% 45%));
+    text-decoration: underline;
+    font-weight: 700;
+  }
+</style>

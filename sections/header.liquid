@@ -1,0 +1,344 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-logo-height: {{ section.settings.logo_height_mobile | default: 32 }}px;
+    --r-nav-link-size: {{ section.settings.nav_link_size_mobile | default: 13 }}px;
+    --r-nav-gap: {{ section.settings.nav_gap_mobile | default: 32 }}px;
+    --r-announcement-font-size: {{ section.settings.announcement_font_size_mobile | default: 10 }}px;
+    --r-bar-padding-x: {{ section.settings.bar_padding_x_mobile | default: 16 }}px;
+    --r-mobile-menu-item-size: {{ section.settings.mobile_menu_item_size | default: 22 }}px;
+    --r-announcement-bg: {{ section.settings.announcement_bg_color | default: '#FFE135' }};
+    --r-announcement-text: {{ section.settings.announcement_text_color | default: '#1A1A1A' }};
+    --r-nav-hover: {{ section.settings.nav_hover_color | default: '#E5006A' }};
+    --r-cart-badge: {{ section.settings.cart_badge_color | default: '#E5006A' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-logo-height: {{ section.settings.logo_height_tablet | default: 40 }}px;
+      --r-nav-link-size: {{ section.settings.nav_link_size_tablet | default: 13 }}px;
+      --r-nav-gap: {{ section.settings.nav_gap_tablet | default: 32 }}px;
+      --r-announcement-font-size: {{ section.settings.announcement_font_size_tablet | default: 10 }}px;
+      --r-bar-padding-x: {{ section.settings.bar_padding_x_tablet | default: 32 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-logo-height: {{ section.settings.logo_height_desktop | default: 40 }}px;
+      --r-nav-link-size: {{ section.settings.nav_link_size_desktop | default: 13 }}px;
+      --r-nav-gap: {{ section.settings.nav_gap_desktop | default: 32 }}px;
+      --r-announcement-font-size: {{ section.settings.announcement_font_size_desktop | default: 10 }}px;
+      --r-bar-padding-x: {{ section.settings.bar_padding_x_desktop | default: 64 }}px;
+    }
+  }
+  /* Consumo de variables — id + clase para ganar especificidad sobre el CSS base */
+  #shopify-section-{{ section.id }} .fuly-header__logo-img { height: var(--r-logo-height); }
+  #shopify-section-{{ section.id }} .fuly-header__nav-link { font-size: var(--r-nav-link-size); }
+  #shopify-section-{{ section.id }} .fuly-header__nav { gap: var(--r-nav-gap); }
+  #shopify-section-{{ section.id }} .fuly-header__announcement {
+    font-size: var(--r-announcement-font-size);
+    background: var(--r-announcement-bg);
+    color: var(--r-announcement-text);
+  }
+  #shopify-section-{{ section.id }} .fuly-header__bar {
+    padding-left: var(--r-bar-padding-x);
+    padding-right: var(--r-bar-padding-x);
+  }
+  #shopify-section-{{ section.id }} .fuly-header__mobile-menu-item { font-size: var(--r-mobile-menu-item-size); }
+  #shopify-section-{{ section.id }} .fuly-header__nav-link:hover { color: var(--r-nav-hover); }
+  #shopify-section-{{ section.id }} .fuly-header__mobile-menu-item:hover { color: var(--r-nav-hover); }
+  #shopify-section-{{ section.id }} .fuly-header__cart-badge { background: var(--r-cart-badge); }
+{%- endstyle -%}
+
+{% render 'fuly-header' %}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "max_blocks": 24,
+  "settings": [
+    {
+      "type": "select",
+      "id": "logo_position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "t:sections.header.settings.logo_position.options__2.label"
+        },
+        {
+          "value": "top-center",
+          "label": "t:sections.header.settings.logo_position.options__3.label"
+        },
+        {
+          "value": "middle-left",
+          "label": "t:sections.header.settings.logo_position.options__1.label"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:sections.header.settings.logo_position.options__4.label"
+        }
+      ],
+      "default": "middle-left",
+      "label": "t:sections.header.settings.logo_position.label",
+      "info": "t:sections.header.settings.logo_help.content"
+    },
+    {
+      "type": "select",
+      "id": "mobile_logo_position",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:sections.header.settings.mobile_logo_position.options__1.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.header.settings.mobile_logo_position.options__2.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.header.settings.mobile_logo_position.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "select",
+      "id": "menu_type_desktop",
+      "options": [
+        {
+          "value": "dropdown",
+          "label": "t:sections.header.settings.menu_type_desktop.options__1.label"
+        },
+        {
+          "value": "mega",
+          "label": "t:sections.header.settings.menu_type_desktop.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.header.settings.menu_type_desktop.options__3.label"
+        }
+      ],
+      "default": "dropdown",
+      "label": "t:sections.header.settings.menu_type_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "sticky_header_type",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.header.settings.sticky_header_type.options__1.label"
+        },
+        {
+          "value": "on-scroll-up",
+          "label": "t:sections.header.settings.sticky_header_type.options__2.label"
+        },
+        {
+          "value": "always",
+          "label": "t:sections.header.settings.sticky_header_type.options__3.label"
+        },
+        {
+          "value": "reduce-logo-size",
+          "label": "t:sections.header.settings.sticky_header_type.options__4.label"
+        }
+      ],
+      "default": "on-scroll-up",
+      "label": "t:sections.header.settings.sticky_header_type.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__1.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "menu_color_scheme",
+      "label": "t:sections.header.settings.menu_color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.header__utilities.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_country_selector.label",
+      "info": "t:sections.header.settings.enable_country_selector.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.header.settings.enable_language_selector.label",
+      "info": "t:sections.header.settings.enable_language_selector.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_customer_avatar",
+      "default": true,
+      "label": "t:sections.header.settings.enable_customer_avatar.label",
+      "info": "t:sections.header.settings.enable_customer_avatar.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.header.settings.margin_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 20
+    },
+    { "type": "header",       "content": "FULY Header — Branding" },
+    { "type": "image_picker", "id": "logo",              "label": "Logo image" },
+    { "type": "text",         "id": "logo_alt",          "label": "Logo alt text",                  "default": "Fuly" },
+
+    { "type": "header",       "content": "FULY Header — Announcement bar" },
+    { "type": "range",        "id": "rotation_interval_ms", "label": "Rotation interval (ms)",       "min": 2000, "max": 9500, "step": 500, "default": 5000 },
+    { "type": "range",        "id": "fade_duration_ms",     "label": "Fade duration (ms)",            "min": 100,  "max": 600,   "step": 50,  "default": 300 },
+
+    { "type": "header",       "content": "FULY Header — Search" },
+    { "type": "checkbox",     "id": "show_search",       "label": "Show search button (visual placeholder)", "default": true },
+
+    { "type": "header",       "content": "FULY Header — Accessibility labels" },
+    { "type": "text",         "id": "nav_label",            "label": "<nav> aria-label",              "default": "Principal" },
+    { "type": "text",         "id": "announcement_label",   "label": "Announcement region aria-label","default": "Anuncios" },
+    { "type": "text",         "id": "menu_label",           "label": "Hamburger aria-label (open)",   "default": "Abrir menu" },
+    { "type": "text",         "id": "close_label",          "label": "Hamburger aria-label (close)",  "default": "Cerrar menu" },
+    { "type": "text",         "id": "search_label",         "label": "Search button aria-label",      "default": "Buscar" },
+    { "type": "text",         "id": "cart_label",           "label": "Cart button aria-label",        "default": "Abrir carrito" },
+    { "type": "text",         "id": "more_desktop_label",   "label": "More button aria-label (desktop)", "default": "Abrir mas opciones" },
+    { "type": "text",         "id": "more_mobile_label",    "label": "More button aria-label (mobile)",  "default": "Mas opciones" },
+    { "type": "text",         "id": "more_trigger_label",   "label": "More button visible label (mobile)", "default": "Más" },
+
+    { "type": "header",       "content": "Responsive — Logo height" },
+    { "type": "range", "id": "logo_height_mobile",  "label": "Logo height (mobile)",  "min": 16, "max": 80, "step": 1, "unit": "px", "default": 32 },
+    { "type": "range", "id": "logo_height_tablet",  "label": "Logo height (tablet)",  "min": 16, "max": 80, "step": 1, "unit": "px", "default": 40 },
+    { "type": "range", "id": "logo_height_desktop", "label": "Logo height (desktop)", "min": 16, "max": 80, "step": 1, "unit": "px", "default": 40 },
+
+    { "type": "header",       "content": "Responsive — Nav link size" },
+    { "type": "range", "id": "nav_link_size_mobile",  "label": "Nav link size (mobile)",  "min": 8, "max": 24, "step": 1, "unit": "px", "default": 13 },
+    { "type": "range", "id": "nav_link_size_tablet",  "label": "Nav link size (tablet)",  "min": 8, "max": 24, "step": 1, "unit": "px", "default": 13 },
+    { "type": "range", "id": "nav_link_size_desktop", "label": "Nav link size (desktop)", "min": 8, "max": 24, "step": 1, "unit": "px", "default": 13 },
+
+    { "type": "header",       "content": "Responsive — Nav gap" },
+    { "type": "range", "id": "nav_gap_mobile",  "label": "Nav gap (mobile)",  "min": 0, "max": 64, "step": 1, "unit": "px", "default": 32 },
+    { "type": "range", "id": "nav_gap_tablet",  "label": "Nav gap (tablet)",  "min": 0, "max": 64, "step": 1, "unit": "px", "default": 32 },
+    { "type": "range", "id": "nav_gap_desktop", "label": "Nav gap (desktop)", "min": 0, "max": 64, "step": 1, "unit": "px", "default": 32 },
+
+    { "type": "header",       "content": "Responsive — Announcement font size" },
+    { "type": "range", "id": "announcement_font_size_mobile",  "label": "Announcement font size (mobile)",  "min": 8, "max": 24, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "announcement_font_size_tablet",  "label": "Announcement font size (tablet)",  "min": 8, "max": 24, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "announcement_font_size_desktop", "label": "Announcement font size (desktop)", "min": 8, "max": 24, "step": 1, "unit": "px", "default": 10 },
+
+    { "type": "header",       "content": "Responsive — Bar horizontal padding" },
+    { "type": "range", "id": "bar_padding_x_mobile",  "label": "Bar padding X (mobile)",  "min": 0, "max": 96, "step": 1, "unit": "px", "default": 16 },
+    { "type": "range", "id": "bar_padding_x_tablet",  "label": "Bar padding X (tablet)",  "min": 0, "max": 96, "step": 1, "unit": "px", "default": 32 },
+    { "type": "range", "id": "bar_padding_x_desktop", "label": "Bar padding X (desktop)", "min": 0, "max": 96, "step": 1, "unit": "px", "default": 64 },
+
+    { "type": "header",       "content": "Responsive — Mobile menu item size" },
+    { "type": "range", "id": "mobile_menu_item_size", "label": "Mobile menu item font size", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 22 },
+
+    { "type": "header",       "content": "Responsive — Colors" },
+    { "type": "color", "id": "announcement_bg_color",   "label": "Announcement background color", "default": "#FFE135" },
+    { "type": "color", "id": "announcement_text_color", "label": "Announcement text color",       "default": "#1A1A1A" },
+    { "type": "color", "id": "nav_hover_color",         "label": "Nav link hover color",          "default": "#E5006A" },
+    { "type": "color", "id": "cart_badge_color",        "label": "Cart badge color",              "default": "#E5006A" }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "announcement",
+      "name": "Anuncio",
+      "limit": 10,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M." },
+        { "type": "url",  "id": "link", "label": "Link (opcional)" }
+      ]
+    },
+    {
+      "type": "nav_link",
+      "name": "Link de navegación",
+      "limit": 8,
+      "settings": [
+        { "type": "text",     "id": "label",               "label": "Label",        "default": "Tienda" },
+        { "type": "url",      "id": "url",                 "label": "URL" },
+        { "type": "checkbox", "id": "is_external",         "label": "External link","default": false },
+        { "type": "checkbox", "id": "show_external_icon",  "label": "Show external icon (NutriScan style)", "default": false }
+      ]
+    },
+    {
+      "type": "dropdown_item",
+      "name": "Item del dropdown 'Mas'",
+      "limit": 6,
+      "settings": [
+        { "type": "text",     "id": "label",       "label": "Label",        "default": "Nosotros" },
+        { "type": "url",      "id": "url",         "label": "URL" },
+        { "type": "checkbox", "id": "is_external", "label": "External link","default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FULY Header",
+      "blocks": [
+        { "type": "announcement",  "settings": { "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M." } },
+        { "type": "announcement",  "settings": { "text": "GARANTÍA DE SATISFACCIÓN : SI NO TE CONVENCE, TE DEVOLVEMOS TU DINERO" } },
+        { "type": "announcement",  "settings": { "text": "SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO" } },
+        { "type": "nav_link",      "settings": { "label": "Tienda",        "url": "/collections/all" } },
+        { "type": "nav_link",      "settings": { "label": "FAQ",           "url": "/pages/preguntas-frecuentes" } },
+        { "type": "nav_link",      "settings": { "label": "Suscripciones", "url": "/pages/suscripciones" } },
+        { "type": "nav_link",      "settings": { "label": "Give-Back",     "url": "/pages/fuly-semilla" } },
+        { "type": "nav_link",      "settings": { "label": "NutriScan", "url": "https://fuly.app", "is_external": true, "show_external_icon": true } },
+        { "type": "dropdown_item", "settings": { "label": "Nosotros",      "url": "/pages/nosotros" } },
+        { "type": "dropdown_item", "settings": { "label": "Contacto",      "url": "/pages/contacto" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

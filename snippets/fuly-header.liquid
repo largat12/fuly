@@ -1,0 +1,310 @@
+{% comment %}
+  fuly-header.liquid — FULY header (override of Dawn).
+
+  Reads:
+    - section.settings.logo, section.settings.logo_alt        (FULY header section settings)
+    - section.settings.menu_label / search_label / cart_label / more_desktop_label / more_mobile_label
+    - section.settings.show_search                            (placeholder visual)
+    - section.settings.rotation_interval_ms                   (default 5000)
+    - section.settings.fade_duration_ms                       (default 300)
+    - section.blocks                                          (announcement, nav_link, dropdown_item)
+    - sections['announcement-bar'].blocks                     (fallback when no announcement blocks at the header level)
+{% endcomment %}
+
+{%- liquid
+  assign rotation_ms = section.settings.rotation_interval_ms | default: 5000
+  assign fade_ms     = section.settings.fade_duration_ms     | default: 300
+
+  assign announcement_blocks = section.blocks | where: 'type', 'announcement'
+  if announcement_blocks.size == 0 and sections['announcement-bar']
+    assign announcement_blocks = sections['announcement-bar'].blocks
+  endif
+
+  assign nav_blocks      = section.blocks | where: 'type', 'nav_link'
+  assign dropdown_blocks = section.blocks | where: 'type', 'dropdown_item'
+
+  comment
+    Defensive fallbacks: if section.blocks is empty (e.g. header-group.json
+    points to a section without preset blocks, or merchant cleared all blocks),
+    render hardcoded content from the recon (audit/06-content-header.md) so the
+    header NEVER ships empty. These mirror the Lovable React arrays
+    (Header.tsx:8-12 announcements, Header.tsx:23-28 navLinks, Header.tsx:105-110
+    dropdown). Once the merchant adds blocks via Theme Editor, the fallback
+    is bypassed entirely.
+  endcomment
+
+  assign use_fallback_announcements = false
+  if announcement_blocks.size == 0
+    assign use_fallback_announcements = true
+  endif
+
+  assign use_fallback_nav = false
+  if nav_blocks.size == 0
+    assign use_fallback_nav = true
+  endif
+
+  assign use_fallback_dropdown = false
+  if dropdown_blocks.size == 0
+    assign use_fallback_dropdown = true
+  endif
+-%}
+
+<header
+  class="fuly-header"
+  data-fuly-header
+  data-rotation-ms="{{ rotation_ms }}"
+  data-fade-ms="{{ fade_ms }}"
+>
+  {%- comment -%} === Announcement bar (rotated client-side by fuly-header.js) === {%- endcomment -%}
+  {%- if use_fallback_announcements -%}
+    <div
+      class="fuly-header__announcement"
+      data-fuly-announcement
+      role="region"
+      aria-label="{{ section.settings.announcement_label | default: 'Anuncios' }}"
+      aria-live="polite"
+    >
+      <span class="fuly-header__announcement-item" data-fuly-announcement-item data-active>ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M.</span>
+      <span class="fuly-header__announcement-item" data-fuly-announcement-item>GARANTÍA DE SATISFACCIÓN : SI NO TE CONVENCE, TE DEVOLVEMOS TU DINERO</span>
+      <span class="fuly-header__announcement-item" data-fuly-announcement-item>SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO</span>
+    </div>
+  {%- else -%}
+    <div
+      class="fuly-header__announcement"
+      data-fuly-announcement
+      role="region"
+      aria-label="{{ section.settings.announcement_label | default: 'Anuncios' }}"
+      aria-live="polite"
+    >
+      {%- for block in announcement_blocks -%}
+        <span
+          class="fuly-header__announcement-item"
+          data-fuly-announcement-item
+          {% if forloop.first %}data-active{% endif %}
+          {{ block.shopify_attributes }}
+        >{{ block.settings.text }}</span>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} === Main nav bar === {%- endcomment -%}
+  <nav class="fuly-header__bar" aria-label="{{ section.settings.nav_label | default: 'Principal' }}">
+    {%- comment -%} Hamburger (mobile <768) {%- endcomment -%}
+    <button
+      type="button"
+      class="fuly-header__hamburger"
+      data-fuly-hamburger
+      aria-label="{{ section.settings.menu_label | default: 'Abrir menu' }}"
+      aria-expanded="false"
+      aria-controls="FulyMobileMenu"
+    >
+      {% comment %} lucide Menu, size 22 {% endcomment %}
+      <svg class="fuly-header__icon-menu"  width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6"  y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      {% comment %} lucide X, size 22 — switched on data-mobile-open {% endcomment %}
+      <svg class="fuly-header__icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    {%- comment -%} Logo {%- endcomment -%}
+    <a class="fuly-header__logo" href="{{ routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 240 | image_tag:
+            loading: 'eager',
+            width: section.settings.logo.width,
+            height: section.settings.logo.height,
+            class: 'fuly-header__logo-img',
+            alt: section.settings.logo_alt | default: 'Fuly'
+        }}
+      {%- else -%}
+        <img class="fuly-header__logo-img"
+             src="{{ 'fuly_logo.svg' | asset_url }}"
+             alt="{{ section.settings.logo_alt | default: 'Fuly' }}"
+             width="120" height="48">
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Desktop nav cluster (hidden <768) {%- endcomment -%}
+    <div class="fuly-header__nav">
+      {%- if use_fallback_nav -%}
+        <a class="fuly-header__nav-link" href="/collections/all">Tienda</a>
+        <a class="fuly-header__nav-link" href="/pages/preguntas-frecuentes">FAQ</a>
+        <a class="fuly-header__nav-link" href="/pages/suscripciones">Suscripciones</a>
+        <a class="fuly-header__nav-link" href="/pages/fuly-semilla">Give-Back</a>
+        <a class="fuly-header__nav-link fuly-header__nutriscan-link"
+           href="https://fuly.app"
+           target="_blank" rel="noopener noreferrer">
+          NutriScan™
+          {% comment %} lucide ExternalLink, size 14 {% endcomment %}
+          <svg class="fuly-header__external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      {%- else -%}
+        {%- for block in nav_blocks -%}
+          {%- assign is_external = block.settings.is_external -%}
+          {%- if is_external -%}
+            <a class="fuly-header__nav-link{% if block.settings.show_external_icon %} fuly-header__nutriscan-link{% endif %}"
+               href="{{ block.settings.url }}"
+               target="_blank" rel="noopener noreferrer"
+               {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+              {%- if block.settings.show_external_icon -%}
+                {% comment %} lucide ExternalLink, size 14 {% endcomment %}
+                <svg class="fuly-header__external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              {%- endif -%}
+            </a>
+          {%- else -%}
+            <a class="fuly-header__nav-link" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- comment -%} (+) circular dropdown trigger — always render so the desktop button is visible even when no dropdown items exist (mirrors Lovable Header.tsx:96-102 which renders the Plus button unconditionally) {%- endcomment -%}
+      <div class="fuly-header__more" data-fuly-more>
+        <button type="button"
+                class="fuly-header__more-trigger"
+                data-fuly-more-trigger
+                aria-label="{{ section.settings.more_desktop_label | default: 'Abrir mas opciones' }}"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="FulyMorePanel">
+          {% comment %} lucide Plus, size 16 {% endcomment %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        </button>
+        <div id="FulyMorePanel" class="fuly-header__more-panel" data-fuly-more-panel hidden>
+          {%- if use_fallback_dropdown -%}
+            <a class="fuly-header__more-item" href="/pages/nosotros">Nosotros</a>
+            <a class="fuly-header__more-item" href="/pages/contacto">Contacto</a>
+          {%- else -%}
+            {%- for item in dropdown_blocks -%}
+              <a class="fuly-header__more-item" href="{{ item.settings.url }}" {{ item.shopify_attributes }}>{{ item.settings.label }}</a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Right cluster: search + cart (always visible) {%- endcomment -%}
+    <div class="fuly-header__icons">
+      {%- if section.settings.show_search -%}
+        <button type="button"
+                class="fuly-header__icon-btn fuly-header__search-btn"
+                data-fuly-search
+                aria-label="{{ section.settings.search_label | default: 'Buscar' }}">
+          {% comment %} lucide Search, size 20 {% endcomment %}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      {%- endif -%}
+
+      <button type="button"
+              class="fuly-header__icon-btn fuly-header__cart-icon"
+              data-fuly-cart
+              aria-label="{{ section.settings.cart_label | default: 'Abrir carrito' }}">
+        {% comment %} lucide ShoppingCart, size 20 {% endcomment %}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="fuly-header__cart-badge" data-fuly-cart-count>{{ cart.item_count }}</span>
+        {%- else -%}
+          <span class="fuly-header__cart-badge" data-fuly-cart-count hidden>0</span>
+        {%- endif -%}
+      </button>
+    </div>
+  </nav>
+
+  {%- comment -%} === Search overlay (toggled by [data-fuly-search]) === {%- endcomment -%}
+  {%- if section.settings.show_search -%}
+    <div class="fuly-header__search-overlay" data-fuly-search-overlay hidden>
+      <div class="fuly-header__search-panel" role="dialog" aria-modal="true" aria-label="{{ section.settings.search_label | default: 'Buscar' }}">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="fuly-header__search-form">
+          <input type="hidden" name="type" value="product">
+          <span class="fuly-header__search-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </span>
+          <input type="search" name="q" class="fuly-header__search-input"
+                 placeholder="{{ section.settings.search_placeholder | default: 'Buscar productos…' }}"
+                 autocomplete="off" autocapitalize="off" spellcheck="false" data-fuly-search-input>
+          <button type="submit" class="fuly-header__search-submit">{{ section.settings.search_label | default: 'Buscar' }}</button>
+          <button type="button" class="fuly-header__search-close" data-fuly-search-close aria-label="Cerrar búsqueda">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} === Mobile fullscreen overlay (rendered always, toggled via [data-mobile-open]) === {%- endcomment -%}
+  <div id="FulyMobileMenu"
+       class="fuly-header__mobile-overlay"
+       data-fuly-mobile-menu
+       hidden>
+    <div class="fuly-header__mobile-topbar">
+      <a class="fuly-header__logo" href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          {{ section.settings.logo | image_url: width: 240 | image_tag:
+              loading: 'lazy',
+              class: 'fuly-header__logo-img',
+              alt: section.settings.logo_alt | default: 'Fuly'
+          }}
+        {%- else -%}
+          <img class="fuly-header__logo-img"
+               src="{{ 'fuly_logo.svg' | asset_url }}"
+               alt="{{ section.settings.logo_alt | default: 'Fuly' }}"
+               width="120" height="32">
+        {%- endif -%}
+      </a>
+      <button type="button"
+              class="fuly-header__mobile-close"
+              data-fuly-mobile-close
+              aria-label="{{ section.settings.close_label | default: 'Cerrar menu' }}">
+        {% comment %} lucide X, size 22 {% endcomment %}
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="fuly-header__mobile-list">
+      {%- if use_fallback_nav -%}
+        <a class="fuly-header__mobile-menu-item" href="/collections/all">Tienda</a>
+        <a class="fuly-header__mobile-menu-item" href="/pages/preguntas-frecuentes">FAQ</a>
+        <a class="fuly-header__mobile-menu-item" href="/pages/suscripciones">Suscripciones</a>
+        <a class="fuly-header__mobile-menu-item" href="/pages/fuly-semilla">Give-Back</a>
+        <a class="fuly-header__mobile-menu-item" href="https://fuly.app" target="_blank" rel="noopener noreferrer">
+          NutriScan™
+          {% comment %} lucide ExternalLink, size 16 {% endcomment %}
+          <svg class="fuly-header__external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      {%- else -%}
+        {%- for block in nav_blocks -%}
+          {%- if block.settings.is_external -%}
+            <a class="fuly-header__mobile-menu-item" href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer">
+              {{ block.settings.label }}
+              {%- if block.settings.show_external_icon -%}
+                {% comment %} lucide ExternalLink, size 16 {% endcomment %}
+                <svg class="fuly-header__external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              {%- endif -%}
+            </a>
+          {%- else -%}
+            <a class="fuly-header__mobile-menu-item" href="{{ block.settings.url }}">{{ block.settings.label }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- comment -%} Mobile "Más" trigger — always render so it mirrors Lovable Header.tsx:155-158 which renders unconditionally {%- endcomment -%}
+      <button type="button"
+              class="fuly-header__mobile-menu-mas-trigger"
+              data-fuly-mobile-more-trigger
+              aria-expanded="false"
+              aria-controls="FulyMobileMore"
+              aria-label="{{ section.settings.more_mobile_label | default: 'Mas opciones' }}">
+        {{ section.settings.more_trigger_label | default: 'Más' }}
+        {% comment %} lucide ChevronDown, size 20 {% endcomment %}
+        <svg class="fuly-header__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div id="FulyMobileMore" class="fuly-header__mobile-menu-mas-subitems" data-fuly-mobile-more-panel hidden>
+        {%- if use_fallback_dropdown -%}
+          <a class="fuly-header__mobile-menu-subitem" href="/pages/nosotros">Nosotros</a>
+          <a class="fuly-header__mobile-menu-subitem" href="/pages/contacto">Contacto</a>
+        {%- else -%}
+          {%- for item in dropdown_blocks -%}
+            <a class="fuly-header__mobile-menu-subitem" href="{{ item.settings.url }}">{{ item.settings.label }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</header>

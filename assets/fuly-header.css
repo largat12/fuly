@@ -1,0 +1,432 @@
+/* === FULY Header (override of Dawn) =================================== */
+
+/* Force sticky behavior at Shopify section wrapper level (Dawn can toggle
+   helper classes like .shopify-section-header-hidden/.animate). */
+.section-header.shopify-section-group-header-group {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+.section-header.shopify-section-group-header-group.shopify-section-header-hidden,
+.section-header.shopify-section-group-header-group.shopify-section-header-hidden.menu-open {
+  top: 0 !important;
+}
+
+/* Sticky shell */
+.fuly-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white-lab);
+}
+
+/* --- Announcement bar -------------------------------------------------- */
+/* Mirrors Lovable AnnouncementBar.tsx:
+   className="bg-yellow-spark text-cartoon-black text-center py-2 font-label uppercase
+              cartoon-border border-x-0 border-t-0"
+   style={{ fontSize: "12px", letterSpacing: "0.05em" }}
+   Font stack uses var(--fuly-font-label) so Martian Mono loads first (Courier New
+   is a much narrower fallback that broke the 375 wrap behavior in round 2).
+   Lovable renders ONE message at a time (state-driven), so the bar's height
+   matches that single message's wrap. We hide inactive items (display:none) so
+   they don't contribute to height — the bar grows/shrinks per active message,
+   matching Lovable behavior. The fade transition is opacity-only on the active
+   span (Lovable also fades opacity on a single span whose text swaps). */
+.fuly-header__announcement {
+  background: var(--yellow-spark);
+  color: hsl(var(--cartoon-black));
+  font-family: var(--fuly-font-label);              /* Martian Mono → JetBrains Mono → Courier New */
+  font-size: 12px;
+  letter-spacing: var(--tracking-tag-label);        /* 0.05em */
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 0;                                   /* py-2 (Lovable has no horizontal padding) */
+  border-bottom: 3px solid hsl(var(--cartoon-black)); /* cartoon-border (3px) */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;                                 /* Tailwind preflight body default */
+  /* 8px + 18px (12px × 1.5) + 8px + 3px = 37px floor for single-line message,
+     prevents collapse during the 300ms swap window in fuly-header.js. */
+  min-height: 37px;
+}
+.fuly-header__announcement-item {
+  display: none;                                    /* hidden by default */
+  text-align: center;
+  transition: opacity 300ms;                        /* matches Lovable inline duration-300 */
+}
+.fuly-header__announcement-item[data-active] {
+  display: inline-block;
+  opacity: 1;
+}
+
+/* --- Nav bar ----------------------------------------------------------- */
+.fuly-header__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;                               /* py-3 px-4 */
+  border-bottom: 3px solid hsl(var(--cartoon-black));
+}
+@media (min-width: 768px) {
+  .fuly-header__bar { padding: 12px 32px; }         /* md:px-8 */
+}
+@media (min-width: 1024px) {
+  .fuly-header__bar { padding: 12px 64px; }         /* lg:px-16 */
+}
+
+/* --- Logo -------------------------------------------------------------- */
+.fuly-header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+.fuly-header__logo-img {
+  height: 32px;                                     /* h-8 */
+  width: auto;
+  max-width: 120px;
+}
+@media (min-width: 768px) {
+  .fuly-header__logo {
+    position: static;
+    transform: none;
+    margin-right: auto;                              /* md:mr-auto */
+  }
+  .fuly-header__logo-img { height: 40px; }          /* md:h-10 */
+}
+
+/* --- Hamburger (mobile only) ------------------------------------------ */
+.fuly-header__hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: hsl(var(--cartoon-black));
+  cursor: pointer;
+}
+.fuly-header__hamburger .fuly-header__icon-close { display: none; }
+.fuly-header[data-mobile-open] .fuly-header__hamburger .fuly-header__icon-menu { display: none; }
+.fuly-header[data-mobile-open] .fuly-header__hamburger .fuly-header__icon-close { display: block; }
+@media (min-width: 768px) {
+  .fuly-header__hamburger { display: none; }        /* md:hidden */
+}
+
+/* --- Desktop nav cluster ---------------------------------------------- */
+.fuly-header__nav {
+  display: none;
+}
+@media (min-width: 768px) {
+  .fuly-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;     
+    margin-right: 10px;                                  
+  }
+}
+
+.fuly-header__nav-link {
+  font-family: var(--fuly-font-label);              /* Martian Mono → JetBrains Mono → Courier New */
+  font-size: 13px;
+  letter-spacing: var(--tracking-tag-label);        /* 0.05em */
+  text-transform: uppercase;
+  color: hsl(var(--cartoon-black));
+  text-decoration: none;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fuly-header__nav-link:hover { color: var(--cereza); }
+
+.fuly-header__nutriscan-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;                                          /* gap-1 */
+}
+.fuly-header__external-icon { color: hsl(var(--muted-foreground)); }
+
+/* --- "Más" trigger + panel (desktop) ---------------------------------- */
+.fuly-header__more { position: relative; }
+.fuly-header__more-trigger {
+  font-family: 'Arial', sans-serif;                  /* --font-heading fallback */
+  font-weight: var(--weight-subtitle-face);          /* 700, matches font-bold */
+  color: hsl(var(--cartoon-black));
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 3px solid hsl(var(--cartoon-black));       /* cartoon-border */
+  cursor: pointer;
+  padding: 0;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fuly-header__more-trigger:hover { color: var(--cereza); }
+.fuly-header__more-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;                                   /* mt-2 */
+  background: var(--white-lab);
+  border: 3px solid hsl(var(--cartoon-black));
+  border-radius: 12px;                               /* rounded-xl */
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* Tailwind shadow-lg */
+  padding: 8px 0;                                    /* py-2 */
+  min-width: 180px;
+  animation: fuly-fade-in-up var(--duration-fade-in-up) var(--easing-fade-in-up) forwards;
+}
+.fuly-header__more-panel[hidden] { display: none; }
+.fuly-header__more-item {
+  display: block;
+  padding: 8px 16px;                                 /* px-4 py-2 */
+  font-family: var(--fuly-font-label);              /* Martian Mono → JetBrains Mono → Courier New */
+  font-size: 13px;
+  letter-spacing: var(--tracking-tag-label);
+  text-transform: uppercase;
+  color: hsl(var(--cartoon-black));
+  text-decoration: none;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fuly-header__more-item:hover { background: hsl(var(--muted)); }
+
+/* --- Right cluster (search + cart) ------------------------------------ */
+.fuly-header__icons {
+  display: flex;
+  align-items: center;
+  gap: 0px;                                          /* gap-2 */
+}
+.fuly-header__icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  border-radius: 9999px;
+  color: hsl(var(--cartoon-black));
+  cursor: pointer;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fuly-header__icon-btn:hover { background: hsl(var(--muted)); }
+
+/* Cart badge */
+.fuly-header__cart-badge {
+  position: absolute;
+  top: -4px;                                         /* -top-1 */
+  right: -4px;                                       /* -right-1 */
+  width: 20px;                                       /* w-5 */
+  height: 20px;                                      /* h-5 */
+  border-radius: 9999px;
+  background: var(--cereza);
+  color: var(--white-lab);
+  font-family: var(--fuly-font-label);              /* Martian Mono → JetBrains Mono → Courier New */
+  font-size: 12px;                                   /* text-xs */
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fuly-header__cart-badge[hidden] { display: none; }
+
+/* --- Mobile fullscreen overlay ---------------------------------------- */
+.fuly-header__mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;                                       /* z-[60] arbitrary value, above sticky header z-50 */
+  background: var(--white-lab);
+  flex-direction: column;
+}
+.fuly-header__mobile-overlay[data-open] { display: flex; }
+@media (min-width: 768px) {
+  .fuly-header__mobile-overlay,
+  .fuly-header__mobile-overlay[data-open] { display: none; }   /* md:hidden */
+}
+
+.fuly-header__mobile-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 3px solid hsl(var(--cartoon-black));
+}
+.fuly-header__mobile-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent;
+  border: 0;
+  color: hsl(var(--cartoon-black));
+  cursor: pointer;
+}
+
+.fuly-header__mobile-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;                                     /* px-6 py-6 */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;                                          /* gap-1 */
+}
+
+.fuly-header__mobile-menu-item {
+  font-family: 'Arial', sans-serif;                   /* --font-subtitle fallback */
+  font-weight: var(--weight-subtitle-face);           /* 700 */
+  text-transform: uppercase;
+  font-size: 22px;                                    /* text-[22px] */
+  color: hsl(var(--cartoon-black));
+  padding: 12px 0;                                    /* py-3 */
+  border-bottom: 2px solid hsl(var(--muted) / 0.3);   /* border-b-2 border-muted/30 */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fuly-header__mobile-menu-item:hover { color: var(--cereza); }
+
+.fuly-header__mobile-menu-mas-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Arial', sans-serif;
+  font-weight: var(--weight-subtitle-face);
+  text-transform: uppercase;
+  font-size: 22px;
+  color: hsl(var(--cartoon-black));
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 2px solid hsl(var(--muted) / 0.3);
+  background: transparent;
+  cursor: pointer;
+}
+.fuly-header__chevron {
+  transition: transform 200ms;                        /* duration-200 */
+}
+.fuly-header__mobile-menu-mas-trigger[aria-expanded="true"] .fuly-header__chevron {
+  transform: rotate(180deg);
+}
+
+.fuly-header__mobile-menu-mas-subitems {
+  padding-left: 16px;                                 /* pl-4 */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fuly-header__mobile-menu-mas-subitems[hidden] { display: none; }
+.fuly-header__mobile-menu-subitem {
+  font-family: 'Arial', sans-serif;
+  font-weight: var(--weight-subtitle-face);
+  text-transform: uppercase;
+  font-size: 18px;                                    /* text-[18px] */
+  color: hsl(var(--cartoon-black));
+  padding: 10px 0;                                    /* py-2.5 */
+  border-bottom: 1px solid hsl(var(--muted) / 0.2);
+  text-decoration: none;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fuly-header__mobile-menu-subitem:hover { color: var(--cereza); }
+
+/* --- Keyframes -------------------------------------------------------- */
+@keyframes fuly-fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Suppress Dawn's announcement-bar visual host --------------------- */
+.fuly-announcement-host { display: none !important; }
+
+/* ===== Search overlay (botón de búsqueda del header) ===== */
+.fuly-header__search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.fuly-header__search-overlay[hidden] { display: none; }
+
+.fuly-header__search-panel {
+  width: 100%;
+  background: #FFFFFF;
+  border-bottom: 3px solid #1A1A1A;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  animation: fuly-search-drop 0.18s ease-out;
+}
+@keyframes fuly-search-drop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.fuly-header__search-form {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fuly-header__search-icon {
+  display: inline-flex;
+  color: #1A1A1A;
+  flex-shrink: 0;
+}
+.fuly-header__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Martian Mono', 'Courier New', monospace;
+  font-size: 16px;
+  padding: 12px 14px;
+  border: 2px solid #1A1A1A;
+  border-radius: 25px;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  outline: none;
+}
+.fuly-header__search-input:focus {
+  outline: 2px solid #FFE135;
+  outline-offset: 2px;
+}
+.fuly-header__search-submit {
+  flex-shrink: 0;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 22px;
+  border: 3px solid #1A1A1A;
+  border-radius: 25px;
+  background: #FFE135;
+  color: #1A1A1A;
+  cursor: pointer;
+}
+.fuly-header__search-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: #1A1A1A;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .fuly-header__search-submit { display: none; }
+}

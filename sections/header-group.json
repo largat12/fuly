@@ -1,0 +1,178 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-envio-mismo-dia": {
+          "type": "announcement",
+          "settings": {
+            "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M.",
+            "link": "shopify://collections/all"
+          }
+        },
+        "announcement-garantia": {
+          "type": "announcement",
+          "settings": {
+            "text": "GARANTÍA DE SATISFACCIÓN : SI NO TE CONVENCE, TE DEVOLVEMOS TU DINERO",
+            "link": "shopify://pages/envios-y-devoluciones"
+          }
+        },
+        "announcement-suscribete": {
+          "type": "announcement",
+          "settings": {
+            "text": "SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO",
+            "link": "shopify://pages/suscripciones"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-envio-mismo-dia",
+        "announcement-garantia",
+        "announcement-suscribete"
+      ],
+      "custom_css": [
+        ".announcement-bar-section .slider-button { display: none !important; }",
+        ".announcement-bar-section .slider-buttons { display: none !important; }"
+      ],
+      "settings": {
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-b89595bd-8350-4325-8908-37d5d794fa2e",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "fuly-announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M."
+          }
+        },
+        "fuly-announcement-2": {
+          "type": "announcement",
+          "settings": {
+            "text": "GARANTÍA DE SATISFACCIÓN : SI NO TE CONVENCE, TE DEVOLVEMOS TU DINERO"
+          }
+        },
+        "fuly-announcement-3": {
+          "type": "announcement",
+          "settings": {
+            "text": "SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO"
+          }
+        },
+        "fuly-nav-tienda": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Tienda",
+            "url": "/collections/all",
+            "is_external": false,
+            "show_external_icon": false
+          }
+        },
+        "fuly-nav-faq": {
+          "type": "nav_link",
+          "settings": {
+            "label": "FAQ",
+            "url": "/pages/preguntas-frecuentes",
+            "is_external": false,
+            "show_external_icon": false
+          }
+        },
+        "fuly-nav-suscripciones": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Suscripciones",
+            "url": "/pages/suscripciones",
+            "is_external": false,
+            "show_external_icon": false
+          }
+        },
+        "fuly-nav-give-back": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Give-Back",
+            "url": "/pages/fuly-semilla",
+            "is_external": false,
+            "show_external_icon": false
+          }
+        },
+        "fuly-nav-mas-ninos": {
+          "type": "nav_link",
+          "settings": {
+            "label": "MÁS NIÑOS",
+            "url": "/pages/mas-ninos",
+            "is_external": false,
+            "show_external_icon": false
+          }
+        },
+        "fuly-nav-nutriscan": {
+          "type": "nav_link",
+          "settings": {
+            "label": "NutriScan™",
+            "url": "https://fuly.app",
+            "is_external": true,
+            "show_external_icon": true
+          }
+        },
+        "fuly-dropdown-nosotros": {
+          "type": "dropdown_item",
+          "settings": {
+            "label": "Nosotros",
+            "url": "/pages/nosotros",
+            "is_external": false
+          }
+        },
+        "fuly-dropdown-contacto": {
+          "type": "dropdown_item",
+          "settings": {
+            "label": "Contacto",
+            "url": "/pages/contacto",
+            "is_external": false
+          }
+        }
+      },
+      "block_order": [
+        "fuly-announcement-1",
+        "fuly-announcement-2",
+        "fuly-announcement-3",
+        "fuly-nav-tienda",
+        "fuly-nav-faq",
+        "fuly-nav-suscripciones",
+        "fuly-nav-give-back",
+        "fuly-nav-mas-ninos",
+        "fuly-nav-nutriscan",
+        "fuly-dropdown-nosotros",
+        "fuly-dropdown-contacto"
+      ],
+      "custom_css": [
+        ".header__icon--account { display: none !important; }",
+        ".header-wrapper { background-color: #FFFFFF !important; }",
+        ".header { background-color: #FFFFFF !important; }"
+      ],
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": false,
+        "margin_bottom": 0,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

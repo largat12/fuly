@@ -1,0 +1,174 @@
+{%- comment -%}
+  FULY Product Details Block — Accordion content for product metafields
+{%- endcomment -%}
+
+{%- liquid
+  assign section_title = settings.section_title | default: 'Detalles del Producto'
+  assign label_nutrition = settings.label_nutrition | default: 'Tabla Nutricional'
+  assign label_ingredients = settings.label_ingredients | default: 'Ingredientes'
+  assign label_howto = settings.label_howto | default: 'Cómo Preparar'
+  assign label_benefits = settings.label_benefits | default: 'Beneficios'
+  assign label_functional = settings.label_functional | default: 'Beneficio Funcional'
+  assign label_allergens = settings.label_allergens | default: 'Alergenos'
+-%}
+
+<div class="fuly-product-details-block">
+  <div class="fuly-faq-list">
+    {%- comment -%}
+      Tabla Nutricional
+    {%- endcomment -%}
+    {%- assign nutrition_info = product.metafields.custom.tabla_nutricional | default: product.metafields.custom.informacion_nutricional | default: product.metafields.fuly.nutrition_info -%}
+    {%- if nutrition_info != blank -%}
+      <details class="fuly-faq-item">
+        <summary>{{ label_nutrition }}</summary>
+        <div class="fuly-faq-answer">
+          {{ nutrition_info }}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- comment -%}
+      Ingredientes
+    {%- endcomment -%}
+    {%- assign ingredients = product.metafields.custom.ingredientes | default: product.metafields.fuly.ingredients -%}
+    {%- if ingredients != blank -%}
+      <details class="fuly-faq-item">
+        <summary>{{ label_ingredients }}</summary>
+        <div class="fuly-faq-answer">
+          {{ ingredients }}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- comment -%}
+      Cómo Preparar
+    {%- endcomment -%}
+    {%- assign how_to_prepare = product.metafields.custom.como_preparar | default: product.metafields.custom.modo_preparacion | default: product.metafields.fuly.how_to_prepare -%}
+    {%- if how_to_prepare != blank -%}
+      <details class="fuly-faq-item">
+        <summary>{{ label_howto }}</summary>
+        <div class="fuly-faq-answer">
+          {{ how_to_prepare }}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- comment -%}
+      Beneficios
+    {%- endcomment -%}
+    {%- assign benefits_raw = product.metafields.custom.beneficios | default: product.metafields.fuly.benefits -%}
+    {%- if benefits_raw != blank -%}
+      <details class="fuly-faq-item">
+        <summary>{{ label_benefits }}</summary>
+        <div class="fuly-faq-answer">
+          {%- assign benefits = benefits_raw | parse_json -%}
+          {%- if benefits -%}
+            <ul class="fuly-benefits-list-product">
+              {%- for benefit in benefits -%}
+                <li>{{ benefit }}</li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            {{ benefits_raw }}
+          {%- endif -%}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- comment -%}
+      Beneficio Funcional
+    {%- endcomment -%}
+    {%- assign functional_benefit = product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit -%}
+    {%- if functional_benefit != blank -%}
+      <details class="fuly-faq-item">
+        <summary>{{ label_functional }}</summary>
+        <div class="fuly-faq-answer">
+          <strong>{{ functional_benefit }}</strong>
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- comment -%}
+      Alergenos
+    {%- endcomment -%}
+    {%- assign allergens = product.metafields.custom.alergenos | default: product.metafields.fuly.allergens -%}
+    {%- if allergens != blank -%}
+      <details class="fuly-faq-item">
+        <summary>{{ label_allergens }}</summary>
+        <div class="fuly-faq-answer">
+          {{ allergens }}
+        </div>
+      </details>
+    {%- endif -%}
+  </div>
+
+  <style>
+    .fuly-product-details-block {
+      padding: 0 1rem;
+    }
+
+    .fuly-product-details-block .fuly-faq-list {
+      margin-top: 0;
+    }
+
+    .fuly-product-details-block .fuly-faq-item {
+      border-bottom: 1px solid #e5e5e5;
+      margin: 0;
+    }
+
+    .fuly-product-details-block .fuly-faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .fuly-product-details-block .fuly-faq-item summary {
+      padding: 1.2rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .fuly-product-details-block .fuly-faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .fuly-product-details-block .fuly-faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      transition: transform 0.2s;
+    }
+
+    .fuly-product-details-block .fuly-faq-item[open] summary::after {
+      content: '−';
+    }
+
+    .fuly-product-details-block .fuly-faq-answer {
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    .fuly-benefits-list-product {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .fuly-benefits-list-product li {
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .fuly-benefits-list-product li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: #4CAF50;
+    }
+  </style>
+</div>
