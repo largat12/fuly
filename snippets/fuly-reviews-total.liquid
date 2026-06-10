@@ -42,15 +42,23 @@
 
   if rt_source != 'manual'
     comment
-      1) Metafield de tienda con total agregado (si la app lo provee).
+      1) Total de la app Revie (revie.lat). Escribe el total de la tienda en
+         shop.metafields.revie.reviewShopData.reviewCount. Es lo más exacto y
+         se actualiza solo, sin llamadas externas.
     endcomment
-    if shop_namespace != blank and shop_key != blank
+    assign rt_revie = shop.metafields.revie.reviewShopData.reviewCount | default: 0
+    assign rt_total = rt_total | plus: rt_revie
+
+    comment
+      2) Metafield de tienda configurable (otra app o total custom).
+    endcomment
+    if rt_total == 0 and shop_namespace != blank and shop_key != blank
       assign rt_shop_value = shop.metafields[shop_namespace][shop_key].value | default: 0
       assign rt_total = rt_total | plus: rt_shop_value
     endif
 
     comment
-      2) Si aún es 0, sumar el metafield por producto.
+      3) Si aún es 0, sumar el metafield por producto (namespace/key configurable).
     endcomment
     if rt_total == 0
       for rt_product in collections.all.products

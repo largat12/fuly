@@ -1449,6 +1449,100 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "Fuly — Barra de envío gratis"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_free_shipping_enabled",
+        "label": "Mostrar barra de envío gratis",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "cart_free_shipping_threshold",
+        "label": "Monto para envío gratis",
+        "info": "En la moneda de la tienda (ej. 250000 = $250.000). 0 para desactivar.",
+        "default": 250000
+      },
+      {
+        "type": "text",
+        "id": "cart_free_shipping_text",
+        "label": "Mensaje (falta para envío gratis)",
+        "info": "Usa [amount] para el monto restante.",
+        "default": "¡Estás a [amount] de tener envío gratis! ✨"
+      },
+      {
+        "type": "text",
+        "id": "cart_free_shipping_success_text",
+        "label": "Mensaje (ya tiene envío gratis)",
+        "default": "¡Tienes envío gratis! 🎉"
+      },
+      {
+        "type": "header",
+        "content": "Fuly — Código de descuento"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_discount_enabled",
+        "label": "Mostrar campo de código de descuento",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_discount_placeholder",
+        "label": "Texto del campo de descuento",
+        "default": "Código de descuento"
+      },
+      {
+        "type": "text",
+        "id": "cart_discount_button",
+        "label": "Texto del botón de descuento",
+        "default": "Aplicar"
+      },
+      {
+        "type": "header",
+        "content": "Fuly — Botón de pago"
+      },
+      {
+        "type": "text",
+        "id": "cart_checkout_label",
+        "label": "Texto del botón de pago",
+        "info": "Se le agrega automáticamente el total. Ej: 'Finalizar Compra'.",
+        "default": "Finalizar Compra"
+      },
+      {
+        "type": "header",
+        "content": "Fuly — Quizás te interese"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_recommendations_enabled",
+        "label": "Mostrar 'Quizás te interese'",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_recommendations_title",
+        "label": "Título de la sección",
+        "default": "Quizás te interese"
+      },
+      {
+        "type": "collection",
+        "id": "cart_recommendations_collection",
+        "label": "Colección de recomendaciones",
+        "info": "Productos que se muestran en 'Quizás te interese'."
+      },
+      {
+        "type": "range",
+        "id": "cart_recommendations_count",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "label": "Cantidad a mostrar",
+        "default": 2
       }
     ]
   }

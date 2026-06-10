@@ -58,20 +58,17 @@
     </header>
 
     <div class="fuly-collection-toolbar">
-      <nav class="fuly-collection-filters" aria-label="Filtrar por categoría">
-        <a
-          href="{{ routes.all_products_collection_url }}"
-          class="fuly-collection-chip{% if current_handle == '' or current_handle == 'all' %} fuly-collection-chip--active{% endif %}"
-        >{{ section.settings.filter_all_label }}</a>
-        {%- for c in collections -%}
-          {%- unless c.handle == 'all' or c.handle == 'frontpage' -%}
-            <a
-              href="{{ c.url }}"
-              class="fuly-collection-chip{% if c.handle == current_handle %} fuly-collection-chip--active{% endif %}"
-            >{{ c.title }}</a>
-          {%- endunless -%}
-        {%- endfor -%}
-      </nav>
+      <div class="fuly-collection-sort fuly-collection-filter">
+        <label class="fuly-collection-sr-only" for="fuly-cat">{{ section.settings.filter_label | default: 'Categoría' }}</label>
+        <select id="fuly-cat" onchange="if(this.value){window.location.href=this.value;}">
+          <option value="{{ routes.all_products_collection_url }}"{% if current_handle == '' or current_handle == 'all' %} selected{% endif %}>{{ section.settings.filter_all_label }}</option>
+          {%- for c in collections -%}
+            {%- unless c.handle == 'all' or c.handle == 'frontpage' -%}
+              <option value="{{ c.url }}"{% if c.handle == current_handle %} selected{% endif %}>{{ c.title }}</option>
+            {%- endunless -%}
+          {%- endfor -%}
+        </select>
+      </div>
 
       <form method="get" class="fuly-collection-sort">
         <label class="fuly-collection-sr-only" for="fuly-sort">{{ section.settings.sort_label }}</label>
@@ -219,6 +216,12 @@
       "id": "eyebrow",
       "label": "Eyebrow tag",
       "default": "CATÁLOGO"
+    },
+    {
+      "type": "text",
+      "id": "filter_label",
+      "label": "Label del dropdown de categorías",
+      "default": "Categoría"
     },
     {
       "type": "text",

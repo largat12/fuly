@@ -167,6 +167,10 @@
   outline-offset: 2px;
 }
 
+@media (min-width: 640px) {
+  .fuly-collection-filter select { min-width: 18rem; }
+}
+
 /* === Grid === */
 .fuly-collection-grid {
   display: grid;

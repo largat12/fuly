@@ -15,6 +15,119 @@
   .drawer {
     visibility: hidden;
   }
+
+  /* === Fuly cart drawer extras === */
+  .drawer__heading-count { font-weight: 700; white-space: nowrap; }
+
+  .fuly-cart-fs {
+    padding: 1.2rem 2rem 1.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .fuly-cart-fs__text { margin: 0 0 0.8rem; font-size: 1.4rem; text-align: center; }
+  .fuly-cart-fs__text strong { font-weight: 700; }
+  .fuly-cart-fs__row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .fuly-cart-fs__track {
+    flex: 1 1 auto;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+  }
+  .fuly-cart-fs__bar {
+    display: block !important;
+    height: 8px;
+    border-radius: 9999px;
+    background: #1aa564 !important;
+    transition: width 0.4s ease;
+  }
+  .fuly-cart-fs__truck {
+    flex: 0 0 auto;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 9999px;
+    background: #fff;
+    border: 2px solid rgba(0,0,0,0.12);
+    color: #555;
+  }
+  .fuly-cart-fs__truck.is-done { background: #1aa564; color: #fff; border-color: #1aa564; }
+
+  .fuly-cart-rec {
+    padding: 1.6rem 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .fuly-cart-rec__title {
+    margin: 0 0 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-align: center;
+  }
+  .fuly-cart-rec__card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background: rgba(0, 0, 0, 0.04);
+    margin-bottom: 1rem;
+  }
+  .fuly-cart-rec__card:last-child { margin-bottom: 0; }
+  .fuly-cart-rec__media { flex: 0 0 auto; }
+  .fuly-cart-rec__media img { width: 56px; height: 56px; object-fit: cover; border-radius: 0.8rem; display: block; }
+  .fuly-cart-rec__info { flex: 1 1 auto; min-width: 0; }
+  .fuly-cart-rec__name {
+    display: block;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: inherit;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .fuly-cart-rec__price { font-size: 1.4rem; opacity: 0.8; }
+  .fuly-cart-rec__add {
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 9999px;
+    background: #FFE135;
+    color: #1A1A1A;
+    font-weight: 700;
+    font-size: 1.3rem;
+    padding: 0.8rem 1.4rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  .fuly-cart-rec__add[disabled] { opacity: 0.5; cursor: default; }
+
+  .fuly-cart-discount {
+    display: flex;
+    gap: 0.8rem;
+    padding: 1.2rem 2rem;
+  }
+  .fuly-cart-discount__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 1rem 1.4rem;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    background: #fff;
+  }
+  .fuly-cart-discount__btn {
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 9999px;
+    background: #FFE135;
+    color: #1A1A1A;
+    font-weight: 700;
+    font-size: 1.4rem;
+    padding: 1rem 1.8rem;
+    cursor: pointer;
+  }
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">
@@ -62,7 +175,10 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading">
+          {{- 'sections.cart.title' | t -}}
+          {%- if cart.item_count > 0 %} <span class="drawer__heading-count">• {{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %}</span>{% endif -%}
+        </h2>
         <button
           class="drawer__close"
           type="button"
@@ -74,6 +190,32 @@
           </span>
         </button>
       </div>
+
+      {%- comment -%} Fuly — Barra de envío gratis {%- endcomment -%}
+      {%- if settings.cart_free_shipping_enabled and settings.cart_free_shipping_threshold > 0 and cart != empty -%}
+        {%- assign fs_threshold = settings.cart_free_shipping_threshold | times: 100 -%}
+        {%- assign fs_remaining = fs_threshold | minus: cart.total_price -%}
+        {%- assign fs_pct = cart.total_price | times: 100 | divided_by: fs_threshold -%}
+        {%- if fs_pct > 100 -%}{%- assign fs_pct = 100 -%}{%- endif -%}
+        {%- capture fs_remaining_money -%}{{ fs_remaining | money }}{%- endcapture -%}
+        {%- if fs_remaining > 0 -%}
+          {%- assign fs_msg = settings.cart_free_shipping_text | default: '¡Estás a [amount] de tener envío gratis! ✨' | replace: '[amount]', fs_remaining_money -%}
+        {%- else -%}
+          {%- assign fs_msg = settings.cart_free_shipping_success_text | default: '¡Tienes envío gratis! 🎉' -%}
+        {%- endif -%}
+        <div class="fuly-cart-fs">
+          <p class="fuly-cart-fs__text">{{ fs_msg }}</p>
+          <div class="fuly-cart-fs__row">
+            <div class="fuly-cart-fs__track">
+              <div class="fuly-cart-fs__bar" style="width: {{ fs_pct }}%; height: 8px; background: #1aa564;"></div>
+            </div>
+            <span class="fuly-cart-fs__truck{% if fs_remaining <= 0 %} is-done{% endif %}" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
@@ -475,6 +617,51 @@
           </details>
         {%- endif -%}
 
+        {%- comment -%} Fuly — Quizás te interese {%- endcomment -%}
+        {%- if settings.cart_recommendations_enabled and settings.cart_recommendations_collection != blank and cart != empty -%}
+          {%- assign rec_coll = collections[settings.cart_recommendations_collection] -%}
+          {%- assign rec_count = settings.cart_recommendations_count | default: 2 -%}
+          {%- assign rec_shown = 0 -%}
+          {%- capture rec_cards -%}
+            {%- for product in rec_coll.products -%}
+              {%- if rec_shown >= rec_count -%}{%- break -%}{%- endif -%}
+              {%- assign in_cart = false -%}
+              {%- for ci in cart.items -%}
+                {%- if ci.product_id == product.id -%}{%- assign in_cart = true -%}{%- endif -%}
+              {%- endfor -%}
+              {%- if in_cart == false and product.available -%}
+                {%- assign rec_shown = rec_shown | plus: 1 -%}
+                <div class="fuly-cart-rec__card">
+                  <a href="{{ product.url }}" class="fuly-cart-rec__media">
+                    {%- if product.featured_image -%}
+                      <img src="{{ product.featured_image | image_url: width: 200 }}" alt="{{ product.title | escape }}" loading="lazy" width="64" height="64">
+                    {%- endif -%}
+                  </a>
+                  <div class="fuly-cart-rec__info">
+                    <a href="{{ product.url }}" class="fuly-cart-rec__name">{{ product.title }}</a>
+                    <span class="fuly-cart-rec__price">{{ product.price | money }}</span>
+                  </div>
+                  <button type="button" class="fuly-cart-rec__add" data-fuly-rec-add="{{ product.selected_or_first_available_variant.id }}">Agregar</button>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endcapture -%}
+          {%- if rec_shown > 0 -%}
+            <div class="fuly-cart-rec">
+              <h3 class="fuly-cart-rec__title">{{ settings.cart_recommendations_title | default: 'Quizás te interese' }}</h3>
+              {{ rec_cards }}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- comment -%} Fuly — Código de descuento {%- endcomment -%}
+        {%- if settings.cart_discount_enabled and cart != empty -%}
+          <div class="fuly-cart-discount">
+            <input type="text" class="fuly-cart-discount__input" placeholder="{{ settings.cart_discount_placeholder | default: 'Código de descuento' | escape }}" aria-label="{{ settings.cart_discount_placeholder | default: 'Código de descuento' | escape }}" data-fuly-discount-input>
+            <button type="button" class="fuly-cart-discount__btn" data-fuly-discount-apply>{{ settings.cart_discount_button | default: 'Aplicar' }}</button>
+          </div>
+        {%- endif -%}
+
         <!-- Start blocks -->
         <!-- Subtotals -->
 
@@ -555,10 +742,85 @@
               disabled
             {% endif %}
           >
-            Pagar
+            {{ settings.cart_checkout_label | default: 'Finalizar Compra' }}{% if cart != empty %} • {{ cart.total_price | money }}{% endif %}
           </button>
         </div>
       </div>
     </div>
   </div>
 </cart-drawer>
+
+<script>
+  (function () {
+    if (window.__fulyCartExtras) return;
+    window.__fulyCartExtras = true;
+
+    function rootUrl() {
+      return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+    }
+
+    function refreshDrawer(reopen) {
+      return fetch(rootUrl() + '?sections=cart-drawer')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var doc = new DOMParser().parseFromString(data['cart-drawer'], 'text/html');
+          var fresh = doc.querySelector('#CartDrawer');
+          var current = document.querySelector('#CartDrawer');
+          if (fresh && current) { current.innerHTML = fresh.innerHTML; }
+          var cd = document.querySelector('cart-drawer');
+          if (cd) {
+            cd.classList.remove('is-empty');
+            var ov = document.querySelector('#CartDrawer-Overlay');
+            if (ov) { ov.addEventListener('click', cd.close.bind(cd)); }
+            if (reopen && typeof cd.open === 'function') { try { cd.open(); } catch (e) {} }
+          }
+          // Sync header badge
+          document.dispatchEvent(new CustomEvent('cart:refresh'));
+        });
+    }
+
+    // "Quizás te interese" → agregar (AJAX)
+    document.addEventListener('click', function (e) {
+      var addBtn = e.target.closest('[data-fuly-rec-add]');
+      if (addBtn) {
+        e.preventDefault();
+        var id = addBtn.getAttribute('data-fuly-rec-add');
+        if (!id || addBtn.disabled) return;
+        addBtn.disabled = true;
+        var label = addBtn.textContent;
+        addBtn.textContent = '…';
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ items: [{ id: id, quantity: 1 }] })
+        })
+          .then(function (r) { return r.json(); })
+          .then(function () { return refreshDrawer(true); })
+          .catch(function () { window.location.href = '/cart'; });
+        return;
+      }
+
+      // Código de descuento
+      var discBtn = e.target.closest('[data-fuly-discount-apply]');
+      if (discBtn) {
+        e.preventDefault();
+        var wrap = discBtn.closest('.fuly-cart-discount');
+        var input = wrap && wrap.querySelector('[data-fuly-discount-input]');
+        var code = input && input.value.trim();
+        if (code) {
+          window.location.href = '/discount/' + encodeURIComponent(code) + '?redirect=/cart';
+        }
+      }
+    });
+
+    // Enter en el campo de descuento
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      var input = e.target.closest('[data-fuly-discount-input]');
+      if (!input) return;
+      e.preventDefault();
+      var code = input.value.trim();
+      if (code) { window.location.href = '/discount/' + encodeURIComponent(code) + '?redirect=/cart'; }
+    });
+  })();
+</script>
