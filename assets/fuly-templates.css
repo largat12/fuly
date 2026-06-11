@@ -1071,7 +1071,7 @@ product-recommendations.related-products .related-products__heading {
 .main-404 h1,
 .template-404 h1 {
   font-family: var(--fuly-font-display);
-  font-size: clamp(100px, 18vw, 180px);
+  font-size: clamp(100px, 18vw, 100px);
   color: var(--fuly-cereza);
   line-height: 1;
   margin-bottom: var(--fuly-space-6);
