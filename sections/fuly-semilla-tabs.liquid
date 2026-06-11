@@ -1,0 +1,153 @@
+<div class="fuly-semilla">
+  <section id="donate-tabs" class="fuly-semilla-section fuly-semilla-tabs">
+    <div class="fuly-semilla-tabs__inner">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <div class="fuly-semilla-tabs__nav" role="tablist">
+        <button type="button" class="fuly-semilla-tab-btn fuly-semilla-tab-btn--left fuly-semilla-tab-btn--active" data-fuly-semilla-tab="once" role="tab" aria-selected="true">{{ section.settings.tab_once_label }}</button>
+        <button type="button" class="fuly-semilla-tab-btn fuly-semilla-tab-btn--right" data-fuly-semilla-tab="monthly" role="tab" aria-selected="false">{{ section.settings.tab_monthly_label }}</button>
+      </div>
+      <div class="fuly-semilla-tab-panel fuly-semilla-tab-panel--active" data-fuly-semilla-panel="once" role="tabpanel">
+        <div class="fuly-semilla-amount-row" data-fuly-amount-selector="once" data-fuly-amount-multiplier="60000">
+          <button type="button" class="fuly-semilla-amount-btn fuly-semilla-amount-btn--active" data-fuly-amount="1" data-fuly-amount-label="1 Niño">{{ section.settings.once_amount_1_label }}</button>
+          <button type="button" class="fuly-semilla-amount-btn" data-fuly-amount="5" data-fuly-amount-label="5 Niños">{{ section.settings.once_amount_5_label }}</button>
+          <button type="button" class="fuly-semilla-amount-btn" data-fuly-amount="10" data-fuly-amount-label="10 Niños">{{ section.settings.once_amount_10_label }}</button>
+        </div>
+        <p class="fuly-semilla-price" data-fuly-price-display="once">{{ section.settings.once_price }}</p>
+        <p class="fuly-semilla-price-sub">{{ section.settings.once_price_sub }}</p>
+        <button type="button" class="fuly-semilla-btn fuly-semilla-btn--whatsapp" data-fuly-whatsapp-button="once" data-fuly-whatsapp-type="Tratamiento anual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          <span data-fuly-whatsapp-label>{{ section.settings.once_button_label }}</span>
+        </button>
+      </div>
+      <div class="fuly-semilla-tab-panel" data-fuly-semilla-panel="monthly" role="tabpanel" hidden>
+        <div class="fuly-semilla-amount-row" data-fuly-amount-selector="monthly">
+          <button type="button" class="fuly-semilla-amount-btn fuly-semilla-amount-btn--active" data-fuly-amount="5000" data-fuly-amount-label="$5.000 mensuales">{{ section.settings.monthly_amount_5000_label }}</button>
+          <button type="button" class="fuly-semilla-amount-btn" data-fuly-amount="10000" data-fuly-amount-label="$10.000 mensuales">{{ section.settings.monthly_amount_10000_label }}</button>
+          <button type="button" class="fuly-semilla-amount-btn" data-fuly-amount="20000" data-fuly-amount-label="$20.000 mensuales">{{ section.settings.monthly_amount_20000_label }}</button>
+          <button type="button" class="fuly-semilla-amount-btn" data-fuly-amount="0" data-fuly-amount-label="Monto personalizado">{{ section.settings.monthly_amount_custom_label }}</button>
+        </div>
+        <p class="fuly-semilla-price-sub fuly-semilla-price-sub--monthly">{{ section.settings.monthly_price_sub }}</p>
+        <button type="button" class="fuly-semilla-btn fuly-semilla-btn--whatsapp" data-fuly-whatsapp-button="monthly" data-fuly-whatsapp-type="Donación mensual">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          <span>{{ section.settings.monthly_button_label }}</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Donación",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta superior",
+      "default": "ELIGE CÓMO AYUDAR"
+    },
+    {
+      "type": "header",
+      "content": "Pestañas"
+    },
+    {
+      "type": "text",
+      "id": "tab_once_label",
+      "label": "Pestaña una vez",
+      "default": "UNA VEZ"
+    },
+    {
+      "type": "text",
+      "id": "tab_monthly_label",
+      "label": "Pestaña mensual",
+      "default": "MENSUAL"
+    },
+    {
+      "type": "header",
+      "content": "Panel: Una vez"
+    },
+    {
+      "type": "text",
+      "id": "once_amount_1_label",
+      "label": "Botón monto 1",
+      "default": "1 Niño"
+    },
+    {
+      "type": "text",
+      "id": "once_amount_5_label",
+      "label": "Botón monto 2",
+      "default": "5 Niños"
+    },
+    {
+      "type": "text",
+      "id": "once_amount_10_label",
+      "label": "Botón monto 3",
+      "default": "10 Niños"
+    },
+    {
+      "type": "text",
+      "id": "once_price",
+      "label": "Precio mostrado",
+      "default": "$60.000 COP"
+    },
+    {
+      "type": "text",
+      "id": "once_price_sub",
+      "label": "Subtítulo precio",
+      "default": "Tratamiento anual completo"
+    },
+    {
+      "type": "text",
+      "id": "once_button_label",
+      "label": "Botón WhatsApp",
+      "default": "Donar $60.000"
+    },
+    {
+      "type": "header",
+      "content": "Panel: Mensual"
+    },
+    {
+      "type": "text",
+      "id": "monthly_amount_5000_label",
+      "label": "Botón monto 1",
+      "default": "$5.000"
+    },
+    {
+      "type": "text",
+      "id": "monthly_amount_10000_label",
+      "label": "Botón monto 2",
+      "default": "$10.000"
+    },
+    {
+      "type": "text",
+      "id": "monthly_amount_20000_label",
+      "label": "Botón monto 3",
+      "default": "$20.000"
+    },
+    {
+      "type": "text",
+      "id": "monthly_amount_custom_label",
+      "label": "Botón monto personalizado",
+      "default": "Otro monto"
+    },
+    {
+      "type": "text",
+      "id": "monthly_price_sub",
+      "label": "Subtítulo mensual",
+      "default": "Tu aporte mensual hace la diferencia"
+    },
+    {
+      "type": "text",
+      "id": "monthly_button_label",
+      "label": "Botón WhatsApp",
+      "default": "Donar mensualmente"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Donación"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-interactive">
+    <div class="fuly-semilla-interactive__inner">
+      {% if section.settings.title != blank %}
+        <h2 class="fuly-semilla-h2 fuly-semilla-interactive__title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+      {% if section.settings.lead != blank %}
+        <p class="fuly-semilla-interactive__lead">
+          {{ section.settings.lead }}
+        </p>
+      {% endif %}
+      <div class="fuly-semilla-interactive__row" data-fuly-amount-selector="interactive" data-fuly-amount-multiplier="60000">
+        <button type="button" class="fuly-semilla-circle-btn fuly-semilla-circle-btn--active" data-fuly-amount="1" data-fuly-amount-label="1 niño">
+          <span class="fuly-semilla-circle-btn__circle"><span class="fuly-semilla-circle-btn__num">1</span></span>
+          <span class="fuly-semilla-circle-btn__label">NIÑO</span>
+        </button>
+        <button type="button" class="fuly-semilla-circle-btn" data-fuly-amount="5" data-fuly-amount-label="5 niños">
+          <span class="fuly-semilla-circle-btn__circle"><span class="fuly-semilla-circle-btn__num">5</span></span>
+          <span class="fuly-semilla-circle-btn__label">NIÑOS</span>
+        </button>
+        <button type="button" class="fuly-semilla-circle-btn" data-fuly-amount="10" data-fuly-amount-label="10 niños">
+          <span class="fuly-semilla-circle-btn__circle"><span class="fuly-semilla-circle-btn__num">10</span></span>
+          <span class="fuly-semilla-circle-btn__label">NIÑOS</span>
+        </button>
+      </div>
+      <p class="fuly-semilla-price fuly-semilla-price--lg" data-fuly-price-display="interactive">{{ section.settings.price }}</p>
+      <button type="button" class="fuly-semilla-btn fuly-semilla-btn--whatsapp" data-fuly-whatsapp-button="interactive" data-fuly-whatsapp-type="Tratamiento anual">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <span>{{ section.settings.button_label }}</span>
+      </button>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Donar más",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "¿Te gustaría donar a más niños?"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Texto introductorio",
+      "default": "La cantidad de niños a los que deseas brindar apoyo con tu donación está en tus manos."
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Precio",
+      "default": "$60.000 COP"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Donar ahora"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Donar más"
+    }
+  ]
+}
+{% endschema %}

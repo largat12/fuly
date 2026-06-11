@@ -1,0 +1,190 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-neuronal">
+    <div class="fuly-semilla-neuronal__inner">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-neuronal__title">
+        {{ section.settings.title }}
+      </h2>
+      <div class="fuly-semilla-neuronal__brains">
+        <div class="fuly-semilla-brain">
+          <div class="fuly-semilla-brain__circle">
+            <svg class="fuly-semilla-brain__icon fuly-semilla-brain__icon--full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+              <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+              <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+              <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
+              <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
+              <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
+              <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
+              <path d="M6 18a4 4 0 0 1-1.967-.516"/>
+              <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+            </svg>
+          </div>
+          <span class="fuly-semilla-brain__mono">{{ section.settings.brain1_mono }}</span>
+          <p class="fuly-semilla-brain__desc">{{ section.settings.brain1_desc }}</p>
+        </div>
+        <div class="fuly-semilla-brain">
+          <div class="fuly-semilla-brain__circle">
+            <svg class="fuly-semilla-brain__icon fuly-semilla-brain__icon--dim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+              <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+              <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+              <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"/>
+              <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/>
+              <path d="M3.477 10.896a4 4 0 0 1 .585-.396"/>
+              <path d="M19.938 10.5a4 4 0 0 1 .585.396"/>
+              <path d="M6 18a4 4 0 0 1-1.967-.516"/>
+              <path d="M19.967 17.484A4 4 0 0 1 18 18"/>
+            </svg>
+          </div>
+          <span class="fuly-semilla-brain__mono">{{ section.settings.brain2_mono }}</span>
+          <p class="fuly-semilla-brain__desc">{{ section.settings.brain2_desc }}</p>
+        </div>
+      </div>
+      <p class="fuly-semilla-neuronal__lead">
+        {{ section.settings.lead }}
+      </p>
+      <div class="fuly-semilla-neuronal__benefits">
+        {% for block in section.blocks %}
+          {% if block.type == 'benefit' %}
+            <div class="fuly-semilla-benefit-card" {{ block.shopify_attributes }}>
+              {% case block.settings.icon %}
+                {% when 'gota' %}
+                  <svg class="fuly-semilla-benefit-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+                  </svg>
+                {% when 'cerebro' %}
+                  <svg class="fuly-semilla-benefit-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+                    <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+                    <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/>
+                  </svg>
+                {% when 'escudo' %}
+                  <svg class="fuly-semilla-benefit-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                  </svg>
+              {% endcase %}
+              <span class="fuly-semilla-benefit-card__text">{{ block.settings.text }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Neuronal",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta superior",
+      "default": "¿POR QUÉ IMPORTA?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "La nutrición transforma el desarrollo cerebral"
+    },
+    {
+      "type": "header",
+      "content": "Cerebro 1 (completo)"
+    },
+    {
+      "type": "text",
+      "id": "brain1_mono",
+      "label": "Cerebro 1 — Etiqueta",
+      "default": "Desarrollo neuronal normal"
+    },
+    {
+      "type": "textarea",
+      "id": "brain1_desc",
+      "label": "Cerebro 1 — Descripción",
+      "default": "Un niño bien nutrido desarrolla conexiones neuronales completas"
+    },
+    {
+      "type": "header",
+      "content": "Cerebro 2 (atenuado)"
+    },
+    {
+      "type": "text",
+      "id": "brain2_mono",
+      "label": "Cerebro 2 — Etiqueta",
+      "default": "Desarrollo con desnutrición"
+    },
+    {
+      "type": "textarea",
+      "id": "brain2_desc",
+      "label": "Cerebro 2 — Descripción",
+      "default": "La falta de nutrientes afecta irreversiblemente el desarrollo del cerebro"
+    },
+    {
+      "type": "header",
+      "content": "Beneficios"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Texto introductorio de beneficios",
+      "default": "Fuly Give-Back contiene 10 vitaminas y 5 minerales que:"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Beneficio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto",
+          "default": "Beneficio"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icono",
+          "options": [
+            { "value": "gota", "label": "Gota" },
+            { "value": "cerebro", "label": "Cerebro" },
+            { "value": "escudo", "label": "Escudo" }
+          ],
+          "default": "gota"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Neuronal",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Previenen la anemia",
+            "icon": "gota"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Favorecen el desarrollo cerebral y neuronal",
+            "icon": "cerebro"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Fortalecen el sistema inmunológico",
+            "icon": "escudo"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

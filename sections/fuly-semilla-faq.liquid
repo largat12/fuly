@@ -1,0 +1,133 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-faq">
+    <div class="fuly-semilla-faq__inner">
+      <div class="fuly-semilla-faq__head">
+        <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+        <h2 class="fuly-semilla-h2 fuly-semilla-faq__title">{{ section.settings.title }}</h2>
+        <p class="fuly-semilla-faq__lead">{{ section.settings.lead }}</p>
+      </div>
+      <div class="fuly-semilla-faq__list">
+        {% for block in section.blocks %}
+          <details class="fuly-semilla-faq-item" {{ block.shopify_attributes }}>
+            <summary class="fuly-semilla-faq-item__summary">
+              <span class="fuly-semilla-faq-item__q">{{ block.settings.pregunta }}</span>
+              <svg class="fuly-semilla-faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="fuly-semilla-faq-item__a">{{ block.settings.respuesta }}</div>
+          </details>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Preguntas Frecuentes"
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "label": "Texto introductorio",
+      "default": "Todo lo que debes saber sobre Fuly Give-Back"
+    }
+  ],
+  "max_blocks": 20,
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Pregunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "pregunta",
+          "label": "Pregunta",
+          "default": "¿Pregunta?"
+        },
+        {
+          "type": "richtext",
+          "id": "respuesta",
+          "label": "Respuesta",
+          "default": "<p>Respuesta</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Fuly Give-Back es una fundación?",
+            "respuesta": "<p>No. Fuly Give-Back es una iniciativa privada de Fuly con la misión de llevar nutrientes a los niños que más lo necesitan.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Al comprar Fuly Give-Back recibo mi certificado de donación para descontar de impuestos?",
+            "respuesta": "<p>Sí. Al realizar tu donación recibirás un certificado que puedes usar para deducción de impuestos según la normativa vigente.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Cuánto vale el tratamiento de un niño por un año?",
+            "respuesta": "<p>El tratamiento nutricional anual tiene un costo de $60.000 COP por niño. Esto cubre los nutrientes esenciales durante 12 meses.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Los $60.000 para el tratamiento de un niño por un año incluye IVA?",
+            "respuesta": "<p>Sí, el valor de $60.000 COP incluye IVA.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿En qué se utilizan los dineros percibidos por la venta de Fuly Give-Back?",
+            "respuesta": "<p>El 100% de los fondos se destinan a la compra y distribución de sobres nutricionales Fuly Give-Back para niños en comunidades vulnerables a través de nuestras organizaciones aliadas.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Cómo puedo llevar Fuly Give-Back a una población vulnerable que conozco?",
+            "respuesta": "<p>Contáctanos a través de nuestro formulario o WhatsApp y cuéntanos sobre la comunidad. Evaluaremos la viabilidad y coordinaremos la entrega con nuestras fundaciones aliadas.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Tienen algún tipo de descuento por volumen?",
+            "respuesta": "<p>Sí, para donaciones de 10 o más tratamientos ofrecemos condiciones especiales. Contáctanos para más información.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "pregunta": "¿Cómo puedo hacer para que mi empresa se vincule?",
+            "respuesta": "<p>Escríbenos a través de nuestro canal de contacto empresarial. Tenemos programas de alianza corporativa con beneficios para tu empresa y certificados de responsabilidad social.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

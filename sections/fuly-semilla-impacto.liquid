@@ -1,0 +1,134 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-impacto">
+    <div class="fuly-semilla-impacto__inner">
+      <div class="fuly-semilla-impacto__head">
+        <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+        <div class="fuly-semilla-impacto__big-number">{{ section.settings.big_number }}</div>
+        <h2 class="fuly-semilla-h2">{{ section.settings.heading }}</h2>
+      </div>
+      <div class="fuly-semilla-impacto__list">
+        {% for block in section.blocks %}
+          <div class="fuly-semilla-org-card" {{ block.shopify_attributes }}>
+            <div class="fuly-semilla-org-card__emoji"><span>{{ block.settings.emoji }}</span></div>
+            <div class="fuly-semilla-org-card__info">
+              <p class="fuly-semilla-org-card__name">{{ block.settings.nombre }}</p>
+              <span class="fuly-semilla-org-card__mono">{{ block.settings.mono }}</span>
+            </div>
+            <div class="fuly-semilla-org-card__count">
+              <p class="fuly-semilla-org-card__kids">{{ block.settings.conteo }}</p>
+              <span class="fuly-semilla-org-card__mono fuly-semilla-org-card__mono--xs">{{ block.settings.kids_label }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <p class="fuly-semilla-impacto__footer">{{ section.settings.footer }}</p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Impacto",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "NUESTRO IMPACTO"
+    },
+    {
+      "type": "text",
+      "id": "big_number",
+      "label": "Número grande",
+      "default": "506"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Niños Beneficiados"
+    },
+    {
+      "type": "text",
+      "id": "footer",
+      "label": "Texto inferior",
+      "default": "Y seguimos creciendo cada mes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "org",
+      "name": "Organización",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "default": "🌱"
+        },
+        {
+          "type": "text",
+          "id": "nombre",
+          "label": "Nombre"
+        },
+        {
+          "type": "text",
+          "id": "mono",
+          "label": "Texto secundario",
+          "default": "fundación aliada"
+        },
+        {
+          "type": "text",
+          "id": "conteo",
+          "label": "Conteo",
+          "default": "156"
+        },
+        {
+          "type": "text",
+          "id": "kids_label",
+          "label": "Etiqueta conteo",
+          "default": "niños"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Impacto",
+      "blocks": [
+        {
+          "type": "org",
+          "settings": {
+            "emoji": "🌱",
+            "nombre": "Corporación Sembramos Futuro",
+            "mono": "fundación aliada",
+            "conteo": "156",
+            "kids_label": "niños"
+          }
+        },
+        {
+          "type": "org",
+          "settings": {
+            "emoji": "💡",
+            "nombre": "Fundación Conciencia",
+            "mono": "fundación aliada",
+            "conteo": "300",
+            "kids_label": "niños"
+          }
+        },
+        {
+          "type": "org",
+          "settings": {
+            "emoji": "🏠",
+            "nombre": "Casa Embera",
+            "mono": "fundación aliada",
+            "conteo": "50",
+            "kids_label": "niños"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

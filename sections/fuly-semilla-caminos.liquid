@@ -1,0 +1,139 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-caminos">
+    <div class="fuly-semilla-caminos__inner">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-caminos__title">{{ section.settings.title }}</h2>
+      <div class="fuly-semilla-caminos__grid">
+        {% for block in section.blocks %}
+          {%- if block.type == 'camino' -%}
+            <div class="fuly-semilla-camino-card" {{ block.shopify_attributes }}>
+              {%- case block.settings.icon -%}
+                {%- when 'persona' -%}
+                  <svg class="fuly-semilla-camino-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                {%- when 'empresa' -%}
+                  <svg class="fuly-semilla-camino-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="2" width="16" height="20" rx="2"/>
+                    <path d="M9 22v-4h6v4"/>
+                    <path d="M8 6h.01"/>
+                    <path d="M16 6h.01"/>
+                    <path d="M12 6h.01"/>
+                    <path d="M12 10h.01"/>
+                    <path d="M12 14h.01"/>
+                    <path d="M16 10h.01"/>
+                    <path d="M16 14h.01"/>
+                    <path d="M8 10h.01"/>
+                    <path d="M8 14h.01"/>
+                  </svg>
+              {%- endcase -%}
+              {%- if block.settings.tag != blank -%}
+                <span class="fuly-tag-label">{{ block.settings.tag }}</span>
+              {%- endif -%}
+              {%- if block.settings.titulo != blank -%}
+                <h3 class="fuly-semilla-camino-card__title">{{ block.settings.titulo }}</h3>
+              {%- endif -%}
+              {%- if block.settings.copy != blank -%}
+                <p class="fuly-semilla-camino-card__copy">{{ block.settings.copy }}</p>
+              {%- endif -%}
+              <button type="button" class="fuly-semilla-btn fuly-semilla-btn--accent fuly-semilla-btn--sm" data-fuly-scroll-to-donate>
+                {{ block.settings.button_label }}
+              </button>
+            </div>
+          {%- endif -%}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Caminos",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta superior",
+      "default": "¿CÓMO PUEDES AYUDAR?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Elige tu camino"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "camino",
+      "name": "Camino",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icono",
+          "options": [
+            { "value": "persona", "label": "Persona" },
+            { "value": "empresa", "label": "Empresa" }
+          ],
+          "default": "persona"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Etiqueta",
+          "default": "PERSONA"
+        },
+        {
+          "type": "text",
+          "id": "titulo",
+          "label": "Título",
+          "default": "Soy una persona que quiere ayudar"
+        },
+        {
+          "type": "textarea",
+          "id": "copy",
+          "label": "Texto",
+          "default": "Dona un tratamiento anual o mensual para un niño que lo necesita."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texto del botón",
+          "default": "Quiero donar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Caminos",
+      "blocks": [
+        {
+          "type": "camino",
+          "settings": {
+            "icon": "persona",
+            "tag": "PERSONA",
+            "titulo": "Soy una persona que quiere ayudar",
+            "copy": "Dona un tratamiento anual o mensual para un niño que lo necesita.",
+            "button_label": "Quiero donar"
+          }
+        },
+        {
+          "type": "camino",
+          "settings": {
+            "icon": "empresa",
+            "tag": "EMPRESA",
+            "titulo": "Soy una empresa que quiere ayudar",
+            "copy": "Únete como aliado corporativo y lleva nutrición a más niños.",
+            "button_label": "Quiero ser aliado"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

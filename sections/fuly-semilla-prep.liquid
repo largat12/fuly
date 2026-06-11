@@ -1,0 +1,93 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-prep fuly-lab-grid-bg">
+    <div class="fuly-semilla-prep__inner">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-prep__title">
+        {{ section.settings.title }}
+      </h2>
+      <p class="fuly-semilla-prep__lead">
+        {{ section.settings.lead }}
+      </p>
+      <div class="fuly-semilla-prep__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'step' %}
+            <div class="fuly-semilla-step-card" {{ block.shopify_attributes }}>
+              <div class="fuly-semilla-step-card__circle"><span>{{ block.settings.numero }}</span></div>
+              <p class="fuly-semilla-step-card__text">
+                {{ block.settings.texto }}
+              </p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Prep",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "PREPARACIÓN"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Así de fácil es preparar Fuly Give-Back"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Texto introductorio",
+      "default": "Es un alimento en polvo fácil de usar y listo para consumir. Puede ser agregado a cualquier comida y no varía el sabor de los alimentos."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        {
+          "type": "text",
+          "id": "numero",
+          "label": "Número",
+          "default": "1"
+        },
+        {
+          "type": "textarea",
+          "id": "texto",
+          "label": "Texto del paso",
+          "default": "Vierte todo el contenido del sobre en cualquier alimento espeso (sopa, arroz, puré, papilla) listo para consumir y que no esté muy caliente."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Prep",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "numero": "1",
+            "texto": "Vierte todo el contenido del sobre en cualquier alimento espeso (sopa, arroz, puré, papilla) listo para consumir y que no esté muy caliente."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "numero": "2",
+            "texto": "Mezcla bien y consume en el menor tiempo posible."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

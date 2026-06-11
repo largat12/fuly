@@ -1,0 +1,87 @@
+<div class="fuly-semilla">
+  <section class="fuly-semilla-section fuly-semilla-sobre">
+    <div class="fuly-semilla-sobre__inner">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <h2 class="fuly-semilla-h2 fuly-semilla-sobre__title">{{ section.settings.title }}</h2>
+      <p class="fuly-semilla-sobre__lead">{{ section.settings.lead1 }}</p>
+      <div class="fuly-semilla-sobre__brand"><span>{{ section.settings.brand }}</span></div>
+      <p class="fuly-semilla-sobre__lead">{{ section.settings.lead2 }}</p>
+      <div class="fuly-semilla-sobre__allies">
+        {% for block in section.blocks %}
+          <div class="fuly-semilla-ally" title="{{ block.settings.title }}" {{ block.shopify_attributes }}><span>{{ block.settings.emoji }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Give-Back — Sobre",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "SOBRE FULY GIVE-BACK"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "¿De quién es Fuly Give-Back?"
+    },
+    {
+      "type": "text",
+      "id": "lead1",
+      "label": "Texto 1",
+      "default": "Fuly Give-Back, una plataforma creada por:"
+    },
+    {
+      "type": "text",
+      "id": "brand",
+      "label": "Marca",
+      "default": "Fuly"
+    },
+    {
+      "type": "text",
+      "id": "lead2",
+      "label": "Texto 2",
+      "default": "A la que se han sumado:"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ally",
+      "name": "Aliado",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji",
+          "default": "🌱"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título (tooltip)",
+          "default": "Aliado"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Give-Back — Sobre",
+      "blocks": [
+        { "type": "ally", "settings": { "emoji": "🌱", "title": "Sembramos Futuro" } },
+        { "type": "ally", "settings": { "emoji": "💡", "title": "Conciencia" } },
+        { "type": "ally", "settings": { "emoji": "🏠", "title": "Casa Embera" } },
+        { "type": "ally", "settings": { "emoji": "🤝", "title": "Aliado 4" } },
+        { "type": "ally", "settings": { "emoji": "💚", "title": "Aliado 5" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
