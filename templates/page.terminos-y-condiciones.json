@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "legal": {
+      "type": "fuly-legal-page",
+      "settings": {
+        "eyebrow": "TÉRMINOS",
+        "title": "Términos y condiciones",
+        "subtitle": "Estas condiciones regulan el acceso, navegación y compra de productos Fuly Kids a través de este sitio web.",
+        "updated_date": "27 de abril de 2026",
+        "contact_email": "hola@fulykids.com"
+      },
+      "blocks": {
+        "clause-1": {
+          "type": "clause",
+          "settings": {
+            "heading": "1. Aceptación del uso del sitio",
+            "body": "<p>Al ingresar, navegar o comprar en este sitio aceptas estos términos y condiciones, así como las políticas publicadas por Fuly Kids y la normativa aplicable en Colombia.</p>"
+          }
+        },
+        "clause-2": {
+          "type": "clause",
+          "settings": {
+            "heading": "2. Información comercial",
+            "body": "<p>Fuly Kids comercializa alimentos funcionales y productos relacionados para niños y familias. Nos esforzamos por mantener la información del sitio actualizada, aunque precios, disponibilidad, promociones y contenidos pueden cambiar sin previo aviso.</p>"
+          }
+        },
+        "clause-3": {
+          "type": "clause",
+          "settings": {
+            "heading": "3. Pedidos, pagos y disponibilidad",
+            "body": "<p>La confirmación de compra está sujeta a validación del pago, disponibilidad del inventario y verificación de la orden. Si se presenta alguna novedad con tu pedido, nuestro equipo te contactará usando los datos registrados en la compra.</p>"
+          }
+        },
+        "clause-4": {
+          "type": "clause",
+          "settings": {
+            "heading": "4. Envíos, cambios y devoluciones",
+            "body": "<p>Las condiciones de envío, tiempos estimados, garantías, cambios y devoluciones pueden variar según la ciudad, el producto y la campaña comercial vigente. Cuando aplique, estas condiciones se complementan con la información publicada en la página de <a href=\"/pages/envios-y-devoluciones\">envíos y devoluciones</a>.</p>"
+          }
+        },
+        "clause-5": {
+          "type": "clause",
+          "settings": {
+            "heading": "5. Uso adecuado del contenido",
+            "body": "<p>Todo el contenido del sitio, incluyendo textos, imágenes, logos, diseño, marcas y piezas gráficas, pertenece a Fuly Kids o a sus licenciantes. No está permitido copiarlo, reproducirlo o usarlo con fines comerciales sin autorización previa y por escrito.</p>"
+          }
+        },
+        "clause-6": {
+          "type": "clause",
+          "settings": {
+            "heading": "6. Responsabilidad del usuario",
+            "body": "<p>El usuario se compromete a suministrar información veraz, no realizar actividades fraudulentas y usar el sitio de conformidad con la ley. Fuly Kids podrá restringir el acceso cuando detecte conductas que afecten la operación, la seguridad o a otros usuarios.</p>"
+          }
+        },
+        "clause-7": {
+          "type": "clause",
+          "settings": {
+            "heading": "7. Modificaciones",
+            "body": "<p>Podemos actualizar estos términos y condiciones en cualquier momento. La versión vigente será la publicada en esta página con su fecha de actualización correspondiente.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "clause-1",
+        "clause-2",
+        "clause-3",
+        "clause-4",
+        "clause-5",
+        "clause-6",
+        "clause-7"
+      ]
+    }
+  },
+  "order": [
+    "legal"
+  ]
+}

@@ -1,0 +1,148 @@
+<div class="fuly-nosotros fuly-lab-grid-bg">
+  <section class="fuly-nosotros-section fuly-nosotros-formula fuly-lab-grid-bg">
+    <div class="fuly-nosotros-container">
+      <div class="fuly-nosotros-section__head">
+        <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+        <h2 class="fuly-nosotros-h2">{{ section.settings.heading }}</h2>
+      </div>
+      <div class="fuly-nosotros-formula__grid">
+        <div class="fuly-nosotros-formula__card fuly-nosotros-formula__card--lab">
+          <h3 class="fuly-nosotros-formula__title fuly-nosotros-formula__title--lab">{{ section.settings.card1_title }}</h3>
+          <ul class="fuly-nosotros-formula__list">
+            {% for block in section.blocks %}
+              {% if block.settings.card == 'lab' %}
+                <li {{ block.shopify_attributes }}><span class="fuly-tag-label fuly-tag-label--sm">{{ block.settings.tag }}</span> <span>{{ block.settings.description }}</span></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="fuly-nosotros-formula__card fuly-nosotros-formula__card--play">
+          <h3 class="fuly-nosotros-formula__title fuly-nosotros-formula__title--play">{{ section.settings.card2_title }}</h3>
+          <ul class="fuly-nosotros-formula__list">
+            {% for block in section.blocks %}
+              {% if block.settings.card == 'play' %}
+                <li {{ block.shopify_attributes }}><span class="fuly-tag-label fuly-tag-label--sm">{{ block.settings.tag }}</span> <span>{{ block.settings.description }}</span></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Nosotros — Fórmula",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "LA FÓRMULA"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Dos mundos, una misión"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Título tarjeta 1",
+      "default": "El Laboratorio"
+    },
+    {
+      "type": "text",
+      "id": "card2_title",
+      "label": "Título tarjeta 2",
+      "default": "El Playground"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Beneficio",
+      "settings": [
+        {
+          "type": "select",
+          "id": "card",
+          "label": "Tarjeta",
+          "options": [
+            { "value": "lab", "label": "El Laboratorio" },
+            { "value": "play", "label": "El Playground" }
+          ],
+          "default": "lab"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Etiqueta corta"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Descripción"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nosotros — Fórmula",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "card": "lab",
+            "tag": "SALUD",
+            "description": "Formulaciones basadas en evidencia"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "card": "lab",
+            "tag": "INVESTIGACIÓN",
+            "description": "Ingredientes con respaldo científico"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "card": "lab",
+            "tag": "RIGOR",
+            "description": "Certificaciones y estándares"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "card": "play",
+            "tag": "DIVERSIÓN",
+            "description": "Sabores que los niños aman"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "card": "play",
+            "tag": "INTUICIÓN",
+            "description": "Diseñado para la vida real de las familias"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "card": "play",
+            "tag": "JUEGO",
+            "description": "Porque crecer debería ser divertido"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

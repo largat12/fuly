@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "legal": {
+      "type": "fuly-legal-page",
+      "settings": {
+        "eyebrow": "PRIVACIDAD",
+        "title": "Política de privacidad",
+        "subtitle": "Aquí te contamos qué datos recopilamos, para qué los usamos y cómo puedes ejercer tus derechos como titular de la información.",
+        "updated_date": "27 de abril de 2026",
+        "contact_email": "hola@fulykids.com"
+      },
+      "blocks": {
+        "clause-1": {
+          "type": "clause",
+          "settings": {
+            "heading": "1. Datos que podemos recopilar",
+            "body": "<p>Podemos recopilar datos como nombre, correo electrónico, teléfono, dirección de entrega, historial de pedidos, preferencias de compra y la información que compartes cuando diligencias formularios o te comunicas con nosotros.</p>"
+          }
+        },
+        "clause-2": {
+          "type": "clause",
+          "settings": {
+            "heading": "2. Finalidades del tratamiento",
+            "body": "<p>Usamos tus datos para procesar compras, coordinar envíos, atender solicitudes, enviar comunicaciones relacionadas con tus pedidos, brindar soporte, mejorar nuestros productos y, cuando exista autorización, compartir información comercial o educativa de la marca.</p>"
+          }
+        },
+        "clause-3": {
+          "type": "clause",
+          "settings": {
+            "heading": "3. Protección y conservación",
+            "body": "<p>Implementamos medidas administrativas, técnicas y operativas razonables para proteger la información personal frente a pérdida, uso no autorizado, alteración o divulgación indebida. Conservamos los datos por el tiempo necesario para cumplir las finalidades informadas y obligaciones legales aplicables.</p>"
+          }
+        },
+        "clause-4": {
+          "type": "clause",
+          "settings": {
+            "heading": "4. Derechos del titular",
+            "body": "<p>Como titular de los datos personales puedes conocer, actualizar, rectificar y suprimir tu información, así como revocar la autorización cuando sea procedente. Este tratamiento se rige, entre otras normas aplicables, por la Ley 1581 de 2012 y sus decretos reglamentarios en Colombia.</p>"
+          }
+        },
+        "clause-5": {
+          "type": "clause",
+          "settings": {
+            "heading": "5. Transferencia y terceros",
+            "body": "<p>Podemos apoyarnos en proveedores tecnológicos, logísticos, de pagos, analítica o atención al cliente para operar el sitio y prestar el servicio. En esos casos, el acceso a la información se limita a lo necesario para cumplir la finalidad correspondiente.</p>"
+          }
+        },
+        "clause-6": {
+          "type": "clause",
+          "settings": {
+            "heading": "6. Canales de contacto",
+            "body": "<p>Si quieres ejercer tus derechos o resolver dudas sobre el tratamiento de tus datos, escríbenos a <a href=\"mailto:hola@fulykids.com\">hola@fulykids.com</a> o contáctanos por <a href=\"https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%87%20%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20los%20alimentos%20funcionales%20para%20ni%C3%B1os\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "clause-1",
+        "clause-2",
+        "clause-3",
+        "clause-4",
+        "clause-5",
+        "clause-6"
+      ]
+    }
+  },
+  "order": [
+    "legal"
+  ]
+}

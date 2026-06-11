@@ -1,0 +1,93 @@
+<div class="fuly-nosotros fuly-lab-grid-bg">
+  <section class="fuly-nosotros-section">
+    <div class="fuly-nosotros-container">
+      <div class="fuly-nosotros-section__head">
+        <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+        <h2 class="fuly-nosotros-h2">{{ section.settings.heading }}</h2>
+      </div>
+      <div class="fuly-nosotros-principles__grid">
+        {% for block in section.blocks %}
+          <div class="fuly-nosotros-principle" style="border-color: {{ block.settings.border_color }};" {{ block.shopify_attributes }}>
+            <h3 class="fuly-nosotros-principle__title">{{ block.settings.title }}</h3>
+            <p class="fuly-nosotros-principle__desc">{{ block.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Nosotros — Principios",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "PRINCIPIOS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Así somos"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "principle",
+      "name": "Principio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Color del borde"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nosotros — Principios",
+      "blocks": [
+        {
+          "type": "principle",
+          "settings": {
+            "title": "Hecho con ciencia",
+            "description": "Cada ingrediente tiene un propósito respaldado por investigación. No improvisamos, formulamos.",
+            "border_color": "#00E5CC"
+          }
+        },
+        {
+          "type": "principle",
+          "settings": {
+            "title": "Travieso y divertido",
+            "description": "Porque la nutrición no tiene que ser aburrida. Si los niños no lo disfrutan, no funciona.",
+            "border_color": "#FF8CB0"
+          }
+        },
+        {
+          "type": "principle",
+          "settings": {
+            "title": "Curioso e innovador",
+            "description": "Nunca dejamos de investigar y mejorar. La ciencia avanza y nosotros con ella.",
+            "border_color": "#FFE135"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

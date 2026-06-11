@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "legal": {
+      "type": "fuly-legal-page",
+      "settings": {
+        "eyebrow": "COOKIES",
+        "title": "Política de cookies",
+        "subtitle": "Usamos cookies y tecnologías similares para que el sitio funcione mejor, entender su uso y mejorar la experiencia de navegación.",
+        "updated_date": "27 de abril de 2026",
+        "contact_email": "hola@fulykids.com"
+      },
+      "blocks": {
+        "clause-1": {
+          "type": "clause",
+          "settings": {
+            "heading": "1. Qué son las cookies",
+            "body": "<p>Las cookies son pequeños archivos que se almacenan en tu navegador y permiten recordar información sobre tu visita, como idioma, sesión, preferencias o comportamiento de navegación.</p>"
+          }
+        },
+        "clause-2": {
+          "type": "clause",
+          "settings": {
+            "heading": "2. Qué tipos usamos",
+            "body": "<p>Podemos usar cookies esenciales para el funcionamiento del sitio, cookies de rendimiento o analítica para entender cómo se usa la tienda y cookies funcionales o publicitarias cuando la configuración del sitio o las herramientas integradas así lo requieran.</p>"
+          }
+        },
+        "clause-3": {
+          "type": "clause",
+          "settings": {
+            "heading": "3. Para qué las usamos",
+            "body": "<p>Las usamos para mantener el carrito activo, facilitar el inicio de sesión, medir tráfico, detectar errores, optimizar la experiencia de compra y personalizar ciertos contenidos o campañas.</p>"
+          }
+        },
+        "clause-4": {
+          "type": "clause",
+          "settings": {
+            "heading": "4. Cookies de terceros",
+            "body": "<p>Algunas herramientas integradas en la tienda, como pasarelas de pago, analítica, automatización o redes sociales, pueden instalar sus propias cookies sujetas a sus políticas y configuraciones independientes.</p>"
+          }
+        },
+        "clause-5": {
+          "type": "clause",
+          "settings": {
+            "heading": "5. Cómo gestionarlas",
+            "body": "<p>Puedes bloquear, eliminar o limitar el uso de cookies desde la configuración de tu navegador. Ten en cuenta que, si desactivas ciertas cookies, algunas funcionalidades de la tienda podrían dejar de operar correctamente.</p>"
+          }
+        },
+        "clause-6": {
+          "type": "clause",
+          "settings": {
+            "heading": "6. Actualizaciones",
+            "body": "<p>Esta política puede actualizarse cuando cambien nuestras herramientas, procesos o requerimientos legales. La versión vigente será siempre la publicada en esta página.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "clause-1",
+        "clause-2",
+        "clause-3",
+        "clause-4",
+        "clause-5",
+        "clause-6"
+      ]
+    }
+  },
+  "order": [
+    "legal"
+  ]
+}

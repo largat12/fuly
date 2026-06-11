@@ -1,0 +1,43 @@
+<div class="fuly-nosotros fuly-lab-grid-bg">
+  <section class="fuly-nosotros-section fuly-nosotros-hero fuly-lab-grid-bg">
+    <div class="fuly-nosotros-container fuly-nosotros-container--narrow">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <h1 class="fuly-nosotros-h1">{{ section.settings.title }}</h1>
+      <p class="fuly-nosotros-p">
+        {{ section.settings.copy }}
+      </p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Nosotros — Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "NUESTRA HISTORIA"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título (H1)",
+      "default": "Ciencia deliciosa para un mundo con más niños"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Texto",
+      "default": "Somos padres que se hicieron científicos del bienestar infantil. Y científicos que se volvieron padres apasionados."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nosotros — Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,48 @@
+<div class="fuly-nosotros fuly-lab-grid-bg">
+  <section class="fuly-nosotros-section">
+    <div class="fuly-nosotros-container fuly-nosotros-container--narrow">
+      <span class="fuly-tag-label">{{ section.settings.tag_label }}</span>
+      <h2 class="fuly-nosotros-h2">{{ section.settings.heading }}</h2>
+      <p class="fuly-nosotros-p">{{ section.settings.copy_1 }}</p>
+      <p class="fuly-nosotros-p">{{ section.settings.copy_2 }}</p>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Nosotros — Contradiccion",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Etiqueta",
+      "default": "LA CONTRADICCIÓN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título (h2)",
+      "default": "Nos dijeron que los niños son un problema."
+    },
+    {
+      "type": "textarea",
+      "id": "copy_1",
+      "label": "Párrafo 1",
+      "default": "Que son caros, que limitan, que &ldquo;mejor esperar&rdquo;. Pero nosotros creemos exactamente lo contrario."
+    },
+    {
+      "type": "textarea",
+      "id": "copy_2",
+      "label": "Párrafo 2",
+      "default": "Los niños son la solución. Son la creatividad sin filtros, la curiosidad sin límites y la alegría sin condiciones. El mundo necesita más de eso. Y nosotros estamos aquí para asegurar que cada niño tenga la nutrición que merece."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nosotros — Contradiccion"
+    }
+  ]
+}
+{% endschema %}

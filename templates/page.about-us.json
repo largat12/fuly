@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "hero": {
+      "type": "fuly-nosotros-hero",
+      "settings": {}
+    },
+    "contradiccion": {
+      "type": "fuly-nosotros-contradiccion",
+      "settings": {}
+    },
+    "formula": {
+      "type": "fuly-nosotros-formula",
+      "settings": {},
+      "blocks": {
+        "benefit-1": {
+          "type": "benefit",
+          "settings": {
+            "card": "lab",
+            "tag": "SALUD",
+            "description": "Formulaciones basadas en evidencia"
+          }
+        },
+        "benefit-2": {
+          "type": "benefit",
+          "settings": {
+            "card": "lab",
+            "tag": "INVESTIGACIÓN",
+            "description": "Ingredientes con respaldo científico"
+          }
+        },
+        "benefit-3": {
+          "type": "benefit",
+          "settings": {
+            "card": "lab",
+            "tag": "RIGOR",
+            "description": "Certificaciones y estándares"
+          }
+        },
+        "benefit-4": {
+          "type": "benefit",
+          "settings": {
+            "card": "play",
+            "tag": "DIVERSIÓN",
+            "description": "Sabores que los niños aman"
+          }
+        },
+        "benefit-5": {
+          "type": "benefit",
+          "settings": {
+            "card": "play",
+            "tag": "INTUICIÓN",
+            "description": "Diseñado para la vida real de las familias"
+          }
+        },
+        "benefit-6": {
+          "type": "benefit",
+          "settings": {
+            "card": "play",
+            "tag": "JUEGO",
+            "description": "Porque crecer debería ser divertido"
+          }
+        }
+      },
+      "block_order": [
+        "benefit-1",
+        "benefit-2",
+        "benefit-3",
+        "benefit-4",
+        "benefit-5",
+        "benefit-6"
+      ]
+    },
+    "creencia": {
+      "type": "fuly-nosotros-creencia",
+      "settings": {}
+    },
+    "principios": {
+      "type": "fuly-nosotros-principios",
+      "settings": {},
+      "blocks": {
+        "principle-1": {
+          "type": "principle",
+          "settings": {
+            "title": "Hecho con ciencia",
+            "description": "Cada ingrediente tiene un propósito respaldado por investigación. No improvisamos, formulamos.",
+            "border_color": "#00E5CC"
+          }
+        },
+        "principle-2": {
+          "type": "principle",
+          "settings": {
+            "title": "Travieso y divertido",
+            "description": "Porque la nutrición no tiene que ser aburrida. Si los niños no lo disfrutan, no funciona.",
+            "border_color": "#FF8CB0"
+          }
+        },
+        "principle-3": {
+          "type": "principle",
+          "settings": {
+            "title": "Curioso e innovador",
+            "description": "Nunca dejamos de investigar y mejorar. La ciencia avanza y nosotros con ella.",
+            "border_color": "#FFE135"
+          }
+        }
+      },
+      "block_order": [
+        "principle-1",
+        "principle-2",
+        "principle-3"
+      ]
+    },
+    "cta": {
+      "type": "fuly-nosotros-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "contradiccion",
+    "formula",
+    "creencia",
+    "principios",
+    "cta"
+  ]
+}

@@ -1,0 +1,132 @@
+/* === FULY Legales — estilos de páginas legales (extraídos del snippet) === */
+
+.fuly-legal-page {
+  padding: 4.8rem 1.6rem 6.4rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-legal-page {
+    padding: 8rem 3.2rem 9.6rem;
+  }
+}
+
+.fuly-legal-page__container {
+  max-width: 88rem;
+  margin: 0 auto;
+}
+
+.fuly-legal-page__header {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-legal-page__header {
+    margin-bottom: 4rem;
+  }
+}
+
+.fuly-legal-page__title {
+  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: hsl(var(--cartoon-black));
+  font-size: clamp(3.6rem, 5vw, 6rem);
+  line-height: 0.95;
+  margin: 1.2rem 0 0;
+}
+
+.fuly-legal-page__subtitle {
+  max-width: 68rem;
+  margin: 1.6rem auto 0;
+  font-size: 1.7rem;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.fuly-legal-page__meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-legal-page__meta {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3.2rem;
+  }
+}
+
+.fuly-legal-page__meta-card,
+.fuly-legal-page__section {
+  background: var(--fuly-white-lab, #faf7f2);
+  border: 3px solid hsl(var(--cartoon-black));
+  border-radius: 2rem;
+  box-shadow: 6px 6px 0 hsl(var(--cartoon-black));
+}
+
+.fuly-legal-page__meta-card {
+  padding: 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.fuly-legal-page__meta-label {
+  font-family: var(--fuly-font-label);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.fuly-legal-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.fuly-legal-page__section {
+  padding: 2.2rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .fuly-legal-page__section {
+    padding: 2.8rem;
+  }
+}
+
+.fuly-legal-page__section h2 {
+  margin: 0 0 1.2rem;
+  font-size: clamp(2rem, 2.5vw, 2.6rem);
+}
+
+.fuly-legal-page__section p {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.82);
+}
+
+/* Cuerpo richtext de cada cláusula: espaciado entre bloques */
+.fuly-legal-page__section .rte > * { margin-top: 0; margin-bottom: 0; }
+.fuly-legal-page__section .rte > * + * { margin-top: 1.4rem; }
+.fuly-legal-page__section .rte ul,
+.fuly-legal-page__section .rte ol {
+  margin-top: 1.4rem;
+  padding-left: 2rem;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.82);
+}
+.fuly-legal-page__section .rte li { margin: 0.4rem 0; }
+
+.fuly-legal-page__section a,
+.fuly-legal-page__meta-card a {
+  color: var(--fuly-cereza, #d0024b);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}

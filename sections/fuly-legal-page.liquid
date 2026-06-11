@@ -1,0 +1,98 @@
+<section class="fuly-legal-page fuly-lab-grid-bg">
+  <div class="fuly-legal-page__container">
+    <header class="fuly-legal-page__header">
+      <span class="fuly-tag-label">{{ section.settings.eyebrow }}</span>
+      <h1 class="fuly-legal-page__title">{{ section.settings.title }}</h1>
+      <p class="fuly-legal-page__subtitle">{{ section.settings.subtitle }}</p>
+    </header>
+    <div class="fuly-legal-page__meta">
+      <div class="fuly-legal-page__meta-card">
+        <span class="fuly-legal-page__meta-label">Última actualización</span>
+        <strong>{{ section.settings.updated_date }}</strong>
+      </div>
+      <div class="fuly-legal-page__meta-card">
+        <span class="fuly-legal-page__meta-label">Canal de contacto</span>
+        <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a>
+      </div>
+    </div>
+    <div class="fuly-legal-page__content">
+      {% for block in section.blocks %}
+        <section class="fuly-legal-page__section" {{ block.shopify_attributes }}>
+          <h2>{{ block.settings.heading }}</h2>
+          <div class="rte">{{ block.settings.body }}</div>
+        </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Legal — Página",
+  "tag": "section",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Etiqueta superior",
+      "default": "LEGAL"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Título legal"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "text",
+      "id": "updated_date",
+      "label": "Última actualización",
+      "default": "27 de abril de 2026"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email de contacto",
+      "default": "hola@fulykids.com"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "clause",
+      "name": "Cláusula",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Título de la cláusula"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Contenido"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Legal — Página",
+      "blocks": [
+        {
+          "type": "clause",
+          "settings": {
+            "heading": "1. Introducción",
+            "body": "<p>Describe aquí el alcance y propósito de este documento legal.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
