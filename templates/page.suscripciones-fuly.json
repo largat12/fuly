@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "hero": {
+      "type": "fuly-suscripciones-hero",
+      "settings": {
+        "tag_label": "SUSCRIPCIONES",
+        "heading": "Plan de suscripciones",
+        "subtitle": "Suscríbete y ahorra para obtener beneficios especiales."
+      }
+    },
+    "planes": {
+      "type": "apps",
+      "blocks": {
+        "subscription_widget": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget-plp/019d9283-612c-7442-85be-ea5df9b0babe",
+          "settings": {
+            "limit": 21,
+            "button_text_color": "#1A1A1A",
+            "text_primary_color": "#1A1A1A",
+            "text_discount_color": "#E5006A",
+            "text_secondary_color": "#9ca3af",
+            "frequency_text_color": "",
+            "variant_text_color": "",
+            "discount_badge_text_color": "",
+            "selected_text_color": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "card_title_size": 18,
+            "card_price_size": 20,
+            "card_button_size": 16
+          }
+        },
+        "faq_suscripcion": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/faq-suscripcion/019d9283-612c-7442-85be-ea5df9b0babe",
+          "settings": {
+            "app_url": "",
+            "faq_title": "PREGUNTAS FRECUENTES SOBRE LA SUSCRIPCIÓN",
+            "footer_text": "Realizado por Moxie con la tecnología de Wompi."
+          }
+        }
+      },
+      "block_order": ["subscription_widget", "faq_suscripcion"],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "cierre": {
+      "type": "fuly-suscripciones-cta",
+      "settings": {
+        "link_label": "Ver términos y condiciones de la suscripción",
+        "link_url": "/pages/terminos-y-condiciones-de-suscripciones",
+        "padding_block": 52
+      }
+    }
+  },
+  "order": ["hero", "planes", "cierre"]
+}

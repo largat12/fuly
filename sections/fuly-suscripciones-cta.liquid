@@ -1,0 +1,73 @@
+{%- comment -%}
+  FULY — Suscripciones: bloque de cierre / términos (estilo Fuly).
+{%- endcomment -%}
+{%- liquid
+  assign heading = section.settings.heading
+  assign text = section.settings.text
+  assign link_label = section.settings.link_label
+  assign link_url = section.settings.link_url
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-pad-block: {{ section.settings.padding_block | default: 52 }}px;
+  }
+  #shopify-section-{{ section.id }} .fuly-section-padding { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-suscripciones-cta { text-align: center; }
+  #shopify-section-{{ section.id }} .fuly-suscripciones-cta__text {
+    max-width: 60rem;
+    margin: 0 auto 2rem;
+    color: #555;
+    font-size: 1.6rem;
+    line-height: 1.6;
+  }
+  #shopify-section-{{ section.id }} .fuly-suscripciones-cta__btn {
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    border: 3px solid hsl(var(--cartoon-black));
+    border-radius: 1.2rem;
+    background-color: var(--yellow-spark, #FFE135);
+    color: hsl(var(--cartoon-black));
+    font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #shopify-section-{{ section.id }} .fuly-suscripciones-cta__btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 hsl(var(--cartoon-black));
+  }
+{%- endstyle -%}
+
+<section class="fuly-section-padding fuly-lab-grid-bg">
+  <div class="fuly-container">
+    <div class="fuly-suscripciones-cta">
+      {%- if heading != blank -%}
+        <h2>{{ heading }}</h2>
+      {%- endif -%}
+      {%- if text != blank -%}
+        <div class="fuly-suscripciones-cta__text rte">{{ text }}</div>
+      {%- endif -%}
+      {%- if link_label != blank and link_url != blank -%}
+        <a href="{{ link_url }}" class="fuly-suscripciones-cta__btn">{{ link_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Suscripciones — Cierre",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título (opcional)" },
+    { "type": "richtext", "id": "text", "label": "Texto (opcional)" },
+    { "type": "text", "id": "link_label", "label": "Texto del enlace", "default": "Ver términos y condiciones de la suscripción" },
+    { "type": "url", "id": "link_url", "label": "Enlace" },
+    { "type": "range", "id": "padding_block", "label": "Padding vertical", "unit": "px", "min": 0, "max": 160, "step": 2, "default": 52 }
+  ],
+  "presets": [{ "name": "Suscripciones — Cierre" }]
+}
+{% endschema %}
