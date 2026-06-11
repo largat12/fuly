@@ -27,6 +27,7 @@
     }
   }
   #shopify-section-{{ section.id }} .fuly-benefits-section { padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); background-color: var(--r-bg); }
+  #shopify-section-{{ section.id }} .fuly-benefits-section > .fuly-container { max-width: none; width: 100%; }
   #shopify-section-{{ section.id }} .fuly-benefits-section .fuly-tag-label { font-size: var(--r-tag-font-size); white-space: nowrap; }
 
   /* #7 — Carrusel de beneficios que se mueve (marquee continuo) en todos los tamaños */
@@ -58,7 +59,7 @@
   }
 {%- endstyle -%}
 <section class="fuly-benefits-section">
-  <div class="fuly-container" style="padding:0 1.6rem;">
+  <div class="fuly-container" style="padding:0;">
     {%- if section.settings.auto_scroll -%}
       <div class="fuly-benefits-marquee">
         <div class="fuly-benefits-track">

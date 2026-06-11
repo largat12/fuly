@@ -181,12 +181,11 @@ class CartItems extends HTMLElement {
           if (cartDrawerWrapper) cartDrawerWrapper.classList.toggle('is-empty', parsedState.item_count === 0);
 
           this.getSectionsToRender().forEach((section) => {
-            const elementToReplace =
-              document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
-            elementToReplace.innerHTML = this.getSectionInnerHTML(
-              parsedState.sections[section.section],
-              section.selector
-            );
+            const sectionElement = document.getElementById(section.id);
+            if (!sectionElement) return;
+            const elementToReplace = sectionElement.querySelector(section.selector) || sectionElement;
+            const newHTML = this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
+            if (newHTML != null) elementToReplace.innerHTML = newHTML;
           });
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
           let message = '';
@@ -243,7 +242,9 @@ class CartItems extends HTMLElement {
   }
 
   getSectionInnerHTML(html, selector) {
-    return new DOMParser().parseFromString(html, 'text/html').querySelector(selector).innerHTML;
+    if (html == null) return null;
+    const parsed = new DOMParser().parseFromString(html, 'text/html').querySelector(selector);
+    return parsed ? parsed.innerHTML : null;
   }
 
   enableLoading(line) {

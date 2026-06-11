@@ -128,6 +128,19 @@
     padding: 1rem 1.8rem;
     cursor: pointer;
   }
+
+  /* Ocultar la descripción (variantes/propiedades) en cada item del carrito */
+  .cart-drawer .cart-item__details dl,
+  .cart-drawer .cart-item__details > p.product-option { display: none; }
+
+  /* Mostrar el descuento con la misma tipografía que la descripción */
+  .cart-drawer .cart-item__details .discounts__discount {
+    font-family: var(--fuly-font-label);
+    font-size: var(--fuly-font-size-label);
+    letter-spacing: var(--fuly-letter-spacing-label);
+    text-transform: uppercase;
+    color: var(--fuly-muted-text);
+  }
 </style>
 
 <cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}">

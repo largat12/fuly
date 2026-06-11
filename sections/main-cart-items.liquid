@@ -17,6 +17,72 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* Centrar el precio (Total) vertical y horizontalmente */
+  #shopify-section-{{ section.id }} .cart-item__totals--center {
+    display: table-cell !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+  #shopify-section-{{ section.id }} .cart-item__totals--center .cart-item__price-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .cart-item__totals--center .loading__spinner {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  #shopify-section-{{ section.id }} .cart-item__totals--center .price,
+  #shopify-section-{{ section.id }} .cart-item__totals--center .price--end {
+    margin-top: 0 !important;
+  }
+
+  /* El encabezado "Total" centrado (override de .cart-items th { text-align:left }) */
+  #shopify-section-{{ section.id }} .cart-items thead th.center {
+    text-align: center !important;
+  }
+
+  /* Corregir el espacio excesivo entre la imagen y el texto del producto:
+     la celda de imagen queda angosta y la de detalles absorbe el ancho sobrante */
+  #shopify-section-{{ section.id }} .cart-items .cart-item td.cart-item__media,
+  #shopify-section-{{ section.id }} .cart-items .cart-item td:first-child {
+    width: 80px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    white-space: nowrap;
+  }
+  /* La imagen ya no usa el contenedor: se le da tamaño fijo directamente */
+  #shopify-section-{{ section.id }} .cart-item__media .cart-item__image {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: contain;
+    display: block;
+    padding: 0;
+    border-radius: 12px;
+  }
+  #shopify-section-{{ section.id }} .cart-items .cart-item__details {
+    width: auto !important;
+  }
+  #shopify-section-{{ section.id }} .cart-items thead th:nth-child(1) {
+    width: 110px !important;
+  }
+  #shopify-section-{{ section.id }} .cart-items thead th:nth-child(2) {
+    width: auto !important;
+  }
+  #shopify-section-{{ section.id }} .cart-items thead th {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  #shopify-section-{{ section.id }} .cart-items cart-remove-button,
+  #shopify-section-{{ section.id }} .cart-items .cart-remove-button {
+    margin-left: 0 !important;
+  }
 {%- endstyle -%}
 
 {%- unless settings.cart_type == 'drawer' -%}
@@ -53,26 +119,23 @@
         <div class="js-contents">
           {%- if cart != empty -%}
             <table class="cart-items">
-              <caption class="visually-hidden">
-                {{ 'sections.cart.title' | t }}
-              </caption>
               <thead>
                 <tr>
-                  <th class="caption-with-letter-spacing" colspan="2" scope="col">
+                  <th class="caption-with-letter-spacing" colspan="1" scope="col">
                     {{ 'sections.cart.headings.product' | t }}
                   </th>
-                  <th class="medium-hide large-up-hide right caption-with-letter-spacing" colspan="1" scope="col">
+                  <th class="caption-with-letter-spacing" colspan="1" scope="col">
+                    <span class="visually-hidden">{{ 'sections.cart.headings.image' | t }}</span>
+                  </th>
+                  <th class="center caption-with-letter-spacing" colspan="1" scope="col">
                     {{ 'sections.cart.headings.total' | t }}
                   </th>
                   <th
-                    class="cart-items__heading--wide cart-items__heading--quantity small-hide caption-with-letter-spacing"
+                    class="cart-items__heading--wide cart-items__heading--quantity center caption-with-letter-spacing"
                     colspan="1"
                     scope="col"
                   >
                     {{ 'sections.cart.headings.quantity' | t }}
-                  </th>
-                  <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">
-                    {{ 'sections.cart.headings.total' | t }}
                   </th>
                 </tr>
               </thead>
@@ -84,16 +147,14 @@
                       {% if item.image %}
                         {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                         <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
-                        <div class="cart-item__image-container gradient global-media-settings">
-                          <img
-                            src="{{ item.image | image_url: width: 300 }}"
-                            class="cart-item__image"
-                            alt="{{ item.image.alt | escape }}"
-                            loading="lazy"
-                            width="150"
-                            height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
-                          >
-                        </div>
+                        <img
+                          src="{{ item.image | image_url: width: 300 }}"
+                          class="cart-item__image"
+                          alt="{{ item.image.alt | escape }}"
+                          loading="lazy"
+                          width="150"
+                          height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                        >
                       {% endif %}
                     </td>
 
@@ -171,7 +232,7 @@
                       </ul>
                     </td>
 
-                    <td class="cart-item__totals right medium-hide large-up-hide">
+                    <td class="cart-item__totals center cart-item__totals--center">
                       {%- render 'loading-spinner' -%}
                       <div class="cart-item__price-wrapper">
                         {%- if item.original_line_price != item.final_line_price -%}
@@ -213,6 +274,7 @@
                         {%- endif -%}
                       </div>
                     </td>
+
                     {%- liquid
                       assign has_qty_rules = false
                       if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
@@ -387,48 +449,6 @@
                       </quantity-popover>
                     </td>
 
-                    <td class="cart-item__totals right small-hide">
-                      {%- render 'loading-spinner' -%}
-                      <div class="cart-item__price-wrapper">
-                        {%- if item.original_line_price != item.final_line_price -%}
-                          <dl class="cart-item__discounted-prices">
-                            <dt class="visually-hidden">
-                              {{ 'products.product.price.regular_price' | t }}
-                            </dt>
-                            <dd>
-                              <s class="cart-item__old-price price price--end">
-                                {{ item.original_line_price | money }}
-                              </s>
-                            </dd>
-                            <dt class="visually-hidden">
-                              {{ 'products.product.price.sale_price' | t }}
-                            </dt>
-                            <dd class="price price--end">
-                              {{ item.final_line_price | money }}
-                            </dd>
-                          </dl>
-                        {%- else -%}
-                          <span class="price price--end">
-                            {{ item.original_line_price | money }}
-                          </span>
-                        {%- endif -%}
-
-                        {%- if item.variant.available and item.unit_price_measurement -%}
-                          <div class="unit-price caption">
-                            <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                            {{ item.unit_price | money }}
-                            <span aria-hidden="true">/</span>
-                            <span class="visually-hidden"
-                              >&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span
-                            >
-                            {%- if item.unit_price_measurement.reference_value != 1 -%}
-                              {{- item.unit_price_measurement.reference_value -}}
-                            {%- endif -%}
-                            {{ item.unit_price_measurement.reference_unit }}
-                          </div>
-                        {%- endif -%}
-                      </div>
-                    </td>
                   </tr>
                 {%- endfor -%}
               </tbody>
