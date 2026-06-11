@@ -37,15 +37,24 @@
   mix-blend-mode: multiply;
 }
 
-/* --- Badge de descuento (pill brand en vez de morado recto) --- */
+/* --- Badge de descuento con el estilo del tag Fuly (.fuly-tag-label) --- */
 .subscription-inline-discount-badge {
-  background: var(--fuly-cereza, #E5006A) !important;
-  color: #fff !important;
-  border-radius: 9999px !important;
-  font-family: 'Martian Mono', 'Courier New', monospace !important;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  box-shadow: none !important;
+  font-family: var(--fuly-font-label) !important;
+  font-size: clamp(10px, 1vw, 13px) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--fuly-letter-spacing-label) !important;
+  padding: 6px 12px !important;
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+  border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius-sm) !important;
+  box-shadow: var(--fuly-shadow-sm) !important;
+}
+
+/* --- Cuerpo: padding lateral e inferior (el inline trae padding:16px 0 0) --- */
+.subscription-grid-card__body {
+  padding: 1.2rem 1.6rem 1.6rem !important;
 }
 
 /* --- Título --- */
@@ -64,10 +73,18 @@
   font-family: 'Arial Black', Arial, sans-serif !important;
   font-weight: 700 !important;
   color: hsl(var(--cartoon-black)) !important;
+  line-height: 1;
 }
 .subscription-inline-price-original {
   color: hsl(var(--cartoon-black)) !important;
   opacity: 0.5;
+  line-height: 1;
+}
+/* Precio tachado encima del precio normal (apilado en columna) */
+.subscription-grid-card__price > span {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 2px !important;
 }
 
 /* --- Botones (estilo botón Fuly amarillo) --- */
@@ -106,4 +123,67 @@
 .subscription-inline-freq-select {
   border: 2px solid hsl(var(--cartoon-black)) !important;
   border-radius: 1rem !important;
+}
+
+/* === FAQ del app (Moxie) con estilo Fuly (.fuly-faq-item) ===
+   El app trae su propio <style>; usamos !important para sobreescribir. */
+.mp-faq {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.mp-faq__title {
+  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: hsl(var(--cartoon-black)) !important;
+  font-size: clamp(2.4rem, 4vw, 3.6rem) !important;
+  line-height: 1.05 !important;
+  text-align: center !important;
+  margin: 0 0 3.2rem !important;
+}
+.mp-faq__list {
+  border-top: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important;
+}
+.mp-faq__item {
+  border: 2px solid hsl(var(--cartoon-black)) !important;
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black)) !important;
+  border-radius: 1.6rem !important;
+  background-color: var(--white-lab) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .mp-faq__item { box-shadow: 3px 3px 0 hsl(var(--cartoon-black)) !important; }
+}
+.mp-faq__question {
+  padding: 2rem !important;
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: hsl(var(--cartoon-black)) !important;
+  font-size: 16px !important;
+}
+.mp-faq__question-text { font-weight: 700 !important; }
+/* Reemplazar la flecha ▼ del app por la '›' que rota (como en Fuly) */
+.mp-faq__chevron { display: none !important; }
+.mp-faq__question::after {
+  content: '\203A';
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-left: 0.8rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.mp-faq__item[data-open] .mp-faq__question::after { transform: rotate(90deg); }
+.mp-faq__answer-inner {
+  padding: 1.6rem 2rem 2rem !important;
+  font-family: Arial, sans-serif !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  line-height: 1.6 !important;
+  font-size: 16px !important;
+  border-top: 2px solid hsl(var(--cartoon-black)) !important;
 }
