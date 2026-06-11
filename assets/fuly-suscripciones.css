@@ -1,0 +1,109 @@
+/* === FULY — Estilo cartoon para el widget de suscripciones (app) ===
+   El app pinta las tarjetas con estilos inline; por eso usamos !important
+   para igualarlas a las tarjetas de producto de la tienda (.fuly-product-card). */
+
+/* Grid: misma separación que los productos */
+#subscription-grid-container.subscription-grid {
+  gap: 2.4rem !important;
+}
+
+/* --- Tarjeta (marco cartoon) --- */
+.subscription-grid-card {
+  border: 2px solid hsl(var(--cartoon-black)) !important;
+  box-shadow: 4px 4px 0 hsl(var(--cartoon-black)) !important;
+  border-radius: 1.6rem !important;
+  background-color: var(--white-lab) !important;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.subscription-grid-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black)) !important;
+}
+@media (max-width: 767px) {
+  .subscription-grid-card { box-shadow: 3px 3px 0 hsl(var(--cartoon-black)) !important; }
+}
+
+/* --- Imagen en caja con padding (como Fuly) --- */
+.subscription-grid-card__image-link {
+  padding: 1.6rem !important;
+  background: var(--white-lab) !important;
+}
+.subscription-grid-card__image {
+  aspect-ratio: 1 !important;
+  object-fit: contain !important;
+  mix-blend-mode: multiply;
+}
+
+/* --- Badge de descuento (pill brand en vez de morado recto) --- */
+.subscription-inline-discount-badge {
+  background: var(--fuly-cereza, #E5006A) !important;
+  color: #fff !important;
+  border-radius: 9999px !important;
+  font-family: 'Martian Mono', 'Courier New', monospace !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  box-shadow: none !important;
+}
+
+/* --- Título --- */
+.subscription-grid-card__title,
+.subscription-grid-card__title a {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: hsl(var(--cartoon-black)) !important;
+  line-height: 1.2 !important;
+}
+
+/* --- Precio --- */
+.subscription-grid-card__price .subscription-inline-price-sub,
+.subscription-inline-price-sub {
+  font-family: 'Arial Black', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  color: hsl(var(--cartoon-black)) !important;
+}
+.subscription-inline-price-original {
+  color: hsl(var(--cartoon-black)) !important;
+  opacity: 0.5;
+}
+
+/* --- Botones (estilo botón Fuly amarillo) --- */
+.subscription-grid-card__btn,
+.subscription-inline-add-btn {
+  background: var(--yellow-spark, #FFE135) !important;
+  color: hsl(var(--cartoon-black)) !important;
+  border: 2px solid hsl(var(--cartoon-black)) !important;
+  box-shadow: 3px 3px 0 hsl(var(--cartoon-black)) !important;
+  border-radius: 25px !important;
+  font-family: 'Arial Black', Arial, sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.subscription-grid-card__btn:hover,
+.subscription-inline-add-btn:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 hsl(var(--cartoon-black)) !important;
+}
+
+/* --- Formulario inline (caja + opciones + selects con look cartoon) --- */
+.subscription-grid-form__box {
+  border: 2px solid hsl(var(--cartoon-black)) !important;
+  border-radius: 1.6rem !important;
+  --plp-theme-color: var(--yellow-spark, #FFE135) !important;
+}
+.subscription-inline-option {
+  border: 2px solid hsl(var(--cartoon-black)) !important;
+  border-radius: 1rem !important;
+}
+.subscription-inline-option--selected {
+  background: var(--yellow-spark, #FFE135)33 !important;
+}
+.subscription-inline-variant-option,
+.subscription-inline-freq-select {
+  border: 2px solid hsl(var(--cartoon-black)) !important;
+  border-radius: 1rem !important;
+}
