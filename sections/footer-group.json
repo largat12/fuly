@@ -59,7 +59,7 @@
           "settings": {
             "column": "AYUDA",
             "link_text": "Contacto",
-            "link_url": "/pages/contacto"
+            "link_url": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%87%20%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20los%20alimentos%20funcionales%20para%20ni%C3%B1os"
           }
         },
         "comunidad-1": {
