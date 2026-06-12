@@ -19,7 +19,7 @@
             "title": "Newsletter",
             "description": "Una herramienta práctica cada semana para el bienestar de tus hijos.",
             "accent": "#0eb680",
-            "link": "",
+            "link": "shopify://blogs/newsletter",
             "cta_label": "Leer newsletter →"
           }
         },
