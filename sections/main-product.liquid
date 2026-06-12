@@ -140,13 +140,13 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   {%- liquid
-    assign fuly_pdp_accent = '#FF7A00'
+    assign fuly_pdp_accent = '#E47524'
     if product.handle contains 'uva-azai' or product.handle contains 'noche'
-      assign fuly_pdp_accent = '#6B3FA0'
+      assign fuly_pdp_accent = '#574DDF'
     elsif product.handle contains 'choco' or product.handle contains 'chocolate'
-      assign fuly_pdp_accent = '#8B5E3C'
+      assign fuly_pdp_accent = '#AB3E18'
     elsif product.handle contains 'vainilla'
-      assign fuly_pdp_accent = '#D4A056'
+      assign fuly_pdp_accent = '#E9A95C'
     endif
 
     assign fuly_reviews_count = product.metafields.reviews.rating_count

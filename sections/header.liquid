@@ -6,10 +6,10 @@
     --r-announcement-font-size: {{ section.settings.announcement_font_size_mobile | default: 10 }}px;
     --r-bar-padding-x: {{ section.settings.bar_padding_x_mobile | default: 16 }}px;
     --r-mobile-menu-item-size: {{ section.settings.mobile_menu_item_size | default: 22 }}px;
-    --r-announcement-bg: {{ section.settings.announcement_bg_color | default: '#FFE135' }};
+    --r-announcement-bg: {{ section.settings.announcement_bg_color | default: '#F7CD47' }};
     --r-announcement-text: {{ section.settings.announcement_text_color | default: '#1A1A1A' }};
-    --r-nav-hover: {{ section.settings.nav_hover_color | default: '#E5006A' }};
-    --r-cart-badge: {{ section.settings.cart_badge_color | default: '#E5006A' }};
+    --r-nav-hover: {{ section.settings.nav_hover_color | default: '#E31B48' }};
+    --r-cart-badge: {{ section.settings.cart_badge_color | default: '#E31B48' }};
   }
   @media (min-width: 768px) {
     #shopify-section-{{ section.id }} {
@@ -283,10 +283,10 @@
     { "type": "range", "id": "mobile_menu_item_size", "label": "Mobile menu item font size", "min": 12, "max": 40, "step": 1, "unit": "px", "default": 22 },
 
     { "type": "header",       "content": "Responsive — Colors" },
-    { "type": "color", "id": "announcement_bg_color",   "label": "Announcement background color", "default": "#FFE135" },
+    { "type": "color", "id": "announcement_bg_color",   "label": "Announcement background color", "default": "#F7CD47" },
     { "type": "color", "id": "announcement_text_color", "label": "Announcement text color",       "default": "#1A1A1A" },
-    { "type": "color", "id": "nav_hover_color",         "label": "Nav link hover color",          "default": "#E5006A" },
-    { "type": "color", "id": "cart_badge_color",        "label": "Cart badge color",              "default": "#E5006A" }
+    { "type": "color", "id": "nav_hover_color",         "label": "Nav link hover color",          "default": "#E31B48" },
+    { "type": "color", "id": "cart_badge_color",        "label": "Cart badge color",              "default": "#E31B48" }
   ],
   "blocks": [
     {

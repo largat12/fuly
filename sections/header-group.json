@@ -220,10 +220,10 @@
         "bar_padding_x_tablet": 32,
         "bar_padding_x_desktop": 64,
         "mobile_menu_item_size": 22,
-        "announcement_bg_color": "#ffe135",
+        "announcement_bg_color": "#F7CD47",
         "announcement_text_color": "#1a1a1a",
-        "nav_hover_color": "#e5006a",
-        "cart_badge_color": "#e5006a"
+        "nav_hover_color": "#E31B48",
+        "cart_badge_color": "#E31B48"
       }
     }
   },

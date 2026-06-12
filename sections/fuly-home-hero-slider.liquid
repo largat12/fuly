@@ -57,7 +57,7 @@
       --slide-max-width: {{ b.content_max_width_mobile | default: 90 }}%;
       --slide-heading-color: {{ b.heading_color | default: '#1A1A1A' }};
       --slide-subtitle-color: {{ b.subtitle_color | default: '#333333' }};
-      --slide-badge-bg: {{ b.badge_bg_color | default: '#FFE135' }};
+      --slide-badge-bg: {{ b.badge_bg_color | default: '#F7CD47' }};
       --slide-overlay: {{ b.overlay_color | default: '#000000' }};
       --slide-overlay-opacity: {{ b.overlay_opacity | default: 0 | divided_by: 100.0 }};
       --slide-heading-font: {% render 'fuly-font-stack', choice: b.heading_font, picker: b.heading_font_picker %};
@@ -443,7 +443,7 @@
         { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Formulados por científicos. Disfrutados por niños." },
         { "type": "color", "id": "heading_color", "label": "Color del título", "default": "#1A1A1A" },
         { "type": "color", "id": "subtitle_color", "label": "Color del subtítulo", "default": "#333333" },
-        { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#FFE135" },
+        { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#F7CD47" },
 
         { "type": "header", "content": "Botón principal" },
         { "type": "checkbox", "id": "show_primary_button", "label": "Mostrar botón principal", "default": true },

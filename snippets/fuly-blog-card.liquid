@@ -16,7 +16,7 @@
   endif
   assign a_excerpt = article.excerpt | strip_html | truncatewords: card_excerpt_words
   assign a_date = article.published_at | date: '%d de %B de %Y'
-  assign a_color = article.metafields.fuly.color | default: '#6B3FA0'
+  assign a_color = article.metafields.fuly.color | default: '#574DDF'
 -%}
 <article class="fuly-blog-card">
   <a

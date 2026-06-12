@@ -55,7 +55,7 @@
 
 /* === Hero === */
 .fuly-nosotros-hero {
-  background: linear-gradient(135deg, #6B3FA022, #00E5CC22);
+  background: linear-gradient(135deg, #574DDF22, #0EB68022);
 }
 
 /* === La Fórmula === */
@@ -90,8 +90,8 @@
   margin: 0 0 1.6rem;
   font-size: clamp(2rem, 3vw, 2.4rem);
 }
-.fuly-nosotros-formula__title--lab { color: #00E5CC; }
-.fuly-nosotros-formula__title--play { color: #E5006A; }
+.fuly-nosotros-formula__title--lab { color: #0EB680; }
+.fuly-nosotros-formula__title--play { color: #E31B48; }
 .fuly-nosotros-formula__list {
   list-style: none;
   padding: 0;

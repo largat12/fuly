@@ -11,7 +11,7 @@
 
 const https = require('https');
 
-const SHOP = process.env.SHOPIFY_STORE || 'largat12.myshopify.com';
+const SHOP = process.env.SHOPIFY_STORE || 'fulycolombia.myshopify.com';
 const TOKEN = process.env.SHOPIFY_ACCESS_TOKEN;
 
 if (!TOKEN) {

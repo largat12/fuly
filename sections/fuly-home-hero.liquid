@@ -34,7 +34,7 @@
     --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
     --r-heading-color: {{ section.settings.heading_color | default: '#1A1A1A' }};
     --r-subtitle-color: {{ section.settings.subtitle_color | default: '#555555' }};
-    --r-badge-bg: {{ section.settings.badge_bg_color | default: '#FFE135' }};
+    --r-badge-bg: {{ section.settings.badge_bg_color | default: '#F7CD47' }};
     --r-heading-font: {% render 'fuly-font-stack', choice: section.settings.heading_font, picker: section.settings.heading_font_picker %};
     --r-body-font: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %};
   }
@@ -248,7 +248,7 @@
     { "type": "header", "content": "Responsive — Colores" },
     { "type": "color", "id": "heading_color", "label": "Color del título", "default": "#1A1A1A" },
     { "type": "color", "id": "subtitle_color", "label": "Color del subtítulo", "default": "#555555" },
-    { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#FFE135" },
+    { "type": "color", "id": "badge_bg_color", "label": "Fondo del badge", "default": "#F7CD47" },
 
     { "type": "header", "content": "Tipografía" },
     {

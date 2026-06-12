@@ -1,5 +1,5 @@
 {%- comment -%}
-  FULY Home — Newsletter (section 12). Cyan (#00E5CC) full-bleed band, uses Shopify customer form.
+  FULY Home — Newsletter (section 12). Cyan (#0EB680) full-bleed band, uses Shopify customer form.
 {%- endcomment -%}
 {%- liquid
   assign heading = section.settings.heading | default: 'ÚNETE AL FULYVERSO'
@@ -14,7 +14,7 @@
     --r-body-size: {{ section.settings.body_size_mobile | default: 16 }}px;
     --r-input-size: {{ section.settings.input_size_mobile | default: 14 }}px;
     --r-pad-block: {{ section.settings.padding_block_mobile | default: 48 }}px;
-    --r-bg: {{ section.settings.bg_color | default: '#00E5CC' }};
+    --r-bg: {{ section.settings.bg_color | default: '#0EB680' }};
   }
   @media (min-width: 768px) {
     #shopify-section-{{ section.id }} {
@@ -118,7 +118,7 @@
       "type": "color",
       "id": "bg_color",
       "label": "Color de fondo",
-      "default": "#00E5CC"
+      "default": "#0EB680"
     },
     {
       "type": "header",

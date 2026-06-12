@@ -10,7 +10,7 @@ Estos metafields **deben ser creados una sola vez** en el admin de Shopify despu
 
 | Nombre | Key | Namespace | Tipo | Descripción |
 |--------|-----|-----------|------|-------------|
-| Beneficios | `benefits` | `custom` | `json` | Lista de beneficios en formato JSON |
+| Beneficios | `beneficios` | `custom` | `json` | Lista de beneficios en formato JSON |
 | Ingredientes | `ingredientes` | `custom` | `multi_line_text_field` | Ingredientes del producto |
 | Tabla Nutricional | `informacion_nutricional` | `custom` | `multi_line_text_field` | Información nutricional |
 | Cómo Preparar | `modo_preparacion` | `custom` | `multi_line_text_field` | Instrucciones de preparación |

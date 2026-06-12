@@ -10,7 +10,7 @@
 
 const https = require('https');
 
-const SHOP = process.env.SHOPIFY_STORE || 'largat12.myshopify.com';
+const SHOP = process.env.SHOPIFY_STORE || 'fulycolombia.myshopify.com';
 const TOKEN = process.env.SHOPIFY_ACCESS_TOKEN || process.env.SHOPIFY_ADMIN_TOKEN;
 
 if (!TOKEN) {
@@ -130,6 +130,18 @@ async function main() {
       key: 'alergenos',
       type: 'multi_line_text_field',
       description: 'Información sobre alergenos e ingredientes que pueden estar presentes',
+    },
+    {
+      name: 'Experto / Descripción corta',
+      key: 'expert',
+      type: 'multi_line_text_field',
+      description: 'Descripción corta que se muestra en la tarjeta del grid de productos (prioriza sobre el beneficio funcional)',
+    },
+    {
+      name: 'Talle',
+      key: 'talle',
+      type: 'single_line_text_field',
+      description: 'Talle/size del producto. Se muestra en la tarjeta del grid y en la página de producto',
     },
   ];
 

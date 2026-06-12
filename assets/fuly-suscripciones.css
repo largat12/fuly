@@ -90,7 +90,7 @@
 /* --- Botones (estilo botón Fuly amarillo) --- */
 .subscription-grid-card__btn,
 .subscription-inline-add-btn {
-  background: var(--yellow-spark, #FFE135) !important;
+  background: var(--yellow-spark, #F7CD47) !important;
   color: hsl(var(--cartoon-black)) !important;
   border: 2px solid hsl(var(--cartoon-black)) !important;
   box-shadow: 3px 3px 0 hsl(var(--cartoon-black)) !important;
@@ -110,14 +110,14 @@
 .subscription-grid-form__box {
   border: 2px solid hsl(var(--cartoon-black)) !important;
   border-radius: 1.6rem !important;
-  --plp-theme-color: var(--yellow-spark, #FFE135) !important;
+  --plp-theme-color: var(--yellow-spark, #F7CD47) !important;
 }
 .subscription-inline-option {
   border: 2px solid hsl(var(--cartoon-black)) !important;
   border-radius: 1rem !important;
 }
 .subscription-inline-option--selected {
-  background: var(--yellow-spark, #FFE135)33 !important;
+  background: var(--yellow-spark, #F7CD47)33 !important;
 }
 .subscription-inline-variant-option,
 .subscription-inline-freq-select {

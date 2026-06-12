@@ -83,7 +83,7 @@
           "settings": {
             "title": "Hecho con ciencia",
             "description": "Cada ingrediente tiene un propósito respaldado por investigación. No improvisamos, formulamos.",
-            "border_color": "#00E5CC"
+            "border_color": "#0EB680"
           }
         },
         "principle-2": {
@@ -91,7 +91,7 @@
           "settings": {
             "title": "Travieso y divertido",
             "description": "Porque la nutrición no tiene que ser aburrida. Si los niños no lo disfrutan, no funciona.",
-            "border_color": "#FF8CB0"
+            "border_color": "#EBA7CA"
           }
         },
         "principle-3": {
@@ -99,7 +99,7 @@
           "settings": {
             "title": "Curioso e innovador",
             "description": "Nunca dejamos de investigar y mejorar. La ciencia avanza y nosotros con ella.",
-            "border_color": "#FFE135"
+            "border_color": "#F7CD47"
           }
         }
       },

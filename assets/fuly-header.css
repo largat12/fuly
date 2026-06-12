@@ -399,7 +399,7 @@
   outline: none;
 }
 .fuly-header__search-input:focus {
-  outline: 2px solid #FFE135;
+  outline: 2px solid #F7CD47;
   outline-offset: 2px;
 }
 .fuly-header__search-submit {
@@ -411,7 +411,7 @@
   padding: 12px 22px;
   border: 3px solid #1A1A1A;
   border-radius: 25px;
-  background: #FFE135;
+  background: #F7CD47;
   color: #1A1A1A;
   cursor: pointer;
 }

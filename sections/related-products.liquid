@@ -37,18 +37,18 @@
       >
         {% for recommendation in recommendations.products %}
           {%- liquid
-            assign fuly_card_color = '#FF7A00'
+            assign fuly_card_color = '#E47524'
             assign recommendation_handle = recommendation.handle | downcase
             assign recommendation_type = recommendation.type | downcase
             assign fuly_card_price = recommendation.price | money_without_trailing_zeros
             assign fuly_card_image_url = ''
 
             if recommendation_handle contains 'uva-azai' or recommendation_handle contains 'noche'
-              assign fuly_card_color = '#6B3FA0'
+              assign fuly_card_color = '#574DDF'
             elsif recommendation_handle contains 'choco' or recommendation_handle contains 'chocolate'
-              assign fuly_card_color = '#8B5E3C'
+              assign fuly_card_color = '#AB3E18'
             elsif recommendation_handle contains 'vainilla'
-              assign fuly_card_color = '#D4A056'
+              assign fuly_card_color = '#E9A95C'
             endif
 
             assign fuly_category_label = recommendation.type | default: 'Producto'
@@ -71,6 +71,7 @@
           <li class="grid__item">
             {% render 'fuly-product-card',
               name: recommendation.title,
+              expert: recommendation.metafields.custom.expert,
               category_label: fuly_category_label,
               price_formatted: fuly_card_price,
               format: recommendation.type,

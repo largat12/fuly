@@ -83,7 +83,7 @@
         "padding_block_desktop": 96,
         "heading_color": "#1a1a1a",
         "subtitle_color": "#555555",
-        "badge_bg_color": "#ffe135"
+        "badge_bg_color": "#F7CD47"
       }
     },
     "fuly_home_marquee": {
@@ -104,7 +104,7 @@
         "item_gap_desktop": 24,
         "bg_color": "#1a1a1a",
         "text_color": "#ffffff",
-        "star_color": "#ffe135"
+        "star_color": "#F7CD47"
       }
     },
     "fuly_home_benefits": {
@@ -425,7 +425,7 @@
         "padding_block_mobile": 48,
         "padding_block_tablet": 96,
         "padding_block_desktop": 96,
-        "star_color": "#ffe135"
+        "star_color": "#F7CD47"
       }
     },
     "fuly_home_cta": {
@@ -434,7 +434,7 @@
         "heading": "ÚNETE A +3,400 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "VER PRODUCTOS",
         "cta_link": "",
-        "bg_color": "#e5006a",
+        "bg_color": "#E31B48",
         "text_color": "#ffffff",
         "heading_size_mobile": 24,
         "heading_size_tablet": 28,
@@ -525,7 +525,7 @@
         "badge": "RECIBE 10% EN TU PRIMERA COMPRA",
         "placeholder": "tu@email.com",
         "submit_label": "Suscribirme",
-        "bg_color": "#00e5cc",
+        "bg_color": "#0EB680",
         "heading_size_mobile": 32,
         "heading_size_tablet": 36,
         "heading_size_desktop": 40,

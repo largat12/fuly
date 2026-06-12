@@ -412,7 +412,7 @@ cart-drawer-items {
 }
 
 .cart-drawer .cart-item .cart-remove-button {
-  color: #ff2f86 !important;
+  color: #E31B48 !important;
 }
 
 .cart-drawer .unit-price {
@@ -457,7 +457,7 @@ cart-drawer-items {
   font-family: var(--fuly-font-heading, inherit);
   font-size: 2.2rem;
   font-weight: 800;
-  color: #ff2f86;
+  color: #E31B48;
   margin-left: 0;
 }
 
@@ -500,13 +500,13 @@ cart-drawer-items {
 }
 
 .cart-drawer .cart__checkout-button {
-  background-color: var(--fuly-yellow-spark, #ffe135);
+  background-color: var(--fuly-yellow-spark, #F7CD47);
   color: var(--fuly-cartoon-black, #212121);
   border: 3px solid var(--fuly-cartoon-black, #212121);
 }
 
 .cart-drawer .cart__checkout-button:hover {
-  background-color: #f6d500;
+  background-color: #F7CD47;
 }
 
 .drawer__footer .button:not(.cart__checkout-button) {

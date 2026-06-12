@@ -32,15 +32,15 @@
   /* === Brand palette colors (hex literals, consume directly via var(--name)) === */
   --cartoon-black-hex: #1A1A1A;
   --white-lab: #FFFFFF;
-  --yellow-spark: #FFE135;
-  --cereza: #E5006A;
-  --rosa-fresa: #FF8CB0;
-  --cyan-menta: #00E5CC;
-  --violeta: #6B3FA0;
-  --naranja: #FF7A00;
-  --amarillo-fruta: #FFDD00;
-  --caramelo: #D4A056;
-  --chocolate: #8B5E3C;
+  --yellow-spark: #F7CD47;
+  --cereza: #E31B48;
+  --rosa-fresa: #EBA7CA;
+  --cyan-menta: #0EB680;
+  --violeta: #574DDF;
+  --naranja: #E47524;
+  --amarillo-fruta: #FFF568;
+  --caramelo: #E9A95C;
+  --chocolate: #AB3E18;
 
   /* === Aliases for shadow internal references === */
   /* `--cartoon-black` is referenced inside the shadow box-shadow values below.

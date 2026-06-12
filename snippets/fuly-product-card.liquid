@@ -2,21 +2,20 @@
   FULY Product Card — pixel port of react-lovable/src/components/ProductCard.tsx
   Inputs (passed via render args):
     - name (string)
-    - functional_benefit (string)
-    - expert (string)            ← descripción corta (metafield custom.expert), prioritaria
+    - expert (string)            ← ÚNICA descripción que se muestra (metafield custom.expert). Si está vacío, no se muestra nada.
     - talle (string)             ← talle/size (metafield custom.talle)
     - category_label (string)
     - price_formatted (string)
     - format (string)
     - image (string, asset filename)
     - image_url (string, absolute/Shopify CDN URL)
-    - color (hex string e.g. "#FF7A00")
+    - color (hex string e.g. "#E47524")
     - category (string for image-scale class)
     - href (optional link target; defaults to "#")
 {%- endcomment -%}
 {%- liquid
   assign card_href = href | default: '#'
-  assign card_color = color | default: '#FFE135'
+  assign card_color = color | default: '#F7CD47'
   assign card_category = category | default: ''
   assign card_image_src = ''
   if image_url != blank
@@ -63,9 +62,9 @@
     <a href="{{ card_href }}" style="text-decoration:none;color:inherit;">
       <h3 class="fuly-product-card__title">{{ name }}</h3>
     </a>
-    {%- assign card_desc = expert | default: functional_benefit -%}
-    {% if card_desc != blank %}
-      <p class="fuly-product-card__benefit">{{ card_desc }}</p>
+    {%- comment -%} Solo el metafield custom.expert. Si está vacío, no se muestra descripción. {%- endcomment -%}
+    {% if expert != blank %}
+      <p class="fuly-product-card__benefit">{{ expert }}</p>
     {% endif %}
     {% if format != blank %}<p class="fuly-product-card__format">{{ format }}</p>{% endif %}
     {% if talle != blank %}<p class="fuly-product-card__talle">Talle: {{ talle }}</p>{% endif %}

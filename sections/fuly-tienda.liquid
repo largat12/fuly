@@ -97,24 +97,23 @@
                 Mapping basado en react-lovable/src/data/products.ts.
               endcomment
               assign p_title_lower = product.title | downcase
-              assign p_color = '#FF7A00'
+              assign p_color = '#E47524'
               if p_title_lower contains 'chocolate'
-                assign p_color = '#8B5E3C'
+                assign p_color = '#AB3E18'
               elsif p_title_lower contains 'vainilla'
-                assign p_color = '#D4A056'
+                assign p_color = '#E9A95C'
               elsif p_title_lower contains 'almendra'
-                assign p_color = '#E8A04C'
+                assign p_color = '#E9A95C'
               elsif p_title_lower contains 'uva' or p_title_lower contains 'azaí' or p_title_lower contains 'azai' or p_title_lower contains 'noche' or p_title_lower contains 'sueño' or p_title_lower contains 'sueno' or p_title_lower contains 'dreamy'
-                assign p_color = '#6B3FA0'
+                assign p_color = '#574DDF'
               elsif p_title_lower contains 'limón' or p_title_lower contains 'limon' or p_title_lower contains 'mandarino'
-                assign p_color = '#FFE135'
+                assign p_color = '#F7CD47'
               elsif p_title_lower contains 'frutos rojos' or p_title_lower contains 'immuny' or p_title_lower contains 'defensa'
-                assign p_color = '#FF7A00'
+                assign p_color = '#E47524'
               endif
             endif
             assign p_format = product.metafields.custom.formato | default: product.metafields.fuly.format | default: ''
             assign p_expert = product.metafields.custom.expert
-            assign p_functional = p_expert | default: product.metafields.custom.beneficio_funcional | default: product.metafields.fuly.functional_benefit | default: ''
             assign p_talle = product.metafields.custom.talle
             assign p_category_label = product.metafields.fuly.category_label | default: product.type
             if p_category_label == blank
@@ -161,8 +160,8 @@
               <a href="{{ product.url }}" style="text-decoration:none;color:inherit;">
                 <h3 class="fuly-product-card__title">{{ product.title }}</h3>
               </a>
-              {%- if p_functional != blank -%}
-                <p class="fuly-product-card__benefit">{{ p_functional }}</p>
+              {%- if p_expert != blank -%}
+                <p class="fuly-product-card__benefit">{{ p_expert }}</p>
               {%- endif -%}
               {%- if p_format != blank -%}
                 <p class="fuly-product-card__format">{{ p_format }}</p>

@@ -54,6 +54,22 @@
             "link_url": "/pages/envios-y-devoluciones"
           }
         },
+        "ayuda-aliadas": {
+          "type": "footer_link",
+          "settings": {
+            "column": "AYUDA",
+            "link_text": "Tiendas aliadas",
+            "link_url": "/pages/distribuidores-fuly"
+          }
+        },
+        "ayuda-ser-aliado": {
+          "type": "footer_link",
+          "settings": {
+            "column": "AYUDA",
+            "link_text": "Quiero ser aliado",
+            "link_url": "/pages/aliados-fuly-kids"
+          }
+        },
         "ayuda-3": {
           "type": "footer_link",
           "settings": {
@@ -117,6 +133,8 @@
         "tienda-3",
         "ayuda-1",
         "ayuda-2",
+        "ayuda-aliadas",
+        "ayuda-ser-aliado",
         "ayuda-3",
         "comunidad-1",
         "comunidad-2",
@@ -147,7 +165,7 @@
         "link_size_tablet": 14,
         "link_size_desktop": 14,
         "bg_color": "#1a1a1a",
-        "accent_color": "#ffe135",
+        "accent_color": "#F7CD47",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",

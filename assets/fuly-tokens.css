@@ -5,20 +5,30 @@
    ========================================================= */
 
 :root {
-  /* -------- PALETA FULY -------- */
+  /* -------- PALETA FULY (actualizada) --------
+     Los NOMBRES de variable se conservan por compatibilidad con los
+     var(--fuly-*) repartidos por el tema, pero los VALORES se migraron
+     a la nueva paleta de marca:
+       yellow-spark / amarillo-fruta → Limón Criollo / Limón claro
+       cereza        → Fresa            rosa-fresa → Fresa Clara
+       cyan-menta    → Lima (verde)     violeta    → Uva
+       violeta-claro → Açaí             naranja    → Mandarina
+       caramelo      → Almendra         chocolate  → Chocolate
+       vainilla      → Cacao
+  */
   --fuly-cartoon-black: #1A1A1A;
   --fuly-white-lab: #FFFFFF;
-  --fuly-yellow-spark: #FFE135;
-  --fuly-amarillo-fruta: #FFDD00;
-  --fuly-cereza: #E5006A;
-  --fuly-rosa-fresa: #FF8CB0;
-  --fuly-cyan-menta: #00E5CC;
-  --fuly-violeta: #6B3FA0;
-  --fuly-violeta-claro: #C4A7DE;
-  --fuly-naranja: #FF7A00;
-  --fuly-caramelo: #D4A056;
-  --fuly-chocolate: #8B5E3C;
-  --fuly-vainilla: #F4D7A1;
+  --fuly-yellow-spark: #F7CD47;     /* Limón Criollo */
+  --fuly-amarillo-fruta: #FFF568;   /* Limón claro */
+  --fuly-cereza: #E31B48;           /* Fresa */
+  --fuly-rosa-fresa: #EBA7CA;       /* Fresa Clara */
+  --fuly-cyan-menta: #0EB680;       /* Lima */
+  --fuly-violeta: #574DDF;          /* Uva */
+  --fuly-violeta-claro: #B351FF;    /* Açaí */
+  --fuly-naranja: #E47524;          /* Mandarina */
+  --fuly-caramelo: #E9A95C;         /* Almendra */
+  --fuly-chocolate: #AB3E18;        /* Chocolate */
+  --fuly-vainilla: #F9ECBF;         /* Cacao */
   --fuly-muted: #F5F5F5;
   --fuly-muted-text: #666666;
   --fuly-muted-text-light: #555555;
