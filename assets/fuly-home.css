@@ -1142,8 +1142,7 @@
 }
 
 .fuly-newsletter-input:focus {
-  outline: 2px solid var(--yellow-spark);
-  outline-offset: 2px;
+  outline: none;
 }
 
 @media (min-width: 640px) {

@@ -399,8 +399,7 @@
   outline: none;
 }
 .fuly-header__search-input:focus {
-  outline: 2px solid #F7CD47;
-  outline-offset: 2px;
+  outline: none;
 }
 .fuly-header__search-submit {
   flex-shrink: 0;

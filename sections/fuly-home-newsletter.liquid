@@ -40,6 +40,15 @@
   #shopify-section-{{ section.id }} .fuly-newsletter-section h2 { font-size: var(--r-heading-size); }
   #shopify-section-{{ section.id }} .fuly-newsletter-section p { font-size: var(--r-body-size); }
   #shopify-section-{{ section.id }} .fuly-newsletter-input { font-size: var(--r-input-size); }
+  #shopify-section-{{ section.id }} .fuly-newsletter-message {
+    flex-basis: 100%;
+    margin: 12px 0 0;
+    font-family: var(--fuly-font-heading);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  #shopify-section-{{ section.id }} .fuly-newsletter-message--success { color: var(--fuly-cartoon-black); }
+  #shopify-section-{{ section.id }} .fuly-newsletter-message--error { color: var(--fuly-cereza); }
 {%- endstyle -%}
 <section class="fuly-newsletter-section">
   <div class="fuly-newsletter-inner">
@@ -54,9 +63,21 @@
         class="fuly-newsletter-input"
         placeholder="{{ placeholder }}"
         aria-label="Email"
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="email"
         required
       >
-      <button type="submit" class="fuly-cartoon-btn fuly-cartoon-btn-primary">{{ submit_label }}</button>
+      <button type="submit" class="fuly-cartoon-btn fuly-cartoon-btn-primary" name="commit">{{ submit_label }}</button>
+      {%- if form.errors -%}
+        <p class="fuly-newsletter-message fuly-newsletter-message--error" role="alert">
+          {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+        </p>
+      {%- elsif form.posted_successfully? -%}
+        <p class="fuly-newsletter-message fuly-newsletter-message--success" role="status" tabindex="-1" autofocus>
+          {{ section.settings.success_message | default: '¡Gracias por suscribirte! 🎉' }}
+        </p>
+      {%- endif -%}
     {%- endform -%}
   </div>
 </section>
@@ -109,6 +130,12 @@
       "id": "submit_label",
       "label": "Submit label",
       "default": "Suscribirme"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Mensaje de éxito",
+      "default": "¡Gracias por suscribirte! 🎉"
     },
     {
       "type": "header",

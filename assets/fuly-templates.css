@@ -1218,3 +1218,183 @@ product-recommendations.related-products .related-products__heading {
   font-family: var(--fuly-font-display);
   font-size: var(--fuly-font-size-h1-hero);
 }
+
+/* =========================================================
+   Página "Aliados" (body.template-page-aliados)
+   Da estética Fuly a una página armada con secciones estándar
+   de Dawn: fondo de cuadrícula + FAQ (collapsible-content) con
+   estilo .fuly-faq-item. Todo scopeado a la plantilla para no
+   afectar el resto del sitio.
+   ========================================================= */
+
+/* 1) Fondo de cuadrícula (lab-grid) en el contenido de la página */
+body.template-page-aliados .content-for-layout {
+  background-color: var(--fuly-white-lab);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: var(--fuly-grid-pattern-size) var(--fuly-grid-pattern-size);
+}
+
+/* Las secciones Dawn pintan un fondo opaco vía .gradient que tapa la
+   cuadrícula; lo hacemos transparente SOLO dentro del contenido de esta
+   página (no toca header/footer ni el resto del sitio). */
+body.template-page-aliados .content-for-layout .gradient {
+  background: none !important;
+}
+
+/* 2) FAQ — collapsible-content con estética .fuly-faq-item */
+body.template-page-aliados .collapsible-content .accordion {
+  border: 2px solid var(--fuly-cartoon-black) !important;
+  box-shadow: var(--fuly-shadow);
+  border-radius: var(--fuly-radius);
+  background-color: var(--fuly-white-lab);
+  margin-bottom: var(--fuly-space-3);
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  body.template-page-aliados .collapsible-content .accordion {
+    box-shadow: var(--fuly-shadow-mobile);
+  }
+}
+
+body.template-page-aliados .collapsible-content summary {
+  padding: var(--fuly-space-5);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--fuly-space-2);
+}
+
+body.template-page-aliados .collapsible-content summary::-webkit-details-marker {
+  display: none;
+}
+
+body.template-page-aliados .collapsible-content summary .accordion__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 0;
+  flex: 1 1 auto;
+  color: var(--fuly-cartoon-black);
+}
+
+/* Ocultar la estrella y el caret de Dawn; usar la flecha '›' que rota */
+body.template-page-aliados .collapsible-content summary > .svg-wrapper,
+body.template-page-aliados .collapsible-content summary .icon-accordion,
+body.template-page-aliados .collapsible-content summary .icon-caret {
+  display: none !important;
+}
+
+body.template-page-aliados .collapsible-content summary::after {
+  content: '\203A';
+  font-size: 24px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-left: var(--fuly-space-2);
+  transition: transform 0.2s ease;
+  color: var(--fuly-cartoon-black);
+}
+
+body.template-page-aliados .collapsible-content details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+body.template-page-aliados .collapsible-content .accordion__content {
+  padding: var(--fuly-space-4) var(--fuly-space-5) var(--fuly-space-5) !important;
+  border-top: 2px solid var(--fuly-cartoon-black);
+  font-family: var(--fuly-font-body);
+  color: rgba(0, 0, 0, 0.6);
+  line-height: var(--fuly-line-height-body);
+  font-size: 16px;
+  margin: 0 !important;
+}
+
+/* Encabezado de la FAQ con la tipografía display de marca */
+body.template-page-aliados .collapsible-content__heading {
+  font-family: var(--fuly-font-display);
+  font-weight: 800;
+}
+
+/* Caption del FAQ ("Todo sobre comisiones y pedidos") con estilo .fuly-tag-label */
+body.template-page-aliados .collapsible-content .caption-with-letter-spacing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--fuly-font-label) !important;
+  font-size: var(--fuly-font-size-label-sm) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: var(--fuly-letter-spacing-label) !important;
+  padding: 6px 12px;
+  background-color: var(--fuly-yellow-spark);
+  color: var(--fuly-cartoon-black);
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius-sm);
+  box-shadow: var(--fuly-shadow-sm);
+  margin-bottom: var(--fuly-space-4);
+}
+
+/* 3) Formulario Klaviyo (embed) con estética Fuly.
+   Klaviyo inyecta su propio reset (.kl-private-reset-css-*) con clases
+   dinámicas (go...), así que sobreescribimos por clases estables + !important. */
+body.template-page-aliados [class*="klaviyo-form"] .klaviyo-form-richtext h2,
+body.template-page-aliados [class*="klaviyo-form"] .klaviyo-form-richtext h2 span {
+  font-family: var(--fuly-font-display) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: var(--fuly-cartoon-black) !important;
+}
+
+/* Inputs (texto, email, ciudad, teléfono) */
+body.template-page-aliados .klaviyo-textinput input,
+body.template-page-aliados .klaviyo-emailinput input {
+  font-family: var(--fuly-font-body) !important;
+  font-size: 16px !important; /* evita iOS autozoom */
+  border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius) !important;
+  box-shadow: none !important;
+  background-color: var(--fuly-white-lab) !important;
+  color: var(--fuly-cartoon-black) !important;
+  padding: 14px 18px !important;
+  min-height: 44px !important;
+  width: 100% !important;
+}
+
+body.template-page-aliados .klaviyo-textinput input::placeholder,
+body.template-page-aliados .klaviyo-emailinput input::placeholder {
+  color: var(--fuly-muted-text) !important;
+  opacity: 1 !important;
+}
+
+body.template-page-aliados .klaviyo-textinput input:focus,
+body.template-page-aliados .klaviyo-emailinput input:focus {
+  outline: none !important;
+  border-color: var(--fuly-cartoon-black) !important;
+}
+
+/* Botón Enviar — botón cartoon de marca */
+body.template-page-aliados .klaviyo-form-button {
+  font-family: var(--fuly-font-heading) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--fuly-letter-spacing-label) !important;
+  background-color: var(--fuly-yellow-spark) !important;
+  color: var(--fuly-cartoon-black) !important;
+  border: var(--fuly-border) !important;
+  border-radius: var(--fuly-radius-pill) !important;
+  box-shadow: var(--fuly-shadow) !important;
+  padding: 14px 32px !important;
+  min-height: 48px !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  transition: var(--fuly-transition) !important;
+}
+
+body.template-page-aliados .klaviyo-form-button:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: var(--fuly-shadow-hover) !important;
+}

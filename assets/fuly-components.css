@@ -148,8 +148,7 @@ textarea {
 .select select:focus,
 input:focus,
 textarea:focus {
-  outline: 3px solid var(--fuly-cereza) !important;
-  outline-offset: 2px !important;
+  outline: none !important;
   border-color: var(--fuly-cartoon-black) !important;
 }
 

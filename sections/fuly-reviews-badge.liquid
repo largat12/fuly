@@ -1,0 +1,245 @@
+{%- comment -%}
+  FULY — Badge de reseñas (standalone). Extrae el pill de reseñas del hero a
+  una banda independiente, reutilizando el snippet fuly-reviews-total y las
+  clases .fuly-tag-label / .fuly-tag-label--reviews (assets/fuly-home.css).
+{%- endcomment -%}
+{%- liquid
+  # Badge de reseñas: número configurable (ver snippet fuly-reviews-total).
+  capture reviews_number
+    render 'fuly-reviews-total', source: section.settings.reviews_source, namespace: section.settings.reviews_namespace, key: section.settings.reviews_key, shop_namespace: section.settings.reviews_shop_namespace, shop_key: section.settings.reviews_shop_key, manual_number: section.settings.reviews_manual_number
+  endcapture
+  assign reviews_number = reviews_number | strip
+  assign reviews_text = section.settings.reviews_text | default: 'reseñas verificadas con 5 estrellas ⭐'
+  assign badge_text = section.settings.tagline
+  if badge_text == blank
+    capture badge_text
+      echo reviews_number
+      echo '+ '
+      echo reviews_text
+    endcapture
+  endif
+-%}
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --r-pad-block: {{ section.settings.padding_block_mobile | default: 24 }}px;
+    --r-badge-size: {{ section.settings.badge_size_mobile | default: 14 }}px;
+    --r-bg: {{ section.settings.bg_color | default: '#FFFFFF' }};
+    --r-badge-bg: {{ section.settings.badge_bg_color | default: '#F7CD47' }};
+    --r-justify: {{ section.settings.alignment | default: 'center' }};
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      --r-pad-block: {{ section.settings.padding_block_tablet | default: 32 }}px;
+      --r-badge-size: {{ section.settings.badge_size_tablet | default: 16 }}px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} {
+      --r-pad-block: {{ section.settings.padding_block_desktop | default: 32 }}px;
+      --r-badge-size: {{ section.settings.badge_size_desktop | default: 18 }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .fuly-reviews-badge-section { background-color: var(--r-bg); padding-top: var(--r-pad-block); padding-bottom: var(--r-pad-block); }
+  #shopify-section-{{ section.id }} .fuly-reviews-badge-inner { display: flex; justify-content: var(--r-justify); }
+  #shopify-section-{{ section.id }} .fuly-tag-label { background-color: var(--r-badge-bg); font-size: var(--r-badge-size); }
+{%- endstyle -%}
+<section class="fuly-reviews-badge-section">
+  <div class="fuly-container fuly-reviews-badge-inner">
+    <span class="fuly-tag-label fuly-tag-label--reviews">{{ badge_text }}</span>
+  </div>
+</section>
+
+<style>
+  {%- if section.settings.body_font != blank and section.settings.body_font != 'inherit' -%}
+  #shopify-section-{{ section.id }} .fuly-tag-label { font-family: {% render 'fuly-font-stack', choice: section.settings.body_font, picker: section.settings.body_font_picker %} !important; }
+  {%- endif -%}
+</style>
+
+{% schema %}
+{
+  "name": "Fuly — Badge de reseñas",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Badge de reseñas"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Texto del badge (vacío = automático con # reseñas)"
+    },
+    {
+      "type": "select",
+      "id": "reviews_source",
+      "label": "Fuente del número de reseñas",
+      "options": [
+        { "value": "auto", "label": "Automático (metafield de la app)" },
+        { "value": "manual", "label": "Manual (número fijo)" }
+      ],
+      "default": "auto",
+      "info": "Automático suma el metafield de reseñas; si da 0, usa el número manual."
+    },
+    {
+      "type": "text",
+      "id": "reviews_namespace",
+      "label": "Reseñas · namespace del metafield (producto)",
+      "default": "reviews",
+      "info": "Revisa Settings → Custom data → Metafields qué usa tu app (revie.lat). Default: reviews"
+    },
+    {
+      "type": "text",
+      "id": "reviews_key",
+      "label": "Reseñas · key del metafield (producto)",
+      "default": "rating_count"
+    },
+    {
+      "type": "text",
+      "id": "reviews_shop_namespace",
+      "label": "Reseñas · namespace metafield de tienda (opcional)",
+      "info": "Si la app guarda un total agregado a nivel tienda."
+    },
+    {
+      "type": "text",
+      "id": "reviews_shop_key",
+      "label": "Reseñas · key metafield de tienda (opcional)"
+    },
+    {
+      "type": "text",
+      "id": "reviews_manual_number",
+      "label": "Número manual / respaldo",
+      "default": "3,400"
+    },
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Texto tras el número",
+      "default": "reseñas verificadas con 5 estrellas ⭐"
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Fondo de la banda",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Fondo del badge",
+      "default": "#F7CD47"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alineación",
+      "options": [
+        { "value": "flex-start", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "flex-end", "label": "Derecha" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Tamaño del badge"
+    },
+    {
+      "type": "range",
+      "id": "badge_size_mobile",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "badge_size_tablet",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "badge_size_desktop",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Responsive — Padding vertical"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "label": "Móvil",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_block_tablet",
+      "min": 0,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "label": "Tablet",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_block_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Tipografía"
+    },
+    {
+      "type": "select",
+      "id": "body_font",
+      "label": "Fuente del badge",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": "Predeterminada (del tema)" },
+        { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
+        { "value": "body", "label": "Marca — Cuerpo (Arial)" },
+        { "value": "mono", "label": "Marca — Martian Mono" },
+        { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
+        { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
+        { "value": "custom", "label": "Personalizada (elegir abajo)" }
+      ]
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font_picker",
+      "label": "Fuente personalizada (badge)",
+      "default": "assistant_n4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly — Badge de reseñas"
+    }
+  ]
+}
+{% endschema %}
