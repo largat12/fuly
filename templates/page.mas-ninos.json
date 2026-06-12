@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "blogs_landing": {
@@ -9,7 +18,8 @@
             "blog": "newsletter",
             "title": "Newsletter",
             "description": "Una herramienta práctica cada semana para el bienestar de tus hijos.",
-            "accent": "#0EB680",
+            "accent": "#0eb680",
+            "link": "",
             "cta_label": "Leer newsletter →"
           }
         },
@@ -19,7 +29,8 @@
             "blog": "podcast",
             "title": "Podcast",
             "description": "Conversaciones sobre nutrición, crianza y desarrollo infantil.",
-            "accent": "#574DDF",
+            "accent": "#574ddf",
+            "link": "shopify://blogs/podcasts",
             "cta_label": "Escuchar podcast →"
           }
         },
@@ -29,18 +40,45 @@
             "blog": "recetas",
             "title": "Recetas",
             "description": "Ideas fáciles y deliciosas para preparar Fuly en casa.",
-            "accent": "#E47524",
+            "accent": "#e47524",
+            "link": "shopify://blogs/recetario",
             "cta_label": "Ver recetas →"
           }
         }
       },
-      "block_order": ["blog_newsletter", "blog_podcast", "blog_recetas"],
+      "block_order": [
+        "blog_newsletter",
+        "blog_podcast",
+        "blog_recetas"
+      ],
       "settings": {
+        "source": "menu",
+        "menu": "",
+        "default_cta": "Ver más →",
+        "default_accent": "#f7cd47",
         "tag_label": "FULY",
         "heading": "MÁS NIÑOS",
-        "subheading": "Contenido para acompañarte: recetas, podcast y nuestro newsletter."
+        "subheading": "Contenido para acompañarte: recetas, podcast y nuestro newsletter.",
+        "cols_mobile": 1,
+        "cols_tablet": 3,
+        "cols_desktop": 3,
+        "gap_mobile": 24,
+        "gap_tablet": 24,
+        "gap_desktop": 24,
+        "title_size_mobile": 18,
+        "title_size_tablet": 20,
+        "title_size_desktop": 20,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     }
   },
-  "order": ["blogs_landing"]
+  "order": [
+    "blogs_landing"
+  ]
 }
