@@ -55,12 +55,19 @@
       "settings": {
         "show_badge": true,
         "tagline": "",
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
         "reviews_manual_number": "3,400",
         "reviews_text": "reseñas verificadas con 5 estrellas ⭐",
         "title": "EL FUTURO SABE RICO",
         "subtitle": "Formulados por científicos. Disfrutados por niños.",
+        "show_primary_button": true,
         "primary_label": "COMPRAR AHORA",
         "primary_link": "",
+        "show_secondary_button": false,
         "secondary_label": "",
         "secondary_link": "",
         "title_size_mobile": 56,
@@ -83,7 +90,11 @@
         "padding_block_desktop": 96,
         "heading_color": "#1a1a1a",
         "subtitle_color": "#555555",
-        "badge_bg_color": "#F7CD47"
+        "badge_bg_color": "#f7cd47",
+        "heading_font": "display",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "body",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_marquee": {
@@ -104,7 +115,11 @@
         "item_gap_desktop": 24,
         "bg_color": "#1a1a1a",
         "text_color": "#ffffff",
-        "star_color": "#F7CD47"
+        "star_color": "#f7cd47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_benefits": {
@@ -160,7 +175,11 @@
         "tag_font_size_mobile": 13,
         "tag_font_size_tablet": 13,
         "tag_font_size_desktop": 13,
-        "bg_color": "#fffbea"
+        "bg_color": "#fffbea",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_products": {
@@ -168,6 +187,10 @@
       "settings": {
         "show_reviews_badge": false,
         "reviews_source": "dynamic",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
         "reviews_manual_number": "3,400",
         "reviews_text": "reseñas verificadas con 5 estrellas ★",
         "tag_label": "",
@@ -197,7 +220,11 @@
         "heading_size_desktop": 44,
         "padding_block_mobile": 48,
         "padding_block_tablet": 96,
-        "padding_block_desktop": 96
+        "padding_block_desktop": 96,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_how_it_works": {
@@ -256,7 +283,11 @@
         "heading_size_desktop": 44,
         "padding_block_mobile": 48,
         "padding_block_tablet": 96,
-        "padding_block_desktop": 96
+        "padding_block_desktop": 96,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_science": {
@@ -324,7 +355,11 @@
         "padding_block_tablet": 96,
         "padding_block_desktop": 96,
         "section_bg_color": "#1a1a1a",
-        "card_bg_color": "#262626"
+        "card_bg_color": "#262626",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_why": {
@@ -348,7 +383,11 @@
         "padding_block_tablet": 96,
         "padding_block_desktop": 96,
         "heading_color": "#1a1a1a",
-        "body_color": "#555555"
+        "body_color": "#555555",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_testimonials": {
@@ -425,7 +464,11 @@
         "padding_block_mobile": 48,
         "padding_block_tablet": 96,
         "padding_block_desktop": 96,
-        "star_color": "#F7CD47"
+        "star_color": "#f7cd47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_cta": {
@@ -434,7 +477,7 @@
         "heading": "ÚNETE A +3,400 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "VER PRODUCTOS",
         "cta_link": "",
-        "bg_color": "#E31B48",
+        "bg_color": "#e31b48",
         "text_color": "#ffffff",
         "heading_size_mobile": 24,
         "heading_size_tablet": 28,
@@ -442,7 +485,11 @@
         "padding_block_mobile": 48,
         "padding_block_tablet": 48,
         "padding_block_desktop": 48,
-        "button_full_width_mobile": false
+        "button_full_width_mobile": false,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_faq": {
@@ -514,7 +561,11 @@
         "summary_padding_desktop": 20,
         "padding_block_mobile": 48,
         "padding_block_tablet": 96,
-        "padding_block_desktop": 96
+        "padding_block_desktop": 96,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_newsletter": {
@@ -525,7 +576,8 @@
         "badge": "RECIBE 10% EN TU PRIMERA COMPRA",
         "placeholder": "tu@email.com",
         "submit_label": "Suscribirme",
-        "bg_color": "#0EB680",
+        "success_message": "¡Gracias por suscribirte! 🎉",
+        "bg_color": "#0eb680",
         "heading_size_mobile": 32,
         "heading_size_tablet": 36,
         "heading_size_desktop": 40,
@@ -537,7 +589,11 @@
         "input_size_desktop": 14,
         "padding_block_mobile": 48,
         "padding_block_tablet": 64,
-        "padding_block_desktop": 64
+        "padding_block_desktop": 64,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     }
   },
