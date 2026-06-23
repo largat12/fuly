@@ -135,7 +135,7 @@
         "fuly-nav-nutriscan": {
           "type": "nav_link",
           "settings": {
-            "label": "NutriScan™",
+            "label": "FulyScan™",
             "url": "https://fuly.app",
             "is_external": true,
             "show_external_icon": true
