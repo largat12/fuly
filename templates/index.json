@@ -260,6 +260,7 @@
         "step_2",
         "step_3"
       ],
+      "disabled": true,
       "settings": {
         "tag_label": "CÓMO FUNCIONA",
         "heading": "ASÍ DE FÁCIL",
