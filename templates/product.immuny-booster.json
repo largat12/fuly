@@ -91,6 +91,7 @@
         },
         "collapsible_tab_P6xG7p": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Desde qué edad se puede consumir?",
             "icon": "none",
@@ -304,6 +305,7 @@
         "column_dGCD3i",
         "column_HLXG96"
       ],
+      "disabled": true,
       "custom_css": [
         ".multicolumn {max-width: 100% !important; width: 100% !important; padding-left: -20px; padding-right: -20px;}",
         ".multicolumn-card__image-wrapper--full-width {margin-left: 0 !important; margin-right: 0 !important;}",
