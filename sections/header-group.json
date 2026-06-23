@@ -96,15 +96,6 @@
             "show_external_icon": false
           }
         },
-        "fuly-nav-faq": {
-          "type": "nav_link",
-          "settings": {
-            "label": "FAQ",
-            "url": "/pages/faqs",
-            "is_external": false,
-            "show_external_icon": false
-          }
-        },
         "fuly-nav-suscripciones": {
           "type": "nav_link",
           "settings": {
@@ -116,6 +107,7 @@
         },
         "fuly-nav-give-back": {
           "type": "nav_link",
+          "disabled": true,
           "settings": {
             "label": "Give-Back",
             "url": "/pages/fuly-semilla",
@@ -128,6 +120,15 @@
           "settings": {
             "label": "MÁS NIÑOS",
             "url": "/pages/mas-ninos",
+            "is_external": false,
+            "show_external_icon": false
+          }
+        },
+        "fuly-nav-faq": {
+          "type": "nav_link",
+          "settings": {
+            "label": "PREGUNTAS",
+            "url": "/pages/faqs",
             "is_external": false,
             "show_external_icon": false
           }
@@ -163,10 +164,10 @@
         "fuly-announcement-2",
         "fuly-announcement-3",
         "fuly-nav-tienda",
-        "fuly-nav-faq",
         "fuly-nav-suscripciones",
         "fuly-nav-give-back",
         "fuly-nav-mas-ninos",
+        "fuly-nav-faq",
         "fuly-nav-nutriscan",
         "fuly-dropdown-nosotros",
         "fuly-dropdown-contacto"
