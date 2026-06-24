@@ -154,7 +154,7 @@
           "type": "dropdown_item",
           "settings": {
             "label": "Contacto",
-            "url": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%87%20%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20los%20alimentos%20funcionales%20para%20ni%C3%B1os",
+            "url": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
             "is_external": true
           }
         }
