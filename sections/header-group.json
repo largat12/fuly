@@ -69,7 +69,7 @@
         "fuly-announcement-1": {
           "type": "announcement",
           "settings": {
-            "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M.",
+            "text": "ENVÍO EL MISMO DÍA : COMPRA ANTES DE LAS 3 P.M. EN CIUDADES PRINCIPALES",
             "link": ""
           }
         },
@@ -83,7 +83,7 @@
         "fuly-announcement-3": {
           "type": "announcement",
           "settings": {
-            "text": "SUSCRÍBETE Y AHORRA : HASTA 15% EN CADA ENVÍO",
+            "text": "SUSCRÍBETE Y AHORRA 15% OFF EN CADA PEDIDO",
             "link": ""
           }
         },
