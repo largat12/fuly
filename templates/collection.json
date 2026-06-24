@@ -1,9 +1,46 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "fuly_collection": {
       "type": "fuly-tienda",
-      "settings": {}
+      "settings": {
+        "eyebrow": "CATÁLOGO",
+        "filter_label": "Categoría",
+        "filter_all_label": "Todos",
+        "sort_label": "Ordenar por",
+        "sort_asc_label": "Precio: menor a mayor",
+        "sort_desc_label": "Precio: mayor a menor",
+        "sort_alpha_label": "Nombre A-Z",
+        "add_btn_label": "Agregar",
+        "empty_message": "No hay productos en esta categoría.",
+        "cols_mobile": 2,
+        "cols_tablet": 2,
+        "cols_desktop": 3,
+        "gap_mobile": 12,
+        "gap_tablet": 24,
+        "gap_desktop": 24,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "title_size_mobile": 30,
+        "title_size_tablet": 50,
+        "title_size_desktop": 50,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
-  "order": ["fuly_collection"]
+  "order": [
+    "fuly_collection"
+  ]
 }
