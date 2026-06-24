@@ -1,14 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "fuly_blog": {
       "type": "fuly-blog",
       "settings": {
-        "eyebrow": "PODCAST",
+        "eyebrow": "Blog",
         "title": "Podcast",
         "subtitle": "Conversaciones sobre nutrición, crianza y desarrollo infantil.",
-        "empty_message": "Pronto publicaremos episodios. ¡Vuelve pronto!"
+        "filter_label": "Categoría",
+        "filter_all_label": "Todos",
+        "sort_label": "Ordenar por",
+        "btn_label": "Leer artículo",
+        "empty_message": "Pronto publicaremos episodios. ¡Vuelve pronto!",
+        "excerpt_words": 20,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     }
   },
-  "order": ["fuly_blog"]
+  "order": [
+    "fuly_blog"
+  ]
 }
