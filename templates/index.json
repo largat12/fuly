@@ -369,7 +369,7 @@
     "fuly_home_marquee": {
       "type": "fuly-home-marquee",
       "settings": {
-        "items": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB",
+        "items": "Melena de león|Reishi|Vitaminas A, D y C|Selenio|Zinc|Magnesio|Frutas Naturales\n|HECHO EN EL FULY LAB",
         "duration_mobile": 10,
         "duration_tablet": 10,
         "duration_desktop": 10,
