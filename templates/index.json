@@ -477,6 +477,43 @@
         "body_font_picker": "assistant_n4"
       }
     },
+    "17823355760edca458": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_4_AgfTLE": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "",
+            "format": "1",
+            "image": "2",
+            "from": "1",
+            "onlinephotos": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "center",
+            "date": false,
+            "star_color": "#FFFF00",
+            "size": 15,
+            "back_color": "#FFFFFF",
+            "text_color": "#000000",
+            "size_text": 14,
+            "max_reviews": 10,
+            "nextButtonText": "Mostrar más reseñas",
+            "productButtonText": "Ver producto",
+            "max_width": 1200,
+            "content_padding": 22,
+            "max_width_image": 24
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_4_AgfTLE"
+      ],
+      "custom_css": [],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "fuly_home_why": {
       "type": "fuly-home-why",
       "settings": {
@@ -629,49 +666,6 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "17823355760edca458": {
-      "type": "apps",
-      "blocks": {
-        "revie_reviews_por_whatsapp_app_block_4_AgfTLE": {
-          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
-          "settings": {
-            "title": "{star} {count} Reviews",
-            "format": "1",
-            "image": "1",
-            "from": "1",
-            "onlinephotos": "1",
-            "title_color": "#000000",
-            "title_size": 24,
-            "title_pos": "flex-start",
-            "date": true,
-            "star_color": "#000000",
-            "size": 15,
-            "back_color": "#ffffff",
-            "text_color": "#121212",
-            "size_text": 14,
-            "max_reviews": 10,
-            "nextButtonText": "Mostrar más reseñas",
-            "productButtonText": "Ver producto",
-            "max_width": 1200,
-            "content_padding": 22,
-            "max_width_image": 24
-          }
-        }
-      },
-      "block_order": [
-        "revie_reviews_por_whatsapp_app_block_4_AgfTLE"
-      ],
-      "disabled": true,
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "1782335740402c1d2c": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -684,11 +678,10 @@
     "fuly_home_science",
     "fuly_home_benefits",
     "fuly_home_testimonials",
+    "17823355760edca458",
     "fuly_home_why",
     "fuly_home_cta",
     "fuly_home_faq",
-    "fuly_home_newsletter",
-    "17823355760edca458",
-    "1782335740402c1d2c"
+    "fuly_home_newsletter"
   ]
 }
