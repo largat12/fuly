@@ -396,6 +396,7 @@
       "blocks": {
         "testimonial_1": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "name": "Carolina M.",
             "city": "Bogotá",
@@ -405,6 +406,7 @@
         },
         "testimonial_2": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "name": "Andrés P.",
             "city": "Medellín",
@@ -414,6 +416,7 @@
         },
         "testimonial_3": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "name": "Laura G.",
             "city": "Cali",
@@ -423,6 +426,7 @@
         },
         "testimonial_4": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "name": "Felipe R.",
             "city": "Barranquilla",
@@ -432,6 +436,7 @@
         },
         "testimonial_5": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "name": "María T.",
             "city": "Bucaramanga",
@@ -462,9 +467,9 @@
         "heading_size_mobile": 28,
         "heading_size_tablet": 36,
         "heading_size_desktop": 44,
-        "padding_block_mobile": 48,
+        "padding_block_mobile": 12,
         "padding_block_tablet": 96,
-        "padding_block_desktop": 96,
+        "padding_block_desktop": 36,
         "star_color": "#f7cd47",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
@@ -624,6 +629,49 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "17823355760edca458": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_4_AgfTLE": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "{star} {count} Reviews",
+            "format": "1",
+            "image": "1",
+            "from": "1",
+            "onlinephotos": "1",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "flex-start",
+            "date": true,
+            "star_color": "#000000",
+            "size": 15,
+            "back_color": "#ffffff",
+            "text_color": "#121212",
+            "size_text": 14,
+            "max_reviews": 10,
+            "nextButtonText": "Mostrar más reseñas",
+            "productButtonText": "Ver producto",
+            "max_width": 1200,
+            "content_padding": 22,
+            "max_width_image": 24
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_4_AgfTLE"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1782335740402c1d2c": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -639,6 +687,8 @@
     "fuly_home_why",
     "fuly_home_cta",
     "fuly_home_faq",
-    "fuly_home_newsletter"
+    "fuly_home_newsletter",
+    "17823355760edca458",
+    "1782335740402c1d2c"
   ]
 }
