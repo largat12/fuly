@@ -170,66 +170,6 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "fuly_home_benefits": {
-      "type": "fuly-home-benefits",
-      "blocks": {
-        "benefit_1": {
-          "type": "benefit",
-          "settings": {
-            "label": "FUENTE DE VITAMINAS Y MINERALES"
-          }
-        },
-        "benefit_2": {
-          "type": "benefit",
-          "settings": {
-            "label": "FORMULADOS POR CIENTÍFICOS"
-          }
-        },
-        "benefit_3": {
-          "type": "benefit",
-          "settings": {
-            "label": "SIN AZÚCAR ADICIONADA"
-          }
-        },
-        "benefit_4": {
-          "type": "benefit",
-          "settings": {
-            "label": "SIN INGREDIENTES CONTROVERSIALES"
-          }
-        },
-        "benefit_5": {
-          "type": "benefit",
-          "settings": {
-            "label": "LES ENCANTA EL SABOR"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_1",
-        "benefit_2",
-        "benefit_3",
-        "benefit_4",
-        "benefit_5"
-      ],
-      "settings": {
-        "auto_scroll": true,
-        "scroll_speed": 30,
-        "padding_block_mobile": 30,
-        "padding_block_tablet": 51,
-        "padding_block_desktop": 51,
-        "tag_gap_mobile": 12,
-        "tag_gap_tablet": 12,
-        "tag_gap_desktop": 12,
-        "tag_font_size_mobile": 13,
-        "tag_font_size_tablet": 13,
-        "tag_font_size_desktop": 13,
-        "bg_color": "#fffbea",
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
-      }
-    },
     "fuly_home_how_it_works": {
       "type": "fuly-home-how-it-works",
       "blocks": {
@@ -288,6 +228,31 @@
         "padding_block_mobile": 48,
         "padding_block_tablet": 96,
         "padding_block_desktop": 96,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_marquee": {
+      "type": "fuly-home-marquee",
+      "settings": {
+        "items": "Melena de león|Reishi|Vitaminas A, D y C|Selenio|Zinc|Magnesio|Frutas Naturales\n|HECHO EN EL FULY LAB",
+        "duration_mobile": 6,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 15,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff",
+        "star_color": "#f7cd47",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
@@ -366,25 +331,60 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "fuly_home_marquee": {
-      "type": "fuly-home-marquee",
+    "fuly_home_benefits": {
+      "type": "fuly-home-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "label": "FUENTE DE VITAMINAS Y MINERALES"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "label": "FORMULADOS POR CIENTÍFICOS"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "label": "SIN AZÚCAR ADICIONADA"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "label": "SIN INGREDIENTES CONTROVERSIALES"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "label": "LES ENCANTA EL SABOR"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5"
+      ],
       "settings": {
-        "items": "Melena de león|Reishi|Vitaminas A, D y C|Selenio|Zinc|Magnesio|Frutas Naturales\n|HECHO EN EL FULY LAB",
-        "duration_mobile": 10,
-        "duration_tablet": 10,
-        "duration_desktop": 10,
-        "font_size_mobile": 18,
-        "font_size_tablet": 18,
-        "font_size_desktop": 18,
-        "padding_block_mobile": 16,
-        "padding_block_tablet": 16,
-        "padding_block_desktop": 16,
-        "item_gap_mobile": 24,
-        "item_gap_tablet": 24,
-        "item_gap_desktop": 24,
-        "bg_color": "#1a1a1a",
-        "text_color": "#ffffff",
-        "star_color": "#f7cd47",
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 51,
+        "padding_block_desktop": 51,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#fffbea",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
@@ -631,10 +631,10 @@
     "fuly_home_hero",
     "fuly_reviews_badge_kkHEQw",
     "fuly_home_products",
-    "fuly_home_benefits",
     "fuly_home_how_it_works",
-    "fuly_home_science",
     "fuly_home_marquee",
+    "fuly_home_science",
+    "fuly_home_benefits",
     "fuly_home_testimonials",
     "fuly_home_why",
     "fuly_home_cta",
