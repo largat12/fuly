@@ -14,7 +14,7 @@
       "settings": {
         "eyebrow": "CATÁLOGO",
         "filter_label": "Categoría",
-        "filter_all_label": "Todos",
+        "filter_all_label": "Tienda",
         "sort_label": "Ordenar por",
         "sort_asc_label": "Precio: menor a mayor",
         "sort_desc_label": "Precio: mayor a menor",
