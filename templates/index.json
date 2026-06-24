@@ -521,6 +521,7 @@
     "fuly_home_why": {
       "type": "fuly-home-why",
       "settings": {
+        "image": "shopify://shop_images/Booster_frutos_rojos_fuly_nino.png",
         "tag_label": "POR QUÉ FULY",
         "heading": "PARA QUE LOS NIÑOS SEAN MÁS NIÑOS",
         "body": "Fuly nació para darles a las familias herramientas respaldadas por ciencia. Porque cada niño merece crecer sano, fuerte y feliz.",
