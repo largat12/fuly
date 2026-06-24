@@ -41,9 +41,36 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "fuly_home_marquee_dFLqCX": {
+      "type": "fuly-home-marquee",
+      "name": "Fuly Home — Marquee",
+      "settings": {
+        "items": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB",
+        "duration_mobile": 10,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 24,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1A1A1A",
+        "text_color": "#FFFFFF",
+        "star_color": "#F7CD47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
-    "fuly_collection"
+    "fuly_collection",
+    "fuly_home_marquee_dFLqCX"
   ]
 }
