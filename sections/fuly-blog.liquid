@@ -65,7 +65,8 @@
           {%- render 'fuly-blog-card',
             article: article,
             btn_label: section.settings.btn_label,
-            excerpt_words: section.settings.excerpt_words
+            excerpt_words: section.settings.excerpt_words,
+            show_date: section.settings.show_date
           -%}
         {%- endfor -%}
       </div>
@@ -309,6 +310,12 @@
       "id": "excerpt_words",
       "label": "Palabras del resumen",
       "default": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Mostrar fecha del artículo",
+      "default": true
     },
     {
       "type": "header",

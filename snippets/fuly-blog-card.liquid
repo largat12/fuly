@@ -6,10 +6,15 @@
     - article       (objeto article, requerido)
     - btn_label     (string, opcional · default 'Leer artículo')
     - excerpt_words (number, opcional · default 20)
+    - show_date     (boolean, opcional · default true · muestra la fecha del artículo)
 {%- endcomment -%}
 {%- liquid
   assign card_btn_label = btn_label | default: 'Leer artículo'
   assign card_excerpt_words = excerpt_words | default: 20
+  assign card_show_date = show_date
+  if show_date == nil
+    assign card_show_date = true
+  endif
   assign a_image_url = ''
   if article.image
     assign a_image_url = article.image | image_url: width: 600
@@ -46,7 +51,9 @@
     </span>
   </a>
   <div class="fuly-blog-card__body">
-    <time class="fuly-blog-card__date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ a_date }}</time>
+    {%- if card_show_date -%}
+      <time class="fuly-blog-card__date" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ a_date }}</time>
+    {%- endif -%}
     <a href="{{ article.url }}" style="text-decoration:none;color:inherit;">
       <h3 class="fuly-blog-card__title">{{ article.title }}</h3>
     </a>
