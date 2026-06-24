@@ -53,7 +53,7 @@
     "fuly_home_hero": {
       "type": "fuly-home-hero",
       "settings": {
-        "show_badge": true,
+        "show_badge": false,
         "tagline": "",
         "reviews_source": "auto",
         "reviews_namespace": "reviews",
@@ -596,12 +596,38 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "fuly_reviews_badge_kkHEQw": {
+      "type": "fuly-reviews-badge",
+      "name": "Fuly — Badge de reseñas",
+      "settings": {
+        "tagline": "",
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "3,400",
+        "reviews_text": "reseñas verificadas con 5 estrellas ⭐",
+        "bg_color": "#FFFFFF",
+        "badge_bg_color": "#F7CD47",
+        "alignment": "center",
+        "badge_size_mobile": 14,
+        "badge_size_tablet": 16,
+        "badge_size_desktop": 18,
+        "padding_block_mobile": 24,
+        "padding_block_tablet": 32,
+        "padding_block_desktop": 32,
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
     "fuly_home_slideshow",
     "fuly_home_hero",
     "fuly_home_marquee",
+    "fuly_reviews_badge_kkHEQw",
     "fuly_home_benefits",
     "fuly_home_products",
     "fuly_home_how_it_works",
