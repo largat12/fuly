@@ -61,7 +61,6 @@
       <div class="fuly-collection-sort fuly-collection-filter">
         <label class="fuly-collection-sr-only" for="fuly-cat">{{ section.settings.filter_label | default: 'Categoría' }}</label>
         <select id="fuly-cat" onchange="if(this.value){window.location.href=this.value;}">
-          <option value="{{ routes.all_products_collection_url }}"{% if current_handle == '' or current_handle == 'all' %} selected{% endif %}>{{ section.settings.filter_all_label }}</option>
           {%- for c in collections -%}
             {%- unless c.handle == 'all' or c.handle == 'frontpage' -%}
               <option value="{{ c.url }}"{% if c.handle == current_handle %} selected{% endif %}>{{ c.title }}</option>

@@ -11,10 +11,13 @@
   "sections": {
     "fuly_collection": {
       "type": "fuly-tienda",
+      "custom_css": [
+        "#fuly-cat option:first-child{display:none}"
+      ],
       "settings": {
         "eyebrow": "CATÁLOGO",
         "filter_label": "Categoría",
-        "filter_all_label": "Tienda",
+        "filter_all_label": "Todos",
         "sort_label": "Ordenar por",
         "sort_asc_label": "Precio: menor a mayor",
         "sort_desc_label": "Precio: mayor a menor",
