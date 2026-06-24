@@ -12,7 +12,7 @@
     "fuly_collection": {
       "type": "fuly-tienda",
       "custom_css": [
-        "#fuly-cat option:first-child{display:none}"
+        "#fuly-cat option:first-child {display: none;}"
       ],
       "settings": {
         "eyebrow": "CATÁLOGO",
@@ -30,9 +30,9 @@
         "gap_mobile": 12,
         "gap_tablet": 24,
         "gap_desktop": 24,
-        "padding_block_mobile": 48,
-        "padding_block_tablet": 96,
-        "padding_block_desktop": 96,
+        "padding_block_mobile": 32,
+        "padding_block_tablet": 52,
+        "padding_block_desktop": 52,
         "title_size_mobile": 30,
         "title_size_tablet": 50,
         "title_size_desktop": 50,
