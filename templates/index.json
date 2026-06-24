@@ -214,7 +214,7 @@
       "settings": {
         "auto_scroll": true,
         "scroll_speed": 30,
-        "padding_block_mobile": 51,
+        "padding_block_mobile": 30,
         "padding_block_tablet": 51,
         "padding_block_desktop": 51,
         "tag_gap_mobile": 12,
@@ -294,31 +294,6 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "fuly_home_marquee": {
-      "type": "fuly-home-marquee",
-      "settings": {
-        "items": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB",
-        "duration_mobile": 10,
-        "duration_tablet": 10,
-        "duration_desktop": 10,
-        "font_size_mobile": 18,
-        "font_size_tablet": 18,
-        "font_size_desktop": 18,
-        "padding_block_mobile": 16,
-        "padding_block_tablet": 16,
-        "padding_block_desktop": 16,
-        "item_gap_mobile": 24,
-        "item_gap_tablet": 24,
-        "item_gap_desktop": 24,
-        "bg_color": "#1a1a1a",
-        "text_color": "#ffffff",
-        "star_color": "#f7cd47",
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
-      }
-    },
     "fuly_home_science": {
       "type": "fuly-home-science",
       "blocks": {
@@ -391,28 +366,25 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "fuly_home_why": {
-      "type": "fuly-home-why",
+    "fuly_home_marquee": {
+      "type": "fuly-home-marquee",
       "settings": {
-        "tag_label": "POR QUÉ FULY",
-        "heading": "PARA QUE LOS NIÑOS SEAN MÁS NIÑOS",
-        "body": "Fuly nació para darles a las familias herramientas respaldadas por ciencia. Porque cada niño merece crecer sano, fuerte y feliz.",
-        "cta_label": "CONOCE NUESTRA HISTORIA",
-        "cta_link": "",
-        "heading_size_mobile": 28,
-        "heading_size_tablet": 36,
-        "heading_size_desktop": 44,
-        "body_size_mobile": 18,
-        "body_size_tablet": 18,
-        "body_size_desktop": 18,
-        "gap_mobile": 32,
-        "gap_tablet": 48,
-        "gap_desktop": 48,
-        "padding_block_mobile": 48,
-        "padding_block_tablet": 96,
-        "padding_block_desktop": 96,
-        "heading_color": "#1a1a1a",
-        "body_color": "#555555",
+        "items": "+VITAMINAS +DIVERSIÓN|CIENCIA DELICIOSA|EL FUTURO SABE RICO|PARA QUE LOS NIÑOS SEAN MÁS NIÑOS|HECHO EN EL FULY LAB",
+        "duration_mobile": 10,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 24,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff",
+        "star_color": "#f7cd47",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
@@ -500,10 +472,38 @@
         "body_font_picker": "assistant_n4"
       }
     },
+    "fuly_home_why": {
+      "type": "fuly-home-why",
+      "settings": {
+        "tag_label": "POR QUÉ FULY",
+        "heading": "PARA QUE LOS NIÑOS SEAN MÁS NIÑOS",
+        "body": "Fuly nació para darles a las familias herramientas respaldadas por ciencia. Porque cada niño merece crecer sano, fuerte y feliz.",
+        "cta_label": "CONOCE NUESTRA HISTORIA",
+        "cta_link": "",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "body_size_mobile": 18,
+        "body_size_tablet": 18,
+        "body_size_desktop": 18,
+        "gap_mobile": 32,
+        "gap_tablet": 48,
+        "gap_desktop": 48,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_color": "#1a1a1a",
+        "body_color": "#555555",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
     "fuly_home_cta": {
       "type": "fuly-home-cta",
       "settings": {
-        "heading": "ÚNETE A +3,400 FAMILIAS QUE CONFÍAN EN FULY",
+        "heading": "ÚNETE A +4,500 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "VER PRODUCTOS",
         "cta_link": "",
         "bg_color": "#e31b48",
@@ -633,10 +633,10 @@
     "fuly_home_products",
     "fuly_home_benefits",
     "fuly_home_how_it_works",
-    "fuly_home_marquee",
     "fuly_home_science",
-    "fuly_home_why",
+    "fuly_home_marquee",
     "fuly_home_testimonials",
+    "fuly_home_why",
     "fuly_home_cta",
     "fuly_home_faq",
     "fuly_home_newsletter"
