@@ -453,7 +453,7 @@
         "testimonial_5"
       ],
       "custom_css": [
-        ".fuly-testimonials-arrow{display:none!important}"
+        ".fuly-testimonials-arrow {display: none !important;}"
       ],
       "settings": {
         "tag_label": "TESTIMONIOS",

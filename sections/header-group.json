@@ -91,7 +91,7 @@
           "type": "nav_link",
           "settings": {
             "label": "Tienda",
-            "url": "/collections/all",
+            "url": "shopify://collections/tienda",
             "is_external": false,
             "show_external_icon": false
           }
