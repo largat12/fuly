@@ -143,6 +143,30 @@ async function main() {
       type: 'single_line_text_field',
       description: 'Talle/size del producto. Se muestra en la tarjeta del grid y en la página de producto',
     },
+    {
+      name: 'Formato',
+      key: 'formato',
+      type: 'single_line_text_field',
+      description: 'Formato/presentación del producto (ej. caja, sachet, frasco)',
+    },
+    {
+      name: 'Color de marca',
+      key: 'color_marca',
+      type: 'single_line_text_field',
+      description: 'Color de marca asociado al producto (hex o nombre)',
+    },
+    {
+      name: 'Tabla Nutricional (alterna)',
+      key: 'tabla_nutricional',
+      type: 'multi_line_text_field',
+      description: 'Tabla nutricional. Alterna de informacion_nutricional, la theme usa la que tenga valor',
+    },
+    {
+      name: 'Cómo Preparar (alterna)',
+      key: 'como_preparar',
+      type: 'multi_line_text_field',
+      description: 'Instrucciones de preparación. Alterna de modo_preparacion, la theme usa la que tenga valor',
+    },
   ];
 
   console.log('\x1b[34m📋 Creando metafields...\x1b[0m\n');

@@ -3,12 +3,14 @@
   Devuelve (echo) el número total de reseñas. Fuente configurable para
   integrarse con la app de reseñas (revie.lat) u otra que escriba en metafields.
 
-  Estrategia:
+  Estrategia (en orden de prioridad):
+    0. Si source != 'manual' y existe shop.metafields.custom.total_reviews → lo usa.
+       (metafield manual de tienda, fuly-hero-reviews. Hoy = 5440)
     1. Si source == 'manual'        → usa manual_number.
     2. Si hay un metafield de tienda (shop) con el total → lo usa directo.
        (algunas apps guardan un total agregado a nivel shop)
     3. Si no, suma el metafield de cada producto (namespace.key) en collections.all.
-    4. Si el resultado es 0 → cae a manual_number (respaldo).
+    4. Si el resultado es 0 → cae a manual_number (respaldo, default 5440).
 
   Params (todos opcionales):
     - source (string): 'auto' (default) | 'manual'
@@ -36,18 +38,28 @@
   assign rt_source = source | default: 'auto'
   assign rt_namespace = namespace | default: 'reviews'
   assign rt_key = key | default: 'rating_count'
-  assign rt_manual = manual_number | default: '3,400'
+  assign rt_manual = manual_number | default: '5440'
 
   assign rt_total = 0
 
   if rt_source != 'manual'
     comment
+      0) Metafield manual de tienda (fuly-hero-reviews): custom.total_reviews.
+         Lo creás y actualizás a mano en Settings → Custom data → Metafields → Shop
+         (hoy = 5440). Es el camino trivial: el hero solo lee un número.
+    endcomment
+    assign rt_custom = shop.metafields.custom.total_reviews.value | default: 0
+    assign rt_total = rt_total | plus: rt_custom
+
+    comment
       1) Total de la app Revie (revie.lat). Escribe el total de la tienda en
          shop.metafields.revie.reviewShopData.reviewCount. Es lo más exacto y
          se actualiza solo, sin llamadas externas.
     endcomment
-    assign rt_revie = shop.metafields.revie.reviewShopData.reviewCount | default: 0
-    assign rt_total = rt_total | plus: rt_revie
+    if rt_total == 0
+      assign rt_revie = shop.metafields.revie.reviewShopData.reviewCount | default: 0
+      assign rt_total = rt_total | plus: rt_revie
+    endif
 
     comment
       2) Metafield de tienda configurable (otra app o total custom).
