@@ -145,7 +145,7 @@
         "fuly-dropdown-nosotros": {
           "type": "dropdown_item",
           "settings": {
-            "label": "Nosotros",
+            "label": "NOSOTROS",
             "url": "/pages/nosotros",
             "is_external": false
           }
