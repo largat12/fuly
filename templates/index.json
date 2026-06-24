@@ -452,6 +452,7 @@
         "testimonial_4",
         "testimonial_5"
       ],
+      "custom_css": [],
       "settings": {
         "tag_label": "TESTIMONIOS",
         "heading": "LO QUE DICEN LAS FAMILIAS",
@@ -510,9 +511,7 @@
         "revie_reviews_por_whatsapp_app_block_4_AgfTLE"
       ],
       "custom_css": [
-        ".tt-rev-it[onclick]{background:#fff!important;border-radius:20px!important;box-shadow:0 0 0 3px #000,7px 7px 0 #000!important;overflow:hidden!important}",
-        ".tt-rev-it[onclick] *{box-shadow:none!important;border:none!important}",
-        ".tt-rev-it[onclick] hr{display:none!important}"
+        "@media(max-width:767px){.tt-rev-it[onclick]{background:#fff!important;border-radius:20px!important;box-shadow:0 0 0 3px #000,7px 7px 0 #000!important;overflow:hidden!important;margin-bottom:16px!important}.tt-rev-it[onclick] *{box-shadow:none!important;border:none!important}}"
       ],
       "settings": {
         "include_margins": true
