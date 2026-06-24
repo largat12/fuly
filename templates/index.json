@@ -509,7 +509,11 @@
       "block_order": [
         "revie_reviews_por_whatsapp_app_block_4_AgfTLE"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".tt-rev-it[onclick]{background:#fff!important;border-radius:20px!important;box-shadow:0 0 0 3px #000,7px 7px 0 #000!important;overflow:hidden!important}",
+        ".tt-rev-it[onclick] *{box-shadow:none!important;border:none!important}",
+        ".tt-rev-it[onclick] hr{display:none!important}"
+      ],
       "settings": {
         "include_margins": true
       }
