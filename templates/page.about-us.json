@@ -136,7 +136,59 @@
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "image_behavior": "none",
+        "image_behavior": "ambient",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "image_with_text_nkdQAD": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_cT93TE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Manuela Gómez - DIR. CIENTÍFICA",
+            "heading_size": "h1"
+          }
+        },
+        "text_Dg7yF4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mamá de Emilio y Elisa. Médica general y cirujana, con más de 15 años de experiencia. Formación avanzada en medicina tradicional china, homeopatía, medicina japonesa (Harvard) y otras disciplinas integrativas en Europa y EE.UU.<br/><br/></p>",
+            "text_style": "body"
+          }
+        },
+        "button_Qt6Gb6": {
+          "type": "button",
+          "settings": {
+            "button_label": "Conoce a Manu",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_cT93TE",
+        "text_Dg7yF4",
+        "button_Qt6Gb6"
+      ],
+      "custom_css": [
+        "@media (max-width: 700px) {.image-with-text {padding-left: 30px !important; padding-right: 30px !important; }}",
+        "@media (min-width: 700px) {.image-with-text {max-width: 900px !important; margin: 0 auto !important; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/WhatsApp_Image_2026-06-24_at_3.03.50_PM.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "ambient",
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
         "desktop_content_alignment": "left",
@@ -199,6 +251,7 @@
     "formula",
     "creencia",
     "image_with_text_FqnyRh",
+    "image_with_text_nkdQAD",
     "principios",
     "cta"
   ]
