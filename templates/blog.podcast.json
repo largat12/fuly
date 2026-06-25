@@ -9,25 +9,6 @@
  */
 {
   "sections": {
-    "fuly_blog": {
-      "type": "fuly-blog",
-      "settings": {
-        "eyebrow": "Blog",
-        "title": "{{ blog.title }}",
-        "subtitle": "{{ blog.metafields.custom.subtitle_category_blog.value }}",
-        "filter_label": "Categoría",
-        "filter_all_label": "Todos",
-        "sort_label": "Ordenar por",
-        "btn_label": "Leer artículo",
-        "empty_message": "",
-        "excerpt_words": 20,
-        "show_date": false,
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
-      }
-    },
     "fuly_home_newsletter_BAk88k": {
       "type": "fuly-home-newsletter",
       "name": "Fuly Home — Newsletter",
@@ -56,10 +37,29 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "fuly_blog": {
+      "type": "fuly-blog",
+      "settings": {
+        "eyebrow": "Blog",
+        "title": "{{ blog.title }}",
+        "subtitle": "{{ blog.metafields.custom.subtitle_category_blog.value }}",
+        "filter_label": "Categoría",
+        "filter_all_label": "Todos",
+        "sort_label": "Ordenar por",
+        "btn_label": "Leer artículo",
+        "empty_message": "",
+        "excerpt_words": 20,
+        "show_date": false,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
-    "fuly_blog",
-    "fuly_home_newsletter_BAk88k"
+    "fuly_home_newsletter_BAk88k",
+    "fuly_blog"
   ]
 }
