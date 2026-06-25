@@ -199,6 +199,58 @@
         "padding_bottom": 20
       }
     },
+    "image_with_text_XyQY4D": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_g9PhbX": {
+          "type": "heading",
+          "settings": {
+            "heading": "IRINA MUSKIS - CO FOUNDER",
+            "heading_size": "h1"
+          }
+        },
+        "text_4AAQE3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mamá de </p>",
+            "text_style": "body"
+          }
+        },
+        "button_44Q6JA": {
+          "type": "button",
+          "settings": {
+            "button_label": "Conoce a Manu",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_g9PhbX",
+        "text_4AAQE3",
+        "button_44Q6JA"
+      ],
+      "custom_css": [
+        "@media (max-width: 700px) {.image-with-text {padding-left: 30px !important; padding-right: 30px !important; }}",
+        "@media (min-width: 700px) {.image-with-text {max-width: 900px !important; margin: 0 auto !important; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Irina.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "ambient",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
     "principios": {
       "type": "fuly-nosotros-principios",
       "blocks": {
@@ -252,6 +304,7 @@
     "creencia",
     "image_with_text_FqnyRh",
     "image_with_text_nkdQAD",
+    "image_with_text_XyQY4D",
     "principios",
     "cta"
   ]
