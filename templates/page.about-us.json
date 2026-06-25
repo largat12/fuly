@@ -11,6 +11,7 @@
   "sections": {
     "hero": {
       "type": "fuly-nosotros-hero",
+      "custom_css": [],
       "settings": {
         "tag_label": "NUESTRA HISTORIA",
         "title": "Más niñosMás saludables.Más felices.",
@@ -94,6 +95,57 @@
         "copy": "Creemos que la nutrición es el superpoder más subestimado. Un niño bien nutrido piensa mejor, duerme mejor, se enferma menos y juega más. Y una familia que le da buena nutrición a sus hijos no solo cuida un cuerpo: está construyendo el futuro."
       }
     },
+    "image_with_text_FqnyRh": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RKYWNK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Daniel Gómez - CEO",
+            "heading_size": "h1"
+          }
+        },
+        "text_eMji6X": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Papá de Juan Pe. Amante de las ciencia del comportamiento. Antes de fundar Fuly...</p>",
+            "text_style": "body"
+          }
+        },
+        "button_QPYCHn": {
+          "type": "button",
+          "settings": {
+            "button_label": "Conoce a Dani",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RKYWNK",
+        "text_eMji6X",
+        "button_QPYCHn"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {img {width: 85% !important; height: auto !important; display: block !important; margin: 0 auto !important; } p {padding-left: 16px !important; padding-right: 16px !important; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Image_20260624_131742.heic",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
     "principios": {
       "type": "fuly-nosotros-principios",
       "blocks": {
@@ -145,6 +197,7 @@
     "hero",
     "formula",
     "creencia",
+    "image_with_text_FqnyRh",
     "principios",
     "cta"
   ]
