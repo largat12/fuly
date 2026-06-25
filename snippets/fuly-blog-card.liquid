@@ -23,7 +23,7 @@
   assign a_date = article.published_at | date: '%d de %B de %Y'
   assign a_color = article.metafields.fuly.color | default: '#574DDF'
 -%}
-<article class="fuly-blog-card">
+<article class="fuly-blog-card" data-sort-title="{{ article.title | escape | downcase }}" data-sort-date="{{ article.published_at | date: '%s' }}">
   <a
     href="{{ article.url }}"
     class="fuly-blog-card__image-wrap"

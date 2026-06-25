@@ -135,7 +135,7 @@
 
 /* ---- CUERPO ---- */
 .fuly-article__content {
-  max-width: 100%;
+  max-width: 72rem;
   margin: 4rem auto 0;
   font-family: var(--fuly-font-body, Arial, sans-serif);
   font-size: 1.7rem;

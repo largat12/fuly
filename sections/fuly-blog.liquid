@@ -3,11 +3,16 @@
   Dinámico: lista artículos de blog con filtros por tags y sort.
 {%- endcomment -%}
 
+{%- comment -%}
+  Filtro por categoría: usa el enrutamiento nativo de tags de Shopify
+  (/blogs/<handle>/tagged/<tag>). En esas URLs Shopify ya filtra blog.articles
+  y expone current_tags. NO se puede leer ?query con Liquid (request.params no
+  existe), por eso el orden se resuelve en el cliente con JS.
+{%- endcomment -%}
 {%- liquid
-  assign current_tag = request.params.tag | default: ''
-  assign sort_value = request.params.sort_by | default: 'manual'
-  if sort_value == blank
-    assign sort_value = 'manual'
+  assign active_tag = ''
+  if current_tags.size > 0
+    assign active_tag = current_tags.first
   endif
 -%}
 
@@ -20,48 +25,32 @@
     </header>
 
     <div class="fuly-collection-toolbar">
-      <form method="get" action="{{ blog.url }}" class="fuly-collection-sort fuly-blog-filter">
+      <div class="fuly-collection-sort fuly-blog-filter">
         <label class="fuly-collection-sr-only" for="fuly-blog-tag">{{ section.settings.filter_label | default: 'Categoría' }}</label>
-        <select id="fuly-blog-tag" name="tag" onchange="this.form.submit()">
-          <option value="">{{ section.settings.filter_all_label }}</option>
+        <select id="fuly-blog-tag" onchange="if(this.value){window.location.href=this.value;}">
+          <option value="{{ blog.url }}"{% if active_tag == blank %} selected{% endif %}>{{ section.settings.filter_all_label }}</option>
           {%- for tag in blog.all_tags -%}
             {%- unless tag == 'Promoción' or tag == 'Destacado' -%}
-              <option value="{{ tag | escape }}"{% if tag == current_tag %} selected{% endif %}>{{ tag }}</option>
+              <option value="{{ blog.url }}/tagged/{{ tag | handleize }}"{% if tag == active_tag %} selected{% endif %}>{{ tag }}</option>
             {%- endunless -%}
           {%- endfor -%}
         </select>
-        {%- if sort_value != 'manual' -%}<input type="hidden" name="sort_by" value="{{ sort_value }}">{%- endif -%}
-      </form>
+      </div>
 
-      <form method="get" action="{{ blog.url }}" class="fuly-collection-sort">
+      <div class="fuly-collection-sort">
         <label class="fuly-collection-sr-only" for="fuly-blog-sort">{{ section.settings.sort_label }}</label>
-        <select id="fuly-blog-sort" name="sort_by" onchange="this.form.submit()">
-          <option value="manual"{% if sort_value == 'manual' %} selected{% endif %}>{{ section.settings.sort_label }}</option>
-          <option value="newest"{% if sort_value == 'newest' %} selected{% endif %}>Más reciente</option>
-          <option value="oldest"{% if sort_value == 'oldest' %} selected{% endif %}>Más antiguo</option>
-          <option value="title-asc"{% if sort_value == 'title-asc' %} selected{% endif %}>Título A-Z</option>
+        <select id="fuly-blog-sort" data-fuly-blog-sort>
+          <option value="manual">{{ section.settings.sort_label }}</option>
+          <option value="newest">Más reciente</option>
+          <option value="oldest">Más antiguo</option>
+          <option value="title-asc">Título A-Z</option>
         </select>
-        {%- if current_tag != '' -%}<input type="hidden" name="tag" value="{{ current_tag | escape }}">{%- endif -%}
-      </form>
+      </div>
     </div>
 
-    {%- liquid
-      assign articles_filtered = blog.articles
-      if current_tag != ''
-        assign articles_filtered = blog.articles | where: 'tags', current_tag
-      endif
-      if sort_value == 'newest'
-        assign articles_filtered = articles_filtered | sort: 'published_at' | reverse
-      elsif sort_value == 'oldest'
-        assign articles_filtered = articles_filtered | sort: 'published_at'
-      elsif sort_value == 'title-asc'
-        assign articles_filtered = articles_filtered | sort: 'title'
-      endif
-    -%}
-
-    {%- if articles_filtered.size > 0 -%}
-      <div class="fuly-blog-grid">
-        {%- for article in articles_filtered -%}
+    {%- if blog.articles.size > 0 -%}
+      <div class="fuly-blog-grid" id="fuly-blog-grid-{{ section.id }}">
+        {%- for article in blog.articles -%}
           {%- render 'fuly-blog-card',
             article: article,
             btn_label: section.settings.btn_label,
@@ -75,6 +64,37 @@
     {%- endif -%}
   </div>
 </section>
+
+<script>
+  (function () {
+    var grid = document.getElementById('fuly-blog-grid-{{ section.id }}');
+    var select = document.querySelector('#shopify-section-{{ section.id }} [data-fuly-blog-sort]');
+    if (!grid || !select) return;
+
+    // Conserva el orden original ("manual") para poder restaurarlo.
+    var cards = Array.prototype.slice.call(grid.children);
+    cards.forEach(function (card, i) { card.dataset.origIndex = i; });
+
+    function applySort() {
+      var v = select.value;
+      var items = Array.prototype.slice.call(grid.children);
+      items.sort(function (a, b) {
+        if (v === 'title-asc') {
+          return (a.dataset.sortTitle || '').localeCompare(b.dataset.sortTitle || '', 'es');
+        }
+        if (v === 'newest' || v === 'oldest') {
+          var da = parseInt(a.dataset.sortDate || '0', 10);
+          var db = parseInt(b.dataset.sortDate || '0', 10);
+          return v === 'newest' ? db - da : da - db;
+        }
+        return parseInt(a.dataset.origIndex || '0', 10) - parseInt(b.dataset.origIndex || '0', 10);
+      });
+      items.forEach(function (card) { grid.appendChild(card); });
+    }
+
+    select.addEventListener('change', applySort);
+  })();
+</script>
 
 <style>
   .fuly-blog-section {
