@@ -205,22 +205,22 @@
         "heading_g9PhbX": {
           "type": "heading",
           "settings": {
-            "heading": "IRINA MUSKIS - CO FOUNDER",
+            "heading": "IRINA MUSKuS - CO FOUNDER",
             "heading_size": "h1"
           }
         },
         "text_4AAQE3": {
           "type": "text",
           "settings": {
-            "text": "<p>Mamá de </p>",
+            "text": "<p>Mamá de Loto y Gala. Empresaria exgerente corporativa de Carulla y emprendedora, CEO de This is Astra. <br/><br/></p>",
             "text_style": "body"
           }
         },
         "button_44Q6JA": {
           "type": "button",
           "settings": {
-            "button_label": "Conoce a Manu",
-            "button_link": "",
+            "button_label": "Conoce a Irina",
+            "button_link": "https://co.linkedin.com/in/irina-jaramillo-muskus",
             "button_style_secondary": false
           }
         }
