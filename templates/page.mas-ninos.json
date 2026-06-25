@@ -29,6 +29,7 @@
             "blog": "podcast",
             "title": "Podcast",
             "description": "Conversaciones sobre nutrición, crianza y desarrollo infantil.",
+            "image": "shopify://shop_images/Foto-Perfil.png",
             "accent": "#574ddf",
             "link": "shopify://blogs/podcasts",
             "cta_label": "Escuchar podcast →"
