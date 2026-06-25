@@ -27,9 +27,39 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "fuly_home_newsletter_BAk88k": {
+      "type": "fuly-home-newsletter",
+      "name": "Fuly Home — Newsletter",
+      "settings": {
+        "heading": "ÚNETE AL NEWSLETTER",
+        "body": "Además recibirás descuentos exclusivos, lanzamientos y herramientas para una crianza más fácil.",
+        "badge": "",
+        "placeholder": "tu@email.com",
+        "submit_label": "Suscribirme",
+        "success_message": "¡Gracias por suscribirte! 🎉",
+        "bg_color": "#574DDF",
+        "heading_size_mobile": 32,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 40,
+        "body_size_mobile": 16,
+        "body_size_tablet": 16,
+        "body_size_desktop": 16,
+        "input_size_mobile": 14,
+        "input_size_tablet": 14,
+        "input_size_desktop": 14,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 64,
+        "padding_block_desktop": 64,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
-    "fuly_blog"
+    "fuly_blog",
+    "fuly_home_newsletter_BAk88k"
   ]
 }
