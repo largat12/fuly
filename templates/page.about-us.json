@@ -1,16 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "fuly-nosotros-hero",
-      "settings": {}
-    },
-    "contradiccion": {
-      "type": "fuly-nosotros-contradiccion",
-      "settings": {}
+      "settings": {
+        "tag_label": "NUESTRA HISTORIA",
+        "title": "Más niñosMás saludables.Más felices.",
+        "copy": "Mandamos cohetes a Marte y construimos inteligencias artificiales… pero los snacks que más les gustan a los niños siguen llenos de azúcar y calorías vacías. <br><br> \nEn 2021, Manuela, Irina y Daniel decidieron cambiar eso. Tenían los ingredientes, el conocimiento y la energía para crear los snacks que los niños de hoy se merecen. <strong>Así nació Fuly Kids.<br><br> </strong>\nSomos papás y mamás obsesionados con la salud de nuestros hijos, pero también con que disfruten su infancia. Y creemos que esas dos cosas no tienen por qué pelear.<br><br> \nSomos  <strong>ciencia deliciosa para un mundo con más niños.</strong>"
+      }
     },
     "formula": {
       "type": "fuly-nosotros-formula",
-      "settings": {},
       "blocks": {
         "benefit-1": {
           "type": "benefit",
@@ -68,22 +76,33 @@
         "benefit-4",
         "benefit-5",
         "benefit-6"
-      ]
+      ],
+      "disabled": true,
+      "settings": {
+        "tag_label": "LA FÓRMULA",
+        "heading": "Dos mundos, una misión",
+        "card1_title": "El Laboratorio",
+        "card2_title": "El Playground"
+      }
     },
     "creencia": {
       "type": "fuly-nosotros-creencia",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "tag_label": "LO QUE CREEMOS",
+        "heading": "Cada niño merece crecer con superpoderes",
+        "copy": "Creemos que la nutrición es el superpoder más subestimado. Un niño bien nutrido piensa mejor, duerme mejor, se enferma menos y juega más. Y una familia que le da buena nutrición a sus hijos no solo cuida un cuerpo: está construyendo el futuro."
+      }
     },
     "principios": {
       "type": "fuly-nosotros-principios",
-      "settings": {},
       "blocks": {
         "principle-1": {
           "type": "principle",
           "settings": {
             "title": "Hecho con ciencia",
             "description": "Cada ingrediente tiene un propósito respaldado por investigación. No improvisamos, formulamos.",
-            "border_color": "#0EB680"
+            "border_color": "#0eb680"
           }
         },
         "principle-2": {
@@ -91,7 +110,7 @@
           "settings": {
             "title": "Travieso y divertido",
             "description": "Porque la nutrición no tiene que ser aburrida. Si los niños no lo disfrutan, no funciona.",
-            "border_color": "#EBA7CA"
+            "border_color": "#eba7ca"
           }
         },
         "principle-3": {
@@ -99,7 +118,7 @@
           "settings": {
             "title": "Curioso e innovador",
             "description": "Nunca dejamos de investigar y mejorar. La ciencia avanza y nosotros con ella.",
-            "border_color": "#F7CD47"
+            "border_color": "#f7cd47"
           }
         }
       },
@@ -107,16 +126,23 @@
         "principle-1",
         "principle-2",
         "principle-3"
-      ]
+      ],
+      "settings": {
+        "tag_label": "PRINCIPIOS",
+        "heading": "Así somos"
+      }
     },
     "cta": {
       "type": "fuly-nosotros-cta",
-      "settings": {}
+      "settings": {
+        "heading": "¿Listo para probar los alimentos del futuro?",
+        "button_label": "Explorar productos",
+        "button_link": "shopify://collections/tienda"
+      }
     }
   },
   "order": [
     "hero",
-    "contradiccion",
     "formula",
     "creencia",
     "principios",
