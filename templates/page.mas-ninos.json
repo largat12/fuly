@@ -45,12 +45,24 @@
             "link": "shopify://blogs/recetario",
             "cta_label": "Ver recetas →"
           }
+        },
+        "blog_card_eiyk6i": {
+          "type": "blog_card",
+          "settings": {
+            "blog": "daniel-gomez-newsletter",
+            "title": "LO mejor que vi esta semana",
+            "description": "Por Daniel Gómez CEO DE fuly",
+            "accent": "#f7cd47",
+            "link": "",
+            "cta_label": "Ver más →"
+          }
         }
       },
       "block_order": [
         "blog_newsletter",
         "blog_podcast",
-        "blog_recetas"
+        "blog_recetas",
+        "blog_card_eiyk6i"
       ],
       "settings": {
         "source": "menu",
