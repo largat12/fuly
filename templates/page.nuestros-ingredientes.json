@@ -30,44 +30,162 @@
     "ing_estudios": {
       "type": "fuly-ingredientes-estudios",
       "blocks": {
-        "e1": { "type": "estudio", "settings": { "org": "NIH", "title": "Vitamina C y función inmune", "desc": "Evidencia sobre el rol de la vitamina C en el sistema inmunológico infantil." } },
-        "e2": { "type": "estudio", "settings": { "org": "EFSA", "title": "Zinc y desarrollo", "desc": "Declaraciones aprobadas sobre el zinc en el crecimiento y la inmunidad." } },
-        "e3": { "type": "estudio", "settings": { "org": "FDA", "title": "Edulcorantes naturales", "desc": "Estado regulatorio de stevia y fruto del monje como endulzantes." } }
+        "e1": {
+          "type": "estudio",
+          "settings": {
+            "org": "NIH",
+            "title": "Vitamina C y función inmune",
+            "desc": "Evidencia sobre el rol de la vitamina C en el sistema inmunológico infantil.",
+            "href": "",
+            "link_label": "Leer el estudio"
+          }
+        },
+        "e2": {
+          "type": "estudio",
+          "settings": {
+            "org": "EFSA",
+            "title": "Zinc y desarrollo",
+            "desc": "Declaraciones aprobadas sobre el zinc en el crecimiento y la inmunidad.",
+            "href": "",
+            "link_label": "Leer el estudio"
+          }
+        },
+        "e3": {
+          "type": "estudio",
+          "settings": {
+            "org": "FDA",
+            "title": "Edulcorantes naturales",
+            "desc": "Estado regulatorio de stevia y fruto del monje como endulzantes.",
+            "href": "",
+            "link_label": "Leer el estudio"
+          }
+        }
       },
-      "block_order": ["e1", "e2", "e3"],
-      "settings": {}
+      "block_order": [
+        "e1",
+        "e2",
+        "e3"
+      ],
+      "settings": {
+        "kicker": "",
+        "title": "Estudios propios",
+        "intro": "No nos creas solo a nosotros: medimos. Estos son los estudios que respaldan nuestras fórmulas y sus ingredientes clave."
+      }
     },
     "ing_productos": {
       "type": "fuly-ingredientes-productos",
       "settings": {
+        "kicker": "02 — Producto por producto",
+        "title": "Qué lleva cada Fuly",
+        "intro": "Cada nombre de producto enlaza a su página en la tienda. Toca una fórmula para ver su desglose completo; cada beneficio con respaldo lleva su fuente.",
         "collection": "tienda",
-        "products_limit": 20
+        "products_limit": 20,
+        "open_all_label": "Abrir todo",
+        "close_all_label": "Cerrar todo",
+        "count_suffix": "ingredientes",
+        "pdp_label": "Ver producto",
+        "source_label": "[fuente]",
+        "empty_message": "Aún no hay productos con ingredientes cargados."
       }
     },
     "ing_endulzamos": {
       "type": "fuly-ingredientes-endulzamos",
       "blocks": {
-        "b1": { "type": "beneficio", "settings": { "title": "Endulzado natural" } },
-        "b2": { "type": "beneficio", "settings": { "title": "Sin sabores artificiales" } },
-        "b3": { "type": "beneficio", "settings": { "title": "Sin azúcar añadido" } },
-        "b4": { "type": "beneficio", "settings": { "title": "Azúcar añadido", "big_text": "0g", "is_dark": true } }
+        "b1": {
+          "type": "beneficio",
+          "settings": {
+            "title": "Endulzado natural",
+            "big_text": "",
+            "is_dark": false
+          }
+        },
+        "b2": {
+          "type": "beneficio",
+          "settings": {
+            "title": "Sin sabores artificiales",
+            "big_text": "",
+            "is_dark": false
+          }
+        },
+        "b3": {
+          "type": "beneficio",
+          "settings": {
+            "title": "Sin azúcar añadido",
+            "big_text": "",
+            "is_dark": false
+          }
+        },
+        "b4": {
+          "type": "beneficio",
+          "settings": {
+            "title": "Azúcar añadido",
+            "big_text": "0g",
+            "is_dark": true
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
-      "settings": {}
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "kicker": "03 — Cómo endulzamos",
+        "title": "Lo dulce no viene del azúcar.",
+        "copy": "Nada de colorantes ni sabores artificiales. Endulzamos con lo que ya estaba en la naturaleza: la stevia (la hoja que endulza hace siglos) y el fruto del monje (la fruta verde que cultivan monjes en China)."
+      }
     },
     "ing_ciencia": {
       "type": "fuly-ingredientes-ciencia",
       "blocks": {
-        "c1": { "type": "fuente", "settings": { "label": "Vitamina C", "org": "NIH" } },
-        "c2": { "type": "fuente", "settings": { "label": "Zinc", "org": "EFSA" } },
-        "c3": { "type": "fuente", "settings": { "label": "Alulosa", "org": "FDA" } }
+        "c1": {
+          "type": "fuente",
+          "settings": {
+            "label": "Vitamina C",
+            "org": "NIH",
+            "href": ""
+          }
+        },
+        "c2": {
+          "type": "fuente",
+          "settings": {
+            "label": "Zinc",
+            "org": "EFSA",
+            "href": ""
+          }
+        },
+        "c3": {
+          "type": "fuente",
+          "settings": {
+            "label": "Alulosa",
+            "org": "FDA",
+            "href": ""
+          }
+        }
       },
-      "block_order": ["c1", "c2", "c3"],
-      "settings": {}
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "kicker": "04 — La ciencia detrás",
+        "title": "Te dejamos las fuentes",
+        "intro": "Cada beneficio de esta página se apoya en organismos como el NIH, la EFSA y la FDA.",
+        "nota": "Nota: las fichas en español del NIH (‘DatosEnEspanol’) se verificaron con la de Calcio; si alguna no carga, cambiar ‘DatosEnEspanol’ por ‘Consumer’. La página de la FDA sobre alulosa es de carga dinámica: confirmar al abrir."
+      }
     },
     "ing_cta": {
       "type": "fuly-ingredientes-cta",
-      "settings": {}
+      "settings": {
+        "title_pre": "¿Listo para tener",
+        "title_highlight": "la fórmula de tu casa?",
+        "title_post": "",
+        "button_label": "Ver todos los productos",
+        "button_link": "shopify://collections/tienda",
+        "tagline": "Ciencia deliciosa para un mundo con más niños."
+      }
     }
   },
   "order": [
