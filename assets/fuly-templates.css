@@ -224,7 +224,6 @@ product-info .fuly-pdp-media-column .product-media-container {
   border-radius: 16px !important;
   box-shadow: var(--fuly-shadow-lg) !important;
   background: linear-gradient(135deg, var(--fuly-pdp-accent-22), var(--fuly-pdp-accent-55)) !important;
-  min-height: 256px;
 }
 
 @media screen and (min-width: 750px) {
@@ -237,6 +236,17 @@ product-info .fuly-pdp-media-column .product-media-container {
 product-info .fuly-pdp-media-column .product__media img {
   object-fit: contain !important;
   mix-blend-mode: var(--fuly-image-blend) !important;
+}
+
+@media screen and (max-width: 749px) {
+  product-info .fuly-pdp-media-column .product__media-item .media {
+    aspect-ratio: 1 / 1;
+    padding-top: 0 !important;
+  }
+
+  product-info .fuly-pdp-media-column .product__media img {
+    object-fit: cover !important;
+  }
 }
 
 product-info .fuly-pdp-media-column .thumbnail-list {
