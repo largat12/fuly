@@ -19,6 +19,7 @@
     },
     "fuly_nosotros_contradiccion_Jprk3R": {
       "type": "fuly-nosotros-contradiccion",
+      "custom_css": [],
       "name": "Nosotros — Contradiccion",
       "settings": {
         "tag_label": "NUESTROS INGREDIENTES",
@@ -33,43 +34,32 @@
         "e1": {
           "type": "estudio",
           "settings": {
-            "org": "NIH",
-            "title": "Vitamina C y función inmune",
-            "desc": "Evidencia sobre el rol de la vitamina C en el sistema inmunológico infantil.",
-            "href": "",
+            "org": "EAFIT · Astrolab · FULY, 2024",
+            "title": "Ensayo exploratorio Booster frutos rojos",
+            "desc": "Investigación propia con apoyo de Astrolab y EAFIT.",
+            "href": "https://fulykids.notion.site/Estudio-Immuny-Booster-EAFIT-Astrolab-2024-2b709ff00c53813db336fb92c0b48c4a?pvs=74",
             "link_label": "Leer el estudio"
           }
         },
         "e2": {
           "type": "estudio",
           "settings": {
-            "org": "EFSA",
-            "title": "Zinc y desarrollo",
-            "desc": "Declaraciones aprobadas sobre el zinc en el crecimiento y la inmunidad.",
-            "href": "",
-            "link_label": "Leer el estudio"
-          }
-        },
-        "e3": {
-          "type": "estudio",
-          "settings": {
-            "org": "FDA",
-            "title": "Edulcorantes naturales",
-            "desc": "Estado regulatorio de stevia y fruto del monje como endulzantes.",
-            "href": "",
+            "org": "NUTREO, 2018",
+            "title": "Estudio de Ganogen",
+            "desc": "Soporte del ingrediente Ganoderma Lucidum (Reishi) usado en los Fulys frutos rojos.",
+            "href": "https://fulykids.notion.site/Estudio-de-Ganogen-ingrediente-Ganoderma-Lucidum-2b709ff00c538197a26de81a93142e85",
             "link_label": "Leer el estudio"
           }
         }
       },
       "block_order": [
         "e1",
-        "e2",
-        "e3"
+        "e2"
       ],
       "settings": {
         "kicker": "",
         "title": "Estudios propios",
-        "intro": "No nos creas solo a nosotros: medimos. Estos son los estudios que respaldan nuestras fórmulas y sus ingredientes clave."
+        "intro": ""
       }
     },
     "ing_productos": {
