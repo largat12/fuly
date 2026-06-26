@@ -65,9 +65,9 @@
     "ing_productos": {
       "type": "fuly-ingredientes-productos",
       "settings": {
-        "kicker": "02 — Producto por producto",
-        "title": "Qué lleva cada Fuly",
-        "intro": "Cada nombre de producto enlaza a su página en la tienda. Toca una fórmula para ver su desglose completo; cada beneficio con respaldo lleva su fuente.",
+        "kicker": "",
+        "title": "La ciencia de cada fuly",
+        "intro": "",
         "collection": "tienda",
         "products_limit": 20,
         "open_all_label": "Abrir todo",
