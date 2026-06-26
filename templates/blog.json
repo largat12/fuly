@@ -18,7 +18,7 @@
         "filter_label": "Categoría",
         "filter_all_label": "Todos",
         "sort_label": "Ordenar por",
-        "btn_label": "Leer artículo",
+        "btn_label": "Ver receta",
         "empty_message": "No hay artículos en esta categoría.",
         "excerpt_words": 20,
         "show_date": true,
