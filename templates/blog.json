@@ -21,7 +21,7 @@
         "btn_label": "Ver receta",
         "empty_message": "No hay artículos en esta categoría.",
         "excerpt_words": 20,
-        "show_date": true,
+        "show_date": false,
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
