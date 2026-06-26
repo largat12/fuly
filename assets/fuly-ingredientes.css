@@ -1,0 +1,464 @@
+/* ============================================================
+   FULY · Página "Nuestros Ingredientes"
+   Estilos de las secciones fuly-ingredientes-* usando los tokens
+   cartoon del tema (assets/fuly-tokens.css). Mobile-first.
+   ============================================================ */
+
+/* ---- Base de sección ---- */
+.fuly-ing {
+  padding: 56px 16px;
+  background-color: #fff;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+@media (min-width: 768px) {
+  .fuly-ing { padding: 88px 32px; }
+}
+
+.fuly-ing__container {
+  max-width: 108rem;
+  margin: 0 auto;
+}
+
+.fuly-ing__head {
+  max-width: 72rem;
+  margin: 0 0 40px;
+}
+
+.fuly-ing__kicker {
+  display: inline-block;
+  font-family: var(--fuly-font-label);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fuly-cyan-menta);
+  margin-bottom: 12px;
+}
+
+.fuly-ing__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--fuly-cartoon-black);
+  font-size: clamp(2.8rem, 4vw, 4.4rem);
+  margin: 0 0 12px;
+}
+
+.fuly-ing__intro {
+  font-family: var(--fuly-font-body);
+  font-size: 1.7rem;
+  line-height: 1.6;
+  color: var(--fuly-muted-text);
+  margin: 0;
+}
+
+.fuly-ing__empty {
+  font-family: var(--fuly-font-body);
+  color: var(--fuly-muted-text);
+  padding: 32px;
+  text-align: center;
+}
+
+/* ============================================================
+   1) ESTUDIOS PROPIOS  (fondo negro, cards blancas)
+   ============================================================ */
+.fuly-ing-estudios {
+  background-color: var(--fuly-cartoon-black);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.fuly-ing-estudios .fuly-ing__title { color: #fff; }
+.fuly-ing-estudios .fuly-ing__intro { color: rgba(255, 255, 255, 0.72); }
+.fuly-ing-estudios .fuly-ing__kicker { color: var(--fuly-yellow-spark); }
+
+.fuly-ing-estudios__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.fuly-ing-estudio {
+  background: #fff;
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius);
+  box-shadow: var(--fuly-shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fuly-ing-estudio__org {
+  font-family: var(--fuly-font-label);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fuly-violeta);
+}
+.fuly-ing-estudio__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: 1.9rem;
+  line-height: 1.15;
+  color: var(--fuly-cartoon-black);
+  margin: 0;
+}
+.fuly-ing-estudio__desc {
+  font-family: var(--fuly-font-body);
+  font-size: 1.5rem;
+  line-height: 1.55;
+  color: var(--fuly-muted-text);
+  margin: 0;
+}
+.fuly-ing-estudio__link {
+  font-family: var(--fuly-font-label);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fuly-cartoon-black);
+  text-decoration: none;
+  margin-top: auto;
+  align-self: flex-start;
+  border-bottom: 3px solid var(--fuly-yellow-spark);
+}
+
+/* ============================================================
+   2) PRODUCTO POR PRODUCTO  (acordeón)
+   ============================================================ */
+.fuly-ing-productos__controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.fuly-ing-productos__ctrl {
+  font-family: var(--fuly-font-label);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  background: #fff;
+  border: var(--fuly-border-sm);
+  border-radius: var(--fuly-radius-pill, 9999px);
+  padding: 8px 16px;
+  transition: var(--fuly-transition, all 0.2s ease);
+}
+.fuly-ing-productos__ctrl:hover {
+  background: var(--fuly-yellow-spark);
+}
+
+.fuly-ing-productos__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fuly-ing-prod {
+  background: #fff;
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius);
+  box-shadow: var(--fuly-shadow);
+  overflow: hidden;
+  border-top: 8px solid var(--fuly-cartoon-black);
+}
+
+.fuly-ing-prod__summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+.fuly-ing-prod__summary::-webkit-details-marker { display: none; }
+
+.fuly-ing-prod__thumb {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--fuly-radius-sm, 8px);
+  border: var(--fuly-border-sm);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.fuly-ing-prod__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.fuly-ing-prod__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.fuly-ing-prod__kicker {
+  font-family: var(--fuly-font-label);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--fuly-muted-text);
+}
+.fuly-ing-prod__name {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--fuly-cartoon-black);
+}
+
+.fuly-ing-prod__count {
+  flex: 0 0 auto;
+  font-family: var(--fuly-font-label);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--fuly-cartoon-black);
+  background: var(--fuly-muted);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .fuly-ing-prod__count { display: none; }
+}
+
+.fuly-ing-prod__chevron {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: var(--fuly-yellow-spark);
+  border: var(--fuly-border-sm);
+  transition: transform 0.2s ease;
+}
+.fuly-ing-prod[open] .fuly-ing-prod__chevron {
+  transform: rotate(180deg);
+}
+
+.fuly-ing-prod__body {
+  padding: 4px 16px 20px;
+  border-top: var(--fuly-border-sm);
+}
+.fuly-ing-prod__desc {
+  font-family: var(--fuly-font-body);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--fuly-muted-text);
+  margin: 16px 0;
+}
+
+.fuly-ing-prod__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 20px;
+}
+.fuly-ing-prod__pdp,
+.fuly-ing-prod__link {
+  font-family: var(--fuly-font-label);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--fuly-cartoon-black);
+  border-bottom: 2px solid var(--ing-accent, var(--fuly-violeta));
+}
+
+.fuly-ing-prod__ingredients {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.fuly-ing-card {
+  background: var(--fuly-muted);
+  border-radius: var(--fuly-radius-sm, 8px);
+  border-left: 4px solid var(--ing-accent, var(--fuly-violeta));
+  padding: 14px 16px;
+}
+.fuly-ing-card__name {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--fuly-cartoon-black);
+  margin: 0 0 4px;
+}
+.fuly-ing-card__desc {
+  font-family: var(--fuly-font-body);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--fuly-muted-text);
+  margin: 0;
+}
+.fuly-ing-card__src {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--fuly-font-label);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--fuly-violeta);
+  text-decoration: none;
+}
+
+/* ============================================================
+   3) CÓMO ENDULZAMOS  (2 columnas + beneficios)
+   ============================================================ */
+.fuly-ing-endulzamos__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .fuly-ing-endulzamos__grid { grid-template-columns: 1.1fr 1fr; gap: 48px; }
+}
+
+.fuly-ing-endulzamos__benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fuly-ing-benefit {
+  background: #fff;
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius);
+  box-shadow: var(--fuly-shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 120px;
+  justify-content: flex-end;
+}
+.fuly-ing-benefit--dark {
+  background: var(--fuly-cartoon-black);
+}
+.fuly-ing-benefit--dark .fuly-ing-benefit__title { color: #fff; }
+.fuly-ing-benefit--dark .fuly-ing-benefit__big { color: var(--fuly-yellow-spark); }
+
+.fuly-ing-benefit__icon img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+.fuly-ing-benefit__big {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 5vw, 4.8rem);
+  line-height: 1;
+  color: var(--fuly-cartoon-black);
+}
+.fuly-ing-benefit__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  color: var(--fuly-cartoon-black);
+}
+
+/* ============================================================
+   4) LA CIENCIA DETRÁS  (fuentes)
+   ============================================================ */
+.fuly-ing-ciencia__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.fuly-ing-fuente {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #fff;
+  border: var(--fuly-border-sm);
+  border-radius: var(--fuly-radius);
+  padding: 16px 18px;
+  text-decoration: none;
+  transition: var(--fuly-transition, all 0.2s ease);
+}
+.fuly-ing-fuente:hover {
+  box-shadow: var(--fuly-shadow);
+  transform: translate(-2px, -2px);
+}
+.fuly-ing-fuente__body { display: flex; flex-direction: column; gap: 2px; }
+.fuly-ing-fuente__label {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--fuly-cartoon-black);
+}
+.fuly-ing-fuente__org {
+  font-family: var(--fuly-font-label);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--fuly-muted-text);
+}
+.fuly-ing-fuente__arrow { color: var(--fuly-cartoon-black); flex: 0 0 auto; }
+
+.fuly-ing-ciencia__nota {
+  font-family: var(--fuly-font-label);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--fuly-muted-text);
+  margin: 24px 0 0;
+  max-width: 80rem;
+}
+
+/* ============================================================
+   5) CTA FINAL  (fondo negro)
+   ============================================================ */
+.fuly-ing-cta {
+  background-color: var(--fuly-cartoon-black);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  text-align: center;
+}
+.fuly-ing-cta__inner { max-width: 72rem; margin: 0 auto; }
+.fuly-ing-cta__title {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #fff;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  margin: 0 0 28px;
+}
+.fuly-ing-cta__hl { color: var(--fuly-yellow-spark); }
+.fuly-ing-cta__btn {
+  display: inline-block;
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--fuly-cartoon-black);
+  background: var(--fuly-yellow-spark);
+  border: var(--fuly-border);
+  border-radius: var(--fuly-radius-pill, 9999px);
+  box-shadow: var(--fuly-shadow);
+  padding: 14px 28px;
+  transition: var(--fuly-transition, all 0.2s ease);
+}
+.fuly-ing-cta__btn:hover { transform: translate(-2px, -2px); box-shadow: var(--fuly-shadow-lg); }
+.fuly-ing-cta__tagline {
+  font-family: var(--fuly-font-body);
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 30px 0 0;
+}

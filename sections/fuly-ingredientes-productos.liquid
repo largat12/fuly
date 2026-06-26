@@ -1,0 +1,150 @@
+{%- comment -%}
+  FULY · Ingredientes — Producto por producto ("Qué lleva cada Fuly")
+  Data-driven: recorre una colección y lee por producto el metafield JSON
+  custom.ingredientes_detalle (bloque completo: kicker, desc, links, ingredients).
+  Acordeón nativo <details>/<summary>. Estilos en assets/fuly-ingredientes.css.
+
+  Forma del metafield (tipo JSON):
+  {
+    "kicker": "Malteada",
+    "desc": "Descripción de la fórmula.",
+    "links": [{ "label": "Receta", "href": "https://..." }],
+    "ingredients": [{ "n": "Cacao", "d": "Apoya antioxidantes.", "s": "https://fuente" }]
+  }
+{%- endcomment -%}
+
+{%- liquid
+  assign col = section.settings.collection
+  if col == blank or col.products.size == 0
+    assign col = collections['tienda']
+  endif
+  if col == blank or col.products.size == 0
+    assign col = collections['all']
+  endif
+  assign products_limit = section.settings.products_limit | default: 20
+-%}
+
+<section class="fuly-ing fuly-ing-productos" id="fuly-ing-productos-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="fuly-ing__container">
+    <header class="fuly-ing__head">
+      {%- if section.settings.kicker != blank -%}
+        <span class="fuly-ing__kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      <h2 class="fuly-ing__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.intro != blank -%}
+        <p class="fuly-ing__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+
+      <div class="fuly-ing-productos__controls">
+        <button type="button" class="fuly-ing-productos__ctrl" data-fuly-ing-openall>{{ section.settings.open_all_label | default: 'Abrir todo' }}</button>
+        <button type="button" class="fuly-ing-productos__ctrl" data-fuly-ing-closeall>{{ section.settings.close_all_label | default: 'Cerrar todo' }}</button>
+      </div>
+    </header>
+
+    <div class="fuly-ing-productos__list">
+      {%- assign rendered = 0 -%}
+      {%- for product in col.products limit: products_limit -%}
+        {%- comment -%} Metafield tipo JSON: .value ya viene parseado (objeto/array). {%- endcomment -%}
+        {%- assign data = product.metafields.custom.ingredientes_detalle.value -%}
+        {%- if data == blank or data.ingredients == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign rendered = rendered | plus: 1 -%}
+
+        {%- assign accent = product.metafields.custom.color_marca | default: product.metafields.fuly.color | default: data.flavor | default: '#574DDF' -%}
+        {%- assign kicker = data.kicker | default: product.metafields.custom.formato -%}
+
+        <details class="fuly-ing-prod" style="--ing-accent: {{ accent }};"{% if rendered == 1 %} open{% endif %}>
+          <summary class="fuly-ing-prod__summary">
+            <span class="fuly-ing-prod__thumb" style="background: {{ data.gradient | default: accent | append: '22' }};">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 128 }}" alt="{{ product.title | escape }}" loading="lazy" width="64" height="64">
+              {%- endif -%}
+            </span>
+            <span class="fuly-ing-prod__heading">
+              {%- if kicker != blank -%}<span class="fuly-ing-prod__kicker">{{ kicker }}</span>{%- endif -%}
+              <span class="fuly-ing-prod__name">{{ product.title }}</span>
+            </span>
+            <span class="fuly-ing-prod__count">{{ data.ingredients.size }} {{ section.settings.count_suffix | default: 'ingredientes' }}</span>
+            <span class="fuly-ing-prod__chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </span>
+          </summary>
+
+          <div class="fuly-ing-prod__body">
+            {%- if data.desc != blank -%}
+              <p class="fuly-ing-prod__desc">{{ data.desc }}</p>
+            {%- endif -%}
+
+            {%- if data.links.size > 0 -%}
+              <div class="fuly-ing-prod__links">
+                <a class="fuly-ing-prod__pdp" href="{{ product.url }}">{{ section.settings.pdp_label | default: 'Ver producto' }} →</a>
+                {%- for l in data.links -%}
+                  {%- if l.href != blank -%}
+                    <a class="fuly-ing-prod__link" href="{{ l.href }}" target="_blank" rel="noopener noreferrer">{{ l.label | default: 'Fuente' }} →</a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- else -%}
+              <div class="fuly-ing-prod__links">
+                <a class="fuly-ing-prod__pdp" href="{{ product.url }}">{{ section.settings.pdp_label | default: 'Ver producto' }} →</a>
+              </div>
+            {%- endif -%}
+
+            <div class="fuly-ing-prod__ingredients">
+              {%- for ing in data.ingredients -%}
+                <div class="fuly-ing-card">
+                  <h4 class="fuly-ing-card__name">{{ ing.n }}</h4>
+                  {%- if ing.d != blank -%}<p class="fuly-ing-card__desc">{{ ing.d }}</p>{%- endif -%}
+                  {%- if ing.s != blank -%}
+                    <a class="fuly-ing-card__src" href="{{ ing.s }}" target="_blank" rel="noopener noreferrer">{{ section.settings.source_label | default: '[fuente]' }}</a>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </details>
+      {%- endfor -%}
+
+      {%- if rendered == 0 -%}
+        <p class="fuly-ing__empty">{{ section.settings.empty_message | default: 'Aún no hay productos con ingredientes cargados. Agrega el metafield custom.ingredientes_detalle a tus productos.' }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('fuly-ing-productos-{{ section.id }}');
+    if (!root) return;
+    var openAll = root.querySelector('[data-fuly-ing-openall]');
+    var closeAll = root.querySelector('[data-fuly-ing-closeall]');
+    function setAll(state) {
+      root.querySelectorAll('details.fuly-ing-prod').forEach(function (d) { d.open = state; });
+    }
+    if (openAll) openAll.addEventListener('click', function () { setAll(true); });
+    if (closeAll) closeAll.addEventListener('click', function () { setAll(false); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ingredientes — Productos",
+  "tag": "section",
+  "class": "fuly-ing-section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "02 — Producto por producto" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Qué lleva cada Fuly" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Cada nombre de producto enlaza a su página en la tienda. Toca una fórmula para ver su desglose completo; cada beneficio con respaldo lleva su fuente." },
+    { "type": "collection", "id": "collection", "label": "Colección de productos" },
+    { "type": "number", "id": "products_limit", "label": "Máximo de productos", "default": 20 },
+    { "type": "text", "id": "open_all_label", "label": "Texto 'Abrir todo'", "default": "Abrir todo" },
+    { "type": "text", "id": "close_all_label", "label": "Texto 'Cerrar todo'", "default": "Cerrar todo" },
+    { "type": "text", "id": "count_suffix", "label": "Sufijo del contador", "default": "ingredientes" },
+    { "type": "text", "id": "pdp_label", "label": "Texto del link al producto", "default": "Ver producto" },
+    { "type": "text", "id": "source_label", "label": "Texto del link de fuente", "default": "[fuente]" },
+    { "type": "textarea", "id": "empty_message", "label": "Mensaje sin productos", "default": "Aún no hay productos con ingredientes cargados." }
+  ],
+  "presets": [
+    { "name": "Ingredientes — Productos" }
+  ]
+}
+{% endschema %}

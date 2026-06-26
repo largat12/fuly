@@ -1,0 +1,76 @@
+{%- comment -%}
+  FULY · Ingredientes — Estudios propios
+  Grilla de estudios editable por bloques (org, título, descripción, link).
+  Estilos en assets/fuly-ingredientes.css (tokens cartoon del tema).
+{%- endcomment -%}
+
+<section class="fuly-ing fuly-ing-estudios" data-section-id="{{ section.id }}">
+  <div class="fuly-ing__container">
+    <header class="fuly-ing__head">
+      {%- if section.settings.kicker != blank -%}
+        <span class="fuly-ing__kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      <h2 class="fuly-ing__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.intro != blank -%}
+        <p class="fuly-ing__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="fuly-ing-estudios__grid">
+        {%- for block in section.blocks -%}
+          <article class="fuly-ing-estudio" {{ block.shopify_attributes }}>
+            {%- if block.settings.org != blank -%}
+              <span class="fuly-ing-estudio__org">{{ block.settings.org }}</span>
+            {%- endif -%}
+            <h3 class="fuly-ing-estudio__title">{{ block.settings.title }}</h3>
+            {%- if block.settings.desc != blank -%}
+              <p class="fuly-ing-estudio__desc">{{ block.settings.desc }}</p>
+            {%- endif -%}
+            {%- if block.settings.href != blank -%}
+              <a class="fuly-ing-estudio__link" href="{{ block.settings.href }}" target="_blank" rel="noopener noreferrer">
+                {{ block.settings.link_label | default: 'Leer el estudio' }} →
+              </a>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredientes — Estudios",
+  "tag": "section",
+  "class": "fuly-ing-section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "01 — Lo que medimos" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Estudios propios" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "No nos creas solo a nosotros: medimos. Estos son los estudios que respaldan nuestras fórmulas y sus ingredientes clave." }
+  ],
+  "blocks": [
+    {
+      "type": "estudio",
+      "name": "Estudio",
+      "settings": [
+        { "type": "text", "id": "org", "label": "Organización" },
+        { "type": "text", "id": "title", "label": "Título del estudio" },
+        { "type": "textarea", "id": "desc", "label": "Descripción" },
+        { "type": "url", "id": "href", "label": "Link al estudio" },
+        { "type": "text", "id": "link_label", "label": "Texto del link", "default": "Leer el estudio" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredientes — Estudios",
+      "blocks": [
+        { "type": "estudio", "settings": { "org": "NIH", "title": "Vitamina C y función inmune", "desc": "Evidencia sobre el rol de la vitamina C en el sistema inmunológico infantil." } },
+        { "type": "estudio", "settings": { "org": "EFSA", "title": "Zinc y desarrollo", "desc": "Declaraciones aprobadas sobre el zinc en el crecimiento y la inmunidad." } },
+        { "type": "estudio", "settings": { "org": "FDA", "title": "Edulcorantes naturales", "desc": "Estado regulatorio de stevia y fruto del monje como endulzantes." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

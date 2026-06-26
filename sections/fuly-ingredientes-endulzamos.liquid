@@ -1,0 +1,74 @@
+{%- comment -%}
+  FULY · Ingredientes — Cómo endulzamos
+  Layout 2 columnas: texto + grilla 2x2 de beneficios (bloques).
+  Un bloque puede marcarse "destacado" (card negra estilo "0g").
+{%- endcomment -%}
+
+<section class="fuly-ing fuly-ing-endulzamos" data-section-id="{{ section.id }}">
+  <div class="fuly-ing__container">
+    <div class="fuly-ing-endulzamos__grid">
+      <div class="fuly-ing-endulzamos__text">
+        {%- if section.settings.kicker != blank -%}
+          <span class="fuly-ing__kicker">{{ section.settings.kicker }}</span>
+        {%- endif -%}
+        <h2 class="fuly-ing__title">{{ section.settings.title }}</h2>
+        {%- if section.settings.copy != blank -%}
+          <p class="fuly-ing__intro">{{ section.settings.copy }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="fuly-ing-endulzamos__benefits">
+          {%- for block in section.blocks -%}
+            <div class="fuly-ing-benefit{% if block.settings.is_dark %} fuly-ing-benefit--dark{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.big_text != blank -%}
+                <span class="fuly-ing-benefit__big">{{ block.settings.big_text }}</span>
+              {%- elsif block.settings.icon != blank -%}
+                <span class="fuly-ing-benefit__icon">
+                  <img src="{{ block.settings.icon | image_url: width: 96 }}" alt="" loading="lazy" width="48" height="48">
+                </span>
+              {%- endif -%}
+              <span class="fuly-ing-benefit__title">{{ block.settings.title }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredientes — Endulzamos",
+  "tag": "section",
+  "class": "fuly-ing-section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "03 — Cómo endulzamos" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Lo dulce no viene del azúcar." },
+    { "type": "textarea", "id": "copy", "label": "Texto", "default": "Nada de colorantes ni sabores artificiales. Endulzamos con lo que ya estaba en la naturaleza: la stevia (la hoja que endulza hace siglos) y el fruto del monje (la fruta verde que cultivan monjes en China)." }
+  ],
+  "blocks": [
+    {
+      "type": "beneficio",
+      "name": "Beneficio",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "image_picker", "id": "icon", "label": "Ícono (opcional)" },
+        { "type": "text", "id": "big_text", "label": "Texto grande (opcional, ej. '0g')" },
+        { "type": "checkbox", "id": "is_dark", "label": "Card destacada (fondo negro)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredientes — Endulzamos",
+      "blocks": [
+        { "type": "beneficio", "settings": { "title": "Endulzado natural" } },
+        { "type": "beneficio", "settings": { "title": "Sin sabores artificiales" } },
+        { "type": "beneficio", "settings": { "title": "Sin azúcar añadido" } },
+        { "type": "beneficio", "settings": { "title": "Azúcar añadido", "big_text": "0g", "is_dark": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

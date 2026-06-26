@@ -1,0 +1,73 @@
+{%- comment -%}
+  FULY · Ingredientes — La ciencia detrás (fuentes / bibliografía)
+  Grilla de fuentes editable por bloques (label, organización, link) + nota.
+{%- endcomment -%}
+
+<section class="fuly-ing fuly-ing-ciencia" data-section-id="{{ section.id }}">
+  <div class="fuly-ing__container">
+    <header class="fuly-ing__head">
+      {%- if section.settings.kicker != blank -%}
+        <span class="fuly-ing__kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      <h2 class="fuly-ing__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.intro != blank -%}
+        <p class="fuly-ing__intro">{{ section.settings.intro }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="fuly-ing-ciencia__grid">
+        {%- for block in section.blocks -%}
+          <a class="fuly-ing-fuente" href="{{ block.settings.href | default: '#' }}" target="_blank" rel="noopener noreferrer" {{ block.shopify_attributes }}>
+            <span class="fuly-ing-fuente__body">
+              <span class="fuly-ing-fuente__label">{{ block.settings.label }}</span>
+              {%- if block.settings.org != blank -%}<span class="fuly-ing-fuente__org">{{ block.settings.org }}</span>{%- endif -%}
+            </span>
+            <span class="fuly-ing-fuente__arrow" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </span>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.nota != blank -%}
+      <p class="fuly-ing-ciencia__nota">{{ section.settings.nota }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredientes — Ciencia",
+  "tag": "section",
+  "class": "fuly-ing-section",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Etiqueta", "default": "04 — La ciencia detrás" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Te dejamos las fuentes" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Cada beneficio de esta página se apoya en organismos como el NIH, la EFSA y la FDA." },
+    { "type": "textarea", "id": "nota", "label": "Nota", "default": "Nota: las fichas en español del NIH (‘DatosEnEspanol’) se verificaron con la de Calcio; si alguna no carga, cambiar ‘DatosEnEspanol’ por ‘Consumer’. La página de la FDA sobre alulosa es de carga dinámica: confirmar al abrir." }
+  ],
+  "blocks": [
+    {
+      "type": "fuente",
+      "name": "Fuente",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Etiqueta / tema" },
+        { "type": "text", "id": "org", "label": "Organización" },
+        { "type": "url", "id": "href", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredientes — Ciencia",
+      "blocks": [
+        { "type": "fuente", "settings": { "label": "Vitamina C", "org": "NIH" } },
+        { "type": "fuente", "settings": { "label": "Zinc", "org": "EFSA" } },
+        { "type": "fuente", "settings": { "label": "Alulosa", "org": "FDA" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

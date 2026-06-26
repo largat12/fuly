@@ -1,0 +1,40 @@
+{%- comment -%}
+  FULY · Ingredientes — CTA final (fondo negro)
+{%- endcomment -%}
+
+<section class="fuly-ing fuly-ing-cta" data-section-id="{{ section.id }}">
+  <div class="fuly-ing-cta__inner">
+    <h2 class="fuly-ing-cta__title">
+      {{ section.settings.title_pre }}
+      {%- if section.settings.title_highlight != blank -%}
+        <span class="fuly-ing-cta__hl">{{ section.settings.title_highlight }}</span>
+      {%- endif -%}
+      {{ section.settings.title_post }}
+    </h2>
+    {%- if section.settings.button_label != blank -%}
+      <a class="fuly-ing-cta__btn" href="{{ section.settings.button_link | default: '/collections/all' }}">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+    {%- if section.settings.tagline != blank -%}
+      <p class="fuly-ing-cta__tagline">{{ section.settings.tagline }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredientes — CTA",
+  "tag": "section",
+  "class": "fuly-ing-section",
+  "settings": [
+    { "type": "text", "id": "title_pre", "label": "Título (antes del resaltado)", "default": "¿Listo para armar la" },
+    { "type": "text", "id": "title_highlight", "label": "Texto resaltado (amarillo)", "default": "fórmula de tu casa" },
+    { "type": "text", "id": "title_post", "label": "Título (después del resaltado)", "default": "?" },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Ver todos los productos" },
+    { "type": "url", "id": "button_link", "label": "Link del botón", "default": "/collections/all" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Ciencia deliciosa para un mundo con más niños." }
+  ],
+  "presets": [
+    { "name": "Ingredientes — CTA" }
+  ]
+}
+{% endschema %}

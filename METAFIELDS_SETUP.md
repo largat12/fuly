@@ -18,6 +18,35 @@ Estos metafields **deben ser creados una sola vez** en el admin de Shopify despu
 | Alergenos | `alergenos` | `custom` | `multi_line_text_field` | Información sobre alergenos |
 | Experto / Descripción corta | `expert` | `custom` | `multi_line_text_field` | Descripción corta que se muestra en la tarjeta del grid de productos (prioriza sobre el beneficio funcional). |
 | Talle | `talle` | `custom` | `single_line_text_field` | Talle/size del producto. Se muestra en la tarjeta del grid y en la página de producto. |
+| Ingredientes (detalle) | `ingredientes_detalle` | `custom` | `json` | Bloque completo de ingredientes para la página **Nuestros Ingredientes** (sección "Qué lleva cada Fuly"). Ver formato abajo. |
+
+### Metafield `custom.ingredientes_detalle` (página Nuestros Ingredientes)
+
+- **Namespace y key:** `custom.ingredientes_detalle`
+- **Tipo:** `json`
+- **Dónde se usa:** sección `fuly-ingredientes-productos` (acordeón "Qué lleva cada Fuly"). Los productos **sin** este metafield se omiten automáticamente.
+- **Datos reutilizados:** el nombre y la URL salen del producto; el color de acento usa `custom.color_marca` (o `fuly.color`).
+
+**Formato del valor (JSON):**
+
+```json
+{
+  "kicker": "Malteada",
+  "desc": "Descripción de la fórmula que aparece al abrir el acordeón.",
+  "links": [
+    { "label": "Receta", "href": "https://fulykids.com/..." }
+  ],
+  "ingredients": [
+    { "n": "Cacao", "d": "Estudiado por sus polifenoles que apoyan antioxidantes.", "s": "https://fuente-cientifica..." },
+    { "n": "Almendra", "d": "Fuente de vitamina E.", "s": null }
+  ]
+}
+```
+
+Notas:
+- `kicker`, `desc` y `links` son opcionales. Si falta `kicker`, se usa `custom.formato`.
+- En cada ingrediente, `s` (fuente) es opcional: si está vacío o `null`, no se muestra el enlace `[fuente]`.
+- El contador "N ingredientes" se calcula del tamaño de `ingredients`.
 
 ## Instalación de Metafields
 
