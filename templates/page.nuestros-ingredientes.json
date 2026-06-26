@@ -85,6 +85,7 @@
           "type": "beneficio",
           "settings": {
             "title": "Endulzado natural",
+            "icon": "shopify://shop_images/no_azuar.png",
             "big_text": "",
             "is_dark": false
           }
@@ -108,7 +109,7 @@
         "b4": {
           "type": "beneficio",
           "settings": {
-            "title": "Azúcar añadido",
+            "title": "Azúcar refinada adicionada",
             "big_text": "0g",
             "is_dark": true
           }
@@ -122,8 +123,8 @@
       ],
       "settings": {
         "kicker": "03 — Cómo endulzamos",
-        "title": "Lo dulce no viene del azúcar.",
-        "copy": "Nada de colorantes ni sabores artificiales. Endulzamos con lo que ya estaba en la naturaleza: la stevia (la hoja que endulza hace siglos) y el fruto del monje (la fruta verde que cultivan monjes en China)."
+        "title": "SIN COLORANTES NI SABORES ARTIFICIALES",
+        "copy": "Además, endulzamos con lo que ya estaba en la naturaleza: la stevia (la hoja que endulza hace siglos) y el fruto del monje (la fruta verde que cultivan monjes en China)."
       }
     },
     "ing_ciencia": {
