@@ -866,7 +866,13 @@
 }
 
 .grid.product-grid {
-  gap: var(--fuly-space-6);
+  /* Override Dawn's spacing vars (used by BOTH the gap and the item-width calc)
+     instead of forcing `gap`, which would desync the calc(50% - spacing/2)
+     item width and break the 2-column layout on mobile. */
+  --grid-mobile-horizontal-spacing: var(--fuly-space-6);
+  --grid-desktop-horizontal-spacing: var(--fuly-space-6);
+  --grid-mobile-vertical-spacing: var(--fuly-space-6);
+  --grid-desktop-vertical-spacing: var(--fuly-space-6);
 }
 
 /* =========================================================

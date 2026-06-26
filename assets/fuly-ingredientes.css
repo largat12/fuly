@@ -6,7 +6,7 @@
 
 /* ---- Base de sección ---- */
 .fuly-ing {
-  padding: 56px 16px;
+  padding: 24px 16px;
   background-color: #fff;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
@@ -14,7 +14,7 @@
   background-size: 24px 24px;
 }
 @media (min-width: 768px) {
-  .fuly-ing { padding: 88px 32px; }
+  .fuly-ing { padding: 40px 32px; }
 }
 
 .fuly-ing__container {
@@ -164,7 +164,6 @@
   border-radius: var(--fuly-radius);
   box-shadow: var(--fuly-shadow);
   overflow: hidden;
-  border-top: 8px solid var(--fuly-cartoon-black);
 }
 
 .fuly-ing-prod__summary {

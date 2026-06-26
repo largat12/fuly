@@ -173,6 +173,17 @@
   box-shadow: var(--fuly-shadow, 4px 4px 0 #1a1a1a);
   margin: 2.4rem 0;
 }
+.fuly-article__content iframe {
+  max-width: 100%;
+  border-radius: 12px;
+}
+/* Videos de YouTube: responsivos 16:9, ocupan todo el ancho */
+.fuly-article__content iframe[src*="youtube"],
+.fuly-article__content iframe[src*="youtu.be"] {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
 .fuly-article__content blockquote {
   border-left: 4px solid var(--fuly-article-accent, #F7CD47);
   padding-left: 1.6rem;
