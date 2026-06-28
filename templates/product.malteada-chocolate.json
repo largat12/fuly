@@ -81,7 +81,7 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "none",
-            "content": "<p>✅ <strong>Proteína de almendras y huevo entero:</strong> Proveen aminoácidos esenciales para crecer.<br/><br/>✅ <strong>Calcio y vitamina D3:</strong> Fortalecen huesos y dientes en desarrollo.<br/><br/>✅ <strong>Magnesio:</strong> Contribuye a la función muscular y ósea.<br/><br/>✅ <strong>Zinc y vitamina C:</strong> Refuerzan las defensas inmunitarias.<br/><br/>✅ <strong>Vitaminas A y E:</strong> Protegen las células con acción antioxidante.<br/><br/>✅ <strong>Vitaminas B6, B12 y B5:</strong> Apoyan el metabolismo energético infantil.<br/><br/>✅ <strong>Cobre y manganeso:</strong> Cofactores esenciales para el crecimiento óseo.<br/><br/>✅ <strong>Inulina y fibra prebiótica:</strong> Favorecen la salud digestiva y la absorción.<br/><br/>✅ <strong>Cocoa natural:</strong> Aporta antioxidantes y un sabor delicioso.</p>",
+            "content": "<p><strong>+ Proteína de almendras y huevo entero: </strong>los \"ladrillos\" que el cuerpo usa para construir músculo y crecer.<br/><strong>+ Calcio y vitamina D3:</strong> para huesos y dientes fuertes; la D3 ayuda a que el calcio llegue a su lugar.<br/><strong>+ Magnesio:</strong> apoya los músculos, los huesos y la energía del día.<br/><strong>+ Zinc y vitamina C:</strong> le dan una mano al sistema de defensas.<br/><strong>+ Vitaminas A y E:</strong> antioxidantes que protegen las células del desgaste.<br/><strong>+ Vitaminas B6, B12 y B5: </strong>convierten la comida en energía para todo el día.<br/><strong>+ Cobre y manganeso: </strong>minerales que ayudan a formar huesos sanos.<br/><strong>+ Inulina y fibra prebiótica: </strong>cuidan la digestión y alimentan las bacterias buenas.<br/><strong>+ Cocoa natural:</strong> antioxidantes naturales y el sabor a chocolate de verdad.</p>",
             "page": ""
           }
         },
@@ -90,7 +90,7 @@
           "settings": {
             "heading": "¿Cómo consumirlo?",
             "icon": "none",
-            "content": "<p>Agrega 2 cucharitas medidoras en 200ml de leche o agua, revuelve ¡Y disfruta!</p>",
+            "content": "<p>Agrega 2 cucharitas medidoras en 200ml de leche o agua, revuelve ¡Y listo!</p>",
             "page": ""
           }
         },
