@@ -75,12 +75,13 @@
           "settings": {
             "heading": "¿Cómo consumirlo?",
             "icon": "none",
-            "content": "<p>Sachets: Vierte el contenido del sobre en 200ml de agua. Revuelve muy bien y listo.<br/><br/>Nuestras bebidas en polvo vienen con una cucharadita medidora, especial para llenar de contenido hasta la rayita y disolverlo en 200ml de agua. Revuelve muy bien y listo.</p><p>Consumir con o después de la última comida.</p>",
+            "content": "<p>Sachets (20 porciones): Vierte el contenido del sobre en 200ml de agua. Revuelve muy bien y listo.<br/><br/>Tarro (30 porciones): Vienen con una cucharadita medidora, especial para llenar de contenido hasta la rayita y disolverlo en 200ml de agua. Revuelve muy bien y listo.</p>",
             "page": ""
           }
         },
         "collapsible_tab_i3UUnG": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Cuándo consumirlo?",
             "icon": "none",
@@ -90,6 +91,7 @@
         },
         "collapsible_tab_PBMwDA": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Desde qué edad se puede consumir?",
             "icon": "none",
