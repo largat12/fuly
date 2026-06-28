@@ -108,7 +108,7 @@
         "text_eMji6X": {
           "type": "text",
           "settings": {
-            "text": "<p>Papá de Juan Pe. Amante de las ciencia del comportamiento. Antes de fundar Fuly...</p>",
+            "text": "<p>Lector y escritor apasionado. Convencido de que cambiar el entorno es tan importante como educar. Padre de Juan Pedro y esposo de Juliana. Enamorado de la misión infinita de trabajar por los niños y las familias. Ha tenido más hobbies de los que puede recordar.<br/></p>",
             "text_style": "body"
           }
         },
@@ -116,7 +116,7 @@
           "type": "button",
           "settings": {
             "button_label": "Conoce a Dani",
-            "button_link": "",
+            "button_link": "https://www.instagram.com/danielgomezospina/",
             "button_style_secondary": false
           }
         }
