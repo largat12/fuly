@@ -67,7 +67,7 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "none",
-            "content": "<p><strong>✅ Vitamina C:</strong> Favorece la producción de anticuerpos y es antioxidante.</p><p><strong>✅ Vitamina D:</strong> Fortalece la barrera antimicrobiana.</p><p><strong>✅ Vitamina A:</strong> Apoya la visión y protege las mucosas.</p><p><strong>✅ Zinc:</strong> Apoya el desarrollo y función de células inmunitarias.</p><p><strong>✅ Selenio:</strong> Potente antioxidante celular.</p><p><strong>✅ Betaglucanos (Ganoderma lucidum):</strong> Reconocido modulador del sistema inmune.</p><p><strong>✅ Probióticos (Bacillus coagulans):</strong> Promueven una flora intestinal equilibrada.</p><p><strong>✅ Inulina y Fibra Prebiótica:</strong> Mejoran la absorción de nutrientes.</p><p><strong>✅ Frutas en polvo (fresa, corozo, camu camu y arazá): </strong>Aportan antioxidantes naturales, vitaminas esenciales y un delicioso sabor a frutos rojos.</p>",
+            "content": "<p><strong>+ Vitamina C</strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br/><strong>+ Vitamina D:</strong> ayuda al cuerpo a activar sus defensas naturales.<br/><strong>+ Vitamina A: </strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br/><strong>+ Zinc:</strong> ayuda a que las células de defensa maduren y trabajen bien.<br/><strong>+ Selenio:</strong> antioxidante que protege las células del desgaste.<br/><strong>+ Betaglucanos (Ganoderma): </strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br/><strong>+ Probióticos (Bacillus coagulans): </strong>bacterias buenas que equilibran la flora intestinal.<br/><strong>+ Inulina y fibra prebiótica: </strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):</strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.</p>",
             "page": ""
           }
         },
@@ -82,6 +82,7 @@
         },
         "collapsible_tab_d7rTyB": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Cuándo consumirlo?",
             "icon": "none",
@@ -235,7 +236,7 @@
         "tag_font_size_mobile": 13,
         "tag_font_size_tablet": 13,
         "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
+        "bg_color": "#fffbea",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
