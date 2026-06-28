@@ -204,13 +204,14 @@
     },
     "fuly_home_benefits_E7mN7Y": {
       "type": "fuly-home-benefits",
+      "custom_css": [],
       "name": "Fuly Home — Benefits",
       "settings": {
         "auto_scroll": true,
         "scroll_speed": 30,
-        "padding_block_mobile": 51,
-        "padding_block_tablet": 51,
-        "padding_block_desktop": 51,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 30,
+        "padding_block_desktop": 30,
         "tag_gap_mobile": 12,
         "tag_gap_tablet": 12,
         "tag_gap_desktop": 12,
