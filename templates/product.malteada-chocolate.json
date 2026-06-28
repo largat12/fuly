@@ -96,6 +96,7 @@
         },
         "collapsible_tab_Rb7Txg": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Cuándo consumirlo?",
             "icon": "none",
@@ -105,6 +106,7 @@
         },
         "collapsible_tab_3Jz8LM": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Desde qué edad se puede consumir?",
             "icon": "none",
@@ -117,7 +119,7 @@
           "settings": {
             "heading": "Características",
             "icon": "none",
-            "content": "<ul><li>10 porciones - Contenido neto: 250g</li><li>20 porciones - Contenido neto: 500g</li><li>Sabor: Chocolate🧋</li><li>Endulzado naturalmente con fruto del monje.</li><li>El azúcar (1.4 gr) que ves en la etiqueta, proviene naturalmente de la cocoa y los prebióticos.</li></ul>",
+            "content": "<ul><li>10 porciones - Contenido neto: 250g</li><li>20 porciones - Contenido neto: 500g</li><li>Sabor: Chocolate🧋</li><li>Endulzado naturalmente con fruto del monje.</li><li>Se puede consumir en cualquier momento del día.</li></ul>",
             "page": ""
           }
         },
