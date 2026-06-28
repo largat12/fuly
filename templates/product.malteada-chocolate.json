@@ -14,6 +14,7 @@
       "blocks": {
         "vendor": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "Defensas y Crecimiento",
             "text_style": "body"
@@ -144,36 +145,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "icon_with_text_yfCeaV": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Dgsty-05_1.png",
-            "heading_1": "Sin colores ni sabores artificiales",
-            "icon_2": "none",
-            "image_2": "shopify://shop_images/fresa_3x_1.png",
-            "heading_2": "Sin azúcar adicionada",
-            "icon_3": "none",
-            "image_3": "shopify://shop_images/hoja_sin_fondo.png",
-            "heading_3": "Endulzado naturalmente con fruto del monje"
-          }
-        },
-        "icon_with_text_gTygxK": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Cara_lengua_2c9d88b0-a7d2-4d85-9eec-510396e21d3f.png",
-            "heading_1": "Deliciosa",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Corazon.png",
-            "heading_2": "Sin ingredientes controversiales",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Cerebor_3x_423c0d3c-d5cb-4b91-afca-752f12a87b27.png",
-            "heading_3": "Formulado por Doctores y Científicos"
-          }
         }
       },
       "block_order": [
@@ -193,9 +164,7 @@
         "collapsible_tab_JYVL96",
         "collapsible_tab_dFUaKd",
         "collapsible_tab_6c6g9N",
-        "share",
-        "icon_with_text_yfCeaV",
-        "icon_with_text_gTygxK"
+        "share"
       ],
       "custom_css": [
         ".icon-with-text {margin-bottom: 0; padding-bottom: 0;}",
@@ -259,6 +228,7 @@
         "column_dGCD3i",
         "column_HLXG96"
       ],
+      "disabled": true,
       "custom_css": [
         ".multicolumn {max-width: 100% !important; width: 100% !important; padding-left: -20px; padding-right: -20px;}",
         ".multicolumn-card__image-wrapper--full-width {margin-left: 0 !important; margin-right: 0 !important;}",
@@ -396,10 +366,33 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "fuly_home_benefits_E7mN7Y": {
+      "type": "fuly-home-benefits",
+      "name": "Fuly Home — Benefits",
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 51,
+        "padding_block_tablet": 51,
+        "padding_block_desktop": 51,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#FFFBEA",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
     "main",
+    "fuly_home_benefits_E7mN7Y",
     "multicolumn_Q3NYhY",
     "1746798531837b132f",
     "related-products",
