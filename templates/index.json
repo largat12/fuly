@@ -237,7 +237,7 @@
     "fuly_home_marquee": {
       "type": "fuly-home-marquee",
       "settings": {
-        "items": "Melena de león|Reishi|Vitaminas A, D y C|Selenio|Zinc|Magnesio|Frutas Naturales\n|HECHO EN EL FULY LAB",
+        "items": "Melena de león|Reishi|Vitaminas A, D y C|Selenio|Zinc|Magnesio|Frutas Naturales\n|HECHOS EN EL FULY LAB",
         "duration_mobile": 6,
         "duration_tablet": 10,
         "duration_desktop": 10,
@@ -655,7 +655,7 @@
         "placeholder": "tu@email.com",
         "submit_label": "Suscribirme",
         "success_message": "¡Gracias por suscribirte! 🎉",
-        "bg_color": "#574DDF",
+        "bg_color": "#574ddf",
         "heading_size_mobile": 32,
         "heading_size_tablet": 36,
         "heading_size_desktop": 40,
