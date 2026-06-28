@@ -262,7 +262,7 @@
           "settings": {
             "title": "Testimonios",
             "format": "1",
-            "image": "3",
+            "image": "1",
             "from": "2",
             "onlinephotos": "2",
             "title_color": "#000000",
@@ -285,6 +285,10 @@
       },
       "block_order": [
         "revie_reviews_por_whatsapp_app_block_4_zmebTd"
+      ],
+      "custom_css": [
+        ".tt-rev-it[onclick] {background: #fff !important; border-radius: 20px !important; box-shadow: inset 0 0 0 1px #000, 3px 2px 0 #000 !important; overflow: hidden !important;}",
+        ".tt-rev-it[onclick] * {box-shadow: none !important; border: none !important;}"
       ],
       "settings": {
         "include_margins": true
