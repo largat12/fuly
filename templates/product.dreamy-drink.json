@@ -222,6 +222,28 @@
         "pdp_gallery_gap_desktop": 48
       }
     },
+    "fuly_home_benefits_txKN3E": {
+      "type": "fuly-home-benefits",
+      "name": "Fuly Home — Benefits",
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 30,
+        "padding_block_desktop": 30,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#FFFBEA",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
     "multicolumn_Q3NYhY": {
       "type": "multicolumn",
       "blocks": {
@@ -264,7 +286,7 @@
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 0,
+        "padding_top": 32,
         "padding_bottom": 0
       }
     },
@@ -326,68 +348,13 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "multicolumn_Kef9Yn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_xpNwKn": {
-          "type": "column",
-          "settings": {
-            "title": "Columna",
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_hxbjb4": {
-          "type": "column",
-          "settings": {
-            "title": "Columna",
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_c6njqw": {
-          "type": "column",
-          "settings": {
-            "title": "Columna",
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_xpNwKn",
-        "column_hxbjb4",
-        "column_c6njqw"
-      ],
-      "disabled": true,
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "Varias columnas",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "Etiqueta de botón",
-        "button_link": "",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "main",
+    "fuly_home_benefits_txKN3E",
     "multicolumn_Q3NYhY",
     "1746798531837b132f",
-    "related-products",
-    "multicolumn_Kef9Yn"
+    "related-products"
   ]
 }
