@@ -200,6 +200,28 @@
         "pdp_gallery_gap_desktop": 48
       }
     },
+    "fuly_home_benefits_E7mN7Y": {
+      "type": "fuly-home-benefits",
+      "name": "Fuly Home — Benefits",
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 51,
+        "padding_block_tablet": 51,
+        "padding_block_desktop": 51,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#FFFBEA",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
     "multicolumn_Q3NYhY": {
       "type": "multicolumn",
       "blocks": {
@@ -285,6 +307,10 @@
       "block_order": [
         "revie_reviews_por_whatsapp_app_block_4_zmebTd"
       ],
+      "custom_css": [
+        ".tt-rev-it[onclick] {background: #fff !important; border-radius: 20px !important; box-shadow: inset 0 0 0 1px #000, 3px 2px 0 #000 !important; overflow: hidden !important;}",
+        ".tt-rev-it[onclick] * {box-shadow: none !important; border: none !important;}"
+      ],
       "settings": {
         "include_margins": true
       }
@@ -365,28 +391,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "fuly_home_benefits_E7mN7Y": {
-      "type": "fuly-home-benefits",
-      "name": "Fuly Home — Benefits",
-      "settings": {
-        "auto_scroll": true,
-        "scroll_speed": 30,
-        "padding_block_mobile": 51,
-        "padding_block_tablet": 51,
-        "padding_block_desktop": 51,
-        "tag_gap_mobile": 12,
-        "tag_gap_tablet": 12,
-        "tag_gap_desktop": 12,
-        "tag_font_size_mobile": 13,
-        "tag_font_size_tablet": 13,
-        "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
       }
     }
   },
