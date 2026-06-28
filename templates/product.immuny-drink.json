@@ -39,6 +39,10 @@
           "type": "price",
           "settings": {}
         },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -57,10 +61,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
         "collapsible_tab_8hiaHy": {
           "type": "collapsible_tab",
           "settings": {
@@ -75,12 +75,13 @@
           "settings": {
             "heading": "¿Cómo consumirlo?",
             "icon": "none",
-            "content": "<p>Sachets: Vierte el contenido del sobre en 200ml de agua. Revuelve muy bien y listo.<br/><br/>Tarro: Nuestras bebidas en polvo vienen con una cucharadita medidora, especial para llenar de contenido hasta la rayita y disolverlo en 200ml de agua. Revuelve muy bien y listo.</p>",
+            "content": "<p>Sachets: Vierte el contenido del sobre en 200ml de agua. Revuelve muy bien y listo.<br/><br/>Doypack: Vienen con una cucharadita medidora, especial para llenar de contenido hasta la rayita y disolverlo en 200ml de agua. Revuelve muy bien y listo.</p>",
             "page": ""
           }
         },
         "collapsible_tab_9ybqbQ": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "¿Cuándo consumirlo?",
             "icon": "none",
@@ -169,10 +170,10 @@
         "title",
         "revie_reviews_por_whatsapp_app_block_4QtQLJ",
         "price",
+        "description",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
         "collapsible_tab_8hiaHy",
         "collapsible_tab_q3Jfxk",
         "collapsible_tab_9ybqbQ",
