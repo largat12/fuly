@@ -190,9 +190,7 @@
       "custom_css": [
         ".icon-with-text {margin-bottom: 0; padding-bottom: 0;}",
         ".button--primary {background-color: #f7cd47; color: #72604f;}",
-        ".media {border-radius: 16px;}",
-        "product-info {padding-bottom: 16px !important;}",
-        "@media (min-width: 750px) {product-info {padding-bottom: 13px !important; }}"
+        ".media {border-radius: 16px;}"
       ],
       "settings": {
         "enable_sticky_info": true,
