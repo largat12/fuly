@@ -240,6 +240,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 20,
         "padding_bottom": 28
