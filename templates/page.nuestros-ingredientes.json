@@ -83,6 +83,7 @@
       "blocks": {
         "b1": {
           "type": "beneficio",
+          "disabled": true,
           "settings": {
             "title": "Endulzado natural",
             "icon": "shopify://shop_images/no_azuar.png",
@@ -94,6 +95,7 @@
           "type": "beneficio",
           "settings": {
             "title": "Sin sabores artificiales",
+            "icon": "shopify://shop_images/no_colorante.png",
             "big_text": "",
             "is_dark": false
           }
@@ -101,13 +103,15 @@
         "b3": {
           "type": "beneficio",
           "settings": {
-            "title": "Sin azúcar añadido",
+            "title": "Sin azúcar refinada adicionada",
+            "icon": "shopify://shop_images/no_azuar.png",
             "big_text": "",
             "is_dark": false
           }
         },
         "b4": {
           "type": "beneficio",
+          "disabled": true,
           "settings": {
             "title": "Azúcar refinada adicionada",
             "big_text": "0g",
@@ -122,7 +126,7 @@
         "b4"
       ],
       "settings": {
-        "kicker": "03 — Cómo endulzamos",
+        "kicker": "",
         "title": "SIN COLORANTES NI SABORES ARTIFICIALES",
         "copy": "Además, endulzamos con lo que ya estaba en la naturaleza: la stevia (la hoja que endulza hace siglos) y el fruto del monje (la fruta verde que cultivan monjes en China)."
       }
@@ -160,6 +164,7 @@
         "c2",
         "c3"
       ],
+      "disabled": true,
       "settings": {
         "kicker": "04 — La ciencia detrás",
         "title": "Te dejamos las fuentes",
