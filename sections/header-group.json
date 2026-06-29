@@ -162,7 +162,7 @@
           "type": "dropdown_item",
           "settings": {
             "label": "Mi cuenta",
-            "url": "/customer_authentication/login",
+            "url": "",
             "is_external": false
           }
         }
