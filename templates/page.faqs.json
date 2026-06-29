@@ -20,12 +20,12 @@
             "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
           }
         },
-        "faq_1": {
+        "faq_item_JkhxwT": {
           "type": "faq_item",
           "settings": {
             "category": "Producto",
-            "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
-            "answer": "<p>Nuestros productos están diseñados para niños por lo que sus ingredientes pueden ser seguros para todas las edades. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de dos años para asegurarse de que lo pueden consumir sin problemas.</p>"
+            "question": "¿Por cuánto tiempo se pueden consumir?",
+            "answer": "<p>Como los Fuly no son medicamentos, no tiene un tiempo de consumo fijo. Son complementos alimenticios que acompañan el bienestar de tus hijos, así que puedes usarlos el tiempo que quieras, según lo que cada niño necesite.</p>"
           }
         },
         "faq_2": {
@@ -33,7 +33,7 @@
           "settings": {
             "category": "Producto",
             "question": "¿Adicionan azúcar a sus productos?",
-            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. En algunos Fuly vas a ver azúcares añadidos en la etiqueta. Esto se debe a que son alimentos procesados. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+            "answer": "<p>No le añadimos azúcar refinada a ningún Fuly. El azúcar que ves en la tabla nutricional es el azúcar natural de las frutas y las fibras que usamos, nada más.</p><p>En algunos productos vas a ver la palabra \"azúcares añadidos\" en la etiqueta. Tranquilo: no es azúcar refinada. Es una regla de etiquetado para alimentos procesados, que obliga a declarar así ciertos azúcares que vienen de los mismos ingredientes naturales.</p><p>Para endulzar usamos opciones naturales como la stevia y el fruto del monje. Nuestra meta es simple: que sepa delicioso sin sacrificar la nutrición.</p>"
           }
         },
         "faq_3": {
@@ -42,6 +42,14 @@
             "category": "Producto",
             "question": "¿Son seguros los ingredientes?",
             "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Producto",
+            "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
+            "answer": "<p>Nuestros productos están diseñados para niños por lo que sus ingredientes pueden ser seguros para todas las edades. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de dos años para asegurarse de que lo pueden consumir sin problemas.</p>"
           }
         },
         "faq_4": {
@@ -112,9 +120,10 @@
       },
       "block_order": [
         "faq_item_xH8CjD",
-        "faq_1",
+        "faq_item_JkhxwT",
         "faq_2",
         "faq_3",
+        "faq_1",
         "faq_4",
         "faq_5",
         "faq_6",
