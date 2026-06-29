@@ -50,6 +50,20 @@
             "swatch_shape": "circle"
           }
         },
+        "suscripciones_fuly_kids_subscription_widget_UpDErE": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
+          "settings": {
+            "show_always": false,
+            "text_primary_color": "",
+            "text_discount_color": "",
+            "text_secondary_color": "",
+            "frequency_text_color": "",
+            "frequency_active_text_color": "",
+            "discount_badge_text_color": "",
+            "benefit_icon_bg_color": "",
+            "benefit_icon_check_color": ""
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -173,6 +187,7 @@
         "price",
         "description",
         "variant_picker",
+        "suscripciones_fuly_kids_subscription_widget_UpDErE",
         "quantity_selector",
         "buy_buttons",
         "collapsible_tab_8hiaHy",
@@ -237,7 +252,7 @@
         "tag_font_size_mobile": 13,
         "tag_font_size_tablet": 13,
         "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
+        "bg_color": "#fffbea",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
