@@ -35,7 +35,7 @@
           "settings": {
             "column": "TIENDA",
             "link_text": "Malteadas",
-            "link_url": "/collections/tienda?cat=malteadas"
+            "link_url": "/collections/tienda?cat=malteada"
           }
         },
         "ayuda-1": {
@@ -48,6 +48,7 @@
         },
         "ayuda-2": {
           "type": "footer_link",
+          "disabled": true,
           "settings": {
             "column": "AYUDA",
             "link_text": "Envíos y devoluciones",
@@ -58,7 +59,7 @@
           "type": "footer_link",
           "settings": {
             "column": "AYUDA",
-            "link_text": "Tiendas aliadas",
+            "link_text": "Dónde encontrarnos",
             "link_url": "/pages/distribuidores-fuly"
           }
         },
@@ -165,7 +166,7 @@
         "link_size_tablet": 14,
         "link_size_desktop": 14,
         "bg_color": "#1a1a1a",
-        "accent_color": "#F7CD47",
+        "accent_color": "#f7cd47",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
