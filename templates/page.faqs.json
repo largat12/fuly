@@ -36,14 +36,6 @@
             "answer": "<p>No le añadimos azúcar refinada a ningún Fuly. El azúcar que ves en la tabla nutricional es el azúcar natural de las frutas y las fibras que usamos, nada más.</p><p>En algunos productos vas a ver la palabra \"azúcares añadidos\" en la etiqueta. Tranquilo: no es azúcar refinada. Es una regla de etiquetado para alimentos procesados, que obliga a declarar así ciertos azúcares que vienen de los mismos ingredientes naturales.</p><p>Para endulzar usamos opciones naturales como la stevia y el fruto del monje. Nuestra meta es simple: que sepa delicioso sin sacrificar la nutrición.</p>"
           }
         },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Producto",
-            "question": "¿Son seguros los ingredientes?",
-            "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
-          }
-        },
         "faq_1": {
           "type": "faq_item",
           "settings": {
@@ -56,8 +48,8 @@
           "type": "faq_item",
           "settings": {
             "category": "Producto",
-            "question": "¿Qué son los betaglucanos?",
-            "answer": "<p>Los betaglucanos son fibras naturales que estimulan el sistema inmunológico. Los obtenemos de fuentes como la levadura y la avena.</p>"
+            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.<br/><br/></p>"
           }
         },
         "faq_5": {
@@ -122,7 +114,6 @@
         "faq_item_xH8CjD",
         "faq_item_JkhxwT",
         "faq_2",
-        "faq_3",
         "faq_1",
         "faq_4",
         "faq_5",
