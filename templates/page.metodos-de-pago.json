@@ -109,6 +109,9 @@
         "text_E6WtAN",
         "button_tHMRRX"
       ],
+      "custom_css": [
+        "/* Quita bordes superior e inferior del texto enriquecido */.rich-text,.rich-text__wrapper,.rich-text__blocks {border-top: none !important; border-bottom: none !important;}"
+      ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
