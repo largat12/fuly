@@ -135,6 +135,14 @@
             "link_text": "Política de cookies",
             "link_url": "/pages/politica-de-cookies"
           }
+        },
+        "footer_link_zJ9edM": {
+          "type": "footer_link",
+          "settings": {
+            "column": "LEGAL",
+            "link_text": "Términos del servicio",
+            "link_url": "shopify://policies/terms-of-service"
+          }
         }
       },
       "block_order": [
@@ -152,7 +160,8 @@
         "footer_link_aqEgdT",
         "legal-1",
         "legal-2",
-        "legal-3"
+        "legal-3",
+        "footer_link_zJ9edM"
       ],
       "settings": {
         "logo": "shopify://shop_images/logo.svg",
