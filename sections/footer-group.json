@@ -55,6 +55,14 @@
             "link_url": "/pages/envios-y-devoluciones"
           }
         },
+        "footer_link_aqEgdT": {
+          "type": "footer_link",
+          "settings": {
+            "column": "COMUNIDAD",
+            "link_text": "Únete al newsletter",
+            "link_url": "shopify://blogs/newsletter"
+          }
+        },
         "ayuda-aliadas": {
           "type": "footer_link",
           "settings": {
@@ -89,6 +97,7 @@
         },
         "comunidad-2": {
           "type": "footer_link",
+          "disabled": true,
           "settings": {
             "column": "COMUNIDAD",
             "link_text": "Fuly Give-Back",
@@ -134,6 +143,7 @@
         "tienda-3",
         "ayuda-1",
         "ayuda-2",
+        "footer_link_aqEgdT",
         "ayuda-aliadas",
         "ayuda-ser-aliado",
         "ayuda-3",
