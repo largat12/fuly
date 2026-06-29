@@ -103,11 +103,10 @@
         },
         "faq_10": {
           "type": "faq_item",
-          "disabled": true,
           "settings": {
-            "category": "Devoluciones",
-            "question": "¿Tienen garantía de satisfacción?",
-            "answer": "<p>Si nunca has probado nuestros productos y temes que no sea una buena experiencia, para compras menores a $200.000 realizadas directamente en nuestra página web, te devolvemos tu dinero si no estás satisfecho. Esta garantía no aplica para productos comprados en otros aliados comerciales. <a href=\"/pages/garantia\">Revisa las condiciones y requisitos aquí</a>.</p>"
+            "category": "Distribuidores",
+            "question": "¿Dónde encuentro Fuly?",
+            "answer": "<p>Encuentra nuestras tiendas aliadas oficiales <a href=\"/pages/aliados-fuly-kids\" title=\"Nuestros aliados Fuly Kids\">aquí.</a></p>"
           }
         },
         "faq_11": {
