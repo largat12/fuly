@@ -18,6 +18,7 @@
             "blog": "newsletter",
             "title": "Newsletter",
             "description": "Una herramienta práctica cada semana para el bienestar de tus hijos.",
+            "image": "shopify://shop_images/Mail.jpg",
             "accent": "#0eb680",
             "link": "shopify://blogs/newsletter",
             "cta_label": "Leer newsletter →"
@@ -41,6 +42,7 @@
             "blog": "recetas",
             "title": "Recetas",
             "description": "Ideas fáciles y deliciosas para preparar Fuly en casa.",
+            "image": "shopify://shop_images/Recetas.jpg",
             "accent": "#e47524",
             "link": "shopify://blogs/recetario",
             "cta_label": "Ver recetas →"
@@ -52,6 +54,7 @@
             "blog": "daniel-gomez-newsletter",
             "title": "Lo mejor que vi esta semana",
             "description": "Por Daniel Gómez CEO DE fuly",
+            "image": "shopify://shop_images/Daniel_c7df9a1c-8370-48df-be5d-ade9b78a679b.jpg",
             "accent": "#f7cd47",
             "link": "",
             "cta_label": "Ver más →"
