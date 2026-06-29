@@ -1,1 +1,136 @@
-{"sections":{"main":{"type":"main-page","settings":{"padding_top":28,"padding_bottom":28}},"rich_text_nDYwWP":{"type":"rich-text","blocks":{"heading_C3Bt8P":{"type":"heading","settings":{"heading":"Ingresa tus datos o inicia sesión","heading_size":"h1"}},"text_KgPWdG":{"type":"text","settings":{"text":"<p>La información se procesa directamente con Wompi, quien se encarga de protegerla y realizar los cobros recurrentes de tu suscripción. Una vez finalices el pago, serás redirigido al checkout para completar tus datos de entrega.<\/p>"}},"button_KPU79X":{"type":"button","disabled":true,"settings":{"button_label":"Etiqueta de botón","button_link":"","button_style_secondary":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["heading_C3Bt8P","text_KgPWdG","button_KPU79X"],"name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"","full_width":true,"padding_top":0,"padding_bottom":0}},"1776342565968b298d":{"type":"_blocks","settings":{}},"1776342465b5fd2baf":{"type":"apps","blocks":{"suscripciones_fuly_kids_metodos_de_pago_q3BbDj":{"type":"shopify:\/\/apps\/suscripciones-fuly-kids\/blocks\/metodos-de-pago\/019d9283-612c-7442-85be-ea5df9b0babe","settings":{"hero_title":"","hero_subtitle":"","hero_info":"","show_login_button":true,"login_url":"\/customer_authentication\/login","login_button_text":"Iniciar Sesión","summary_title":"Resumen de tu compra","form_section_title":"Información de pago","form_section_title_payment":"INFORMACIÓN DE PAGO","button_text":"¡PAGAR Y SUSCRIBIRME AHORA!","terms_label":"Estoy de acuerdo con los","terms_link_text":"Términos y Condiciones","terms_url":"","strip_heading":"PAGO 100% SEGURO","strip_heading_bold":true,"strip_heading_uppercase":false,"strip_heading_size":"small","strip_body":"Tus datos se procesan directamente con Wompi, y tú mantienes el control de tu suscripción.\n* La tienda no almacena ningún dato de tu tarjeta.","strip_text_size":"medium"}},"suscripciones_fuly_kids_faq_suscripcion_iaVmAk":{"type":"shopify:\/\/apps\/suscripciones-fuly-kids\/blocks\/faq-suscripcion\/019d9283-612c-7442-85be-ea5df9b0babe","settings":{"app_url":"","faq_title":"PREGUNTAS FRECUENTES SOBRE LA SUSCRIPCIÓN","footer_text":"Realizado por Moxie con la tecnología de Wompi."}}},"block_order":["suscripciones_fuly_kids_metodos_de_pago_q3BbDj","suscripciones_fuly_kids_faq_suscripcion_iaVmAk"],"settings":{"include_margins":true}},"177634245407711dca":{"type":"apps","blocks":{"suscripciones_fuly_kids_metodos_de_pago_banner_PxfXyV":{"type":"shopify:\/\/apps\/suscripciones-fuly-kids\/blocks\/metodos-de-pago-banner\/019d9283-612c-7442-85be-ea5df9b0babe","disabled":true,"settings":{}}},"block_order":["suscripciones_fuly_kids_metodos_de_pago_banner_PxfXyV"],"settings":{"include_margins":true}}},"order":["main","rich_text_nDYwWP","1776342565968b298d","1776342465b5fd2baf","177634245407711dca"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_nDYwWP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_C3Bt8P": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ingresa tus datos para activar tu suscripción",
+            "heading_size": "h2"
+          }
+        },
+        "text_KgPWdG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Estás activando tu suscripción a Fuly: recibirás tus productos automáticamente cada ciclo, con tu 15% de descuento aplicado siempre. Ingresa tus datos para guardar tu método de pago de forma segura (lo protege Wompi, nuestro proveedor de pagos). Apenas confirmes, te llevamos al último paso para que ingreses tu dirección de entrega.</p>"
+          }
+        },
+        "button_KPU79X": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Etiqueta de botón",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_C3Bt8P",
+        "text_KgPWdG",
+        "button_KPU79X"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "1776342565968b298d": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "1776342465b5fd2baf": {
+      "type": "apps",
+      "blocks": {
+        "suscripciones_fuly_kids_metodos_de_pago_q3BbDj": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/metodos-de-pago/019d9283-612c-7442-85be-ea5df9b0babe",
+          "settings": {
+            "hero_title": "",
+            "hero_subtitle": "",
+            "hero_info": "",
+            "show_login_button": false,
+            "login_url": "/customer_authentication/login",
+            "login_button_text": "Iniciar Sesión",
+            "summary_title": "Resumen de tu compra",
+            "form_section_title": "Información de pago",
+            "form_section_title_payment": "INFORMACIÓN DE PAGO",
+            "button_text": "¡PAGAR Y SUSCRIBIRME AHORA!",
+            "terms_label": "Estoy de acuerdo con los",
+            "terms_link_text": "Términos y Condiciones",
+            "terms_url": "",
+            "strip_heading": "PAGO 100% SEGURO",
+            "strip_heading_bold": true,
+            "strip_heading_uppercase": false,
+            "strip_heading_size": "small",
+            "strip_body": "Tus datos se procesan directamente con Wompi, y tú mantienes el control de tu suscripción.\n* La tienda no almacena ningún dato de tu tarjeta.",
+            "strip_text_size": "medium"
+          }
+        },
+        "suscripciones_fuly_kids_faq_suscripcion_iaVmAk": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/faq-suscripcion/019d9283-612c-7442-85be-ea5df9b0babe",
+          "settings": {
+            "app_url": "",
+            "faq_title": "PREGUNTAS FRECUENTES SOBRE LA SUSCRIPCIÓN",
+            "footer_text": "Realizado por Moxie con la tecnología de Wompi."
+          }
+        }
+      },
+      "block_order": [
+        "suscripciones_fuly_kids_metodos_de_pago_q3BbDj",
+        "suscripciones_fuly_kids_faq_suscripcion_iaVmAk"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "177634245407711dca": {
+      "type": "apps",
+      "blocks": {
+        "suscripciones_fuly_kids_metodos_de_pago_banner_PxfXyV": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/metodos-de-pago-banner/019d9283-612c-7442-85be-ea5df9b0babe",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "suscripciones_fuly_kids_metodos_de_pago_banner_PxfXyV"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_nDYwWP",
+    "1776342565968b298d",
+    "1776342465b5fd2baf",
+    "177634245407711dca"
+  ]
+}
