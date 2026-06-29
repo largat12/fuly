@@ -576,8 +576,8 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
-            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
+            "question": "¿Tienen registro Invima?",
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
           }
         },
         "faq_2": {
@@ -590,15 +590,15 @@
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "¿Son seguros los ingredientes?",
-            "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
+            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
             "question": "¿Cómo funciona el envío?",
-            "answer": "<p>Realizamos envíos a todo Colombia. Si compras antes de las 3 p.m., tu pedido sale el mismo día. El tiempo de entrega varía entre 1-3 días hábiles.</p>"
+            "answer": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>"
           }
         },
         "faq_5": {
