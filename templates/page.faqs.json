@@ -109,6 +109,14 @@
             "answer": "<p>Encuentra nuestras tiendas aliadas oficiales <a href=\"/pages/aliados-fuly-kids\" title=\"Nuestros aliados Fuly Kids\">aquí.</a></p>"
           }
         },
+        "faq_item_x6RLp7": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Distribuidores",
+            "question": "¿CÓMO PUEDO SER ALIADO/DISTRIBUIDOR?",
+            "answer": "<p>Conviértete en aliado Fuly haciendo <a href=\"/pages/aliados-fuly-kids\" title=\"Nuestros aliados Fuly Kids\">clic aquí.</a></p>"
+          }
+        },
         "faq_11": {
           "type": "faq_item",
           "settings": {
@@ -131,6 +139,7 @@
         "faq_8",
         "faq_9",
         "faq_10",
+        "faq_item_x6RLp7",
         "faq_11"
       ],
       "settings": {
