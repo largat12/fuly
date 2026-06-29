@@ -103,6 +103,7 @@
         },
         "faq_10": {
           "type": "faq_item",
+          "disabled": true,
           "settings": {
             "category": "Devoluciones",
             "question": "¿Tienen garantía de satisfacción?",
