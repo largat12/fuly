@@ -77,6 +77,14 @@
             "answer": "<p>Por ahora solo realizamos envíos dentro de Colombia. Estamos trabajando para expandirnos pronto.</p>"
           }
         },
+        "faq_item_gjgGNk": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Suscripción",
+            "question": "¿Qué es la suscripción a un producto?",
+            "answer": "<p>La suscripción funciona como una membresía. Solo seleccionas el producto, seleccionas la opción suscripción y eliges el plan, realizas el proceso de pago y listo, recibirás ese Fuly de forma automática de acuerdo a la frecuencia seleccionada. El cobro se hace solo, siempre en la misma fecha. No tienes que hacer nada para seguir disfrutando.</p>"
+          }
+        },
         "faq_8": {
           "type": "faq_item",
           "settings": {
@@ -90,7 +98,7 @@
           "settings": {
             "category": "Suscripción",
             "question": "¿Puedo cancelar mi suscripción?",
-            "answer": "<p>Sí, puedes cancelar tu suscripción en cualquier momento sin penalidad.</p>"
+            "answer": "<p>Sí, puedes cancelar en cualquier momento, sin embargo ten presente que:</p><ul><li>Si ya completaste 3 pedidos: cancelas cuando quieras, sin ningún costo.</li><li>Si cancelas antes de completar 3 pedidos: pagas el valor equivalente al descuento que recibiste en los pedidos anteriores.</li></ul>"
           }
         },
         "faq_10": {
@@ -119,6 +127,7 @@
         "faq_5",
         "faq_6",
         "faq_7",
+        "faq_item_gjgGNk",
         "faq_8",
         "faq_9",
         "faq_10",

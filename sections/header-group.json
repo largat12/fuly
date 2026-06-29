@@ -157,6 +157,14 @@
             "url": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
             "is_external": true
           }
+        },
+        "dropdown_item_iTVMJF": {
+          "type": "dropdown_item",
+          "settings": {
+            "label": "Mi cuenta",
+            "url": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
+            "is_external": false
+          }
         }
       },
       "block_order": [
@@ -170,7 +178,8 @@
         "fuly-nav-faq",
         "fuly-nav-nutriscan",
         "fuly-dropdown-nosotros",
-        "fuly-dropdown-contacto"
+        "fuly-dropdown-contacto",
+        "dropdown_item_iTVMJF"
       ],
       "custom_css": [
         ".header__icon--account {display: none !important;}",
