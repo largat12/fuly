@@ -178,9 +178,15 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
-                <div class="fuly-pdp-app-block" {{ block.shopify_attributes }}>
-                  {% render block %}
-                </div>
+  {%- if block.id contains 'suscripciones' -%}
+    <div {{ block.shopify_attributes }}>
+      {% render block %}
+    </div>
+  {%- else -%}
+    <div class="fuly-pdp-app-block" {{ block.shopify_attributes }}>
+      {% render block %}
+    </div>
+  {%- endif -%}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if block.settings.text_style == 'body' %} fuly-pdp-tag-block{% endif %}"
