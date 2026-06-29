@@ -12,12 +12,20 @@
     "fuly_faq_page": {
       "type": "fuly-faq-page",
       "blocks": {
+        "faq_item_xH8CjD": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Producto",
+            "question": "¿Tienen registro invima?",
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
+          }
+        },
         "faq_1": {
           "type": "faq_item",
           "settings": {
             "category": "Producto",
             "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
-            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
+            "answer": "<p>Nuestros productos están diseñados para niños por lo que sus ingredientes pueden ser seguros para todas las edades. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de dos años para asegurarse de que lo pueden consumir sin problemas.</p>"
           }
         },
         "faq_2": {
@@ -54,6 +62,7 @@
         },
         "faq_6": {
           "type": "faq_item",
+          "disabled": true,
           "settings": {
             "category": "Envíos",
             "question": "¿Cuánto cuesta el envío?",
@@ -102,6 +111,7 @@
         }
       },
       "block_order": [
+        "faq_item_xH8CjD",
         "faq_1",
         "faq_2",
         "faq_3",
