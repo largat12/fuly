@@ -7,7 +7,8 @@
     - section.settings.show_search                            (placeholder visual)
     - section.settings.rotation_interval_ms                   (default 5000)
     - section.settings.fade_duration_ms                       (default 300)
-    - section.blocks                                          (announcement, nav_link, dropdown_item)
+    - section.settings.menu                                   (Shopify Navigation menu, default main-menu — drives nav links + "+" dropdown)
+    - section.blocks                                          (announcement only; nav_link/dropdown_item kept for back-compat but no longer rendered)
     - sections['announcement-bar'].blocks                     (fallback when no announcement blocks at the header level)
 {% endcomment %}
 
@@ -20,17 +21,26 @@
     assign announcement_blocks = sections['announcement-bar'].blocks
   endif
 
-  assign nav_blocks      = section.blocks | where: 'type', 'nav_link'
-  assign dropdown_blocks = section.blocks | where: 'type', 'dropdown_item'
+  comment
+    Navigation is driven by the Shopify menu (Online Store → Navigation),
+    via the `menu` link_list setting (default `main-menu`). This gives the
+    merchant the native link picker — including Customer accounts → Profile,
+    whose dynamic URL Shopify resolves into link.url automatically.
+
+    Mapping (position-based):
+      - first `max_top_links` top-level links → main nav bar (desktop) / list (mobile)
+      - the rest                              → the "+" / "Más" dropdown
+    Cap is set by section.settings.desktop_max_links (default 5).
+  endcomment
+  assign menu = section.settings.menu
+  assign max_top_links = section.settings.desktop_max_links | default: 5
 
   comment
-    Defensive fallbacks: if section.blocks is empty (e.g. header-group.json
-    points to a section without preset blocks, or merchant cleared all blocks),
-    render hardcoded content from the recon (audit/06-content-header.md) so the
-    header NEVER ships empty. These mirror the Lovable React arrays
-    (Header.tsx:8-12 announcements, Header.tsx:23-28 navLinks, Header.tsx:105-110
-    dropdown). Once the merchant adds blocks via Theme Editor, the fallback
-    is bypassed entirely.
+    Defensive fallbacks: if the menu is empty/unset, render hardcoded content
+    so the header NEVER ships empty (mirrors the Lovable React arrays:
+    Header.tsx:8-12 announcements, Header.tsx:23-28 navLinks,
+    Header.tsx:105-110 dropdown). Once the merchant configures `main-menu`,
+    the fallback is bypassed entirely.
   endcomment
 
   assign use_fallback_announcements = false
@@ -39,14 +49,10 @@
   endif
 
   assign use_fallback_nav = false
-  if nav_blocks.size == 0
+  if menu == blank or menu.links.size == 0
     assign use_fallback_nav = true
   endif
-
-  assign use_fallback_dropdown = false
-  if dropdown_blocks.size == 0
-    assign use_fallback_dropdown = true
-  endif
+  assign use_fallback_dropdown = use_fallback_nav
 -%}
 
 <header
@@ -137,21 +143,19 @@
           <svg class="fuly-header__external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
         </a>
       {%- else -%}
-        {%- for block in nav_blocks -%}
-          {%- assign is_external = block.settings.is_external -%}
+        {%- for link in menu.links limit: max_top_links -%}
+          {%- assign is_external = false -%}
+          {%- if link.type == 'http_link' and link.url contains '://' -%}{%- assign is_external = true -%}{%- endif -%}
           {%- if is_external -%}
-            <a class="fuly-header__nav-link{% if block.settings.show_external_icon %} fuly-header__nutriscan-link{% endif %}"
-               href="{{ block.settings.url }}"
-               target="_blank" rel="noopener noreferrer"
-               {{ block.shopify_attributes }}>
-              {{ block.settings.label }}
-              {%- if block.settings.show_external_icon -%}
-                {% comment %} lucide ExternalLink, size 14 {% endcomment %}
-                <svg class="fuly-header__external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              {%- endif -%}
+            <a class="fuly-header__nav-link fuly-header__nutriscan-link"
+               href="{{ link.url }}"
+               target="_blank" rel="noopener noreferrer">
+              {{ link.title }}
+              {% comment %} lucide ExternalLink, size 14 {% endcomment %}
+              <svg class="fuly-header__external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
             </a>
           {%- else -%}
-            <a class="fuly-header__nav-link" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+            <a class="fuly-header__nav-link{% if link.active or link.child_active %} fuly-header__nav-link--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
@@ -173,8 +177,14 @@
             <a class="fuly-header__more-item" href="/pages/nosotros">Nosotros</a>
             <a class="fuly-header__more-item" href="https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%87%20%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20los%20alimentos%20funcionales%20para%20ni%C3%B1os" target="_blank" rel="noopener noreferrer">Contacto</a>
           {%- else -%}
-            {%- for item in dropdown_blocks -%}
-              <a class="fuly-header__more-item" href="{{ item.settings.url }}" {{ item.shopify_attributes }}>{{ item.settings.label }}</a>
+            {%- for item in menu.links offset: max_top_links -%}
+              {%- assign item_external = false -%}
+              {%- if item.type == 'http_link' and item.url contains '://' -%}{%- assign item_external = true -%}{%- endif -%}
+              {%- if item_external -%}
+                <a class="fuly-header__more-item" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+              {%- else -%}
+                <a class="fuly-header__more-item" href="{{ item.url }}">{{ item.title }}</a>
+              {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
         </div>
@@ -269,17 +279,17 @@
           <svg class="fuly-header__external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
         </a>
       {%- else -%}
-        {%- for block in nav_blocks -%}
-          {%- if block.settings.is_external -%}
-            <a class="fuly-header__mobile-menu-item" href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer">
-              {{ block.settings.label }}
-              {%- if block.settings.show_external_icon -%}
-                {% comment %} lucide ExternalLink, size 16 {% endcomment %}
-                <svg class="fuly-header__external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              {%- endif -%}
+        {%- for link in menu.links limit: max_top_links -%}
+          {%- assign is_external = false -%}
+          {%- if link.type == 'http_link' and link.url contains '://' -%}{%- assign is_external = true -%}{%- endif -%}
+          {%- if is_external -%}
+            <a class="fuly-header__mobile-menu-item" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+              {{ link.title }}
+              {% comment %} lucide ExternalLink, size 16 {% endcomment %}
+              <svg class="fuly-header__external-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
             </a>
           {%- else -%}
-            <a class="fuly-header__mobile-menu-item" href="{{ block.settings.url }}">{{ block.settings.label }}</a>
+            <a class="fuly-header__mobile-menu-item" href="{{ link.url }}">{{ link.title }}</a>
           {%- endif -%}
         {%- endfor -%}
       {%- endif -%}
@@ -300,8 +310,14 @@
           <a class="fuly-header__mobile-menu-subitem" href="/pages/nosotros">Nosotros</a>
           <a class="fuly-header__mobile-menu-subitem" href="https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%87%20%C2%A1Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20los%20alimentos%20funcionales%20para%20ni%C3%B1os" target="_blank" rel="noopener noreferrer">Contacto</a>
         {%- else -%}
-          {%- for item in dropdown_blocks -%}
-            <a class="fuly-header__mobile-menu-subitem" href="{{ item.settings.url }}">{{ item.settings.label }}</a>
+          {%- for item in menu.links offset: max_top_links -%}
+            {%- assign item_external = false -%}
+            {%- if item.type == 'http_link' and item.url contains '://' -%}{%- assign item_external = true -%}{%- endif -%}
+            {%- if item_external -%}
+              <a class="fuly-header__mobile-menu-subitem" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+            {%- else -%}
+              <a class="fuly-header__mobile-menu-subitem" href="{{ item.url }}">{{ item.title }}</a>
+            {%- endif -%}
           {%- endfor -%}
         {%- endif -%}
       </div>

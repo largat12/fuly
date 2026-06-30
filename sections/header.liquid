@@ -101,7 +101,18 @@
       "type": "link_list",
       "id": "menu",
       "default": "main-menu",
-      "label": "t:sections.header.settings.menu.label"
+      "label": "Menú principal",
+      "info": "El menú del header se administra en Online Store → Navigation. Los primeros items se muestran en la barra (según el límite de abajo) y el resto pasa al dropdown '+'. Para 'Mi cuenta' elige Customer accounts → Profile (la URL se resuelve sola)."
+    },
+    {
+      "type": "range",
+      "id": "desktop_max_links",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 5,
+      "label": "Máximo de links en la barra",
+      "info": "Los items del menú que excedan este número pasan automáticamente al dropdown '+'."
     },
     {
       "type": "select",
