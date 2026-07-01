@@ -112,7 +112,9 @@
         "share"
       ],
       "custom_css": [
-        ".icon-with-text {margin-bottom: 0; padding-bottom: 0;}"
+        ".icon-with-text {margin-bottom: 0; padding-bottom: 0;}",
+        "product-info {padding-bottom: 16px !important;}",
+        "@media (min-width: 750px) {product-info {padding-bottom: 13px !important; }}"
       ],
       "settings": {
         "enable_sticky_info": true,
