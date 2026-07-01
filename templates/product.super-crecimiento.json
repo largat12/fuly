@@ -71,6 +71,7 @@
         },
         "collapsible_tab_dFUaKd": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Envíos",
             "icon": "none",
@@ -80,6 +81,7 @@
         },
         "collapsible_tab_6c6g9N": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Registro INVIMA",
             "icon": "none",
