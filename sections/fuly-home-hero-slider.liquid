@@ -101,9 +101,13 @@
     <div class="fuly-hslider__viewport" data-hslider-viewport>
       <div class="fuly-hslider__track" data-hslider-track>
         {%- for block in section.blocks -%}
-          {%- assign b = block.settings -%}
-          <div class="fuly-hslide" data-slide="{{ block.id }}" {{ block.shopify_attributes }}>
-            <div class="fuly-hslide__media">
+  {%- assign b = block.settings -%}
+  {%- assign slide_url = b.slide_link | default: b.primary_link -%}
+  <div class="fuly-hslide" data-slide="{{ block.id }}" {{ block.shopify_attributes }}>
+    {%- if slide_url != blank -%}
+      <a class="fuly-hslide__link" href="{{ slide_url }}" aria-label="{{ b.title | default: 'Ver productos' | escape }}"></a>
+    {%- endif -%}
+    <div class="fuly-hslide__media">
               {%- if b.image != blank -%}
                 {{ b.image | image_url: width: 2000 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--desktop', alt: b.title | default: 'Fuly' | escape }}
               {%- endif -%}
