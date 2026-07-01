@@ -218,7 +218,7 @@
       "name": "Fuly Home — Hero Slider",
       "settings": {
         "autoplay": true,
-        "autoplay_speed": 5,
+        "autoplay_speed": 3,
         "loop": true,
         "show_arrows": true,
         "show_dots": true,
