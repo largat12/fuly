@@ -198,28 +198,6 @@
         "padding_bottom": 0
       }
     },
-    "fuly_home_benefits_787dFH": {
-      "type": "fuly-home-benefits",
-      "name": "Fuly Home — Benefits",
-      "settings": {
-        "auto_scroll": true,
-        "scroll_speed": 30,
-        "padding_block_mobile": 30,
-        "padding_block_tablet": 30,
-        "padding_block_desktop": 30,
-        "tag_gap_mobile": 12,
-        "tag_gap_tablet": 12,
-        "tag_gap_desktop": 12,
-        "tag_font_size_mobile": 13,
-        "tag_font_size_tablet": 13,
-        "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
-      }
-    },
     "1746798531837b132f": {
       "type": "apps",
       "blocks": {
@@ -340,7 +318,6 @@
   "order": [
     "main",
     "multicolumn_Q3NYhY",
-    "fuly_home_benefits_787dFH",
     "1746798531837b132f",
     "related-products",
     "multicolumn_Kef9Yn"
