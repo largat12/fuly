@@ -47,7 +47,7 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "none",
-            "content": "<p><strong>Immuny Booster: </strong><br/>Mezcla de frutas en polvo, fibra, betaglucanos (Ganoderma lucidum), probióticos (<em>Bacillus coagulans</em>), y vitaminas A, C y D, zinc y selenio que <strong>contribuyen al funcionamiento normal del sistema inmunitario</strong>, dentro de una alimentación equilibrada<strong><br/>Malteadas: </strong><br/>Proteína de almendras, huevo entero en polvo, incluye calcio, magnesio, zinc, vitaminas A, C, D, E y vitaminas del complejo B. Opción práctica para <strong>sumar proteína, vitaminas y minerales</strong> al desayuno o a la lonchera.<br/><br/><br/><br/></p>",
+            "content": "<p><strong>Booster Frutos Rojos:</strong><br/>Mezcla de frutas en polvo, fibra, betaglucanos (Ganoderma lucidum), probióticos (<em>Bacillus coagulans</em>), y vitaminas A, C y D, zinc y selenio que <strong>contribuyen al funcionamiento normal del sistema inmunitario</strong>, dentro de una alimentación equilibrada<strong><br/>Malteadas: </strong><br/>Proteína de almendras, huevo entero en polvo, incluye calcio, magnesio, zinc, vitaminas A, C, D, E y vitaminas del complejo B. Opción práctica para <strong>sumar proteína, vitaminas y minerales</strong> al desayuno o a la lonchera.</p>",
             "page": ""
           }
         },
@@ -56,7 +56,7 @@
           "settings": {
             "heading": "Características",
             "icon": "none",
-            "content": "<p><strong>Cada Immuny Booster:</strong></p><ul><li>Contenido neto: 45g</li><li>Cantidad: 15 sobres de 3g</li><li>Sabor: Frutos rojos</li></ul><p><strong>Cada Malteada Fuly:</strong></p><ul><li>Contenido neto: 250 g <em>(</em>o 10 sobres de 25 g, según versión del kit)</li><li>Sabores: Chocolate o Vainilla</li></ul>",
+            "content": "<p><strong>Cada Booster:</strong></p><ul><li>Contenido neto: 45g</li><li>Cantidad: 15 sobres de 3g</li><li>Sabor: Frutos rojos</li></ul><p><strong>Cada Malteada Fuly:</strong></p><ul><li>Contenido neto: 250 g <em>(</em>o 10 sobres de 25 g, según versión del kit)</li><li>Sabores: Chocolate o Vainilla</li></ul>",
             "page": ""
           }
         },
@@ -93,36 +93,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "icon_with_text_yfCeaV": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Dgsty-05_1.png",
-            "heading_1": "Sin colores ni sabores artificiales",
-            "icon_2": "none",
-            "image_2": "shopify://shop_images/fresa_3x_1.png",
-            "heading_2": "Sin azúcar adicionada",
-            "icon_3": "none",
-            "image_3": "shopify://shop_images/hoja_sin_fondo.png",
-            "heading_3": "Endulzado naturalmente con alulosa"
-          }
-        },
-        "icon_with_text_gTygxK": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Cara_lengua_2c9d88b0-a7d2-4d85-9eec-510396e21d3f.png",
-            "heading_1": "Deliciosos",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Corazon.png",
-            "heading_2": "Sin ingredientes controversiales",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Cerebor_3x_423c0d3c-d5cb-4b91-afca-752f12a87b27.png",
-            "heading_3": "Formulado por Doctores y Científicos"
-          }
         }
       },
       "block_order": [
@@ -137,9 +107,7 @@
         "collapsible_tab_q3Jfxk",
         "collapsible_tab_dFUaKd",
         "collapsible_tab_6c6g9N",
-        "share",
-        "icon_with_text_yfCeaV",
-        "icon_with_text_gTygxK"
+        "share"
       ],
       "custom_css": [
         ".icon-with-text {margin-bottom: 0; padding-bottom: 0;}"
