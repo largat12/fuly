@@ -32,7 +32,7 @@
 /* Shared headings */
 .fuly-semilla-h2 {
   font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
-  font-weight: 800;
+  
   text-transform: uppercase;
   color: hsl(var(--cartoon-black));
   font-size: clamp(2.8rem, 4vw, 4.4rem);
@@ -47,7 +47,7 @@
   justify-content: center;
   gap: 0.8rem;
   font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
-  font-weight: 800;
+  
   text-transform: uppercase;
   border: 3px solid hsl(var(--cartoon-black));
   box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
@@ -129,7 +129,7 @@
 }
 .fuly-semilla-hero__title {
   font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
-  font-weight: 800;
+  
   text-transform: uppercase;
   color: hsl(var(--cartoon-black));
   font-size: clamp(3.6rem, 5vw, 6.4rem);
@@ -907,7 +907,7 @@
 }
 .fuly-semilla-cta-final__title {
   font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
-  font-weight: 800;
+  
   text-transform: uppercase;
   color: var(--white-lab);
   font-size: clamp(2.8rem, 4vw, 4.4rem);

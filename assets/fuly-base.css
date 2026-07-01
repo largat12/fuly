@@ -60,7 +60,7 @@ div#main-cart-footer {
 /* -------- Headings -------- */
 h1,
 .h1 {
-  font-weight: 800;
+  
   font-size: var(--fuly-font-size-h1);
   line-height: var(--fuly-line-height-heading-tight);
   letter-spacing: var(--fuly-letter-spacing-heading);
@@ -76,7 +76,7 @@ h1.h1--hero,
 
 h2,
 .h2 {
-  font-weight: 800;
+  
   font-size: var(--fuly-font-size-h2);
   line-height: var(--fuly-line-height-heading-tight);
   letter-spacing: var(--fuly-letter-spacing-heading);
@@ -98,7 +98,7 @@ h2.h2--sm,
 h3,
 .h3 {
   font-family: var(--fuly-font-heading) ;
-  font-weight: 800;
+  
   font-size: var(--fuly-font-size-h3);
   line-height: var(--fuly-line-height-heading);
   text-transform: uppercase;
@@ -109,7 +109,7 @@ h3,
 h4,
 .h4 {
   font-family: var(--fuly-font-heading) ;
-  font-weight: 800;
+  
   font-size: var(--fuly-font-size-h4);
   line-height: var(--fuly-line-height-heading);
   text-transform: uppercase;

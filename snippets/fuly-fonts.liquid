@@ -23,7 +23,7 @@
 {%- assign fuly_fonts_enabled = true -%}
 
 {%- if fuly_fonts_enabled -%}
-  {%- comment -%} Preload de la fuente crítica above-the-fold (display/h1-h2). {%- endcomment -%}
+  {%- comment -%} Preload de la fuente crítica above-the-fold (Extrabold, corte único de la familia). {%- endcomment -%}
   <link
     rel="preload"
     as="font"
@@ -38,29 +38,21 @@
       ascent/descent-override aproximados para minimizar el CLS al hacer
       swap desde los fallbacks Google (Lilita One / Fredoka).
       Ajustar si se aprecia shift al recargar.
+
+      NOTA DE PESO: la familia se declara con UN solo corte (Extrabold) mapeado
+      a todo el rango 100–900. Así, cualquier título que use esta tipografía
+      —pida 500, 700 u 800— se renderiza SIEMPRE con el corte Extrabold, sin
+      necesidad de editar los font-weight repartidos por el tema.
+      (El archivo Bold sigue en assets/ por si en el futuro se quiere
+      reintroducir la jerarquía de dos pesos.)
     */
 
-    /* Extrabold · display y h1/h2 */
     @font-face {
       font-family: 'PP Pangram Sans Rounded Compressed';
       src:
         url('{{ 'PPPangramSansRounded-Extrabold.woff2' | asset_url }}') format('woff2'),
         url('{{ 'PPPangramSansRounded-Extrabold.ttf' | asset_url }}') format('truetype');
-      font-weight: 800;
-      font-style: normal;
-      font-display: swap;
-      ascent-override: 95%;
-      descent-override: 20%;
-      line-gap-override: 0%;
-    }
-
-    /* Bold · h3/h4 y headings secundarios */
-    @font-face {
-      font-family: 'PP Pangram Sans Rounded Compressed';
-      src:
-        url('{{ 'PPPangramSansRounded-Bold.woff2' | asset_url }}') format('woff2'),
-        url('{{ 'PPPangramSansRounded-Bold.ttf' | asset_url }}') format('truetype');
-      font-weight: 700;
+      font-weight: 100 900;
       font-style: normal;
       font-display: swap;
       ascent-override: 95%;

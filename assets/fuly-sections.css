@@ -149,7 +149,7 @@
   background-color: var(--fuly-cereza) !important;
   color: var(--fuly-white-lab) !important;
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   border-radius: var(--fuly-radius-full);
   border: var(--fuly-border-sm);
   min-width: 20px;
@@ -618,7 +618,7 @@
 .cart-notification__heading,
 .drawer__heading {
   font-family: var(--fuly-font-display);
-  font-weight: 800;
+  
   text-transform: uppercase;
   font-size: 2rem;
 }
@@ -636,7 +636,7 @@
 
 .cart-item__name {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
 }
 
@@ -667,7 +667,7 @@
 .totals,
 .cart__footer .totals {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: var(--fuly-font-size-h3);
   text-transform: uppercase;
   padding: var(--fuly-space-4) 0;
@@ -888,7 +888,7 @@
 .banner__heading,
 .slideshow__text-wrapper .slideshow__heading {
   font-family: var(--fuly-font-display) !important;
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: var(--fuly-line-height-heading-tight);
 }
@@ -932,7 +932,7 @@
 
 .multicolumn-card__info h3 {
   font-family: var(--fuly-font-heading) !important;
-  font-weight: 800;
+  
   text-transform: uppercase;
 }
 
@@ -956,7 +956,7 @@
   padding-inline: var(--fuly-space-6);
   animation: fuly-marquee-scroll 30s linear infinite;
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: var(--fuly-letter-spacing-marquee);

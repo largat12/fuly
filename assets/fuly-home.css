@@ -222,7 +222,7 @@
 /* === Typography helpers (use system stack since woff2 doesn't exist) === */
 .fuly-font-heading {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 0.95;
 }
@@ -312,7 +312,7 @@
 
 .fuly-hero-title {
   font-family: var(--fuly-font-heading) !important;
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 0.95;
   font-size: clamp(56px, 7vw, 80px);
@@ -408,7 +408,7 @@
 
 .fuly-section-head h2 {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 0.95;
   font-size: clamp(28px, 4vw, 44px);
@@ -805,7 +805,7 @@
 
 .fuly-why-text h2 {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 0.95;
   font-size: clamp(28px, 4vw, 44px);
@@ -946,7 +946,7 @@
 
 .fuly-cta-section h2 {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 0.95;
   color: var(--white-lab);
@@ -1077,7 +1077,7 @@
 
 .fuly-newsletter-section h2 {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 0.95;
   color: var(--white-lab);

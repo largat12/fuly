@@ -84,7 +84,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 .drawer__heading {
   margin: 0;
   font-size: 2rem;
-  font-weight: 800;
+  
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -237,7 +237,7 @@ cart-drawer-items {
 .drawer__heading {
   font-family: var(--fuly-font-heading, inherit);
   font-size: 2rem;
-  font-weight: 800;
+  
   letter-spacing: 0.02em;
 }
 
@@ -349,7 +349,7 @@ cart-drawer-items {
   margin: 0 0 0.4rem;
   font-family: var(--fuly-font-heading, inherit);
   font-size: 1.35rem;
-  font-weight: 800;
+  
   line-height: 1.15;
   text-transform: uppercase;
   color: var(--fuly-cartoon-black, #212121);
@@ -389,7 +389,7 @@ cart-drawer-items {
   display: block;
   font-family: var(--fuly-font-heading, inherit);
   font-size: 1.45rem;
-  font-weight: 800;
+  
   line-height: 1;
 }
 
@@ -449,14 +449,14 @@ cart-drawer-items {
 .cart-drawer .totals__total {
   font-family: var(--fuly-font-heading, inherit);
   font-size: 1.8rem;
-  font-weight: 800;
+  
   text-transform: uppercase;
 }
 
 .cart-drawer .totals__total-value {
   font-family: var(--fuly-font-heading, inherit);
   font-size: 2.2rem;
-  font-weight: 800;
+  
   color: #E31B48;
   margin-left: 0;
 }
@@ -491,7 +491,7 @@ cart-drawer-items {
   padding: 1.2rem 2rem;
   font-family: var(--fuly-font-heading, inherit);
   font-size: 1.45rem;
-  font-weight: 800;
+  
   text-transform: uppercase;
   letter-spacing: 0.03em;
   border-radius: 9999px;

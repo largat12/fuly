@@ -85,7 +85,7 @@
 .product__info-wrapper .price__sale .price-item--sale {
   font-family: var(--fuly-font-display);
   font-size: clamp(24px, 4vw, 36px);
-  font-weight: 800;
+  
   color: var(--fuly-cartoon-black);
 }
 
@@ -329,7 +329,7 @@ product-info .fuly-pdp-info .price__regular .price-item--regular,
 product-info .fuly-pdp-info .price__sale .price-item--sale {
   font-family: var(--fuly-font-heading) !important;
   font-size: clamp(32px, 4vw, 36px) !important;
-  font-weight: 800;
+  
   color: var(--fuly-cartoon-black);
 }
 
@@ -559,13 +559,13 @@ product-recommendations.related-products .related-products__heading {
 
 .facets__heading {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
 }
 
 .facets-container details summary {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   padding: 12px 16px;
   border: var(--fuly-border-sm);
@@ -707,7 +707,7 @@ product-recommendations.related-products .related-products__heading {
 
 .cart-item__name {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: clamp(15px, 1.5vw, 18px);
   line-height: 1.12;
   text-transform: uppercase;
@@ -734,7 +734,7 @@ product-recommendations.related-products .related-products__heading {
 
 .cart-item__price-wrapper .price {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: clamp(16px, 1.7vw, 20px);
 }
 
@@ -941,7 +941,7 @@ product-recommendations.related-products .related-products__heading {
   margin: 0;
   font-family: var(--fuly-font-heading);
   font-size: 1.8rem;
-  font-weight: 800;
+  
   text-transform: uppercase;
 }
 
@@ -1198,7 +1198,7 @@ product-recommendations.related-products .related-products__heading {
 /* Article card */
 .article-card__title {
   font-family: var(--fuly-font-heading) !important;
-  font-weight: 800;
+  
   text-transform: uppercase;
 }
 
@@ -1326,7 +1326,7 @@ body.template-page-aliados .collapsible-content .accordion__content {
 /* Encabezado de la FAQ con la tipografía display de marca */
 body.template-page-aliados .collapsible-content__heading {
   font-family: var(--fuly-font-display);
-  font-weight: 800;
+  
 }
 
 /* Caption del FAQ ("Todo sobre comisiones y pedidos") con estilo .fuly-tag-label */

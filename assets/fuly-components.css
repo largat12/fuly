@@ -260,13 +260,13 @@ input[type='radio'] {
 
 .price {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
 }
 
 .price__regular .price-item--regular,
 .price__sale .price-item--sale {
   font-size: var(--fuly-font-size-h3);
-  font-weight: 800;
+  
   color: var(--fuly-cartoon-black);
 }
 

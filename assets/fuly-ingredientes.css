@@ -40,7 +40,7 @@
 
 .fuly-ing__title {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 1.05;
   color: var(--fuly-cartoon-black);
@@ -103,7 +103,7 @@
 }
 .fuly-ing-estudio__title {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: 1.9rem;
   line-height: 1.15;
   color: var(--fuly-cartoon-black);
@@ -209,7 +209,7 @@
 }
 .fuly-ing-prod__name {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: clamp(1.8rem, 2.5vw, 2.4rem);
   line-height: 1.1;
   color: var(--fuly-cartoon-black);
@@ -288,7 +288,7 @@
 }
 .fuly-ing-card__name {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: 1.5rem;
   color: var(--fuly-cartoon-black);
   margin: 0 0 4px;
@@ -354,14 +354,14 @@
 }
 .fuly-ing-benefit__big {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: clamp(3.2rem, 5vw, 4.8rem);
   line-height: 1;
   color: var(--fuly-cartoon-black);
 }
 .fuly-ing-benefit__title {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: 1.6rem;
   line-height: 1.15;
   color: var(--fuly-cartoon-black);
@@ -394,7 +394,7 @@
 .fuly-ing-fuente__body { display: flex; flex-direction: column; gap: 2px; }
 .fuly-ing-fuente__label {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: 1.6rem;
   color: var(--fuly-cartoon-black);
 }
@@ -430,7 +430,7 @@
 .fuly-ing-cta__inner { max-width: 72rem; margin: 0 auto; }
 .fuly-ing-cta__title {
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   text-transform: uppercase;
   line-height: 1.05;
   color: #fff;
@@ -441,7 +441,7 @@
 .fuly-ing-cta__btn {
   display: inline-block;
   font-family: var(--fuly-font-heading);
-  font-weight: 800;
+  
   font-size: 1.7rem;
   text-transform: uppercase;
   letter-spacing: 0.02em;
