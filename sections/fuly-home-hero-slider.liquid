@@ -101,13 +101,13 @@
     <div class="fuly-hslider__viewport" data-hslider-viewport>
       <div class="fuly-hslider__track" data-hslider-track>
         {%- for block in section.blocks -%}
-  {%- assign b = block.settings -%}
-  {%- assign slide_url = b.slide_link | default: b.primary_link -%}
-  <div class="fuly-hslide" data-slide="{{ block.id }}" {{ block.shopify_attributes }}>
-    {%- if slide_url != blank -%}
-      <a class="fuly-hslide__link" href="{{ slide_url }}" aria-label="{{ b.title | default: 'Ver productos' | escape }}"></a>
-    {%- endif -%}
-    <div class="fuly-hslide__media">
+          {%- assign b = block.settings -%}
+          {%- assign slide_url = b.slide_link | default: b.primary_link -%}
+          <div class="fuly-hslide" data-slide="{{ block.id }}" {{ block.shopify_attributes }}>
+            {%- if slide_url != blank -%}
+              <a class="fuly-hslide__link" href="{{ slide_url }}" aria-label="{{ b.title | default: 'Ver productos' | escape }}"></a>
+            {%- endif -%}
+            <div class="fuly-hslide__media">
               {%- if b.image != blank -%}
                 {{ b.image | image_url: width: 2000 | image_tag: loading: 'eager', class: 'fuly-hslide__img fuly-hslide__img--desktop', alt: b.title | default: 'Fuly' | escape }}
               {%- endif -%}
@@ -197,6 +197,18 @@
     height: var(--r-height);
     min-height: var(--r-height);
   }
+
+  {%- comment -%} Enlace invisible que cubre toda la slide (imagen clickeable) {%- endcomment -%}
+  #shopify-section-{{ sid }} .fuly-hslide__link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: block;
+    font-size: 0;
+  }
+  {%- comment -%} Ocultar los botones en todas las slides {%- endcomment -%}
+  #shopify-section-{{ sid }} .fuly-hslide__buttons { display: none; }
+
   #shopify-section-{{ sid }} .fuly-hslide__media,
   #shopify-section-{{ sid }} .fuly-hslide__media .fuly-hslide__img {
     position: absolute;
@@ -433,6 +445,9 @@
         { "type": "image_picker", "id": "image_tablet", "label": "Imagen tablet (opcional)" },
         { "type": "image_picker", "id": "image_mobile", "label": "Imagen mobile (opcional)" },
 
+        { "type": "header", "content": "Enlace del slide (imagen clickeable)" },
+        { "type": "url", "id": "slide_link", "label": "Enlace al hacer clic en la imagen" },
+
         { "type": "header", "content": "Overlay" },
         { "type": "color", "id": "overlay_color", "label": "Color del overlay", "default": "#000000" },
         { "type": "range", "id": "overlay_opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "label": "Opacidad del overlay", "default": 0 },
@@ -515,33 +530,7 @@
         },
         { "type": "range", "id": "content_max_width_mobile", "min": 40, "max": 100, "step": 5, "unit": "%", "label": "Ancho máx. del contenido", "default": 90 },
         { "type": "range", "id": "title_size_mobile", "min": 18, "max": 80, "step": 1, "unit": "px", "label": "Tamaño título", "default": 40 },
-        { "type": "range", "id": "subtitle_size_mobile", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Tamaño subtítulo", "default": 16 },
-
-        { "type": "header", "content": "Tipografía" },
-        {
-          "type": "select", "id": "heading_font", "label": "Fuente del título", "default": "display",
-          "options": [
-            { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
-            { "value": "body", "label": "Marca — Cuerpo (Arial)" },
-            { "value": "mono", "label": "Marca — Martian Mono" },
-            { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
-            { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
-            { "value": "custom", "label": "Personalizada (elegir abajo)" }
-          ]
-        },
-        { "type": "font_picker", "id": "heading_font_picker", "label": "Fuente personalizada del título", "default": "assistant_n4" },
-        {
-          "type": "select", "id": "body_font", "label": "Fuente del subtítulo", "default": "body",
-          "options": [
-            { "value": "display", "label": "Marca — Títulos (PP Pangram Rounded)" },
-            { "value": "body", "label": "Marca — Cuerpo (Arial)" },
-            { "value": "mono", "label": "Marca — Martian Mono" },
-            { "value": "shopify_heading", "label": "Shopify — Fuente de títulos" },
-            { "value": "shopify_body", "label": "Shopify — Fuente de cuerpo" },
-            { "value": "custom", "label": "Personalizada (elegir abajo)" }
-          ]
-        },
-        { "type": "font_picker", "id": "body_font_picker", "label": "Fuente personalizada del subtítulo", "default": "assistant_n4" }
+        { "type": "range", "id": "subtitle_size_mobile", "min": 10, "max": 32, "step": 1, "unit": "px", "label": "Tamaño subtítulo", "default": 16 }
       ]
     }
   ],
