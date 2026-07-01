@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "logo": "shopify://shop_images/LogoFuly.png",
     "logo_width": 200,
     "favicon": "shopify://shop_images/favicoFulyKids.png",
     "type_header_font": "figtree_n6",
