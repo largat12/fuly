@@ -673,111 +673,6 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "fuly_home_hero_slider_tyiPHW": {
-      "type": "fuly-home-hero-slider",
-      "blocks": {
-        "slide_AEjngz": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/1_e0fe68f3-2945-43f4-982b-16abf049a3e6.png",
-            "image_mobile": "shopify://shop_images/1_f21fbeb9-f2a3-4c47-af29-edb8b57a43a4.png",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "show_badge": false,
-            "badge_text": "",
-            "reviews_text": "reseñas verificadas ⭐",
-            "title": "",
-            "subtitle": "",
-            "heading_color": "#1A1A1A",
-            "subtitle_color": "#333333",
-            "badge_bg_color": "#F7CD47",
-            "show_primary_button": false,
-            "primary_label": "COMPRAR AHORA",
-            "primary_link": "",
-            "show_secondary_button": false,
-            "secondary_label": "VER PRODUCTOS",
-            "secondary_link": "",
-            "align_desktop": "flex-start",
-            "vertical_desktop": "center",
-            "text_align_desktop": "left",
-            "content_max_width_desktop": 50,
-            "title_size_desktop": 72,
-            "subtitle_size_desktop": 18,
-            "align_mobile": "flex-start",
-            "vertical_mobile": "flex-end",
-            "text_align_mobile": "left",
-            "content_max_width_mobile": 90,
-            "title_size_mobile": 40,
-            "subtitle_size_mobile": 16,
-            "heading_font": "display",
-            "heading_font_picker": "assistant_n4",
-            "body_font": "body",
-            "body_font_picker": "assistant_n4"
-          }
-        },
-        "slide_NYRAa9": {
-          "type": "slide",
-          "settings": {
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "show_badge": false,
-            "badge_text": "",
-            "reviews_text": "reseñas verificadas ⭐",
-            "title": "EL FUTURO SABE RICO",
-            "subtitle": "Formulados por científicos. Disfrutados por niños.",
-            "heading_color": "#1A1A1A",
-            "subtitle_color": "#333333",
-            "badge_bg_color": "#F7CD47",
-            "show_primary_button": true,
-            "primary_label": "COMPRAR AHORA",
-            "primary_link": "",
-            "show_secondary_button": false,
-            "secondary_label": "VER PRODUCTOS",
-            "secondary_link": "",
-            "align_desktop": "flex-start",
-            "vertical_desktop": "center",
-            "text_align_desktop": "left",
-            "content_max_width_desktop": 50,
-            "title_size_desktop": 72,
-            "subtitle_size_desktop": 18,
-            "align_mobile": "flex-start",
-            "vertical_mobile": "flex-end",
-            "text_align_mobile": "left",
-            "content_max_width_mobile": 90,
-            "title_size_mobile": 40,
-            "subtitle_size_mobile": 16,
-            "heading_font": "display",
-            "heading_font_picker": "assistant_n4",
-            "body_font": "body",
-            "body_font_picker": "assistant_n4"
-          }
-        }
-      },
-      "block_order": [
-        "slide_AEjngz",
-        "slide_NYRAa9"
-      ],
-      "name": "Fuly Home — Hero Slider",
-      "settings": {
-        "autoplay": true,
-        "autoplay_speed": 5,
-        "loop": true,
-        "show_arrows": true,
-        "show_dots": true,
-        "height_mobile": 460,
-        "height_tablet": 560,
-        "height_desktop": 640,
-        "pad_x_mobile": 16,
-        "pad_x_tablet": 48,
-        "pad_x_desktop": 64,
-        "reviews_source": "auto",
-        "reviews_namespace": "reviews",
-        "reviews_key": "rating_count",
-        "reviews_shop_namespace": "",
-        "reviews_shop_key": "",
-        "reviews_manual_number": "3,400"
-      }
     }
   },
   "order": [
@@ -794,7 +689,6 @@
     "fuly_home_faq",
     "fuly_home_why",
     "fuly_home_cta",
-    "fuly_home_newsletter",
-    "fuly_home_hero_slider_tyiPHW"
+    "fuly_home_newsletter"
   ]
 }
