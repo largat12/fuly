@@ -24,7 +24,7 @@
           "settings": {}
         },
         "revie_reviews_por_whatsapp_app_block_7YAH7n": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/app-block\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "star_color": "#f7cd47",
             "text_color": "#432d14",
@@ -39,12 +39,20 @@
           "type": "price",
           "settings": {}
         },
+        "text_736PYU": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Un refuerzo diario para las defensas de tus hijos. 🛡️🍓</strong>Con betaglucanos de<strong> </strong>Reishi.<strong>Excelente fuente de Vitaminas A, C y D, Selenio y Zinc</strong>, ingredientes que contribuyen al funcionamiento normal del sistema inmunitario. <strong>  </strong>Nota: estamos renovando nuestra imagen; tu Fuly puede llegar con empaque nuevo o anterior. Por dentro, la misma ciencia deliciosa de siempre ✨",
+            "text_style": "subtitle"
+          }
+        },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "suscripciones_fuly_kids_subscription_widget_EErTjU": {
-          "type": "shopify:\/\/apps\/suscripciones-fuly-kids\/blocks\/subscription-widget\/019d9283-612c-7442-85be-ea5df9b0babe",
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
           "settings": {
             "show_always": false,
             "text_primary_color": "",
@@ -81,7 +89,7 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "none",
-            "content": "<p><strong>+ Vitamina C<\/strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br\/><strong>+ Vitamina D:<\/strong> ayuda al cuerpo a activar sus defensas naturales.<br\/><strong>+ Vitamina A: <\/strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br\/><strong>+ Zinc:<\/strong> ayuda a que las células de defensa maduren y trabajen bien.<br\/><strong>+ Selenio:<\/strong> antioxidante que protege las células del desgaste.<br\/><strong>+ Betaglucanos (Ganoderma): <\/strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br\/><strong>+ Probióticos (Bacillus coagulans): <\/strong>bacterias buenas que equilibran la flora intestinal.<br\/><strong>+ Inulina y fibra prebiótica: <\/strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br\/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):<\/strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.<\/p>",
+            "content": "<p><strong>+ Vitamina C</strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br/><strong>+ Vitamina D:</strong> ayuda al cuerpo a activar sus defensas naturales.<br/><strong>+ Vitamina A: </strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br/><strong>+ Zinc:</strong> ayuda a que las células de defensa maduren y trabajen bien.<br/><strong>+ Selenio:</strong> antioxidante que protege las células del desgaste.<br/><strong>+ Betaglucanos (Ganoderma): </strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br/><strong>+ Probióticos (Bacillus coagulans): </strong>bacterias buenas que equilibran la flora intestinal.<br/><strong>+ Inulina y fibra prebiótica: </strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):</strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.</p>",
             "page": ""
           }
         },
@@ -90,7 +98,7 @@
           "settings": {
             "heading": "¿Cómo consumirlo?",
             "icon": "none",
-            "content": "<p>Súper fácil: viene listo para comer. Tu hijo puede tomarlo directo del sobre, con cucharita o hasta con el dedo. Y si quieres jugar un poco, va genial como topping en helado, batidos, fruta o yogur.<br\/><br\/><br\/>Producto listo para el consumo. Los niños lo pueden consumir directamente del sobre, con una cucharita, con el dedo o como topping en recetas como helado, batidos, frutas, yogurt, entre otros.<\/p>",
+            "content": "<p>Súper fácil: viene listo para comer. Tu hijo puede tomarlo directo del sobre, con cucharita o hasta con el dedo. Y si quieres jugar un poco, va genial como topping en helado, batidos, fruta o yogur.<br/><br/><br/>Producto listo para el consumo. Los niños lo pueden consumir directamente del sobre, con una cucharita, con el dedo o como topping en recetas como helado, batidos, frutas, yogurt, entre otros.</p>",
             "page": ""
           }
         },
@@ -100,7 +108,7 @@
           "settings": {
             "heading": "¿Cuándo consumirlo?",
             "icon": "none",
-            "content": "<p>Consumir en cualquier momento del día.<\/p>",
+            "content": "<p>Consumir en cualquier momento del día.</p>",
             "page": ""
           }
         },
@@ -110,7 +118,7 @@
           "settings": {
             "heading": "¿Desde qué edad se puede consumir?",
             "icon": "none",
-            "content": "<p>Fuly Kids está recomendado a partir de los 4 años, cuando los niños ya han sido expuestos a sabores dulces. <\/p><p><strong>En algunos casos, pediatras lo han sugerido antes, gracias a la seguridad de sus ingredientes.<\/strong><\/p>",
+            "content": "<p>Fuly Kids está recomendado a partir de los 4 años, cuando los niños ya han sido expuestos a sabores dulces. </p><p><strong>En algunos casos, pediatras lo han sugerido antes, gracias a la seguridad de sus ingredientes.</strong></p>",
             "page": ""
           }
         },
@@ -119,7 +127,7 @@
           "settings": {
             "heading": "Características",
             "icon": "none",
-            "content": "<ul><li>Cantidad: 15 sobres de 3g<\/li><li>Contenido neto: 45g<\/li><li>Sabor: Frutos rojos 🍓<\/li><li>Se puede consumir en cualquier momento del día.<\/li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.<\/li><\/ul>",
+            "content": "<ul><li>Cantidad: 15 sobres de 3g</li><li>Contenido neto: 45g</li><li>Sabor: Frutos rojos 🍓</li><li>Se puede consumir en cualquier momento del día.</li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.</li></ul>",
             "page": ""
           }
         },
@@ -128,7 +136,7 @@
           "settings": {
             "heading": "Envíos",
             "icon": "none",
-            "content": "<ul><li>Hacemos envíos a toda Colombia.<\/li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplica TyC.<\/li><li>Recibe el mismo día si compras antes de las 3:00 p.m. Disponible en Bogotá, Medellín y Cali. Aplican TyC. <\/li><\/ul>",
+            "content": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplica TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m. Disponible en Bogotá, Medellín y Cali. Aplican TyC. </li></ul>",
             "page": ""
           }
         },
@@ -137,7 +145,7 @@
           "settings": {
             "heading": "Registro INVIMA",
             "icon": "none",
-            "content": "<p>RSA-0020686-2022.<\/p>",
+            "content": "<p>RSA-0020686-2022.</p>",
             "page": ""
           }
         },
@@ -153,13 +161,13 @@
           "settings": {
             "layout": "vertical",
             "icon_1": "heart",
-            "image_1": "shopify:\/\/shop_images\/Dgsty-05_1.png",
+            "image_1": "shopify://shop_images/Dgsty-05_1.png",
             "heading_1": "Sin colores ni sabores artificiales",
             "icon_2": "none",
-            "image_2": "shopify:\/\/shop_images\/fresa_3x_1.png",
+            "image_2": "shopify://shop_images/fresa_3x_1.png",
             "heading_2": "Sin azúcar adicionada",
             "icon_3": "none",
-            "image_3": "shopify:\/\/shop_images\/hoja_sin_fondo.png",
+            "image_3": "shopify://shop_images/hoja_sin_fondo.png",
             "heading_3": "Endulzado naturalmente con alulosa"
           }
         },
@@ -169,13 +177,13 @@
           "settings": {
             "layout": "vertical",
             "icon_1": "heart",
-            "image_1": "shopify:\/\/shop_images\/Cara_lengua_2c9d88b0-a7d2-4d85-9eec-510396e21d3f.png",
+            "image_1": "shopify://shop_images/Cara_lengua_2c9d88b0-a7d2-4d85-9eec-510396e21d3f.png",
             "heading_1": "Deliciosos",
             "icon_2": "return",
-            "image_2": "shopify:\/\/shop_images\/Corazon.png",
+            "image_2": "shopify://shop_images/Corazon.png",
             "heading_2": "Sin ingredientes controversiales",
             "icon_3": "truck",
-            "image_3": "shopify:\/\/shop_images\/Cerebor_3x_423c0d3c-d5cb-4b91-afca-752f12a87b27.png",
+            "image_3": "shopify://shop_images/Cerebor_3x_423c0d3c-d5cb-4b91-afca-752f12a87b27.png",
             "heading_3": "Formulado por Doctores y Científicos"
           }
         }
@@ -185,6 +193,7 @@
         "title",
         "revie_reviews_por_whatsapp_app_block_7YAH7n",
         "price",
+        "text_736PYU",
         "description",
         "suscripciones_fuly_kids_subscription_widget_EErTjU",
         "variant_picker",
@@ -264,7 +273,7 @@
       "type": "apps",
       "blocks": {
         "revie_reviews_por_whatsapp_app_block_4_zmebTd": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/app-block-4\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "Testimonios",
             "format": "1",
@@ -306,7 +315,7 @@
         "column_dGCD3i": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Immuny-booster-Producto-web-2.jpg",
+            "image": "shopify://shop_images/Immuny-booster-Producto-web-2.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -316,7 +325,7 @@
         "column_HLXG96": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/nino_immuny_booster.png",
+            "image": "shopify://shop_images/nino_immuny_booster.png",
             "title": "",
             "text": "",
             "link_label": "",
