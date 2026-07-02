@@ -26,16 +26,16 @@
           "type": "footer_link",
           "settings": {
             "column": "TIENDA",
-            "link_text": "Boosters",
-            "link_url": "/collections/tienda?cat=boosters"
+            "link_text": "Crecimiento - Malteadas",
+            "link_url": "shopify://collections/crecimiento"
           }
         },
         "tienda-3": {
           "type": "footer_link",
           "settings": {
             "column": "TIENDA",
-            "link_text": "Malteadas",
-            "link_url": "/collections/tienda?cat=malteada"
+            "link_text": "Defensas",
+            "link_url": "shopify://collections/defensas"
           }
         },
         "ayuda-1": {
