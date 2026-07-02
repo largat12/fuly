@@ -184,7 +184,7 @@
           "settings": {
             "heading": "¿Cuánto es el pedido mínimo?",
             "icon": "star",
-            "row_content": "<p>Para obtener el beneficio de distribuidor tu pedido mínimo debe ser de dos millones de pesos colombianos <strong>$2.000.000 COP</strong></p>",
+            "row_content": "<p>Para obtener el beneficio de distribuidor tu pedido mínimo debe ser 3 referencias por presentación seleccionada. <br/><br/></p>",
             "page": ""
           }
         },
@@ -202,7 +202,7 @@
           "settings": {
             "heading": "¿El envío es gratis?",
             "icon": "star",
-            "row_content": "<p>Los envíos son gratis solo a un punto por pedido. Promesa de entrega: 7 días hábiles. Pedidos marcados como contraentrega serán cancelados.</p>",
+            "row_content": "<p>Si el pedido es menor a $1.500.000 se cobra el envío, si es mayor a $1.500.000 el envío es gratis. </p><p>Promesa de entrega: 7 días hábiles. </p>",
             "page": ""
           }
         },
