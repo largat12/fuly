@@ -42,7 +42,14 @@
         "text_736PYU": {
           "type": "text",
           "settings": {
-            "text": "<strong>Un refuerzo diario para las defensas de tus hijos. 🛡️🍓</strong>Con betaglucanos de<strong> </strong>Reishi.<strong>Excelente fuente de Vitaminas A, C y D, Selenio y Zinc</strong>, ingredientes que contribuyen al funcionamiento normal del sistema inmunitario. <strong>  </strong>Nota: estamos renovando nuestra imagen; tu Fuly puede llegar con empaque nuevo o anterior. Por dentro, la misma ciencia deliciosa de siempre ✨",
+            "text": "<strong>Un refuerzo diario para las defensas de tus hijos. 🛡️🍓</strong>Con betaglucanos de<strong> </strong>Reishi. <strong>Excelente fuente de Vitaminas A, C y D, Selenio y Zinc</strong>, ingredientes que contribuyen al funcionamiento normal del sistema inmunitario.",
+            "text_style": "subtitle"
+          }
+        },
+        "text_kVnrQc": {
+          "type": "text",
+          "settings": {
+            "text": "Nota: estamos renovando nuestra imagen; tu Fuly puede llegar con empaque nuevo o anterior. Por dentro, la misma ciencia deliciosa de siempre ✨",
             "text_style": "subtitle"
           }
         },
@@ -194,6 +201,7 @@
         "revie_reviews_por_whatsapp_app_block_7YAH7n",
         "price",
         "text_736PYU",
+        "text_kVnrQc",
         "description",
         "suscripciones_fuly_kids_subscription_widget_EErTjU",
         "variant_picker",
