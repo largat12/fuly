@@ -488,6 +488,26 @@
   }
 }
 
+/* Tinte de marca por producto. El color llega como --card-tint-* en un style
+   inline (metafield fuly.color). Va en un ::before para poder desvanecerlo
+   en hover: background-image no es animable, opacity sí. */
+.fuly-product-card__image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    135deg,
+    var(--card-tint-from, transparent),
+    var(--card-tint-to, transparent)
+  );
+  transition: opacity 0.2s ease;
+}
+
+.fuly-product-card:hover .fuly-product-card__image-wrap::before {
+  opacity: 0;
+}
+
 .fuly-product-card__grid-overlay {
   position: absolute;
   inset: 0;

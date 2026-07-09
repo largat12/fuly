@@ -35,7 +35,7 @@
   <a
     href="{{ card_href }}"
     class="fuly-product-card__image-wrap"
-    style="background: linear-gradient(135deg, {{ card_color }}22, {{ card_color }}44);"
+    style="--card-tint-from: {{ card_color }}22; --card-tint-to: {{ card_color }}44;"
   >
     <span class="fuly-product-card__grid-overlay" aria-hidden="true"></span>
     {% if card_image_src != blank %}
