@@ -5,8 +5,8 @@
 
 {%- liquid
   assign wa_phone = section.settings.whatsapp_number
-  assign wa_message = section.settings.whatsapp_message
-  assign wa_url = 'https://api.whatsapp.com/send?phone=' | append: wa_phone | append: '&text=' | append: wa_message | url_encode
+  assign wa_message = section.settings.whatsapp_message | url_encode
+  assign wa_url = 'https://api.whatsapp.com/send?phone=' | append: wa_phone | append: '&text=' | append: wa_message
 -%}
 
 {%- if section.settings.show_button -%}
