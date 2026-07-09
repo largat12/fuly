@@ -2,20 +2,22 @@
   Fuly Kids · Declaración @font-face de la tipografía comercial.
 
   ARCHIVOS INSTALADOS (theme/assets/):
-    - PPPangramSansRounded-Extrabold.woff2  (+ .ttf fallback)  → display / h1-h2
-    - PPPangramSansRounded-Bold.woff2       (+ .ttf fallback)  → h3-h4 / headings 2º
+    - PPPangramSansRounded-Extrabold.woff2  (+ .ttf fallback)  → único corte en uso
+    - PPPangramSansRounded-Bold.*  presente pero SIN @font-face: no se carga.
 
   IMPORTANTE — nombre de familia:
-  Todo el tema (base.css --font-heading, fuly-collection.css, fuly-semilla.css,
-  snippets de contenido, fuly-tokens.css, theme.liquid) referencia la familia
-  con el literal 'PP Pangram Sans Rounded Compressed'. Por eso el @font-face se
-  declara EXACTAMENTE con ese nombre, para que las 30+ reglas existentes
-  resuelvan sin tocar nada más.
+  La familia se declara como 'Fuly Display', un alias interno. El archivo real es
+  la cut estándar de PP Pangram Sans Rounded (name table interno: "PP Pangram Sans
+  Rounded").
 
-  Los archivos provistos son la cut estándar de PP Pangram Sans Rounded
-  (name table interno: "PP Pangram Sans Rounded"); aquí se mapean al nombre
-  'Compressed' que el branding ya usa en todo el tema. Si en el futuro se sube
-  la verdadera cut Compressed, basta con reemplazar los .woff2/.ttf de assets/.
+  NO renombrar a 'PP Pangram Sans Rounded Compressed'. El script de onsite de
+  Klaviyo inyecta en runtime un <style id="kl-custom-fonts"> con sus propios
+  @font-face para ese nombre exacto, incluida una cara de peso 800 que apunta a
+  PPPangramSansRounded-CompressedExtrabold.woff2 en cdn.shopify.com. Al compartir
+  nombre, cualquier título en 800 renderizaba la cut Compressed (estrecha) y el
+  resto la Extrabold (ancha) — dos tipografías distintas en la misma página.
+  El alias rompe esa colisión. Ese <style> se configura en el panel de Klaviyo,
+  no en el tema.
 
   Para volver a los fallbacks Google, pon `fuly_fonts_enabled` en false.
 {%- endcomment -%}
@@ -48,7 +50,7 @@
     */
 
     @font-face {
-      font-family: 'PP Pangram Sans Rounded Compressed';
+      font-family: 'Fuly Display';
       src:
         url('{{ 'PPPangramSansRounded-Extrabold.woff2' | asset_url }}') format('woff2'),
         url('{{ 'PPPangramSansRounded-Extrabold.ttf' | asset_url }}') format('truetype');

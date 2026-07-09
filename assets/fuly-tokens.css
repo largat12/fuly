@@ -43,8 +43,8 @@
      @font-face local (snippet fuly-fonts), con Martian Mono / fallbacks Google
      mientras carga; Arial y Georgia son del sistema.
   */
-  --fuly-font-display: "PP Pangram Sans Rounded Compressed", "Martian Mono", Arial, sans-serif;
-  --fuly-font-heading: "PP Pangram Sans Rounded Compressed", "Martian Mono", Arial, "Helvetica Neue", sans-serif;
+  --fuly-font-display: "Fuly Display", "Martian Mono", Arial, sans-serif;
+  --fuly-font-heading: "Fuly Display", "Martian Mono", Arial, "Helvetica Neue", sans-serif;
   --fuly-font-body: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --fuly-font-serif: Georgia, "Times New Roman", serif;
   --fuly-font-label: "Martian Mono", "JetBrains Mono", "Courier New", monospace;

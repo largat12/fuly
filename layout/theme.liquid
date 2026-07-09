@@ -125,15 +125,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
 
       :root {
-        /* Tipografía de marca (brandbook): Arial cuerpo, PP Pangram Sans Rounded títulos. */
+        /* Tipografía de marca (brandbook): Arial cuerpo, Fuly Display títulos.
+           "Fuly Display" es un alias propio de PP Pangram Sans Rounded Extrabold.
+           No usar el nombre real de la familia: el script de Klaviyo inyecta sus
+           propios @font-face con ese nombre y secuestra el peso 800. */
         --font-body-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         --font-body-style: normal;
         --font-body-weight: 400;
         --font-body-weight-bold: 700;
 
-        --font-heading-family: "PP Pangram Sans Rounded Compressed", "Martian Mono", Arial, "Helvetica Neue", sans-serif;
+        --font-heading-family: "Fuly Display", "Martian Mono", Arial, "Helvetica Neue", sans-serif;
         --font-heading-style: normal;
-        --font-heading-weight: auto;
+        --font-heading-weight: 800;
 
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
@@ -311,7 +314,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       Rounded + Polymath Text + Martian Mono.
 
       Mapping visual (fallback):
-        Display (h1/h2)  · Lilita One   ≈ PP Pangram Sans Rounded Compressed Extrabold
+        Display (h1/h2)  · Lilita One   ≈ Fuly Display (PP Pangram Sans Rounded Extrabold)
         Heading (h3/h4)  · Fredoka 700  ≈ PP Pangram Sans Rounded Bold
         Body             · Fraunces     ≈ Polymath Text
         Label (mono)     · Martian Mono = Martian Mono (misma fuente)

@@ -31,7 +31,7 @@
 
 /* Shared headings */
 .fuly-semilla-h2 {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   
   text-transform: uppercase;
   color: hsl(var(--cartoon-black));
@@ -46,7 +46,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   
   text-transform: uppercase;
   border: 3px solid hsl(var(--cartoon-black));
@@ -108,7 +108,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -128,7 +128,7 @@
   .fuly-semilla-badge__icon { width: 3.6rem; height: 3.6rem; }
 }
 .fuly-semilla-hero__title {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   
   text-transform: uppercase;
   color: hsl(var(--cartoon-black));
@@ -163,7 +163,7 @@
   .fuly-semilla-impacto__head { margin-bottom: 4rem; }
 }
 .fuly-semilla-impacto__big-number {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   font-size: 4.8rem;
   line-height: 1;
@@ -221,7 +221,7 @@
   text-align: left;
 }
 .fuly-semilla-org-card__name {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.6rem;
   color: hsl(var(--cartoon-black));
@@ -241,7 +241,7 @@
 .fuly-semilla-org-card__mono--xs { font-size: 1rem; }
 .fuly-semilla-org-card__count { flex-shrink: 0; text-align: right; }
 .fuly-semilla-org-card__kids {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   font-size: 2rem;
   line-height: 1;
@@ -340,7 +340,7 @@
   margin: 0;
 }
 .fuly-semilla-neuronal__lead {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   color: hsl(var(--cartoon-black));
@@ -380,7 +380,7 @@
   color: #E31B48;
 }
 .fuly-semilla-benefit-card__text {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   text-align: left;
   font-size: 1.6rem;
@@ -436,7 +436,7 @@
   .fuly-semilla-camino-card__icon { width: 8rem; height: 8rem; }
 }
 .fuly-semilla-camino-card__title {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1.8rem;
@@ -515,7 +515,7 @@
   margin-bottom: 2.4rem;
 }
 .fuly-semilla-amount-btn {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.6rem;
   padding: 1.2rem 2rem;
@@ -532,7 +532,7 @@
   box-shadow: 4px 4px 0 hsl(var(--cartoon-black));
 }
 .fuly-semilla-price {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   font-size: 3rem;
   color: #E31B48;
@@ -622,7 +622,7 @@
   }
 }
 .fuly-semilla-step-card__circle span {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   font-size: 3.6rem;
   color: hsl(var(--cartoon-black));
@@ -704,7 +704,7 @@
   box-shadow: 6px 6px 0 hsl(var(--cartoon-black));
 }
 .fuly-semilla-circle-btn__num {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   color: hsl(var(--cartoon-black));
   font-size: 2.4rem;
@@ -775,7 +775,7 @@
 .fuly-semilla-faq-item__summary::-webkit-details-marker { display: none; }
 .fuly-semilla-faq-item__summary::marker { display: none; }
 .fuly-semilla-faq-item__q {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.6rem;
   color: #E31B48;
@@ -821,7 +821,7 @@
   .fuly-semilla-sobre__title { margin-bottom: 3.2rem; }
 }
 .fuly-semilla-sobre__lead {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
   color: hsl(var(--cartoon-black));
@@ -847,7 +847,7 @@
   }
 }
 .fuly-semilla-sobre__brand span {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   font-weight: 900;
   font-size: 2rem;
   color: hsl(var(--cartoon-black));
@@ -906,7 +906,7 @@
   .fuly-semilla-cta-final__sparkles { width: 4.8rem; height: 4.8rem; }
 }
 .fuly-semilla-cta-final__title {
-  font-family: 'PP Pangram Sans Rounded Compressed', Arial, sans-serif;
+  font-family: 'Fuly Display', Arial, sans-serif;
   
   text-transform: uppercase;
   color: var(--white-lab);

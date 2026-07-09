@@ -223,7 +223,7 @@ product-info .fuly-pdp-media-column .product-media-container {
   border: var(--fuly-border) !important;
   border-radius: 16px !important;
   box-shadow: var(--fuly-shadow-lg) !important;
-  background: linear-gradient(135deg, #E4752422, #E4752444) !important;
+  background: transparent !important;
 }
 
 @media screen and (min-width: 750px) {

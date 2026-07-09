@@ -73,8 +73,8 @@
   --shadow-whatsapp-pulse-peak: 2px 4px 20px rgba(37, 211, 102, 0.4);
 
   /* === Typography === */
-  --font-heading: 'PP Pangram Sans Rounded Compressed', 'Arial', sans-serif;
-  --font-subtitle: 'PP Pangram Sans Rounded', 'Arial', sans-serif;
+  --font-heading: 'Fuly Display', 'Arial', sans-serif;
+  --font-subtitle: 'Fuly Display', 'Arial', sans-serif;
   --font-body: 'Polymath Text', 'Georgia', serif;
   --font-label: 'Martian Mono', 'Courier New', monospace;
   --type-h1-size: clamp(36px, 5vw, 64px);
