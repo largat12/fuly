@@ -1,0 +1,834 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "fuly_home_slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "enable_image_link": false,
+            "image_link": "",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_1"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "show_on_desktop": true,
+        "show_on_mobile": true,
+        "show_text_content": true,
+        "accessibility_info": "Presentación de diapositivas sobre tu marca"
+      }
+    },
+    "fuly_home_hero": {
+      "type": "fuly-home-hero",
+      "disabled": true,
+      "settings": {
+        "show_badge": false,
+        "tagline": "",
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "3,400",
+        "reviews_text": "reseñas verificadas con 5 estrellas ⭐",
+        "title": "EL FUTURO SABE RICO",
+        "subtitle": "Alimentos y bebidas con ingredientes respaldados por la ciencia y aprobados por los niños.",
+        "show_primary_button": true,
+        "primary_label": "COMPRAR AHORA",
+        "primary_link": "shopify:\/\/collections\/tienda",
+        "show_secondary_button": false,
+        "secondary_label": "",
+        "secondary_link": "",
+        "title_size_mobile": 56,
+        "title_size_tablet": 68,
+        "title_size_desktop": 80,
+        "subtitle_size_mobile": 18,
+        "subtitle_size_tablet": 18,
+        "subtitle_size_desktop": 18,
+        "content_gap_mobile": 10,
+        "content_gap_tablet": 24,
+        "content_gap_desktop": 24,
+        "buttons_gap_mobile": 12,
+        "buttons_gap_tablet": 12,
+        "buttons_gap_desktop": 12,
+        "image_height_mobile": 225,
+        "image_height_tablet": 450,
+        "image_height_desktop": 450,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 50,
+        "padding_block_desktop": 50,
+        "heading_color": "#1a1a1a",
+        "subtitle_color": "#555555",
+        "badge_bg_color": "#f7cd47",
+        "heading_font": "display",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "body",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_hero_slider_RrrnBT": {
+      "type": "fuly-home-hero-slider",
+      "blocks": {
+        "slide_iQBWCV": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/1Reducido.png",
+            "image_mobile": "shopify:\/\/shop_images\/1_bd234bb6-7d09-4da5-97ed-41dcf82a6c19.png",
+            "slide_link": "shopify:\/\/products\/malteada-de-chocolate",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "show_badge": false,
+            "badge_text": "",
+            "reviews_text": "reseñas verificadas ⭐",
+            "title": "",
+            "subtitle": "",
+            "heading_color": "#1a1a1a",
+            "subtitle_color": "#333333",
+            "badge_bg_color": "#f7cd47",
+            "show_primary_button": false,
+            "primary_label": "COMPRAR AHORA",
+            "primary_link": "",
+            "show_secondary_button": false,
+            "secondary_label": "VER PRODUCTOS",
+            "secondary_link": "",
+            "align_desktop": "flex-start",
+            "vertical_desktop": "center",
+            "text_align_desktop": "left",
+            "content_max_width_desktop": 50,
+            "title_size_desktop": 72,
+            "subtitle_size_desktop": 18,
+            "align_mobile": "flex-start",
+            "vertical_mobile": "flex-end",
+            "text_align_mobile": "left",
+            "content_max_width_mobile": 90,
+            "title_size_mobile": 40,
+            "subtitle_size_mobile": 16
+          }
+        },
+        "slide_4UXzti": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3Reducido.png",
+            "image_mobile": "shopify:\/\/shop_images\/2_d8cb1c57-865e-4b22-86b5-e61da71563bc.png",
+            "slide_link": "shopify:\/\/products\/malteada-de-chocolate",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "show_badge": false,
+            "badge_text": "",
+            "reviews_text": "reseñas verificadas ⭐",
+            "title": "",
+            "subtitle": "",
+            "heading_color": "#1a1a1a",
+            "subtitle_color": "#333333",
+            "badge_bg_color": "#f7cd47",
+            "show_primary_button": false,
+            "primary_label": "COMPRAR AHORA",
+            "primary_link": "",
+            "show_secondary_button": false,
+            "secondary_label": "VER PRODUCTOS",
+            "secondary_link": "",
+            "align_desktop": "flex-start",
+            "vertical_desktop": "center",
+            "text_align_desktop": "left",
+            "content_max_width_desktop": 50,
+            "title_size_desktop": 72,
+            "subtitle_size_desktop": 18,
+            "align_mobile": "flex-start",
+            "vertical_mobile": "flex-end",
+            "text_align_mobile": "left",
+            "content_max_width_mobile": 90,
+            "title_size_mobile": 40,
+            "subtitle_size_mobile": 16
+          }
+        },
+        "slide_QhRRW4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/4Reducido.png",
+            "image_mobile": "shopify:\/\/shop_images\/3_16552196-0e48-4a55-996c-0af81827dd12.png",
+            "slide_link": "shopify:\/\/products\/malteada-de-chocolate",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "show_badge": false,
+            "badge_text": "",
+            "reviews_text": "reseñas verificadas ⭐",
+            "title": "",
+            "subtitle": "",
+            "heading_color": "#1a1a1a",
+            "subtitle_color": "#333333",
+            "badge_bg_color": "#f7cd47",
+            "show_primary_button": false,
+            "primary_label": "COMPRAR AHORA",
+            "primary_link": "",
+            "show_secondary_button": false,
+            "secondary_label": "VER PRODUCTOS",
+            "secondary_link": "",
+            "align_desktop": "flex-start",
+            "vertical_desktop": "center",
+            "text_align_desktop": "left",
+            "content_max_width_desktop": 50,
+            "title_size_desktop": 72,
+            "subtitle_size_desktop": 18,
+            "align_mobile": "flex-start",
+            "vertical_mobile": "flex-end",
+            "text_align_mobile": "left",
+            "content_max_width_mobile": 90,
+            "title_size_mobile": 40,
+            "subtitle_size_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "slide_iQBWCV",
+        "slide_4UXzti",
+        "slide_QhRRW4"
+      ],
+      "name": "Fuly Home — Hero Slider",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "loop": true,
+        "show_arrows": true,
+        "show_dots": true,
+        "height_mobile": 460,
+        "height_tablet": 560,
+        "height_desktop": 640,
+        "pad_x_mobile": 16,
+        "pad_x_tablet": 48,
+        "pad_x_desktop": 64,
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "3,400"
+      }
+    },
+    "fuly_reviews_badge_kkHEQw": {
+      "type": "fuly-reviews-badge",
+      "custom_css": [
+        "@media (max-width: 767px) {.fuly-tag-label--reviews {display: flex !important; \/* block-level → permite centrar *\/ width: fit-content !important; \/* se ajusta al texto *\/ max-width: calc(100% - 48px) !important; \/* 24px de aire a cada lado *\/ margin-left: auto !important; margin-right: auto !important; white-space: normal !important; \/* 2 líneas *\/ text-align: center; box-sizing: border-box; }}"
+      ],
+      "name": "Fuly — Badge de reseñas",
+      "settings": {
+        "tagline": "",
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "4.500",
+        "reviews_text": "reseñas verificadas con 5 estrellas ★★★★★",
+        "bg_color": "#ffffff",
+        "badge_bg_color": "#f7cd47",
+        "alignment": "center",
+        "badge_size_mobile": 10,
+        "badge_size_tablet": 16,
+        "badge_size_desktop": 19,
+        "padding_block_mobile": 0,
+        "padding_block_tablet": 32,
+        "padding_block_desktop": 0,
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_products": {
+      "type": "fuly-home-products",
+      "settings": {
+        "show_reviews_badge": false,
+        "reviews_source": "dynamic",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "3,400",
+        "reviews_text": "reseñas verificadas con 5 estrellas ★",
+        "tag_label": "",
+        "heading": "",
+        "collection": "favoritos",
+        "fallback_collection": "",
+        "products_limit": 4,
+        "cta_label": "Ver todos los productos →",
+        "cta_link": "shopify:\/\/collections\/tienda",
+        "grid_cols_mobile": 1,
+        "grid_cols_tablet": 2,
+        "grid_cols_desktop": 4,
+        "grid_gap_mobile": 12,
+        "grid_gap_tablet": 24,
+        "grid_gap_desktop": 24,
+        "card_image_height_mobile": 160,
+        "card_image_height_tablet": 224,
+        "card_image_height_desktop": 224,
+        "card_title_size_mobile": 16,
+        "card_title_size_tablet": 18,
+        "card_title_size_desktop": 18,
+        "card_price_size_mobile": 18,
+        "card_price_size_tablet": 20,
+        "card_price_size_desktop": 20,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 50,
+        "padding_block_desktop": 50,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_how_it_works": {
+      "type": "fuly-home-how-it-works",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "num": "01",
+            "title": "ELIGE TU FULY",
+            "desc": "Boosters, malteadas o drinks para cada momento del día."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "num": "02",
+            "title": "PREPÁRALO EN SEGUNDOS",
+            "desc": "Solo mezcla con agua, leche o tu bebida favorita."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "num": "03",
+            "title": "DISFRUTA LOS RESULTADOS",
+            "desc": "Nutrición funcional que les encanta."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "disabled": true,
+      "settings": {
+        "tag_label": "CÓMO FUNCIONA",
+        "heading": "ASÍ DE FÁCIL",
+        "cols_mobile": 1,
+        "cols_tablet": 3,
+        "cols_desktop": 3,
+        "gap_mobile": 24,
+        "gap_tablet": 24,
+        "gap_desktop": 24,
+        "card_padding_mobile": 32,
+        "card_padding_tablet": 32,
+        "card_padding_desktop": 32,
+        "title_size_mobile": 20,
+        "title_size_tablet": 20,
+        "title_size_desktop": 20,
+        "desc_size_mobile": 16,
+        "desc_size_tablet": 16,
+        "desc_size_desktop": 16,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_marquee": {
+      "type": "fuly-home-marquee",
+      "settings": {
+        "items": "Melena de león|Reishi|Vitaminas A, D y C|Selenio|Zinc|Magnesio|Frutas Naturales\n|HECHOS EN EL FULY LAB",
+        "duration_mobile": 6,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 15,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff",
+        "star_color": "#f7cd47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_science": {
+      "type": "fuly-home-science",
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {
+            "name": "GANODERMA",
+            "benefit": "Hongo adaptógeno que fortalece las defensas naturales."
+          }
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "name": "MELENA DE LEÓN",
+            "benefit": "Hongo nootrópico que apoya la concentración y el desarrollo cognitivo."
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "name": "VITAMINA C",
+            "benefit": "Antioxidante esencial para el sistema inmune y la absorción de hierro."
+          }
+        },
+        "ingredient_4": {
+          "type": "ingredient",
+          "settings": {
+            "name": "MAGNESIO",
+            "benefit": "Mineral clave para el sueño, la relajación y el crecimiento óseo."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3",
+        "ingredient_4"
+      ],
+      "settings": {
+        "tag_label": "NUESTROS INGREDIENTES",
+        "heading": "HECHO CON CIENCIA DELICIOSA EN EL FULY LAB",
+        "cta_label": "CONOCE NUESTROS INGREDIENTES",
+        "cta_link": "shopify:\/\/pages\/nuestros-ingredientes",
+        "cols_mobile": 1,
+        "cols_tablet": 2,
+        "cols_desktop": 2,
+        "gap_mobile": 16,
+        "gap_tablet": 16,
+        "gap_desktop": 16,
+        "card_padding_mobile": 24,
+        "card_padding_tablet": 24,
+        "card_padding_desktop": 24,
+        "name_size_mobile": 18,
+        "name_size_tablet": 18,
+        "name_size_desktop": 18,
+        "benefit_size_mobile": 15,
+        "benefit_size_tablet": 15,
+        "benefit_size_desktop": 15,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 32,
+        "heading_size_desktop": 36,
+        "padding_block_mobile": 32,
+        "padding_block_tablet": 52,
+        "padding_block_desktop": 52,
+        "section_bg_color": "#1a1a1a",
+        "card_bg_color": "#262626",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_benefits": {
+      "type": "fuly-home-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "label": "FUENTE DE VITAMINAS Y MINERALES"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "label": "FORMULADOS POR CIENTÍFICOS"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "label": "SIN AZÚCAR ADICIONADA"
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "label": "SIN INGREDIENTES CONTROVERSIALES"
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "label": "LES ENCANTA EL SABOR"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5"
+      ],
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 51,
+        "padding_block_desktop": 51,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#fffbea",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_testimonials": {
+      "type": "fuly-home-testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "name": "Carolina M.",
+            "city": "Bogotá",
+            "text": "Mis hijos piden su Booster Día Frutos Rojos todas las mañanas. Desde que lo toman, tienen más energía y comen mucho mejor. ¡Gracias Fuly!",
+            "product_tag": "BOOSTER DÍA"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "name": "Andrés P.",
+            "city": "Medellín",
+            "text": "El Booster Noche Uva - Azaí cambió las noches en nuestra casa. Mi hija ahora se duerme tranquila y descansa toda la noche. Un antes y un después.",
+            "product_tag": "BOOSTER NOCHE"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "name": "Laura G.",
+            "city": "Cali",
+            "text": "La malteada de chocolate es increíble. Mi hijo no sabe que está tomando algo nutritivo y eso me encanta. Ciencia deliciosa de verdad.",
+            "product_tag": "MALTEADA"
+          }
+        },
+        "testimonial_4": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "name": "Felipe R.",
+            "city": "Barranquilla",
+            "text": "Como padre investigador, revisé cada ingrediente. Estoy impresionado con la formulación. Fuly hace las cosas bien.",
+            "product_tag": "BOOSTER DÍA"
+          }
+        },
+        "testimonial_5": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "name": "María T.",
+            "city": "Bucaramanga",
+            "text": "El Booster Día Limón Mandarino le ayudó mucho a mi hija con su digestión. Ahora lo pide todos los días después del almuerzo.",
+            "product_tag": "BOOSTER DÍA"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3",
+        "testimonial_4",
+        "testimonial_5"
+      ],
+      "custom_css": [
+        ".fuly-testimonials-arrow {display: none !important;}"
+      ],
+      "settings": {
+        "tag_label": "TESTIMONIOS",
+        "heading": "LO QUE DICEN LAS FAMILIAS",
+        "card_width_mobile": 260,
+        "card_width_tablet": 280,
+        "card_width_desktop": 280,
+        "text_size_mobile": 16,
+        "text_size_tablet": 16,
+        "text_size_desktop": 16,
+        "track_gap_mobile": 16,
+        "track_gap_tablet": 16,
+        "track_gap_desktop": 16,
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "padding_block_mobile": 12,
+        "padding_block_tablet": 20,
+        "padding_block_desktop": 20,
+        "star_color": "#f7cd47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "17823355760edca458": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_4_AgfTLE": {
+          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/app-block-4\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "",
+            "format": "1",
+            "image": "2",
+            "from": "1",
+            "onlinephotos": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "center",
+            "date": false,
+            "star_color": "#ffff00",
+            "size": 15,
+            "back_color": "#ffffff",
+            "text_color": "#000000",
+            "size_text": 14,
+            "max_reviews": 10,
+            "nextButtonText": "Mostrar más reseñas",
+            "productButtonText": "Ver producto",
+            "max_width": 1200,
+            "content_padding": 22,
+            "max_width_image": 24
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_4_AgfTLE"
+      ],
+      "custom_css": [
+        ".tt-rev-it[onclick] {background: #fff !important; border-radius: 20px !important; box-shadow: inset 0 0 0 1px #000, 3px 2px 0 #000 !important; overflow: hidden !important;}",
+        ".tt-rev-it[onclick] * {box-shadow: none !important; border: none !important;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "fuly_home_faq": {
+      "type": "fuly-home-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Tienen registro Invima?",
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.<\/p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Adicionan azúcar a sus productos?",
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.<\/p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.<\/p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo funciona el envío?",
+            "answer": "<ul><li>Hacemos envíos a toda Colombia.<\/li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.<\/li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.<\/li><\/ul>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Qué beneficios tiene la suscripción?",
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "tag_label": "FAQ",
+        "heading": "PREGUNTAS FRECUENTES",
+        "cta_heading": "¿TIENES MÁS PREGUNTAS?",
+        "cta_label": "ESCRÍBENOS",
+        "cta_link": "https:\/\/api.whatsapp.com\/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "question_size_mobile": 16,
+        "question_size_tablet": 16,
+        "question_size_desktop": 16,
+        "answer_size_mobile": 16,
+        "answer_size_tablet": 16,
+        "answer_size_desktop": 16,
+        "gap_mobile": 12,
+        "gap_tablet": 12,
+        "gap_desktop": 12,
+        "summary_padding_mobile": 20,
+        "summary_padding_tablet": 20,
+        "summary_padding_desktop": 20,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 50,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_why": {
+      "type": "fuly-home-why",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Booster_frutos_rojos_fuly_nino.png",
+        "tag_label": "POR QUÉ FULY",
+        "heading": "PARA QUE LOS NIÑOS SEAN MÁS NIÑOS",
+        "body": "Fuly nació para darles a las familias herramientas respaldadas por ciencia. Porque cada niño merece crecer sano, fuerte y feliz.",
+        "cta_label": "CONOCE NUESTRA HISTORIA",
+        "cta_link": "",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "body_size_mobile": 18,
+        "body_size_tablet": 18,
+        "body_size_desktop": 18,
+        "gap_mobile": 32,
+        "gap_tablet": 48,
+        "gap_desktop": 48,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_color": "#1a1a1a",
+        "body_color": "#555555",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_cta": {
+      "type": "fuly-home-cta",
+      "settings": {
+        "heading": "ÚNETE A +4,500 FAMILIAS QUE CONFÍAN EN FULY",
+        "cta_label": "VER PRODUCTOS",
+        "cta_link": "",
+        "bg_color": "#e31b48",
+        "text_color": "#ffffff",
+        "heading_size_mobile": 24,
+        "heading_size_tablet": 28,
+        "heading_size_desktop": 28,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 48,
+        "padding_block_desktop": 48,
+        "button_full_width_mobile": false,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "fuly_home_newsletter": {
+      "type": "fuly-home-newsletter",
+      "settings": {
+        "heading": "ÚNETE AL FULYVERSO",
+        "body": "Descuentos exclusivos, lanzamientos y herramientas para una crianza más fácil.",
+        "badge": "RECIBE 10% EN TU PRIMERA COMPRA",
+        "placeholder": "tu@email.com",
+        "submit_label": "Suscribirme",
+        "success_message": "¡Gracias por suscribirte! 🎉",
+        "bg_color": "#574ddf",
+        "heading_size_mobile": 32,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 40,
+        "body_size_mobile": 16,
+        "body_size_tablet": 16,
+        "body_size_desktop": 16,
+        "input_size_mobile": 14,
+        "input_size_tablet": 14,
+        "input_size_desktop": 14,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 64,
+        "padding_block_desktop": 64,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    }
+  },
+  "order": [
+    "fuly_home_slideshow",
+    "fuly_home_hero",
+    "fuly_home_hero_slider_RrrnBT",
+    "fuly_reviews_badge_kkHEQw",
+    "fuly_home_products",
+    "fuly_home_how_it_works",
+    "fuly_home_marquee",
+    "fuly_home_science",
+    "fuly_home_benefits",
+    "fuly_home_testimonials",
+    "17823355760edca458",
+    "fuly_home_faq",
+    "fuly_home_why",
+    "fuly_home_cta",
+    "fuly_home_newsletter"
+  ]
+}
