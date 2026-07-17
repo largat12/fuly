@@ -40,17 +40,6 @@
           "type": "price",
           "settings": {}
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
         "suscripciones_fuly_kids_subscription_widget_GmiMUr": {
           "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
           "settings": {
@@ -74,6 +63,17 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "collapsible_tab_8hiaHy": {
@@ -154,11 +154,11 @@
         "title",
         "revie_reviews_por_whatsapp_app_block_DweQYg",
         "price",
-        "description",
-        "variant_picker",
         "suscripciones_fuly_kids_subscription_widget_GmiMUr",
         "quantity_selector",
         "buy_buttons",
+        "description",
+        "variant_picker",
         "collapsible_tab_8hiaHy",
         "collapsible_tab_q3Jfxk",
         "collapsible_tab_Rb7Txg",
@@ -220,7 +220,7 @@
         "tag_font_size_mobile": 13,
         "tag_font_size_tablet": 13,
         "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
+        "bg_color": "#fffbea",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
