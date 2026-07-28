@@ -26,6 +26,8 @@
           "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget-plp/019d9283-612c-7442-85be-ea5df9b0babe",
           "settings": {
             "limit": 21,
+            "default_sort": "bestsellers",
+            "show_sort_control": true,
             "button_text_color": "#1a1a1a",
             "text_primary_color": "#1a1a1a",
             "text_discount_color": "#e31b48",
