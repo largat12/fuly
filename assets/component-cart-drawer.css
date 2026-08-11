@@ -672,6 +672,8 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     grid-column: 1;
     width: auto;
     text-align: left;
+    display: block;
+    justify-content: flex-start;
   }
 
   .cart-drawer .cart-items .cart-item__quantity {
