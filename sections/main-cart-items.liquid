@@ -18,70 +18,201 @@
     }
   }
 
-  /* Centrar el precio (Total) vertical y horizontalmente */
-  #shopify-section-{{ section.id }} .cart-item__totals--center {
-    display: table-cell !important;
-    text-align: center !important;
-    vertical-align: middle !important;
-  }
-  #shopify-section-{{ section.id }} .cart-item__totals--center .cart-item__price-wrapper {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center;
-  }
-  #shopify-section-{{ section.id }} .cart-item__totals--center .loading__spinner {
-    top: 50%;
-    left: 50%;
-    right: auto;
-    transform: translate(-50%, -50%);
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  #shopify-section-{{ section.id }} .cart-item__totals--center .price,
-  #shopify-section-{{ section.id }} .cart-item__totals--center .price--end {
-    margin-top: 0 !important;
+  @media screen and (min-width: 750px) {
+    /* Centrar el precio (Total) vertical y horizontalmente */
+    #shopify-section-{{ section.id }} .cart-item__totals--center {
+      display: table-cell !important;
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+    #shopify-section-{{ section.id }} .cart-item__totals--center .cart-item__price-wrapper {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .cart-item__totals--center .loading__spinner {
+      top: 50%;
+      left: 50%;
+      right: auto;
+      transform: translate(-50%, -50%);
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+    #shopify-section-{{ section.id }} .cart-item__totals--center .price,
+    #shopify-section-{{ section.id }} .cart-item__totals--center .price--end {
+      margin-top: 0 !important;
+    }
+
+    /* El encabezado "Total" centrado (override de .cart-items th { text-align:left }) */
+    #shopify-section-{{ section.id }} .cart-items thead th.center {
+      text-align: center !important;
+    }
+
+    /* Corregir el espacio excesivo entre la imagen y el texto del producto:
+       la celda de imagen queda angosta y la de detalles absorbe el ancho sobrante */
+    #shopify-section-{{ section.id }} .cart-items .cart-item td.cart-item__media,
+    #shopify-section-{{ section.id }} .cart-items .cart-item td:first-child {
+      width: 80px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+      white-space: nowrap;
+    }
+    /* La imagen ya no usa el contenedor: se le da tamaño fijo directamente */
+    #shopify-section-{{ section.id }} .cart-item__media .cart-item__image {
+      width: 80px !important;
+      height: 80px !important;
+      object-fit: contain;
+      display: block;
+      padding: 0;
+      border-radius: 12px;
+    }
+    #shopify-section-{{ section.id }} .cart-items .cart-item__details {
+      width: auto !important;
+    }
+    #shopify-section-{{ section.id }} .cart-items thead th:nth-child(1) {
+      width: 110px !important;
+    }
+    #shopify-section-{{ section.id }} .cart-items thead th:nth-child(2) {
+      width: auto !important;
+    }
+    #shopify-section-{{ section.id }} .cart-items thead th {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
   }
 
-  /* El encabezado "Total" centrado (override de .cart-items th { text-align:left }) */
-  #shopify-section-{{ section.id }} .cart-items thead th.center {
-    text-align: center !important;
-  }
-
-  /* Corregir el espacio excesivo entre la imagen y el texto del producto:
-     la celda de imagen queda angosta y la de detalles absorbe el ancho sobrante */
-  #shopify-section-{{ section.id }} .cart-items .cart-item td.cart-item__media,
-  #shopify-section-{{ section.id }} .cart-items .cart-item td:first-child {
-    width: 80px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    white-space: nowrap;
-  }
-  /* La imagen ya no usa el contenedor: se le da tamaño fijo directamente */
-  #shopify-section-{{ section.id }} .cart-item__media .cart-item__image {
-    width: 80px !important;
-    height: 80px !important;
-    object-fit: contain;
-    display: block;
-    padding: 0;
-    border-radius: 12px;
-  }
-  #shopify-section-{{ section.id }} .cart-items .cart-item__details {
-    width: auto !important;
-  }
-  #shopify-section-{{ section.id }} .cart-items thead th:nth-child(1) {
-    width: 110px !important;
-  }
-  #shopify-section-{{ section.id }} .cart-items thead th:nth-child(2) {
-    width: auto !important;
-  }
-  #shopify-section-{{ section.id }} .cart-items thead th {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
   #shopify-section-{{ section.id }} .cart-items cart-remove-button,
   #shopify-section-{{ section.id }} .cart-items .cart-remove-button {
     margin-left: 0 !important;
+  }
+
+  /* === Mobile: mismo diseño de tarjeta que el cart-drawer === */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .cart-items thead {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} table.cart-items {
+      border: none;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item {
+      display: grid;
+      grid-template-columns: 8rem 1fr auto;
+      grid-template-rows: auto auto;
+      column-gap: 0.8rem;
+      row-gap: 0.4rem;
+      align-items: center;
+      background: var(--fuly-white-lab, #fff);
+      border: 3px solid var(--fuly-cartoon-black, #212121);
+      border-radius: 2.2rem;
+      padding: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item:last-child {
+      margin-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item td {
+      background: transparent;
+      border-radius: 0;
+      padding: 0.3rem 0.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item td:first-child {
+      padding-left: 0;
+      width: auto;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item td:last-child {
+      padding-right: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__media {
+      grid-row: 1;
+      grid-column: 1;
+      align-self: start;
+    }
+
+    #shopify-section-{{ section.id }} .cart-item__media .cart-item__image {
+      width: 5.8rem !important;
+      height: 5.8rem !important;
+      object-fit: contain;
+      border-radius: 1.2rem;
+      border: 2px solid rgba(var(--color-foreground), 0.12);
+      background: #fff;
+      padding: 0.6rem;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__details {
+      grid-row: 1;
+      grid-column: 2 / 4;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__details .cart-item__name {
+      font-size: 1.35rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__totals {
+      grid-row: 2;
+      grid-column: 1;
+      width: auto;
+      display: block;
+      text-align: left;
+      justify-content: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__totals .cart-item__price-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__totals .price,
+    #shopify-section-{{ section.id }} .cart-items .cart-item__totals .price--end {
+      font-size: 1.75rem;
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__quantity {
+      grid-row: 2;
+      grid-column: 2 / 4;
+      width: auto;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item__quantity-wrapper {
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item .quantity {
+      width: calc(9.4rem + var(--inputs-border-width, 0) * 2);
+      min-height: 3.2rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item .quantity__button {
+      width: 2.9rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item .quantity__input {
+      font-size: 1.3rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item cart-remove-button .button {
+      min-width: 3.2rem;
+      min-height: 3.2rem;
+    }
+
+    #shopify-section-{{ section.id }} .cart-items .cart-item .icon-remove {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
   }
 {%- endstyle -%}
 
