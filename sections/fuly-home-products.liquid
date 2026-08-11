@@ -104,6 +104,7 @@
             expert: block.settings.functional_benefit,
             category_label: block.settings.category_label,
             price_formatted: block.settings.price_formatted,
+            compare_at_price_formatted: block.settings.compare_at_price_formatted,
             format: block.settings.format,
             image: block.settings.image_filename,
             color: block.settings.color,
@@ -119,6 +120,10 @@
               assign p_image_url = product.featured_image | image_url: width: 600
             endif
             assign p_price_formatted = product.price | money
+            assign p_compare_at_price_formatted = ''
+            if product.compare_at_price > product.price
+              assign p_compare_at_price_formatted = product.compare_at_price | money
+            endif
             assign p_color = product.metafields.custom.color_marca | default: product.metafields.fuly.color
             if p_color == blank
               assign p_title_lower = product.title | downcase
@@ -152,6 +157,7 @@
             talle: p_talle,
             category_label: p_category_label,
             price_formatted: p_price_formatted,
+            compare_at_price_formatted: p_compare_at_price_formatted,
             format: p_format,
             image_url: p_image_url,
             color: p_color,
@@ -642,6 +648,12 @@
           "type": "text",
           "id": "price_formatted",
           "label": "Price (formatted)"
+        },
+        {
+          "type": "text",
+          "id": "compare_at_price_formatted",
+          "label": "Compare-at price (formatted)",
+          "info": "Opcional. Si se llena, se muestra tachado junto al precio."
         },
         {
           "type": "text",

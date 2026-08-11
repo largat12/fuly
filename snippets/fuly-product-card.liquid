@@ -6,6 +6,7 @@
     - talle (string)             ← talle/size (metafield custom.talle)
     - category_label (string)
     - price_formatted (string)
+    - compare_at_price_formatted (string, optional) ← precio tachado si el producto está en descuento
     - format (string)
     - image (string, asset filename)
     - image_url (string, absolute/Shopify CDN URL)
@@ -69,7 +70,12 @@
     {% if format != blank %}<p class="fuly-product-card__format">{{ format }}</p>{% endif %}
     {% if talle != blank %}<p class="fuly-product-card__talle">Talle: {{ talle }}</p>{% endif %}
     <div class="fuly-product-card__footer">
-      <span class="fuly-product-card__price">{{ price_formatted }}</span>
+      <span class="fuly-product-card__price-group">
+        {% if compare_at_price_formatted != blank %}
+          <s class="fuly-product-card__price--compare">{{ compare_at_price_formatted }}</s>
+        {% endif %}
+        <span class="fuly-product-card__price">{{ price_formatted }}</span>
+      </span>
       <a href="{{ card_href }}" class="fuly-product-card__btn" aria-label="Ver {{ name | escape }}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="9" cy="21" r="1"></circle>

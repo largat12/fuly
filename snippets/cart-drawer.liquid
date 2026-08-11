@@ -105,8 +105,12 @@
 
   .fuly-cart-discount {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.8rem;
     padding: 1.2rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: var(--fuly-white-lab, #fff);
   }
   .fuly-cart-discount__input {
     flex: 1 1 auto;
@@ -127,6 +131,22 @@
     font-size: 1.4rem;
     padding: 1rem 1.8rem;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 749px) {
+    .fuly-cart-discount {
+      flex-wrap: nowrap;
+      gap: 0.6rem;
+      padding: 1rem 1.2rem;
+    }
+    .fuly-cart-discount__input {
+      padding: 0.9rem 1.1rem;
+      font-size: 1.2rem;
+    }
+    .fuly-cart-discount__btn {
+      padding: 0.9rem 1.3rem;
+      font-size: 1.2rem;
+    }
   }
 
   /* Ocultar la descripción (variantes/propiedades) en cada item del carrito */

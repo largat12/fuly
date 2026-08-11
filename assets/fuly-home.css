@@ -626,6 +626,13 @@
   }
 }
 
+.fuly-product-card__price-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 .fuly-product-card__price {
   font-family: 'Arial Black', Arial, sans-serif;
   font-weight: 700;
@@ -635,9 +642,22 @@
   white-space: nowrap;
 }
 
+.fuly-product-card__price--compare {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: hsl(var(--cartoon-black) / 0.45);
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
 @media (min-width: 768px) {
   .fuly-product-card__price {
     font-size: 20px;
+  }
+
+  .fuly-product-card__price--compare {
+    font-size: 16px;
   }
 }
 
