@@ -36,6 +36,13 @@
             "utm": "2"
           }
         },
+        "text_eTzBWY": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Proteína de huevo entero y almendras</strong> + 18 vitaminas y minerales para apoyar el crecimiento normal y sistema inmune de tus hijos. La proteína más completa, en una malteada que sí se quieren tomar 🍫",
+            "text_style": "subtitle"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -72,8 +79,16 @@
             "show_gift_card_recipient": false
           }
         },
+        "text_HUjPyN": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>Nota:</strong> Estamos renovando nuestra imagen, así que tu Fuly puede llegar con empaque nuevo o anterior. Pero tranqui, dentro sigue siendo la misma ciencia deliciosa de siempre✨",
+            "text_style": "subtitle"
+          }
+        },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "collapsible_tab_8hiaHy": {
@@ -153,11 +168,13 @@
         "vendor",
         "title",
         "revie_reviews_por_whatsapp_app_block_DweQYg",
+        "text_eTzBWY",
         "price",
         "variant_picker",
         "suscripciones_fuly_kids_subscription_widget_GmiMUr",
         "quantity_selector",
         "buy_buttons",
+        "text_HUjPyN",
         "description",
         "collapsible_tab_8hiaHy",
         "collapsible_tab_q3Jfxk",

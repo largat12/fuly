@@ -1,0 +1,539 @@
+{% doc %}
+  @prompt
+    Necesito una sección tipo multicolumna en donde pueda poner 3 videos, que también este optimizado para movil, y pueda configurar cuantos videos aparecen en la grilla, Cada video debe medir lo que mide un video de redes sociales es decir 1080x1920px, se le está cambiando el tamaño al video cargado originalmente en shopify. Como si fuera más grande que el espacio pero en realidad tiene el tamaño de redes sociales. Además está dejando mucho espacio abajo como si fuera un bug
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-grid-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-video-grid__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-video-grid__header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.heading_alignment }};
+    margin-bottom: {{ block.settings.heading_spacing }}px;
+  }
+
+  .ai-video-grid__title-{{ ai_gen_id }} {
+    margin: 0 0 12px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+  }
+
+  .ai-video-grid__description-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.description_size }}px;
+  }
+
+  .ai-video-grid__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-video-grid__item-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    border-radius: {{ block.settings.video_border_radius }}px;
+    overflow: hidden;
+    background-color: {{ block.settings.video_background }};
+  }
+
+  .ai-video-grid__video-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+  }
+
+  .ai-video-grid__video-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .ai-video-grid__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+
+  .ai-video-grid__placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .ai-video-grid__caption-{{ ai_gen_id }} {
+    padding: 16px;
+    text-align: {{ block.settings.caption_alignment }};
+  }
+
+  .ai-video-grid__caption-title-{{ ai_gen_id }} {
+    margin: 0 0 8px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.caption_title_size }}px;
+    font-weight: 600;
+  }
+
+  .ai-video-grid__caption-text-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.caption_text_size }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-video-grid__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+      gap: {{ block.settings.grid_gap_mobile }}px;
+    }
+
+    .ai-video-grid__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-video-grid__description-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.description_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<video-grid-{{ ai_gen_id }} class="ai-video-grid-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-video-grid__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank or block.settings.description != blank %}
+      <div class="ai-video-grid__header-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-video-grid__title-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <div class="ai-video-grid__description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-video-grid__grid-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign video_key = 'video_' | append: i
+          assign title_key = 'video_' | append: i | append: '_title'
+          assign caption_key = 'video_' | append: i | append: '_caption'
+          assign video = block.settings[video_key]
+          assign title = block.settings[title_key]
+          assign caption = block.settings[caption_key]
+        %}
+
+        <div class="ai-video-grid__item-{{ ai_gen_id }}">
+          <div class="ai-video-grid__video-wrapper-{{ ai_gen_id }}">
+            {% if video %}
+              {{
+                video
+                | video_tag:
+                  image_size: '1100x',
+                  autoplay: block.settings.autoplay,
+                  loop: block.settings.loop,
+                  controls: block.settings.show_controls,
+                  muted: block.settings.muted,
+                  class: 'ai-video-grid__video-' | append: ai_gen_id
+              }}
+            {% else %}
+              <div class="ai-video-grid__placeholder-{{ ai_gen_id }}">
+                {{ 'collection-apparel-1' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if title != blank or caption != blank %}
+            <div class="ai-video-grid__caption-{{ ai_gen_id }}">
+              {% if title != blank %}
+                <h3 class="ai-video-grid__caption-title-{{ ai_gen_id }}">{{ title }}</h3>
+              {% endif %}
+              {% if caption != blank %}
+                <div class="ai-video-grid__caption-text-{{ ai_gen_id }}">{{ caption }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</video-grid-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class VideoGrid{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.videos = this.querySelectorAll('.ai-video-grid__video-{{ ai_gen_id }}');
+        this.setupVideoObserver();
+      }
+
+      setupVideoObserver() {
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                  if (video.paused && video.hasAttribute('autoplay')) {
+                    video.play().catch(() => {});
+                  }
+                } else {
+                  if (!video.paused) {
+                    video.pause();
+                  }
+                }
+              });
+            },
+            { threshold: 0.5 }
+          );
+
+          this.videos.forEach((video) => {
+            observer.observe(video);
+          });
+        }
+      }
+    }
+
+    customElements.define('video-grid-{{ ai_gen_id }}', VideoGrid{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Encabezado"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Título",
+      "default": "Nuestros videos"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descripción"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alineación del encabezado",
+      "options": [
+        {
+          "value": "left",
+          "label": "Izquierda"
+        },
+        {
+          "value": "center",
+          "label": "Centro"
+        },
+        {
+          "value": "right",
+          "label": "Derecha"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Tamaño del título",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Tamaño de la descripción",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Espacio debajo del encabezado",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Diseño de la grilla"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columnas en escritorio",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columnas en móvil",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Espacio entre videos (escritorio)",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "Espacio entre videos (móvil)",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Ancho máximo del contenedor",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Ancho en escritorio",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Espaciado vertical",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Video 1"
+    },
+    {
+      "type": "video",
+      "id": "video_1",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "video_1_title",
+      "label": "Título del video"
+    },
+    {
+      "type": "textarea",
+      "id": "video_1_caption",
+      "label": "Descripción del video"
+    },
+    {
+      "type": "header",
+      "content": "Video 2"
+    },
+    {
+      "type": "video",
+      "id": "video_2",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "video_2_title",
+      "label": "Título del video"
+    },
+    {
+      "type": "textarea",
+      "id": "video_2_caption",
+      "label": "Descripción del video"
+    },
+    {
+      "type": "header",
+      "content": "Video 3"
+    },
+    {
+      "type": "video",
+      "id": "video_3",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "video_3_title",
+      "label": "Título del video"
+    },
+    {
+      "type": "textarea",
+      "id": "video_3_caption",
+      "label": "Descripción del video"
+    },
+    {
+      "type": "header",
+      "content": "Configuración de videos"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Reproducción automática",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Reproducir en bucle",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Silenciar videos",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Mostrar controles",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Estilo de videos"
+    },
+    {
+      "type": "range",
+      "id": "video_border_radius",
+      "label": "Radio de borde",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "video_background",
+      "label": "Color de fondo",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "header",
+      "content": "Estilo de subtítulos"
+    },
+    {
+      "type": "select",
+      "id": "caption_alignment",
+      "label": "Alineación de subtítulos",
+      "options": [
+        {
+          "value": "left",
+          "label": "Izquierda"
+        },
+        {
+          "value": "center",
+          "label": "Centro"
+        },
+        {
+          "value": "right",
+          "label": "Derecha"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "caption_title_size",
+      "label": "Tamaño del título",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "caption_text_size",
+      "label": "Tamaño del texto",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color de títulos",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de texto",
+      "default": "#1a1a1a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video grid"
+    }
+  ]
+}
+{% endschema %}

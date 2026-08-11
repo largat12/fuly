@@ -1,0 +1,311 @@
+{%- comment -%}
+  Sección: Videos en columnas (multicolumna)
+  - Hasta 3 (o más) videos en columnas
+  - Cada video puede subirse directo a Shopify o pegarse un link de YouTube
+  - En móvil se puede elegir cuántos videos por fila (1 o 2)
+{%- endcomment -%}
+
+{%- liquid
+  assign cols_desktop = section.settings.columns_desktop
+  assign cols_mobile = section.settings.columns_mobile
+  assign gap = section.settings.gap
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .vc-wrapper {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .vc-title {
+    text-align: {{ section.settings.title_alignment }};
+    margin: 0 0 24px;
+  }
+  #shopify-section-{{ section.id }} .vc-grid {
+    display: grid;
+    grid-template-columns: repeat({{ cols_mobile }}, minmax(0, 1fr));
+    gap: {{ gap }}px;
+  }
+  #shopify-section-{{ section.id }} .vc-item {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ section.settings.aspect_ratio }};
+    overflow: hidden;
+    border-radius: {{ section.settings.corner_radius }}px;
+    background: #000;
+  }
+  #shopify-section-{{ section.id }} .vc-item iframe,
+  #shopify-section-{{ section.id }} .vc-item video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+  }
+  #shopify-section-{{ section.id }} .vc-caption {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  @media (min-width: 750px) {
+    #shopify-section-{{ section.id }} .vc-grid {
+      grid-template-columns: repeat({{ cols_desktop }}, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<div class="vc-wrapper page-width">
+  {%- if section.settings.title != blank -%}
+    <h2 class="vc-title">{{ section.settings.title }}</h2>
+  {%- endif -%}
+
+  <div class="vc-grid">
+    {%- for block in section.blocks -%}
+      <div class="vc-block" {{ block.shopify_attributes }}>
+        <div class="vc-item">
+          {%- case block.settings.video_type -%}
+
+            {%- when 'shopify' -%}
+              {%- if block.settings.native_video != blank -%}
+                {{
+                  block.settings.native_video
+                  | video_tag:
+                      image_size: '800x',
+                      autoplay: section.settings.autoplay,
+                      loop: section.settings.loop,
+                      muted: section.settings.mute,
+                      controls: section.settings.show_controls,
+                      playsinline: true
+                }}
+              {%- else -%}
+                {{ 'video' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+
+            {%- when 'youtube' -%}
+              {%- liquid
+                assign yt_url = block.settings.youtube_url
+                assign yt_id = ''
+                if yt_url contains 'youtu.be/'
+                  assign yt_id = yt_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first
+                elsif yt_url contains 'watch?v='
+                  assign yt_id = yt_url | split: 'watch?v=' | last | split: '&' | first
+                elsif yt_url contains '/embed/'
+                  assign yt_id = yt_url | split: '/embed/' | last | split: '?' | first
+                elsif yt_url contains '/shorts/'
+                  assign yt_id = yt_url | split: '/shorts/' | last | split: '?' | first
+                endif
+
+                assign yt_params = 'rel=0&playsinline=1'
+                if section.settings.autoplay
+                  assign yt_params = yt_params | append: '&autoplay=1&mute=1'
+                endif
+                if section.settings.mute
+                  assign yt_params = yt_params | append: '&mute=1'
+                endif
+                if section.settings.loop and yt_id != blank
+                  assign yt_params = yt_params | append: '&loop=1&playlist=' | append: yt_id
+                endif
+                unless section.settings.show_controls
+                  assign yt_params = yt_params | append: '&controls=0'
+                endunless
+              -%}
+              {%- if yt_id != blank -%}
+                <iframe
+                  src="https://www.youtube.com/embed/{{ yt_id }}?{{ yt_params }}"
+                  title="{{ block.settings.caption | default: 'YouTube video' | escape }}"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              {%- else -%}
+                {{ 'video' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+
+          {%- endcase -%}
+        </div>
+
+        {%- if block.settings.caption != blank -%}
+          <div class="vc-caption">{{ block.settings.caption }}</div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Videos en columnas",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la sección",
+      "default": "Nuestros videos"
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Alineación del título",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Derecha" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Diseño de columnas"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Columnas en computador",
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Videos por fila en móvil",
+      "options": [
+        { "value": "1", "label": "1 por fila" },
+        { "value": "2", "label": "2 por fila" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Espacio entre videos",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Formato del video",
+      "options": [
+        { "value": "9 / 16", "label": "Vertical (9:16 - Reels/Shorts)" },
+        { "value": "1 / 1", "label": "Cuadrado (1:1)" },
+        { "value": "4 / 5", "label": "Retrato (4:5)" },
+        { "value": "16 / 9", "label": "Horizontal (16:9)" }
+      ],
+      "default": "9 / 16"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Bordes redondeados",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Reproducción"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Reproducir automáticamente (se silencia por defecto)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Repetir en bucle",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "mute",
+      "label": "Silenciar",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Mostrar controles",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Espaciado de la sección"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espacio superior",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Espacio inferior",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "Origen del video",
+          "options": [
+            { "value": "shopify", "label": "Subido a Shopify" },
+            { "value": "youtube", "label": "Link de YouTube" }
+          ],
+          "default": "shopify"
+        },
+        {
+          "type": "video",
+          "id": "native_video",
+          "label": "Video de Shopify"
+        },
+        {
+          "type": "text",
+          "id": "youtube_url",
+          "label": "Link de YouTube",
+          "info": "Pega la URL completa (ej: https://www.youtube.com/watch?v=... o https://youtu.be/...)"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Texto debajo del video (opcional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Videos en columnas",
+      "blocks": [
+        { "type": "video" },
+        { "type": "video" },
+        { "type": "video" }
+      ]
+    }
+  ]
+}
+{% endschema %}
