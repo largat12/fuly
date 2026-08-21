@@ -42,6 +42,17 @@
     object-fit: cover;
     border: 0;
   }
+  #shopify-section-{{ section.id }} .vc-empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 12px;
+  }
   #shopify-section-{{ section.id }} .vc-caption {
     text-align: center;
     margin-top: 10px;
@@ -78,7 +89,7 @@
                       playsinline: true
                 }}
               {%- else -%}
-                {{ 'video' | placeholder_svg_tag: 'placeholder-svg' }}
+                <div class="vc-empty">Selecciona o sube un video de Shopify</div>
               {%- endif -%}
 
             {%- when 'youtube' -%}
@@ -118,7 +129,7 @@
                   loading="lazy"
                 ></iframe>
               {%- else -%}
-                {{ 'video' | placeholder_svg_tag: 'placeholder-svg' }}
+                <div class="vc-empty">Pega el link de YouTube</div>
               {%- endif -%}
 
           {%- endcase -%}
