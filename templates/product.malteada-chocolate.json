@@ -30,6 +30,7 @@
             "star_color": "#f7cd47",
             "text_color": "#292929",
             "star_text_2": "reseñas",
+            "star_text_singular": "reseña",
             "size": 25,
             "showcero": "2",
             "format": "1",
@@ -280,6 +281,69 @@
         "padding_bottom": 0
       }
     },
+    "video_fuly_columnas_tCzFfL": {
+      "type": "Video-Fuly-columnas",
+      "blocks": {
+        "video_zqdknt": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/VIDEO PAUTA 01.mov",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_wXgNLj": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Principal_3_2 (1).mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_hHG6E6": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Malteada sachet v pauta.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_bnYPFK": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_zqdknt",
+        "video_wXgNLj",
+        "video_hHG6E6",
+        "video_bnYPFK"
+      ],
+      "name": "Videos en columnas",
+      "settings": {
+        "title": "",
+        "title_alignment": "center",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "gap": 16,
+        "aspect_ratio": "9 / 16",
+        "corner_radius": 12,
+        "autoplay": false,
+        "loop": false,
+        "mute": false,
+        "show_controls": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "1746798531837b132f": {
       "type": "apps",
       "blocks": {
@@ -305,7 +369,26 @@
             "productButtonText": "Ver producto",
             "max_width": 1200,
             "content_padding": 22,
-            "max_width_image": 24
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25d366",
+            "label_wall_title": "Míralo en casas reales"
           }
         }
       },
@@ -403,6 +486,7 @@
     "main",
     "fuly_home_benefits_E7mN7Y",
     "multicolumn_Q3NYhY",
+    "video_fuly_columnas_tCzFfL",
     "1746798531837b132f",
     "related-products",
     "multicolumn_Kef9Yn"
