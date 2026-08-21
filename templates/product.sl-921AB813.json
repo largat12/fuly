@@ -29,6 +29,7 @@
             "star_color": "#f7cd47",
             "text_color": "#432d14",
             "star_text_2": "testimonios",
+            "star_text_singular": "reseña",
             "size": 26,
             "showcero": "2",
             "format": "1",
@@ -272,12 +273,29 @@
             "caption": ""
           }
         },
+        "video_rFUUMA": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/video_02_4.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
         "video_pCxfgf": {
           "type": "video",
-          "disabled": true,
           "settings": {
             "video_type": "shopify",
             "native_video": "shopify://files/videos/Immuny Booster AD.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_BfU6Vf": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/main.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -285,14 +303,16 @@
       },
       "block_order": [
         "video_tY9e6a",
-        "video_pCxfgf"
+        "video_rFUUMA",
+        "video_pCxfgf",
+        "video_BfU6Vf"
       ],
       "name": "Videos en columnas",
       "settings": {
         "title": "",
         "title_alignment": "center",
         "columns_desktop": 4,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "gap": 16,
         "aspect_ratio": "9 / 16",
         "corner_radius": 12,
@@ -329,7 +349,26 @@
             "productButtonText": "Ver producto",
             "max_width": 1200,
             "content_padding": 22,
-            "max_width_image": 24
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25d366",
+            "label_wall_title": "Míralo en casas reales"
           }
         }
       },
