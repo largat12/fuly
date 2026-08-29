@@ -530,6 +530,70 @@
         "body_font_picker": "assistant_n4"
       }
     },
+    "video_fuly_columnas_LM4Xwi": {
+      "type": "Video-Fuly-columnas",
+      "blocks": {
+        "video_YDdhxF": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/VIDEO PAUTA 01.mov",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_gW6q8j": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Principal_3_2 (1).mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_69bGAB": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Malteada sachet v pauta.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_JTXe8n": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_YDdhxF",
+        "video_gW6q8j",
+        "video_69bGAB",
+        "video_JTXe8n"
+      ],
+      "disabled": true,
+      "name": "Videos en columnas",
+      "settings": {
+        "title": "",
+        "title_alignment": "center",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "gap": 16,
+        "aspect_ratio": "9 / 16",
+        "corner_radius": 12,
+        "autoplay": false,
+        "loop": false,
+        "mute": false,
+        "show_controls": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "fuly_home_testimonials": {
       "type": "fuly-home-testimonials",
       "blocks": {
@@ -830,69 +894,6 @@
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
-      }
-    },
-    "video_fuly_columnas_LM4Xwi": {
-      "type": "Video-Fuly-columnas",
-      "blocks": {
-        "video_YDdhxF": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/VIDEO PAUTA 01.mov",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_gW6q8j": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Principal_3_2 (1).mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_69bGAB": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Malteada sachet v pauta.mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_JTXe8n": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        }
-      },
-      "block_order": [
-        "video_YDdhxF",
-        "video_gW6q8j",
-        "video_69bGAB",
-        "video_JTXe8n"
-      ],
-      "name": "Videos en columnas",
-      "settings": {
-        "title": "",
-        "title_alignment": "center",
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "gap": 16,
-        "aspect_ratio": "9 / 16",
-        "corner_radius": 12,
-        "autoplay": false,
-        "loop": false,
-        "mute": false,
-        "show_controls": true,
-        "padding_top": 40,
-        "padding_bottom": 40
       }
     }
   },
