@@ -29,6 +29,7 @@
             "star_color": "#f7cd47",
             "text_color": "#292929",
             "star_text_2": "reseñas",
+            "star_text_singular": "reseña",
             "size": 25,
             "showcero": "2",
             "format": "1",
@@ -52,6 +53,7 @@
         },
         "suscripciones_fuly_kids_subscription_widget_UpDErE": {
           "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
+          "disabled": true,
           "settings": {
             "show_always": false,
             "text_primary_color": "",
@@ -337,7 +339,26 @@
             "productButtonText": "Ver producto",
             "max_width": 1200,
             "content_padding": 22,
-            "max_width_image": 24
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25d366",
+            "label_wall_title": "Míralo en casas reales"
           }
         }
       },
