@@ -101,8 +101,45 @@
     "fuly_home_hero_slider_RrrnBT": {
       "type": "fuly-home-hero-slider",
       "blocks": {
+        "slide_Dj6Bxg": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/BannerLiquidacion1.svg",
+            "image_mobile": "shopify://shop_images/BannerLiquidacionMovil1.svg",
+            "slide_link": "https://fulykids.com/collections/ofertas",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "show_badge": false,
+            "badge_text": "",
+            "reviews_text": "",
+            "title": "",
+            "subtitle": "",
+            "heading_color": "#1a1a1a",
+            "subtitle_color": "#333333",
+            "badge_bg_color": "#f7cd47",
+            "show_primary_button": false,
+            "primary_label": "COMPRAR AHORA",
+            "primary_link": "",
+            "show_secondary_button": false,
+            "secondary_label": "VER PRODUCTOS",
+            "secondary_link": "",
+            "align_desktop": "flex-start",
+            "vertical_desktop": "center",
+            "text_align_desktop": "left",
+            "content_max_width_desktop": 50,
+            "title_size_desktop": 72,
+            "subtitle_size_desktop": 18,
+            "align_mobile": "flex-start",
+            "vertical_mobile": "flex-end",
+            "text_align_mobile": "left",
+            "content_max_width_mobile": 90,
+            "title_size_mobile": 40,
+            "subtitle_size_mobile": 16
+          }
+        },
         "slide_iQBWCV": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/1Reducido.png",
             "image_mobile": "shopify://shop_images/1_bd234bb6-7d09-4da5-97ed-41dcf82a6c19.png",
@@ -139,6 +176,7 @@
         },
         "slide_4UXzti": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/3Reducido.png",
             "image_mobile": "shopify://shop_images/2_d8cb1c57-865e-4b22-86b5-e61da71563bc.png",
@@ -175,6 +213,7 @@
         },
         "slide_QhRRW4": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/4Reducido.png",
             "image_mobile": "shopify://shop_images/3_16552196-0e48-4a55-996c-0af81827dd12.png",
@@ -211,6 +250,7 @@
         }
       },
       "block_order": [
+        "slide_Dj6Bxg",
         "slide_iQBWCV",
         "slide_4UXzti",
         "slide_QhRRW4"
