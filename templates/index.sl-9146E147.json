@@ -67,7 +67,7 @@
         "subtitle": "Alimentos y bebidas con ingredientes respaldados por la ciencia y aprobados por los niños.",
         "show_primary_button": true,
         "primary_label": "COMPRAR AHORA",
-        "primary_link": "shopify:\/\/collections\/tienda",
+        "primary_link": "shopify://collections/tienda",
         "show_secondary_button": false,
         "secondary_label": "",
         "secondary_link": "",
@@ -101,89 +101,17 @@
     "fuly_home_hero_slider_RrrnBT": {
       "type": "fuly-home-hero-slider",
       "blocks": {
-        "slide_iQBWCV": {
+        "slide_FqYq9r": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1Reducido.png",
-            "image_mobile": "shopify:\/\/shop_images\/1_bd234bb6-7d09-4da5-97ed-41dcf82a6c19.png",
-            "slide_link": "shopify:\/\/products\/malteada-de-chocolate",
+            "image": "shopify://shop_images/Bannerkitdefensasdrink2.svg",
+            "image_mobile": "shopify://shop_images/BannerKitdefensasdrink.svg",
+            "slide_link": "https://fulykids.com/products/kit-defensas",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "show_badge": false,
             "badge_text": "",
-            "reviews_text": "reseñas verificadas ⭐",
-            "title": "",
-            "subtitle": "",
-            "heading_color": "#1a1a1a",
-            "subtitle_color": "#333333",
-            "badge_bg_color": "#f7cd47",
-            "show_primary_button": false,
-            "primary_label": "COMPRAR AHORA",
-            "primary_link": "",
-            "show_secondary_button": false,
-            "secondary_label": "VER PRODUCTOS",
-            "secondary_link": "",
-            "align_desktop": "flex-start",
-            "vertical_desktop": "center",
-            "text_align_desktop": "left",
-            "content_max_width_desktop": 50,
-            "title_size_desktop": 72,
-            "subtitle_size_desktop": 18,
-            "align_mobile": "flex-start",
-            "vertical_mobile": "flex-end",
-            "text_align_mobile": "left",
-            "content_max_width_mobile": 90,
-            "title_size_mobile": 40,
-            "subtitle_size_mobile": 16
-          }
-        },
-        "slide_4UXzti": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/3Reducido.png",
-            "image_mobile": "shopify:\/\/shop_images\/2_d8cb1c57-865e-4b22-86b5-e61da71563bc.png",
-            "slide_link": "shopify:\/\/products\/malteada-de-chocolate",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "show_badge": false,
-            "badge_text": "",
-            "reviews_text": "reseñas verificadas ⭐",
-            "title": "",
-            "subtitle": "",
-            "heading_color": "#1a1a1a",
-            "subtitle_color": "#333333",
-            "badge_bg_color": "#f7cd47",
-            "show_primary_button": false,
-            "primary_label": "COMPRAR AHORA",
-            "primary_link": "",
-            "show_secondary_button": false,
-            "secondary_label": "VER PRODUCTOS",
-            "secondary_link": "",
-            "align_desktop": "flex-start",
-            "vertical_desktop": "center",
-            "text_align_desktop": "left",
-            "content_max_width_desktop": 50,
-            "title_size_desktop": 72,
-            "subtitle_size_desktop": 18,
-            "align_mobile": "flex-start",
-            "vertical_mobile": "flex-end",
-            "text_align_mobile": "left",
-            "content_max_width_mobile": 90,
-            "title_size_mobile": 40,
-            "subtitle_size_mobile": 16
-          }
-        },
-        "slide_QhRRW4": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/4Reducido.png",
-            "image_mobile": "shopify:\/\/shop_images\/3_16552196-0e48-4a55-996c-0af81827dd12.png",
-            "slide_link": "shopify:\/\/products\/malteada-de-chocolate",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "show_badge": false,
-            "badge_text": "",
-            "reviews_text": "reseñas verificadas ⭐",
+            "reviews_text": "",
             "title": "",
             "subtitle": "",
             "heading_color": "#1a1a1a",
@@ -211,9 +139,7 @@
         }
       },
       "block_order": [
-        "slide_iQBWCV",
-        "slide_4UXzti",
-        "slide_QhRRW4"
+        "slide_FqYq9r"
       ],
       "name": "Fuly Home — Hero Slider",
       "settings": {
@@ -239,7 +165,7 @@
     "fuly_reviews_badge_kkHEQw": {
       "type": "fuly-reviews-badge",
       "custom_css": [
-        "@media (max-width: 767px) {.fuly-tag-label--reviews {display: flex !important; \/* block-level → permite centrar *\/ width: fit-content !important; \/* se ajusta al texto *\/ max-width: calc(100% - 48px) !important; \/* 24px de aire a cada lado *\/ margin-left: auto !important; margin-right: auto !important; white-space: normal !important; \/* 2 líneas *\/ text-align: center; box-sizing: border-box; }}"
+        "@media (max-width: 767px) {.fuly-tag-label--reviews {display: flex !important; /* block-level → permite centrar */ width: fit-content !important; /* se ajusta al texto */ max-width: calc(100% - 48px) !important; /* 24px de aire a cada lado */ margin-left: auto !important; margin-right: auto !important; white-space: normal !important; /* 2 líneas */ text-align: center; box-sizing: border-box; }}"
       ],
       "name": "Fuly — Badge de reseñas",
       "settings": {
@@ -281,7 +207,7 @@
         "fallback_collection": "",
         "products_limit": 4,
         "cta_label": "Ver todos los productos →",
-        "cta_link": "shopify:\/\/collections\/tienda",
+        "cta_link": "shopify://collections/tienda",
         "grid_cols_mobile": 1,
         "grid_cols_tablet": 2,
         "grid_cols_desktop": 4,
@@ -440,7 +366,7 @@
         "tag_label": "NUESTROS INGREDIENTES",
         "heading": "HECHO CON CIENCIA DELICIOSA EN EL FULY LAB",
         "cta_label": "CONOCE NUESTROS INGREDIENTES",
-        "cta_link": "shopify:\/\/pages\/nuestros-ingredientes",
+        "cta_link": "shopify://pages/nuestros-ingredientes",
         "cols_mobile": 1,
         "cols_tablet": 2,
         "cols_desktop": 2,
@@ -623,7 +549,7 @@
       "type": "apps",
       "blocks": {
         "revie_reviews_por_whatsapp_app_block_4_AgfTLE": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/app-block-4\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "",
             "format": "1",
@@ -685,35 +611,35 @@
           "type": "faq",
           "settings": {
             "question": "¿Tienen registro Invima?",
-            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.<\/p>"
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
             "question": "¿Adicionan azúcar a sus productos?",
-            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.<\/p>"
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
             "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
-            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.<\/p>"
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
             "question": "¿Cómo funciona el envío?",
-            "answer": "<ul><li>Hacemos envíos a toda Colombia.<\/li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.<\/li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.<\/li><\/ul>"
+            "answer": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>"
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
             "question": "¿Qué beneficios tiene la suscripción?",
-            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.<\/p>"
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.</p>"
           }
         }
       },
@@ -729,7 +655,7 @@
         "heading": "PREGUNTAS FRECUENTES",
         "cta_heading": "¿TIENES MÁS PREGUNTAS?",
         "cta_label": "ESCRÍBENOS",
-        "cta_link": "https:\/\/api.whatsapp.com\/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
+        "cta_link": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
         "heading_size_mobile": 28,
         "heading_size_tablet": 36,
         "heading_size_desktop": 44,
@@ -760,63 +686,63 @@
         "logo_zfNKwJ": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/621419425_17878171149465700_8677330066643019938_n.jpg",
+            "logo": "shopify://shop_images/621419425_17878171149465700_8677330066643019938_n.jpg",
             "name": "FiveMonkeys"
           }
         },
         "logo_xEpnHp": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/416118094_285759954093963_7621578547686018966_n.jpg",
+            "logo": "shopify://shop_images/416118094_285759954093963_7621578547686018966_n.jpg",
             "name": "Pasamano"
           }
         },
         "logo_4FL3eV": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/images.png",
+            "logo": "shopify://shop_images/images.png",
             "name": "Cocofit"
           }
         },
         "logo_AkQQxD": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/logo_pasteur_drogueria_2018-01-scaled.jpg",
+            "logo": "shopify://shop_images/logo_pasteur_drogueria_2018-01-scaled.jpg",
             "name": "Farmacias Pasteur"
           }
         },
         "logo_RrLfDn": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/logo-funat.webp",
+            "logo": "shopify://shop_images/logo-funat.webp",
             "name": "Funat"
           }
         },
         "logo_8MMXNa": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/images_5.jpg",
+            "logo": "shopify://shop_images/images_5.jpg",
             "name": "Sanos Hábitos"
           }
         },
         "logo_YXDLnN": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/694064798_17879984526583109_7416605217620761269_n.jpg",
+            "logo": "shopify://shop_images/694064798_17879984526583109_7416605217620761269_n.jpg",
             "name": "Sernova"
           }
         },
         "logo_ppgqKp": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/LOGO-RAPPI.png",
+            "logo": "shopify://shop_images/LOGO-RAPPI.png",
             "name": "Rappi y RappiTurbo"
           }
         },
         "logo_3f8XCh": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/images_4.jpg",
+            "logo": "shopify://shop_images/images_4.jpg",
             "name": "Vita Integral"
           }
         }
@@ -837,7 +763,7 @@
         "title": "¿Dónde comprar?",
         "text": "",
         "text_align": "center",
-        "link": "shopify:\/\/pages\/distribuidores-fuly",
+        "link": "shopify://pages/distribuidores-fuly",
         "button_label": "Conoce tu tienda más cercana",
         "button_position": "top",
         "link_logos": true,
@@ -882,7 +808,7 @@
     "fuly_home_why": {
       "type": "fuly-home-why",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Booster_frutos_rojos_fuly_nino.png",
+        "image": "shopify://shop_images/Booster_frutos_rojos_fuly_nino.png",
         "tag_label": "POR QUÉ FULY",
         "heading": "PARA QUE LOS NIÑOS SEAN MÁS NIÑOS",
         "body": "Fuly nació para darles a las familias herramientas respaldadas por ciencia. Porque cada niño merece crecer sano, fuerte y feliz.",
