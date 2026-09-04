@@ -179,15 +179,28 @@
                   {%- endif -%}
                   <span class="fuly-product-card__price">{{ p_price_formatted }}</span>
                 </span>
-                <a href="{{ product.url }}" class="fuly-product-card__btn" aria-label="Ver {{ product.title | escape }}">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                  <span class="fuly-product-card__btn-text-wide">{{ section.settings.add_btn_label }}</span>
-                  <span class="fuly-product-card__btn-text-narrow">+</span>
-                </a>
+                <button
+                  type="button"
+                  class="fuly-product-card__btn"
+                  data-fuly-add-to-cart
+                  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                  data-product-url="{{ product.url }}"
+                  aria-label="Agregar {{ product.title | escape }} al carrito"
+                  {% unless product.available %}disabled aria-disabled="true"{% endunless %}
+                >
+                  {%- if product.available -%}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="9" cy="21" r="1"></circle>
+                      <circle cx="20" cy="21" r="1"></circle>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="fuly-product-card__btn-text-wide">{{ section.settings.add_btn_label }}</span>
+                    <span class="fuly-product-card__btn-text-narrow">+</span>
+                  {%- else -%}
+                    <span class="fuly-product-card__btn-text-wide">Agotado</span>
+                    <span class="fuly-product-card__btn-text-narrow">×</span>
+                  {%- endif -%}
+                </button>
               </div>
             </div>
           </article>
