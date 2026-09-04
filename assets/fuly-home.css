@@ -1341,3 +1341,34 @@
   height: 20px;
   display: block;
 }
+
+/* === PRODUCT CARD: add-to-cart states === */
+.fuly-product-card__btn.is-loading {
+  opacity: 0.7;
+  cursor: wait;
+  pointer-events: none;
+}
+
+.fuly-product-card__btn.is-loading svg {
+  animation: fuly-cart-btn-spin 0.8s linear infinite;
+}
+
+.fuly-product-card__btn.is-added {
+  background-color: #9FE870;
+}
+
+.fuly-product-card__btn.is-error {
+  background-color: #FF7A7A;
+}
+
+.fuly-product-card__btn[disabled]:not(.is-loading) {
+  background-color: #e5e5e5;
+  color: #777;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@keyframes fuly-cart-btn-spin {
+  to { transform: rotate(360deg); }
+}

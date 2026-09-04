@@ -293,8 +293,10 @@
                       image_url: p_image_url,
                       color: p_color,
                       category: p_category,
-                      href: product.url
-                    %}
+                      href: product.url,
+                      variant_id: product.selected_or_first_available_variant.id,
+                      available: product.available
+                      %}
                   {%- endif -%}
                 {%- endfor -%}
               </div>

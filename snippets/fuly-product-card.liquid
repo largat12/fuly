@@ -13,11 +13,18 @@
     - color (hex string e.g. "#E47524")
     - category (string for image-scale class)
     - href (optional link target; defaults to "#")
+    - variant_id (optional) ← si se pasa, el botón "Agregar" añade esa variante al carrito vía AJAX (sin ir al producto)
+    - available (optional bool, default true) ← si es false el botón se muestra como "Agotado" y deshabilitado
 {%- endcomment -%}
 {%- liquid
   assign card_href = href | default: '#'
   assign card_color = color | default: '#F7CD47'
   assign card_category = category | default: ''
+  assign card_variant_id = variant_id | default: ''
+  assign card_available = true
+  if available == false
+    assign card_available = false
+  endif
   assign card_image_src = ''
   if image_url != blank
     assign card_image_src = image_url
@@ -76,7 +83,7 @@
         {% endif %}
         <span class="fuly-product-card__price">{{ price_formatted }}</span>
       </span>
-      <a href="{{ card_href }}" class="fuly-product-card__btn" aria-label="Ver {{ name | escape }}">
+      {%- capture card_btn_inner -%}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="9" cy="21" r="1"></circle>
           <circle cx="20" cy="21" r="1"></circle>
@@ -84,7 +91,29 @@
         </svg>
         <span class="fuly-product-card__btn-text-wide">Agregar</span>
         <span class="fuly-product-card__btn-text-narrow">+</span>
-      </a>
+      {%- endcapture -%}
+      {%- if card_variant_id != blank -%}
+        <button
+          type="button"
+          class="fuly-product-card__btn"
+          data-fuly-add-to-cart
+          data-variant-id="{{ card_variant_id }}"
+          data-product-url="{{ card_href }}"
+          aria-label="Agregar {{ name | escape }} al carrito"
+          {% unless card_available %}disabled aria-disabled="true"{% endunless %}
+        >
+          {%- if card_available -%}
+            {{ card_btn_inner }}
+          {%- else -%}
+            <span class="fuly-product-card__btn-text-wide">Agotado</span>
+            <span class="fuly-product-card__btn-text-narrow">×</span>
+          {%- endif -%}
+        </button>
+      {%- else -%}
+        <a href="{{ card_href }}" class="fuly-product-card__btn" aria-label="Ver {{ name | escape }}">
+          {{ card_btn_inner }}
+        </a>
+      {%- endif -%}
     </div>
   </div>
 </article>
