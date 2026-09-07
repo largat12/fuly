@@ -40,10 +40,6 @@
           "type": "price",
           "settings": {}
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
         "suscripciones_fuly_kids_subscription_widget_EErTjU": {
           "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
           "settings": {
@@ -58,14 +54,6 @@
             "benefit_icon_check_color": ""
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "disabled": true,
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -75,6 +63,18 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "collapsible_tab_8hiaHy": {
@@ -186,11 +186,11 @@
         "title",
         "revie_reviews_por_whatsapp_app_block_7YAH7n",
         "price",
-        "description",
         "suscripciones_fuly_kids_subscription_widget_EErTjU",
-        "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "description",
+        "variant_picker",
         "collapsible_tab_8hiaHy",
         "collapsible_tab_q3Jfxk",
         "collapsible_tab_d7rTyB",
