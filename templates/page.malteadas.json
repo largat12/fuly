@@ -89,18 +89,20 @@
             "tint": "",
             "image_scale": "none",
             "title": "",
-            "caption": "PROTEÍNA + CALCIO + VITAMINA D · Tarro 250g"
+            "caption": "PROTEÍNA + CALCIO + VITAMINA D · Tarro 250g",
+            "image": "shopify://shop_images/Malteada_Vainilla_2_1.png"
           }
         },
         "item_AiDRRb": {
           "type": "item",
           "settings": {
-            "text": "Perfectas para acompañar el desayuno",
+            "text": "Perfectas para acompañar el desayuno, la lonchera o los snacks",
             "icon": "✓"
           }
         },
         "item_zLi4EW": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "text": "Perfectas como snack en la tarde",
             "icon": "✓"
@@ -148,7 +150,7 @@
       "name": "Productos + Panel",
       "settings": {
         "heading": "Elige su favorita",
-        "subheading": "<p>La misma fórmula en los sabores que los niños más aman</p>",
+        "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.</p>",
         "panel_position": "right",
         "columns": 2,
         "products_ratio": 1.2,
@@ -157,20 +159,20 @@
         "gap_mobile": 10,
         "sticky_panel": false,
         "mobile_layout": "one",
-        "panel_image": "shopify://shop_images/Malteada_Vainilla_web_3.png",
+        "panel_image": "shopify://shop_images/Malteada_Chocolate_1.png",
         "image_style": "top",
         "panel_image_ratio": "1/1",
         "panel_image_ratio_custom": "5/4",
         "panel_image_fit": "cover",
         "panel_image_position": "center",
-        "panel_grid_overlay": false,
-        "overlay_opacity": 80,
+        "panel_grid_overlay": true,
+        "overlay_opacity": 90,
         "panel_title": "",
         "panel_text": "",
-        "panel_btn_label": "",
-        "panel_btn_link": "",
+        "panel_btn_label": "Elegir sabor",
+        "panel_btn_link": "shopify://collections/crecimiento",
         "panel_btn_radius": 10,
-        "panel_bg": "#ffd93d",
+        "panel_bg": "#F7CD47",
         "panel_btn_bg": "#111111",
         "panel_btn_text": "#ffffff",
         "benefit_metafield": "",
@@ -183,8 +185,8 @@
         "view_label": "Ver producto",
         "soldout_label": "Agotado",
         "show_grid_bg": true,
-        "bg_color": "#ffffff",
-        "padding_top": 56,
+        "bg_color": "#FFFFFF",
+        "padding_top": 16,
         "padding_bottom": 56
       }
     }
