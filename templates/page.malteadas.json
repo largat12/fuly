@@ -10,12 +10,11 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 0
-      }
+      "type": "fuly-malteadas-landing",
+      "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
