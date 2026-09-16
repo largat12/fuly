@@ -1,0 +1,589 @@
+{%- comment -%}
+  Sección: Productos + Panel (imagen / texto)
+  ------------------------------------------------------------------
+  Columna izquierda: tarjetas de producto (bloques tipo "Producto")
+  Columna derecha:   panel con imagen, título, lista de beneficios y botón
+  100% responsive. Autocontenida (no depende del CSS del tema).
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign product_blocks = section.blocks | where: 'type', 'product'
+  assign item_blocks = section.blocks | where: 'type', 'item'
+  assign cols = product_blocks.size
+  if cols > 3
+    assign cols = 3
+  endif
+  if cols < 1
+    assign cols = 1
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --fk-bg: {{ s.bg_color }};
+    --fk-text: {{ s.text_color }};
+    --fk-border: {{ s.border_color }};
+    --fk-card-bg: {{ s.card_bg }};
+    --fk-accent: {{ s.accent_color }};
+    --fk-accent-text: {{ s.accent_text_color }};
+    --fk-panel-bg: {{ s.panel_bg }};
+    --fk-panel-text: {{ s.panel_text_color }};
+    --fk-radius: {{ s.radius }}px;
+    --fk-border-w: {{ s.border_width }}px;
+    --fk-shadow: {{ s.shadow_size }}px;
+    --fk-cols: {{ cols }};
+    --fk-gap: {{ s.gap }}px;
+    --fk-pad-top: {{ s.padding_top }}px;
+    --fk-pad-bottom: {{ s.padding_bottom }}px;
+  }
+
+  .fk-pi {
+    background: var(--fk-bg);
+    color: var(--fk-text);
+    padding: var(--fk-pad-top) 0 var(--fk-pad-bottom);
+  }
+  .fk-pi__inner {
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .fk-pi__head { margin: 0 0 24px; max-width: 720px; }
+  .fk-pi__title {
+    margin: 0 0 8px;
+    font-size: clamp(28px, 4.2vw, 46px);
+    line-height: 1.02;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-weight: 800;
+  }
+  .fk-pi__sub { margin: 0; font-size: 16px; line-height: 1.5; opacity: .85; }
+  .fk-pi__sub p { margin: 0 0 6px; }
+
+  /* ---------- Layout 2 columnas ---------- */
+  .fk-pi__grid {
+    display: grid;
+    grid-template-columns: minmax(0, {{ s.products_ratio }}fr) minmax(0, 1fr);
+    gap: var(--fk-gap);
+    align-items: start;
+  }
+  .fk-pi__grid--reverse .fk-pi__products { order: 2; }
+  .fk-pi__grid--reverse .fk-panel { order: 1; }
+
+  .fk-pi__products {
+    display: grid;
+    grid-template-columns: repeat(var(--fk-cols), minmax(0, 1fr));
+    gap: var(--fk-gap);
+    min-width: 0;
+  }
+
+  /* ---------- Tarjeta de producto ---------- */
+  .fk-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--fk-card-bg);
+    border: var(--fk-border-w) solid var(--fk-border);
+    border-radius: var(--fk-radius);
+    box-shadow: var(--fk-shadow) var(--fk-shadow) 0 var(--fk-border);
+    overflow: hidden;
+    min-width: 0;
+    height: 100%;
+  }
+  .fk-card__media {
+    position: relative;
+    display: block;
+    background: {{ s.media_bg }};
+    border-bottom: var(--fk-border-w) solid var(--fk-border);
+  }
+  .fk-card__media img,
+  .fk-card__media svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: {{ s.image_ratio }};
+    object-fit: {{ s.image_fit }};
+  }
+  .fk-card__badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--fk-accent);
+    color: var(--fk-accent-text);
+    border: 2px solid var(--fk-border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .fk-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    flex: 1 1 auto;
+  }
+  .fk-card__title {
+    margin: 0;
+    font-size: clamp(15px, 1.5vw, 19px);
+    line-height: 1.15;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .fk-card__title a { color: inherit; text-decoration: none; }
+  .fk-card__caption {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    opacity: .65;
+  }
+  .fk-card__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 12px;
+  }
+  .fk-card__price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .fk-card__price b { font-size: clamp(17px, 1.8vw, 22px); font-weight: 800; }
+  .fk-card__price s { font-size: 13px; opacity: .55; }
+
+  .fk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px solid var(--fk-border);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform .12s ease, opacity .12s ease;
+    background: var(--fk-accent);
+    color: var(--fk-accent-text);
+  }
+  .fk-btn:hover { transform: translateY(-1px); }
+  .fk-btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
+  .fk-btn svg { width: 15px; height: 15px; flex: none; }
+  .fk-card__form { margin: 0; }
+
+  /* ---------- Panel derecho ---------- */
+  .fk-panel {
+    position: relative;
+    background: var(--fk-panel-bg);
+    color: var(--fk-panel-text);
+    border: var(--fk-border-w) solid var(--fk-border);
+    border-radius: var(--fk-radius);
+    box-shadow: var(--fk-shadow) var(--fk-shadow) 0 var(--fk-border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+{%- if s.sticky_panel %}
+  @media (min-width: 990px) {
+    .fk-panel { position: sticky; top: 24px; }
+  }
+{%- endif %}
+  .fk-panel__img { display: block; width: 100%; }
+  .fk-panel__img img,
+  .fk-panel__img svg {
+    display: block;
+    width: 100%;
+    aspect-ratio: {{ s.panel_image_ratio }};
+    object-fit: cover;
+  }
+  .fk-panel--overlay .fk-panel__img { position: absolute; inset: 0; z-index: 0; }
+  .fk-panel--overlay .fk-panel__img img { height: 100%; aspect-ratio: auto; }
+  .fk-panel--overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: {{ s.panel_bg }};
+    opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+  }
+  .fk-panel__content {
+    position: relative;
+    z-index: 2;
+    padding: clamp(18px, 2.4vw, 28px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1 1 auto;
+  }
+  .fk-panel__title {
+    margin: 0;
+    font-size: clamp(18px, 2.2vw, 26px);
+    line-height: 1.1;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .fk-panel__text { margin: 0; font-size: 15px; line-height: 1.5; }
+  .fk-panel__text p { margin: 0 0 8px; }
+  .fk-panel__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .fk-panel__list li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 10px;
+    align-items: start;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .fk-panel__check {
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    border: 2px solid currentColor;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+  .fk-panel__cta {
+    margin-top: auto;
+    width: 100%;
+    background: {{ s.panel_btn_bg }};
+    color: {{ s.panel_btn_text }};
+    border-color: {{ s.panel_btn_bg }};
+    padding: 15px 20px;
+    border-radius: {{ s.panel_btn_radius }}px;
+    font-size: 13px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 989px) {
+    .fk-pi__grid { grid-template-columns: minmax(0, 1fr); }
+    .fk-pi__grid--reverse .fk-pi__products,
+    .fk-pi__grid--reverse .fk-panel { order: initial; }
+    .fk-pi__products { --fk-cols: 2; }
+  }
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --fk-gap: {{ s.gap_mobile }}px;
+      --fk-pad-top: {{ s.padding_top | times: 0.65 | round }}px;
+      --fk-pad-bottom: {{ s.padding_bottom | times: 0.65 | round }}px;
+      --fk-shadow: {{ s.shadow_size | at_most: 4 }}px;
+    }
+    .fk-pi__inner { padding: 0 16px; }
+    .fk-pi__head { margin-bottom: 18px; }
+    .fk-card__body { padding: 13px; }
+    .fk-card__foot { flex-direction: column; align-items: stretch; gap: 8px; }
+    .fk-btn { width: 100%; }
+{%- if s.mobile_layout == 'carousel' %}
+    .fk-pi__products {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin: 0 -16px;
+      padding: 4px 16px calc(var(--fk-shadow) + 8px);
+    }
+    .fk-pi__products::-webkit-scrollbar { display: none; }
+    .fk-pi__products > * { flex: 0 0 76%; max-width: 300px; scroll-snap-align: start; }
+{%- elsif s.mobile_layout == 'one' %}
+    .fk-pi__products { grid-template-columns: minmax(0, 1fr); }
+{%- else %}
+    .fk-pi__products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fk-card__caption { display: none; }
+{%- endif %}
+  }
+</style>
+
+<section class="fk-pi">
+  <div class="fk-pi__inner">
+
+    {%- if s.heading != blank or s.subheading != blank -%}
+      <header class="fk-pi__head">
+        {%- if s.heading != blank -%}
+          <h2 class="fk-pi__title">{{ s.heading }}</h2>
+        {%- endif -%}
+        {%- if s.subheading != blank -%}
+          <div class="fk-pi__sub">{{ s.subheading }}</div>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    <div class="fk-pi__grid{% if s.panel_position == 'left' %} fk-pi__grid--reverse{% endif %}">
+
+      {%- comment -%} ---------- COLUMNA DE PRODUCTOS ---------- {%- endcomment -%}
+      <div class="fk-pi__products">
+        {%- for block in product_blocks -%}
+          {%- assign card_product = block.settings.product -%}
+          <div class="fk-card" {{ block.shopify_attributes }}>
+
+            <a class="fk-card__media" href="{{ card_product.url | default: '#' }}">
+              {%- if block.settings.badge != blank -%}
+                <span class="fk-card__badge">{{ block.settings.badge }}</span>
+              {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', alt: card_product.title }}
+              {%- elsif card_product.featured_image -%}
+                {{ card_product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', alt: card_product.title }}
+              {%- else -%}
+                {{ 'product-apparel-1' | placeholder_svg_tag }}
+              {%- endif -%}
+            </a>
+
+            <div class="fk-card__body">
+              <h3 class="fk-card__title">
+                <a href="{{ card_product.url | default: '#' }}">
+                  {{ block.settings.title | default: card_product.title | default: 'Producto de ejemplo' }}
+                </a>
+              </h3>
+
+              {%- if block.settings.caption != blank -%}
+                <p class="fk-card__caption">{{ block.settings.caption }}</p>
+              {%- endif -%}
+
+              <div class="fk-card__foot">
+                {%- if s.show_price -%}
+                  <div class="fk-card__price">
+                    {%- if card_product != blank -%}
+                      {%- if card_product.compare_at_price > card_product.price -%}
+                        <s>{{ card_product.compare_at_price | money }}</s>
+                      {%- endif -%}
+                      <b>{{ card_product.price | money }}</b>
+                    {%- else -%}
+                      <b>{{ 11490000 | money }}</b>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+                {%- if card_product == blank -%}
+                  <span class="fk-btn">{{ s.add_label }}</span>
+
+                {%- elsif s.button_action == 'link' or card_product.variants.size > 1 -%}
+                  <a class="fk-btn" href="{{ card_product.url }}">{{ s.view_label }}</a>
+
+                {%- else -%}
+                  {%- assign card_variant = card_product.selected_or_first_available_variant -%}
+                  {%- form 'product', card_product, class: 'fk-card__form' -%}
+                    <input type="hidden" name="id" value="{{ card_variant.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" name="add" class="fk-btn" {% unless card_variant.available %}disabled{% endunless %}>
+                      {%- if card_variant.available -%}
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                          <circle cx="9" cy="20" r="1.4"></circle>
+                          <circle cx="18" cy="20" r="1.4"></circle>
+                          <path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.3L21 7H6"></path>
+                        </svg>
+                        {{ s.add_label }}
+                      {%- else -%}
+                        {{ s.soldout_label }}
+                      {%- endif -%}
+                    </button>
+                  {%- endform -%}
+                {%- endif -%}
+              </div>
+            </div>
+
+          </div>
+        {%- else -%}
+          <div class="fk-card">
+            <div class="fk-card__media">{{ 'product-apparel-2' | placeholder_svg_tag }}</div>
+            <div class="fk-card__body">
+              <h3 class="fk-card__title">Agrega un bloque de producto</h3>
+              <p class="fk-card__caption">Personalizar &rarr; Agregar bloque &rarr; Producto</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} ---------- PANEL IMAGEN + TEXTO ---------- {%- endcomment -%}
+      <aside class="fk-panel{% if s.image_style == 'background' and s.panel_image != blank %} fk-panel--overlay{% endif %}">
+
+        {%- if s.panel_image != blank and s.image_style != 'none' -%}
+          <div class="fk-panel__img">
+            {{ s.panel_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400,600,800,1200', alt: s.panel_title }}
+          </div>
+        {%- endif -%}
+
+        <div class="fk-panel__content">
+          {%- if s.panel_title != blank -%}
+            <h3 class="fk-panel__title">{{ s.panel_title }}</h3>
+          {%- endif -%}
+
+          {%- if s.panel_text != blank -%}
+            <div class="fk-panel__text">{{ s.panel_text }}</div>
+          {%- endif -%}
+
+          {%- if item_blocks.size > 0 -%}
+            <ul class="fk-panel__list">
+              {%- for block in item_blocks -%}
+                <li {{ block.shopify_attributes }}>
+                  <span class="fk-panel__check" aria-hidden="true">{{ block.settings.icon | default: '&#10003;' }}</span>
+                  <span>{{ block.settings.text }}</span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          {%- if s.panel_btn_label != blank -%}
+            <a class="fk-btn fk-panel__cta" href="{{ s.panel_btn_link | default: '#' }}">{{ s.panel_btn_label }}</a>
+          {%- endif -%}
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Productos + Panel",
+  "tag": "div",
+  "class": "fk-section-productos-panel",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "header", "content": "Encabezado" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Elige tu malteada" },
+    { "type": "richtext", "id": "subheading", "label": "Descripción", "default": "<p>Las dos tienen la misma fórmula: proteína de almendra y huevo, 18 vitaminas y minerales, cero azúcar añadida.</p>" },
+
+    { "type": "header", "content": "Distribución" },
+    {
+      "type": "select",
+      "id": "panel_position",
+      "label": "Posición del panel",
+      "default": "right",
+      "options": [
+        { "value": "right", "label": "Panel a la derecha" },
+        { "value": "left", "label": "Panel a la izquierda" }
+      ]
+    },
+    { "type": "range", "id": "products_ratio", "label": "Ancho de la zona de productos", "min": 0.8, "max": 2, "step": 0.1, "default": 1.2 },
+    { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 },
+    { "type": "range", "id": "gap", "label": "Separación (escritorio)", "min": 8, "max": 60, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "gap_mobile", "label": "Separación (móvil)", "min": 8, "max": 40, "step": 2, "unit": "px", "default": 14 },
+    { "type": "checkbox", "id": "sticky_panel", "label": "Panel fijo al hacer scroll (escritorio)", "default": false },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Productos en móvil",
+      "default": "grid",
+      "options": [
+        { "value": "grid", "label": "2 por fila" },
+        { "value": "one", "label": "1 por fila" },
+        { "value": "carousel", "label": "Carrusel deslizable" }
+      ]
+    },
+
+    { "type": "header", "content": "Panel: imagen y contenido" },
+    { "type": "image_picker", "id": "panel_image", "label": "Imagen" },
+    {
+      "type": "select",
+      "id": "image_style",
+      "label": "Estilo de la imagen",
+      "default": "top",
+      "options": [
+        { "value": "top", "label": "Arriba del texto" },
+        { "value": "background", "label": "De fondo (texto encima)" },
+        { "value": "none", "label": "Sin imagen" }
+      ]
+    },
+    { "type": "text", "id": "panel_image_ratio", "label": "Proporción de la imagen", "default": "4/3", "info": "Ej: 4/3, 1/1, 16/9" },
+    { "type": "range", "id": "overlay_opacity", "label": "Opacidad del color sobre la imagen", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 80 },
+    { "type": "text", "id": "panel_title", "label": "Título del panel", "default": "¿En qué momento del día?" },
+    { "type": "richtext", "id": "panel_text", "label": "Texto del panel" },
+    { "type": "text", "id": "panel_btn_label", "label": "Texto del botón", "default": "Comprar ahora" },
+    { "type": "url", "id": "panel_btn_link", "label": "Enlace del botón" },
+    { "type": "range", "id": "panel_btn_radius", "label": "Redondeo del botón del panel", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 10 },
+
+    { "type": "header", "content": "Tarjetas de producto" },
+    { "type": "checkbox", "id": "show_price", "label": "Mostrar precio", "default": true },
+    {
+      "type": "select",
+      "id": "button_action",
+      "label": "Acción del botón",
+      "default": "add",
+      "info": "Los productos con más de una variante siempre llevan a la página del producto.",
+      "options": [
+        { "value": "add", "label": "Agregar al carrito" },
+        { "value": "link", "label": "Ir a la página del producto" }
+      ]
+    },
+    { "type": "text", "id": "add_label", "label": "Texto: agregar", "default": "Agregar al carrito" },
+    { "type": "text", "id": "view_label", "label": "Texto: ver producto", "default": "Ver producto" },
+    { "type": "text", "id": "soldout_label", "label": "Texto: agotado", "default": "Agotado" },
+    { "type": "text", "id": "image_ratio", "label": "Proporción de la imagen del producto", "default": "1/1", "info": "Ej: 1/1, 4/5, 3/4" },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Ajuste de la imagen",
+      "default": "cover",
+      "options": [
+        { "value": "cover", "label": "Rellenar (recorta)" },
+        { "value": "contain", "label": "Contener (muestra completa)" }
+      ]
+    },
+
+    { "type": "header", "content": "Estilo" },
+    { "type": "color", "id": "bg_color", "label": "Fondo de la sección", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Texto", "default": "#111111" },
+    { "type": "color", "id": "border_color", "label": "Bordes y sombra", "default": "#111111" },
+    { "type": "color", "id": "card_bg", "label": "Fondo de tarjeta", "default": "#FFFFFF" },
+    { "type": "color", "id": "media_bg", "label": "Fondo detrás de la foto", "default": "#F3EDE6" },
+    { "type": "color", "id": "accent_color", "label": "Fondo del botón de producto", "default": "#FFD93D" },
+    { "type": "color", "id": "accent_text_color", "label": "Texto del botón de producto", "default": "#111111" },
+    { "type": "color", "id": "panel_bg", "label": "Fondo del panel", "default": "#FFD93D" },
+    { "type": "color", "id": "panel_text_color", "label": "Texto del panel", "default": "#111111" },
+    { "type": "color", "id": "panel_btn_bg", "label": "Fondo del botón del panel", "default": "#111111" },
+    { "type": "color", "id": "panel_btn_text", "label": "Texto del botón del panel", "default": "#FFFFFF" },
+    { "type": "range", "id": "radius", "label": "Redondeo", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 14 },
+    { "type": "range", "id": "border_width", "label": "Grosor del borde", "min": 0, "max": 6, "step": 1, "unit": "px", "default": 3 },
+    { "type": "range", "id": "shadow_size", "label": "Sombra dura", "min": 0, "max": 14, "step": 1, "unit": "px", "default": 6 },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Producto",
+      "limit": 4,
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" },
+        { "type": "text", "id": "badge", "label": "Etiqueta (opcional)", "info": "Ej: MALTEADA, BOOSTER, KITS" },
+        { "type": "text", "id": "title", "label": "Título personalizado (opcional)" },
+        { "type": "text", "id": "caption", "label": "Línea descriptiva", "info": "Ej: 250 g · 10 porciones · 7,2 g proteína" },
+        { "type": "image_picker", "id": "image", "label": "Imagen personalizada (opcional)" }
+      ]
+    },
+    {
+      "type": "item",
+      "name": "Beneficio del panel",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "Perfecta para acompañar el desayuno" },
+        { "type": "text", "id": "icon", "label": "Icono", "default": "✓", "info": "Un carácter o emoji" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Productos + Panel",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "item", "settings": { "text": "Perfecta para acompañar el desayuno" } },
+        { "type": "item", "settings": { "text": "Perfecta como snack en la tarde" } },
+        { "type": "item", "settings": { "text": "Fácil de preparar en segundos, con leche o agua" } },
+        { "type": "item", "settings": { "text": "Cada porción aporta la proteína de un huevo entero" } },
+        { "type": "item", "settings": { "text": "Se mezcla con yogur, avena o fruta sin perder el sabor" } },
+        { "type": "item", "settings": { "text": "Tranquilidad los días que come poco" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
