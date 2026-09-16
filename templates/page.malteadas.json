@@ -19,8 +19,8 @@
             "image_mobile": "shopify://shop_images/Fuly_proteina_vitaminas_ninos.svg",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
-            "enable_link": false,
-            "link": ""
+            "enable_link": true,
+            "link": "shopify://collections/crecimiento"
           }
         }
       },
@@ -66,41 +66,10 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "main": {
-      "type": "fuly-malteadas-landing",
-      "settings": {
-        "product_chocolate": "",
-        "product_vainilla": "",
-        "product_kit": "",
-        "hero_bg": "#e9a95c",
-        "eyebrow": "Malteadas Fuly · Chocolate y Vainilla",
-        "headline": "Proteína de almendras y huevo",
-        "headline_image_width": 560,
-        "subheadline": "+ 18 vitaminas y minerales",
-        "rating_text": "+4.500 padres la recomiendan",
-        "formato": "250 g · 10 porciones",
-        "marquee_claims": "Sin azúcar añadida | Preparada en segundos | Con magnesio y calcio | Proteína de almendra y huevo | Con fibra prebiótica | 18 vitaminas y minerales | Sin sabores artificiales | Endulzada con fruto del monje",
-        "marquee_speed": 38,
-        "productos_title": "Elige tu malteada",
-        "checklist_title": "¿En qué momento del día?",
-        "checklist": "Perfecta para acompañar el desayuno | Perfecta como snack en la tarde | Fácil de preparar en segundos, con leche o agua | Cada porción de chocolate aporta la proteína de un huevo entero | Se mezcla con yogur, avena o fruta sin perder el sabor | Tranquilidad los días que come poco",
-        "resenas_title": "1, 2, 3 y la pedirán otra vez",
-        "resenas_sub": "+4.500 familias nos califican con 5 estrellas",
-        "resenas_url": "",
-        "prep_title": "Mezcla, mezcla, ¡y listo!",
-        "prep_sub": "2 medidas (25 g) en 200 ml de leche o agua",
-        "prep_steps": "Sirve 2 medidas en 200 ml de leche o agua. | Mézclalo. En segundos queda cremosa, sin grumos. | Disfrútalo. Solo, o con yogur, avena o fruta.",
-        "faq_title": "Preguntas frecuentes",
-        "comparativa_title": "No todas las malteadas son iguales",
-        "comparativa_claim": "Fortificada: hasta 4.9x más vitamina A, 4x más B12 y 3.6x más calcio que un huevo",
-        "cross_title": "También te puede interesar"
-      }
     }
   },
   "order": [
     "fuly_slideshow_Abqkad",
-    "fuly_home_marquee_GFyUtn",
-    "main"
+    "fuly_home_marquee_GFyUtn"
   ]
 }
