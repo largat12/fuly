@@ -105,7 +105,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Escritorio.jpg",
-            "image_mobile": "shopify://shop_images/BannerLiquidacionMovil1.svg",
+            "image_mobile": "shopify://shop_images/Movil.jpg",
             "slide_link": "https://fulykids.com/collections/ofertas",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
