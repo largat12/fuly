@@ -9,12 +9,98 @@
  */
 {
   "sections": {
+    "fuly_slideshow_Abqkad": {
+      "type": "fuly-slideshow",
+      "blocks": {
+        "slide_8QXVBE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Malteada_proteina_ninos.png",
+            "image_mobile": "shopify://shop_images/Fuly_proteina_vitaminas_ninos.svg",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "enable_link": false,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_8QXVBE"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "loop": true,
+        "show_arrows": true,
+        "show_dots": true,
+        "height_mode": "fixed",
+        "image_fit": "cover",
+        "height_mobile": 420,
+        "height_tablet": 520,
+        "height_desktop": 600
+      }
+    },
+    "fuly_home_marquee_GFyUtn": {
+      "type": "fuly-home-marquee",
+      "name": "Fuly Home — Marquee",
+      "settings": {
+        "items": "CALCIO|MAGNESIO|HIERRO|VITAMINAS B6 Y B12 | VITAMINAS A,C,E Y D | PROTEÍNA |SELENIO| ZINC| PROTEÍNA ALMENDRAS | PROTEÍNA HUEVO | HECHO CON CIENCIA DELICIOSA",
+        "duration_mobile": 10,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 24,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1A1A1A",
+        "text_color": "#FFFFFF",
+        "star_color": "#F7CD47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
     "main": {
       "type": "fuly-malteadas-landing",
-      "settings": {}
+      "settings": {
+        "product_chocolate": "",
+        "product_vainilla": "",
+        "product_kit": "",
+        "hero_bg": "#e9a95c",
+        "eyebrow": "Malteadas Fuly · Chocolate y Vainilla",
+        "headline": "Proteína de almendras y huevo",
+        "headline_image_width": 560,
+        "subheadline": "+ 18 vitaminas y minerales",
+        "rating_text": "+4.500 padres la recomiendan",
+        "formato": "250 g · 10 porciones",
+        "marquee_claims": "Sin azúcar añadida | Preparada en segundos | Con magnesio y calcio | Proteína de almendra y huevo | Con fibra prebiótica | 18 vitaminas y minerales | Sin sabores artificiales | Endulzada con fruto del monje",
+        "marquee_speed": 38,
+        "productos_title": "Elige tu malteada",
+        "checklist_title": "¿En qué momento del día?",
+        "checklist": "Perfecta para acompañar el desayuno | Perfecta como snack en la tarde | Fácil de preparar en segundos, con leche o agua | Cada porción de chocolate aporta la proteína de un huevo entero | Se mezcla con yogur, avena o fruta sin perder el sabor | Tranquilidad los días que come poco",
+        "resenas_title": "1, 2, 3 y la pedirán otra vez",
+        "resenas_sub": "+4.500 familias nos califican con 5 estrellas",
+        "resenas_url": "",
+        "prep_title": "Mezcla, mezcla, ¡y listo!",
+        "prep_sub": "2 medidas (25 g) en 200 ml de leche o agua",
+        "prep_steps": "Sirve 2 medidas en 200 ml de leche o agua. | Mézclalo. En segundos queda cremosa, sin grumos. | Disfrútalo. Solo, o con yogur, avena o fruta.",
+        "faq_title": "Preguntas frecuentes",
+        "comparativa_title": "No todas las malteadas son iguales",
+        "comparativa_claim": "Fortificada: hasta 4.9x más vitamina A, 4x más B12 y 3.6x más calcio que un huevo",
+        "cross_title": "También te puede interesar"
+      }
     }
   },
   "order": [
+    "fuly_slideshow_Abqkad",
+    "fuly_home_marquee_GFyUtn",
     "main"
   ]
 }
