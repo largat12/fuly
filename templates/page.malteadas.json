@@ -58,18 +58,138 @@
         "item_gap_mobile": 24,
         "item_gap_tablet": 24,
         "item_gap_desktop": 24,
-        "bg_color": "#1A1A1A",
-        "text_color": "#FFFFFF",
-        "star_color": "#F7CD47",
+        "bg_color": "#1a1a1a",
+        "text_color": "#ffffff",
+        "star_color": "#f7cd47",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "productos_con_panel_XWmzhX": {
+      "type": "productos-con-panel",
+      "blocks": {
+        "product_YrN9aW": {
+          "type": "product",
+          "settings": {
+            "product": "malteada-de-chocolate",
+            "badge": "",
+            "title": "",
+            "caption": "PROTEÍNA + CALCIO + VITAMINA D · 500G o 250G"
+          }
+        },
+        "product_tgDXGj": {
+          "type": "product",
+          "settings": {
+            "product": "malteada-de-vainilla",
+            "badge": "",
+            "title": "",
+            "caption": ""
+          }
+        },
+        "item_AiDRRb": {
+          "type": "item",
+          "settings": {
+            "text": "Perfecta para acompañar el desayuno",
+            "icon": "✓"
+          }
+        },
+        "item_zLi4EW": {
+          "type": "item",
+          "settings": {
+            "text": "Perfecta como snack en la tarde",
+            "icon": "✓"
+          }
+        },
+        "item_zEmATi": {
+          "type": "item",
+          "settings": {
+            "text": "Fácil de preparar en segundos, con leche o agua",
+            "icon": "✓"
+          }
+        },
+        "item_QP6Twt": {
+          "type": "item",
+          "settings": {
+            "text": "Cada porción aporta la proteína de un huevo entero",
+            "icon": "✓"
+          }
+        },
+        "item_HjBhNQ": {
+          "type": "item",
+          "settings": {
+            "text": "Se mezcla con yogur, avena o fruta sin perder el sabor",
+            "icon": "✓"
+          }
+        },
+        "item_Cz6eem": {
+          "type": "item",
+          "settings": {
+            "text": "Tranquilidad los días que come poco",
+            "icon": "✓"
+          }
+        }
+      },
+      "block_order": [
+        "product_YrN9aW",
+        "product_tgDXGj",
+        "item_AiDRRb",
+        "item_zLi4EW",
+        "item_zEmATi",
+        "item_QP6Twt",
+        "item_HjBhNQ",
+        "item_Cz6eem"
+      ],
+      "name": "Productos + Panel",
+      "settings": {
+        "heading": "Elige su favorita",
+        "subheading": "<p>La misma fórmula: proteína de almendra y huevo, 18 vitaminas y minerales, cero azúcar añadida. En los sabores que los niños más aman</p>",
+        "panel_position": "right",
+        "products_ratio": 1.2,
+        "max_width": 1200,
+        "gap": 24,
+        "gap_mobile": 14,
+        "sticky_panel": false,
+        "mobile_layout": "grid",
+        "panel_image": "shopify://shop_images/Malteada_Vainilla_web_3.png",
+        "image_style": "top",
+        "panel_image_ratio": "1/1",
+        "overlay_opacity": 80,
+        "panel_title": "¿En qué momento del día?",
+        "panel_text": "",
+        "panel_btn_label": "Comprar ahora",
+        "panel_btn_link": "",
+        "panel_btn_radius": 10,
+        "show_price": true,
+        "button_action": "add",
+        "add_label": "Agregar al carrito",
+        "view_label": "Ver producto",
+        "soldout_label": "Agotado",
+        "image_ratio": "1/1",
+        "image_fit": "cover",
+        "bg_color": "#FFFFFF",
+        "text_color": "#111111",
+        "border_color": "#111111",
+        "card_bg": "#FFFFFF",
+        "media_bg": "#F3EDE6",
+        "accent_color": "#FFD93D",
+        "accent_text_color": "#111111",
+        "panel_bg": "#FFD93D",
+        "panel_text_color": "#111111",
+        "panel_btn_bg": "#111111",
+        "panel_btn_text": "#FFFFFF",
+        "radius": 14,
+        "border_width": 3,
+        "shadow_size": 6,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
     }
   },
   "order": [
     "fuly_slideshow_Abqkad",
-    "fuly_home_marquee_GFyUtn"
+    "fuly_home_marquee_GFyUtn",
+    "productos_con_panel_XWmzhX"
   ]
 }
