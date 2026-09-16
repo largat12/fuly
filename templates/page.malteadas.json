@@ -190,11 +190,29 @@
         "padding_top": 16,
         "padding_bottom": 56
       }
+    },
+    "fuly_ingredientes_productos_eL99P4": {
+      "type": "fuly-ingredientes-productos",
+      "name": "Ingredientes — Productos",
+      "settings": {
+        "kicker": "",
+        "title": "Conoce todos los ingredientes",
+        "intro": "",
+        "collection": "malteadas",
+        "products_limit": 20,
+        "open_all_label": "",
+        "close_all_label": "",
+        "count_suffix": "ingredientes",
+        "pdp_label": "Ver producto",
+        "source_label": "[fuente]",
+        "empty_message": "Aún no hay productos con ingredientes cargados."
+      }
     }
   },
   "order": [
     "fuly_slideshow_Abqkad",
     "fuly_home_marquee_GFyUtn",
-    "productos_con_panel_XWmzhX"
+    "productos_con_panel_XWmzhX",
+    "fuly_ingredientes_productos_eL99P4"
   ]
 }
