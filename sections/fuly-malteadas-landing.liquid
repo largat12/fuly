@@ -1,0 +1,424 @@
+{%- comment -%}
+  Fuly · Landing de Malteadas
+  Sección de Shopify (Online Store 2.0). Copiar en: sections/fuly-malteadas-landing.liquid
+  Uso: crear una plantilla JSON (templates/page.malteadas.json) que incluya esta sección,
+  o agregarla desde el editor de temas a cualquier página.
+
+  FUENTES
+  Activa: PP Pangram Sans Rounded Bold (ya está en /assets del tema).
+  No se usa la Compressed Extrabold: los titulares display van en Pangram Bold,
+  y el titular del banner puede subirse como imagen diseñada.
+
+  PENDIENTES — Polymath Text y Martian Mono aún no están en /assets.
+  Mientras tanto el cuerpo cae a Georgia y los datos a la mono del sistema.
+  Cuando subas PolymathText-Regular.woff2 y MartianMono-SemiBold.woff2 a /assets,
+  agrega estas dos líneas justo debajo del @font-face de Pangram (línea 17),
+  reemplazando los paréntesis por llaves dobles de Liquid:
+
+  @font-face { font-family: "Polymath Text"; src: url(( 'PolymathText-Regular.woff2' | asset_url )) format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Martian Mono"; src: url(( 'MartianMono-SemiBold.woff2' | asset_url )) format("woff2"); font-weight: 600; font-display: swap; }
+{%- endcomment -%}
+
+{% style %}
+  @font-face { font-family: "PP Pangram Sans Rounded"; src: url({{ 'PPPangramSansRounded-Bold.woff2' | asset_url }}) format("woff2"), url({{ 'PPPangramSansRounded-Bold.woff' | asset_url }}) format("woff"); font-weight: 700; font-display: swap; }
+
+  .fuly {
+    --black: #000000; --white: #FFFFFF; --yellow: #FAE64B;
+    --chocolate: #AB3E18; --vainilla: #20A5DE; --almendra: #E9A95C;
+    --cacao: #F9ECBF; --galleta: #F6F0A4; --grey: #F2F2F2; --ink-500: #3D3D3D;
+    --display: "PP Pangram Sans Rounded", Helvetica, Arial, sans-serif;
+    --title: "PP Pangram Sans Rounded", Helvetica, Arial, sans-serif;
+    --body: "Polymath Text", Georgia, serif;
+    --mono: "Martian Mono", ui-monospace, monospace;
+    font-family: var(--title); color: var(--black);
+  }
+  .fuly__wrap { max-width: 1180px; margin: 0 auto; padding: 72px 24px; }
+  .fuly__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+  .fuly__card { background: var(--white); border: 3px solid var(--black); border-radius: 24px; box-shadow: 6px 6px 0 var(--black); overflow: hidden; min-width: 0; }
+  .fuly__btn { display: block; text-align: center; font-family: var(--title); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: .02em; background: var(--yellow); color: var(--black); border: 3px solid var(--black); border-radius: 999px; box-shadow: 4px 4px 0 var(--black); padding: 15px 24px; transition: transform 120ms ease, box-shadow 120ms ease; cursor: pointer; }
+  .fuly__btn:hover { transform: translateY(-2px); box-shadow: 6px 6px 0 var(--black); }
+  .fuly__btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--black); }
+  .fuly__btn--choco { background: var(--chocolate); color: var(--white); border-width: 4px; font-size: 20px; padding: 20px 24px; }
+  .fuly__btn--vain { background: var(--vainilla); color: var(--white); border-width: 4px; font-size: 20px; padding: 20px 24px; }
+  .fuly__h1 { font-family: var(--display); font-weight: 800; font-size: clamp(44px, 7vw, 86px); line-height: .92; text-transform: uppercase; color: var(--white); text-shadow: 4px 4px 0 var(--black); margin: 0; text-wrap: balance; }
+  .fuly__h2 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 5vw, 60px); line-height: .95; text-transform: uppercase; margin: 0 0 24px; text-wrap: balance; }
+  .fuly__mono { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .fuly__body { font-family: var(--body); font-size: 16px; line-height: 1.6; color: var(--ink-500); }
+  .fuly__marquee { background: var(--black); overflow: hidden; padding: 16px 0; border-top: 3px solid var(--black); border-bottom: 3px solid var(--black); }
+  .fuly__marquee-track { display: flex; width: max-content; animation: fuly-marquee {{ section.settings.marquee_speed }}s linear infinite; }
+  .fuly__marquee-set { display: flex; gap: 40px; padding-right: 40px; font-weight: 700; font-size: 20px; text-transform: uppercase; color: var(--white); white-space: nowrap; }
+  @keyframes fuly-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .fuly [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 420ms ease-out, transform 420ms cubic-bezier(.34,1.56,.64,1); }
+  .fuly [data-reveal].is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .fuly [data-reveal] { opacity: 1; transform: none; } .fuly__marquee-track { animation: none; } }
+{% endstyle %}
+
+{%- assign p_choco = section.settings.product_chocolate -%}
+{%- assign p_vain = section.settings.product_vainilla -%}
+
+<div class="fuly">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section style="background: {{ section.settings.hero_bg }}; border-bottom: 3px solid #000;">
+    <div class="fuly__wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: center;">
+      <div style="min-width: 0;">
+        <p class="fuly__mono" style="margin: 0 0 18px;">{{ section.settings.eyebrow }}</p>
+        {%- if section.settings.headline_image != blank -%}
+          <h1 class="fuly__h1" style="text-shadow: none; margin: 0;">
+            {%- assign hi_style = 'width:100%;height:auto;display:block;max-width:' | append: section.settings.headline_image_width | append: 'px' -%}
+            {{ section.settings.headline_image | image_url: width: 1200 | image_tag: alt: section.settings.headline, loading: 'eager', style: hi_style }}
+          </h1>
+        {%- else -%}
+          <h1 class="fuly__h1">{{ section.settings.headline }}</h1>
+        {%- endif -%}
+        <p style="display: inline-block; margin: 18px 0 0; background: var(--yellow); border: 3px solid #000; border-radius: 12px; box-shadow: 4px 4px 0 #000; padding: 8px 16px; font-weight: 700; font-size: clamp(18px, 2.4vw, 26px); text-transform: uppercase;">{{ section.settings.subheadline }}</p>
+        <div style="display: flex; align-items: center; gap: 12px; margin: 28px 0 0; background: #fff; border: 3px solid #000; border-radius: 999px; box-shadow: 4px 4px 0 #000; padding: 10px 20px; width: fit-content;">
+          <span style="font-size: 18px; letter-spacing: 2px; color: var(--yellow); text-shadow: 0 0 1px #000;">★★★★★</span>
+          <span class="fuly__mono" style="white-space: nowrap; font-size: 12px;">{{ section.settings.rating_text }}</span>
+        </div>
+        {%- if p_choco != blank -%}
+          <p class="fuly__mono" style="margin: 28px 0 0; font-size: 12px;">Desde {{ p_choco.price | money }} · {{ section.settings.formato }}</p>
+        {%- endif -%}
+      </div>
+
+      <div style="min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: flex-end; justify-content: center;">
+          {%- if section.settings.pack_chocolate -%}
+            {{ section.settings.pack_chocolate | image_url: width: 700 | image_tag: alt: 'Malteada de chocolate', loading: 'eager', style: 'width:58%;max-width:300px;height:auto;transform:rotate(-6deg);filter:drop-shadow(10px 12px 0 rgba(0,0,0,.25));' }}
+          {%- endif -%}
+          {%- if section.settings.pack_vainilla -%}
+            {{ section.settings.pack_vainilla | image_url: width: 700 | image_tag: alt: 'Malteada de vainilla', loading: 'eager', style: 'width:58%;max-width:300px;height:auto;margin-left:-14%;transform:rotate(5deg);filter:drop-shadow(10px 12px 0 rgba(0,0,0,.25));' }}
+          {%- endif -%}
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px;">
+          {%- if p_choco != blank -%}
+            {%- form 'product', p_choco, id: 'fuly-hero-choco' -%}
+              <input type="hidden" name="id" value="{{ p_choco.selected_or_first_available_variant.id }}">
+              <button type="submit" class="fuly__btn fuly__btn--choco" {% unless p_choco.available %}disabled{% endunless %}>
+                Agregar chocolate
+                <span class="fuly__mono" style="display: block; font-size: 11px; color: inherit;">{{ p_choco.price | money }}</span>
+              </button>
+            {%- endform -%}
+          {%- endif -%}
+          {%- if p_vain != blank -%}
+            {%- form 'product', p_vain, id: 'fuly-hero-vain' -%}
+              <input type="hidden" name="id" value="{{ p_vain.selected_or_first_available_variant.id }}">
+              <button type="submit" class="fuly__btn fuly__btn--vain" {% unless p_vain.available %}disabled{% endunless %}>
+                Agregar vainilla
+                <span class="fuly__mono" style="display: block; font-size: 11px; color: inherit;">{{ p_vain.price | money }}</span>
+              </button>
+            {%- endform -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} MARQUESINA {%- endcomment -%}
+  <div class="fuly__marquee">
+    <div class="fuly__marquee-track">
+      {%- for i in (1..2) -%}
+        <div class="fuly__marquee-set" {% if forloop.last %}aria-hidden="true"{% endif %}>
+          {%- assign claims = section.settings.marquee_claims | split: '|' -%}
+          {%- for c in claims -%}
+            <span>{{ c | strip }}</span><span style="color: var(--yellow);">◆</span>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- comment -%} PRODUCTO SERVIDO + PRODUCTOS + CLAIMS + RESEÑAS + PREPARACIÓN + FAQ {%- endcomment -%}
+  <div class="fuly__wrap">
+    <div class="fuly__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'servida' -%}
+          <figure class="fuly__card" data-reveal {{ block.shopify_attributes }} style="margin: 0;">
+            {%- if block.settings.image -%}
+              <div role="img" aria-label="{{ block.settings.caption | escape }}" style="height: 380px; background-image: url({{ block.settings.image | image_url: width: 1200 }}); background-size: cover; background-position: {{ block.settings.focus }};"></div>
+            {%- endif -%}
+            <figcaption class="fuly__mono" style="border-top: 3px solid #000; background: {{ block.settings.accent }}; color: #fff; padding: 14px 18px;">{{ block.settings.caption }}</figcaption>
+          </figure>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="fuly__wrap" id="productos">
+    <h2 class="fuly__h2">{{ section.settings.productos_title }}</h2>
+    <div class="fuly__grid">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; min-width: 0;">
+        {%- assign flavors = 'chocolate,vainilla' | split: ',' -%}
+        {%- for f in flavors -%}
+          {%- if f == 'chocolate' -%}{%- assign prod = p_choco -%}{%- assign bg = '#AB3E18' -%}{%- assign img = section.settings.pack_chocolate -%}
+          {%- else -%}{%- assign prod = p_vain -%}{%- assign bg = '#20A5DE' -%}{%- assign img = section.settings.pack_vainilla -%}{%- endif -%}
+          {%- if prod != blank -%}
+            <article class="fuly__card" data-reveal style="display: flex; flex-direction: column;">
+              <div style="background: {{ bg }}; padding: 24px; display: flex; justify-content: center; border-bottom: 3px solid #000;">
+                {{ img | image_url: width: 500 | image_tag: alt: prod.title, loading: 'lazy', style: 'width:100%;max-width:210px;height:auto;' }}
+              </div>
+              <div style="padding: 22px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                <h3 style="margin: 0; font-weight: 700; font-size: 24px; text-transform: uppercase; line-height: 1.1;">{{ prod.title }}</h3>
+                <p class="fuly__mono" style="margin: 0; color: var(--ink-500);">{{ prod.metafields.custom.descriptor | default: section.settings.formato }}</p>
+                <span style="font-family: var(--display); font-weight: 800; font-size: 40px; line-height: 1; margin-top: auto;">{{ prod.price | money }}</span>
+                {%- form 'product', prod -%}
+                  <input type="hidden" name="id" value="{{ prod.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="fuly__btn" {% unless prod.available %}disabled{% endunless %}>
+                    {% if prod.available %}Agregar al carrito{% else %}Agotado{% endif %}
+                  </button>
+                {%- endform -%}
+              </div>
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div data-reveal style="align-self: start; background: var(--yellow); border: 3px solid #000; border-radius: 24px; box-shadow: 6px 6px 0 #000; padding: 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+        <h3 class="fuly__h2" style="font-size: 30px; margin: 0;">{{ section.settings.checklist_title }}</h3>
+        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px;">
+          {%- assign items = section.settings.checklist | split: '|' -%}
+          {%- for item in items -%}
+            <li style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="flex: none; width: 26px; height: 26px; border: 3px solid #000; border-radius: 8px; background: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">✓</span>
+              <span class="fuly__body" style="color: #000;">{{ item | strip }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if p_choco != blank -%}
+          <a class="fuly__btn" href="{{ p_choco.url }}" style="background: #000; color: #fff; box-shadow: 4px 4px 0 #fff;">Comprar ahora</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} TARJETAS DE CLAIMS (bloques tipo claim) {%- endcomment -%}
+  <section style="background: var(--grey); border-top: 3px solid #000; border-bottom: 3px solid #000;">
+    <div class="fuly__wrap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; padding-top: 64px; padding-bottom: 64px;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'claim' -%}
+          <div data-reveal {{ block.shopify_attributes }} style="background: {{ block.settings.bg }}; border: 3px solid #000; border-radius: 20px; box-shadow: 5px 5px 0 #000; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0;">
+            {%- if block.settings.icon -%}{{ block.settings.icon | image_url: width: 150 | image_tag: alt: '', loading: 'lazy', style: 'width:62px;height:62px;' }}{%- endif -%}
+            <h3 style="margin: 0; font-weight: 700; font-size: 19px; text-transform: uppercase; line-height: 1.15;">{{ block.settings.title }}</h3>
+            <p class="fuly__body" style="margin: 0; font-size: 15px;">{{ block.settings.text }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} RESEÑAS (bloques tipo resena) {%- endcomment -%}
+  <div class="fuly__wrap" id="resenas">
+    <h2 class="fuly__h2" style="max-width: 18ch;">{{ section.settings.resenas_title }}</h2>
+    <p class="fuly__mono" style="margin: 0 0 32px;">★★★★★ {{ section.settings.resenas_sub }}</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'resena' -%}
+          <blockquote class="fuly__card" data-reveal {{ block.shopify_attributes }} style="margin: 0; padding: 22px; box-shadow: 5px 5px 0 #000;">
+            <span style="color: var(--yellow); font-size: 17px; letter-spacing: 2px; text-shadow: 0 0 1px #000;">★★★★★</span>
+            <p class="fuly__body" style="margin: 10px 0 14px; color: #000;">{{ block.settings.text }}</p>
+            <footer style="font-weight: 700; font-size: 15px;">{{ block.settings.author }} <span style="color: #0EB680;">✓</span></footer>
+          </blockquote>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.resenas_url != blank -%}
+      <a class="fuly__btn" href="{{ section.settings.resenas_url }}" style="max-width: 280px; margin: 28px 0 0; background: #000; color: #fff;">Ver más reseñas</a>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} PREPARACIÓN {%- endcomment -%}
+  <section id="preparacion" style="background: var(--vainilla); border-top: 3px solid #000; border-bottom: 3px solid #000;">
+    <div class="fuly__wrap">
+      <h2 class="fuly__h2" style="color: #fff; text-shadow: 4px 4px 0 #000; max-width: 20ch;">{{ section.settings.prep_title }}</h2>
+      <p class="fuly__mono" style="margin: 0 0 36px;">{{ section.settings.prep_sub }}</p>
+      <div class="fuly__grid" style="align-items: start;">
+        {%- if section.settings.prep_video != blank -%}
+          <div class="fuly__card" style="width: 100%; max-width: 340px; margin: 0 auto; background: #000;">
+            {{ section.settings.prep_video | video_tag: controls: true, playsinline: true, preload: 'metadata', style: 'width:100%;aspect-ratio:9/16;height:auto;object-fit:contain;display:block;' }}
+          </div>
+        {%- endif -%}
+        <div style="display: flex; flex-direction: column; gap: 18px; min-width: 0;">
+          {%- assign steps = section.settings.prep_steps | split: '|' -%}
+          {%- for step in steps -%}
+            <div data-reveal style="display: flex; gap: 16px; align-items: center; background: #fff; border: 3px solid #000; border-radius: 20px; box-shadow: 5px 5px 0 #000; padding: 20px;">
+              <span style="flex: none; font-family: var(--display); font-weight: 800; font-size: 34px; color: var(--vainilla); -webkit-text-stroke: 1px #000;">0{{ forloop.index }}</span>
+              <p class="fuly__body" style="margin: 0; font-size: 17px; color: #000;">{{ step | strip }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} FAQ (bloques tipo faq) {%- endcomment -%}
+  <div class="fuly__wrap" id="faq" style="max-width: 900px;">
+    <h2 class="fuly__h2">{{ section.settings.faq_title }}</h2>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq' -%}
+          <details data-reveal {{ block.shopify_attributes }} style="background: #fff; border: 3px solid #000; border-radius: 18px; box-shadow: 5px 5px 0 #000; padding: 18px 22px;">
+            <summary style="display: flex; align-items: center; justify-content: space-between; gap: 16px; font-weight: 700; font-size: 18px; cursor: pointer; list-style: none;">
+              <span>{{ block.settings.question }}</span><span style="font-size: 22px;">+</span>
+            </summary>
+            <div class="fuly__body" style="margin-top: 14px;">{{ block.settings.answer }}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- comment -%} COMPARATIVA {%- endcomment -%}
+  {%- if section.settings.comparativa -%}
+    <section style="background: var(--grey); border-top: 3px solid #000; border-bottom: 3px solid #000;">
+      <div class="fuly__wrap">
+        <h2 class="fuly__h2" style="max-width: 22ch;">{{ section.settings.comparativa_title }}</h2>
+        <div class="fuly__grid">
+          <div class="fuly__card" data-reveal style="align-self: start;">
+            {{ section.settings.comparativa | image_url: width: 1200 | image_tag: alt: section.settings.comparativa_title, loading: 'lazy', style: 'width:100%;height:auto;display:block;' }}
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 24px; min-width: 0;">
+            {%- if section.settings.comparativa_foto -%}
+              <div class="fuly__card" data-reveal>
+                {{ section.settings.comparativa_foto | image_url: width: 1000 | image_tag: alt: '', loading: 'lazy', style: 'width:100%;height:100%;object-fit:cover;display:block;' }}
+              </div>
+            {%- endif -%}
+            <div data-reveal style="background: var(--yellow); border: 3px solid #000; border-radius: 24px; box-shadow: 6px 6px 0 #000; padding: 26px;">
+              <p style="margin: 0 0 18px; font-weight: 700; font-size: 22px; line-height: 1.2; text-transform: uppercase;">{{ section.settings.comparativa_claim }}</p>
+              {%- if p_choco != blank -%}
+                {%- form 'product', p_choco -%}
+                  <input type="hidden" name="id" value="{{ p_choco.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="fuly__btn" style="background: #000; color: #fff; box-shadow: 4px 4px 0 #fff; width: 100%;">Agregar al carrito</button>
+                {%- endform -%}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} CROSS-SELL {%- endcomment -%}
+  {%- if section.settings.product_kit != blank -%}
+    {%- assign kit = section.settings.product_kit -%}
+    <div class="fuly__wrap">
+      <h2 class="fuly__h2" style="font-size: clamp(30px, 4vw, 48px);">{{ section.settings.cross_title }}</h2>
+      <div class="fuly__grid">
+        <article class="fuly__card" data-reveal style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div style="background: var(--almendra); padding: 24px; display: flex; align-items: flex-end; justify-content: center; border-right: 3px solid #000;">
+            {%- if kit.featured_image -%}{{ kit.featured_image | image_url: width: 600 | image_tag: alt: kit.title, loading: 'lazy', style: 'width:80%;height:auto;' }}{%- endif -%}
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+            <p class="fuly__mono" style="margin: 0; color: var(--chocolate); font-size: 10px;">Kit malteadas</p>
+            <h3 style="margin: 0; font-weight: 700; font-size: 22px; text-transform: uppercase;">{{ kit.title }}</h3>
+            <p class="fuly__body" style="margin: 0; font-size: 15px;">{{ kit.description | strip_html | truncatewords: 24 }}</p>
+            <a class="fuly__btn" href="{{ kit.url }}" style="margin-top: auto;">Ver el kit · {{ kit.price | money }}</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.fuly [data-reveal]');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (!e.isIntersecting) return;
+        e.target.style.transitionDelay = (i % 4) * 80 + 'ms';
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Fuly · Landing Malteadas",
+  "settings": [
+    { "type": "header", "content": "Productos" },
+    { "type": "product", "id": "product_chocolate", "label": "Malteada de Chocolate" },
+    { "type": "product", "id": "product_vainilla", "label": "Malteada de Vainilla" },
+    { "type": "product", "id": "product_kit", "label": "Kit / combo (cross-sell)" },
+    { "type": "header", "content": "Banner" },
+    { "type": "color", "id": "hero_bg", "label": "Fondo del banner", "default": "#E9A95C" },
+    { "type": "text", "id": "eyebrow", "label": "Línea superior", "default": "Malteadas Fuly · Chocolate y Vainilla" },
+    { "type": "text", "id": "headline", "label": "Titular", "default": "Proteína de almendras y huevo" },
+    { "type": "image_picker", "id": "headline_image", "label": "Titular como imagen (opcional)", "info": "Si subes una imagen, reemplaza al titular de texto. Deja el campo Titular escrito de todos modos: se usa como texto alternativo y para SEO. Usa PNG con fondo transparente." },
+    { "type": "range", "id": "headline_image_width", "label": "Ancho máx. del titular en imagen (px)", "min": 240, "max": 760, "step": 20, "default": 560 },
+    { "type": "text", "id": "subheadline", "label": "Subtitular destacado", "default": "+ 18 vitaminas y minerales" },
+    { "type": "text", "id": "rating_text", "label": "Texto del rating", "default": "+4.500 padres la recomiendan" },
+    { "type": "text", "id": "formato", "label": "Formato", "default": "250 g · 10 porciones" },
+    { "type": "image_picker", "id": "pack_chocolate", "label": "Mockup chocolate" },
+    { "type": "image_picker", "id": "pack_vainilla", "label": "Mockup vainilla" },
+    { "type": "header", "content": "Marquesina" },
+    { "type": "textarea", "id": "marquee_claims", "label": "Claims separados por |", "default": "Sin azúcar añadida | Preparada en segundos | Con magnesio y calcio | Proteína de almendra y huevo | Con fibra prebiótica | 18 vitaminas y minerales | Sin sabores artificiales | Endulzada con fruto del monje" },
+    { "type": "range", "id": "marquee_speed", "label": "Velocidad (s)", "min": 15, "max": 80, "step": 1, "default": 38 },
+    { "type": "header", "content": "Productos y checklist" },
+    { "type": "text", "id": "productos_title", "label": "Título", "default": "Elige tu malteada" },
+    { "type": "text", "id": "checklist_title", "label": "Título del checklist", "default": "¿En qué momento del día?" },
+    { "type": "textarea", "id": "checklist", "label": "Items separados por |", "default": "Perfecta para acompañar el desayuno | Perfecta como snack en la tarde | Fácil de preparar en segundos, con leche o agua | Cada porción de chocolate aporta la proteína de un huevo entero | Se mezcla con yogur, avena o fruta sin perder el sabor | Tranquilidad los días que come poco" },
+    { "type": "header", "content": "Reseñas" },
+    { "type": "text", "id": "resenas_title", "label": "Título", "default": "1, 2, 3 y la pedirán otra vez" },
+    { "type": "text", "id": "resenas_sub", "label": "Subtítulo", "default": "+4.500 familias nos califican con 5 estrellas" },
+    { "type": "url", "id": "resenas_url", "label": "Enlace a todas las reseñas" },
+    { "type": "header", "content": "Preparación" },
+    { "type": "text", "id": "prep_title", "label": "Título", "default": "Mezcla, mezcla, ¡y listo!" },
+    { "type": "text", "id": "prep_sub", "label": "Subtítulo", "default": "2 medidas (25 g) en 200 ml de leche o agua" },
+    { "type": "video", "id": "prep_video", "label": "Video vertical" },
+    { "type": "textarea", "id": "prep_steps", "label": "Pasos separados por |", "default": "Sirve 2 medidas en 200 ml de leche o agua. | Mézclalo. En segundos queda cremosa, sin grumos. | Disfrútalo. Solo, o con yogur, avena o fruta." },
+    { "type": "header", "content": "FAQ y comparativa" },
+    { "type": "text", "id": "faq_title", "label": "Título FAQ", "default": "Preguntas frecuentes" },
+    { "type": "text", "id": "comparativa_title", "label": "Título comparativa", "default": "No todas las malteadas son iguales" },
+    { "type": "image_picker", "id": "comparativa", "label": "Imagen comparativa" },
+    { "type": "image_picker", "id": "comparativa_foto", "label": "Foto lateral" },
+    { "type": "text", "id": "comparativa_claim", "label": "Claim destacado", "default": "Fortificada: hasta 4.9x más vitamina A, 4x más B12 y 3.6x más calcio que un huevo" },
+    { "type": "text", "id": "cross_title", "label": "Título cross-sell", "default": "También te puede interesar" }
+  ],
+  "blocks": [
+    {
+      "type": "servida",
+      "name": "Foto servida",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Foto" },
+        { "type": "text", "id": "caption", "label": "Pie de foto", "default": "Chocolate servida en 200 ml de leche" },
+        { "type": "text", "id": "focus", "label": "Encuadre (background-position)", "default": "50% 100%" },
+        { "type": "color", "id": "accent", "label": "Color del pie", "default": "#AB3E18" }
+      ]
+    },
+    {
+      "type": "claim",
+      "name": "Tarjeta de claim",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icono" },
+        { "type": "text", "id": "title", "label": "Título" },
+        { "type": "textarea", "id": "text", "label": "Texto" },
+        { "type": "color", "id": "bg", "label": "Fondo", "default": "#F9ECBF" }
+      ]
+    },
+    {
+      "type": "resena",
+      "name": "Reseña",
+      "settings": [
+        { "type": "textarea", "id": "text", "label": "Reseña" },
+        { "type": "text", "id": "author", "label": "Nombre" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Pregunta frecuente",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Pregunta" },
+        { "type": "richtext", "id": "answer", "label": "Respuesta" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Fuly · Landing Malteadas" }]
+}
+{% endschema %}
