@@ -46,7 +46,7 @@
       "name": "Fuly Home — Marquee",
       "settings": {
         "items": "CALCIO|MAGNESIO|HIERRO|VITAMINAS B6 Y B12 | VITAMINAS A,C,E Y D | PROTEÍNA |SELENIO| ZINC| PROTEÍNA ALMENDRAS | PROTEÍNA HUEVO | HECHO CON CIENCIA DELICIOSA",
-        "duration_mobile": 10,
+        "duration_mobile": 5,
         "duration_tablet": 10,
         "duration_desktop": 10,
         "font_size_mobile": 18,
@@ -207,12 +207,127 @@
         "source_label": "[fuente]",
         "empty_message": "Aún no hay productos con ingredientes cargados."
       }
+    },
+    "video_fuly_columnas_LGHQeF": {
+      "type": "Video-Fuly-columnas",
+      "blocks": {
+        "video_HcRDPB": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_gmM6LY": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_GY386W": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "youtube_url": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_HcRDPB",
+        "video_gmM6LY",
+        "video_GY386W"
+      ],
+      "name": "Videos en columnas",
+      "settings": {
+        "title": "Nuestros videos",
+        "title_alignment": "center",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "gap": 16,
+        "aspect_ratio": "9 / 16",
+        "corner_radius": 12,
+        "autoplay": false,
+        "loop": false,
+        "mute": false,
+        "show_controls": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "fuly_home_hero_slider_nR9jWF": {
+      "type": "fuly-home-hero-slider",
+      "blocks": {
+        "slide_CCh9bx": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Mezcla_y_listo.svg",
+            "slide_link": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "show_badge": false,
+            "badge_text": "",
+            "reviews_text": "reseñas verificadas ⭐",
+            "title": "EL FUTURO SABE RICO",
+            "subtitle": "Formulados por científicos. Disfrutados por niños.",
+            "heading_color": "#1A1A1A",
+            "subtitle_color": "#333333",
+            "badge_bg_color": "#F7CD47",
+            "show_primary_button": true,
+            "primary_label": "COMPRAR AHORA",
+            "primary_link": "",
+            "show_secondary_button": false,
+            "secondary_label": "VER PRODUCTOS",
+            "secondary_link": "",
+            "align_desktop": "flex-start",
+            "vertical_desktop": "center",
+            "text_align_desktop": "left",
+            "content_max_width_desktop": 50,
+            "title_size_desktop": 72,
+            "subtitle_size_desktop": 18,
+            "align_mobile": "flex-start",
+            "vertical_mobile": "flex-end",
+            "text_align_mobile": "left",
+            "content_max_width_mobile": 90,
+            "title_size_mobile": 40,
+            "subtitle_size_mobile": 16
+          }
+        }
+      },
+      "block_order": [
+        "slide_CCh9bx"
+      ],
+      "name": "Fuly Home — Hero Slider",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "loop": true,
+        "show_arrows": true,
+        "show_dots": true,
+        "height_mobile": 460,
+        "height_tablet": 560,
+        "height_desktop": 640,
+        "pad_x_mobile": 16,
+        "pad_x_tablet": 48,
+        "pad_x_desktop": 64,
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "3,400"
+      }
     }
   },
   "order": [
     "fuly_slideshow_Abqkad",
     "fuly_home_marquee_GFyUtn",
     "productos_con_panel_XWmzhX",
-    "fuly_ingredientes_productos_eL99P4"
+    "fuly_ingredientes_productos_eL99P4",
+    "video_fuly_columnas_LGHQeF",
+    "fuly_home_hero_slider_nR9jWF"
   ]
 }
