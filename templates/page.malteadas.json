@@ -15,12 +15,12 @@
         "slide_8QXVBE": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Malteada_proteina_ninos.png",
-            "image_mobile": "shopify://shop_images/Fuly_proteina_vitaminas_ninos.svg",
+            "image": "shopify://shop_images/Lamejorproteinaparaninos.svg",
+            "image_mobile": "shopify://shop_images/Lasmejorproteinaparaninos.svg",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
-            "enable_link": true,
-            "link": "shopify://collections/crecimiento"
+            "enable_link": false,
+            "link": ""
           }
         }
       },
