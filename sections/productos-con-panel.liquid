@@ -1,308 +1,273 @@
 {%- comment -%}
   Sección: Productos + Panel (imagen / texto)
   ------------------------------------------------------------------
-  Columna izquierda: tarjetas de producto (bloques tipo "Producto")
-  Columna derecha:   panel con imagen, título, lista de beneficios y botón
-  100% responsive. Autocontenida (no depende del CSS del tema).
+  Reutiliza las clases del design system de Fuly (.fuly-product-card,
+  .fuly-tag-label, .fuly-lab-grid-bg, .fuly-animate-float) para heredar
+  la grilla, el tinte, el flotado, el hover y el botón AJAX del carrito.
 {%- endcomment -%}
 
 {%- liquid
   assign s = section.settings
   assign product_blocks = section.blocks | where: 'type', 'product'
   assign item_blocks = section.blocks | where: 'type', 'item'
-  assign cols = product_blocks.size
-  if cols > 3
-    assign cols = 3
+
+  assign mf_path = s.benefit_metafield | strip
+  assign mf_parts = mf_path | split: '.'
+
+  # ---- Proporción del panel: se convierte a % para forzar la altura ----
+  assign ratio_str = s.panel_image_ratio
+  if ratio_str == 'custom'
+    assign ratio_str = s.panel_image_ratio_custom
   endif
-  if cols < 1
-    assign cols = 1
+  assign ratio_str = ratio_str | replace: ' ', '' | replace: ':', '/'
+  assign rp = ratio_str | split: '/'
+  assign rw = rp[0] | plus: 0.0
+  assign rh = rp[1] | plus: 0.0
+  if rw <= 0 or rh <= 0
+    assign rw = 1.0
+    assign rh = 1.0
   endif
+  assign ratio_pct = rh | times: 100.0 | divided_by: rw | round: 3
 -%}
 
 <style>
   #shopify-section-{{ section.id }} {
-    --fk-bg: {{ s.bg_color }};
-    --fk-text: {{ s.text_color }};
-    --fk-border: {{ s.border_color }};
-    --fk-card-bg: {{ s.card_bg }};
-    --fk-accent: {{ s.accent_color }};
-    --fk-accent-text: {{ s.accent_text_color }};
-    --fk-panel-bg: {{ s.panel_bg }};
-    --fk-panel-text: {{ s.panel_text_color }};
-    --fk-radius: {{ s.radius }}px;
-    --fk-border-w: {{ s.border_width }}px;
-    --fk-shadow: {{ s.shadow_size }}px;
-    --fk-cols: {{ cols }};
     --fk-gap: {{ s.gap }}px;
-    --fk-pad-top: {{ s.padding_top }}px;
-    --fk-pad-bottom: {{ s.padding_bottom }}px;
+    --fk-cols: {{ s.columns }};
+    --fk-card-img-h: {{ s.card_image_height }}px;
   }
 
-  .fk-pi {
-    background: var(--fk-bg);
-    color: var(--fk-text);
-    padding: var(--fk-pad-top) 0 var(--fk-pad-bottom);
+  #shopify-section-{{ section.id }} .fk-pi {
+    padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px;
+    {%- if s.bg_color != blank and s.bg_color != 'rgba(0,0,0,0)' %}
+    background-color: {{ s.bg_color }};
+    {%- endif %}
   }
-  .fk-pi__inner {
+  #shopify-section-{{ section.id }} .fk-pi__inner {
     max-width: {{ s.max_width }}px;
     margin: 0 auto;
     padding: 0 20px;
   }
-  .fk-pi__head { margin: 0 0 24px; max-width: 720px; }
-  .fk-pi__title {
-    margin: 0 0 8px;
-    font-size: clamp(28px, 4.2vw, 46px);
-    line-height: 1.02;
+
+  #shopify-section-{{ section.id }} .fk-pi__head { margin: 0 0 24px; max-width: 72rem; }
+  #shopify-section-{{ section.id }} .fk-pi__title {
+    font-family: var(--fuly-font-heading);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
-    font-weight: 800;
+    font-size: clamp(26px, 4vw, 44px);
+    line-height: 1.05;
+    color: hsl(var(--cartoon-black));
+    margin: 0 0 8px;
   }
-  .fk-pi__sub { margin: 0; font-size: 16px; line-height: 1.5; opacity: .85; }
-  .fk-pi__sub p { margin: 0 0 6px; }
+  #shopify-section-{{ section.id }} .fk-pi__sub {
+    font-family: var(--fuly-font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: hsl(var(--cartoon-black) / .75);
+  }
+  #shopify-section-{{ section.id }} .fk-pi__sub p { margin: 0 0 6px; }
 
   /* ---------- Layout 2 columnas ---------- */
-  .fk-pi__grid {
+  #shopify-section-{{ section.id }} .fk-pi__grid {
     display: grid;
     grid-template-columns: minmax(0, {{ s.products_ratio }}fr) minmax(0, 1fr);
     gap: var(--fk-gap);
     align-items: start;
   }
-  .fk-pi__grid--reverse .fk-pi__products { order: 2; }
-  .fk-pi__grid--reverse .fk-panel { order: 1; }
+  #shopify-section-{{ section.id }} .fk-pi__grid--reverse .fk-pi__products { order: 2; }
+  #shopify-section-{{ section.id }} .fk-pi__grid--reverse .fk-panel { order: 1; }
 
-  .fk-pi__products {
-    display: grid;
+  /* Grilla de productos: hereda .fuly-products-grid y solo sobreescribe columnas */
+  #shopify-section-{{ section.id }} .fuly-products-grid {
     grid-template-columns: repeat(var(--fk-cols), minmax(0, 1fr));
     gap: var(--fk-gap);
-    min-width: 0;
   }
+  #shopify-section-{{ section.id }} .fuly-product-card__image-wrap { height: var(--fk-card-img-h); }
 
-  /* ---------- Tarjeta de producto ---------- */
-  .fk-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--fk-card-bg);
-    border: var(--fk-border-w) solid var(--fk-border);
-    border-radius: var(--fk-radius);
-    box-shadow: var(--fk-shadow) var(--fk-shadow) 0 var(--fk-border);
-    overflow: hidden;
-    min-width: 0;
-    height: 100%;
-  }
-  .fk-card__media {
+  /* ---------- Panel (mismos tokens del tema) ---------- */
+  #shopify-section-{{ section.id }} .fk-panel {
     position: relative;
-    display: block;
-    background: {{ s.media_bg }};
-    border-bottom: var(--fk-border-w) solid var(--fk-border);
-  }
-  .fk-card__media img,
-  .fk-card__media svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: {{ s.image_ratio }};
-    object-fit: {{ s.image_fit }};
-  }
-  .fk-card__badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: var(--fk-accent);
-    color: var(--fk-accent-text);
-    border: 2px solid var(--fk-border);
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    z-index: 2;
-  }
-  .fk-card__body {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 16px;
-    flex: 1 1 auto;
-  }
-  .fk-card__title {
-    margin: 0;
-    font-size: clamp(15px, 1.5vw, 19px);
-    line-height: 1.15;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-  .fk-card__title a { color: inherit; text-decoration: none; }
-  .fk-card__caption {
-    margin: 0;
-    font-size: 11px;
-    line-height: 1.45;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-    opacity: .65;
-  }
-  .fk-card__foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: auto;
-    padding-top: 12px;
-  }
-  .fk-card__price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-  .fk-card__price b { font-size: clamp(17px, 1.8vw, 22px); font-weight: 800; }
-  .fk-card__price s { font-size: 13px; opacity: .55; }
-
-  .fk-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 2px solid var(--fk-border);
-    border-radius: 999px;
-    padding: 10px 18px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    line-height: 1;
-    transition: transform .12s ease, opacity .12s ease;
-    background: var(--fk-accent);
-    color: var(--fk-accent-text);
-  }
-  .fk-btn:hover { transform: translateY(-1px); }
-  .fk-btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
-  .fk-btn svg { width: 15px; height: 15px; flex: none; }
-  .fk-card__form { margin: 0; }
-
-  /* ---------- Panel derecho ---------- */
-  .fk-panel {
-    position: relative;
-    background: var(--fk-panel-bg);
-    color: var(--fk-panel-text);
-    border: var(--fk-border-w) solid var(--fk-border);
-    border-radius: var(--fk-radius);
-    box-shadow: var(--fk-shadow) var(--fk-shadow) 0 var(--fk-border);
+    background-color: {{ s.panel_bg }};
+    color: hsl(var(--cartoon-black));
+    border: 2px solid hsl(var(--cartoon-black));
+    box-shadow: 4px 4px hsl(var(--cartoon-black));
+    border-radius: 1.6rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
-{%- if s.sticky_panel %}
+  {%- if s.sticky_panel %}
   @media (min-width: 990px) {
-    .fk-panel { position: sticky; top: 24px; }
+    #shopify-section-{{ section.id }} .fk-panel { position: sticky; top: 24px; }
   }
-{%- endif %}
-  .fk-panel__img { display: block; width: 100%; }
-  .fk-panel__img img,
-  .fk-panel__img svg {
+  {%- endif %}
+  /* La proporción se fuerza con padding-top en el contenedor y la imagen se
+     posiciona en absoluto: así ningún "height:auto" del tema puede anularla. */
+  #shopify-section-{{ section.id }} .fk-panel__img {
     display: block;
+    position: relative;
     width: 100%;
-    aspect-ratio: {{ s.panel_image_ratio }};
-    object-fit: cover;
+    overflow: hidden;
+    {%- if s.panel_image_ratio != 'original' %}
+    height: 0;
+    padding-top: {{ ratio_pct }}%;
+    {%- endif %}
   }
-  .fk-panel--overlay .fk-panel__img { position: absolute; inset: 0; z-index: 0; }
-  .fk-panel--overlay .fk-panel__img img { height: 100%; aspect-ratio: auto; }
-  .fk-panel--overlay::after {
+  #shopify-section-{{ section.id }} .fk-panel__img img,
+  #shopify-section-{{ section.id }} .fk-panel__img svg {
+    display: block;
+    {%- if s.panel_image_ratio == 'original' %}
+    position: relative;
+    width: 100%;
+    height: auto;
+    {%- else %}
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    {%- endif %}
+    object-fit: {{ s.panel_image_fit }};
+    object-position: {{ s.panel_image_position }};
+  }
+  #shopify-section-{{ section.id }} .fk-panel__grid-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(0,0,0,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,.06) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  #shopify-section-{{ section.id }} .fk-panel--overlay .fk-panel__img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: auto;
+    padding-top: 0;
+  }
+  #shopify-section-{{ section.id }} .fk-panel--overlay .fk-panel__img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .fk-panel--overlay::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: {{ s.panel_bg }};
+    background-color: {{ s.panel_bg }};
     opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
   }
-  .fk-panel__content {
+  #shopify-section-{{ section.id }} .fk-panel__content {
     position: relative;
     z-index: 2;
-    padding: clamp(18px, 2.4vw, 28px);
+    padding: clamp(1.6rem, 2.4vw, 2.4rem);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 1.4rem;
     flex: 1 1 auto;
   }
-  .fk-panel__title {
-    margin: 0;
+  #shopify-section-{{ section.id }} .fk-panel__title {
+    font-family: var(--fuly-font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
     font-size: clamp(18px, 2.2vw, 26px);
     line-height: 1.1;
-    font-weight: 800;
-    text-transform: uppercase;
+    margin: 0;
   }
-  .fk-panel__text { margin: 0; font-size: 15px; line-height: 1.5; }
-  .fk-panel__text p { margin: 0 0 8px; }
-  .fk-panel__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  .fk-panel__list li {
+  #shopify-section-{{ section.id }} .fk-panel__text {
+    font-family: var(--fuly-font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .fk-panel__text p { margin: 0 0 8px; }
+  #shopify-section-{{ section.id }} .fk-panel__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+  #shopify-section-{{ section.id }} .fk-panel__list li {
     display: grid;
-    grid-template-columns: 22px 1fr;
-    gap: 10px;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 1rem;
     align-items: start;
+    font-family: var(--fuly-font-body);
     font-size: 14px;
     line-height: 1.35;
   }
-  .fk-panel__check {
-    width: 20px;
-    height: 20px;
+  #shopify-section-{{ section.id }} .fk-panel__check {
+    width: 2rem;
+    height: 2rem;
     display: grid;
     place-items: center;
-    border: 2px solid currentColor;
+    border: 2px solid hsl(var(--cartoon-black));
     border-radius: 5px;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
     margin-top: 1px;
   }
-  .fk-panel__cta {
+  #shopify-section-{{ section.id }} .fk-panel__cta {
     margin-top: auto;
     width: 100%;
-    background: {{ s.panel_btn_bg }};
+    box-sizing: border-box;
+    background-color: {{ s.panel_btn_bg }};
     color: {{ s.panel_btn_text }};
-    border-color: {{ s.panel_btn_bg }};
-    padding: 15px 20px;
+    border: 2px solid hsl(var(--cartoon-black));
+    box-shadow: 3px 3px hsl(var(--cartoon-black));
+    font-family: "Arial Black", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
     border-radius: {{ s.panel_btn_radius }}px;
-    font-size: 13px;
+    padding: 1.4rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+  }
+  #shopify-section-{{ section.id }} .fk-panel__cta:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px hsl(var(--cartoon-black));
   }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 989px) {
-    .fk-pi__grid { grid-template-columns: minmax(0, 1fr); }
-    .fk-pi__grid--reverse .fk-pi__products,
-    .fk-pi__grid--reverse .fk-panel { order: initial; }
-    .fk-pi__products { --fk-cols: 2; }
+    #shopify-section-{{ section.id }} .fk-pi__grid { grid-template-columns: minmax(0, 1fr); }
+    #shopify-section-{{ section.id }} .fk-pi__grid--reverse .fk-pi__products,
+    #shopify-section-{{ section.id }} .fk-pi__grid--reverse .fk-panel { order: initial; }
+    #shopify-section-{{ section.id }} { --fk-cols: 2; }
   }
-  @media (max-width: 749px) {
+  @media (max-width: 767px) {
     #shopify-section-{{ section.id }} {
       --fk-gap: {{ s.gap_mobile }}px;
-      --fk-pad-top: {{ s.padding_top | times: 0.65 | round }}px;
-      --fk-pad-bottom: {{ s.padding_bottom | times: 0.65 | round }}px;
-      --fk-shadow: {{ s.shadow_size | at_most: 4 }}px;
+      --fk-card-img-h: {{ s.card_image_height_mobile }}px;
     }
-    .fk-pi__inner { padding: 0 16px; }
-    .fk-pi__head { margin-bottom: 18px; }
-    .fk-card__body { padding: 13px; }
-    .fk-card__foot { flex-direction: column; align-items: stretch; gap: 8px; }
-    .fk-btn { width: 100%; }
+    #shopify-section-{{ section.id }} .fk-pi {
+      padding: {{ s.padding_top | times: 0.65 | round }}px 0 {{ s.padding_bottom | times: 0.65 | round }}px;
+    }
+    #shopify-section-{{ section.id }} .fk-pi__inner { padding: 0 16px; }
+    #shopify-section-{{ section.id }} .fk-pi__head { margin-bottom: 18px; }
 {%- if s.mobile_layout == 'carousel' %}
-    .fk-pi__products {
+    #shopify-section-{{ section.id }} .fuly-products-grid {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       margin: 0 -16px;
-      padding: 4px 16px calc(var(--fk-shadow) + 8px);
+      padding: 4px 16px 12px;
     }
-    .fk-pi__products::-webkit-scrollbar { display: none; }
-    .fk-pi__products > * { flex: 0 0 76%; max-width: 300px; scroll-snap-align: start; }
+    #shopify-section-{{ section.id }} .fuly-products-grid::-webkit-scrollbar { display: none; }
+    #shopify-section-{{ section.id }} .fuly-products-grid > * { flex: 0 0 74%; max-width: 300px; scroll-snap-align: start; }
 {%- elsif s.mobile_layout == 'one' %}
-    .fk-pi__products { grid-template-columns: minmax(0, 1fr); }
+    #shopify-section-{{ section.id }} { --fk-cols: 1; }
 {%- else %}
-    .fk-pi__products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .fk-card__caption { display: none; }
+    #shopify-section-{{ section.id }} { --fk-cols: 2; }
 {%- endif %}
   }
 </style>
 
-<section class="fk-pi">
+<div class="fk-pi{% if s.show_grid_bg %} fuly-lab-grid-bg{% endif %}">
   <div class="fk-pi__inner">
 
     {%- if s.heading != blank or s.subheading != blank -%}
@@ -320,86 +285,131 @@
 
       {%- comment -%} ---------- COLUMNA DE PRODUCTOS ---------- {%- endcomment -%}
       <div class="fk-pi__products">
-        {%- for block in product_blocks -%}
-          {%- assign card_product = block.settings.product -%}
-          <div class="fk-card" {{ block.shopify_attributes }}>
+        <div class="fuly-products-grid">
+          {%- for block in product_blocks -%}
+            {%- assign card_product = block.settings.product -%}
 
-            <a class="fk-card__media" href="{{ card_product.url | default: '#' }}">
-              {%- if block.settings.badge != blank -%}
-                <span class="fk-card__badge">{{ block.settings.badge }}</span>
-              {%- endif -%}
-              {%- if block.settings.image != blank -%}
-                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', alt: card_product.title }}
-              {%- elsif card_product.featured_image -%}
-                {{ card_product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '200,300,400,600,800', alt: card_product.title }}
-              {%- else -%}
-                {{ 'product-apparel-1' | placeholder_svg_tag }}
-              {%- endif -%}
-            </a>
+            {%- liquid
+                # Línea descriptiva: texto del bloque > metafield / metaobject > nada
+                assign benefit = block.settings.caption
+                if benefit == blank and mf_parts.size >= 2 and card_product != blank
+                  assign ns = mf_parts[0]
+                  assign key = mf_parts[1]
+                  assign mf = card_product.metafields[ns][key]
+                  if mf_parts.size > 2
+                    assign sub = mf_parts[2]
+                    assign benefit = mf.value[sub]
+                  else
+                    assign benefit = mf.value
+                  endif
+                endif
 
-            <div class="fk-card__body">
-              <h3 class="fk-card__title">
-                <a href="{{ card_product.url | default: '#' }}">
-                  {{ block.settings.title | default: card_product.title | default: 'Producto de ejemplo' }}
+                assign card_variant = card_product.selected_or_first_available_variant
+              -%}
+
+              <article class="fuly-product-card" {{ block.shopify_attributes }}>
+
+                <a
+                  href="{{ card_product.url | default: '#' }}"
+                  class="fuly-product-card__image-wrap"
+                  {%- if block.settings.tint != blank and block.settings.tint != 'rgba(0,0,0,0)' %} style="--card-tint-from: {{ block.settings.tint }}22; --card-tint-to: {{ block.settings.tint }}44;"{% endif %}
+                >
+                  <span class="fuly-product-card__grid-overlay" aria-hidden="true"></span>
+
+                  {%- assign card_image = block.settings.image | default: card_product.featured_image -%}
+                  {%- if card_image != blank -%}
+                    <img
+                      src="{{ card_image | image_url: width: 600 }}"
+                      alt="{{ card_product.title | escape }}"
+                      class="fuly-product-card__image{% if s.float_animation %} fuly-animate-float{% endif %}{% if block.settings.image_scale != 'none' %} fuly-product-card__image--{{ block.settings.image_scale }}{% endif %}"
+                      loading="lazy"
+                      width="200"
+                      height="200"
+                    >
+                  {%- else -%}
+                    {{ 'product-apparel-1' | placeholder_svg_tag: 'fuly-product-card__image' }}
+                  {%- endif -%}
+
+                  {%- if block.settings.badge != blank -%}
+                    <span class="fuly-product-card__tag">
+                      <span class="fuly-tag-label">{{ block.settings.badge }}</span>
+                    </span>
+                  {%- endif -%}
                 </a>
-              </h3>
 
-              {%- if block.settings.caption != blank -%}
-                <p class="fk-card__caption">{{ block.settings.caption }}</p>
-              {%- endif -%}
+                <div class="fuly-product-card__body">
+                  <a href="{{ card_product.url | default: '#' }}" style="text-decoration:none;color:inherit;">
+                    <h3 class="fuly-product-card__title">
+                      {{ block.settings.title | default: card_product.title | default: 'Producto de ejemplo' }}
+                    </h3>
+                  </a>
 
-              <div class="fk-card__foot">
-                {%- if s.show_price -%}
-                  <div class="fk-card__price">
-                    {%- if card_product != blank -%}
-                      {%- if card_product.compare_at_price > card_product.price -%}
-                        <s>{{ card_product.compare_at_price | money }}</s>
-                      {%- endif -%}
-                      <b>{{ card_product.price | money }}</b>
+                  {%- if benefit != blank -%}
+                    <p class="fuly-product-card__benefit">{{ benefit }}</p>
+                  {%- endif -%}
+
+                  <div class="fuly-product-card__footer">
+                    {%- if s.show_price -%}
+                      <span class="fuly-product-card__price-group">
+                        {%- if card_product.compare_at_price > card_product.price -%}
+                          <span class="fuly-product-card__price--compare">{{ card_product.compare_at_price | money }}</span>
+                        {%- endif -%}
+                        <span class="fuly-product-card__price">
+                          {%- if card_product != blank -%}{{ card_product.price | money }}{%- else -%}{{ 11490000 | money }}{%- endif -%}
+                        </span>
+                      </span>
+                    {%- endif -%}
+
+                    {%- if card_product == blank -%}
+                      <span class="fuly-product-card__btn">
+                        <span class="fuly-product-card__btn-text-wide">{{ s.add_label }}</span>
+                      </span>
+
+                    {%- elsif s.button_action == 'link' -%}
+                      <a class="fuly-product-card__btn" href="{{ card_product.url }}">
+                        <span class="fuly-product-card__btn-text-wide">{{ s.view_label }}</span>
+                        <span class="fuly-product-card__btn-text-narrow">+</span>
+                      </a>
+
                     {%- else -%}
-                      <b>{{ 11490000 | money }}</b>
+                      <button
+                        type="button"
+                        class="fuly-product-card__btn"
+                        data-fuly-add-to-cart
+                        data-variant-id="{{ card_variant.id }}"
+                        data-product-url="{{ card_product.url }}"
+                        aria-label="Agregar {{ card_product.title | escape }} al carrito"
+                        {%- unless card_variant.available %} disabled{% endunless %}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <circle cx="9" cy="21" r="1"></circle>
+                          <circle cx="20" cy="21" r="1"></circle>
+                          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="fuly-product-card__btn-text-wide">
+                          {%- if card_variant.available -%}{{ s.add_label }}{%- else -%}{{ s.soldout_label }}{%- endif -%}
+                        </span>
+                        <span class="fuly-product-card__btn-text-narrow">+</span>
+                      </button>
                     {%- endif -%}
                   </div>
-                {%- endif -%}
+                </div>
 
-                {%- if card_product == blank -%}
-                  <span class="fk-btn">{{ s.add_label }}</span>
+            </article>
 
-                {%- elsif s.button_action == 'link' or card_product.variants.size > 1 -%}
-                  <a class="fk-btn" href="{{ card_product.url }}">{{ s.view_label }}</a>
-
-                {%- else -%}
-                  {%- assign card_variant = card_product.selected_or_first_available_variant -%}
-                  {%- form 'product', card_product, class: 'fk-card__form' -%}
-                    <input type="hidden" name="id" value="{{ card_variant.id }}">
-                    <input type="hidden" name="quantity" value="1">
-                    <button type="submit" name="add" class="fk-btn" {% unless card_variant.available %}disabled{% endunless %}>
-                      {%- if card_variant.available -%}
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                          <circle cx="9" cy="20" r="1.4"></circle>
-                          <circle cx="18" cy="20" r="1.4"></circle>
-                          <path d="M2 3h3l2.4 12.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.3L21 7H6"></path>
-                        </svg>
-                        {{ s.add_label }}
-                      {%- else -%}
-                        {{ s.soldout_label }}
-                      {%- endif -%}
-                    </button>
-                  {%- endform -%}
-                {%- endif -%}
+          {%- else -%}
+            <article class="fuly-product-card">
+              <span class="fuly-product-card__image-wrap">
+                <span class="fuly-product-card__grid-overlay" aria-hidden="true"></span>
+                {{ 'product-apparel-2' | placeholder_svg_tag: 'fuly-product-card__image' }}
+              </span>
+              <div class="fuly-product-card__body">
+                <h3 class="fuly-product-card__title">Agrega un bloque de producto</h3>
+                <p class="fuly-product-card__benefit">Personalizar &rarr; Agregar bloque &rarr; Producto</p>
               </div>
-            </div>
-
-          </div>
-        {%- else -%}
-          <div class="fk-card">
-            <div class="fk-card__media">{{ 'product-apparel-2' | placeholder_svg_tag }}</div>
-            <div class="fk-card__body">
-              <h3 class="fk-card__title">Agrega un bloque de producto</h3>
-              <p class="fk-card__caption">Personalizar &rarr; Agregar bloque &rarr; Producto</p>
-            </div>
-          </div>
-        {%- endfor -%}
+            </article>
+          {%- endfor -%}
+        </div>
       </div>
 
       {%- comment -%} ---------- PANEL IMAGEN + TEXTO ---------- {%- endcomment -%}
@@ -408,6 +418,9 @@
         {%- if s.panel_image != blank and s.image_style != 'none' -%}
           <div class="fk-panel__img">
             {{ s.panel_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400,600,800,1200', alt: s.panel_title }}
+            {%- if s.panel_grid_overlay -%}
+              <span class="fk-panel__grid-overlay" aria-hidden="true"></span>
+            {%- endif -%}
           </div>
         {%- endif -%}
 
@@ -432,7 +445,7 @@
           {%- endif -%}
 
           {%- if s.panel_btn_label != blank -%}
-            <a class="fk-btn fk-panel__cta" href="{{ s.panel_btn_link | default: '#' }}">{{ s.panel_btn_label }}</a>
+            <a class="fk-panel__cta" href="{{ s.panel_btn_link | default: '#' }}">{{ s.panel_btn_label }}</a>
           {%- endif -%}
         </div>
 
@@ -440,7 +453,7 @@
 
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
@@ -464,10 +477,11 @@
         { "value": "left", "label": "Panel a la izquierda" }
       ]
     },
+    { "type": "range", "id": "columns", "label": "Columnas de producto (escritorio)", "min": 1, "max": 3, "step": 1, "default": 2 },
     { "type": "range", "id": "products_ratio", "label": "Ancho de la zona de productos", "min": 0.8, "max": 2, "step": 0.1, "default": 1.2 },
-    { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 },
+    { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
     { "type": "range", "id": "gap", "label": "Separación (escritorio)", "min": 8, "max": 60, "step": 2, "unit": "px", "default": 24 },
-    { "type": "range", "id": "gap_mobile", "label": "Separación (móvil)", "min": 8, "max": 40, "step": 2, "unit": "px", "default": 14 },
+    { "type": "range", "id": "gap_mobile", "label": "Separación (móvil)", "min": 8, "max": 40, "step": 2, "unit": "px", "default": 12 },
     { "type": "checkbox", "id": "sticky_panel", "label": "Panel fijo al hacer scroll (escritorio)", "default": false },
     {
       "type": "select",
@@ -494,34 +508,26 @@
         { "value": "none", "label": "Sin imagen" }
       ]
     },
-    { "type": "text", "id": "panel_image_ratio", "label": "Proporción de la imagen", "default": "4/3", "info": "Ej: 4/3, 1/1, 16/9" },
-    { "type": "range", "id": "overlay_opacity", "label": "Opacidad del color sobre la imagen", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 80 },
-    { "type": "text", "id": "panel_title", "label": "Título del panel", "default": "¿En qué momento del día?" },
-    { "type": "richtext", "id": "panel_text", "label": "Texto del panel" },
-    { "type": "text", "id": "panel_btn_label", "label": "Texto del botón", "default": "Comprar ahora" },
-    { "type": "url", "id": "panel_btn_link", "label": "Enlace del botón" },
-    { "type": "range", "id": "panel_btn_radius", "label": "Redondeo del botón del panel", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 10 },
-
-    { "type": "header", "content": "Tarjetas de producto" },
-    { "type": "checkbox", "id": "show_price", "label": "Mostrar precio", "default": true },
     {
       "type": "select",
-      "id": "button_action",
-      "label": "Acción del botón",
-      "default": "add",
-      "info": "Los productos con más de una variante siempre llevan a la página del producto.",
+      "id": "panel_image_ratio",
+      "label": "Proporción de la imagen",
+      "default": "1/1",
       "options": [
-        { "value": "add", "label": "Agregar al carrito" },
-        { "value": "link", "label": "Ir a la página del producto" }
+        { "value": "1/1", "label": "Cuadrada (1:1)" },
+        { "value": "4/3", "label": "Horizontal (4:3)" },
+        { "value": "16/9", "label": "Panorámica (16:9)" },
+        { "value": "3/2", "label": "Horizontal suave (3:2)" },
+        { "value": "3/4", "label": "Vertical (3:4)" },
+        { "value": "4/5", "label": "Vertical suave (4:5)" },
+        { "value": "custom", "label": "Personalizada" },
+        { "value": "original", "label": "Original de la imagen" }
       ]
     },
-    { "type": "text", "id": "add_label", "label": "Texto: agregar", "default": "Agregar al carrito" },
-    { "type": "text", "id": "view_label", "label": "Texto: ver producto", "default": "Ver producto" },
-    { "type": "text", "id": "soldout_label", "label": "Texto: agotado", "default": "Agotado" },
-    { "type": "text", "id": "image_ratio", "label": "Proporción de la imagen del producto", "default": "1/1", "info": "Ej: 1/1, 4/5, 3/4" },
+    { "type": "text", "id": "panel_image_ratio_custom", "label": "Proporción personalizada", "default": "5/4", "info": "Formato ancho/alto. Solo aplica si eliges \"Personalizada\"." },
     {
       "type": "select",
-      "id": "image_fit",
+      "id": "panel_image_fit",
       "label": "Ajuste de la imagen",
       "default": "cover",
       "options": [
@@ -529,22 +535,54 @@
         { "value": "contain", "label": "Contener (muestra completa)" }
       ]
     },
-
-    { "type": "header", "content": "Estilo" },
-    { "type": "color", "id": "bg_color", "label": "Fondo de la sección", "default": "#FFFFFF" },
-    { "type": "color", "id": "text_color", "label": "Texto", "default": "#111111" },
-    { "type": "color", "id": "border_color", "label": "Bordes y sombra", "default": "#111111" },
-    { "type": "color", "id": "card_bg", "label": "Fondo de tarjeta", "default": "#FFFFFF" },
-    { "type": "color", "id": "media_bg", "label": "Fondo detrás de la foto", "default": "#F3EDE6" },
-    { "type": "color", "id": "accent_color", "label": "Fondo del botón de producto", "default": "#FFD93D" },
-    { "type": "color", "id": "accent_text_color", "label": "Texto del botón de producto", "default": "#111111" },
-    { "type": "color", "id": "panel_bg", "label": "Fondo del panel", "default": "#FFD93D" },
-    { "type": "color", "id": "panel_text_color", "label": "Texto del panel", "default": "#111111" },
-    { "type": "color", "id": "panel_btn_bg", "label": "Fondo del botón del panel", "default": "#111111" },
+    {
+      "type": "select",
+      "id": "panel_image_position",
+      "label": "Zona visible al recortar",
+      "default": "center",
+      "info": "Si la foto es vertical y se recorta la cara, elige \"Arriba\".",
+      "options": [
+        { "value": "center", "label": "Centro" },
+        { "value": "top", "label": "Arriba" },
+        { "value": "bottom", "label": "Abajo" },
+        { "value": "left", "label": "Izquierda" },
+        { "value": "right", "label": "Derecha" }
+      ]
+    },
+    { "type": "checkbox", "id": "panel_grid_overlay", "label": "Grilla sobre la imagen del panel", "default": true },
+    { "type": "range", "id": "overlay_opacity", "label": "Opacidad del color sobre la imagen", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 80 },
+    { "type": "text", "id": "panel_title", "label": "Título del panel", "default": "¿En qué momento del día?" },
+    { "type": "richtext", "id": "panel_text", "label": "Texto del panel" },
+    { "type": "text", "id": "panel_btn_label", "label": "Texto del botón", "default": "Comprar ahora" },
+    { "type": "url", "id": "panel_btn_link", "label": "Enlace del botón" },
+    { "type": "range", "id": "panel_btn_radius", "label": "Redondeo del botón del panel", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 10 },
+    { "type": "color", "id": "panel_bg", "label": "Fondo del panel", "default": "#F7CD47" },
+    { "type": "color", "id": "panel_btn_bg", "label": "Fondo del botón del panel", "default": "#1A1A1A" },
     { "type": "color", "id": "panel_btn_text", "label": "Texto del botón del panel", "default": "#FFFFFF" },
-    { "type": "range", "id": "radius", "label": "Redondeo", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 14 },
-    { "type": "range", "id": "border_width", "label": "Grosor del borde", "min": 0, "max": 6, "step": 1, "unit": "px", "default": 3 },
-    { "type": "range", "id": "shadow_size", "label": "Sombra dura", "min": 0, "max": 14, "step": 1, "unit": "px", "default": 6 },
+
+    { "type": "header", "content": "Tarjetas de producto" },
+    { "type": "text", "id": "benefit_metafield", "label": "Metafield de la línea descriptiva", "info": "Formato: espacio.clave (o espacio.clave.campo si es metaobject). Lo encuentras en Configuración → Metacampos → Productos, abriendo la definición: aparece como custom.algo. Se usa cuando el bloque no tiene texto propio." },
+    { "type": "checkbox", "id": "show_price", "label": "Mostrar precio", "default": true },
+    { "type": "checkbox", "id": "float_animation", "label": "Animación flotante en la imagen", "default": true },
+    { "type": "range", "id": "card_image_height", "label": "Alto de la imagen (escritorio)", "min": 140, "max": 320, "step": 4, "unit": "px", "default": 224 },
+    { "type": "range", "id": "card_image_height_mobile", "label": "Alto de la imagen (móvil)", "min": 100, "max": 260, "step": 4, "unit": "px", "default": 160 },
+    {
+      "type": "select",
+      "id": "button_action",
+      "label": "Acción del botón",
+      "default": "add",
+      "options": [
+        { "value": "add", "label": "Agregar al carrito (AJAX del tema)" },
+        { "value": "link", "label": "Ir a la página del producto" }
+      ]
+    },
+    { "type": "text", "id": "add_label", "label": "Texto: agregar", "default": "Agregar" },
+    { "type": "text", "id": "view_label", "label": "Texto: ver producto", "default": "Ver" },
+    { "type": "text", "id": "soldout_label", "label": "Texto: agotado", "default": "Agotado" },
+
+    { "type": "header", "content": "Fondo de la sección" },
+    { "type": "checkbox", "id": "show_grid_bg", "label": "Fondo de grilla de laboratorio", "default": true },
+    { "type": "color", "id": "bg_color", "label": "Color de fondo", "default": "#FFFFFF" },
     { "type": "range", "id": "padding_top", "label": "Espacio superior", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
     { "type": "range", "id": "padding_bottom", "label": "Espacio inferior", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 }
   ],
@@ -555,9 +593,21 @@
       "limit": 4,
       "settings": [
         { "type": "product", "id": "product", "label": "Producto" },
-        { "type": "text", "id": "badge", "label": "Etiqueta (opcional)", "info": "Ej: MALTEADA, BOOSTER, KITS" },
+        { "type": "text", "id": "badge", "label": "Etiqueta", "info": "Ej: Malteada, Booster, Kits" },
+        { "type": "color", "id": "tint", "label": "Tinte del fondo de la foto", "info": "El mismo color que usas en las tarjetas de la home." },
+        {
+          "type": "select",
+          "id": "image_scale",
+          "label": "Tamaño de la foto",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "Normal" },
+            { "value": "scale-up", "label": "Más grande" },
+            { "value": "scale-down", "label": "Más pequeña" }
+          ]
+        },
         { "type": "text", "id": "title", "label": "Título personalizado (opcional)" },
-        { "type": "text", "id": "caption", "label": "Línea descriptiva", "info": "Ej: 250 g · 10 porciones · 7,2 g proteína" },
+        { "type": "text", "id": "caption", "label": "Línea descriptiva (opcional)", "info": "Déjalo vacío para que la tome del metafield del producto." },
         { "type": "image_picker", "id": "image", "label": "Imagen personalizada (opcional)" }
       ]
     },
