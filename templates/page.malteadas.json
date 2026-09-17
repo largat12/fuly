@@ -427,8 +427,8 @@
         "heading": "ÚNETE A +4.500 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "Comprar ahora",
         "cta_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
-        "bg_color": "#20A5DE",
-        "text_color": "#FFFFFF",
+        "bg_color": "#20a5de",
+        "text_color": "#ffffff",
         "heading_size_mobile": 24,
         "heading_size_tablet": 28,
         "heading_size_desktop": 28,
@@ -441,6 +441,77 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "fuly_imagen_texto_imagen_xWfFAF": {
+      "type": "Fuly-imagen-texto-imagen",
+      "blocks": {
+        "claim_TnP8yb": {
+          "type": "claim",
+          "settings": {
+            "text": "Perfectas para todas las edades",
+            "bg": "#FFFFFF",
+            "color": "#000000"
+          }
+        },
+        "button_qgJpPx": {
+          "type": "button",
+          "settings": {
+            "label": "Agregar al carrito",
+            "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
+            "size": 16,
+            "bg": "#FAE64B",
+            "color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "claim_TnP8yb",
+        "button_qgJpPx"
+      ],
+      "name": "Fuly · Dos imágenes",
+      "settings": {
+        "heading": "No todas las malteadas son iguales",
+        "heading_color": "#000000",
+        "heading_toy_shadow": false,
+        "heading_shadow_color": "#FAE64B",
+        "heading_size": 42,
+        "heading_align": "left",
+        "image_a": "shopify://shop_images/ChatGPT_Image_16_sept_2026_09_11_37_p.m..png",
+        "image_b": "shopify://shop_images/FulyPara_todas_las_edades.png",
+        "ratio": "4 / 5",
+        "ratio_mobile": "auto",
+        "image_fit": "cover",
+        "image_bg": "#FFFFFF",
+        "image_radius": 24,
+        "image_border": 3,
+        "image_shadow": true,
+        "columns_ratio": "1fr 1fr",
+        "reverse": false,
+        "column_gap": 24,
+        "row_gap": 24,
+        "foot_width": "right",
+        "foot_align": "left",
+        "foot_gap": 16,
+        "button_full_desktop": true,
+        "mobile_first_image": "a",
+        "heading_size_mobile": 28,
+        "heading_align_mobile": "left",
+        "row_gap_mobile": 20,
+        "column_gap_mobile": 16,
+        "foot_gap_mobile": 16,
+        "foot_align_mobile": "left",
+        "button_full_mobile": true,
+        "padding_inline_mobile": 16,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "bg_color": "#FFFFFF",
+        "lab_grid": false,
+        "max_width": 1200,
+        "padding_inline": 32,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "anchor_id": ""
+      }
     }
   },
   "order": [
@@ -452,6 +523,7 @@
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj"
+    "fuly_home_cta_abyzBj",
+    "fuly_imagen_texto_imagen_xWfFAF"
   ]
 }
