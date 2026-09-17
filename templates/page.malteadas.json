@@ -350,6 +350,60 @@
         "anchor_id": ""
       }
     },
+    "fuly_home_benefits_i6bfkg": {
+      "type": "fuly-home-benefits",
+      "blocks": {
+        "benefit_xaa9LG": {
+          "type": "benefit",
+          "settings": {
+            "label": "APROBADO POR NIÑOS"
+          }
+        },
+        "benefit_9Mgaqc": {
+          "type": "benefit",
+          "settings": {
+            "label": "RECOMENDADO POR PEDIATRAS"
+          }
+        },
+        "benefit_UpBHna": {
+          "type": "benefit",
+          "settings": {
+            "label": "FORMULADO POR CIENTIFICOS"
+          }
+        },
+        "benefit_az6me6": {
+          "type": "benefit",
+          "settings": {
+            "label": "FUENTE DE VITAMINAS Y MINERALES"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_xaa9LG",
+        "benefit_9Mgaqc",
+        "benefit_UpBHna",
+        "benefit_az6me6"
+      ],
+      "name": "Fuly Home — Benefits",
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 15,
+        "padding_block_tablet": 51,
+        "padding_block_desktop": 20,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#FFFBEA",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
     "17896129330e294f05": {
       "type": "apps",
       "blocks": {
@@ -553,60 +607,6 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "fuly_home_benefits_i6bfkg": {
-      "type": "fuly-home-benefits",
-      "blocks": {
-        "benefit_xaa9LG": {
-          "type": "benefit",
-          "settings": {
-            "label": "APROBADO POR NIÑOS"
-          }
-        },
-        "benefit_9Mgaqc": {
-          "type": "benefit",
-          "settings": {
-            "label": "RECOMENDADO POR PEDIATRAS"
-          }
-        },
-        "benefit_UpBHna": {
-          "type": "benefit",
-          "settings": {
-            "label": "FORMULADO POR CIENTIFICOS"
-          }
-        },
-        "benefit_az6me6": {
-          "type": "benefit",
-          "settings": {
-            "label": "FUENTE DE VITAMINAS Y MINERALES"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_xaa9LG",
-        "benefit_9Mgaqc",
-        "benefit_UpBHna",
-        "benefit_az6me6"
-      ],
-      "name": "Fuly Home — Benefits",
-      "settings": {
-        "auto_scroll": true,
-        "scroll_speed": 30,
-        "padding_block_mobile": 15,
-        "padding_block_tablet": 51,
-        "padding_block_desktop": 20,
-        "tag_gap_mobile": 12,
-        "tag_gap_tablet": 12,
-        "tag_gap_desktop": 12,
-        "tag_font_size_mobile": 13,
-        "tag_font_size_tablet": 13,
-        "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
-      }
     }
   },
   "order": [
@@ -617,10 +617,10 @@
     "video_fuly_columnas_LGHQeF",
     "fuly_imagen_texto_imagen_xWfFAF",
     "17896129330e294f05",
+    "fuly_home_benefits_i6bfkg",
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj",
-    "fuly_home_benefits_i6bfkg"
+    "fuly_home_cta_abyzBj"
   ]
 }
