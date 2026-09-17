@@ -285,7 +285,7 @@
         "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34": {
           "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/testimonialsRevie-v2/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
-            "title": "Amadas por cientos",
+            "title": "Amadas por cientos DE FAMILIAS",
             "title_color": "#14181f",
             "title_size": 32,
             "title_pos": "left",
@@ -317,7 +317,7 @@
       "custom_css": [
         ".revie-tm__card {display: none !important;}",
         ".revie-tm__card[data-handle^=\"malteada\"] {display: flex !important;}",
-        "[data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] {display: none !important;}",
+        "[data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] {display: none !important;}",
         "[data-handle$=\"vainilla\"] ~ [data-handle$=\"vainilla\"] ~ [data-handle$=\"vainilla\"] {display: none !important;}",
         ".revie-tm__more-wrap {display: none !important;}"
       ],
