@@ -1,0 +1,370 @@
+{%- comment -%}
+  FULY · Sección "Imagen + contenido"
+  Guardar como: sections/fuly-imagen-texto-imagen.liquid
+  Izquierda: imagen fija. Derecha: bloques apilables (título, texto, imagen, botón, claim, descriptor).
+  Mobile-first: en móvil se apila y cada parte tiene sus propios controles.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{% style %}
+  .fuly-dual{
+    background: {{ s.bg_color }};
+    padding-top: {{ s.padding_top_mobile }}px;
+    padding-bottom: {{ s.padding_bottom_mobile }}px;
+  }
+  .fuly-dual__inner{
+    max-width: {{ s.max_width }}px;
+    margin-inline: auto;
+    padding-inline: {{ s.padding_inline_mobile }}px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ s.gap_mobile }}px;
+    align-items: {{ s.vertical_align }};
+  }
+  .fuly-dual__media img,
+  .fuly-dual__blockimg img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: {{ s.image_radius }}px;
+    {% if s.image_border > 0 %}border: {{ s.image_border }}px solid #000;{% endif %}
+    {% if s.image_shadow %}box-shadow: 4px 4px 0 #000;{% endif %}
+  }
+  .fuly-dual__content{
+    display: flex;
+    flex-direction: column;
+    gap: {{ s.stack_gap_mobile }}px;
+    text-align: {{ s.text_align_mobile }};
+    align-items: {% if s.text_align_mobile == 'center' %}center{% else %}flex-start{% endif %};
+  }
+  .fuly-dual__heading{
+    margin: 0;
+    font-size: {{ s.heading_size_mobile }}px;
+    line-height: 1.02;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .fuly-dual__text{ margin: 0; line-height: 1.5; }
+  .fuly-dual__text > *:first-child{ margin-top: 0; }
+  .fuly-dual__text > *:last-child{ margin-bottom: 0; }
+
+  .fuly-dual__descriptor{
+    margin: 0;
+    font-family: ui-monospace, "Martian Mono", SFMono-Regular, Menlo, monospace;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .fuly-dual__claim{
+    margin: 0;
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 12px 16px;
+    font-family: ui-monospace, "Martian Mono", SFMono-Regular, Menlo, monospace;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 700;
+    box-shadow: 4px 4px 0 #000;
+    width: 100%;
+  }
+
+  .fuly-dual__btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    border: 3px solid #000;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    line-height: 1.1;
+    box-shadow: 4px 4px 0 #000;
+    transition: transform 120ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 120ms ease-out;
+    width: 100%;
+  }
+  .fuly-dual__btn:hover{ transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #000; }
+  .fuly-dual__btn:active{ transform: translate(4px,4px); box-shadow: 0 0 0 #000; }
+  .fuly-dual__btn:focus-visible{ outline: 3px solid #000; outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .fuly-dual__btn{ transition: none; }
+    .fuly-dual__btn:hover{ transform: none; box-shadow: 4px 4px 0 #000; }
+  }
+
+  {% if s.lab_grid %}
+  .fuly-dual{
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.055) 0 1px, transparent 1px 32px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,.055) 0 1px, transparent 1px 32px);
+  }
+  {% endif %}
+
+  {% unless s.button_full_mobile %}
+  @media screen and (max-width: 749px){
+    .fuly-dual__btn{ width: auto; }
+  }
+  {% endunless %}
+
+  @media screen and (min-width: 750px){
+    .fuly-dual{
+      padding-top: {{ s.padding_top }}px;
+      padding-bottom: {{ s.padding_bottom }}px;
+    }
+    .fuly-dual__inner{
+      padding-inline: {{ s.padding_inline }}px;
+      gap: {{ s.gap }}px;
+      grid-template-columns: {{ s.columns_ratio }};
+    }
+    .fuly-dual--reverse .fuly-dual__media{ order: 2; }
+    .fuly-dual--reverse .fuly-dual__content{ order: 1; }
+    .fuly-dual__content{
+      gap: {{ s.stack_gap }}px;
+      text-align: {{ s.text_align }};
+      align-items: {% if s.text_align == 'center' %}center{% elsif s.text_align == 'right' %}flex-end{% else %}flex-start{% endif %};
+    }
+    .fuly-dual__heading{ font-size: {{ s.heading_size }}px; }
+    .fuly-dual__descriptor,
+    .fuly-dual__claim{ font-size: 13px; }
+    .fuly-dual__btn{ width: auto; }
+  }
+{% endstyle %}
+
+<section
+  class="fuly-dual{% if s.reverse %} fuly-dual--reverse{% endif %}"
+  {% if s.anchor_id != blank %}id="{{ s.anchor_id | handle }}"{% endif %}
+>
+  <div class="fuly-dual__inner">
+
+    {%- if s.image != blank -%}
+      <div class="fuly-dual__media">
+        {%- if s.image_mobile != blank -%}
+          <picture>
+            <source media="(min-width: 750px)" srcset="{{ s.image | image_url: width: 1400 }}">
+            {{ s.image_mobile | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '100vw', widths: '400,600,750,900', alt: s.image_mobile.alt }}
+          </picture>
+        {%- else -%}
+          {{ s.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 50vw, 100vw', widths: '400,600,800,1000,1200,1400', alt: s.image.alt }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="fuly-dual__content">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+          {%- when 'heading' -%}
+            <h2
+              class="fuly-dual__heading"
+              style="color:{{ block.settings.color }};{% if block.settings.toy_shadow %}text-shadow:3px 3px 0 {{ block.settings.shadow_color }};{% endif %}"
+              {{ block.shopify_attributes }}
+            >{{ block.settings.text }}</h2>
+
+          {%- when 'descriptor' -%}
+            <p class="fuly-dual__descriptor" style="color:{{ block.settings.color }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+
+          {%- when 'text' -%}
+            <div
+              class="fuly-dual__text"
+              style="color:{{ block.settings.color }};font-size:{{ block.settings.size }}px"
+              {{ block.shopify_attributes }}
+            >{{ block.settings.text }}</div>
+
+          {%- when 'image' -%}
+            {%- if block.settings.image != blank -%}
+              <div
+                class="fuly-dual__blockimg"
+                style="width:100%;max-width:{{ block.settings.max_width }}px"
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 45vw, 100vw', widths: '400,600,800,1000,1200', alt: block.settings.image.alt }}
+              </div>
+            {%- endif -%}
+
+          {%- when 'claim' -%}
+            <p
+              class="fuly-dual__claim"
+              style="background:{{ block.settings.bg }};color:{{ block.settings.color }}"
+              {{ block.shopify_attributes }}
+            >{{ block.settings.text }}</p>
+
+          {%- when 'button' -%}
+            {%- if block.settings.label != blank -%}
+              <a
+                class="fuly-dual__btn"
+                href="{{ block.settings.link | default: '#' }}"
+                style="background:{{ block.settings.bg }};color:{{ block.settings.color }};font-size:{{ block.settings.size }}px"
+                {{ block.shopify_attributes }}
+              >{{ block.settings.label }}</a>
+            {%- endif -%}
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fuly · Imagen + contenido",
+  "tag": "section",
+  "class": "fuly-dual-section",
+  "settings": [
+    { "type": "header", "content": "Imagen principal (izquierda)" },
+    { "type": "image_picker", "id": "image", "label": "Imagen" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Imagen para móvil (opcional)", "info": "Si la dejas vacía se usa la misma." },
+    { "type": "range", "id": "image_radius", "label": "Redondeo", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "image_border", "label": "Contorno negro", "min": 0, "max": 6, "step": 1, "unit": "px", "default": 3 },
+    { "type": "checkbox", "id": "image_shadow", "label": "Sombra cartoon", "default": true },
+
+    { "type": "header", "content": "Distribución (escritorio)" },
+    {
+      "type": "select",
+      "id": "columns_ratio",
+      "label": "Proporción de columnas",
+      "options": [
+        { "value": "1fr 1fr", "label": "50 / 50" },
+        { "value": "1.2fr 1fr", "label": "55 / 45" },
+        { "value": "1.5fr 1fr", "label": "60 / 40" },
+        { "value": "1fr 1.5fr", "label": "40 / 60" }
+      ],
+      "default": "1fr 1fr"
+    },
+    { "type": "checkbox", "id": "reverse", "label": "Invertir columnas", "default": false },
+    {
+      "type": "select",
+      "id": "vertical_align",
+      "label": "Alineación vertical",
+      "options": [
+        { "value": "center", "label": "Centrado" },
+        { "value": "start", "label": "Arriba" },
+        { "value": "stretch", "label": "Estirado" }
+      ],
+      "default": "center"
+    },
+    { "type": "range", "id": "gap", "label": "Separación entre columnas", "min": 16, "max": 96, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "stack_gap", "label": "Separación entre bloques", "min": 8, "max": 48, "step": 4, "unit": "px", "default": 20 },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alineación del contenido",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Derecha" }
+      ],
+      "default": "left"
+    },
+    { "type": "range", "id": "heading_size", "label": "Tamaño del título", "min": 20, "max": 72, "step": 2, "unit": "px", "default": 42 },
+
+    { "type": "header", "content": "Móvil" },
+    { "type": "range", "id": "gap_mobile", "label": "Separación entre imagen y contenido", "min": 16, "max": 64, "step": 4, "unit": "px", "default": 28 },
+    { "type": "range", "id": "stack_gap_mobile", "label": "Separación entre bloques", "min": 8, "max": 40, "step": 4, "unit": "px", "default": 16 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Tamaño del título", "min": 18, "max": 48, "step": 2, "unit": "px", "default": 28 },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "label": "Alineación del contenido",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" }
+      ],
+      "default": "left"
+    },
+    { "type": "checkbox", "id": "button_full_mobile", "label": "Botón de ancho completo", "default": true },
+    { "type": "range", "id": "padding_inline_mobile", "label": "Margen lateral", "min": 0, "max": 40, "step": 4, "unit": "px", "default": 16 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Espacio arriba", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Espacio abajo", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 32 },
+
+    { "type": "header", "content": "Sección" },
+    { "type": "color_background", "id": "bg_color", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "checkbox", "id": "lab_grid", "label": "Retícula del lab de fondo", "default": false },
+    { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 },
+    { "type": "range", "id": "padding_inline", "label": "Margen lateral (escritorio)", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding_top", "label": "Espacio arriba (escritorio)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio abajo (escritorio)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 },
+    { "type": "text", "id": "anchor_id", "label": "ID de ancla (opcional)", "info": "Para enlazar con #nombre desde un botón." }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Título",
+      "limit": 2,
+      "settings": [
+        { "type": "inline_richtext", "id": "text", "label": "Texto", "default": "No todas las malteadas son iguales" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
+        { "type": "checkbox", "id": "toy_shadow", "label": "Sombra sólida de juguete", "default": false },
+        { "type": "color", "id": "shadow_color", "label": "Color de la sombra", "default": "#FAE64B" }
+      ]
+    },
+    {
+      "type": "descriptor",
+      "name": "Descriptor (mono)",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "250 G · 10 PORCIONES · PROTEÍNA DE ALMENDRA Y HUEVO" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Texto",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Proteína de almendra y huevo, sin azúcar añadida y con fibra prebiótica. La que sí se toman sin pelear.</p>" },
+        { "type": "range", "id": "size", "label": "Tamaño", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Imagen",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 120, "max": 800, "step": 20, "unit": "px", "default": 520 }
+      ]
+    },
+    {
+      "type": "claim",
+      "name": "Claim destacado",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "FORTIFICADA CON VITAMINAS Y MINERALES" },
+        { "type": "color", "id": "bg", "label": "Fondo", "default": "#FAE64B" },
+        { "type": "color", "id": "color", "label": "Texto", "default": "#000000" }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Botón",
+      "limit": 2,
+      "settings": [
+        { "type": "text", "id": "label", "label": "Texto del botón", "default": "Agregar al carrito" },
+        { "type": "url", "id": "link", "label": "Enlace" },
+        { "type": "range", "id": "size", "label": "Tamaño del texto", "min": 12, "max": 22, "step": 1, "unit": "px", "default": 16 },
+        { "type": "color", "id": "bg", "label": "Fondo", "default": "#FAE64B" },
+        { "type": "color", "id": "color", "label": "Texto", "default": "#000000" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly · Imagen + contenido",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "text" },
+        { "type": "image" },
+        { "type": "claim" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}
