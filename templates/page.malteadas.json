@@ -160,13 +160,13 @@
         "gap_mobile": 10,
         "sticky_panel": false,
         "mobile_layout": "grid",
-        "panel_image": "shopify://shop_images/Malteada_Chocolate_1.png",
+        "panel_image": "shopify://shop_images/Malteada_Chocolate_web_10.png",
         "image_style": "top",
         "panel_image_ratio": "1/1",
         "panel_image_ratio_custom": "5/4",
         "panel_image_fit": "cover",
         "panel_image_position": "center",
-        "panel_grid_overlay": true,
+        "panel_grid_overlay": false,
         "overlay_opacity": 90,
         "panel_title": "",
         "panel_text": "",
@@ -213,6 +213,7 @@
       "block_order": [
         "ai_gen_block_f10a1a9_PrYfXR"
       ],
+      "disabled": true,
       "settings": {}
     },
     "video_fuly_columnas_LGHQeF": {
@@ -244,19 +245,29 @@
             "youtube_url": "",
             "caption": ""
           }
+        },
+        "video_CtEFbp": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/video malteada de vainilla_b7c9c3bc-1ed7-431a-a1a4-5ed5ab70a71a.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
         }
       },
       "block_order": [
         "video_GY386W",
         "video_gmM6LY",
-        "video_HcRDPB"
+        "video_HcRDPB",
+        "video_CtEFbp"
       ],
       "name": "Videos en columnas",
       "settings": {
         "title": "",
         "title_alignment": "center",
         "columns_desktop": 3,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "gap": 16,
         "aspect_ratio": "9 / 16",
         "corner_radius": 12,
@@ -320,6 +331,12 @@
       },
       "block_order": [
         "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34"
+      ],
+      "custom_css": [
+        "#revieListTestimoniales .p-test {display: none !important;}",
+        "#revieListTestimoniales .p-test[data-handle=\"malteada-de-chocolate\"],#revieListTestimoniales .p-test[data-handle=\"malteada-de-vainilla\"] {display: block !important; height: auto !important; margin-bottom: 1rem !important;}",
+        ".rv4-f1 #revieListTestimoniales .p-test[data-handle=\"malteada-de-chocolate\"],.rv4-f1 #revieListTestimoniales .p-test[data-handle=\"malteada-de-vainilla\"] {padding: 10px !important;}",
+        "#moreTestimoniales {display: none !important;}"
       ],
       "settings": {
         "include_margins": true
