@@ -315,11 +315,11 @@
         "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34"
       ],
       "custom_css": [
-        ".revie-tm__card{display:none!important}",
-        ".revie-tm__card[data-handle^=malteada]{display:flex!important}",
-        "[data-handle$=chocolate]~[data-handle$=chocolate]~[data-handle$=chocolate]~[data-handle$=chocolate]~[data-handle$=chocolate]{display:none!important}",
-        "[data-handle$=vainilla]~[data-handle$=vainilla]~[data-handle$=vainilla]{display:none!important}",
-        ".revie-tm__more-wrap{display:none!important}"
+        ".revie-tm__card {display: none !important;}",
+        ".revie-tm__card[data-handle^=\"malteada\"] {display: flex !important;}",
+        "[data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] ~ [data-handle$=\"chocolate\"] {display: none !important;}",
+        "[data-handle$=\"vainilla\"] ~ [data-handle$=\"vainilla\"] ~ [data-handle$=\"vainilla\"] {display: none !important;}",
+        ".revie-tm__more-wrap {display: none !important;}"
       ],
       "settings": {
         "include_margins": true
@@ -327,7 +327,9 @@
     },
     "fuly_ingredientes_productos_eL99P4": {
       "type": "fuly-ingredientes-productos",
-      "custom_css": [],
+      "custom_css": [
+        ".fuly-ing-productos__controls{display:none!important}"
+      ],
       "name": "Ingredientes — Productos",
       "settings": {
         "kicker": "",
@@ -349,7 +351,7 @@
         "faq_item_PEgWny": {
           "type": "faq_item",
           "settings": {
-            "category": "Producto",
+            "category": "PREGUNTAS FRECUENTES",
             "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
             "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
           }
@@ -357,7 +359,7 @@
         "faq_item_hKEqEq": {
           "type": "faq_item",
           "settings": {
-            "category": "Producto",
+            "category": "PREGUNTAS FRECUENTES",
             "question": "¿Adicionan azúcar a sus productos?",
             "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. En algunos Fuly vas a ver azúcares añadidos en la etiqueta. Esto se debe a que son alimentos procesados. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
           }
@@ -365,93 +367,22 @@
         "faq_item_K9UX3g": {
           "type": "faq_item",
           "settings": {
-            "category": "Producto",
+            "category": "PREGUNTAS FRECUENTES",
             "question": "¿Son seguros los ingredientes?",
             "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
-          }
-        },
-        "faq_item_nNFrgy": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Producto",
-            "question": "¿Qué son los betaglucanos?",
-            "answer": "<p>Los betaglucanos son fibras naturales que estimulan el sistema inmunológico. Los obtenemos de fuentes como la levadura y la avena.</p>"
-          }
-        },
-        "faq_item_ghjAxH": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Envíos",
-            "question": "¿Cómo funciona el envío?",
-            "answer": "<p>Realizamos envíos a todo Colombia. Si compras antes de las 3 p.m., tu pedido sale el mismo día. El tiempo de entrega varía entre 1-3 días hábiles.</p>"
-          }
-        },
-        "faq_item_KeJRMX": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Envíos",
-            "question": "¿Cuánto cuesta el envío?",
-            "answer": "<p>El envío es gratis en pedidos superiores a $100.000 COP. Para pedidos menores, el costo varía según la ciudad.</p>"
-          }
-        },
-        "faq_item_AKfwq7": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Envíos",
-            "question": "¿Hacen envíos internacionales?",
-            "answer": "<p>Por ahora solo realizamos envíos dentro de Colombia. Estamos trabajando para expandirnos pronto.</p>"
-          }
-        },
-        "faq_item_HzpMM3": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Suscripción",
-            "question": "¿Qué beneficios tiene la suscripción?",
-            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas. Puedes modificar o pausar la suscripción en cualquier momento.</p>"
-          }
-        },
-        "faq_item_Ynmntj": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Suscripción",
-            "question": "¿Puedo cancelar mi suscripción?",
-            "answer": "<p>Sí, puedes cancelar tu suscripción en cualquier momento sin penalidad.</p>"
-          }
-        },
-        "faq_item_aXqg46": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Devoluciones",
-            "question": "¿Tienen garantía de satisfacción?",
-            "answer": "<p>Si nunca has probado nuestros productos y temes que no sea una buena experiencia, para compras menores a $200.000 realizadas directamente en nuestra página web, te devolvemos tu dinero si no estás satisfecho. Esta garantía no aplica para productos comprados en otros aliados comerciales. <a href=\"/pages/garantia\">Revisa las condiciones y requisitos aquí</a>.</p>"
-          }
-        },
-        "faq_item_MmaFrV": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Devoluciones",
-            "question": "¿Cómo solicito una devolución?",
-            "answer": "<p>Escríbenos a nuestro WhatsApp o correo electrónico con tu número de pedido y te guiamos en el proceso.</p>"
           }
         }
       },
       "block_order": [
         "faq_item_PEgWny",
         "faq_item_hKEqEq",
-        "faq_item_K9UX3g",
-        "faq_item_nNFrgy",
-        "faq_item_ghjAxH",
-        "faq_item_KeJRMX",
-        "faq_item_AKfwq7",
-        "faq_item_HzpMM3",
-        "faq_item_Ynmntj",
-        "faq_item_aXqg46",
-        "faq_item_MmaFrV"
+        "faq_item_K9UX3g"
       ],
+      "custom_css": [],
       "name": "Fuly FAQ Page",
       "settings": {
         "eyebrow": "",
-        "title": "Preguntas frecuentes",
+        "title": "",
         "subtitle": "",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
