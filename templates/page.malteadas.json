@@ -270,6 +270,7 @@
     },
     "fuly_ingredientes_productos_eL99P4": {
       "type": "fuly-ingredientes-productos",
+      "custom_css": [],
       "name": "Ingredientes — Productos",
       "settings": {
         "kicker": "",
@@ -284,6 +285,45 @@
         "source_label": "[fuente]",
         "empty_message": "Aún no hay productos con ingredientes cargados."
       }
+    },
+    "1789603482df0f6ab5": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/testimonialsRevie-v2/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "Amadas por cientos",
+            "title_color": "#14181F",
+            "title_size": 32,
+            "title_pos": "left",
+            "show_overview": true,
+            "title_stars": "reseñas",
+            "image": "1",
+            "max_reviews": 9,
+            "lines": 4,
+            "columns_desktop": 3,
+            "columns_tablet": 2,
+            "columns_mobile": "1",
+            "card_radius": 18,
+            "size_text": 14,
+            "star_color": "#F8B401",
+            "text_color": "#2B322C",
+            "back_color": "#FFFFFF",
+            "border_color": "#ECEFEC",
+            "accent_color": "#F7CD47",
+            "modal_cta_color": "#15A75F",
+            "modal_cta_text_color": "#FFFFFF",
+            "max_width": 1200,
+            "content_padding": 40
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -292,6 +332,7 @@
     "productos_con_panel_XWmzhX",
     "178960209864e24a26",
     "video_fuly_columnas_LGHQeF",
-    "fuly_ingredientes_productos_eL99P4"
+    "fuly_ingredientes_productos_eL99P4",
+    "1789603482df0f6ab5"
   ]
 }
