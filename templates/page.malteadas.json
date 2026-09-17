@@ -512,6 +512,42 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "17896129330e294f05": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "Reviews",
+            "format": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "flex-start",
+            "star_color": "#000000",
+            "size": 15,
+            "back_color": "#FFFFFF",
+            "text_color": "#000000",
+            "size_text": 12,
+            "name": "2",
+            "truncate": "1",
+            "max_reviews": 10,
+            "image": "1",
+            "from": "1",
+            "width_elements": 4,
+            "content_padding": 22,
+            "mobil_content_padding": 16,
+            "movil_count": "1.5",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -524,6 +560,7 @@
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj"
+    "fuly_home_cta_abyzBj",
+    "17896129330e294f05"
   ]
 }
