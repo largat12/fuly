@@ -97,7 +97,7 @@
         "item_AiDRRb": {
           "type": "item",
           "settings": {
-            "text": "Perfectas para acompañar el desayuno, la lonchera o los snacks",
+            "text": "Perfectas para acompañar el desayuno, la lonchera o los snacks de tus hijos",
             "icon": "✓"
           }
         },
@@ -126,7 +126,7 @@
         "item_HjBhNQ": {
           "type": "item",
           "settings": {
-            "text": "Puedes mezclar con yogur, avena y hasta hacer recetas",
+            "text": "Puedes mezclar con yogur, avena y recetas",
             "icon": "✓"
           }
         },
@@ -293,7 +293,7 @@
         "button_qgJpPx": {
           "type": "button",
           "settings": {
-            "label": "Agregar al carrito",
+            "label": "¡Las quiero!",
             "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
             "size": 16,
             "bg": "#fae64b",
@@ -313,8 +313,8 @@
         "heading_shadow_color": "#fae64b",
         "heading_size": 42,
         "heading_align": "left",
-        "image_a": "shopify://shop_images/ChatGPT_Image_16_sept_2026_09_11_37_p.m..png",
-        "image_b": "shopify://shop_images/FulyPara_todas_las_edades.png",
+        "image_a": "shopify://shop_images/Fuly_funciona_vs_otros_productos.png",
+        "image_b": "shopify://shop_images/ninos-maltedeada-de-chocolate_1.jpg",
         "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
