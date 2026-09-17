@@ -52,7 +52,7 @@
         {%- assign accent = product.metafields.custom.color_marca | default: product.metafields.fuly.color | default: data.flavor | default: '#574DDF' -%}
         {%- assign kicker = data.kicker | default: product.metafields.custom.formato -%}
 
-        <details class="fuly-ing-prod" style="--ing-accent: {{ accent }};"{% if rendered == 1 %} open{% endif %}>
+        <details class="fuly-ing-prod" style="--ing-accent: {{ accent }};">
           <summary class="fuly-ing-prod__summary">
             <span class="fuly-ing-prod__thumb" style="background: {{ data.gradient | default: accent | append: '22' }};">
               {%- if product.featured_image -%}
