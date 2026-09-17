@@ -380,10 +380,10 @@
             "image": "2",
             "from": "1",
             "width_elements": 7,
-            "content_padding": 22,
+            "content_padding": 6,
             "mobil_content_padding": 16,
             "movil_count": "1.5",
-            "max_width": 1200
+            "max_width": 1860
           }
         }
       },
