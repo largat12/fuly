@@ -123,6 +123,13 @@
             "icon": "✓"
           }
         },
+        "item_m8AJmW": {
+          "type": "item",
+          "settings": {
+            "text": "Sin azúcar añadida. Endulzada con fruto del monje.",
+            "icon": "✓"
+          }
+        },
         "item_HjBhNQ": {
           "type": "item",
           "settings": {
@@ -145,6 +152,7 @@
         "item_zLi4EW",
         "item_zEmATi",
         "item_QP6Twt",
+        "item_m8AJmW",
         "item_HjBhNQ",
         "item_Cz6eem"
       ],
