@@ -296,7 +296,7 @@
             "lines": 4,
             "columns_desktop": 4,
             "columns_tablet": 2,
-            "columns_mobile": "2",
+            "columns_mobile": "1",
             "card_radius": 18,
             "size_text": 14,
             "star_color": "#f8b401",
@@ -328,11 +328,19 @@
     "fuly_faq_page_iWXdJy": {
       "type": "fuly-faq-page",
       "blocks": {
+        "faq_item_D9zf4B": {
+          "type": "faq_item",
+          "settings": {
+            "category": "PREGUNTAS FRECUENTES",
+            "question": "¿De dónde viene la proteína?",
+            "answer": "<p>De almendra y huevo entero. La de chocolate aporta 7,2 g de proteína por porción preparada, la de vainilla aporta 6,7g. Contiene almendra y huevo: revísalo si tu hijo tiene alguna alergia.</p>"
+          }
+        },
         "faq_item_PEgWny": {
           "type": "faq_item",
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
-            "question": "¿A partir de qué edad pueden tomar los productos Fuly?",
+            "question": "¿A partir de qué edad se pueden tomar?",
             "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
           }
         },
@@ -340,8 +348,16 @@
           "type": "faq_item",
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
-            "question": "¿Adicionan azúcar a sus productos?",
-            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. En algunos Fuly vas a ver azúcares añadidos en la etiqueta. Esto se debe a que son alimentos procesados. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+            "question": "¿Tienen azúcar añadida?",
+            "answer": "<p>No. Las malteadas no tienen azúcares añadidos.</p>"
+          }
+        },
+        "faq_item_EgYp9a": {
+          "type": "faq_item",
+          "settings": {
+            "category": "PREGUNTAS FRECUENTES",
+            "question": "¿tIENEN REGISTRO INVIMA?",
+            "answer": "<p>Si. Nuestras malteadas tienen registro invima: RSA-0031556-2024</p>"
           }
         },
         "faq_item_K9UX3g": {
@@ -351,12 +367,23 @@
             "question": "¿Son seguros los ingredientes?",
             "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
           }
+        },
+        "faq_item_B9xbFF": {
+          "type": "faq_item",
+          "settings": {
+            "category": "PREGUNTAS FRECUENTES",
+            "question": "¿Reemplaza una comida o el desayuno?",
+            "answer": "<p>No. Es un complemento: acompaña el desayuno o cualquier momento del día.  Pero no busca reemplazar comidas completas. Aporta proteína, fibra y micronutrientes dentro de una alimentación equilibrada.</p>"
+          }
         }
       },
       "block_order": [
+        "faq_item_D9zf4B",
         "faq_item_PEgWny",
         "faq_item_hKEqEq",
-        "faq_item_K9UX3g"
+        "faq_item_EgYp9a",
+        "faq_item_K9UX3g",
+        "faq_item_B9xbFF"
       ],
       "custom_css": [
         ".fuly-faq-page__header {display: none;}",
