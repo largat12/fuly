@@ -15,8 +15,8 @@
         "slide_8QXVBE": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/PNG_Lamejorproteinaninos.png",
-            "image_mobile": "shopify://shop_images/Lasmejorproteinaparaninos.svg",
+            "image": "shopify://shop_images/Banner_web_LP_Malteadas_Fuly.png",
+            "image_mobile": "shopify://shop_images/Banner_Movil_Malteadas_Fuly.png",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "enable_link": true,
@@ -286,7 +286,7 @@
           "type": "claim",
           "settings": {
             "text": "Perfectas para todas las edades",
-            "bg": "#FFFFFF",
+            "bg": "#ffffff",
             "color": "#000000"
           }
         },
@@ -296,7 +296,7 @@
             "label": "Agregar al carrito",
             "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
             "size": 16,
-            "bg": "#FAE64B",
+            "bg": "#fae64b",
             "color": "#000000"
           }
         }
@@ -310,7 +310,7 @@
         "heading": "¡No todas las malteadas son iguales!",
         "heading_color": "#000000",
         "heading_toy_shadow": false,
-        "heading_shadow_color": "#FAE64B",
+        "heading_shadow_color": "#fae64b",
         "heading_size": 42,
         "heading_align": "left",
         "image_a": "shopify://shop_images/ChatGPT_Image_16_sept_2026_09_11_37_p.m..png",
@@ -348,6 +348,46 @@
         "padding_top": 64,
         "padding_bottom": 64,
         "anchor_id": ""
+      }
+    },
+    "17896129330e294f05": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
+            "format": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "flex-start",
+            "star_color": "#000000",
+            "size": 15,
+            "back_color": "#ffffff",
+            "text_color": "#000000",
+            "size_text": 12,
+            "name": "2",
+            "truncate": "1",
+            "max_reviews": 60,
+            "image": "2",
+            "from": "1",
+            "width_elements": 7,
+            "content_padding": 22,
+            "mobil_content_padding": 16,
+            "movil_count": "1.5",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
+      ],
+      "custom_css": [
+        ".carouselPre .itemsC {display: none !important;}",
+        ".carouselPre .itemsC[data-go=\"malteada-de-chocolate\"] {display: list-item !important;}"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "fuly_home_benefits_i6bfkg": {
@@ -397,51 +437,11 @@
         "tag_font_size_mobile": 13,
         "tag_font_size_tablet": 13,
         "tag_font_size_desktop": 13,
-        "bg_color": "#FFFBEA",
+        "bg_color": "#fffbea",
         "heading_font": "inherit",
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
-      }
-    },
-    "17896129330e294f05": {
-      "type": "apps",
-      "blocks": {
-        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
-          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
-          "settings": {
-            "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
-            "format": "2",
-            "title_color": "#000000",
-            "title_size": 24,
-            "title_pos": "flex-start",
-            "star_color": "#000000",
-            "size": 15,
-            "back_color": "#FFFFFF",
-            "text_color": "#000000",
-            "size_text": 12,
-            "name": "2",
-            "truncate": "1",
-            "max_reviews": 60,
-            "image": "2",
-            "from": "1",
-            "width_elements": 7,
-            "content_padding": 22,
-            "mobil_content_padding": 16,
-            "movil_count": "1.5",
-            "max_width": 1200
-          }
-        }
-      },
-      "block_order": [
-        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
-      ],
-      "custom_css": [
-        ".carouselPre .itemsC {display: none !important;}",
-        ".carouselPre .itemsC[data-go=\"malteada-de-chocolate\"] {display: list-item !important;}"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "1789603482df0f6ab5": {
