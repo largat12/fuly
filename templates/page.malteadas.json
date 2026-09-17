@@ -385,6 +385,7 @@
       "block_order": [
         "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34"
       ],
+      "disabled": true,
       "custom_css": [
         ".revie-tm__card {display: none !important;}",
         ".revie-tm__card[data-handle^=\"malteada\"] {display: flex !important;}",
@@ -519,7 +520,7 @@
         "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
           "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
-            "title": "Reviews",
+            "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
             "format": "2",
             "title_color": "#000000",
             "title_size": 24,
@@ -531,10 +532,10 @@
             "size_text": 12,
             "name": "2",
             "truncate": "1",
-            "max_reviews": 10,
-            "image": "1",
+            "max_reviews": 60,
+            "image": "2",
             "from": "1",
-            "width_elements": 4,
+            "width_elements": 7,
             "content_padding": 22,
             "mobil_content_padding": 16,
             "movil_count": "1.5",
@@ -544,6 +545,10 @@
       },
       "block_order": [
         "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
+      ],
+      "custom_css": [
+        ".carouselPre .itemsC {display: none !important;}",
+        ".carouselPre .itemsC[data-go=\"malteada-de-chocolate\"] {display: list-item !important;}"
       ],
       "settings": {
         "include_margins": true
@@ -557,10 +562,10 @@
     "178960209864e24a26",
     "video_fuly_columnas_LGHQeF",
     "fuly_imagen_texto_imagen_xWfFAF",
+    "17896129330e294f05",
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj",
-    "17896129330e294f05"
+    "fuly_home_cta_abyzBj"
   ]
 }
