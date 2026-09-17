@@ -350,6 +350,46 @@
         "anchor_id": ""
       }
     },
+    "17896129330e294f05": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
+            "format": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "flex-start",
+            "star_color": "#000000",
+            "size": 15,
+            "back_color": "#FFFFFF",
+            "text_color": "#000000",
+            "size_text": 12,
+            "name": "2",
+            "truncate": "1",
+            "max_reviews": 60,
+            "image": "2",
+            "from": "1",
+            "width_elements": 7,
+            "content_padding": 22,
+            "mobil_content_padding": 16,
+            "movil_count": "1.5",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
+      ],
+      "custom_css": [
+        ".carouselPre .itemsC {display: none !important;}",
+        ".carouselPre .itemsC[data-go=\"malteada-de-chocolate\"] {display: list-item !important;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "1789603482df0f6ab5": {
       "type": "apps",
       "blocks": {
@@ -413,7 +453,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿A partir de qué edad se pueden tomar?",
-            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
+            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Sin embargo muchos los consumen desde los 2 años por recomendación de su pediatra. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
           }
         },
         "faq_item_hKEqEq": {
@@ -437,7 +477,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Son seguros los ingredientes?",
-            "answer": "<p>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
+            "answer": "<p>Sí, las malteadas tienen ingredientes seguros (puedes encontrar la lista completa debajo de estas preguntas)<br/>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
           }
         },
         "faq_item_B9xbFF": {
@@ -512,46 +552,6 @@
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
-      }
-    },
-    "17896129330e294f05": {
-      "type": "apps",
-      "blocks": {
-        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
-          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
-          "settings": {
-            "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
-            "format": "2",
-            "title_color": "#000000",
-            "title_size": 24,
-            "title_pos": "flex-start",
-            "star_color": "#000000",
-            "size": 15,
-            "back_color": "#FFFFFF",
-            "text_color": "#000000",
-            "size_text": 12,
-            "name": "2",
-            "truncate": "1",
-            "max_reviews": 60,
-            "image": "2",
-            "from": "1",
-            "width_elements": 7,
-            "content_padding": 22,
-            "mobil_content_padding": 16,
-            "movil_count": "1.5",
-            "max_width": 1200
-          }
-        }
-      },
-      "block_order": [
-        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
-      ],
-      "custom_css": [
-        ".carouselPre .itemsC {display: none !important;}",
-        ".carouselPre .itemsC[data-go=\"malteada-de-chocolate\"] {display: list-item !important;}"
-      ],
-      "settings": {
-        "include_margins": true
       }
     }
   },
