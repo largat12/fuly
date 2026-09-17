@@ -19,8 +19,8 @@
             "image_mobile": "shopify://shop_images/Lasmejorproteinaparaninos.svg",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
-            "enable_link": false,
-            "link": ""
+            "enable_link": true,
+            "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true"
           }
         }
       },
