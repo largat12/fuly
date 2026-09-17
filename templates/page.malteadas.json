@@ -173,7 +173,7 @@
         "panel_btn_label": "Elegir sabor",
         "panel_btn_link": "",
         "panel_btn_radius": 10,
-        "panel_bg": "#F7CD47",
+        "panel_bg": "#f7cd47",
         "panel_btn_bg": "#111111",
         "panel_btn_text": "#ffffff",
         "benefit_metafield": "",
@@ -186,7 +186,7 @@
         "view_label": "Ver producto",
         "soldout_label": "Agotado",
         "show_grid_bg": false,
-        "bg_color": "#FFFFFF",
+        "bg_color": "#ffffff",
         "padding_top": 16,
         "padding_bottom": 56
       }
@@ -286,7 +286,7 @@
           "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/testimonialsRevie-v2/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "Amadas por cientos",
-            "title_color": "#14181F",
+            "title_color": "#14181f",
             "title_size": 32,
             "title_pos": "left",
             "show_overview": true,
@@ -299,13 +299,13 @@
             "columns_mobile": "2",
             "card_radius": 18,
             "size_text": 14,
-            "star_color": "#F8B401",
-            "text_color": "#2B322C",
-            "back_color": "#FFFFFF",
-            "border_color": "#ECEFEC",
-            "accent_color": "#F7CD47",
-            "modal_cta_color": "#15A75F",
-            "modal_cta_text_color": "#FFFFFF",
+            "star_color": "#f8b401",
+            "text_color": "#2b322c",
+            "back_color": "#ffffff",
+            "border_color": "#ecefec",
+            "accent_color": "#f7cd47",
+            "modal_cta_color": "#15a75f",
+            "modal_cta_text_color": "#ffffff",
             "max_width": 1200,
             "content_padding": 40
           }
@@ -323,26 +323,6 @@
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "fuly_ingredientes_productos_eL99P4": {
-      "type": "fuly-ingredientes-productos",
-      "custom_css": [
-        ".fuly-ing-productos__controls{display:none!important}"
-      ],
-      "name": "Ingredientes — Productos",
-      "settings": {
-        "kicker": "",
-        "title": "Conoce todos sus ingredientes",
-        "intro": "",
-        "collection": "malteadas",
-        "products_limit": 20,
-        "open_all_label": "",
-        "close_all_label": "",
-        "count_suffix": "ingredientes",
-        "pdp_label": "Ver producto",
-        "source_label": "[fuente]",
-        "empty_message": "Aún no hay productos con ingredientes cargados."
       }
     },
     "fuly_faq_page_iWXdJy": {
@@ -378,7 +358,10 @@
         "faq_item_hKEqEq",
         "faq_item_K9UX3g"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".fuly-faq-page__header {display: none;}",
+        ".fuly-faq-page {padding-top: 16px;}"
+      ],
       "name": "Fuly FAQ Page",
       "settings": {
         "eyebrow": "",
@@ -389,6 +372,26 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "fuly_ingredientes_productos_eL99P4": {
+      "type": "fuly-ingredientes-productos",
+      "custom_css": [
+        ".fuly-ing-productos__controls {display: none !important;}"
+      ],
+      "name": "Ingredientes — Productos",
+      "settings": {
+        "kicker": "",
+        "title": "Conoce todos sus ingredientes",
+        "intro": "",
+        "collection": "malteadas",
+        "products_limit": 20,
+        "open_all_label": "",
+        "close_all_label": "",
+        "count_suffix": "ingredientes",
+        "pdp_label": "Ver producto",
+        "source_label": "[fuente]",
+        "empty_message": "Aún no hay productos con ingredientes cargados."
+      }
     }
   },
   "order": [
@@ -398,7 +401,7 @@
     "178960209864e24a26",
     "video_fuly_columnas_LGHQeF",
     "1789603482df0f6ab5",
-    "fuly_ingredientes_productos_eL99P4",
-    "fuly_faq_page_iWXdJy"
+    "fuly_faq_page_iWXdJy",
+    "fuly_ingredientes_productos_eL99P4"
   ]
 }
