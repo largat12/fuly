@@ -256,8 +256,13 @@
   @media (min-width: 990px) {
     #shopify-section-{{ section.id }} .fk-pi__grid { grid-template-columns: minmax(0, 1fr); }
     #shopify-section-{{ section.id }} .fuly-products-grid {
+    {%- if s.cards_fill %}
+      /* Las tarjetas se reparten todo el ancho disponible */
+      grid-template-columns: repeat(var(--fk-cols), minmax(0, 1fr));
+    {%- else %}
       grid-template-columns: repeat(var(--fk-cols), minmax(0, {{ s.cards_max_width }}px));
       justify-content: {{ prod_justify }};
+    {%- endif %}
     }
   {%- if split_panel %}
     #shopify-section-{{ section.id }} .fk-panel {
@@ -532,7 +537,8 @@
         { "value": "side", "label": "En paralelo: productos y panel lado a lado" }
       ]
     },
-    { "type": "range", "id": "cards_max_width", "label": "Ancho máximo de cada tarjeta (apilado)", "min": 240, "max": 600, "step": 20, "unit": "px", "default": 340 },
+    { "type": "checkbox", "id": "cards_fill", "label": "Tarjetas a todo el ancho (apilado)", "default": false, "info": "Reparten todo el ancho de la sección, sin espacio sobrante. Al activarlo se ignoran el ancho máximo y la alineación de abajo." },
+    { "type": "range", "id": "cards_max_width", "label": "Ancho máximo de cada tarjeta (apilado)", "min": 240, "max": 720, "step": 20, "unit": "px", "default": 340 },
     {
       "type": "select",
       "id": "products_align",
