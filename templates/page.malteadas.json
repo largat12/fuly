@@ -116,13 +116,6 @@
             "icon": "✓"
           }
         },
-        "item_QP6Twt": {
-          "type": "item",
-          "settings": {
-            "text": "Cada porción aporta la proteína de un huevo entero",
-            "icon": "✓"
-          }
-        },
         "item_m8AJmW": {
           "type": "item",
           "settings": {
@@ -136,13 +129,6 @@
             "text": "Puedes mezclar con yogur, avena y recetas",
             "icon": "✓"
           }
-        },
-        "item_Cz6eem": {
-          "type": "item",
-          "settings": {
-            "text": "Tranquilidad los días que come poco",
-            "icon": "✓"
-          }
         }
       },
       "block_order": [
@@ -151,15 +137,16 @@
         "item_AiDRRb",
         "item_zLi4EW",
         "item_zEmATi",
-        "item_QP6Twt",
         "item_m8AJmW",
-        "item_HjBhNQ",
-        "item_Cz6eem"
+        "item_HjBhNQ"
       ],
       "name": "Productos + Panel",
       "settings": {
         "heading": "Elige su favorita",
         "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.</p>",
+        "desktop_layout": "stacked",
+        "cards_max_width": 340,
+        "products_align": "left",
         "panel_position": "right",
         "columns": 2,
         "products_ratio": 1.2,
@@ -174,14 +161,18 @@
         "panel_image_ratio_custom": "5/4",
         "panel_image_fit": "cover",
         "panel_image_position": "center",
+        "panel_image_side": "left",
+        "panel_split": "1fr 1fr",
+        "panel_image_min_height": 360,
         "panel_grid_overlay": false,
         "overlay_opacity": 90,
         "panel_title": "",
         "panel_text": "",
         "panel_btn_label": "comprar ahora",
         "panel_btn_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
+        "panel_btn_style": "theme",
         "panel_btn_radius": 10,
-        "panel_bg": "#f7cd47",
+        "panel_bg": "#FFFFFF",
         "panel_btn_bg": "#111111",
         "panel_btn_text": "#ffffff",
         "benefit_metafield": "",
