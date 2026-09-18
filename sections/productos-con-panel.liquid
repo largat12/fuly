@@ -28,6 +28,18 @@
     assign rh = 1.0
   endif
   assign ratio_pct = rh | times: 100.0 | divided_by: rw | round: 3
+
+  # ---- Layout de escritorio ----
+  assign prod_justify = 'start'
+  if s.products_align == 'center'
+    assign prod_justify = 'center'
+  endif
+
+  # El panel solo se parte en dos columnas si hay imagen "arriba del texto"
+  assign split_panel = false
+  if s.desktop_layout == 'stacked' and s.panel_image != blank and s.image_style == 'top'
+    assign split_panel = true
+  endif
 -%}
 
 <style>
@@ -208,15 +220,22 @@
     margin-top: auto;
     width: 100%;
     box-sizing: border-box;
+    {%- if s.panel_btn_style == 'theme' %}
+    /* Mismo botón que el resto del sitio: amarillo, borde negro, píldora */
+    background-color: var(--yellow-spark);
+    color: hsl(var(--cartoon-black));
+    border-radius: 999px;
+    {%- else %}
     background-color: {{ s.panel_btn_bg }};
     color: {{ s.panel_btn_text }};
+    border-radius: {{ s.panel_btn_radius }}px;
+    {%- endif %}
     border: 2px solid hsl(var(--cartoon-black));
     box-shadow: 3px 3px hsl(var(--cartoon-black));
     font-family: "Arial Black", Arial, sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 14px;
-    border-radius: {{ s.panel_btn_radius }}px;
     padding: 1.4rem 2rem;
     display: inline-flex;
     align-items: center;
@@ -229,6 +248,41 @@
     transform: translate(1px, 1px);
     box-shadow: 2px 2px hsl(var(--cartoon-black));
   }
+
+{%- if s.desktop_layout == 'stacked' %}
+  /* ---------- Escritorio apilado: productos arriba, panel abajo ----------
+     Evita la franja blanca que queda cuando el panel es más alto que las
+     tarjetas: nada queda al costado de un bloque alto. */
+  @media (min-width: 990px) {
+    #shopify-section-{{ section.id }} .fk-pi__grid { grid-template-columns: minmax(0, 1fr); }
+    #shopify-section-{{ section.id }} .fuly-products-grid {
+      grid-template-columns: repeat(var(--fk-cols), minmax(0, {{ s.cards_max_width }}px));
+      justify-content: {{ prod_justify }};
+    }
+  {%- if split_panel %}
+    #shopify-section-{{ section.id }} .fk-panel {
+      display: grid;
+      grid-template-columns: {{ s.panel_split }};
+      align-items: stretch;
+    }
+    #shopify-section-{{ section.id }} .fk-panel__img {
+      height: auto;
+      padding-top: 0;
+      min-height: {{ s.panel_image_min_height }}px;
+      {%- if s.panel_image_side == 'right' %}
+      order: 2;
+      {%- endif %}
+    }
+    #shopify-section-{{ section.id }} .fk-panel__img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+    }
+  {%- endif %}
+  }
+{%- endif %}
 
   /* ---------- Responsive ---------- */
   @media (max-width: 989px) {
@@ -281,7 +335,7 @@
       </header>
     {%- endif -%}
 
-    <div class="fk-pi__grid{% if s.panel_position == 'left' %} fk-pi__grid--reverse{% endif %}">
+    <div class="fk-pi__grid{% if s.desktop_layout == 'stacked' %} fk-pi__grid--stacked{% elsif s.panel_position == 'left' %} fk-pi__grid--reverse{% endif %}">
 
       {%- comment -%} ---------- COLUMNA DE PRODUCTOS ---------- {%- endcomment -%}
       <div class="fk-pi__products">
@@ -469,16 +523,38 @@
     { "type": "header", "content": "Distribución" },
     {
       "type": "select",
+      "id": "desktop_layout",
+      "label": "Diseño en escritorio",
+      "default": "stacked",
+      "info": "\"Apilado\" evita la franja blanca que queda al costado cuando el panel es más alto que las tarjetas.",
+      "options": [
+        { "value": "stacked", "label": "Apilado: productos arriba, panel abajo" },
+        { "value": "side", "label": "En paralelo: productos y panel lado a lado" }
+      ]
+    },
+    { "type": "range", "id": "cards_max_width", "label": "Ancho máximo de cada tarjeta (apilado)", "min": 240, "max": 600, "step": 20, "unit": "px", "default": 340 },
+    {
+      "type": "select",
+      "id": "products_align",
+      "label": "Alineación de las tarjetas (apilado)",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Izquierda" },
+        { "value": "center", "label": "Centro" }
+      ]
+    },
+    {
+      "type": "select",
       "id": "panel_position",
-      "label": "Posición del panel",
+      "label": "Posición del panel (solo en paralelo)",
       "default": "right",
       "options": [
         { "value": "right", "label": "Panel a la derecha" },
         { "value": "left", "label": "Panel a la izquierda" }
       ]
     },
-    { "type": "range", "id": "columns", "label": "Columnas de producto (escritorio)", "min": 1, "max": 3, "step": 1, "default": 2 },
-    { "type": "range", "id": "products_ratio", "label": "Ancho de la zona de productos", "min": 0.8, "max": 2, "step": 0.1, "default": 1.2 },
+    { "type": "range", "id": "columns", "label": "Columnas de producto (escritorio)", "min": 1, "max": 4, "step": 1, "default": 2 },
+    { "type": "range", "id": "products_ratio", "label": "Ancho de la zona de productos (solo en paralelo)", "min": 0.8, "max": 2, "step": 0.1, "default": 1.2 },
     { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
     { "type": "range", "id": "gap", "label": "Separación (escritorio)", "min": 8, "max": 60, "step": 2, "unit": "px", "default": 24 },
     { "type": "range", "id": "gap_mobile", "label": "Separación (móvil)", "min": 8, "max": 40, "step": 2, "unit": "px", "default": 12 },
@@ -549,16 +625,51 @@
         { "value": "right", "label": "Derecha" }
       ]
     },
+    {
+      "type": "select",
+      "id": "panel_image_side",
+      "label": "Lado de la imagen (apilado)",
+      "default": "left",
+      "info": "En escritorio apilado la imagen va al costado del texto, no encima.",
+      "options": [
+        { "value": "left", "label": "Imagen a la izquierda" },
+        { "value": "right", "label": "Imagen a la derecha" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "panel_split",
+      "label": "Reparto imagen / texto (apilado)",
+      "default": "1fr 1fr",
+      "options": [
+        { "value": "1fr 1fr", "label": "50 / 50" },
+        { "value": "1fr 1.2fr", "label": "45 / 55 (más texto)" },
+        { "value": "1.2fr 1fr", "label": "55 / 45 (más imagen)" },
+        { "value": "1fr 1.5fr", "label": "40 / 60 (mucho más texto)" }
+      ]
+    },
+    { "type": "range", "id": "panel_image_min_height", "label": "Alto mínimo de la imagen (apilado)", "min": 200, "max": 600, "step": 20, "unit": "px", "default": 360 },
     { "type": "checkbox", "id": "panel_grid_overlay", "label": "Grilla sobre la imagen del panel", "default": true },
     { "type": "range", "id": "overlay_opacity", "label": "Opacidad del color sobre la imagen", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 80 },
     { "type": "text", "id": "panel_title", "label": "Título del panel", "default": "¿En qué momento del día?" },
     { "type": "richtext", "id": "panel_text", "label": "Texto del panel" },
     { "type": "text", "id": "panel_btn_label", "label": "Texto del botón", "default": "Comprar ahora" },
     { "type": "url", "id": "panel_btn_link", "label": "Enlace del botón" },
-    { "type": "range", "id": "panel_btn_radius", "label": "Redondeo del botón del panel", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 10 },
+    {
+      "type": "select",
+      "id": "panel_btn_style",
+      "label": "Estilo del botón",
+      "default": "theme",
+      "info": "\"Del tema\" usa el mismo amarillo, borde y sombra que los botones del resto del sitio.",
+      "options": [
+        { "value": "theme", "label": "Del tema (amarillo Fuly)" },
+        { "value": "custom", "label": "Personalizado (colores de abajo)" }
+      ]
+    },
+    { "type": "range", "id": "panel_btn_radius", "label": "Redondeo del botón (personalizado)", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 10 },
     { "type": "color", "id": "panel_bg", "label": "Fondo del panel", "default": "#F7CD47" },
-    { "type": "color", "id": "panel_btn_bg", "label": "Fondo del botón del panel", "default": "#1A1A1A" },
-    { "type": "color", "id": "panel_btn_text", "label": "Texto del botón del panel", "default": "#FFFFFF" },
+    { "type": "color", "id": "panel_btn_bg", "label": "Fondo del botón (personalizado)", "default": "#1A1A1A" },
+    { "type": "color", "id": "panel_btn_text", "label": "Texto del botón (personalizado)", "default": "#FFFFFF" },
 
     { "type": "header", "content": "Tarjetas de producto" },
     { "type": "text", "id": "benefit_metafield", "label": "Metafield de la línea descriptiva", "info": "Formato: espacio.clave (o espacio.clave.campo si es metaobject). Lo encuentras en Configuración → Metacampos → Productos, abriendo la definición: aparece como custom.algo. Se usa cuando el bloque no tiene texto propio." },
