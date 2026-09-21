@@ -5,13 +5,33 @@
   Estructura:
     Título (ancho completo)
     [ Imagen A ]  [ Imagen B ]
-    Pie: claim / texto / botón (ancho configurable)
+    Pie: claim / texto / botón
 
+  En escritorio el pie puede ir DEBAJO (como antes) o DENTRO de una de las
+  imágenes: se coloca en la misma celda de la grilla y se alinea abajo.
   Mobile-first: se apila y tiene sus propios controles de tamaño y espaciado.
 {%- endcomment -%}
 
 {%- liquid
   assign s = section.settings
+
+  # ---- Colocación en la grilla de escritorio ----
+  assign a_col = 1
+  assign b_col = 2
+  if s.reverse
+    assign a_col = 2
+    assign b_col = 1
+  endif
+
+  assign foot_col = b_col
+  if s.foot_placement == 'over_a'
+    assign foot_col = a_col
+  endif
+
+  assign foot_overlay = false
+  if s.foot_placement != 'below'
+    assign foot_overlay = true
+  endif
 -%}
 
 {% style %}
@@ -176,11 +196,13 @@
       gap: {{ s.foot_gap }}px;
       text-align: {{ s.foot_align }};
       align-items: {% if s.foot_align == 'center' %}center{% elsif s.foot_align == 'right' %}flex-end{% else %}flex-start{% endif %};
+      {%- if s.foot_placement == 'below' %}
       {% case s.foot_width %}
         {% when 'full' %}grid-column: 1 / -1;
         {% when 'left' %}grid-column: 1;
         {% when 'right' %}grid-column: 2;
       {% endcase %}
+      {%- endif %}
     }
     .fuly-two__descriptor,
     .fuly-two__claim{ font-size: 13px; }
@@ -189,6 +211,41 @@
     .fuly-two__btn{ width: 100%; }
     {% endif %}
   }
+
+  {%- if foot_overlay %}
+  /* ---------- Pie dentro de la imagen (solo escritorio) ----------
+     Se coloca en la MISMA celda de la grilla que la imagen y se alinea
+     abajo. Por eso hay que fijar explícitamente la posición de las dos
+     imágenes: si no, la grilla empujaría una a otra fila. */
+  @media screen and (min-width: 990px){
+    .fuly-two__media--a{ grid-column: {{ a_col }}; grid-row: 2; }
+    .fuly-two__media--b{ grid-column: {{ b_col }}; grid-row: 2; }
+    .fuly-two__foot{
+      grid-column: {{ foot_col }};
+      grid-row: 2;
+      align-self: end;
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
+      width: 100%;
+      padding: {{ s.foot_inset }}px;
+    }
+    {%- if s.foot_scrim %}
+    .fuly-two__foot::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: -{{ s.foot_scrim_height }}px;
+      background: linear-gradient(to top, rgba(0,0,0,{{ s.foot_scrim_opacity | divided_by: 100.0 }}), rgba(0,0,0,0));
+      border-radius: 0 0 {{ s.image_radius }}px {{ s.image_radius }}px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    {%- endif %}
+  }
+  {%- endif %}
 {% endstyle %}
 
 <section
@@ -305,7 +362,7 @@
       "type": "select",
       "id": "ratio",
       "label": "Proporción en escritorio",
-      "info": "Una proporción fija deja las dos imágenes de la misma altura.",
+      "info": "Una proporción fija deja las dos imágenes de la misma altura. Es necesaria si pones el pie dentro de una imagen.",
       "options": [
         { "value": "auto", "label": "Original de cada imagen" },
         { "value": "1 / 1", "label": "Cuadrada 1:1" },
@@ -362,8 +419,24 @@
     { "type": "header", "content": "Pie (claim, texto, botón)" },
     {
       "type": "select",
+      "id": "foot_placement",
+      "label": "Dónde va el pie (escritorio)",
+      "default": "over_b",
+      "info": "\"Dentro\" lo superpone en la parte baja de la imagen. En móvil siempre queda debajo.",
+      "options": [
+        { "value": "over_b", "label": "Dentro de la imagen derecha" },
+        { "value": "over_a", "label": "Dentro de la imagen izquierda" },
+        { "value": "below", "label": "Debajo de las imágenes" }
+      ]
+    },
+    { "type": "range", "id": "foot_inset", "label": "Margen interno del pie", "min": 8, "max": 48, "step": 2, "unit": "px", "default": 20 },
+    { "type": "checkbox", "id": "foot_scrim", "label": "Degradado oscuro detrás del pie", "default": false, "info": "Solo si el pie lleva texto suelto sobre la foto. El claim y el botón ya tienen fondo propio." },
+    { "type": "range", "id": "foot_scrim_opacity", "label": "Intensidad del degradado", "min": 10, "max": 80, "step": 5, "unit": "%", "default": 55 },
+    { "type": "range", "id": "foot_scrim_height", "label": "Alto del degradado", "min": 20, "max": 200, "step": 10, "unit": "px", "default": 60 },
+    {
+      "type": "select",
       "id": "foot_width",
-      "label": "Ancho del pie (escritorio)",
+      "label": "Ancho del pie (solo si va debajo)",
       "options": [
         { "value": "right", "label": "Solo bajo la columna derecha" },
         { "value": "left", "label": "Solo bajo la columna izquierda" },
