@@ -15,8 +15,8 @@
         "slide_8QXVBE": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_web_LP_Malteadas_Fuly.png",
-            "image_mobile": "shopify://shop_images/Banner_Movil_Malteadas_Fuly.png",
+            "image": "shopify://shop_images/Malteadas_Fuly_Proteina_ninos.jpg",
+            "image_mobile": "shopify://shop_images/Malteadas_Fuly_Proteina_ninos_Chocolate.jpg",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "enable_link": true,
@@ -145,6 +145,7 @@
         "heading": "Elige su favorita",
         "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.</p>",
         "desktop_layout": "stacked",
+        "cards_fill": false,
         "cards_max_width": 340,
         "products_align": "left",
         "panel_position": "right",
@@ -172,7 +173,7 @@
         "panel_btn_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
         "panel_btn_style": "theme",
         "panel_btn_radius": 10,
-        "panel_bg": "#FFFFFF",
+        "panel_bg": "#ffffff",
         "panel_btn_bg": "#111111",
         "panel_btn_text": "#ffffff",
         "benefit_metafield": "",
