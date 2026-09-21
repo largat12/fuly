@@ -298,7 +298,7 @@
             "label": "¡Las quiero!",
             "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
             "size": 16,
-            "bg": "#fae64b",
+            "bg": "#F7CD47",
             "color": "#000000"
           }
         }
@@ -312,7 +312,7 @@
         "heading": "¡No todas las malteadas son iguales!",
         "heading_color": "#000000",
         "heading_toy_shadow": false,
-        "heading_shadow_color": "#fae64b",
+        "heading_shadow_color": "#F7CD47",
         "heading_size": 42,
         "heading_align": "left",
         "image_a": "shopify://shop_images/Fuly_funciona_vs_otros_productos.png",
@@ -328,6 +328,11 @@
         "reverse": false,
         "column_gap": 24,
         "row_gap": 24,
+        "foot_placement": "over_b",
+        "foot_inset": 20,
+        "foot_scrim": false,
+        "foot_scrim_opacity": 55,
+        "foot_scrim_height": 60,
         "foot_width": "right",
         "foot_align": "left",
         "foot_gap": 16,
