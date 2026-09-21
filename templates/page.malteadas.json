@@ -45,7 +45,7 @@
       "type": "fuly-home-marquee",
       "name": "Fuly Home — Marquee",
       "settings": {
-        "items": "CALCIO|MAGNESIO|HIERRO|VITAMINAS B6 Y B12 | VITAMINAS A,C,E Y D | PROTEÍNA |SELENIO| ZINC| PROTEÍNA ALMENDRAS | PROTEÍNA HUEVO | HECHO CON CIENCIA DELICIOSA",
+        "items": "CALCIO|MAGNESIO|HIERRO|VITAMINAS B6 Y B12 | VITAMINAS A,C,E Y D | SELENIO| ZINC| PROTEÍNA ALMENDRAS | PROTEÍNA HUEVO | HECHO CON CIENCIA DELICIOSA",
         "duration_mobile": 5,
         "duration_tablet": 10,
         "duration_desktop": 10,
