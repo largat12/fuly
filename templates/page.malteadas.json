@@ -145,7 +145,7 @@
         "heading": "Elige su favorita",
         "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.</p>",
         "desktop_layout": "stacked",
-        "cards_fill": false,
+        "cards_fill": true,
         "cards_max_width": 340,
         "products_align": "left",
         "panel_position": "right",
