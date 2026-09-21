@@ -40,6 +40,14 @@
   if s.desktop_layout == 'stacked' and s.panel_image != blank and s.image_style == 'top'
     assign split_panel = true
   endif
+
+  # Alineación vertical del contenido del panel en escritorio apilado
+  assign content_justify = 'center'
+  if s.panel_content_valign == 'top'
+    assign content_justify = 'flex-start'
+  elsif s.panel_content_valign == 'between'
+    assign content_justify = 'space-between'
+  endif
 -%}
 
 <style>
@@ -273,18 +281,39 @@
     #shopify-section-{{ section.id }} .fk-panel__img {
       height: auto;
       padding-top: 0;
-      min-height: {{ s.panel_image_min_height }}px;
       {%- if s.panel_image_side == 'right' %}
       order: 2;
       {%- endif %}
+      {%- if s.panel_image_desktop_fit == 'whole' %}
+      /* La imagen manda su propio alto: se ve completa, nunca se recorta */
+      align-self: center;
+      {%- else %}
+      min-height: {{ s.panel_image_min_height }}px;
+      {%- endif %}
     }
     #shopify-section-{{ section.id }} .fk-panel__img img {
+      {%- if s.panel_image_desktop_fit == 'whole' %}
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+      {%- else %}
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       max-width: none;
+      {%- endif %}
     }
+    /* Reparto vertical del texto; sin esto el botón se va al fondo */
+    #shopify-section-{{ section.id }} .fk-panel__content {
+      justify-content: {{ content_justify }};
+    }
+    {%- if s.panel_content_valign != 'between' %}
+    #shopify-section-{{ section.id }} .fk-panel__cta { margin-top: 0; }
+    {%- endif %}
   {%- endif %}
   }
 {%- endif %}
@@ -654,7 +683,29 @@
         { "value": "1fr 1.5fr", "label": "40 / 60 (mucho más texto)" }
       ]
     },
-    { "type": "range", "id": "panel_image_min_height", "label": "Alto mínimo de la imagen (apilado)", "min": 200, "max": 600, "step": 20, "unit": "px", "default": 360 },
+    {
+      "type": "select",
+      "id": "panel_image_desktop_fit",
+      "label": "Imagen en escritorio (apilado)",
+      "default": "whole",
+      "info": "\"Completa\" respeta la imagen y nunca la recorta. \"Estirada\" la iguala al alto del texto recortando lo que sobra.",
+      "options": [
+        { "value": "whole", "label": "Completa (no se recorta)" },
+        { "value": "fill", "label": "Estirada al alto del texto" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "panel_content_valign",
+      "label": "Posición del texto (apilado)",
+      "default": "center",
+      "options": [
+        { "value": "center", "label": "Centrado" },
+        { "value": "top", "label": "Arriba" },
+        { "value": "between", "label": "Repartido, botón abajo" }
+      ]
+    },
+    { "type": "range", "id": "panel_image_min_height", "label": "Alto mínimo de la imagen (solo si está estirada)", "min": 200, "max": 600, "step": 20, "unit": "px", "default": 360 },
     { "type": "checkbox", "id": "panel_grid_overlay", "label": "Grilla sobre la imagen del panel", "default": true },
     { "type": "range", "id": "overlay_opacity", "label": "Opacidad del color sobre la imagen", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 80 },
     { "type": "text", "id": "panel_title", "label": "Título del panel", "default": "¿En qué momento del día?" },
