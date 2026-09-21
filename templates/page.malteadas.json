@@ -164,6 +164,8 @@
         "panel_image_position": "center",
         "panel_image_side": "left",
         "panel_split": "1fr 1fr",
+        "panel_image_desktop_fit": "whole",
+        "panel_content_valign": "center",
         "panel_image_min_height": 360,
         "panel_grid_overlay": false,
         "overlay_opacity": 90,
