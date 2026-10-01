@@ -36,19 +36,34 @@
     background: {{ s.bg_color }};
     padding: {{ s.padding_y }}px 0;
     color: var(--fps-ink);
+    overflow-x: clip; /* corta cualquier desborde lateral sin romper la imagen fija */
   }
   #fps-{{ sid }} .fps__inner {
     max-width: {{ s.max_width }}px;
     margin: 0 auto;
     padding: 0 32px;
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 48px;
+    /* minmax(0, …) evita que fotos o textos largos empujen la columna y se corte todo */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
     align-items: start;
   }
+  #fps-{{ sid }} .fps__gallery,
+  #fps-{{ sid }} .fps__info { min-width: 0; max-width: 100%; }
+  #fps-{{ sid }} .fps__info { overflow-wrap: break-word; }
+  #fps-{{ sid }} .fps__info img,
+  #fps-{{ sid }} .fps__info iframe,
+  #fps-{{ sid }} .fps__info table { max-width: 100%; }
 
   /* Galería sticky */
-  #fps-{{ sid }} .fps__gallery { position: sticky; top: var(--fps-top); }
+  #fps-{{ sid }} .fps__gallery {
+    position: sticky;
+    top: var(--fps-top);
+    width: 100%;
+    max-width: {{ s.image_max_desktop }}px;
+    justify-self: end;
+  }
   #fps-{{ sid }} .fps__main {
     aspect-ratio: 1 / 1;
     background: #fff;
@@ -94,8 +109,9 @@
     margin: 4px 0 0;
     font-family: var(--fps-heading) !important;
     text-transform: uppercase;
-    font-size: clamp(36px, 5vw, 64px);
+    font-size: clamp(30px, 3.6vw, 48px);
     line-height: .95;
+    overflow-wrap: anywhere;
   }
   #fps-{{ sid }} .fps__rating { display: flex; align-items: center; gap: 8px; margin-top: 8px !important; }
   #fps-{{ sid }} .fps__stars { font-size: 18px; line-height: 1; letter-spacing: 1px; color: var(--fps-yellow); -webkit-text-stroke: .5px #000; }
@@ -109,8 +125,9 @@
     background: #fff; font-weight: 700; font-size: 15px;
   }
 
-  #fps-{{ sid }} .fps__buy { display: flex; gap: 12px; }
+  #fps-{{ sid }} .fps__buy { display: flex; gap: 12px; align-items: stretch; }
   #fps-{{ sid }} .fps__qty {
+    flex: 0 0 auto;
     display: flex; align-items: center;
     border: 2px solid var(--fps-ink); border-radius: 999px;
     overflow: hidden; background: #fff;
@@ -128,7 +145,8 @@
   #fps-{{ sid }} .fps__qty input::-webkit-inner-spin-button,
   #fps-{{ sid }} .fps__qty input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
   #fps-{{ sid }} .fps__add {
-    flex: 1; min-height: 52px;
+    flex: 1 1 auto; min-width: 0; min-height: 52px;
+    padding: 0 16px;
     background: var(--fps-yellow);
     color: var(--fps-ink);
     border: var(--fps-border);
@@ -171,10 +189,36 @@
   #fps-{{ sid }} .fps__acc-body { padding: 0 16px 16px; font-size: 14px; line-height: 1.55; }
   #fps-{{ sid }} .fps__acc-body img { max-width: 100%; height: auto; display: block; margin-top: 8px; }
 
+  /* Tablet: columnas un poco más juntas */
+  @media (max-width: 989px) {
+    #fps-{{ sid }} .fps__inner { gap: 32px; padding: 0 24px; }
+  }
+
+  /* Teléfono: todo en una columna, imagen compacta y centrada */
   @media (max-width: 749px) {
-    #fps-{{ sid }} .fps__inner { grid-template-columns: 1fr; gap: 24px; padding: 0 16px; }
-    #fps-{{ sid }} .fps__gallery { position: static; }
-    #fps-{{ sid }} .fps__thumb { flex-basis: 60px; height: 60px; }
+    #fps-{{ sid }} { padding: {{ s.padding_y_mobile }}px 0; }
+    #fps-{{ sid }} .fps__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+      padding: 0 16px;
+    }
+    #fps-{{ sid }} .fps__gallery {
+      position: static;
+      max-width: {{ s.image_max_mobile }}px;
+      justify-self: center;
+    }
+    #fps-{{ sid }} .fps__main { border-radius: 12px; box-shadow: 3px 3px 0 var(--fps-ink); }
+    #fps-{{ sid }} .fps__thumbs { gap: 8px; margin-top: 12px; justify-content: flex-start; }
+    #fps-{{ sid }} .fps__thumb { flex-basis: 52px; height: 52px; border-radius: 8px; }
+    #fps-{{ sid }} .fps__info > * + * { margin-top: 14px; }
+    #fps-{{ sid }} .fps__title { font-size: clamp(26px, 8vw, 34px); }
+    #fps-{{ sid }} .fps__price { font-size: 26px; }
+    #fps-{{ sid }} .fps__qty button { width: 34px; }
+    #fps-{{ sid }} .fps__qty input { width: 28px !important; }
+    #fps-{{ sid }} .fps__add { font-size: 15px; }
+    #fps-{{ sid }} .fps__desc,
+    #fps-{{ sid }} .fps__acc-body { font-size: 14px; }
+    #fps-{{ sid }} .fps__acc summary { padding: 12px 14px; font-size: 13px; }
   }
 </style>
 
@@ -190,8 +234,8 @@
         {%- if first_media -%}
           {{ first_media.preview_image | image_url: width: 1200 | image_tag:
             loading: 'eager',
-            sizes: '(max-width: 749px) 92vw, 50vw',
-            widths: '500, 800, 1000, 1200',
+            sizes: '(max-width: 749px) 280px, 440px',
+            widths: '300, 440, 600, 880, 1200',
             alt: first_media.alt | default: product.title
           }}
         {%- else -%}
@@ -222,6 +266,22 @@
 
           {%- when '@app' -%}
             <div class="fps__app">{% render block %}</div>
+
+          {%- when 'subscription' -%}
+            {%- comment -%}
+              Réplica del widget de la app Suscripciones Fuly Kids. El bloque de la app solo
+              carga en plantillas de producto; aquí se le pasan los mismos datos a mano.
+            {%- endcomment -%}
+            <div class="fps__subs" {{ block.shopify_attributes }}>
+              <div id="subscription-widget-container"
+                data-product-id="{{ product.id }}"
+                data-shop="{{ shop.permanent_domain }}"
+                data-variant-id="{{ variant.id }}"
+                data-price="{{ variant.price | divided_by: 100.0 }}"
+                data-app-url="https://suscripciones-moxie-1.onrender.com/"
+                data-show-always="{{ block.settings.show_always }}"></div>
+              <script src="https://suscripciones-moxie-1.onrender.com/api/extension-asset/subscription-widget.js" defer></script>
+            </div>
 
           {%- when 'badge' -%}
             {%- if block.settings.text != blank -%}
@@ -334,10 +394,16 @@
         e.stopImmediatePropagation();
         var btn = form.querySelector('.fps__add');
         if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Un momento…'; }
+        var data = new FormData(form);
+        // Propiedades de suscripción (tipo de compra, frecuencia, descuento) del widget de la app
+        if (typeof window.__subsWidgetGetCurrentProperties === 'function') {
+          var props = window.__subsWidgetGetCurrentProperties() || {};
+          Object.keys(props).forEach(function (k) { data.set('properties[' + k + ']', props[k]); });
+        }
         fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart/add.js' : '/cart/add.js', {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
+          body: data
         })
           .then(function (r) { if (!r.ok) throw r; window.location.href = '/checkout'; })
           .catch(function () {
@@ -373,7 +439,10 @@
     { "type": "header", "content": "Diseño" },
     { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFFFF" },
     { "type": "range", "id": "sticky_offset", "label": "Separación de la imagen fija con el borde superior", "info": "Súbelo si el header tapa la imagen al hacer scroll.", "min": 0, "max": 200, "step": 10, "unit": "px", "default": 110 },
-    { "type": "range", "id": "padding_y", "label": "Margen arriba/abajo", "min": 0, "max": 120, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "image_max_desktop", "label": "Tamaño máx. de la imagen en escritorio", "min": 300, "max": 640, "step": 20, "unit": "px", "default": 440 },
+    { "type": "range", "id": "image_max_mobile", "label": "Tamaño máx. de la imagen en teléfono", "min": 180, "max": 400, "step": 10, "unit": "px", "default": 280 },
+    { "type": "range", "id": "padding_y", "label": "Margen arriba/abajo escritorio", "min": 0, "max": 120, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_y_mobile", "label": "Margen arriba/abajo teléfono", "min": 0, "max": 80, "step": 8, "unit": "px", "default": 24 },
     { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 }
   ],
   "blocks": [
@@ -387,6 +456,13 @@
       "settings": [ { "type": "text", "id": "text", "label": "Título", "info": "Vacío = nombre del producto." } ]
     },
     { "type": "rating", "name": "Reseñas", "limit": 1 },
+    {
+      "type": "subscription", "name": "Suscripción (Fuly)", "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Muestra Compra única / Suscríbete de la app Suscripciones Fuly Kids." },
+        { "type": "checkbox", "id": "show_always", "label": "Mostrar siempre", "default": false }
+      ]
+    },
     { "type": "price", "name": "Precio", "limit": 1 },
     { "type": "variant_picker", "name": "Selector de variante", "limit": 1 },
     {
@@ -423,6 +499,7 @@
         { "type": "title" },
         { "type": "rating" },
         { "type": "price" },
+        { "type": "subscription" },
         { "type": "variant_picker" },
         { "type": "buy" },
         { "type": "description" },
