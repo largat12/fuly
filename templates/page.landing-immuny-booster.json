@@ -267,7 +267,7 @@
         "claim_TnP8yb": {
           "type": "claim",
           "settings": {
-            "text": "Perfectas para todas las edades",
+            "text": "Perfecto para llevar a cualquier lugar: Lonchera, viajes, entrenamientos.",
             "bg": "#ffffff",
             "color": "#000000"
           }
@@ -289,14 +289,14 @@
       ],
       "name": "Fuly · Dos imágenes",
       "settings": {
-        "heading": "¡No todas las malteadas son iguales!",
+        "heading": "La ciencia detrás de unas defensas más fuertes&nbsp;",
         "heading_color": "#000000",
         "heading_toy_shadow": false,
         "heading_shadow_color": "#f7cd47",
         "heading_size": 42,
         "heading_align": "left",
-        "image_a": "shopify://shop_images/Fuly_funciona_vs_otros_productos.png",
-        "image_b": "shopify://shop_images/ninos-maltedeada-de-chocolate_1.jpg",
+        "image_a": "shopify://shop_images/Claims_Immuny_Booster.png",
+        "image_b": "shopify://shop_images/Booster_frutos_rojos_fuly_nino_1cff53bb-36e4-497e-835c-965fac4cface.png",
         "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
@@ -343,7 +343,7 @@
         "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
           "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
-            "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
+            "title": "AMADO POR CIENTOS DE FAMILIAS ★★★★★",
             "format": "2",
             "title_color": "#000000",
             "title_size": 24,
@@ -594,76 +594,6 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "featured_product_PyjfNg": {
-      "type": "featured-product",
-      "blocks": {
-        "text_jwf67Q": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title_TCraJT": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "price_U79Unx": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_f6MTkc": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector_a3WygU": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_xDtgbJ": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "share_YJq63J": {
-          "type": "share",
-          "settings": {
-            "share_label": "Compartir"
-          }
-        }
-      },
-      "block_order": [
-        "text_jwf67Q",
-        "title_TCraJT",
-        "price_U79Unx",
-        "variant_picker_f6MTkc",
-        "quantity_selector_a3WygU",
-        "buy_buttons_xDtgbJ",
-        "share_YJq63J"
-      ],
-      "name": "t:sections.featured-product.presets.name",
-      "settings": {
-        "product": "immuny-booster-caja-x15",
-        "color_scheme": "",
-        "secondary_background": false,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -678,7 +608,6 @@
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj",
-    "featured_product_PyjfNg"
+    "fuly_home_cta_abyzBj"
   ]
 }
