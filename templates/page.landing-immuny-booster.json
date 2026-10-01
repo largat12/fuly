@@ -266,7 +266,7 @@
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 1 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n{%- if count >= 1000 -%}\n  {%- assign miles = count | divided_by: 1000 -%}\n  {%- assign resto = count | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}\n  {%- assign count_txt = miles | append: '.' | append: resto -%}\n{%- else -%}\n  {%- assign count_txt = count -%}\n{%- endif -%}\n\n<style>\n  .fuly-rv-head { max-width: 1200px; margin: 0 auto; padding: 32px 32px 0; box-sizing: border-box; }\n  .fuly-rv-head h2 {\n    margin: 0 0 12px;\n    font-family: var(--fuly-font-heading); font-weight: 800; text-transform: uppercase;\n    font-size: clamp(26px, 4vw, 40px); line-height: .95;\n  }\n  .fuly-rv-head__row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }\n  .fuly-rv-head__chip {\n    display: inline-flex; align-items: center; gap: 8px;\n    padding: 6px 14px;\n    background: var(--fuly-yellow-spark, #FAE64B);\n    border: 2px solid #000; border-radius: 999px; box-shadow: 3px 3px 0 #000;\n    font-family: var(--fuly-font-heading); font-weight: 800; font-size: 18px; line-height: 1;\n  }\n  .fuly-rv-head__stars { letter-spacing: 1px; font-size: 16px; }\n  .fuly-rv-head__count { font-family: var(--fuly-font-heading); font-size: 15px; color: var(--fuly-muted-text, #6b6b6b); }\n  @media (max-width: 749px) { .fuly-rv-head { padding: 24px 16px 0; } }\n</style>\n\n<div class=\"fuly-rv-head\">\n  <h2>Amado por +{{ count_txt }} familias</h2>\n  {%- if rating > 0 -%}\n    <div class=\"fuly-rv-head__row\">\n      <span class=\"fuly-rv-head__chip\">{{ rating }} <span class=\"fuly-rv-head__stars\">★★★★★</span></span>\n      <span class=\"fuly-rv-head__count\">de 5 · {{ count_txt }} reseñas</span>\n    </div>\n  {%- endif -%}\n</div>",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -345,7 +345,8 @@
         "heading_shadow_color": "#f7cd47",
         "heading_size": 42,
         "heading_align": "left",
-        "image_a": "shopify://shop_images/Claims_Immuny_Booster.png",
+        "image_a": "shopify://shop_images/Post_Sin_Con-selection_1.png",
+        "image_a_mobile": "shopify://shop_images/Claims_Immuny_Booster.png",
         "image_b": "shopify://shop_images/Booster_frutos_rojos_fuly_nino_1cff53bb-36e4-497e-835c-965fac4cface.png",
         "ratio": "4 / 5",
         "ratio_mobile": "auto",
@@ -545,54 +546,6 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "fuly_home_hero_JAchWR": {
-      "type": "fuly-home-hero",
-      "name": "Fuly Home — Hero",
-      "settings": {
-        "show_badge": true,
-        "tagline": "",
-        "reviews_source": "auto",
-        "reviews_namespace": "reviews",
-        "reviews_key": "rating_count",
-        "reviews_shop_namespace": "",
-        "reviews_shop_key": "",
-        "reviews_manual_number": "5440",
-        "reviews_text": "reseñas verificadas con 5 estrellas ⭐",
-        "title": "EL FUTURO SABE RICO",
-        "subtitle": "Formulados por científicos. Disfrutados por niños.",
-        "show_primary_button": true,
-        "primary_label": "COMPRAR AHORA",
-        "primary_link": "",
-        "show_secondary_button": true,
-        "secondary_label": "VER PRODUCTOS",
-        "secondary_link": "",
-        "title_size_mobile": 32,
-        "title_size_tablet": 68,
-        "title_size_desktop": 80,
-        "subtitle_size_mobile": 18,
-        "subtitle_size_tablet": 18,
-        "subtitle_size_desktop": 18,
-        "content_gap_mobile": 16,
-        "content_gap_tablet": 24,
-        "content_gap_desktop": 24,
-        "buttons_gap_mobile": 12,
-        "buttons_gap_tablet": 12,
-        "buttons_gap_desktop": 12,
-        "image_height_mobile": 225,
-        "image_height_tablet": 450,
-        "image_height_desktop": 450,
-        "padding_block_mobile": 48,
-        "padding_block_tablet": 96,
-        "padding_block_desktop": 96,
-        "heading_color": "#1A1A1A",
-        "subtitle_color": "#555555",
-        "badge_bg_color": "#F7CD47",
-        "heading_font": "display",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "body",
-        "body_font_picker": "assistant_n4"
-      }
-    },
     "fuly_home_cta_abyzBj": {
       "type": "fuly-home-cta",
       "name": "Fuly Home — CTA",
@@ -614,6 +567,55 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "image_with_text_eAmBEi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8Qpcgc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Imagen con texto",
+            "heading_size": "h1"
+          }
+        },
+        "text_cFYBTm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_m9HdnP": {
+          "type": "button",
+          "settings": {
+            "button_label": "Etiqueta de botón",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8Qpcgc",
+        "text_cFYBTm",
+        "button_m9HdnP"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Contenido-enriquecido_Booster-Frutos-Rojos_1.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -628,7 +630,7 @@
     "fuly_home_benefits_i6bfkg",
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
-    "fuly_home_hero_JAchWR",
-    "fuly_home_cta_abyzBj"
+    "fuly_home_cta_abyzBj",
+    "image_with_text_eAmBEi"
   ]
 }
