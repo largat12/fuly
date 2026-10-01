@@ -64,7 +64,21 @@
     max-width: {{ s.image_max_desktop }}px;
     justify-self: end;
   }
-  #fps-{{ sid }} .fps__main {
+  /* Carrusel: se desliza con el dedo; en escritorio lo mueven las miniaturas */
+  #fps-{{ sid }} .fps__track {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 6px 6px 0; /* deja ver la sombra cartoon */
+  }
+  #fps-{{ sid }} .fps__track::-webkit-scrollbar { display: none; }
+  #fps-{{ sid }} .fps__slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
     aspect-ratio: 1 / 1;
     background: #fff;
     border: var(--fps-border);
@@ -72,8 +86,30 @@
     box-shadow: var(--fps-shadow);
     overflow: hidden;
     display: flex; align-items: center; justify-content: center;
+    box-sizing: border-box;
   }
-  #fps-{{ sid }} .fps__main img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #fps-{{ sid }} .fps__slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  #fps-{{ sid }} .fps__nav {
+    display: none;
+    align-items: center; justify-content: center;
+    gap: 20px;
+    margin-top: 12px;
+    font-size: 14px; font-weight: 600;
+  }
+  #fps-{{ sid }} .fps__arrow {
+    width: 36px; height: 36px; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: none; border: 0; cursor: pointer; color: inherit;
+  }
+  #fps-{{ sid }} .fps__arrow::before {
+    content: "";
+    width: 8px; height: 8px;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  }
+  #fps-{{ sid }} .fps__arrow--prev::before { transform: rotate(135deg); margin-left: 4px; }
+  #fps-{{ sid }} .fps__arrow--next::before { transform: rotate(-45deg); margin-right: 4px; }
+  #fps-{{ sid }} .fps__arrow[disabled] { opacity: .3; cursor: default; }
   #fps-{{ sid }} .fps__thumbs {
     display: flex; gap: 12px;
     margin-top: 16px;
@@ -204,12 +240,22 @@
     }
     #fps-{{ sid }} .fps__gallery {
       position: static;
-      max-width: {{ s.image_max_mobile }}px;
-      justify-self: center;
+      max-width: none;
+      justify-self: stretch;
+      margin: 0 -16px; /* el carrusel llega al borde y deja asomar la siguiente foto */
     }
-    #fps-{{ sid }} .fps__main { border-radius: 12px; box-shadow: 3px 3px 0 var(--fps-ink); }
-    #fps-{{ sid }} .fps__thumbs { gap: 8px; margin-top: 12px; justify-content: flex-start; }
-    #fps-{{ sid }} .fps__thumb { flex-basis: 52px; height: 52px; border-radius: 8px; }
+    #fps-{{ sid }} .fps__track {
+      padding: 0 16px 6px;
+      scroll-padding-left: 16px;
+      gap: 10px;
+    }
+    #fps-{{ sid }} .fps__slide {
+      flex-basis: {{ s.slide_width_mobile }}%;
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--fps-ink);
+    }
+    #fps-{{ sid }} .fps__thumbs { display: none; }
+    #fps-{{ sid }} .fps__nav { display: flex; }
     #fps-{{ sid }} .fps__info > * + * { margin-top: 14px; }
     #fps-{{ sid }} .fps__title { font-size: clamp(26px, 8vw, 34px); }
     #fps-{{ sid }} .fps__price { font-size: 26px; }
@@ -229,26 +275,32 @@
   <div class="fps__inner">
 
     <div class="fps__gallery">
-      <div class="fps__main">
-        {%- assign first_media = product.featured_media -%}
-        {%- if first_media -%}
-          {{ first_media.preview_image | image_url: width: 1200 | image_tag:
-            loading: 'eager',
-            sizes: '(max-width: 749px) 280px, 440px',
-            widths: '300, 440, 600, 880, 1200',
-            alt: first_media.alt | default: product.title
-          }}
+      <div class="fps__track" aria-label="Imágenes del producto">
+        {%- for media in product.media -%}
+          <div class="fps__slide" data-index="{{ forloop.index0 }}">
+            {%- if forloop.first -%}{%- assign img_loading = 'eager' -%}{%- else -%}{%- assign img_loading = 'lazy' -%}{%- endif -%}
+            {{ media.preview_image | image_url: width: 1200 | image_tag:
+              loading: img_loading,
+              sizes: '(max-width: 749px) 85vw, 440px',
+              widths: '300, 440, 600, 880, 1200',
+              alt: media.alt | default: product.title
+            }}
+          </div>
         {%- else -%}
-          {{ 'product-1' | placeholder_svg_tag }}
-        {%- endif -%}
+          <div class="fps__slide">{{ 'product-1' | placeholder_svg_tag }}</div>
+        {%- endfor -%}
       </div>
 
       {%- if product.media.size > 1 -%}
+        <div class="fps__nav">
+          <button type="button" class="fps__arrow fps__arrow--prev" aria-label="Imagen anterior"></button>
+          <span class="fps__count"><span data-fps-current>1</span>/{{ product.media.size }}</span>
+          <button type="button" class="fps__arrow fps__arrow--next" aria-label="Imagen siguiente"></button>
+        </div>
+
         <div class="fps__thumbs">
           {%- for media in product.media -%}
-            <button type="button" class="fps__thumb"
-              data-src="{{ media.preview_image | image_url: width: 1200 }}"
-              data-alt="{{ media.alt | default: product.title | escape }}"
+            <button type="button" class="fps__thumb" data-index="{{ forloop.index0 }}"
               aria-label="Ver imagen {{ forloop.index }}"
               {% if forloop.first %}aria-current="true"{% endif %}>
               {{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
@@ -363,18 +415,47 @@
     var root = document.getElementById('fps-{{ sid }}');
     if (!root) return;
 
-    var main = root.querySelector('.fps__main img');
-    root.querySelectorAll('.fps__thumb').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (main) {
-          main.removeAttribute('srcset');
-          main.src = btn.dataset.src;
-          main.alt = btn.dataset.alt;
-        }
-        root.querySelectorAll('.fps__thumb').forEach(function (b) { b.removeAttribute('aria-current'); });
-        btn.setAttribute('aria-current', 'true');
+    // Carrusel
+    var track = root.querySelector('.fps__track');
+    var slides = root.querySelectorAll('.fps__slide');
+    var thumbs = root.querySelectorAll('.fps__thumb');
+    var current = root.querySelector('[data-fps-current]');
+    var prev = root.querySelector('.fps__arrow--prev');
+    var next = root.querySelector('.fps__arrow--next');
+    var active = 0;
+
+    function goTo(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      track.scrollTo({ left: i * (slides[0].offsetWidth + gap), behavior: 'smooth' });
+    }
+    function setActive(i) {
+      active = i;
+      if (current) current.textContent = i + 1;
+      if (prev) prev.disabled = i === 0;
+      if (next) next.disabled = i === slides.length - 1;
+      thumbs.forEach(function (t, n) {
+        if (n === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
       });
-    });
+    }
+
+    if (track && slides.length > 1) {
+      // Detecta qué foto está a la vista mientras se desliza
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting && en.intersectionRatio >= 0.6) setActive(parseInt(en.target.dataset.index, 10));
+          });
+        }, { root: track, threshold: [0.6] });
+        slides.forEach(function (sl) { io.observe(sl); });
+      }
+      thumbs.forEach(function (t) {
+        t.addEventListener('click', function () { goTo(parseInt(t.dataset.index, 10)); });
+      });
+      if (prev) prev.addEventListener('click', function () { goTo(active - 1); });
+      if (next) next.addEventListener('click', function () { goTo(active + 1); });
+      setActive(0);
+    }
 
     var qty = root.querySelector('.fps__qty input');
     root.querySelectorAll('[data-qty]').forEach(function (btn) {
@@ -440,7 +521,7 @@
     { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFFFF" },
     { "type": "range", "id": "sticky_offset", "label": "Separación de la imagen fija con el borde superior", "info": "Súbelo si el header tapa la imagen al hacer scroll.", "min": 0, "max": 200, "step": 10, "unit": "px", "default": 110 },
     { "type": "range", "id": "image_max_desktop", "label": "Tamaño máx. de la imagen en escritorio", "min": 300, "max": 640, "step": 20, "unit": "px", "default": 440 },
-    { "type": "range", "id": "image_max_mobile", "label": "Tamaño máx. de la imagen en teléfono", "min": 180, "max": 400, "step": 10, "unit": "px", "default": 280 },
+    { "type": "range", "id": "slide_width_mobile", "label": "Ancho de cada foto en teléfono", "info": "Menos de 100% deja asomar la siguiente foto del carrusel.", "min": 70, "max": 100, "step": 5, "unit": "%", "default": 85 },
     { "type": "range", "id": "padding_y", "label": "Margen arriba/abajo escritorio", "min": 0, "max": 120, "step": 8, "unit": "px", "default": 48 },
     { "type": "range", "id": "padding_y_mobile", "label": "Margen arriba/abajo teléfono", "min": 0, "max": 80, "step": 8, "unit": "px", "default": 24 },
     { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 }
