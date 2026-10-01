@@ -67,118 +67,6 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "productos_con_panel_XWmzhX": {
-      "type": "productos-con-panel",
-      "blocks": {
-        "product_YrN9aW": {
-          "type": "product",
-          "settings": {
-            "product": "immuny-booster-caja-x15",
-            "badge": "",
-            "tint": "",
-            "image_scale": "none",
-            "title": "",
-            "caption": "GANODERMA + ZINC + SELENIO + VITAMINA C · Caja x15 sobres"
-          }
-        },
-        "item_AiDRRb": {
-          "type": "item",
-          "settings": {
-            "text": "Perfectas para acompañar el desayuno, la lonchera o los snacks de tus hijos",
-            "icon": "✓"
-          }
-        },
-        "item_zLi4EW": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "text": "Perfectas como snack en la tarde",
-            "icon": "✓"
-          }
-        },
-        "item_zEmATi": {
-          "type": "item",
-          "settings": {
-            "text": "Fácil de preparar en segundos, con leche o agua",
-            "icon": "✓"
-          }
-        },
-        "item_m8AJmW": {
-          "type": "item",
-          "settings": {
-            "text": "Sin azúcar añadida. Endulzada con fruto del monje.",
-            "icon": "✓"
-          }
-        },
-        "item_HjBhNQ": {
-          "type": "item",
-          "settings": {
-            "text": "Puedes mezclar con yogur, avena y recetas",
-            "icon": "✓"
-          }
-        }
-      },
-      "block_order": [
-        "product_YrN9aW",
-        "item_AiDRRb",
-        "item_zLi4EW",
-        "item_zEmATi",
-        "item_m8AJmW",
-        "item_HjBhNQ"
-      ],
-      "name": "Productos + Panel",
-      "settings": {
-        "heading": "Elige su favorita",
-        "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.</p>",
-        "desktop_layout": "stacked",
-        "cards_fill": true,
-        "cards_max_width": 340,
-        "products_align": "left",
-        "panel_position": "right",
-        "columns": 1,
-        "products_ratio": 1.2,
-        "max_width": 1200,
-        "gap": 24,
-        "gap_mobile": 10,
-        "sticky_panel": false,
-        "mobile_layout": "grid",
-        "panel_image": "shopify://shop_images/Malteada_Chocolate_web_10.png",
-        "image_style": "top",
-        "panel_image_ratio": "1/1",
-        "panel_image_ratio_custom": "5/4",
-        "panel_image_fit": "cover",
-        "panel_image_position": "center",
-        "panel_image_side": "left",
-        "panel_split": "1fr 1fr",
-        "panel_image_desktop_fit": "whole",
-        "panel_content_valign": "center",
-        "panel_image_min_height": 360,
-        "panel_grid_overlay": false,
-        "overlay_opacity": 90,
-        "panel_title": "",
-        "panel_text": "",
-        "panel_btn_label": "comprar ahora",
-        "panel_btn_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
-        "panel_btn_style": "theme",
-        "panel_btn_radius": 10,
-        "panel_bg": "#ffffff",
-        "panel_btn_bg": "#111111",
-        "panel_btn_text": "#ffffff",
-        "benefit_metafield": "",
-        "show_price": true,
-        "float_animation": true,
-        "card_image_height": 224,
-        "card_image_height_mobile": 160,
-        "button_action": "add",
-        "add_label": "Agregar",
-        "view_label": "Ver producto",
-        "soldout_label": "Agotado",
-        "show_grid_bg": false,
-        "bg_color": "#ffffff",
-        "padding_top": 16,
-        "padding_bottom": 56
-      }
-    },
     "178960209864e24a26": {
       "type": "_blocks",
       "blocks": {
@@ -670,13 +558,114 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "fuly_producto_sticky_4Bc6xi": {
+      "type": "fuly-producto-sticky",
+      "blocks": {
+        "badge_Y66RTw": {
+          "type": "badge",
+          "settings": {
+            "text": "DEFENSAS"
+          }
+        },
+        "title_PxQEgN": {
+          "type": "title",
+          "settings": {
+            "text": ""
+          }
+        },
+        "rating_qyVj8q": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price_rRbNF4": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_NdXxm9": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "buy_haeRyE": {
+          "type": "buy",
+          "settings": {
+            "label": "Agregar al carrito"
+          }
+        },
+        "description_hkKwkp": {
+          "type": "description",
+          "settings": {}
+        },
+        "accordion_JAzt7T": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Ingredientes",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_AFLq8x": {
+          "type": "accordion",
+          "settings": {
+            "heading": "¿Cómo consumirlo?",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_PD3XJn": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Características",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_8CkWWX": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Envíos",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_V6PKkG": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Registro INVIMA",
+            "content": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "badge_Y66RTw",
+        "title_PxQEgN",
+        "rating_qyVj8q",
+        "price_rRbNF4",
+        "variant_picker_NdXxm9",
+        "buy_haeRyE",
+        "description_hkKwkp",
+        "accordion_JAzt7T",
+        "accordion_AFLq8x",
+        "accordion_PD3XJn",
+        "accordion_8CkWWX",
+        "accordion_V6PKkG"
+      ],
+      "name": "Fuly · Producto sticky",
+      "settings": {
+        "product": "immuny-booster-caja-x15",
+        "bg_color": "#FFFFFF",
+        "sticky_offset": 110,
+        "padding_y": 48,
+        "max_width": 1200
+      }
     }
   },
   "order": [
     "fuly_slideshow_Abqkad",
     "fuly_home_marquee_GFyUtn",
-    "productos_con_panel_XWmzhX",
     "178960209864e24a26",
+    "fuly_producto_sticky_4Bc6xi",
     "video_fuly_columnas_LGHQeF",
     "fuly_imagen_texto_imagen_xWfFAF",
     "17896129330e294f05",
