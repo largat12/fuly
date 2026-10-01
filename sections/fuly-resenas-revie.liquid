@@ -1,0 +1,168 @@
+{%- comment -%}
+  Fuly · Reseñas Revie (producto)
+  Muestra en cualquier página el widget de reseñas de Revie de UN producto específico.
+
+  Cómo funciona: el bloque de Revie solo sabe qué producto mostrar en la página de producto.
+  Esta sección le pide al servidor la sección de reseñas ya armada de la página de ese
+  producto (Section Rendering API) y la pinta aquí, con el script y estilos de Revie.
+  Si la sección de la plantilla de producto cambia de ID, busca el widget en la página
+  completa del producto, así que sigue funcionando.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign product = s.product
+-%}
+
+<style>
+  #frr-{{ sid }} {
+    background: {{ s.bg_color }};
+    padding: {{ s.padding_y }}px 0;
+  }
+  #frr-{{ sid }} .frr__inner {
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+  #frr-{{ sid }} .frr__loading {
+    min-height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Martian Mono", ui-monospace, monospace;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: #6b6b6b;
+  }
+  @media (max-width: 749px) {
+    #frr-{{ sid }} { padding: {{ s.padding_y_mobile }}px 0; }
+    #frr-{{ sid }} .frr__inner { padding: 0 16px; }
+  }
+</style>
+
+<div id="frr-{{ sid }}" class="frr">
+  <div class="frr__inner">
+    {%- if product == blank -%}
+      <p>Elige el producto cuyas reseñas quieres mostrar.</p>
+    {%- else -%}
+      <div class="frr__target"
+        data-handle="{{ product.handle }}"
+        data-view="{{ s.style_view | strip | handleize }}"
+        data-section="{{ s.source_section | strip }}">
+        <div class="frr__loading">Cargando reseñas…</div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- if product != blank -%}
+<script>
+  (function () {
+    var root = document.getElementById('frr-{{ sid }}');
+    var target = root && root.querySelector('.frr__target');
+    if (!target) return;
+
+    var handle = target.dataset.handle;
+    var sectionId = target.dataset.section;
+    var base = (window.Shopify && Shopify.routes ? Shopify.routes.root : '/') + 'products/' + handle;
+
+    function findWidget(html) {
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      // Cualquier bloque de Revie fuera del bloque principal de producto (ahí solo están las estrellas).
+      // Así sirve para todos los estilos de Revie (lista, carrusel, cuadrícula…), no solo uno.
+      var blocks = Array.prototype.slice.call(doc.querySelectorAll('.shopify-app-block[id*="revie"]'))
+        .filter(function (b) { return !b.closest('[id$="__main"]'); })
+        .sort(function (a, b) { return b.innerHTML.length - a.innerHTML.length; });
+      if (blocks.length) return blocks[0];
+      var cont = doc.querySelector('#rlt-cont');
+      return cont ? (cont.closest('.shopify-app-block') || cont.parentElement) : null;
+    }
+
+    function mount(block) {
+      // Estilos de Revie
+      block.querySelectorAll('link[rel="stylesheet"]').forEach(function (l) {
+        if (!document.querySelector('link[href="' + l.getAttribute('href') + '"]')) {
+          var n = document.createElement('link');
+          n.rel = 'stylesheet';
+          n.href = l.href;
+          document.head.appendChild(n);
+        }
+      });
+      var scripts = Array.prototype.map.call(block.querySelectorAll('script[src]'), function (s) { return s.src; });
+
+      target.innerHTML = '';
+      var node = document.importNode(block, true);
+      node.querySelectorAll('script').forEach(function (sc) { sc.remove(); });
+      target.appendChild(node);
+
+      // Scripts de Revie (los scripts insertados como HTML no se ejecutan solos)
+      scripts.forEach(function (src) {
+        var sc = document.createElement('script');
+        sc.src = src;
+        document.body.appendChild(sc);
+      });
+    }
+
+    function fail() {
+      target.innerHTML = '';
+      if (window.Shopify && Shopify.designMode) {
+        target.innerHTML = '<p>No se encontraron reseñas de Revie en la página de este producto.</p>';
+      }
+    }
+
+    var view = target.dataset.view;
+    function getText(url) { return fetch(url).then(function (r) { return r.ok ? r.text() : ''; }); }
+
+    var first;
+    if (view) {
+      // Estilo propio: plantilla de producto alterna (product.<view>.json) con el bloque de Revie configurado
+      first = getText(base + '?view=' + encodeURIComponent(view));
+    } else if (sectionId) {
+      first = getText(base + '?section_id=' + encodeURIComponent(sectionId));
+    } else {
+      first = Promise.resolve('');
+    }
+
+    first
+      .then(function (html) {
+        var block = html && findWidget(html);
+        if (block) return block;
+        // Plan B: buscar el widget en la página normal del producto
+        return getText(base).then(findWidget);
+      })
+      .then(function (block) { block ? mount(block) : fail(); })
+      .catch(fail);
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Fuly · Reseñas Revie",
+  "tag": "section",
+  "class": "section-fuly-resenas-revie",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    {
+      "type": "text",
+      "id": "style_view",
+      "label": "Plantilla de estilo de Revie (opcional)",
+      "info": "Nombre de una plantilla de producto creada solo para el estilo de reseñas, ej. resenas-landing. Vacío = mismo estilo de la página de producto."
+    },
+    {
+      "type": "text",
+      "id": "source_section",
+      "label": "ID de la sección de reseñas en la plantilla del producto",
+      "info": "Opcional: hace que cargue más rápido. Si se deja vacío o cambia, la sección busca las reseñas sola.",
+      "default": "template--16346200277072__1746798531837b132f"
+    },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 },
+    { "type": "range", "id": "padding_y", "label": "Margen arriba/abajo escritorio", "min": 0, "max": 120, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_y_mobile", "label": "Margen arriba/abajo teléfono", "min": 0, "max": 80, "step": 8, "unit": "px", "default": 24 }
+  ],
+  "presets": [
+    { "name": "Fuly · Reseñas Revie" }
+  ]
+}
+{% endschema %}
