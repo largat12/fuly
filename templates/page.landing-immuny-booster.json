@@ -261,6 +261,16 @@
         "padding_bottom": 8
       }
     },
+    "custom_liquid_ba3Hgx": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 2 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n\n{%- if rating > 0 -%}\n<div style=\"display:flex;justify-content:center;align-items:center;gap:10px;padding:8px 16px 24px;flex-wrap:wrap;\">\n  <span style=\"font-family:var(--fuly-font-heading);font-weight:800;font-size:40px;line-height:1;\">{{ rating }}</span>\n  <span style=\"display:flex;flex-direction:column;gap:2px;\">\n    <span style=\"color:var(--fuly-yellow-spark,#FAE64B);font-size:22px;letter-spacing:2px;-webkit-text-stroke:.5px #000;line-height:1;\">★★★★★</span>\n    <span style=\"font-family:var(--fuly-font-heading);font-size:14px;color:var(--fuly-muted-text,#6b6b6b);\">Promedio de {{ count }} reseñas</span>\n  </span>\n</div>\n{%- endif -%}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "17896129330e294f05": {
       "type": "apps",
       "blocks": {
@@ -494,7 +504,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Tienen azúcar añadida?",
-            "answer": "<p>No. Las malteadas no tienen azúcares añadidos.<br/><br/>Endulzamos con extracto de fruto del monje (luo han guo), una fruta verde del sur de China que los monjes budistas cultivan hace siglos. Su dulzor no es azúcar: son sus mogrósidos. Por eso lleva 0 g de azúcar añadida y sabe deliciosa.</p>"
+            "answer": "<p>No le añadimos azúcar refinada a ningún Fuly. El azúcar que ves en la tabla nutricional es el azúcar natural de las frutas y las fibras que usamos, nada más.</p><p>En algunos productos vas a ver la palabra \"azúcares añadidos\" en la etiqueta. Tranquilo: no es azúcar refinada. Es una regla de etiquetado para alimentos procesados, que obliga a declarar así ciertos azúcares que vienen de los mismos ingredientes naturales.</p>"
           }
         },
         "faq_item_EgYp9a": {
@@ -502,23 +512,15 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿tIENEN REGISTRO INVIMA?",
-            "answer": "<p>Si. Nuestras malteadas tienen registro invima: RSA-0031556-2024</p>"
-          }
-        },
-        "faq_item_K9UX3g": {
-          "type": "faq_item",
-          "settings": {
-            "category": "PREGUNTAS FRECUENTES",
-            "question": "¿Son seguros los ingredientes?",
-            "answer": "<p>Sí, las malteadas tienen ingredientes seguros (puedes encontrar la lista completa debajo de estas preguntas)<br/>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
+            "answer": "<p>RSA-0020686-2022.</p>"
           }
         },
         "faq_item_B9xbFF": {
           "type": "faq_item",
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
-            "question": "¿Reemplaza una comida o el desayuno?",
-            "answer": "<p>No. Es un complemento: acompaña el desayuno o cualquier momento del día.  Pero no busca reemplazar comidas completas. Aporta proteína, fibra y micronutrientes dentro de una alimentación equilibrada.</p>"
+            "question": "¿Reemplaza tratamientos médicos?",
+            "answer": "<p>No. Nuestros productos son alimentos, no medicamentos. Si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
           }
         }
       },
@@ -526,7 +528,6 @@
         "faq_item_PEgWny",
         "faq_item_hKEqEq",
         "faq_item_EgYp9a",
-        "faq_item_K9UX3g",
         "faq_item_B9xbFF"
       ],
       "custom_css": [
@@ -613,16 +614,6 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "custom_liquid_ba3Hgx": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 2 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n\n{%- if rating > 0 -%}\n<div style=\"display:flex;justify-content:center;align-items:center;gap:10px;padding:8px 16px 24px;flex-wrap:wrap;\">\n  <span style=\"font-family:var(--fuly-font-heading);font-weight:800;font-size:40px;line-height:1;\">{{ rating }}</span>\n  <span style=\"display:flex;flex-direction:column;gap:2px;\">\n    <span style=\"color:var(--fuly-yellow-spark,#FAE64B);font-size:22px;letter-spacing:2px;-webkit-text-stroke:.5px #000;line-height:1;\">★★★★★</span>\n    <span style=\"font-family:var(--fuly-font-heading);font-size:14px;color:var(--fuly-muted-text,#6b6b6b);\">Promedio de {{ count }} reseñas</span>\n  </span>\n</div>\n{%- endif -%}",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
@@ -631,13 +622,13 @@
     "178960209864e24a26",
     "fuly_producto_sticky_4Bc6xi",
     "video_fuly_columnas_LGHQeF",
+    "custom_liquid_ba3Hgx",
     "17896129330e294f05",
     "fuly_imagen_texto_imagen_xWfFAF",
     "fuly_home_benefits_i6bfkg",
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_home_hero_JAchWR",
-    "fuly_home_cta_abyzBj",
-    "custom_liquid_ba3Hgx"
+    "fuly_home_cta_abyzBj"
   ]
 }
