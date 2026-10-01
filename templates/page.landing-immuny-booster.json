@@ -394,25 +394,25 @@
         "benefit_xaa9LG": {
           "type": "benefit",
           "settings": {
-            "label": "APROBADO POR NIÑOS"
+            "label": "PRACTICOS Y DELICIOSOS"
           }
         },
         "benefit_9Mgaqc": {
           "type": "benefit",
           "settings": {
-            "label": "RECOMENDADO POR PEDIATRAS"
+            "label": "PARA CUALQUIER MOMENTO DEL DÍA"
           }
         },
         "benefit_UpBHna": {
           "type": "benefit",
           "settings": {
-            "label": "FORMULADO POR CIENTIFICOS"
+            "label": "IDEAL COMO TOPPING"
           }
         },
         "benefit_az6me6": {
           "type": "benefit",
           "settings": {
-            "label": "FUENTE DE VITAMINAS Y MINERALES"
+            "label": "PARA LLEVAR A CUALQUIER LUGAR"
           }
         }
       },
@@ -552,7 +552,7 @@
       "settings": {
         "heading": "ÚNETE A +4.500 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "Comprar ahora",
-        "cta_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
+        "cta_link": "https://fulykids.com/cart/40003663757392:1",
         "bg_color": "#20a5de",
         "text_color": "#ffffff",
         "heading_size_mobile": 24,
