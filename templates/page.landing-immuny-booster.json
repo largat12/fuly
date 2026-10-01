@@ -15,12 +15,12 @@
         "slide_8QXVBE": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Malteadas_Fuly_Proteina_ninos.jpg",
-            "image_mobile": "shopify://shop_images/Malteadas_Fuly_Proteina_ninos_Chocolate.jpg",
+            "image": "shopify://shop_images/Banner_Immuny_Fuly_defensas_ninos_escritorio.png",
+            "image_mobile": "shopify://shop_images/Banner_Immuny_Fuly_defensas_ninos_movil.png",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "enable_link": true,
-            "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true"
+            "link": "https://fulykids.com/cart/40003663757392:1"
           }
         }
       },
@@ -45,7 +45,7 @@
       "type": "fuly-home-marquee",
       "name": "Fuly Home — Marquee",
       "settings": {
-        "items": "CALCIO|MAGNESIO|HIERRO|VITAMINAS B6 Y B12 | VITAMINAS A,C,E Y D | SELENIO| ZINC| PROTEÍNA ALMENDRAS | PROTEÍNA HUEVO | HECHO CON CIENCIA DELICIOSA",
+        "items": "VITAMINAS A,C Y D | SELENIO| ZINC| GANODERMA | FRUTOS AMAZÓNICOS",
         "duration_mobile": 5,
         "duration_tablet": 10,
         "duration_desktop": 10,
@@ -73,25 +73,12 @@
         "product_YrN9aW": {
           "type": "product",
           "settings": {
-            "product": "malteada-de-chocolate",
+            "product": "immuny-booster-caja-x15",
             "badge": "",
             "tint": "",
             "image_scale": "none",
             "title": "",
-            "caption": "PROTEÍNA + CALCIO + VITAMINA D · 500G o 250G",
-            "image": "shopify://shop_images/Malteada_Chocolate_2.png"
-          }
-        },
-        "product_tgDXGj": {
-          "type": "product",
-          "settings": {
-            "product": "malteada-de-vainilla",
-            "badge": "",
-            "tint": "",
-            "image_scale": "none",
-            "title": "",
-            "caption": "PROTEÍNA + CALCIO + VITAMINA D · Tarro 250g",
-            "image": "shopify://shop_images/Malteada_Vainilla_2.png"
+            "caption": "GANODERMA + ZINC + SELENIO + VITAMINA C · Caja x15 sobres"
           }
         },
         "item_AiDRRb": {
@@ -133,7 +120,6 @@
       },
       "block_order": [
         "product_YrN9aW",
-        "product_tgDXGj",
         "item_AiDRRb",
         "item_zLi4EW",
         "item_zEmATi",
@@ -298,7 +284,7 @@
             "label": "¡Las quiero!",
             "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
             "size": 16,
-            "bg": "#F7CD47",
+            "bg": "#f7cd47",
             "color": "#000000"
           }
         }
@@ -312,7 +298,7 @@
         "heading": "¡No todas las malteadas son iguales!",
         "heading_color": "#000000",
         "heading_toy_shadow": false,
-        "heading_shadow_color": "#F7CD47",
+        "heading_shadow_color": "#f7cd47",
         "heading_size": 42,
         "heading_align": "left",
         "image_a": "shopify://shop_images/Fuly_funciona_vs_otros_productos.png",
@@ -600,7 +586,7 @@
         "heading": "ÚNETE A +4.500 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "Comprar ahora",
         "cta_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
-        "bg_color": "#20A5DE",
+        "bg_color": "#20a5de",
         "text_color": "#ffffff",
         "heading_size_mobile": 24,
         "heading_size_tablet": 28,
