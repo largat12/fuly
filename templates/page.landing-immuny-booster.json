@@ -135,7 +135,7 @@
         "cards_max_width": 340,
         "products_align": "left",
         "panel_position": "right",
-        "columns": 2,
+        "columns": 1,
         "products_ratio": 1.2,
         "max_width": 1200,
         "gap": 24,
@@ -600,6 +600,76 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "featured_product_PyjfNg": {
+      "type": "featured-product",
+      "blocks": {
+        "text_jwf67Q": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_TCraJT": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_U79Unx": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_f6MTkc": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_a3WygU": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_xDtgbJ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_YJq63J": {
+          "type": "share",
+          "settings": {
+            "share_label": "Compartir"
+          }
+        }
+      },
+      "block_order": [
+        "text_jwf67Q",
+        "title_TCraJT",
+        "price_U79Unx",
+        "variant_picker_f6MTkc",
+        "quantity_selector_a3WygU",
+        "buy_buttons_xDtgbJ",
+        "share_YJq63J"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "immuny-booster-caja-x15",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -614,6 +684,7 @@
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
     "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj"
+    "fuly_home_cta_abyzBj",
+    "featured_product_PyjfNg"
   ]
 }
