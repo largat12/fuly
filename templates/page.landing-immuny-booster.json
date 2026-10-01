@@ -261,13 +261,53 @@
         "padding_bottom": 8
       }
     },
+    "17896129330e294f05": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "AMADO POR CIENTOS DE FAMILIAS ★★★★★",
+            "format": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "flex-start",
+            "star_color": "#000000",
+            "size": 15,
+            "back_color": "#ffffff",
+            "text_color": "#000000",
+            "size_text": 12,
+            "name": "2",
+            "truncate": "1",
+            "max_reviews": 60,
+            "image": "2",
+            "from": "1",
+            "width_elements": 7,
+            "content_padding": 6,
+            "mobil_content_padding": 16,
+            "movil_count": "1.5",
+            "max_width": 1860
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
+      ],
+      "custom_css": [
+        ".carouselPre .itemsC {display: none !important;}",
+        ".carouselPre .itemsC[data-go=\"Booster_frutos_rojos\"] {display: list-item !important;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "fuly_imagen_texto_imagen_xWfFAF": {
       "type": "Fuly-imagen-texto-imagen",
       "blocks": {
         "claim_TnP8yb": {
           "type": "claim",
           "settings": {
-            "text": "Perfecto para llevar a cualquier lugar",
+            "text": "Sabor frutos amazónicos reales",
             "bg": "#ffffff",
             "color": "#000000"
           }
@@ -275,8 +315,8 @@
         "button_qgJpPx": {
           "type": "button",
           "settings": {
-            "label": "¡Las quiero!",
-            "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
+            "label": "¡Comprar ahora!",
+            "link": "https://fulykids.com/cart/40003663757392:1",
             "size": 16,
             "bg": "#f7cd47",
             "color": "#000000"
@@ -296,7 +336,7 @@
         "heading_size": 42,
         "heading_align": "left",
         "image_a": "shopify://shop_images/Claims_Immuny_Booster.png",
-        "image_b": "shopify://shop_images/Booster_frutos_rojos_fuly_nino_1cff53bb-36e4-497e-835c-965fac4cface.png",
+        "image_b": "shopify://shop_images/Contenido-enriquecido_Booster-Frutos-Rojos_2.jpg",
         "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
@@ -335,46 +375,6 @@
         "padding_top": 64,
         "padding_bottom": 64,
         "anchor_id": ""
-      }
-    },
-    "17896129330e294f05": {
-      "type": "apps",
-      "blocks": {
-        "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
-          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
-          "settings": {
-            "title": "AMADO POR CIENTOS DE FAMILIAS ★★★★★",
-            "format": "2",
-            "title_color": "#000000",
-            "title_size": 24,
-            "title_pos": "flex-start",
-            "star_color": "#000000",
-            "size": 15,
-            "back_color": "#ffffff",
-            "text_color": "#000000",
-            "size_text": 12,
-            "name": "2",
-            "truncate": "1",
-            "max_reviews": 60,
-            "image": "2",
-            "from": "1",
-            "width_elements": 7,
-            "content_padding": 6,
-            "mobil_content_padding": 16,
-            "movil_count": "1.5",
-            "max_width": 1860
-          }
-        }
-      },
-      "block_order": [
-        "revie_reviews_por_whatsapp_app_block_3_Xetq6D"
-      ],
-      "custom_css": [
-        ".carouselPre .itemsC {display: none !important;}",
-        ".carouselPre .itemsC[data-go=\"malteada-de-chocolate\"] {display: list-item !important;}"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "fuly_home_benefits_i6bfkg": {
@@ -602,8 +602,8 @@
     "178960209864e24a26",
     "fuly_producto_sticky_4Bc6xi",
     "video_fuly_columnas_LGHQeF",
-    "fuly_imagen_texto_imagen_xWfFAF",
     "17896129330e294f05",
+    "fuly_imagen_texto_imagen_xWfFAF",
     "fuly_home_benefits_i6bfkg",
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
