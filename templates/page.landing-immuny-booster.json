@@ -45,7 +45,7 @@
       "type": "fuly-home-marquee",
       "name": "Fuly Home — Marquee",
       "settings": {
-        "items": "VITAMINAS A,C Y D | SELENIO| ZINC| GANODERMA | FRUTOS AMAZÓNICOS",
+        "items": "VITAMINAS A,C Y D | SELENIO| ZINC| GANODERMA | FRUTOS AMAZÓNICOS | PROBIÓTICOS | FIBRA PREBIÓTICA",
         "duration_mobile": 5,
         "duration_tablet": 10,
         "duration_desktop": 10,
@@ -288,7 +288,7 @@
             "text_color": "#000000",
             "size_text": 12,
             "name": "2",
-            "truncate": "1",
+            "truncate": "2",
             "max_reviews": 60,
             "image": "2",
             "from": "1",
@@ -305,7 +305,8 @@
       ],
       "custom_css": [
         ".carouselPre .itemsC {display: none !important;}",
-        ".carouselPre .itemsC[data-go=\"immuny-booster-caja-x15\"] {display: list-item !important;}"
+        ".carouselPre .itemsC[data-go=\"immuny-booster-caja-x15\"] {display: list-item !important;}",
+        ".carouselPre .textDet {max-height: 220px !important;}"
       ],
       "settings": {
         "include_margins": true
