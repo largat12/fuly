@@ -92,6 +92,109 @@
       "disabled": true,
       "settings": {}
     },
+    "fuly_producto_sticky_4Bc6xi": {
+      "type": "fuly-producto-sticky",
+      "blocks": {
+        "badge_Y66RTw": {
+          "type": "badge",
+          "settings": {
+            "text": "DEFENSAS"
+          }
+        },
+        "title_PxQEgN": {
+          "type": "title",
+          "settings": {
+            "text": ""
+          }
+        },
+        "rating_qyVj8q": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price_rRbNF4": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_NdXxm9": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "buy_haeRyE": {
+          "type": "buy",
+          "settings": {
+            "action": "checkout",
+            "label_checkout": "Comprar ahora",
+            "label": "Agregar al carrito"
+          }
+        },
+        "description_hkKwkp": {
+          "type": "description",
+          "settings": {}
+        },
+        "accordion_JAzt7T": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Ingredientes",
+            "content": "<p><strong>+ Vitamina C</strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br/><strong>+ Vitamina D:</strong> ayuda al cuerpo a activar sus defensas naturales.<br/><strong>+ Vitamina A: </strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br/><strong>+ Zinc:</strong> ayuda a que las células de defensa maduren y trabajen bien.<br/><strong>+ Selenio:</strong> antioxidante que protege las células del desgaste.<br/><strong>+ Betaglucanos (Ganoderma): </strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br/><strong>+ Probióticos (Bacillus coagulans): </strong>bacterias buenas que equilibran la flora intestinal.<br/><strong>+ Inulina y fibra prebiótica: </strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):</strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.</p>",
+            "open": false
+          }
+        },
+        "accordion_AFLq8x": {
+          "type": "accordion",
+          "settings": {
+            "heading": "¿Cómo consumirlo?",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_PD3XJn": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Características",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_8CkWWX": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Envíos",
+            "content": "",
+            "open": false
+          }
+        },
+        "accordion_V6PKkG": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Registro INVIMA",
+            "content": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "badge_Y66RTw",
+        "title_PxQEgN",
+        "rating_qyVj8q",
+        "price_rRbNF4",
+        "variant_picker_NdXxm9",
+        "buy_haeRyE",
+        "description_hkKwkp",
+        "accordion_JAzt7T",
+        "accordion_AFLq8x",
+        "accordion_PD3XJn",
+        "accordion_8CkWWX",
+        "accordion_V6PKkG"
+      ],
+      "name": "Fuly · Producto sticky",
+      "settings": {
+        "product": "immuny-booster-caja-x15",
+        "bg_color": "#ffffff",
+        "sticky_offset": 110,
+        "padding_y": 48,
+        "max_width": 1200
+      }
+    },
     "video_fuly_columnas_LGHQeF": {
       "type": "Video-Fuly-columnas",
       "blocks": {
@@ -557,107 +660,6 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "fuly_producto_sticky_4Bc6xi": {
-      "type": "fuly-producto-sticky",
-      "blocks": {
-        "badge_Y66RTw": {
-          "type": "badge",
-          "settings": {
-            "text": "DEFENSAS"
-          }
-        },
-        "title_PxQEgN": {
-          "type": "title",
-          "settings": {
-            "text": ""
-          }
-        },
-        "rating_qyVj8q": {
-          "type": "rating",
-          "settings": {}
-        },
-        "price_rRbNF4": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_NdXxm9": {
-          "type": "variant_picker",
-          "settings": {}
-        },
-        "buy_haeRyE": {
-          "type": "buy",
-          "settings": {
-            "label": "Agregar al carrito"
-          }
-        },
-        "description_hkKwkp": {
-          "type": "description",
-          "settings": {}
-        },
-        "accordion_JAzt7T": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Ingredientes",
-            "content": "",
-            "open": false
-          }
-        },
-        "accordion_AFLq8x": {
-          "type": "accordion",
-          "settings": {
-            "heading": "¿Cómo consumirlo?",
-            "content": "",
-            "open": false
-          }
-        },
-        "accordion_PD3XJn": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Características",
-            "content": "",
-            "open": false
-          }
-        },
-        "accordion_8CkWWX": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Envíos",
-            "content": "",
-            "open": false
-          }
-        },
-        "accordion_V6PKkG": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Registro INVIMA",
-            "content": "",
-            "open": false
-          }
-        }
-      },
-      "block_order": [
-        "badge_Y66RTw",
-        "title_PxQEgN",
-        "rating_qyVj8q",
-        "price_rRbNF4",
-        "variant_picker_NdXxm9",
-        "buy_haeRyE",
-        "description_hkKwkp",
-        "accordion_JAzt7T",
-        "accordion_AFLq8x",
-        "accordion_PD3XJn",
-        "accordion_8CkWWX",
-        "accordion_V6PKkG"
-      ],
-      "name": "Fuly · Producto sticky",
-      "settings": {
-        "product": "immuny-booster-caja-x15",
-        "bg_color": "#FFFFFF",
-        "sticky_offset": 110,
-        "padding_y": 48,
-        "max_width": 1200
       }
     }
   },
