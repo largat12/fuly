@@ -143,7 +143,7 @@
           "type": "accordion",
           "settings": {
             "heading": "¿Cómo consumirlo?",
-            "content": "",
+            "content": "<p>Súper fácil: viene listo para comer. Tu hijo puede tomarlo directo del sobre, con cucharita o hasta con el dedo. Y si quieres jugar un poco, va genial como topping en helado, batidos, fruta o yogur.</p>",
             "open": false
           }
         },
@@ -151,7 +151,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Características",
-            "content": "",
+            "content": "<ul><li>Cantidad: 15 sobres de 3g</li><li>Contenido neto: 45g</li><li>Sabor: Frutos rojos 🍓</li><li>Se puede consumir en cualquier momento del día.</li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.</li></ul>",
             "open": false
           }
         },
