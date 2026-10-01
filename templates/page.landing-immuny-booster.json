@@ -265,7 +265,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 2 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n\n{%- if rating > 0 -%}\n<div style=\"display:flex;justify-content:center;align-items:center;gap:10px;padding:8px 16px 24px;flex-wrap:wrap;\">\n  <span style=\"font-family:var(--fuly-font-heading);font-weight:800;font-size:40px;line-height:1;\">{{ rating }}</span>\n  <span style=\"display:flex;flex-direction:column;gap:2px;\">\n    <span style=\"color:var(--fuly-yellow-spark,#FAE64B);font-size:22px;letter-spacing:2px;-webkit-text-stroke:.5px #000;line-height:1;\">★★★★★</span>\n    <span style=\"font-family:var(--fuly-font-heading);font-size:14px;color:var(--fuly-muted-text,#6b6b6b);\">Promedio de {{ count }} reseñas</span>\n  </span>\n</div>\n{%- endif -%}",
+        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 1 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n{%- if count >= 1000 -%}\n  {%- assign miles = count | divided_by: 1000 -%}\n  {%- assign resto = count | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}\n  {%- assign count_txt = miles | append: '.' | append: resto -%}\n{%- else -%}\n  {%- assign count_txt = count -%}\n{%- endif -%}\n\n<style>\n  .fuly-rv-head { max-width: 1200px; margin: 0 auto; padding: 32px 32px 0; box-sizing: border-box; }\n  .fuly-rv-head h2 {\n    margin: 0 0 12px;\n    font-family: var(--fuly-font-heading); font-weight: 800; text-transform: uppercase;\n    font-size: clamp(26px, 4vw, 40px); line-height: .95;\n  }\n  .fuly-rv-head__row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }\n  .fuly-rv-head__chip {\n    display: inline-flex; align-items: center; gap: 8px;\n    padding: 6px 14px;\n    background: var(--fuly-yellow-spark, #FAE64B);\n    border: 2px solid #000; border-radius: 999px; box-shadow: 3px 3px 0 #000;\n    font-family: var(--fuly-font-heading); font-weight: 800; font-size: 18px; line-height: 1;\n  }\n  .fuly-rv-head__stars { letter-spacing: 1px; font-size: 16px; }\n  .fuly-rv-head__count { font-family: var(--fuly-font-heading); font-size: 15px; color: var(--fuly-muted-text, #6b6b6b); }\n  @media (max-width: 749px) { .fuly-rv-head { padding: 24px 16px 0; } }\n</style>\n\n<div class=\"fuly-rv-head\">\n  <h2>Amado por +{{ count_txt }} familias</h2>\n  {%- if rating > 0 -%}\n    <div class=\"fuly-rv-head__row\">\n      <span class=\"fuly-rv-head__chip\">{{ rating }} <span class=\"fuly-rv-head__stars\">★★★★★</span></span>\n      <span class=\"fuly-rv-head__count\">de 5 · {{ count_txt }} reseñas</span>\n    </div>\n  {%- endif -%}\n</div>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
@@ -277,7 +277,7 @@
         "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
           "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
-            "title": "AMADO POR CIENTOS DE FAMILIAS ★★★★★",
+            "title": "",
             "format": "2",
             "title_color": "#000000",
             "title_size": 24,
@@ -566,7 +566,7 @@
         "show_secondary_button": true,
         "secondary_label": "VER PRODUCTOS",
         "secondary_link": "",
-        "title_size_mobile": 56,
+        "title_size_mobile": 32,
         "title_size_tablet": 68,
         "title_size_desktop": 80,
         "subtitle_size_mobile": 18,
