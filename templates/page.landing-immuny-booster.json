@@ -318,7 +318,7 @@
         "claim_TnP8yb": {
           "type": "claim",
           "settings": {
-            "text": "Sabor frutos amazónicos reales que los niños aman",
+            "text": "",
             "bg": "#ffffff",
             "color": "#000000"
           }
@@ -346,9 +346,10 @@
         "heading_shadow_color": "#f7cd47",
         "heading_size": 42,
         "heading_align": "left",
-        "image_a": "shopify://shop_images/Post_Sin_Con-selection_1.png",
-        "image_a_mobile": "shopify://shop_images/Claims_Immuny_Booster.png",
-        "image_b": "shopify://shop_images/Booster_frutos_rojos_fuly_nino_1cff53bb-36e4-497e-835c-965fac4cface.png",
+        "image_a": "shopify://shop_images/Escritorio_nino_ingredientes_fuly.png",
+        "image_a_mobile": "shopify://shop_images/Movil_nino_ingredientes_booster.png",
+        "image_b": "shopify://shop_images/Post_Sin_Con-selection_1.png",
+        "image_b_mobile": "shopify://shop_images/Claims_Immuny_Booster.png",
         "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
@@ -624,9 +625,9 @@
     "fuly_home_marquee_GFyUtn",
     "178960209864e24a26",
     "fuly_producto_sticky_4Bc6xi",
-    "video_fuly_columnas_LGHQeF",
     "custom_liquid_ba3Hgx",
     "17896129330e294f05",
+    "video_fuly_columnas_LGHQeF",
     "fuly_imagen_texto_imagen_xWfFAF",
     "fuly_home_benefits_i6bfkg",
     "1789603482df0f6ab5",
