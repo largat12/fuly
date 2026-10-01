@@ -1,0 +1,398 @@
+{%- comment -%}
+  Fuly · Producto sticky
+  Bloque de producto para landings: galería fija al hacer scroll + info de compra.
+  - Producto: se elige en la configuración de la sección.
+  - Reseñas: lee product.metafields.reviews.rating_count (igual que main-product).
+  - Suscripción: agrega el bloque de app "Suscripciones Fuly Kids · Subscription widget"
+    (Add block → Apps). Queda dentro del formulario de compra, igual que en la PDP.
+  - El orden de etiqueta, título, reseñas, precio, app, compra, descripción y acordeones
+    se cambia arrastrando bloques.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign product = s.product
+  if product != blank
+    assign variant = product.selected_or_first_available_variant
+    assign reviews_count = product.metafields.reviews.rating_count
+    if reviews_count == blank
+      assign reviews_count = 0
+    endif
+    assign form_id = 'fps-form-' | append: sid
+  endif
+-%}
+
+<style>
+  #fps-{{ sid }} {
+    --fps-ink: var(--fuly-cartoon-black, #000);
+    --fps-yellow: var(--fuly-yellow-spark, #FAE64B);
+    --fps-border: var(--fuly-border, 3px solid #000);
+    --fps-shadow: 4px 4px 0 var(--fps-ink);
+    --fps-shadow-sm: var(--fuly-shadow-sm, 3px 3px 0 #000);
+    --fps-heading: var(--fuly-font-heading, "PP Pangram Sans Rounded", "Arial Narrow", Helvetica, sans-serif);
+    --fps-muted: var(--fuly-muted-text, #6b6b6b);
+    --fps-top: {{ s.sticky_offset }}px;
+    background: {{ s.bg_color }};
+    padding: {{ s.padding_y }}px 0;
+    color: var(--fps-ink);
+  }
+  #fps-{{ sid }} .fps__inner {
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Galería sticky */
+  #fps-{{ sid }} .fps__gallery { position: sticky; top: var(--fps-top); }
+  #fps-{{ sid }} .fps__main {
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    border: var(--fps-border);
+    border-radius: 16px;
+    box-shadow: var(--fps-shadow);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #fps-{{ sid }} .fps__main img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #fps-{{ sid }} .fps__thumbs {
+    display: flex; gap: 12px;
+    margin-top: 16px;
+    overflow-x: auto;
+    padding: 2px 6px 8px 2px;
+    scrollbar-width: thin;
+  }
+  #fps-{{ sid }} .fps__thumb {
+    flex: 0 0 72px; height: 72px; padding: 0;
+    background: #fff;
+    border: 2px solid var(--fps-ink);
+    border-radius: 10px;
+    overflow: hidden; cursor: pointer;
+    opacity: .55;
+    transition: opacity 120ms ease-out, box-shadow 120ms ease-out;
+  }
+  #fps-{{ sid }} .fps__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #fps-{{ sid }} .fps__thumb[aria-current="true"] { opacity: 1; box-shadow: var(--fps-shadow-sm); }
+
+  /* Info */
+  #fps-{{ sid }} .fps__info > * + * { margin-top: 16px; }
+  #fps-{{ sid }} .fps__badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--fps-yellow);
+    border: var(--fps-border);
+    border-radius: 8px;
+    box-shadow: var(--fps-shadow-sm);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+  #fps-{{ sid }} .fps__title {
+    margin: 4px 0 0;
+    font-family: var(--fps-heading) !important;
+    text-transform: uppercase;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: .95;
+  }
+  #fps-{{ sid }} .fps__rating { display: flex; align-items: center; gap: 8px; margin-top: 8px !important; }
+  #fps-{{ sid }} .fps__stars { font-size: 18px; line-height: 1; letter-spacing: 1px; color: var(--fps-yellow); -webkit-text-stroke: .5px #000; }
+  #fps-{{ sid }} .fps__rating-count { font-family: var(--fps-heading); font-size: 16px; color: var(--fps-muted); }
+  #fps-{{ sid }} .fps__price { font-family: var(--fps-heading); font-size: 32px; font-weight: 800; display: flex; gap: 12px; align-items: baseline; }
+  #fps-{{ sid }} .fps__price s { font-size: 18px; font-weight: 400; color: var(--fps-muted); }
+
+  #fps-{{ sid }} .fps__variant select {
+    width: 100%; height: 48px; padding: 0 16px;
+    border: 2px solid var(--fps-ink); border-radius: 10px;
+    background: #fff; font-weight: 700; font-size: 15px;
+  }
+
+  #fps-{{ sid }} .fps__buy { display: flex; gap: 12px; }
+  #fps-{{ sid }} .fps__qty {
+    display: flex; align-items: center;
+    border: 2px solid var(--fps-ink); border-radius: 999px;
+    overflow: hidden; background: #fff;
+  }
+  #fps-{{ sid }} .fps__qty button { width: 40px; height: 48px; background: none; border: 0; font-size: 18px; cursor: pointer; color: inherit; }
+  #fps-{{ sid }} .fps__qty input {
+    width: 36px; border: 0; text-align: center;
+    font-weight: 700; font-size: 15px; background: transparent;
+    -moz-appearance: textfield;
+  }
+  #fps-{{ sid }} .fps__qty input::-webkit-inner-spin-button,
+  #fps-{{ sid }} .fps__qty input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  #fps-{{ sid }} .fps__add {
+    flex: 1; min-height: 52px;
+    background: var(--fps-yellow);
+    color: var(--fps-ink);
+    border: var(--fps-border);
+    border-radius: 999px;
+    box-shadow: var(--fps-shadow);
+    font-weight: 800; font-size: 16px;
+    cursor: pointer;
+    transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+  }
+  #fps-{{ sid }} .fps__add:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--fps-ink); }
+  #fps-{{ sid }} .fps__add:active { transform: translate(4px,4px); box-shadow: 0 0 0 var(--fps-ink); }
+  #fps-{{ sid }} .fps__add[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
+
+  #fps-{{ sid }} .fps__desc { font-size: 14px; line-height: 1.55; }
+  #fps-{{ sid }} .fps__desc p { margin: 0 0 10px; }
+
+  #fps-{{ sid }} .fps__acc {
+    border: 2px solid var(--fps-ink);
+    border-radius: 10px;
+    box-shadow: var(--fps-shadow-sm);
+    background: #fff;
+  }
+  #fps-{{ sid }} .fps__acc + .fps__acc { margin-top: 12px; }
+  #fps-{{ sid }} .fps__acc summary {
+    list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 16px;
+    font-weight: 800; font-size: 14px; text-transform: uppercase;
+    cursor: pointer;
+  }
+  #fps-{{ sid }} .fps__acc summary::-webkit-details-marker { display: none; }
+  #fps-{{ sid }} .fps__acc summary::after {
+    content: ""; flex: 0 0 auto;
+    width: 7px; height: 7px; margin-left: 12px;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 200ms ease-out;
+  }
+  #fps-{{ sid }} .fps__acc[open] summary::after { transform: rotate(-135deg); }
+  #fps-{{ sid }} .fps__acc-body { padding: 0 16px 16px; font-size: 14px; line-height: 1.55; }
+  #fps-{{ sid }} .fps__acc-body img { max-width: 100%; height: auto; display: block; margin-top: 8px; }
+
+  @media (max-width: 749px) {
+    #fps-{{ sid }} .fps__inner { grid-template-columns: 1fr; gap: 24px; padding: 0 16px; }
+    #fps-{{ sid }} .fps__gallery { position: static; }
+    #fps-{{ sid }} .fps__thumb { flex-basis: 60px; height: 60px; }
+  }
+</style>
+
+<section id="fps-{{ sid }}" class="fps">
+  {%- if product == blank -%}
+    <div class="fps__inner"><p>Elige un producto en la configuración de esta sección.</p></div>
+  {%- else -%}
+  <div class="fps__inner">
+
+    <div class="fps__gallery">
+      <div class="fps__main">
+        {%- assign first_media = product.featured_media -%}
+        {%- if first_media -%}
+          {{ first_media.preview_image | image_url: width: 1200 | image_tag:
+            loading: 'eager',
+            sizes: '(max-width: 749px) 92vw, 50vw',
+            widths: '500, 800, 1000, 1200',
+            alt: first_media.alt | default: product.title
+          }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="fps__thumbs">
+          {%- for media in product.media -%}
+            <button type="button" class="fps__thumb"
+              data-src="{{ media.preview_image | image_url: width: 1200 }}"
+              data-alt="{{ media.alt | default: product.title | escape }}"
+              aria-label="Ver imagen {{ forloop.index }}"
+              {% if forloop.first %}aria-current="true"{% endif %}>
+              {{ media.preview_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: '' }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- form 'product', product, id: form_id, class: 'fps__info', data-type: 'add-to-cart-form' -%}
+      <input type="hidden" name="id" value="{{ variant.id }}" data-fps-id>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+          {%- when '@app' -%}
+            <div class="fps__app">{% render block %}</div>
+
+          {%- when 'badge' -%}
+            {%- if block.settings.text != blank -%}
+              <div {{ block.shopify_attributes }}><span class="fps__badge">{{ block.settings.text }}</span></div>
+            {%- endif -%}
+
+          {%- when 'title' -%}
+            <h2 class="fps__title" {{ block.shopify_attributes }}>{{ block.settings.text | default: product.title }}</h2>
+
+          {%- when 'rating' -%}
+            <div class="fps__rating" {{ block.shopify_attributes }} aria-label="{{ reviews_count }} reseñas">
+              <span class="fps__stars" aria-hidden="true">★★★★★</span>
+              <span class="fps__rating-count">({{ reviews_count }} reseñas)</span>
+            </div>
+
+          {%- when 'price' -%}
+            <div class="fps__price" {{ block.shopify_attributes }} data-fps-price>
+              {{ variant.price | money_without_trailing_zeros }}
+              {%- if variant.compare_at_price > variant.price -%}
+                <s>{{ variant.compare_at_price | money_without_trailing_zeros }}</s>
+              {%- endif -%}
+            </div>
+
+          {%- when 'variant_picker' -%}
+            {%- unless product.has_only_default_variant -%}
+              <div class="fps__variant" {{ block.shopify_attributes }}>
+                <select aria-label="{{ product.options.first | escape }}">
+                  {%- for v in product.variants -%}
+                    <option value="{{ v.id }}" data-price="{{ v.price | money_without_trailing_zeros }}"
+                      {% if v.id == variant.id %}selected{% endif %}
+                      {% unless v.available %}disabled{% endunless %}>
+                      {{ v.title }}{% unless v.available %} · Agotado{% endunless %}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endunless -%}
+
+          {%- when 'buy' -%}
+            <div class="fps__buy" {{ block.shopify_attributes }}>
+              <div class="fps__qty">
+                <button type="button" data-qty="-1" aria-label="Menos">−</button>
+                <input type="number" name="quantity" value="1" min="1" aria-label="Cantidad">
+                <button type="button" data-qty="1" aria-label="Más">+</button>
+              </div>
+              <button type="submit" name="add" class="fps__add" {% unless variant.available %}disabled{% endunless %}>
+                {%- if variant.available -%}{{ block.settings.label }}{%- else -%}Agotado{%- endif -%}
+              </button>
+            </div>
+
+          {%- when 'description' -%}
+            {%- if product.description != blank -%}
+              <div class="fps__desc" {{ block.shopify_attributes }}>{{ product.description }}</div>
+            {%- endif -%}
+
+          {%- when 'accordion' -%}
+            <details class="fps__acc" {{ block.shopify_attributes }} {% if block.settings.open %}open{% endif %}>
+              <summary>{{ block.settings.heading }}</summary>
+              <div class="fps__acc-body">
+                {{ block.settings.content }}
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy' }}
+                {%- endif -%}
+              </div>
+            </details>
+
+        {%- endcase -%}
+      {%- endfor -%}
+    {%- endform -%}
+
+  </div>
+  {%- endif -%}
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('fps-{{ sid }}');
+    if (!root) return;
+
+    var main = root.querySelector('.fps__main img');
+    root.querySelectorAll('.fps__thumb').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (main) {
+          main.removeAttribute('srcset');
+          main.src = btn.dataset.src;
+          main.alt = btn.dataset.alt;
+        }
+        root.querySelectorAll('.fps__thumb').forEach(function (b) { b.removeAttribute('aria-current'); });
+        btn.setAttribute('aria-current', 'true');
+      });
+    });
+
+    var qty = root.querySelector('.fps__qty input');
+    root.querySelectorAll('[data-qty]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        qty.value = Math.max(1, (parseInt(qty.value, 10) || 1) + parseInt(btn.dataset.qty, 10));
+        qty.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+
+    var select = root.querySelector('.fps__variant select');
+    var price = root.querySelector('[data-fps-price]');
+    var idInput = root.querySelector('[data-fps-id]');
+    if (select) {
+      select.addEventListener('change', function () {
+        var opt = select.options[select.selectedIndex];
+        if (idInput) {
+          idInput.value = opt.value;
+          idInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        if (price) price.textContent = opt.dataset.price;
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Fuly · Producto sticky",
+  "tag": "div",
+  "class": "section-fuly-producto-sticky",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "bg_color", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "range", "id": "sticky_offset", "label": "Separación de la imagen fija con el borde superior", "info": "Súbelo si el header tapa la imagen al hacer scroll.", "min": 0, "max": 200, "step": 10, "unit": "px", "default": 110 },
+    { "type": "range", "id": "padding_y", "label": "Margen arriba/abajo", "min": 0, "max": 120, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "max_width", "label": "Ancho máximo", "min": 900, "max": 1600, "step": 20, "unit": "px", "default": 1200 }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "badge", "name": "Etiqueta", "limit": 1,
+      "settings": [ { "type": "text", "id": "text", "label": "Texto", "default": "DEFENSAS" } ]
+    },
+    {
+      "type": "title", "name": "Título", "limit": 1,
+      "settings": [ { "type": "text", "id": "text", "label": "Título", "info": "Vacío = nombre del producto." } ]
+    },
+    { "type": "rating", "name": "Reseñas", "limit": 1 },
+    { "type": "price", "name": "Precio", "limit": 1 },
+    { "type": "variant_picker", "name": "Selector de variante", "limit": 1 },
+    {
+      "type": "buy", "name": "Cantidad + agregar", "limit": 1,
+      "settings": [ { "type": "text", "id": "label", "label": "Texto del botón", "default": "Agregar al carrito" } ]
+    },
+    { "type": "description", "name": "Descripción del producto", "limit": 1 },
+    {
+      "type": "accordion", "name": "Acordeón",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título", "default": "Ingredientes" },
+        { "type": "richtext", "id": "content", "label": "Contenido" },
+        { "type": "image_picker", "id": "image", "label": "Imagen (opcional)" },
+        { "type": "checkbox", "id": "open", "label": "Abierto por defecto", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuly · Producto sticky",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "title" },
+        { "type": "rating" },
+        { "type": "price" },
+        { "type": "variant_picker" },
+        { "type": "buy" },
+        { "type": "description" },
+        { "type": "accordion", "settings": { "heading": "Ingredientes" } },
+        { "type": "accordion", "settings": { "heading": "¿Cómo consumirlo?" } },
+        { "type": "accordion", "settings": { "heading": "Características" } },
+        { "type": "accordion", "settings": { "heading": "Envíos" } },
+        { "type": "accordion", "settings": { "heading": "Registro INVIMA" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
