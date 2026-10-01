@@ -295,7 +295,7 @@
       ],
       "custom_css": [
         ".carouselPre .itemsC {display: none !important;}",
-        ".carouselPre .itemsC[data-go=\"Booster_frutos_rojos\"] {display: list-item !important;}"
+        ".carouselPre .itemsC[data-go=\"immuny-booster-caja-x15\"] {display: list-item !important;}"
       ],
       "settings": {
         "include_margins": true
@@ -307,7 +307,7 @@
         "claim_TnP8yb": {
           "type": "claim",
           "settings": {
-            "text": "Sabor frutos amazónicos reales",
+            "text": "Sabor frutos amazónicos reales que los niños aman",
             "bg": "#ffffff",
             "color": "#000000"
           }
@@ -336,7 +336,7 @@
         "heading_size": 42,
         "heading_align": "left",
         "image_a": "shopify://shop_images/Claims_Immuny_Booster.png",
-        "image_b": "shopify://shop_images/Contenido-enriquecido_Booster-Frutos-Rojos_2.jpg",
+        "image_b": "shopify://shop_images/Booster_frutos_rojos_fuly_nino_1cff53bb-36e4-497e-835c-965fac4cface.png",
         "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
@@ -481,14 +481,6 @@
     "fuly_faq_page_iWXdJy": {
       "type": "fuly-faq-page",
       "blocks": {
-        "faq_item_D9zf4B": {
-          "type": "faq_item",
-          "settings": {
-            "category": "PREGUNTAS FRECUENTES",
-            "question": "¿De dónde viene la proteína?",
-            "answer": "<p>De almendra y huevo entero. La de chocolate aporta 7,2 g de proteína por porción preparada, la de vainilla aporta 6,7g. Contiene almendra y huevo: revísalo si tu hijo tiene alguna alergia.</p>"
-          }
-        },
         "faq_item_PEgWny": {
           "type": "faq_item",
           "settings": {
@@ -531,7 +523,6 @@
         }
       },
       "block_order": [
-        "faq_item_D9zf4B",
         "faq_item_PEgWny",
         "faq_item_hKEqEq",
         "faq_item_EgYp9a",
@@ -553,24 +544,52 @@
         "body_font_picker": "assistant_n4"
       }
     },
-    "fuly_ingredientes_productos_eL99P4": {
-      "type": "fuly-ingredientes-productos",
-      "custom_css": [
-        ".fuly-ing-productos__controls {display: none !important;}"
-      ],
-      "name": "Ingredientes — Productos",
+    "fuly_home_hero_JAchWR": {
+      "type": "fuly-home-hero",
+      "name": "Fuly Home — Hero",
       "settings": {
-        "kicker": "",
-        "title": "Conoce todos sus ingredientes",
-        "intro": "",
-        "collection": "malteadas",
-        "products_limit": 20,
-        "open_all_label": "",
-        "close_all_label": "",
-        "count_suffix": "ingredientes",
-        "pdp_label": "Ver producto",
-        "source_label": "[fuente]",
-        "empty_message": "Aún no hay productos con ingredientes cargados."
+        "show_badge": true,
+        "tagline": "",
+        "reviews_source": "auto",
+        "reviews_namespace": "reviews",
+        "reviews_key": "rating_count",
+        "reviews_shop_namespace": "",
+        "reviews_shop_key": "",
+        "reviews_manual_number": "5440",
+        "reviews_text": "reseñas verificadas con 5 estrellas ⭐",
+        "title": "EL FUTURO SABE RICO",
+        "subtitle": "Formulados por científicos. Disfrutados por niños.",
+        "show_primary_button": true,
+        "primary_label": "COMPRAR AHORA",
+        "primary_link": "",
+        "show_secondary_button": true,
+        "secondary_label": "VER PRODUCTOS",
+        "secondary_link": "",
+        "title_size_mobile": 56,
+        "title_size_tablet": 68,
+        "title_size_desktop": 80,
+        "subtitle_size_mobile": 18,
+        "subtitle_size_tablet": 18,
+        "subtitle_size_desktop": 18,
+        "content_gap_mobile": 16,
+        "content_gap_tablet": 24,
+        "content_gap_desktop": 24,
+        "buttons_gap_mobile": 12,
+        "buttons_gap_tablet": 12,
+        "buttons_gap_desktop": 12,
+        "image_height_mobile": 225,
+        "image_height_tablet": 450,
+        "image_height_desktop": 450,
+        "padding_block_mobile": 48,
+        "padding_block_tablet": 96,
+        "padding_block_desktop": 96,
+        "heading_color": "#1A1A1A",
+        "subtitle_color": "#555555",
+        "badge_bg_color": "#F7CD47",
+        "heading_font": "display",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "body",
+        "body_font_picker": "assistant_n4"
       }
     },
     "fuly_home_cta_abyzBj": {
@@ -594,6 +613,16 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
+    },
+    "custom_liquid_ba3Hgx": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 2 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n\n{%- if rating > 0 -%}\n<div style=\"display:flex;justify-content:center;align-items:center;gap:10px;padding:8px 16px 24px;flex-wrap:wrap;\">\n  <span style=\"font-family:var(--fuly-font-heading);font-weight:800;font-size:40px;line-height:1;\">{{ rating }}</span>\n  <span style=\"display:flex;flex-direction:column;gap:2px;\">\n    <span style=\"color:var(--fuly-yellow-spark,#FAE64B);font-size:22px;letter-spacing:2px;-webkit-text-stroke:.5px #000;line-height:1;\">★★★★★</span>\n    <span style=\"font-family:var(--fuly-font-heading);font-size:14px;color:var(--fuly-muted-text,#6b6b6b);\">Promedio de {{ count }} reseñas</span>\n  </span>\n</div>\n{%- endif -%}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -607,7 +636,8 @@
     "fuly_home_benefits_i6bfkg",
     "1789603482df0f6ab5",
     "fuly_faq_page_iWXdJy",
-    "fuly_ingredientes_productos_eL99P4",
-    "fuly_home_cta_abyzBj"
+    "fuly_home_hero_JAchWR",
+    "fuly_home_cta_abyzBj",
+    "custom_liquid_ba3Hgx"
   ]
 }
