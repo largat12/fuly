@@ -122,9 +122,9 @@
         "buy_haeRyE": {
           "type": "buy",
           "settings": {
-            "action": "checkout",
+            "action": "cart",
             "label_checkout": "COMPRAR AHORA",
-            "label": "Agregar al carrito"
+            "label": "AGREGAR AL CARRITO"
           }
         },
         "description_hkKwkp": {
