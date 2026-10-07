@@ -1545,5 +1545,17 @@
         "default": 2
       }
     ]
+  },
+  {
+    "name": "Reseñas",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "fuly_show_rating_average",
+        "label": "Mostrar promedio de calificación en productos",
+        "info": "Ej: ★★★★★ 4.9 - 232 reseñas. El promedio viene de Revie.",
+        "default": true
+      }
+    ]
   }
 ]
