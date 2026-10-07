@@ -153,6 +153,7 @@
     if fuly_reviews_count == blank or fuly_reviews_count == 0
       assign fuly_reviews_count = 0
     endif
+    assign fuly_reviews_avg = product.metafields.reviews.rating.value.rating | round: 1
   -%}
   <div
     class="page-width fuly-pdp-shell"
@@ -204,7 +205,7 @@
                   </a>
                   <div class="fuly-pdp-rating" aria-label="{{ fuly_reviews_count }} reseñas">
                     <span class="fuly-pdp-stars" aria-hidden="true">★★★★★</span>
-                    <span class="fuly-pdp-rating-count">({{ fuly_reviews_count }} reseñas)</span>
+                    {%- if settings.fuly_show_rating_average and fuly_reviews_avg > 0 -%}<span class="fuly-pdp-rating-count">{{ fuly_reviews_avg }} - {{ fuly_reviews_count }} reseñas</span>{%- else -%}<span class="fuly-pdp-rating-count">({{ fuly_reviews_count }} reseñas)</span>{%- endif -%}
                   </div>
                 </div>
               {%- when 'price' -%}
