@@ -91,6 +91,13 @@
         padding-left: 0 !important;
         padding-right: 0 !important;
       }
+      /* La columna de fotos se estira al alto de la info para que la galería sticky acompañe el scroll */
+      #shopify-section-{{ section.id }} .fuly-pdp-grid > .product__media-wrapper {
+        align-self: stretch;
+      }
+      #shopify-section-{{ section.id }} .fuly-pdp-media-column media-gallery.product__column-sticky {
+        top: 120px;
+      }
     }
 
     /* #6 — Quitar la animación (reveal al hacer scroll) de la galería e info del producto
@@ -102,6 +109,31 @@
       transform: none !important;
       animation: none !important;
       transition: none !important;
+    }
+
+    /* Info arriba de las fotos en móvil: los bloques antes de la compra se agrupan en .fuly-pdp-top */
+    #shopify-section-{{ section.id }} .fuly-pdp-top {
+      display: contents;
+    }
+    #shopify-section-{{ section.id }} .fuly-pdp-top > * {
+      width: 100%;
+      margin: 0 !important;
+    }
+    @media (max-width: 749px) {
+      #shopify-section-{{ section.id }} .fuly-pdp-grid--info-top {
+        gap: 16px;
+      }
+      #shopify-section-{{ section.id }} .fuly-pdp-grid--info-top > .product__info-wrapper,
+      #shopify-section-{{ section.id }} .fuly-pdp-grid--info-top .product__info-container {
+        display: contents;
+      }
+      #shopify-section-{{ section.id }} .fuly-pdp-top {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        width: 100%;
+        order: -1;
+      }
     }
   {%- endstyle -%}
 
@@ -165,7 +197,7 @@
       <span class="fuly-pdp-breadcrumb__current">{{ product.title | escape }}</span>
     </nav>
 
-    <div class="product fuly-pdp-grid product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product fuly-pdp-grid product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }}{% if section.settings.mobile_info_position == 'above' %} fuly-pdp-grid--info-top{% endif %} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper fuly-pdp-media-column">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -176,7 +208,22 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+          {%- liquid
+            assign fuly_top_open = false
+            if section.settings.mobile_info_position == 'above'
+              assign fuly_top_open = true
+              echo '<div class="fuly-pdp-top">'
+            endif
+          -%}
           {%- for block in section.blocks -%}
+            {%- liquid
+              if fuly_top_open
+                if block.type == 'variant_picker' or block.type == 'quantity_selector' or block.type == 'buy_buttons' or block.id contains 'suscripciones'
+                  assign fuly_top_open = false
+                  echo '</div>'
+                endif
+              endif
+            -%}
             {%- case block.type -%}
               {%- when '@app' -%}
   {%- if block.id contains 'suscripciones' -%}
@@ -222,8 +269,7 @@
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
-                {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                  <div class="product__tax caption rte">
+                {%- capture fuly_tax_note -%}
                     {%- if cart.duties_included and cart.taxes_included -%}
                       {{ 'products.product.duties_and_taxes_included' | t }}
                     {%- elsif cart.taxes_included -%}
@@ -234,15 +280,21 @@
                     {%- if shop.shipping_policy.body != blank -%}
                       {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                     {%- endif -%}
-                  </div>
+                {%- endcapture -%}
+                {%- if fuly_tax_note != blank -%}
+                  <div class="product__tax caption rte">{{ fuly_tax_note }}</div>
                 {%- endif -%}
-                <div {{ block.shopify_attributes }}>
-                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                {%- capture fuly_installment_form -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    {{ form | payment_terms }}
+                    {%- capture fuly_payment_terms -%}{{ form | payment_terms }}{%- endcapture -%}
+                    {{ fuly_payment_terms }}
                   {%- endform -%}
-                </div>
+                {%- endcapture -%}
+                {%- if fuly_payment_terms != blank -%}
+                  <div {{ block.shopify_attributes }}>{{ fuly_installment_form }}</div>
+                {%- endif -%}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -771,6 +823,7 @@
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
           {%- endfor -%}
+          {%- if fuly_top_open -%}{{ '</div>' }}{%- endif -%}
         </section>
       </div>
     </div>
@@ -2190,6 +2243,17 @@
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "select",
+      "id": "mobile_info_position",
+      "label": "Información del producto en móvil",
+      "options": [
+        { "value": "below", "label": "Debajo de las fotos" },
+        { "value": "above", "label": "Arriba de las fotos" }
+      ],
+      "default": "below",
+      "info": "En 'Arriba', los bloques ubicados antes del selector de variantes, cantidad, suscripción o botón de compra (ej. título, reseñas, precio, descripción) se muestran arriba de las fotos. Reordena los bloques para elegir cuáles suben."
     },
     {
       "type": "text",

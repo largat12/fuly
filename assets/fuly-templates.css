@@ -146,8 +146,19 @@
 
 product-info.fuly-pdp-surface {
   padding-top: 48px !important;
-  padding-bottom: 48px !important;
+  padding-bottom: 0 !important;
   background-color: transparent !important;
+}
+
+@media screen and (max-width: 749px) {
+  product-info .fuly-pdp-grid {
+    margin-bottom: 0;
+  }
+}
+
+/* El widget de suscripción trae margin: 20px 0 inline; el gap del contenedor ya separa */
+product-info #subscription-widget-root > div {
+  margin: 0 !important;
 }
 
 @media screen and (min-width: 750px) {
