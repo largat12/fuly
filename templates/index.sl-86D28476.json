@@ -104,9 +104,9 @@
         "slide_Dj6Bxg": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Bannerkitdefensasdrink2.svg",
-            "image_mobile": "shopify://shop_images/BannerKitdefensasdrink.svg",
-            "slide_link": "shopify://products/kit-defensas",
+            "image": "shopify://shop_images/1_7.jpg",
+            "image_mobile": "shopify://shop_images/2_11.jpg",
+            "slide_link": "shopify://products/immuny-booster-caja-x15",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "show_badge": false,
