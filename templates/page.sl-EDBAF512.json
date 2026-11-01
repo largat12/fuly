@@ -15,18 +15,19 @@
         "slide_8QXVBE": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1_7.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/2_11.jpg",
+            "image": "shopify://shop_images/1_7.jpg",
+            "image_mobile": "shopify://shop_images/2_11.jpg",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "enable_link": true,
-            "link": "https:\/\/fulykids.com\/cart\/40003663757392:1"
+            "link": "https://fulykids.com/cart/40003663757392:1"
           }
         }
       },
       "block_order": [
         "slide_8QXVBE"
       ],
+      "disabled": true,
       "name": "Slideshow",
       "settings": {
         "autoplay": true,
@@ -73,11 +74,11 @@
         "ai_gen_block_f10a1a9_PrYfXR": {
           "type": "ai_gen_block_f10a1a9",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Malteadadeproteinaninos.svg",
+            "image": "shopify://shop_images/Malteadadeproteinaninos.svg",
             "image_alt": "Imagen de Fuly Kids",
             "image_link": "",
-            "image_ratio": "2 \/ 1",
-            "mobile_ratio": "4 \/ 3",
+            "image_ratio": "2 / 1",
+            "mobile_ratio": "4 / 3",
             "desktop_width_percent": 100,
             "corner_radius": 16,
             "placeholder_color": "#f9ecbf",
@@ -135,7 +136,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Ingredientes",
-            "content": "<p><strong>+ Vitamina C<\/strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br\/><strong>+ Vitamina D:<\/strong> ayuda al cuerpo a activar sus defensas naturales.<br\/><strong>+ Vitamina A: <\/strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br\/><strong>+ Zinc:<\/strong> ayuda a que las células de defensa maduren y trabajen bien.<br\/><strong>+ Selenio:<\/strong> antioxidante que protege las células del desgaste.<br\/><strong>+ Betaglucanos (Ganoderma): <\/strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br\/><strong>+ Probióticos (Bacillus coagulans): <\/strong>bacterias buenas que equilibran la flora intestinal.<br\/><strong>+ Inulina y fibra prebiótica: <\/strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br\/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):<\/strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.<\/p>",
+            "content": "<p><strong>+ Vitamina C</strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br/><strong>+ Vitamina D:</strong> ayuda al cuerpo a activar sus defensas naturales.<br/><strong>+ Vitamina A: </strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br/><strong>+ Zinc:</strong> ayuda a que las células de defensa maduren y trabajen bien.<br/><strong>+ Selenio:</strong> antioxidante que protege las células del desgaste.<br/><strong>+ Betaglucanos (Ganoderma): </strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br/><strong>+ Probióticos (Bacillus coagulans): </strong>bacterias buenas que equilibran la flora intestinal.<br/><strong>+ Inulina y fibra prebiótica: </strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):</strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.</p>",
             "open": false
           }
         },
@@ -143,7 +144,7 @@
           "type": "accordion",
           "settings": {
             "heading": "¿Cómo consumirlo?",
-            "content": "<p>Súper fácil: viene listo para comer. Tu hijo puede tomarlo directo del sobre, con cucharita o hasta con el dedo. Y si quieres jugar un poco, va genial como topping en helado, batidos, fruta o yogur.<br\/>Ideal 1 sobre al día.<\/p>",
+            "content": "<p>Súper fácil: viene listo para comer. Tu hijo puede tomarlo directo del sobre, con cucharita o hasta con el dedo. Y si quieres jugar un poco, va genial como topping en helado, batidos, fruta o yogur.<br/>Ideal 1 sobre al día.</p>",
             "open": false
           }
         },
@@ -151,7 +152,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Características",
-            "content": "<ul><li>Cantidad: 15 sobres de 3g<\/li><li>Contenido neto: 45g<\/li><li>Sabor: Frutos rojos 🍓<\/li><li>Se puede consumir en cualquier momento del día.<\/li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.<\/li><\/ul>",
+            "content": "<ul><li>Cantidad: 15 sobres de 3g</li><li>Contenido neto: 45g</li><li>Sabor: Frutos rojos 🍓</li><li>Se puede consumir en cualquier momento del día.</li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.</li></ul>",
             "open": false
           }
         },
@@ -159,7 +160,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Envíos",
-            "content": "<ul><li>Hacemos envíos a toda Colombia.<\/li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplica TyC.<\/li><li>Recibe el mismo día si compras antes de las 3:00 p.m. Disponible en Bogotá, Medellín y Cali. Aplican TyC.<\/li><\/ul>",
+            "content": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplica TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>",
             "open": false
           }
         },
@@ -167,7 +168,7 @@
           "type": "accordion",
           "settings": {
             "heading": "Registro INVIMA",
-            "content": "<p>RSA-0020686-2022.<\/p>",
+            "content": "<p>RSA-0020686-2022.</p>",
             "open": false
           }
         }
@@ -202,7 +203,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 1 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n{%- if count >= 1000 -%}\n  {%- assign miles = count | divided_by: 1000 -%}\n  {%- assign resto = count | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}\n  {%- assign count_txt = miles | append: '.' | append: resto -%}\n{%- else -%}\n  {%- assign count_txt = count -%}\n{%- endif -%}\n\n<style>\n  .fuly-rv-head { max-width: 1200px; margin: 0 auto; padding: 32px 32px 0; box-sizing: border-box; }\n  .fuly-rv-head h2 {\n    margin: 0 0 12px;\n    font-family: var(--fuly-font-heading); font-weight: 800; text-transform: uppercase;\n    font-size: clamp(26px, 4vw, 40px); line-height: .95;\n  }\n  .fuly-rv-head__row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }\n  .fuly-rv-head__chip {\n    display: inline-flex; align-items: center; gap: 8px;\n    padding: 6px 14px;\n    background: var(--fuly-yellow-spark, #FAE64B);\n    border: 2px solid #000; border-radius: 999px; box-shadow: 3px 3px 0 #000;\n    font-family: var(--fuly-font-heading); font-weight: 800; font-size: 18px; line-height: 1;\n  }\n  .fuly-rv-head__stars { letter-spacing: 1px; font-size: 16px; }\n  .fuly-rv-head__count { font-family: var(--fuly-font-heading); font-size: 15px; color: var(--fuly-muted-text, #6b6b6b); }\n  .carouselPre .itemsC[data-go] { cursor: pointer; }\n  @media (max-width: 749px) { .fuly-rv-head { padding: 24px 16px 0; } }\n<\/style>\n\n<div class=\"fuly-rv-head\">\n  <h2>Amado por +{{ count_txt }} familias<\/h2>\n  {%- if rating > 0 -%}\n    <div class=\"fuly-rv-head__row\">\n      <span class=\"fuly-rv-head__chip\">{{ rating }} <span class=\"fuly-rv-head__stars\">★★★★★<\/span><\/span>\n      <span class=\"fuly-rv-head__count\">de 5 · {{ count_txt }} reseñas<\/span>\n    <\/div>\n  {%- endif -%}\n<\/div>\n\n<script>\n  (function () {\n    if (window.__fulyRevieToCart) return;\n    window.__fulyRevieToCart = true;\n\n    var variantCache = {};\n    function getVariant(handle) {\n      if (variantCache[handle]) return Promise.resolve(variantCache[handle]);\n      return fetch('\/products\/' + handle + '.js')\n        .then(function (r) { return r.json(); })\n        .then(function (p) {\n          var v = p.variants.find(function (x) { return x.available; }) || p.variants[0];\n          variantCache[handle] = v.id;\n          return v.id;\n        });\n    }\n\n    window.addEventListener('click', function (e) {\n      var card = e.target.closest('.carouselPre .itemsC[data-go]');\n      if (!card) return;\n      e.preventDefault();\n      e.stopImmediatePropagation();\n      if (card.dataset.adding) return;\n      card.dataset.adding = '1';\n      card.style.opacity = '.6';\n\n      var drawer = document.querySelector('cart-drawer');\n      var sections = drawer && drawer.getSectionsToRender\n        ? drawer.getSectionsToRender().map(function (s) { return s.id; })\n        : [];\n\n      getVariant(card.dataset.go)\n        .then(function (id) {\n          return fetch('\/cart\/add.js', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application\/json', 'Accept': 'application\/json' },\n            body: JSON.stringify({ id: id, quantity: 1, sections: sections, sections_url: location.pathname })\n          });\n        })\n        .then(function (r) { if (!r.ok) throw r; return r.json(); })\n        .then(function (data) {\n          if (drawer && drawer.renderContents) {\n            drawer.classList.remove('is-empty');\n            drawer.renderContents(data);\n          } else {\n            window.location.href = '\/cart';\n          }\n        })\n        .catch(function () { alert('No pudimos agregar el producto. Intenta de nuevo.'); })\n        .finally(function () { delete card.dataset.adding; card.style.opacity = ''; });\n    }, true);\n  })();\n<\/script>\n<script>\n  (function () {\n    if (window.__fulyRevieArrows) return;\n    window.__fulyRevieArrows = true;\n\n    \/\/ Las flechas de Revie miden la primera tarjeta; como el filtro la oculta (0 px), no avanzan.\n    \/\/ Aquí se usa el ancho de la primera tarjeta visible.\n    window.addEventListener('click', function (e) {\n      var btn = e.target.closest('.rv3-prev, .rv3-next');\n      if (!btn) return;\n      var box = btn.parentElement, ul = null;\n      while (box && !(ul = box.querySelector('ul.carouselPre'))) box = box.parentElement;\n      if (!ul) return;\n      e.preventDefault();\n      e.stopImmediatePropagation();\n\n      var item = Array.prototype.find.call(ul.querySelectorAll('.itemsC'), function (i) { return i.offsetWidth > 0; });\n      if (!item) return;\n      var gap = parseFloat(getComputedStyle(ul).columnGap) || 0;\n      var perView = Math.max(1, Math.floor(ul.clientWidth \/ (item.offsetWidth + gap)) - 1);\n      var step = (item.offsetWidth + gap) * perView;\n      ul.scrollBy({ left: btn.classList.contains('rv3-next') ? step : -step, behavior: 'smooth' });\n    }, true);\n  })();\n<\/script>",
+        "custom_liquid": "{%- assign p = all_products['immuny-booster-caja-x15'] -%}\n{%- assign rating = p.metafields.reviews.rating.value.rating | default: 0 | times: 1.0 | round: 1 -%}\n{%- assign count = p.metafields.reviews.rating_count | default: 0 -%}\n{%- if count >= 1000 -%}\n  {%- assign miles = count | divided_by: 1000 -%}\n  {%- assign resto = count | modulo: 1000 | prepend: '00' | slice: -3, 3 -%}\n  {%- assign count_txt = miles | append: '.' | append: resto -%}\n{%- else -%}\n  {%- assign count_txt = count -%}\n{%- endif -%}\n\n<style>\n  .fuly-rv-head { max-width: 1200px; margin: 0 auto; padding: 32px 32px 0; box-sizing: border-box; }\n  .fuly-rv-head h2 {\n    margin: 0 0 12px;\n    font-family: var(--fuly-font-heading); font-weight: 800; text-transform: uppercase;\n    font-size: clamp(26px, 4vw, 40px); line-height: .95;\n  }\n  .fuly-rv-head__row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }\n  .fuly-rv-head__chip {\n    display: inline-flex; align-items: center; gap: 8px;\n    padding: 6px 14px;\n    background: var(--fuly-yellow-spark, #FAE64B);\n    border: 2px solid #000; border-radius: 999px; box-shadow: 3px 3px 0 #000;\n    font-family: var(--fuly-font-heading); font-weight: 800; font-size: 18px; line-height: 1;\n  }\n  .fuly-rv-head__stars { letter-spacing: 1px; font-size: 16px; }\n  .fuly-rv-head__count { font-family: var(--fuly-font-heading); font-size: 15px; color: var(--fuly-muted-text, #6b6b6b); }\n  .carouselPre .itemsC[data-go] { cursor: pointer; }\n  @media (max-width: 749px) { .fuly-rv-head { padding: 24px 16px 0; } }\n</style>\n\n<div class=\"fuly-rv-head\">\n  <h2>Amado por +{{ count_txt }} familias</h2>\n  {%- if rating > 0 -%}\n    <div class=\"fuly-rv-head__row\">\n      <span class=\"fuly-rv-head__chip\">{{ rating }} <span class=\"fuly-rv-head__stars\">★★★★★</span></span>\n      <span class=\"fuly-rv-head__count\">de 5 · {{ count_txt }} reseñas</span>\n    </div>\n  {%- endif -%}\n</div>\n\n<script>\n  (function () {\n    if (window.__fulyRevieToCart) return;\n    window.__fulyRevieToCart = true;\n\n    var variantCache = {};\n    function getVariant(handle) {\n      if (variantCache[handle]) return Promise.resolve(variantCache[handle]);\n      return fetch('/products/' + handle + '.js')\n        .then(function (r) { return r.json(); })\n        .then(function (p) {\n          var v = p.variants.find(function (x) { return x.available; }) || p.variants[0];\n          variantCache[handle] = v.id;\n          return v.id;\n        });\n    }\n\n    window.addEventListener('click', function (e) {\n      var card = e.target.closest('.carouselPre .itemsC[data-go]');\n      if (!card) return;\n      e.preventDefault();\n      e.stopImmediatePropagation();\n      if (card.dataset.adding) return;\n      card.dataset.adding = '1';\n      card.style.opacity = '.6';\n\n      var drawer = document.querySelector('cart-drawer');\n      var sections = drawer && drawer.getSectionsToRender\n        ? drawer.getSectionsToRender().map(function (s) { return s.id; })\n        : [];\n\n      getVariant(card.dataset.go)\n        .then(function (id) {\n          return fetch('/cart/add.js', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },\n            body: JSON.stringify({ id: id, quantity: 1, sections: sections, sections_url: location.pathname })\n          });\n        })\n        .then(function (r) { if (!r.ok) throw r; return r.json(); })\n        .then(function (data) {\n          if (drawer && drawer.renderContents) {\n            drawer.classList.remove('is-empty');\n            drawer.renderContents(data);\n          } else {\n            window.location.href = '/cart';\n          }\n        })\n        .catch(function () { alert('No pudimos agregar el producto. Intenta de nuevo.'); })\n        .finally(function () { delete card.dataset.adding; card.style.opacity = ''; });\n    }, true);\n  })();\n</script>\n<script>\n  (function () {\n    if (window.__fulyRevieArrows) return;\n    window.__fulyRevieArrows = true;\n\n    // Las flechas de Revie miden la primera tarjeta; como el filtro la oculta (0 px), no avanzan.\n    // Aquí se usa el ancho de la primera tarjeta visible.\n    window.addEventListener('click', function (e) {\n      var btn = e.target.closest('.rv3-prev, .rv3-next');\n      if (!btn) return;\n      var box = btn.parentElement, ul = null;\n      while (box && !(ul = box.querySelector('ul.carouselPre'))) box = box.parentElement;\n      if (!ul) return;\n      e.preventDefault();\n      e.stopImmediatePropagation();\n\n      var item = Array.prototype.find.call(ul.querySelectorAll('.itemsC'), function (i) { return i.offsetWidth > 0; });\n      if (!item) return;\n      var gap = parseFloat(getComputedStyle(ul).columnGap) || 0;\n      var perView = Math.max(1, Math.floor(ul.clientWidth / (item.offsetWidth + gap)) - 1);\n      var step = (item.offsetWidth + gap) * perView;\n      ul.scrollBy({ left: btn.classList.contains('rv3-next') ? step : -step, behavior: 'smooth' });\n    }, true);\n  })();\n</script>",
         "color_scheme": "scheme-1",
         "padding_top": 0,
         "padding_bottom": 0
@@ -212,7 +213,7 @@
       "type": "apps",
       "blocks": {
         "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/app-block-3\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "",
             "format": "2",
@@ -256,7 +257,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/AD - Comparación - Doc Manu booster frutos rojos - Si tu hijo pudiera elegir.mp4",
+            "native_video": "shopify://files/videos/AD - Comparación - Doc Manu booster frutos rojos - Si tu hijo pudiera elegir.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -265,7 +266,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/video_02_4.mp4",
+            "native_video": "shopify://files/videos/video_02_4.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -274,7 +275,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/video_2_4.mp4",
+            "native_video": "shopify://files/videos/video_2_4.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -283,7 +284,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/Immuny Booster AD.mp4",
+            "native_video": "shopify://files/videos/Immuny Booster AD.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -302,7 +303,7 @@
         "columns_desktop": 4,
         "columns_mobile": "2",
         "gap": 16,
-        "aspect_ratio": "9 \/ 16",
+        "aspect_ratio": "9 / 16",
         "corner_radius": 12,
         "autoplay": false,
         "loop": false,
@@ -327,7 +328,7 @@
           "type": "button",
           "settings": {
             "label": "¡Comprar ahora!",
-            "link": "https:\/\/fulykids.com\/cart\/40003663757392:1",
+            "link": "https://fulykids.com/cart/40003663757392:1",
             "size": 16,
             "bg": "#f7cd47",
             "color": "#000000"
@@ -346,11 +347,11 @@
         "heading_shadow_color": "#f7cd47",
         "heading_size": 42,
         "heading_align": "left",
-        "image_a": "shopify:\/\/shop_images\/Escritorio_nino_ingredientes_fuly.png",
-        "image_a_mobile": "shopify:\/\/shop_images\/Movil_nino_ingredientes_booster.png",
-        "image_b": "shopify:\/\/shop_images\/Post_Sin_Con-selection_1.png",
-        "image_b_mobile": "shopify:\/\/shop_images\/Claims_Immuny_Booster.png",
-        "ratio": "4 \/ 5",
+        "image_a": "shopify://shop_images/Escritorio_nino_ingredientes_fuly.png",
+        "image_a_mobile": "shopify://shop_images/Movil_nino_ingredientes_booster.png",
+        "image_b": "shopify://shop_images/Post_Sin_Con-selection_1.png",
+        "image_b_mobile": "shopify://shop_images/Claims_Immuny_Booster.png",
+        "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
         "image_bg": "#FFFFFF",
@@ -448,7 +449,7 @@
       "type": "apps",
       "blocks": {
         "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/testimonialsRevie-v2\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/testimonialsRevie-v2/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "Amadas por cientos DE FAMILIAS",
             "title_color": "#14181f",
@@ -499,7 +500,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿A partir de qué edad se pueden tomar?",
-            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Sin embargo muchos los consumen desde los 2 años por recomendación de su pediatra. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.<\/p>"
+            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Sin embargo muchos los consumen desde los 2 años por recomendación de su pediatra. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
           }
         },
         "faq_item_hKEqEq": {
@@ -507,7 +508,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Tienen azúcar añadida?",
-            "answer": "<p>No le añadimos azúcar refinada a ningún Fuly. El azúcar que ves en la tabla nutricional es el azúcar natural de las frutas y las fibras que usamos, nada más.<\/p><p>En algunos productos vas a ver la palabra \"azúcares añadidos\" en la etiqueta. Tranquilo: no es azúcar refinada. Es una regla de etiquetado para alimentos procesados, que obliga a declarar así ciertos azúcares que vienen de los mismos ingredientes naturales.<\/p>"
+            "answer": "<p>No le añadimos azúcar refinada a ningún Fuly. El azúcar que ves en la tabla nutricional es el azúcar natural de las frutas y las fibras que usamos, nada más.</p><p>En algunos productos vas a ver la palabra \"azúcares añadidos\" en la etiqueta. Tranquilo: no es azúcar refinada. Es una regla de etiquetado para alimentos procesados, que obliga a declarar así ciertos azúcares que vienen de los mismos ingredientes naturales.</p>"
           }
         },
         "faq_item_EgYp9a": {
@@ -515,7 +516,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿tIENEN REGISTRO INVIMA?",
-            "answer": "<p>RSA-0020686-2022.<\/p>"
+            "answer": "<p>RSA-0020686-2022.</p>"
           }
         },
         "faq_item_B9xbFF": {
@@ -523,7 +524,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Reemplaza tratamientos médicos?",
-            "answer": "<p>No. Nuestros productos son alimentos, no medicamentos. Si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.<\/p>"
+            "answer": "<p>No. Nuestros productos son alimentos, no medicamentos. Si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
           }
         }
       },
@@ -554,7 +555,7 @@
       "settings": {
         "heading": "ÚNETE A +4.500 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "Comprar ahora",
-        "cta_link": "https:\/\/fulykids.com\/cart\/40003663757392:1",
+        "cta_link": "https://fulykids.com/cart/40003663757392:1",
         "bg_color": "#20a5de",
         "text_color": "#ffffff",
         "heading_size_mobile": 24,
@@ -583,7 +584,7 @@
         "text_cFYBTm": {
           "type": "text",
           "settings": {
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.<\/p>",
+            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
             "text_style": "body"
           }
         },
@@ -604,7 +605,7 @@
       "disabled": true,
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Contenido-enriquecido_Booster-Frutos-Rojos_1.jpg",
+        "image": "shopify://shop_images/Contenido-enriquecido_Booster-Frutos-Rojos_1.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
