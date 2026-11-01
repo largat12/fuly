@@ -105,7 +105,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Malteada_infantil_pouches_y_resena.png",
-            "slide_link": "",
+            "slide_link": "shopify://pages/malteadas",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "show_badge": false,
