@@ -15,18 +15,19 @@
         "slide_8QXVBE": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Malteadas_Fuly_Proteina_ninos.jpg",
-            "image_mobile": "shopify:\/\/shop_images\/Malteadas_Fuly_Proteina_ninos_Chocolate.jpg",
+            "image": "shopify://shop_images/Malteadas_Fuly_Proteina_ninos.jpg",
+            "image_mobile": "shopify://shop_images/Malteadas_Fuly_Proteina_ninos_Chocolate.jpg",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "enable_link": true,
-            "link": "https:\/\/fulykids.com\/cart\/41201819615312:1,41261932019792:1?storefront=true"
+            "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true"
           }
         }
       },
       "block_order": [
         "slide_8QXVBE"
       ],
+      "disabled": true,
       "name": "Slideshow",
       "settings": {
         "autoplay": true,
@@ -79,7 +80,7 @@
             "image_scale": "none",
             "title": "",
             "caption": "PROTEÍNA + CALCIO + VITAMINA D · 500G o 250G",
-            "image": "shopify:\/\/shop_images\/Malteada_Chocolate_2.png"
+            "image": "shopify://shop_images/Malteada_Chocolate_2.png"
           }
         },
         "product_tgDXGj": {
@@ -91,7 +92,7 @@
             "image_scale": "none",
             "title": "",
             "caption": "PROTEÍNA + CALCIO + VITAMINA D · Tarro 250g",
-            "image": "shopify:\/\/shop_images\/Malteada_Vainilla_2.png"
+            "image": "shopify://shop_images/Malteada_Vainilla_2.png"
           }
         },
         "item_AiDRRb": {
@@ -143,7 +144,7 @@
       "name": "Productos + Panel",
       "settings": {
         "heading": "Elige su favorita",
-        "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.<\/p>",
+        "subheading": "<p>La misma fórmula en los sabores que los niños más aman: Proteína de almendra y huevo, 18 vitaminas y minerales.</p>",
         "desktop_layout": "stacked",
         "cards_fill": true,
         "cards_max_width": 340,
@@ -156,10 +157,10 @@
         "gap_mobile": 10,
         "sticky_panel": false,
         "mobile_layout": "grid",
-        "panel_image": "shopify:\/\/shop_images\/Malteada_Chocolate_web_10.png",
+        "panel_image": "shopify://shop_images/Malteada_Chocolate_web_10.png",
         "image_style": "top",
-        "panel_image_ratio": "1\/1",
-        "panel_image_ratio_custom": "5\/4",
+        "panel_image_ratio": "1/1",
+        "panel_image_ratio_custom": "5/4",
         "panel_image_fit": "cover",
         "panel_image_position": "center",
         "panel_image_side": "left",
@@ -172,7 +173,7 @@
         "panel_title": "",
         "panel_text": "",
         "panel_btn_label": "comprar ahora",
-        "panel_btn_link": "https:\/\/fulykids.com\/cart\/41201819615312:1,41261932019792:1?storefront=true",
+        "panel_btn_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
         "panel_btn_style": "theme",
         "panel_btn_radius": 10,
         "panel_bg": "#ffffff",
@@ -199,11 +200,11 @@
         "ai_gen_block_f10a1a9_PrYfXR": {
           "type": "ai_gen_block_f10a1a9",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Malteadadeproteinaninos.svg",
+            "image": "shopify://shop_images/Malteadadeproteinaninos.svg",
             "image_alt": "Imagen de Fuly Kids",
             "image_link": "",
-            "image_ratio": "2 \/ 1",
-            "mobile_ratio": "4 \/ 3",
+            "image_ratio": "2 / 1",
+            "mobile_ratio": "4 / 3",
             "desktop_width_percent": 100,
             "corner_radius": 16,
             "placeholder_color": "#f9ecbf",
@@ -225,7 +226,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/AD - Beneficios - Malteada Manuela Doctora mi hijo no come nada.mp4",
+            "native_video": "shopify://files/videos/AD - Beneficios - Malteada Manuela Doctora mi hijo no come nada.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -234,7 +235,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/Malteada sachet v pauta.mp4",
+            "native_video": "shopify://files/videos/Malteada sachet v pauta.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -243,7 +244,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/Principal_3_2 (1).mp4",
+            "native_video": "shopify://files/videos/Principal_3_2 (1).mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -252,7 +253,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify:\/\/files\/videos\/video malteada de vainilla_b7c9c3bc-1ed7-431a-a1a4-5ed5ab70a71a.mp4",
+            "native_video": "shopify://files/videos/video malteada de vainilla_b7c9c3bc-1ed7-431a-a1a4-5ed5ab70a71a.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -271,7 +272,7 @@
         "columns_desktop": 4,
         "columns_mobile": "2",
         "gap": 16,
-        "aspect_ratio": "9 \/ 16",
+        "aspect_ratio": "9 / 16",
         "corner_radius": 12,
         "autoplay": false,
         "loop": false,
@@ -296,9 +297,9 @@
           "type": "button",
           "settings": {
             "label": "¡Las quiero!",
-            "link": "https:\/\/fulykids.com\/cart\/41201819615312:1,41261932019792:1?storefront=true",
+            "link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
             "size": 16,
-            "bg": "#F7CD47",
+            "bg": "#f7cd47",
             "color": "#000000"
           }
         }
@@ -312,12 +313,12 @@
         "heading": "¡No todas las malteadas son iguales!",
         "heading_color": "#000000",
         "heading_toy_shadow": false,
-        "heading_shadow_color": "#F7CD47",
+        "heading_shadow_color": "#f7cd47",
         "heading_size": 42,
         "heading_align": "left",
-        "image_a": "shopify:\/\/shop_images\/Fuly_funciona_vs_otros_productos.png",
-        "image_b": "shopify:\/\/shop_images\/ninos-maltedeada-de-chocolate_1.jpg",
-        "ratio": "4 \/ 5",
+        "image_a": "shopify://shop_images/Fuly_funciona_vs_otros_productos.png",
+        "image_b": "shopify://shop_images/ninos-maltedeada-de-chocolate_1.jpg",
+        "ratio": "4 / 5",
         "ratio_mobile": "auto",
         "image_fit": "cover",
         "image_bg": "#FFFFFF",
@@ -361,7 +362,7 @@
       "type": "apps",
       "blocks": {
         "revie_reviews_por_whatsapp_app_block_3_Xetq6D": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/app-block-3\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-3/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "AMADAS POR CIENTOS DE FAMILIAS ★★★★★",
             "format": "2",
@@ -455,7 +456,7 @@
       "type": "apps",
       "blocks": {
         "revie_reviews_por_whatsapp_testimonials_revie_v2_h7Mb34": {
-          "type": "shopify:\/\/apps\/revie-reviews-por-whatsapp\/blocks\/testimonialsRevie-v2\/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/testimonialsRevie-v2/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
           "settings": {
             "title": "Amadas por cientos DE FAMILIAS",
             "title_color": "#14181f",
@@ -506,7 +507,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿De dónde viene la proteína?",
-            "answer": "<p>De almendra y huevo entero. La de chocolate aporta 7,2 g de proteína por porción preparada, la de vainilla aporta 6,7g. Contiene almendra y huevo: revísalo si tu hijo tiene alguna alergia.<\/p>"
+            "answer": "<p>De almendra y huevo entero. La de chocolate aporta 7,2 g de proteína por porción preparada, la de vainilla aporta 6,7g. Contiene almendra y huevo: revísalo si tu hijo tiene alguna alergia.</p>"
           }
         },
         "faq_item_PEgWny": {
@@ -514,7 +515,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿A partir de qué edad se pueden tomar?",
-            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Sin embargo muchos los consumen desde los 2 años por recomendación de su pediatra. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.<\/p>"
+            "answer": "<p>Nuestros productos están diseñados para niños a partir de los 4 años. Sin embargo muchos los consumen desde los 2 años por recomendación de su pediatra. Recomendamos consultar con tu pediatra antes de darle cualquier Fuly a menores de 4 años para asegurarse de que lo pueden consumir sin problemas, y en ese caso recomendarles una porción adecuada para el niño.</p>"
           }
         },
         "faq_item_hKEqEq": {
@@ -522,7 +523,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Tienen azúcar añadida?",
-            "answer": "<p>No. Las malteadas no tienen azúcares añadidos.<br\/><br\/>Endulzamos con extracto de fruto del monje (luo han guo), una fruta verde del sur de China que los monjes budistas cultivan hace siglos. Su dulzor no es azúcar: son sus mogrósidos. Por eso lleva 0 g de azúcar añadida y sabe deliciosa.<\/p>"
+            "answer": "<p>No. Las malteadas no tienen azúcares añadidos.<br/><br/>Endulzamos con extracto de fruto del monje (luo han guo), una fruta verde del sur de China que los monjes budistas cultivan hace siglos. Su dulzor no es azúcar: son sus mogrósidos. Por eso lleva 0 g de azúcar añadida y sabe deliciosa.</p>"
           }
         },
         "faq_item_EgYp9a": {
@@ -530,7 +531,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿tIENEN REGISTRO INVIMA?",
-            "answer": "<p>Si. Nuestras malteadas tienen registro invima: RSA-0031556-2024<\/p>"
+            "answer": "<p>Si. Nuestras malteadas tienen registro invima: RSA-0031556-2024</p>"
           }
         },
         "faq_item_K9UX3g": {
@@ -538,7 +539,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Son seguros los ingredientes?",
-            "answer": "<p>Sí, las malteadas tienen ingredientes seguros (puedes encontrar la lista completa debajo de estas preguntas)<br\/>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.<\/p>"
+            "answer": "<p>Sí, las malteadas tienen ingredientes seguros (puedes encontrar la lista completa debajo de estas preguntas)<br/>Todos nuestros productos son formulados por científicos y médicos, y están certificados por INVIMA.</p>"
           }
         },
         "faq_item_B9xbFF": {
@@ -546,7 +547,7 @@
           "settings": {
             "category": "PREGUNTAS FRECUENTES",
             "question": "¿Reemplaza una comida o el desayuno?",
-            "answer": "<p>No. Es un complemento: acompaña el desayuno o cualquier momento del día.  Pero no busca reemplazar comidas completas. Aporta proteína, fibra y micronutrientes dentro de una alimentación equilibrada.<\/p>"
+            "answer": "<p>No. Es un complemento: acompaña el desayuno o cualquier momento del día.  Pero no busca reemplazar comidas completas. Aporta proteína, fibra y micronutrientes dentro de una alimentación equilibrada.</p>"
           }
         }
       },
@@ -599,8 +600,8 @@
       "settings": {
         "heading": "ÚNETE A +4.500 FAMILIAS QUE CONFÍAN EN FULY",
         "cta_label": "Comprar ahora",
-        "cta_link": "https:\/\/fulykids.com\/cart\/41201819615312:1,41261932019792:1?storefront=true",
-        "bg_color": "#20A5DE",
+        "cta_link": "https://fulykids.com/cart/41201819615312:1,41261932019792:1?storefront=true",
+        "bg_color": "#20a5de",
         "text_color": "#ffffff",
         "heading_size_mobile": 24,
         "heading_size_tablet": 28,
