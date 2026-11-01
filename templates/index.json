@@ -101,17 +101,16 @@
     "fuly_home_hero_slider_RrrnBT": {
       "type": "fuly-home-hero-slider",
       "blocks": {
-        "slide_Dj6Bxg": {
+        "slide_QWL4zD": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/4-1.jpg",
-            "image_mobile": "shopify://shop_images/4-2.jpg",
-            "slide_link": "https://fulykids.com/collections/ofertas",
+            "image": "shopify://shop_images/Malteada_infantil_pouches_y_resena.png",
+            "slide_link": "",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "show_badge": false,
             "badge_text": "",
-            "reviews_text": "",
+            "reviews_text": "reseñas verificadas ⭐",
             "title": "",
             "subtitle": "",
             "heading_color": "#1a1a1a",
@@ -250,7 +249,7 @@
         }
       },
       "block_order": [
-        "slide_Dj6Bxg",
+        "slide_QWL4zD",
         "slide_iQBWCV",
         "slide_4UXzti",
         "slide_QhRRW4"
