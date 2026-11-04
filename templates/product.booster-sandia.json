@@ -82,7 +82,7 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "none",
-            "content": "<p><strong>+ Vitamina C</strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br/><strong>+ Vitamina D:</strong> ayuda al cuerpo a activar sus defensas naturales.<br/><strong>+ Vitamina A: </strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br/><strong>+ Zinc:</strong> ayuda a que las células de defensa maduren y trabajen bien.<br/><strong>+ Selenio:</strong> antioxidante que protege las células del desgaste.<br/><strong>+ Betaglucanos (Ganoderma): </strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br/><strong>+ Probióticos (Bacillus coagulans): </strong>bacterias buenas que equilibran la flora intestinal.<br/><strong>+ Inulina y fibra prebiótica: </strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):</strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.</p>",
+            "content": "<p><strong>+ Vitamina C</strong>: antioxidante que apoya el sistema de defensas y ayuda a absorber el hierro.<br/><strong>+ Vitamina D:</strong> ayuda al cuerpo a activar sus defensas naturales.<br/><strong>+ Vitamina A: </strong>cuida las mucosas de nariz y garganta (la primera barrera contra los virus) y la visión.<br/><strong>+ Zinc:</strong> ayuda a que las células de defensa maduren y trabajen bien.<br/><strong>+ Selenio:</strong> antioxidante que protege las células del desgaste.<br/><strong>+ Betaglucanos (Ganoderma): </strong>fibras del hongo reishi que \"entrenan\" al sistema de defensas.<br/><strong>+ Probióticos (Bacillus coagulans): </strong>bacterias buenas que equilibran la flora intestinal.<br/><strong>+ Inulina y fibra prebiótica: </strong>alimentan las bacterias buenas y ayudan a aprovechar mejor los nutrientes.<br/><strong>+ Frutas en polvo (fresa, corozo, camu-camu y arazá):</strong> antioxidantes y vitaminas naturales, con el sabor a frutos rojos.<br/><strong>+ Sabor natural sandía</strong><br/></p>",
             "page": ""
           }
         },
@@ -120,7 +120,7 @@
           "settings": {
             "heading": "Características",
             "icon": "none",
-            "content": "<ul><li>Cantidad: 15 sobres de 3g</li><li>Contenido neto: 45g</li><li>Sabor: Frutos rojos 🍓</li><li>Se puede consumir en cualquier momento del día.</li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.</li></ul>",
+            "content": "<ul><li>Cantidad: 15 sobres de 3g</li><li>Contenido neto: 45g</li><li>Sabor natural sandía 🍉</li><li>Se puede consumir en cualquier momento del día.</li><li>El azúcar (0.2gr) que ves en la etiqueta, proviene naturalmente de las frutas y los prebióticos.</li></ul>",
             "page": ""
           }
         },
@@ -212,6 +212,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "mobile_info_position": "below",
         "breadcrumb_home_label": "Tienda",
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -268,7 +269,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify://files/videos/AD - Comparación - Doc Manu booster frutos rojos - Si tu hijo pudiera elegir.mp4",
+            "native_video": "shopify://files/videos/Reel Lanzamiento Daniel.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -277,25 +278,7 @@
           "type": "video",
           "settings": {
             "video_type": "shopify",
-            "native_video": "shopify://files/videos/video_02_4.mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_YLt46c": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Immuny Booster AD.mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_BY3jeF": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Clip 3 Immuny Booster.mp4",
+            "native_video": "shopify://files/videos/IMG_5106_editado_v6.mp4",
             "youtube_url": "",
             "caption": ""
           }
@@ -303,9 +286,7 @@
       },
       "block_order": [
         "video_gb8twM",
-        "video_aXMHKi",
-        "video_YLt46c",
-        "video_BY3jeF"
+        "video_aXMHKi"
       ],
       "name": "Videos en columnas",
       "settings": {
