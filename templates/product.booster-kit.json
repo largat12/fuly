@@ -47,7 +47,7 @@
           "settings": {
             "heading": "Ingredientes",
             "icon": "none",
-            "content": "<p><strong>Booster Frutos Rojos:</strong><br/>Mezcla de frutas en polvo, fibra, betaglucanos (Ganoderma lucidum), probióticos (<em>Bacillus coagulans</em>), y vitaminas A, C y D, zinc y selenio que <strong>contribuyen al funcionamiento normal del sistema inmunitario</strong>, dentro de una alimentación equilibrada<strong><br/>Malteadas: </strong><br/>Proteína de almendras, huevo entero en polvo, incluye calcio, magnesio, zinc, vitaminas A, C, D, E y vitaminas del complejo B. Opción práctica para <strong>sumar proteína, vitaminas y minerales</strong> al desayuno o a la lonchera.</p>",
+            "content": "<p>Immuny Booster (en cualquiera de sus sabores) contiene una mezcla de frutas en polvo, fibra, betaglucanos (Ganoderma lucidum), probióticos (<em>Bacillus coagulans</em>), y vitaminas A, C y D, zinc y selenio que <strong>contribuyen al funcionamiento normal del sistema inmunitario</strong>, dentro de una alimentación equilibrada</p>",
             "page": ""
           }
         },
@@ -56,7 +56,7 @@
           "settings": {
             "heading": "Características",
             "icon": "none",
-            "content": "<p><strong>Cada Booster:</strong></p><ul><li>Contenido neto: 45g</li><li>Cantidad: 15 sobres de 3g</li><li>Sabor: Frutos rojos</li></ul><p><strong>Cada Malteada Fuly:</strong></p><ul><li>Contenido neto: 250 g <em>(</em>o 10 sobres de 25 g, según versión del kit)</li><li>Sabores: Chocolate o Vainilla</li></ul>",
+            "content": "<p><strong>Cada Booster:</strong></p><ul><li>Contenido neto: 45g</li><li>Cantidad: 15 sobres de 3g</li><li>Sabor: Frutos rojos o sandía</li></ul>",
             "page": ""
           }
         },
@@ -65,7 +65,7 @@
           "settings": {
             "heading": "¿Cómo consumirlo?",
             "icon": "none",
-            "content": "<p><strong>Booster:</strong> consumo directo, recomendación consumir 1 sachet al día. Perfecto para llevar en la lonchera o consumir en cualquier momento del día. <br/><br/><strong>Malteada:</strong> adicionar 1 sachet o 2 medidas (25 g) en 200 mL de leche y mezclar hasta disolver.<br/>Ideal para el desayuno o para llevar preparado o por preparar al colegio.</p>",
+            "content": "<p><strong>Booster:</strong> consumo directo, recomendación consumir 1 sachet al día. Perfecto para llevar en la lonchera o consumir en cualquier momento del día.&nbsp;</p>",
             "page": ""
           }
         },
@@ -118,6 +118,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "mobile_info_position": "below",
         "breadcrumb_home_label": "Tienda",
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -223,7 +224,26 @@
             "productButtonText": "Ver producto",
             "max_width": 1200,
             "content_padding": 22,
-            "max_width_image": 24
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25d366",
+            "label_wall_title": "Míralo en casas reales"
           }
         }
       },
