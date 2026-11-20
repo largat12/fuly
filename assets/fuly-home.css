@@ -626,11 +626,24 @@
   }
 }
 
+/* El precio tachado flota encima del precio final para que este quede
+   en la misma posición (alineado con el botón) haya descuento o no. */
 .fuly-product-card__price-group {
+  position: relative;
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+}
+
+.fuly-product-card__price-group > .fuly-product-card__price--compare {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  line-height: 1.2;
+}
+
+/* Reserva espacio para el tachado y que no pise la descripción */
+.fuly-product-card__footer:has(.fuly-product-card__price--compare) {
+  padding-top: 2.8rem;
 }
 
 .fuly-product-card__price {

@@ -64,6 +64,12 @@ product-info .fuly-cro-delivery__row {
 }
 product-info .fuly-cro-delivery__row p {
   margin: 0;
+  font-family: inherit;
+}
+/* Títulos en la tipografía de marca, como el widget de suscripción */
+product-info .fuly-cro-delivery__row strong {
+  font-family: var(--fuly-font-heading);
+  font-weight: 800;
 }
 product-info .fuly-cro-delivery__icon {
   flex: 0 0 22px;

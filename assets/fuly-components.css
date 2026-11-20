@@ -830,3 +830,13 @@ table th {
 #subscription-widget-root #subscription-benefits span {
   font-family: var(--fuly-font-body) !important;
 }
+
+/* Descuento automático (fuly-auto-discount.js): solo tachado, sin badge */
+.fuly-auto-discount .price__badge-sale {
+  display: none;
+}
+
+/* Tachado de "Compra Única" en el widget de suscripciones: igual al de la app */
+#subscription-widget-root .fuly-sub-compare {
+  font-size: 14px;
+}
