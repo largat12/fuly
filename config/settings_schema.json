@@ -1514,6 +1514,13 @@
         "default": "Finalizar Compra"
       },
       {
+        "type": "text",
+        "id": "cart_trust_text",
+        "label": "Texto de confianza bajo el botón de pago",
+        "info": "Se muestra con un candado debajo del botón de pago en el carrito. Déjalo vacío para ocultarlo.",
+        "default": "Pago seguro · Envío a toda Colombia"
+      },
+      {
         "type": "header",
         "content": "Fuly — Quizás te interese"
       },

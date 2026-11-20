@@ -1,0 +1,502 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "revie_reviews_por_whatsapp_app_block_7YAH7n": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "star_color": "#f7cd47",
+            "text_color": "#432d14",
+            "star_text_2": "testimonios",
+            "star_text_singular": "reseña",
+            "size": 26,
+            "showcero": "2",
+            "format": "1",
+            "utm": "2"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "suscripciones_fuly_kids_subscription_widget_EErTjU": {
+          "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
+          "settings": {
+            "show_always": false,
+            "text_primary_color": "",
+            "text_discount_color": "",
+            "text_secondary_color": "",
+            "frequency_text_color": "",
+            "frequency_active_text_color": "",
+            "discount_badge_text_color": "",
+            "benefit_icon_bg_color": "",
+            "benefit_icon_check_color": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "collapsible_tab_8hiaHy": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredientes",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          },
+          "disabled": true
+        },
+        "collapsible_tab_q3Jfxk": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "¿Cómo consumirlo?",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          },
+          "disabled": true
+        },
+        "collapsible_tab_d7rTyB": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "¿Cuándo consumirlo?",
+            "icon": "none",
+            "content": "<p>Consumir en cualquier momento del día.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_P6xG7p": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "¿Desde qué edad se puede consumir?",
+            "icon": "none",
+            "content": "<p>Fuly Kids está recomendado a partir de los 4 años, cuando los niños ya han sido expuestos a sabores dulces. </p><p><strong>En algunos casos, pediatras lo han sugerido antes, gracias a la seguridad de sus ingredientes.</strong></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_JYVL96": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Características",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          },
+          "disabled": true
+        },
+        "collapsible_tab_dFUaKd": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Envíos",
+            "icon": "none",
+            "content": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplica TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m. Disponible en Bogotá, Medellín y Cali. Aplican TyC. </li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_6c6g9N": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Registro INVIMA",
+            "icon": "none",
+            "content": "",
+            "page": ""
+          },
+          "disabled": true
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "icon_with_text_yfCeaV": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Dgsty-05_1.png",
+            "heading_1": "Sin colores ni sabores artificiales",
+            "icon_2": "none",
+            "image_2": "shopify://shop_images/fresa_3x_1.png",
+            "heading_2": "Sin azúcar adicionada",
+            "icon_3": "none",
+            "image_3": "shopify://shop_images/hoja_sin_fondo.png",
+            "heading_3": "Endulzado naturalmente con alulosa"
+          }
+        },
+        "icon_with_text_gTygxK": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "heart",
+            "image_1": "shopify://shop_images/Cara_lengua_2c9d88b0-a7d2-4d85-9eec-510396e21d3f.png",
+            "heading_1": "Deliciosos",
+            "icon_2": "return",
+            "image_2": "shopify://shop_images/Corazon.png",
+            "heading_2": "Sin ingredientes controversiales",
+            "icon_3": "truck",
+            "image_3": "shopify://shop_images/Cerebor_3x_423c0d3c-d5cb-4b91-afca-752f12a87b27.png",
+            "heading_3": "Formulado por Doctores y Científicos"
+          }
+        },
+        "fuly_highlights_cro": {
+          "type": "fuly_highlights",
+          "settings": {
+            "item_1": "<strong>Excelente fuente de vitaminas y minerales</strong>",
+            "item_2": "Sin azúcar refinada añadida",
+            "item_3": "Les encanta el sabor",
+            "item_4": ""
+          }
+        },
+        "fuly_delivery_cro": {
+          "type": "fuly_delivery",
+          "settings": {}
+        },
+        "landing_tag": {
+          "type": "text",
+          "settings": {
+            "text": "Ciencia deliciosa para tus hijos",
+            "text_style": "uppercase"
+          }
+        },
+        "fuly_video_stories_cro": {
+          "type": "fuly_video_stories",
+          "settings": {
+            "heading": ""
+          }
+        }
+      },
+      "block_order": [
+        "landing_tag",
+        "title",
+        "revie_reviews_por_whatsapp_app_block_7YAH7n",
+        "fuly_highlights_cro",
+        "price",
+        "suscripciones_fuly_kids_subscription_widget_EErTjU",
+        "quantity_selector",
+        "buy_buttons",
+        "fuly_video_stories_cro",
+        "fuly_delivery_cro",
+        "description",
+        "variant_picker",
+        "collapsible_tab_8hiaHy",
+        "collapsible_tab_q3Jfxk",
+        "collapsible_tab_d7rTyB",
+        "collapsible_tab_P6xG7p",
+        "collapsible_tab_JYVL96",
+        "collapsible_tab_dFUaKd",
+        "collapsible_tab_6c6g9N",
+        "share",
+        "icon_with_text_yfCeaV",
+        "icon_with_text_gTygxK"
+      ],
+      "custom_css": [
+        ".icon-with-text {margin-bottom: 0; padding-bottom: 0;}",
+        ".button--primary {background-color: #f7cd47; color: #72604f;}",
+        ".media {border-radius: 16px;}",
+        ".badge {display: none;}",
+        "product-info {padding-bottom: 16px !important;}",
+        "@media (min-width: 750px) {product-info {padding-bottom: 13px !important; }}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "mobile_info_position": "below",
+        "breadcrumb_home_label": "Tienda",
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": false,
+        "enable_video_looping": true,
+        "padding_top": 20,
+        "padding_bottom": 12,
+        "pdp_title_size_mobile": 36,
+        "pdp_title_size_tablet": 50,
+        "pdp_title_size_desktop": 64,
+        "pdp_price_size_mobile": 32,
+        "pdp_price_size_tablet": 34,
+        "pdp_price_size_desktop": 36,
+        "pdp_breadcrumb_size_mobile": 16,
+        "pdp_breadcrumb_size_tablet": 16,
+        "pdp_breadcrumb_size_desktop": 16,
+        "pdp_gallery_gap_mobile": 24,
+        "pdp_gallery_gap_tablet": 32,
+        "pdp_gallery_gap_desktop": 48
+      }
+    },
+    "fuly_home_benefits_aaeWed": {
+      "type": "fuly-home-benefits",
+      "name": "Fuly Home — Benefits",
+      "settings": {
+        "auto_scroll": true,
+        "scroll_speed": 30,
+        "padding_block_mobile": 30,
+        "padding_block_tablet": 30,
+        "padding_block_desktop": 30,
+        "tag_gap_mobile": 12,
+        "tag_gap_tablet": 12,
+        "tag_gap_desktop": 12,
+        "tag_font_size_mobile": 13,
+        "tag_font_size_tablet": 13,
+        "tag_font_size_desktop": 13,
+        "bg_color": "#fffbea",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    },
+    "1746798531837b132f": {
+      "type": "apps",
+      "blocks": {
+        "revie_reviews_por_whatsapp_app_block_4_zmebTd": {
+          "type": "shopify://apps/revie-reviews-por-whatsapp/blocks/app-block-4/32a49769-cfbe-4f29-8b19-1ae20fdb2abe",
+          "settings": {
+            "title": "Testimonios",
+            "format": "1",
+            "image": "1",
+            "from": "2",
+            "onlinephotos": "2",
+            "title_color": "#000000",
+            "title_size": 24,
+            "title_pos": "center",
+            "date": true,
+            "star_color": "#f7cd47",
+            "size": 15,
+            "back_color": "#ffffff",
+            "text_color": "#121212",
+            "size_text": 14,
+            "max_reviews": 6,
+            "nextButtonText": "Mostrar más reseñas",
+            "productButtonText": "Ver producto",
+            "max_width": 1200,
+            "content_padding": 22,
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25d366",
+            "label_wall_title": "Míralo en casas reales"
+          }
+        }
+      },
+      "block_order": [
+        "revie_reviews_por_whatsapp_app_block_4_zmebTd"
+      ],
+      "custom_css": [
+        ".tt-rev-it[onclick] {background: #fff !important; border-radius: 20px !important; box-shadow: inset 0 0 0 1px #000, 3px 2px 0 #000 !important; overflow: hidden !important;}",
+        ".tt-rev-it[onclick] * {box-shadow: none !important; border: none !important;}"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "multicolumn_Q3NYhY": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dGCD3i": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Immuny-booster-Producto-web-2.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_HLXG96": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/nino_immuny_booster.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dGCD3i",
+        "column_HLXG96"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn {max-width: 100% !important; width: 100% !important; padding-left: -20px; padding-right: -20px;}",
+        ".multicolumn-card__image-wrapper--full-width {margin-left: 0 !important; margin-right: 0 !important;}",
+        ".multicolumn-card__image-wrapper {width: 100% !important;}",
+        ".content-container {padding-left: 0 !important; padding-right: 0 !important;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "custom_css": [
+        "h2 {text-align: center;}",
+        ".card__media {border-radius: 16px;}",
+        ".badge {display: none;}"
+      ],
+      "settings": {
+        "heading": "Quienes vieron este producto, también compraron",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "fuly_pdp_faq": {
+      "type": "fuly-home-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Tienen registro Invima?",
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Adicionan azúcar a sus productos?",
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo funciona el envío?",
+            "answer": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Qué beneficios tiene la suscripción?",
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "tag_label": "FAQ",
+        "heading": "PREGUNTAS FRECUENTES",
+        "cta_heading": "¿TIENES MÁS PREGUNTAS?",
+        "cta_label": "ESCRÍBENOS",
+        "cta_link": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "question_size_mobile": 16,
+        "question_size_tablet": 16,
+        "question_size_desktop": 16,
+        "answer_size_mobile": 16,
+        "answer_size_tablet": 16,
+        "answer_size_desktop": 16,
+        "gap_mobile": 12,
+        "gap_tablet": 12,
+        "gap_desktop": 12,
+        "summary_padding_mobile": 20,
+        "summary_padding_tablet": 20,
+        "summary_padding_desktop": 20,
+        "padding_block_mobile": 40,
+        "padding_block_tablet": 60,
+        "padding_block_desktop": 60,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "fuly_home_benefits_aaeWed",
+    "1746798531837b132f",
+    "fuly_pdp_faq",
+    "related-products",
+    "multicolumn_Q3NYhY"
+  ]
+}

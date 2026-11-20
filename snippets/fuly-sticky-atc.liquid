@@ -1,0 +1,89 @@
+{%- comment -%}
+  Fuly · Botón de compra fijo en móvil.
+  Aparece cuando el botón principal de compra no está en pantalla.
+  Al tocarlo, envía el mismo formulario del producto (respeta la variante
+  y la opción de compra única / suscripción elegida en la página).
+  Parámetros: product, section_id, label, reviews_count
+{%- endcomment -%}
+<div
+  id="FulyStickyAtc-{{ section_id }}"
+  class="fuly-sticky-atc"
+  aria-hidden="true"
+  data-section-id="{{ section_id }}"
+>
+  {%- if product.featured_media -%}
+    <div class="fuly-sticky-atc__media">
+      {{
+        product.featured_media
+        | image_url: width: 120
+        | image_tag: loading: 'lazy', width: 48, height: 48, alt: product.featured_media.alt
+      }}
+    </div>
+  {%- endif -%}
+  <div class="fuly-sticky-atc__info">
+    <p class="fuly-sticky-atc__title">{{ product.title | escape }}</p>
+    {%- if reviews_count > 0 -%}
+      <p class="fuly-sticky-atc__rating">
+        <span class="fuly-sticky-atc__stars" aria-hidden="true">★★★★★</span>
+        ({{ reviews_count }})
+      </p>
+    {%- endif -%}
+  </div>
+  <button
+    type="button"
+    class="fuly-sticky-atc__button"
+    tabindex="-1"
+    {% unless product.available %}
+      disabled
+    {% endunless %}
+  >
+    {{ label | escape }}
+  </button>
+</div>
+<script>
+  (function () {
+    var sid = {{ section_id | json }};
+    var bar = document.getElementById('FulyStickyAtc-' + sid);
+    var target = document.getElementById('ProductSubmitButton-' + sid);
+    if (!bar || !target || !('IntersectionObserver' in window)) return;
+
+    var button = bar.querySelector('.fuly-sticky-atc__button');
+    var mq = window.matchMedia('(max-width: 749px)');
+    var targetVisible = true;
+    var footerVisible = false;
+
+    function update() {
+      var show = mq.matches && !targetVisible && !footerVisible;
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      button.tabIndex = show ? 0 : -1;
+      document.body.classList.toggle('fuly-sticky-atc-on', show);
+    }
+
+    new IntersectionObserver(function (entries) {
+      targetVisible = entries[0].isIntersecting;
+      update();
+    }).observe(target);
+
+    var footer = document.querySelector('.shopify-section-group-footer-group') || document.querySelector('footer');
+    if (footer) {
+      new IntersectionObserver(function (entries) {
+        footerVisible = entries[0].isIntersecting;
+        update();
+      }).observe(footer);
+    }
+
+    if (mq.addEventListener) {
+      mq.addEventListener('change', update);
+    }
+
+    button.addEventListener('click', function () {
+      var current = document.getElementById('ProductSubmitButton-' + sid) || target;
+      if (current.disabled || current.getAttribute('aria-disabled') === 'true') {
+        current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      current.click();
+    });
+  })();
+</script>

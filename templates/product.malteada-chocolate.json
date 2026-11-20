@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -39,7 +30,11 @@
         },
         "price": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_price_per_serving": false,
+            "servings_fallback": 10,
+            "per_serving_label": "por porción"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -148,17 +143,45 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "fuly_highlights_cro": {
+          "type": "fuly_highlights",
+          "settings": {
+            "item_1": "<strong>Proteína de huevo y almendras</strong> en una malteada que les encanta",
+            "item_2": "Fuente de calcio, magnesio y vitaminas A, B5, B12, C y E",
+            "item_3": "Endulzada con fruto del monje, sin azúcar refinada añadida",
+            "item_4": ""
+          }
+        },
+        "fuly_delivery_cro": {
+          "type": "fuly_delivery",
+          "settings": {
+            "show_badges": false
+          }
+        },
+        "fuly_video_stories_cro": {
+          "type": "fuly_video_stories",
+          "settings": {
+            "heading": "",
+            "video_1": "shopify://files/videos/VIDEO PAUTA 01.mov",
+            "video_2": "shopify://files/videos/Principal_3_2 (1).mp4",
+            "video_3": "shopify://files/videos/Malteada sachet v pauta.mp4",
+            "video_4": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4"
+          }
         }
       },
       "block_order": [
         "vendor",
         "title",
         "revie_reviews_por_whatsapp_app_block_DweQYg",
+        "fuly_highlights_cro",
         "price",
         "variant_picker",
         "suscripciones_fuly_kids_subscription_widget_GmiMUr",
         "quantity_selector",
         "buy_buttons",
+        "fuly_video_stories_cro",
+        "fuly_delivery_cro",
         "description",
         "collapsible_tab_8hiaHy",
         "collapsible_tab_q3Jfxk",
@@ -342,7 +365,8 @@
         "show_controls": true,
         "padding_top": 40,
         "padding_bottom": 40
-      }
+      },
+      "disabled": true
     },
     "1746798531837b132f": {
       "type": "apps",
@@ -480,15 +504,92 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "fuly_pdp_faq": {
+      "type": "fuly-home-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Tienen registro Invima?",
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Adicionan azúcar a sus productos?",
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo funciona el envío?",
+            "answer": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Qué beneficios tiene la suscripción?",
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "tag_label": "FAQ",
+        "heading": "PREGUNTAS FRECUENTES",
+        "cta_heading": "¿TIENES MÁS PREGUNTAS?",
+        "cta_label": "ESCRÍBENOS",
+        "cta_link": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "question_size_mobile": 16,
+        "question_size_tablet": 16,
+        "question_size_desktop": 16,
+        "answer_size_mobile": 16,
+        "answer_size_tablet": 16,
+        "answer_size_desktop": 16,
+        "gap_mobile": 12,
+        "gap_tablet": 12,
+        "gap_desktop": 12,
+        "summary_padding_mobile": 20,
+        "summary_padding_tablet": 20,
+        "summary_padding_desktop": 20,
+        "padding_block_mobile": 40,
+        "padding_block_tablet": 60,
+        "padding_block_desktop": 60,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
     "main",
     "fuly_home_benefits_E7mN7Y",
-    "multicolumn_Q3NYhY",
-    "video_fuly_columnas_tCzFfL",
     "1746798531837b132f",
+    "fuly_pdp_faq",
+    "video_fuly_columnas_tCzFfL",
     "related-products",
+    "multicolumn_Q3NYhY",
     "multicolumn_Kef9Yn"
   ]
 }

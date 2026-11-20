@@ -356,3 +356,8 @@ summary:focus-visible {
     box-shadow: none !important;
   }
 }
+
+/* Tarjeta de producto clickeable completa (ver fuly-card-click.js) */
+.fuly-product-card {
+  cursor: pointer;
+}

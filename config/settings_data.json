@@ -317,7 +317,11 @@
           "shadow": "#1a1a1a"
         }
       }
-    }
+    },
+    "cart_free_shipping_text": "¡Te faltan [amount] para tener envío gratis en ciudades principales! ✨",
+    "cart_free_shipping_success_text": "¡Tu pedido tiene envío gratis en ciudades principales! 🎉",
+    "cart_recommendations_collection": "kits",
+    "cart_recommendations_count": 4
   },
   "presets": {
     "Default": {

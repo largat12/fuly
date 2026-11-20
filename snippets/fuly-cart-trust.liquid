@@ -1,0 +1,29 @@
+{%- comment -%}
+  Fuly · Línea de confianza debajo del botón de pago (carrito y cart drawer).
+  Texto editable en Configuración del tema → Carrito.
+{%- endcomment -%}
+{%- if settings.cart_trust_text != blank -%}
+  <p class="fuly-cart-trust">
+    {%- render 'fuly-cro-icon', icon: 'lock' -%}
+    <span>{{ settings.cart_trust_text | escape }}</span>
+  </p>
+  <style>
+    .fuly-cart-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 10px 0 0;
+      font-family: var(--fuly-font-body, Arial, sans-serif);
+      font-size: 13px;
+      line-height: 1.3;
+      color: var(--fuly-cartoon-black, #1a1a1a);
+      text-align: center;
+    }
+    .fuly-cart-trust svg {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 14px;
+    }
+  </style>
+{%- endif -%}

@@ -15,6 +15,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {{ 'fuly-cro.css' | asset_url | stylesheet_tag }}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -191,7 +192,7 @@
     class="page-width fuly-pdp-shell"
     style="--fuly-pdp-accent: {{ fuly_pdp_accent }}; --fuly-pdp-accent-22: {{ fuly_pdp_accent }}22; --fuly-pdp-accent-55: {{ fuly_pdp_accent }}55;"
   >
-    <nav class="fuly-pdp-breadcrumb" aria-label="Breadcrumb">
+    <nav class="fuly-pdp-breadcrumb{% if section.settings.hide_breadcrumb_mobile %} fuly-pdp-breadcrumb--hide-mobile{% endif %}" aria-label="Breadcrumb">
       <a href="{{ routes.all_products_collection_url }}">{{ section.settings.breadcrumb_home_label }}</a>
       <span class="fuly-pdp-breadcrumb__sep" aria-hidden="true">›</span>
       <span class="fuly-pdp-breadcrumb__current">{{ product.title | escape }}</span>
@@ -263,6 +264,19 @@
                     show_badges: true,
                     price_class: 'price--large'
                   -%}
+                  {%- if block.settings.show_price_per_serving -%}
+                    {%- liquid
+                      assign pps_variant = product.selected_or_first_available_variant
+                      assign pps_servings = pps_variant.title | split: ' ' | first | plus: 0
+                      if pps_servings == 0
+                        assign pps_servings = block.settings.servings_fallback | default: 0
+                      endif
+                    -%}
+                    {%- if pps_servings > 1 -%}
+                      {%- assign pps_price = pps_variant.price | divided_by: pps_servings -%}
+                      <p class="fuly-cro-pps">≈ {{ pps_price | money }} {{ block.settings.per_serving_label | escape }}</p>
+                    {%- endif -%}
+                  {%- endif -%}
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -819,6 +833,61 @@
                     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 </product-recommendations>
+              {%- when 'fuly_highlights' -%}
+                <ul class="fuly-cro-highlights" {{ block.shopify_attributes }}>
+                  {%- for i in (1..4) -%}
+                    {%- assign hl_key = 'item_' | append: i -%}
+                    {%- assign hl_text = block.settings[hl_key] -%}
+                    {%- if hl_text != blank -%}
+                      <li class="fuly-cro-highlights__item">
+                        <span class="fuly-cro-highlights__icon">{% render 'fuly-cro-icon', icon: 'check' %}</span>
+                        <span>{{ hl_text }}</span>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- when 'fuly_video_stories' -%}
+                {%- render 'fuly-video-stories', block: block -%}
+              {%- when 'fuly_delivery' -%}
+                <div class="fuly-cro-delivery" {{ block.shopify_attributes }}>
+                  <div class="fuly-cro-delivery__box">
+                    {%- for i in (1..3) -%}
+                      {%- assign dl_key = 'line_' | append: i -%}
+                      {%- assign dl_icon_key = 'icon_' | append: i -%}
+                      {%- if block.settings[dl_key] != blank -%}
+                        <div class="fuly-cro-delivery__row">
+                          <span class="fuly-cro-delivery__icon">{% render 'fuly-cro-icon', icon: block.settings[dl_icon_key] %}</span>
+                          <p>{{ block.settings[dl_key] }}</p>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                  {%- liquid
+                    assign show_bd = false
+                    if block.settings.badge_1 != blank or block.settings.badge_2 != blank or block.settings.badge_3 != blank
+                      assign show_bd = true
+                    endif
+                    if block.settings.show_badges == false
+                      assign show_bd = false
+                    endif
+                  -%}
+                  {%- if show_bd -%}
+                    <ul class="fuly-cro-delivery__badges">
+                      {%- for i in (1..3) -%}
+                        {%- assign bd_key = 'badge_' | append: i -%}
+                        {%- if block.settings[bd_key] != blank -%}
+                          <li class="fuly-cro-delivery__badge">
+                            {%- render 'fuly-cro-icon', icon: 'shield' -%}
+                            {{- block.settings[bd_key] | escape -}}
+                          </li>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                  {%- if block.settings.note != blank -%}
+                    <p class="fuly-cro-delivery__note">{{ block.settings.note }}</p>
+                  {%- endif -%}
+                </div>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
@@ -827,6 +896,10 @@
         </section>
       </div>
     </div>
+
+    {%- if section.settings.enable_mobile_sticky_atc -%}
+      {%- render 'fuly-sticky-atc', product: product, section_id: section.id, label: section.settings.sticky_atc_label, reviews_count: fuly_reviews_count -%}
+    {%- endif -%}
 
     {% render 'product-media-modal', variant_images: variant_images %}
 
@@ -892,6 +965,167 @@
       "type": "@app"
     },
     {
+      "type": "fuly_highlights",
+      "name": "Fuly · Beneficios clave",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Lista corta de beneficios con check, ideal debajo del título. Deja vacío un campo para ocultarlo."
+        },
+        {
+          "type": "inline_richtext",
+          "id": "item_1",
+          "label": "Beneficio 1",
+          "default": "Excelente fuente de vitaminas y minerales"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "item_2",
+          "label": "Beneficio 2",
+          "default": "Sin azúcar refinada añadida"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "item_3",
+          "label": "Beneficio 3",
+          "default": "Les encanta el sabor"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "item_4",
+          "label": "Beneficio 4"
+        }
+      ]
+    },
+    {
+      "type": "fuly_video_stories",
+      "name": "Fuly · Videos historias",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Videos en círculos tipo historias de Instagram. Uno sí y uno no se reproducen solos sin sonido; al tocarlos se abren en una ventana."
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Título (opcional)"
+        },
+        { "type": "video", "id": "video_1", "label": "Video 1" },
+        { "type": "video", "id": "video_2", "label": "Video 2" },
+        { "type": "video", "id": "video_3", "label": "Video 3" },
+        { "type": "video", "id": "video_4", "label": "Video 4" },
+        { "type": "video", "id": "video_5", "label": "Video 5" },
+        { "type": "video", "id": "video_6", "label": "Video 6" }
+      ]
+    },
+    {
+      "type": "fuly_delivery",
+      "name": "Fuly · Envío y confianza",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Información de envío y sellos de confianza. Recomendado justo debajo del botón de compra."
+        },
+        {
+          "type": "select",
+          "id": "icon_1",
+          "label": "Ícono fila 1",
+          "options": [
+            { "value": "truck", "label": "Camión" },
+            { "value": "clock", "label": "Reloj" },
+            { "value": "repeat", "label": "Suscripción" },
+            { "value": "gift", "label": "Regalo" },
+            { "value": "heart", "label": "Corazón" },
+            { "value": "lock", "label": "Candado" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "line_1",
+          "label": "Fila 1",
+          "default": "<strong>Envío a toda Colombia.</strong> El costo se calcula al pagar según tu ciudad. Gratis en ciudades principales desde $250.000*"
+        },
+        {
+          "type": "select",
+          "id": "icon_2",
+          "label": "Ícono fila 2",
+          "options": [
+            { "value": "truck", "label": "Camión" },
+            { "value": "clock", "label": "Reloj" },
+            { "value": "repeat", "label": "Suscripción" },
+            { "value": "gift", "label": "Regalo" },
+            { "value": "heart", "label": "Corazón" },
+            { "value": "lock", "label": "Candado" }
+          ],
+          "default": "clock"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "line_2",
+          "label": "Fila 2",
+          "default": "<strong>Recíbelo hoy</strong> en Bogotá, Medellín y Cali si compras antes de las 3:00 p.m.*"
+        },
+        {
+          "type": "select",
+          "id": "icon_3",
+          "label": "Ícono fila 3",
+          "options": [
+            { "value": "truck", "label": "Camión" },
+            { "value": "clock", "label": "Reloj" },
+            { "value": "repeat", "label": "Suscripción" },
+            { "value": "gift", "label": "Regalo" },
+            { "value": "heart", "label": "Corazón" },
+            { "value": "lock", "label": "Candado" }
+          ],
+          "default": "repeat"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "line_3",
+          "label": "Fila 3",
+          "default": "<strong>Suscríbete y ahorra 15%.</strong> Modifica o pausa cuando quieras."
+        },
+        {
+          "type": "header",
+          "content": "Sellos de confianza"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_badges",
+          "label": "Mostrar sellos de confianza",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "badge_1",
+          "label": "Sello 1",
+          "default": "Registro INVIMA"
+        },
+        {
+          "type": "text",
+          "id": "badge_2",
+          "label": "Sello 2",
+          "default": "Sin azúcar refinada añadida"
+        },
+        {
+          "type": "text",
+          "id": "badge_3",
+          "label": "Sello 3",
+          "default": "Formulado por científicos"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "note",
+          "label": "Nota al pie",
+          "default": "*Aplican términos y condiciones."
+        }
+      ]
+    },
+    {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
@@ -931,7 +1165,27 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_price_per_serving",
+          "label": "Mostrar precio por porción",
+          "info": "Toma el número de porciones del inicio del nombre de la variante (ej. '10 porciones'). Si no hay número, usa el valor de abajo.",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "servings_fallback",
+          "label": "Porciones (si la variante no lo indica)"
+        },
+        {
+          "type": "text",
+          "id": "per_serving_label",
+          "label": "Texto",
+          "default": "por porción"
+        }
+      ]
     },
     {
       "type": "sku",
@@ -2238,6 +2492,26 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_breadcrumb_mobile",
+      "default": true,
+      "label": "Ocultar ruta de navegación (Tienda › Producto) en móvil",
+      "info": "Sube el producto en pantallas de celular."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_mobile_sticky_atc",
+      "default": true,
+      "label": "Mostrar botón de compra fijo en móvil",
+      "info": "Aparece abajo en móvil cuando el botón principal no está en pantalla. Respeta la variante y la opción de suscripción elegidas."
+    },
+    {
+      "type": "text",
+      "id": "sticky_atc_label",
+      "label": "Texto del botón fijo",
+      "default": "Agregar al carrito"
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",

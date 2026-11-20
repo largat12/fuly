@@ -1,0 +1,148 @@
+{%- comment -%}
+  Fuly · Videos tipo historias de Instagram.
+  Círculos en fila deslizable; uno sí y uno no se reproducen solos (sin sonido).
+  Al tocar un círculo, el video se abre en una ventana con botón de cerrar.
+  Parámetros: block
+{%- endcomment -%}
+{%- liquid
+  assign stories_count = 0
+  for i in (1..6)
+    assign v_key = 'video_' | append: i
+    if block.settings[v_key] != blank
+      assign stories_count = stories_count | plus: 1
+    endif
+  endfor
+-%}
+{%- if stories_count > 0 -%}
+  <div class="fuly-stories" id="FulyStories-{{ block.id }}" {{ block.shopify_attributes }}>
+    {%- if block.settings.heading != blank -%}
+      <p class="fuly-stories__heading">{{ block.settings.heading }}</p>
+    {%- endif -%}
+    <ul class="fuly-stories__track" role="list">
+      {%- assign shown = 0 -%}
+      {%- for i in (1..6) -%}
+        {%- assign v_key = 'video_' | append: i -%}
+        {%- assign video = block.settings[v_key] -%}
+        {%- if video != blank -%}
+          {%- liquid
+            assign small_src = nil
+            for src in video.sources
+              if src.format == 'mp4'
+                if small_src == nil
+                  assign small_src = src
+                elsif src.height < small_src.height
+                  assign small_src = src
+                endif
+              endif
+            endfor
+            assign autoplay = false
+            assign rem = shown | modulo: 2
+            if rem == 0
+              assign autoplay = true
+            endif
+            assign shown = shown | plus: 1
+          -%}
+          <li>
+            <button
+              type="button"
+              class="fuly-stories__item"
+              data-story="{{ i }}"
+              aria-label="Ver video {{ shown }} de {{ stories_count }}"
+            >
+              <span class="fuly-stories__inner">
+                {%- if autoplay and small_src -%}
+                  <video
+                    muted
+                    loop
+                    playsinline
+                    preload="none"
+                    data-story-autoplay
+                    {% if video.preview_image %}poster="{{ video.preview_image | image_url: width: 200 }}"{% endif %}
+                    aria-hidden="true"
+                    tabindex="-1"
+                  >
+                    <source src="{{ small_src.url }}" type="video/mp4">
+                  </video>
+                {%- elsif video.preview_image -%}
+                  {{ video.preview_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '', width: 78, height: 78 }}
+                {%- endif -%}
+              </span>
+              <span class="fuly-stories__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M6 4.5v15a1 1 0 0 0 1.5.87l12.5-7.5a1 1 0 0 0 0-1.74L7.5 3.63A1 1 0 0 0 6 4.5Z"/></svg>
+              </span>
+            </button>
+            <template data-story-template="{{ i }}">
+              {{ video | video_tag: controls: true, playsinline: true, preload: 'metadata', image_size: '720x' }}
+            </template>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+    <dialog class="fuly-stories-modal" aria-label="Video">
+      <div class="fuly-stories-modal__box">
+        <button type="button" class="fuly-stories-modal__close" aria-label="Cerrar video">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <div class="fuly-stories-modal__player"></div>
+      </div>
+    </dialog>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById('FulyStories-{{ block.id }}');
+      if (!root) return;
+      var dialog = root.querySelector('.fuly-stories-modal');
+      var player = root.querySelector('.fuly-stories-modal__player');
+      var previews = root.querySelectorAll('[data-story-autoplay]');
+
+      function playPreviews(on) {
+        previews.forEach(function (v) {
+          if (on) {
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+          } else {
+            v.pause();
+          }
+        });
+      }
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          playPreviews(entries[0].isIntersecting && !dialog.open);
+        }, { threshold: 0.25 }).observe(root);
+      }
+
+      function close() {
+        player.innerHTML = '';
+        if (dialog.open) dialog.close();
+      }
+
+      root.querySelectorAll('.fuly-stories__item').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var tpl = root.querySelector('[data-story-template="' + btn.getAttribute('data-story') + '"]');
+          if (!tpl || typeof dialog.showModal !== 'function') return;
+          player.innerHTML = '';
+          player.appendChild(tpl.content.cloneNode(true));
+          playPreviews(false);
+          dialog.showModal();
+          var v = player.querySelector('video');
+          if (v) {
+            var p = v.play();
+            if (p && p.catch) p.catch(function () {});
+          }
+        });
+      });
+
+      root.querySelector('.fuly-stories-modal__close').addEventListener('click', close);
+      dialog.addEventListener('click', function (e) {
+        if (e.target === dialog) close();
+      });
+      dialog.addEventListener('close', function () {
+        player.innerHTML = '';
+        playPreviews(true);
+      });
+    })();
+  </script>
+{%- endif -%}

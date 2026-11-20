@@ -198,6 +198,22 @@
     min-height: var(--r-height);
   }
 
+  {%- comment -%} Altura en móvil según la proporción de la imagen (para que la imagen entre completa) {%- endcomment -%}
+  {%- if section.settings.height_mobile_auto -%}
+    {%- liquid
+      assign hs_first = section.blocks.first.settings
+      assign hs_img = hs_first.image_mobile | default: hs_first.image
+    -%}
+    {%- if hs_img != blank -%}
+      @media (max-width: 767px) {
+        #shopify-section-{{ sid }} .fuly-hslide {
+          height: auto;
+          min-height: 0;
+          aspect-ratio: {{ hs_img.aspect_ratio }};
+        }
+      }
+    {%- endif -%}
+  {%- endif -%}
   {%- comment -%} Enlace invisible que cubre toda la slide (imagen clickeable) {%- endcomment -%}
   #shopify-section-{{ sid }} .fuly-hslide__link {
     position: absolute;
@@ -409,6 +425,7 @@
     { "type": "checkbox", "id": "show_dots", "label": "Mostrar puntos (dots)", "default": true },
 
     { "type": "header", "content": "Responsive — Altura del slider" },
+    { "type": "checkbox", "id": "height_mobile_auto", "label": "Altura según la imagen en móvil", "info": "La imagen mobile se ve completa en cualquier celular. Si se desactiva, se usa la altura fija de abajo.", "default": true },
     { "type": "range", "id": "height_mobile", "min": 240, "max": 900, "step": 10, "unit": "px", "label": "Móvil", "default": 460 },
     { "type": "range", "id": "height_tablet", "min": 240, "max": 1000, "step": 10, "unit": "px", "label": "Tablet", "default": 560 },
     { "type": "range", "id": "height_desktop", "min": 240, "max": 1000, "step": 10, "unit": "px", "label": "Desktop", "default": 640 },

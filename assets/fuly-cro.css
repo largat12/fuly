@@ -1,0 +1,398 @@
+/* =========================================================
+   FULY · CRO página de producto
+   Beneficios clave, envío y confianza junto al botón de compra,
+   y botón de compra fijo en móvil.
+   ========================================================= */
+
+/* ---------- Beneficios clave ---------- */
+product-info .fuly-cro-highlights {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+product-info .fuly-cro-highlights__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--fuly-font-body);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--fuly-cartoon-black);
+}
+product-info .fuly-cro-highlights__icon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--fuly-cyan-menta);
+  color: var(--fuly-white-lab);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+product-info .fuly-cro-highlights__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- Envío y confianza ---------- */
+product-info .fuly-cro-delivery {
+  width: 100%;
+  margin: 0 !important;
+  display: grid;
+  gap: 12px;
+}
+product-info .fuly-cro-delivery__box {
+  background: var(--fuly-white-lab);
+  border: var(--fuly-border-sm);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 10px;
+}
+product-info .fuly-cro-delivery__row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--fuly-font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--fuly-cartoon-black);
+}
+product-info .fuly-cro-delivery__row p {
+  margin: 0;
+}
+product-info .fuly-cro-delivery__icon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  color: var(--fuly-cartoon-black);
+  margin-top: 1px;
+}
+product-info .fuly-cro-delivery__icon svg {
+  width: 22px;
+  height: 22px;
+}
+product-info .fuly-cro-delivery__badges {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+product-info .fuly-cro-delivery__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: var(--fuly-border-sm);
+  border-radius: 999px;
+  background: var(--fuly-vainilla);
+  font-family: var(--fuly-font-body);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--fuly-cartoon-black);
+}
+product-info .fuly-cro-delivery__badge svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+product-info .fuly-cro-delivery__note {
+  margin: 0;
+  font-family: var(--fuly-font-body);
+  font-size: 12px;
+  color: var(--fuly-muted-text);
+}
+
+/* ---------- Botón de compra fijo en móvil ---------- */
+.fuly-sticky-atc {
+  display: none;
+}
+@media screen and (max-width: 749px) {
+  .fuly-sticky-atc {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 998;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: var(--fuly-white-lab);
+    border-top: var(--fuly-border-sm);
+    box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.08);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .fuly-sticky-atc.is-visible {
+    transform: translateY(0);
+    visibility: visible;
+    transition: transform 0.25s ease, visibility 0s;
+  }
+  .fuly-sticky-atc__media {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border: var(--fuly-border-sm);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--fuly-white-lab);
+  }
+  .fuly-sticky-atc__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .fuly-sticky-atc__info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+  }
+  .fuly-sticky-atc__title {
+    margin: 0;
+    font-family: var(--fuly-font-heading);
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--fuly-cartoon-black);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .fuly-sticky-atc__rating {
+    margin: 0;
+    font-family: var(--fuly-font-body);
+    font-size: 12px;
+    color: var(--fuly-cartoon-black);
+    white-space: nowrap;
+  }
+  .fuly-sticky-atc__stars {
+    color: var(--fuly-yellow-spark);
+    letter-spacing: 1px;
+  }
+  .fuly-sticky-atc__button {
+    flex: 0 0 auto;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 25px;
+    border: var(--fuly-border-sm);
+    box-shadow: 2px 2px 0 var(--fuly-cartoon-black);
+    background: var(--fuly-yellow-spark);
+    color: var(--fuly-cartoon-black);
+    font-family: var(--fuly-font-heading);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .fuly-sticky-atc__button:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--fuly-cartoon-black);
+  }
+  .fuly-sticky-atc__button[disabled] {
+    opacity: 0.6;
+  }
+  body.fuly-sticky-atc-on .fuly-whatsapp-fab {
+    bottom: calc(86px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fuly-sticky-atc,
+  .fuly-sticky-atc.is-visible {
+    transition: none;
+  }
+}
+
+/* El aviso de descuento de Klaviyo (abajo a la izquierda) sube para no tapar el botón fijo */
+@media screen and (max-width: 749px) {
+  body.fuly-sticky-atc-on div[class*="kl-teaser"]:not([class*="kl-teaser"] *) {
+    transform: translateY(-140px) !important;
+    transition: transform 0.25s ease;
+  }
+}
+
+product-info .fuly-cro-delivery__badges > li {
+  width: auto !important;
+  flex: 0 0 auto;
+}
+product-info ul.fuly-cro-delivery__badges {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+}
+product-info ul.fuly-cro-delivery__badges > li.fuly-cro-delivery__badge {
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: 100%;
+}
+
+/* ---------- Videos tipo historias (círculos) ---------- */
+product-info .fuly-stories {
+  width: 100%;
+  margin: 0 !important;
+  display: grid;
+  gap: 8px;
+}
+product-info .fuly-stories__heading {
+  margin: 0;
+  font-family: var(--fuly-font-heading);
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--fuly-cartoon-black);
+}
+product-info .fuly-stories__track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 2px 6px;
+  margin: 0;
+  list-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+product-info .fuly-stories__track::-webkit-scrollbar {
+  display: none;
+}
+product-info .fuly-stories__track > li {
+  flex: 0 0 auto;
+  width: auto !important;
+  scroll-snap-align: start;
+}
+product-info .fuly-stories__item {
+  position: relative;
+  display: block;
+  width: 84px;
+  height: 84px;
+  padding: 3px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--fuly-yellow-spark);
+  border: 2px solid var(--fuly-cartoon-black);
+  box-shadow: 2px 2px 0 var(--fuly-cartoon-black);
+  cursor: pointer;
+}
+product-info .fuly-stories__inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--fuly-white-lab);
+  background: var(--fuly-muted);
+}
+product-info .fuly-stories__inner video,
+product-info .fuly-stories__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+product-info .fuly-stories__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.55);
+  color: var(--fuly-white-lab);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+product-info .fuly-stories__play svg {
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+}
+product-info .fuly-stories__item:focus-visible {
+  outline: 3px solid var(--fuly-cartoon-black);
+  outline-offset: 3px;
+}
+
+.fuly-stories-modal {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+  max-width: none;
+  max-height: none;
+}
+.fuly-stories-modal::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+.fuly-stories-modal__box {
+  position: relative;
+  width: min(88vw, calc(80vh * 9 / 16));
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  border: 3px solid var(--fuly-cartoon-black, #1a1a1a);
+}
+.fuly-stories-modal__box video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+.fuly-stories-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--fuly-cartoon-black, #1a1a1a);
+  background: var(--fuly-white-lab, #fff);
+  color: var(--fuly-cartoon-black, #1a1a1a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.fuly-stories-modal__close svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 749px) {
+  product-info .fuly-pdp-breadcrumb--hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Menos espacio arriba del producto en móvil */
+@media screen and (max-width: 749px) {
+  product-info.fuly-pdp-surface {
+    padding-top: 12px !important;
+  }
+}
+@media screen and (max-width: 749px) {
+  product-info .fuly-pdp-grid {
+    padding-top: 0 !important;
+  }
+}
+
+/* Precio por porción */
+product-info .fuly-cro-pps {
+  margin: 4px 0 0;
+  font-family: var(--fuly-font-body);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--fuly-muted-text);
+}
