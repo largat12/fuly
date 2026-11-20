@@ -10,8 +10,10 @@
  */
 (() => {
   const API_VERSION = '2025-07';
-  const CACHE_KEY = 'fuly-auto-discount-v1';
-  const CACHE_TTL_MS = 10 * 60 * 1000;
+  const CACHE_KEY = 'fuly-auto-discount-v2';
+  // Corto a propósito: si un descuento se apaga, nadie debe ver un tachado
+  // que el carrito ya no cobra por más de 2 minutos.
+  const CACHE_TTL_MS = 2 * 60 * 1000;
   const shop = window.Shopify && window.Shopify.shop;
   if (!shop) return;
   const endpoint = `https://${shop}/api/${API_VERSION}/graphql.json`;
@@ -93,11 +95,15 @@
     const regular = priceEl.querySelector('.price__regular .price-item--regular');
     const saleCompare = priceEl.querySelector('.price__sale s.price-item--regular');
     const salePrice = priceEl.querySelector('.price__sale .price-item--sale');
-    if (!regular || !saleCompare || !salePrice) return;
+    if (!regular || !saleCompare || !salePrice || priceEl.dataset.fulyAutoDiscount) return;
     const sample = regular.textContent.trim();
-    saleCompare.textContent = formatLike(sample, d.original);
+    // Con precio de comparación ya hay tachado: solo se baja el precio final.
+    if (!priceEl.classList.contains('price--on-sale')) {
+      saleCompare.textContent = formatLike(sample, d.original);
+      priceEl.classList.add('price--on-sale', 'fuly-auto-discount');
+    }
     salePrice.textContent = formatLike(sample, d.final);
-    priceEl.classList.add('price--on-sale', 'fuly-auto-discount');
+    priceEl.dataset.fulyAutoDiscount = '1';
   };
 
   const scanCards = (root = document) => {
@@ -109,7 +115,7 @@
   };
 
   const scanPdp = () => {
-    document.querySelectorAll('[id^="price-"] .price:not(.price--on-sale)').forEach((priceEl) => {
+    document.querySelectorAll('[id^="price-"] .price:not([data-fuly-auto-discount])').forEach((priceEl) => {
       const scope = priceEl.closest('product-info, section') || document;
       const id = scope.querySelector('form[action*="/cart/add"] [name="id"]')?.value;
       if (id) fetchDiscount(id).then((d) => d && applyToPdp(priceEl, d));
@@ -138,29 +144,29 @@
     });
   };
 
-  const watchSubscriptionWidget = () => {
+  const scanAll = () => {
+    scanCards();
+    scanPdp();
+    scanSubscription();
+  };
+
+  // Tarjetas cargadas después (filtros, búsqueda) y widget de suscripción,
+  // que la app vuelve a pintar.
+  const watchDom = () => {
     let queued = false;
     new MutationObserver(() => {
       if (queued) return;
       queued = true;
       requestAnimationFrame(() => {
         queued = false;
-        scanSubscription();
+        scanAll();
       });
     }).observe(document.body, { childList: true, subtree: true, characterData: true });
   };
 
   const run = () => {
-    scanCards();
-    scanPdp();
-    if (document.querySelector('form[action*="/cart/add"]')) {
-      scanSubscription();
-      watchSubscriptionWidget();
-    }
-    // La PDP re-renderiza el precio al cambiar de variante.
-    if (typeof subscribe === 'function' && window.PUB_SUB_EVENTS) {
-      subscribe(PUB_SUB_EVENTS.variantChange, () => setTimeout(scanPdp, 0));
-    }
+    scanAll();
+    watchDom(); // también cubre el re-render del precio al cambiar de variante
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
