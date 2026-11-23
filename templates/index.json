@@ -446,14 +446,7 @@
           "type": "ingredient",
           "settings": {
             "name": "GANODERMA",
-            "benefit": "Hongo adaptógeno que fortalece las defensas naturales."
-          }
-        },
-        "ingredient_2": {
-          "type": "ingredient",
-          "settings": {
-            "name": "MELENA DE LEÓN",
-            "benefit": "Hongo nootrópico que apoya la concentración y el desarrollo cognitivo."
+            "benefit": "Hongo funcional con compuestos que apoyan el sistema inmune."
           }
         },
         "ingredient_3": {
@@ -469,13 +462,20 @@
             "name": "MAGNESIO",
             "benefit": "Mineral clave para el sueño, la relajación y el crecimiento óseo."
           }
+        },
+        "ingredient_JDh7zf": {
+          "type": "ingredient",
+          "settings": {
+            "name": "SELENIO",
+            "benefit": "Mineral antioxidante que ayuda a las defensas a funcionar bien."
+          }
         }
       },
       "block_order": [
         "ingredient_1",
-        "ingredient_2",
         "ingredient_3",
-        "ingredient_4"
+        "ingredient_4",
+        "ingredient_JDh7zf"
       ],
       "settings": {
         "tag_label": "NUESTROS INGREDIENTES",
