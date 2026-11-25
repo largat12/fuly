@@ -104,9 +104,9 @@
         "slide_QWL4zD": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/1_f8c07041-7fe0-4d2b-9452-2398b20065de.jpg",
-            "image_mobile": "shopify://shop_images/2_3c7fd0a6-9b05-4cec-a226-e35244aace98.jpg",
-            "slide_link": "shopify://products/booster-sandia",
+            "image": "shopify://shop_images/BANNER_1_0d475247-b076-47c1-aed0-0b7dd9a23bf0.jpg",
+            "image_mobile": "shopify://shop_images/BANNERKIDSDAYS_2.jpg",
+            "slide_link": "shopify://collections/tienda",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "show_badge": false,
