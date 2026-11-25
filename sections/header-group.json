@@ -236,10 +236,37 @@
         "nav_hover_color": "#e31b48",
         "cart_badge_color": "#e31b48"
       }
+    },
+    "fuly_home_marquee_yHx9Qr": {
+      "type": "fuly-home-marquee",
+      "name": "Fuly Home — Marquee",
+      "settings": {
+        "items": "KIDS DAYS | 20% OFF EN TODA LA TIENDA| KIDS DAYS | 20% OFF EN TODA LA TIENDA|KIDS DAYS | 20% OFF EN TODA LA TIENDA",
+        "duration_mobile": 10,
+        "duration_tablet": 10,
+        "duration_desktop": 10,
+        "font_size_mobile": 18,
+        "font_size_tablet": 18,
+        "font_size_desktop": 18,
+        "padding_block_mobile": 16,
+        "padding_block_tablet": 16,
+        "padding_block_desktop": 16,
+        "item_gap_mobile": 24,
+        "item_gap_tablet": 24,
+        "item_gap_desktop": 24,
+        "bg_color": "#1A1A1A",
+        "text_color": "#FFFFFF",
+        "star_color": "#F7CD47",
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
+      }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "fuly_home_marquee_yHx9Qr"
   ]
 }
