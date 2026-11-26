@@ -38,7 +38,10 @@
         },
         "price": {
           "type": "price",
-          "settings": {}
+          "settings": {
+            "show_price_per_serving": false,
+            "per_serving_label": "por porción"
+          }
         },
         "suscripciones_fuly_kids_subscription_widget_EErTjU": {
           "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
@@ -52,7 +55,8 @@
             "discount_badge_text_color": "",
             "benefit_icon_bg_color": "",
             "benefit_icon_check_color": ""
-          }
+          },
+          "disabled": true
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -192,7 +196,17 @@
         "fuly_delivery_cro": {
           "type": "fuly_delivery",
           "settings": {
-            "show_badges": false
+            "show_badges": false,
+            "icon_1": "truck",
+            "line_1": "<strong>Envío a toda Colombia.</strong> El costo se calcula al pagar según tu ciudad. Gratis en ciudades principales desde $250.000*",
+            "icon_2": "clock",
+            "line_2": "<strong>Recíbelo hoy</strong> en Bogotá, Medellín y Cali si compras antes de las 3:00 p.m.*",
+            "icon_3": "repeat",
+            "line_3": "<strong>Suscríbete y ahorra 15%.</strong> Modifica o pausa cuando quieras.",
+            "badge_1": "Registro INVIMA",
+            "badge_2": "Sin azúcar refinada añadida",
+            "badge_3": "Formulado por científicos",
+            "note": "*Aplican términos y condiciones."
           }
         },
         "fuly_video_stories_cro": {
@@ -263,7 +277,10 @@
         "pdp_breadcrumb_size_desktop": 16,
         "pdp_gallery_gap_mobile": 24,
         "pdp_gallery_gap_tablet": 32,
-        "pdp_gallery_gap_desktop": 48
+        "pdp_gallery_gap_desktop": 48,
+        "hide_breadcrumb_mobile": true,
+        "enable_mobile_sticky_atc": true,
+        "sticky_atc_label": "Agregar al carrito"
       }
     },
     "fuly_home_benefits_aaeWed": {
