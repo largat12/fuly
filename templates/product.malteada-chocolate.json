@@ -37,6 +37,15 @@
             "utm": "2"
           }
         },
+        "fuly_highlights_cro": {
+          "type": "fuly_highlights",
+          "settings": {
+            "item_1": "<strong>Proteína de huevo y almendras</strong> en una malteada que les encanta",
+            "item_2": "Fuente de calcio, magnesio y vitaminas A, B5, B12, C y E",
+            "item_3": "Endulzada con fruto del monje, sin azúcar refinada añadida",
+            "item_4": "<strong>Nota: </strong>estamos produciendo tu malteada. Cómprala hoy con el 20% de Kids Days y te la despachamos desde el 3 de diciembre.&nbsp;"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -75,6 +84,32 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "fuly_video_stories_cro": {
+          "type": "fuly_video_stories",
+          "settings": {
+            "heading": "",
+            "video_1": "shopify://files/videos/VIDEO PAUTA 01.mov",
+            "video_2": "shopify://files/videos/Principal_3_2 (1).mp4",
+            "video_3": "shopify://files/videos/Malteada sachet v pauta.mp4",
+            "video_4": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4"
+          }
+        },
+        "fuly_delivery_cro": {
+          "type": "fuly_delivery",
+          "settings": {
+            "icon_1": "truck",
+            "line_1": "<strong>Envío a toda Colombia.</strong> El costo se calcula al pagar según tu ciudad. Gratis en ciudades principales desde $250.000*",
+            "icon_2": "clock",
+            "line_2": "<strong>Recíbelo hoy</strong> en Bogotá, Medellín y Cali si compras antes de las 3:00 p.m.*",
+            "icon_3": "repeat",
+            "line_3": "<strong>Suscríbete y ahorra 15%.</strong> Modifica o pausa cuando quieras.",
+            "show_badges": false,
+            "badge_1": "Registro INVIMA",
+            "badge_2": "Sin azúcar refinada añadida",
+            "badge_3": "Formulado por científicos",
+            "note": "*Aplican términos y condiciones."
           }
         },
         "description": {
@@ -152,31 +187,6 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "fuly_highlights_cro": {
-          "type": "fuly_highlights",
-          "settings": {
-            "item_1": "<strong>Proteína de huevo y almendras</strong> en una malteada que les encanta",
-            "item_2": "Fuente de calcio, magnesio y vitaminas A, B5, B12, C y E",
-            "item_3": "Endulzada con fruto del monje, sin azúcar refinada añadida",
-            "item_4": ""
-          }
-        },
-        "fuly_delivery_cro": {
-          "type": "fuly_delivery",
-          "settings": {
-            "show_badges": false
-          }
-        },
-        "fuly_video_stories_cro": {
-          "type": "fuly_video_stories",
-          "settings": {
-            "heading": "",
-            "video_1": "shopify://files/videos/VIDEO PAUTA 01.mov",
-            "video_2": "shopify://files/videos/Principal_3_2 (1).mp4",
-            "video_3": "shopify://files/videos/Malteada sachet v pauta.mp4",
-            "video_4": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4"
-          }
         }
       },
       "block_order": [
@@ -209,7 +219,11 @@
         "@media (min-width: 750px) {product-info {padding-bottom: 13px !important; }}"
       ],
       "settings": {
+        "hide_breadcrumb_mobile": true,
+        "enable_mobile_sticky_atc": true,
+        "sticky_atc_label": "Agregar al carrito",
         "enable_sticky_info": true,
+        "mobile_info_position": "below",
         "breadcrumb_home_label": "Tienda",
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -259,123 +273,6 @@
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
       }
-    },
-    "multicolumn_Q3NYhY": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_dGCD3i": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Excelentefuentede-MalteadadeChocolate.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_HLXG96": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/32.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_dGCD3i",
-        "column_HLXG96"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".multicolumn {max-width: 100% !important; width: 100% !important; padding-left: -20px; padding-right: -20px;}",
-        ".multicolumn-card__image-wrapper--full-width {margin-left: 0 !important; margin-right: 0 !important;}",
-        ".multicolumn-card__image-wrapper {width: 100% !important;}",
-        ".content-container {padding-left: 0 !important; padding-right: 0 !important;}"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "square",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 2,
-        "column_alignment": "center",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "video_fuly_columnas_tCzFfL": {
-      "type": "Video-Fuly-columnas",
-      "blocks": {
-        "video_zqdknt": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/VIDEO PAUTA 01.mov",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_wXgNLj": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Principal_3_2 (1).mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_hHG6E6": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Malteada sachet v pauta.mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        },
-        "video_bnYPFK": {
-          "type": "video",
-          "settings": {
-            "video_type": "shopify",
-            "native_video": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4",
-            "youtube_url": "",
-            "caption": ""
-          }
-        }
-      },
-      "block_order": [
-        "video_zqdknt",
-        "video_wXgNLj",
-        "video_hHG6E6",
-        "video_bnYPFK"
-      ],
-      "name": "Videos en columnas",
-      "settings": {
-        "title": "",
-        "title_alignment": "center",
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "gap": 16,
-        "aspect_ratio": "9 / 16",
-        "corner_radius": 12,
-        "autoplay": false,
-        "loop": false,
-        "mute": false,
-        "show_controls": true,
-        "padding_top": 40,
-        "padding_bottom": 40
-      },
-      "disabled": true
     },
     "1746798531837b132f": {
       "type": "apps",
@@ -434,84 +331,6 @@
       ],
       "settings": {
         "include_margins": true
-      }
-    },
-    "related-products": {
-      "type": "related-products",
-      "custom_css": [
-        "h2 {text-align: center;}",
-        ".media {border-radius: 16px;}",
-        ".badge {display: none;}"
-      ],
-      "settings": {
-        "heading": "Quienes vieron este producto, también compraron",
-        "heading_size": "h2",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_Kef9Yn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_xpNwKn": {
-          "type": "column",
-          "settings": {
-            "title": "Columna",
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_hxbjb4": {
-          "type": "column",
-          "settings": {
-            "title": "Columna",
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_c6njqw": {
-          "type": "column",
-          "settings": {
-            "title": "Columna",
-            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_xpNwKn",
-        "column_hxbjb4",
-        "column_c6njqw"
-      ],
-      "disabled": true,
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "Varias columnas",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "Etiqueta de botón",
-        "button_link": "",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "fuly_pdp_faq": {
@@ -588,6 +407,201 @@
         "heading_font_picker": "assistant_n4",
         "body_font": "inherit",
         "body_font_picker": "assistant_n4"
+      }
+    },
+    "video_fuly_columnas_tCzFfL": {
+      "type": "Video-Fuly-columnas",
+      "blocks": {
+        "video_zqdknt": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/VIDEO PAUTA 01.mov",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_wXgNLj": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Principal_3_2 (1).mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_hHG6E6": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Malteada sachet v pauta.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        },
+        "video_bnYPFK": {
+          "type": "video",
+          "settings": {
+            "video_type": "shopify",
+            "native_video": "shopify://files/videos/Clip1 recomenda mamá Aclaración.mp4",
+            "youtube_url": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_zqdknt",
+        "video_wXgNLj",
+        "video_hHG6E6",
+        "video_bnYPFK"
+      ],
+      "disabled": true,
+      "name": "Videos en columnas",
+      "settings": {
+        "title": "",
+        "title_alignment": "center",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "gap": 16,
+        "aspect_ratio": "9 / 16",
+        "corner_radius": 12,
+        "autoplay": false,
+        "loop": false,
+        "mute": false,
+        "show_controls": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "custom_css": [
+        "h2 {text-align: center;}",
+        ".media {border-radius: 16px;}",
+        ".badge {display: none;}"
+      ],
+      "settings": {
+        "heading": "Quienes vieron este producto, también compraron",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_Q3NYhY": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_dGCD3i": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Excelentefuentede-MalteadadeChocolate.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_HLXG96": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/32.png",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_dGCD3i",
+        "column_HLXG96"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn {max-width: 100% !important; width: 100% !important; padding-left: -20px; padding-right: -20px;}",
+        ".multicolumn-card__image-wrapper--full-width {margin-left: 0 !important; margin-right: 0 !important;}",
+        ".multicolumn-card__image-wrapper {width: 100% !important;}",
+        ".content-container {padding-left: 0 !important; padding-right: 0 !important;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "square",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_Kef9Yn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_xpNwKn": {
+          "type": "column",
+          "settings": {
+            "title": "Columna",
+            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hxbjb4": {
+          "type": "column",
+          "settings": {
+            "title": "Columna",
+            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_c6njqw": {
+          "type": "column",
+          "settings": {
+            "title": "Columna",
+            "text": "<p>Vincula un texto con una imagen para atraer la atención hacia tu producto, colección o artículo de blog seleccionados. Agrega detalles sobre disponibilidad y estilo, o incluso ofrece una reseña.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_xpNwKn",
+        "column_hxbjb4",
+        "column_c6njqw"
+      ],
+      "disabled": true,
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Varias columnas",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Etiqueta de botón",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
