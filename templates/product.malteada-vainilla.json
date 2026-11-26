@@ -30,10 +30,20 @@
             "star_color": "#f7cd47",
             "text_color": "#432d14",
             "star_text_2": "reseñas",
+            "star_text_singular": "reseña",
             "size": 25,
             "showcero": "2",
             "format": "1",
             "utm": "2"
+          }
+        },
+        "fuly_highlights_cro": {
+          "type": "fuly_highlights",
+          "settings": {
+            "item_1": "<strong>Proteína de huevo y almendras</strong> en una malteada que les encanta",
+            "item_2": "Fuente de calcio, magnesio y vitaminas A, B5, B12, C y E",
+            "item_3": "Sin azúcar refinada añadida",
+            "item_4": "<strong>Nota: </strong>estamos produciendo tu malteada. Cómprala hoy con el 20% de Kids Days y te la despachamos desde el 3 de diciembre. &nbsp;"
           }
         },
         "price": {
@@ -43,10 +53,6 @@
             "servings_fallback": 10,
             "per_serving_label": "por porción"
           }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
         },
         "suscripciones_fuly_kids_subscription_widget_zjE3VG": {
           "type": "shopify://apps/suscripciones-fuly-kids/blocks/subscription-widget/019d9283-612c-7442-85be-ea5df9b0babe",
@@ -79,6 +85,26 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
+        },
+        "fuly_delivery_cro": {
+          "type": "fuly_delivery",
+          "settings": {
+            "icon_1": "truck",
+            "line_1": "<strong>Envío a toda Colombia.</strong> El costo se calcula al pagar según tu ciudad. Gratis en ciudades principales desde $250.000*",
+            "icon_2": "clock",
+            "line_2": "<strong>Recíbelo hoy</strong> en Bogotá, Medellín y Cali si compras antes de las 3:00 p.m.*",
+            "icon_3": "repeat",
+            "line_3": "<strong>Suscríbete y ahorra 15%.</strong> Modifica o pausa cuando quieras.",
+            "show_badges": true,
+            "badge_1": "Registro INVIMA",
+            "badge_2": "Sin azúcar refinada añadida",
+            "badge_3": "Formulado por científicos",
+            "note": "*Aplican términos y condiciones."
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
         },
         "text_UdiAGY": {
           "type": "text",
@@ -191,19 +217,6 @@
             "image_3": "shopify://shop_images/Cerebor_3x_423c0d3c-d5cb-4b91-afca-752f12a87b27.png",
             "heading_3": "Formulado por Doctores y Científicos"
           }
-        },
-        "fuly_highlights_cro": {
-          "type": "fuly_highlights",
-          "settings": {
-            "item_1": "<strong>Proteína de huevo y almendras</strong> en una malteada que les encanta",
-            "item_2": "Fuente de calcio, magnesio y vitaminas A, B5, B12, C y E",
-            "item_3": "Sin azúcar refinada añadida",
-            "item_4": ""
-          }
-        },
-        "fuly_delivery_cro": {
-          "type": "fuly_delivery",
-          "settings": {}
         }
       },
       "block_order": [
@@ -238,7 +251,11 @@
         "@media (min-width: 750px) {product-info {padding-bottom: 13px !important; }}"
       ],
       "settings": {
+        "hide_breadcrumb_mobile": true,
+        "enable_mobile_sticky_atc": true,
+        "sticky_atc_label": "Agregar al carrito",
         "enable_sticky_info": true,
+        "mobile_info_position": "below",
         "breadcrumb_home_label": "Tienda",
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -313,7 +330,26 @@
             "productButtonText": "Ver producto",
             "max_width": 1200,
             "content_padding": 22,
-            "max_width_image": 24
+            "max_width_image": 24,
+            "label_reviews": "reseñas",
+            "label_average": "promedio",
+            "label_verified": "Reseñas verificadas",
+            "label_photos": "Fotos de clientes",
+            "label_seeall": "Ver todas",
+            "label_chip_all": "Todas",
+            "label_chip_photo": "Con foto",
+            "label_chip_video": "Con video",
+            "label_chip_audio": "Con audio",
+            "label_chip_top": "5 estrellas",
+            "label_products_all": "Todos los productos",
+            "label_sort_featured": "Destacadas",
+            "label_sort_recent": "Más recientes",
+            "label_sort_top": "Mejor puntuadas",
+            "label_sort_old": "Más antiguas",
+            "label_response": "Respuesta de",
+            "label_stories_title": "Videos y fotos de clientes",
+            "stories_ring": "#25d366",
+            "label_wall_title": "Míralo en casas reales"
           }
         }
       },
@@ -326,6 +362,82 @@
       ],
       "settings": {
         "include_margins": true
+      }
+    },
+    "fuly_pdp_faq": {
+      "type": "fuly-home-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Tienen registro Invima?",
+            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Adicionan azúcar a sus productos?",
+            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
+            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo funciona el envío?",
+            "answer": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Qué beneficios tiene la suscripción?",
+            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "tag_label": "FAQ",
+        "heading": "PREGUNTAS FRECUENTES",
+        "cta_heading": "¿TIENES MÁS PREGUNTAS?",
+        "cta_label": "ESCRÍBENOS",
+        "cta_link": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
+        "heading_size_mobile": 28,
+        "heading_size_tablet": 36,
+        "heading_size_desktop": 44,
+        "question_size_mobile": 16,
+        "question_size_tablet": 16,
+        "question_size_desktop": 16,
+        "answer_size_mobile": 16,
+        "answer_size_tablet": 16,
+        "answer_size_desktop": 16,
+        "gap_mobile": 12,
+        "gap_tablet": 12,
+        "gap_desktop": 12,
+        "summary_padding_mobile": 20,
+        "summary_padding_tablet": 20,
+        "summary_padding_desktop": 20,
+        "padding_block_mobile": 40,
+        "padding_block_tablet": 60,
+        "padding_block_desktop": 60,
+        "heading_font": "inherit",
+        "heading_font_picker": "assistant_n4",
+        "body_font": "inherit",
+        "body_font_picker": "assistant_n4"
       }
     },
     "related-products": {
@@ -404,82 +516,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
-      }
-    },
-    "fuly_pdp_faq": {
-      "type": "fuly-home-faq",
-      "blocks": {
-        "faq_1": {
-          "type": "faq",
-          "settings": {
-            "question": "¿Tienen registro Invima?",
-            "answer": "<p>¡Sí! Todos los productos de Fuly Kids cuentan con registro INVIMA, lo que asegura que cumplen con los estándares de calidad y seguridad exigidos en Colombia.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "question": "¿Adicionan azúcar a sus productos?",
-            "answer": "<p>No adicionamos azúcar refinada. El azúcar que verás en nuestras tablas nutricionales corresponde al azúcar natural de las frutas y de las fibras. Usamos edulcorantes naturales y nos enfocamos en que el sabor sea delicioso sin comprometer la nutrición.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "question": "¿Puedo dárselo a mi hijo si toma medicamentos?",
-            "answer": "<p>Nuestros productos son alimentos, no medicamentos, y no deberían interferir. Sin embargo, si tu hijo toma un tratamiento médico específico, te recomendamos consultar con su pediatra antes de consumir cualquier nuevo alimento funcional.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "faq",
-          "settings": {
-            "question": "¿Cómo funciona el envío?",
-            "answer": "<ul><li>Hacemos envíos a toda Colombia.</li><li>Disfruta envío gratis en ciudades principales por compras superiores a $250.000 pesos. Aplican TyC.</li><li>Recibe el mismo día si compras antes de las 3:00 p.m seleccionando esta opción en el proceso de compra. Disponible en Bogotá, Medellín y Cali. Aplican TyC.</li></ul>"
-          }
-        },
-        "faq_5": {
-          "type": "faq",
-          "settings": {
-            "question": "¿Qué beneficios tiene la suscripción?",
-            "answer": "<p>Con la suscripción ahorras un 15% en todos los Fuly y nunca te quedas sin ellos en casa. Recibes tus productos automáticamente en la frecuencia que elijas y puedes modificar o pausar la suscripción en cualquier momento.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5"
-      ],
-      "settings": {
-        "tag_label": "FAQ",
-        "heading": "PREGUNTAS FRECUENTES",
-        "cta_heading": "¿TIENES MÁS PREGUNTAS?",
-        "cta_label": "ESCRÍBENOS",
-        "cta_link": "https://api.whatsapp.com/send?phone=573164737772&text=%F0%9F%8D%8B%20%C2%A1Hola%20Fuly%21%20Vengo%20por%20ciencia%20deliciosa%20para%20mis%20hijos.%20Cu%C3%A9ntenme%20sobre%20sus%20alimentos",
-        "heading_size_mobile": 28,
-        "heading_size_tablet": 36,
-        "heading_size_desktop": 44,
-        "question_size_mobile": 16,
-        "question_size_tablet": 16,
-        "question_size_desktop": 16,
-        "answer_size_mobile": 16,
-        "answer_size_tablet": 16,
-        "answer_size_desktop": 16,
-        "gap_mobile": 12,
-        "gap_tablet": 12,
-        "gap_desktop": 12,
-        "summary_padding_mobile": 20,
-        "summary_padding_tablet": 20,
-        "summary_padding_desktop": 20,
-        "padding_block_mobile": 40,
-        "padding_block_tablet": 60,
-        "padding_block_desktop": 60,
-        "heading_font": "inherit",
-        "heading_font_picker": "assistant_n4",
-        "body_font": "inherit",
-        "body_font_picker": "assistant_n4"
       }
     }
   },
